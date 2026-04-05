@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="de"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silber-Chargenrechner – Berechnen Sie mehrere Silberartikel gleichzeitig</title>
+  <meta name="description" content="Berechnen Sie den Gesamtwert mehrerer Silbergegenstände auf einmal. Fügen Sie Ringe, Ketten, Münzen und Silberbesteck hinzu, um einen kombinierten Schmelzwert für Ihre gesamte Sammlung zu erhalten.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .batch-table { width: 100%; border-collapse: collapse; margin: var(--space-lg) 0; }
+    .batch-table th, .batch-table td { padding: var(--space-sm) var(--space-md); text-align: left; border-bottom: 1px solid var(--border-subtle); font-size: var(--fs-sm); }
+    .batch-table th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: var(--fs-xs); letter-spacing: 0.05em; }
+    .batch-table td input, .batch-table td select { width: 100%; padding: 6px 10px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-primary); font-size: var(--fs-sm); }
+    .batch-table td input:focus, .batch-table td select:focus { border-color: var(--accent-primary); outline: none; }
+    .batch-table .row-value { font-family: var(--font-display); font-weight: 600; color: var(--accent-primary); white-space: nowrap; }
+    .batch-table .remove-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: var(--fs-md); padding: 4px; transition: color var(--transition-fast); }
+    .batch-table .remove-btn:hover { color: #ef4444; }
+    .add-row-btn { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); background: var(--bg-glass); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); color: var(--accent-primary); cursor: pointer; font-size: var(--fs-sm); font-weight: 500; transition: all var(--transition-fast); width: 100%; justify-content: center; }
+    .add-row-btn:hover { background: var(--bg-glass-strong); border-color: var(--accent-primary); }
+    .batch-actions { display: flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap; }
+    .grand-total { background: linear-gradient(135deg, rgba(192,192,192,0.1) 0%, rgba(192,192,192,0.03) 100%); border: 2px solid var(--border-accent); border-radius: var(--radius-lg); padding: var(--space-xl); text-align: center; margin-top: var(--space-xl); }
+    .grand-total .total-label { font-size: var(--fs-sm); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .grand-total .total-value { font-family: var(--font-display); font-size: var(--fs-4xl); font-weight: 800; background: var(--gradient-silver); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .grand-total .total-detail { display: flex; justify-content: center; gap: var(--space-xl); margin-top: var(--space-md); font-size: var(--fs-sm); color: var(--text-secondary); }
+    @media print { .site-header, .site-footer, .mobile-menu-btn, .mobile-nav, .add-row-btn, .batch-actions, .related-grid, .breadcrumb, #price-ticker { display: none !important; } main { padding-top: 0 !important; } .calc-widget { border: 1px solid #ccc; } .grand-total { border: 2px solid #333; } body { background: white; color: black; } .batch-table th, .batch-table td { border-color: #ccc; } .result-value, .total-value, .row-value { -webkit-text-fill-color: initial !important; background: none !important; color: #333 !important; } .result-label, .total-label { color: #666 !important; } .page-hero h1 .highlight { -webkit-text-fill-color: initial !important; background: none !important; color: #333 !important; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>Silberne Charge <span class="highlight">Calculator</span></h1><p>Berechnen Sie den Gesamtwert mehrerer Silbergegenstände auf einmal – ideal für den Verkauf einer Sammlung.</p></div></section>
+    <div class="calc-page-layout" style="max-width:1000px;">
+      <div class="calc-widget" style="max-width:100%;">
+        <div class="calc-widget-title"><span class="icon">📋</span> Batch Calculator</div>
+        <div style="overflow-x:auto;">
+          <table class="batch-table" id="batch-table">
+            <thead>
+              <tr>
+                <th style="width:22%;">Beschreibung</th>
+                <th style="width:15%;">Gewicht</th>
+                <th style="width:14%;">Einheit</th>
+                <th style="width:16%;">Reinheit</th>
+                <th style="width:8%;">Menge</th>
+                <th style="width:15%;">Wert</th>
+                <th style="width:5%;"></th>
+              </tr>
+            </thead>
+            <tbody id="batch-body"></tbody>
+          </table>
+        </div>
+        <button type="button" class="add-row-btn" id="add-row-btn">+ Add Another Item</button>
+
+        <div class="grand-total" id="grand-total">
+          <div class="total-label">Total Collection Value</div>
+          <div class="total-value" id="total-value">$0.00</div>
+          <div class="total-detail">
+            <span id="total-items">0 items</span>
+            <span id="total-weight">0g total</span>
+            <span id="total-silver">0g pure silver</span>
+          </div>
+        </div>
+
+        <div class="batch-actions">
+          <button type="button" class="btn btn-primary" onclick="window.print()">🖨️ Print Receipt</button>
+          <button type="button" class="btn btn-secondary" id="copy-btn">📋 Copy Results</button>
+          <button type="button" class="btn btn-secondary" id="clear-btn">🗑️ Clear All</button>
+          <button type="button" class="btn btn-secondary" id="save-btn">💾 Save to Browser</button>
+          <button type="button" class="btn btn-secondary" id="load-btn" style="display:none;">📂 Load Saved</button>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>So verwenden Sie den Batch-Rechner</h2>
+        <p>Mit dem Chargenrechner können Sie mehrere Silbergegenstände hinzufügen und ihren Gesamtwert berechnen – ideal, wenn Sie den Verkauf einer Sammlung an einen Händler vorbereiten.</p>
+        <ol>
+          <li><strong>Add items</strong> — Klicken Sie für jedes Stück auf „+ Weiteres Element hinzufügen“.</li>
+          <li><strong>Enter details</strong> — Beschreibung, Gewicht, Einheit und Reinheit für jeden</li>
+          <li><strong>See total</strong> — Die Gesamtsumme wird automatisch aktualisiert</li>
+          <li><strong>Print or copy</strong> — Bringen Sie die Quittung zu Ihrem Händler oder bewahren Sie sie zum Nachschlagen auf</li>
+        </ol>
+        <div class="callout tip">
+          <div class="callout-title">💡 Pro Tip</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Gruppieren Sie Artikel nach Reinheitsgrad (alle 925 Teile zusammen, alle 800 Teile zusammen), um die Verhandlungen mit Händlern zu erleichtern. Verwenden Sie die Schaltfläche „Im Browser speichern“, um Ihren Bestand zwischen Besuchen aufzubewahren.</p>
+        </div>
+      </div>
+
+      <div><h3 style="margin-bottom:var(--space-lg);">Verwandte</h3><div class="related-grid">
+        <a href="silberschrott-rechner.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        <a href="silber-gewichtsumrechner.html" class="related-link"><span class="r-icon">⚖️</span> Weight Converter</a>
+        <a href="wie-man-silber-verkauft.html" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>
+        <a href="silber-reinheitstabelle.html" class="related-link"><span class="r-icon">📊</span> Purity Chart</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Startseite',href:'index.html'},{label:'Batch Calculator'}]);
+
+    let rows = [];
+    let rowId = 0;
+
+    function createRow(desc='', weight='', unit='g', purity='0.925', qty='1') {
+      const id = rowId++;
+      rows.push(id);
+      const tr = document.createElement('tr');
+      tr.id = 'row-' + id;
+      tr.innerHTML = `
+        <td><input type="text" placeholder="e.g. Ring" value="${desc}" data-field="desc"></td>
+        <td><input type="number" placeholder="0" step="0.01" min="0" value="${weight}" data-field="weight"></td>
+        <td><select data-field="unit"><option value="g" ${unit==='g'?'selected':''}>Grams</option><option value="oz" ${unit==='oz'?'selected':''}>Troy Oz</option><option value="dwt" ${unit==='dwt'?'selected':''}>DWT</option><option value="kg" ${unit==='kg'?'selected':''}>KG</option></select></td>
+        <td><select data-field="purity"><option value="0.999" ${purity==='0.999'?'selected':''}>999</option><option value="0.958" ${purity==='0.958'?'selected':''}>958</option><option value="0.925" ${purity==='0.925'?'selected':''}>925</option><option value="0.900" ${purity==='0.900'?'selected':''}>900</option><option value="0.835" ${purity==='0.835'?'selected':''}>835</option><option value="0.800" ${purity==='0.800'?'selected':''}>800</option></select></td>
+        <td><input type="number" min="1" step="1" value="${qty}" data-field="qty" style="width:60px;"></td>
+        <td class="row-value" id="val-${id}">$0.00</td>
+        <td><button type="button" class="remove-btn" onclick="removeRow(${id})">✕</button></td>`;
+      document.getElementById('batch-body').appendChild(tr);
+      tr.querySelectorAll('input, select').forEach(el => { el.addEventListener('input', calcAll); el.addEventListener('change', calcAll); });
+      calcAll();
+    }
+
+    function removeRow(id) {
+      const tr = document.getElementById('row-' + id);
+      if (tr) tr.remove();
+      rows = rows.filter(r => r !== id);
+      calcAll();
+    }
+
+    function calcAll() {
+      const spot = SilverPrice.getPrice();
+      let totalValue = 0, totalWeightG = 0, totalSilverG = 0, itemCount = 0;
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        const w = parseFloat(tr.querySelector('[data-field="weight"]').value) || 0;
+        const u = tr.querySelector('[data-field="unit"]').value;
+        const p = parseFloat(tr.querySelector('[data-field="purity"]').value);
+        const q = parseInt(tr.querySelector('[data-field="qty"]').value) || 1;
+        const grams = SilverCalc.toGrams(w, u) * q;
+        const r = SilverCalc.meltValue(grams, p, spot);
+        const valEl = tr.querySelector('.row-value');
+        if (valEl) valEl.textContent = SilverCalc.formatCurrency(r.value);
+        totalValue += r.value;
+        totalWeightG += grams;
+        totalSilverG += r.silverContentGrams;
+        itemCount += q;
+      });
+      document.getElementById('total-value').textContent = SilverCalc.formatCurrency(totalValue);
+      document.getElementById('total-items').textContent = itemCount + ' item(s)';
+      document.getElementById('total-weight').textContent = totalWeightG.toFixed(1) + 'g total';
+      document.getElementById('total-silver').textContent = totalSilverG.toFixed(1) + 'g pure silver';
+    }
+
+    // Add initial rows
+    createRow('Sterling Ring', '6', 'g', '0.925', '1');
+    createRow('Silver Chain', '25', 'g', '0.925', '1');
+    createRow('Silver Spoon', '40', 'g', '0.925', '4');
+
+    document.getElementById('add-row-btn').addEventListener('click', () => createRow());
+
+    document.getElementById('clear-btn').addEventListener('click', () => {
+      document.getElementById('batch-body').innerHTML = '';
+      rows = [];
+      createRow();
+    });
+
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const spot = SilverPrice.getPrice();
+      let text = `Silver Batch Valuation — ${new Date().toLocaleDateString()}\nSpot Price: $${spot.toFixed(2)}/oz\n\n`;
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        const desc = tr.querySelector('[data-field="desc"]').value || 'Item';
+        const w = tr.querySelector('[data-field="weight"]').value;
+        const u = tr.querySelector('[data-field="unit"]').value;
+        const p = tr.querySelector('[data-field="purity"]').value;
+        const q = tr.querySelector('[data-field="qty"]').value;
+        const val = tr.querySelector('.row-value').textContent;
+        text += `${desc}: ${w}${u} × ${q} @ ${(p*100).toFixed(1)}% = ${val}\n`;
+      });
+      text += `\nTOTAL: ${document.getElementById('total-value').textContent}`;
+      text += `\n${document.getElementById('total-items').textContent} · ${document.getElementById('total-weight').textContent} · ${document.getElementById('total-silver').textContent}`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy Results', 2000);
+      });
+    });
+
+    document.getElementById('save-btn').addEventListener('click', () => {
+      const data = [];
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        data.push({
+          desc: tr.querySelector('[data-field="desc"]').value,
+          weight: tr.querySelector('[data-field="weight"]').value,
+          unit: tr.querySelector('[data-field="unit"]').value,
+          purity: tr.querySelector('[data-field="purity"]').value,
+          qty: tr.querySelector('[data-field="qty"]').value
+        });
+      });
+      localStorage.setItem('silverBatchData', JSON.stringify(data));
+      const btn = document.getElementById('save-btn');
+      btn.textContent = '✅ Saved!';
+      setTimeout(() => btn.textContent = '💾 Save to Browser', 2000);
+      document.getElementById('load-btn').style.display = 'inline-flex';
+    });
+
+    // Check for saved data
+    if (localStorage.getItem('silverBatchData')) {
+      document.getElementById('load-btn').style.display = 'inline-flex';
+    }
+
+    document.getElementById('load-btn').addEventListener('click', () => {
+      try {
+        const data = JSON.parse(localStorage.getItem('silverBatchData'));
+        document.getElementById('batch-body').innerHTML = '';
+        rows = [];
+        data.forEach(d => createRow(d.desc, d.weight, d.unit, d.purity, d.qty));
+      } catch(e) {}
+    });
+
+    SilverPrice.onPriceUpdate(() => calcAll());
+  </script>
+
+
+
+<script>
+   
+</script>
+<script>
+  window.MenuTranslations = {"slugs":{"silver-scrap-calculator.html":"silberschrott-rechner.html","gold-and-silver-calculator.html":"gold-und-silber-rechner.html","silver-melt-value-calculator.html":"silber-schmelzwert-rechner.html","sterling-silver-calculator.html":"sterlingsilber-rechner.html","junk-silver-calculator.html":"billon-silber-rechner.html","silver-coin-value-calculator.html":"silbermuenzen-wert-rechner.html","silver-bar-value-calculator.html":"silberbarren-wert-rechner.html","silver-jewelry-value-calculator.html":"silberschmuck-wert-rechner.html","silverware-value-calculator.html":"silberbesteck-wert-rechner.html","999-silver-calculator.html":"999-feinsilber-rechner.html","958-silver-calculator.html":"958-britanniasilber-rechner.html","925-silver-calculator.html":"925-sterlingsilber-rechner.html","900-silver-calculator.html":"900-muenzsilber-rechner.html","835-silver-calculator.html":"835-silber-rechner.html","800-silver-calculator.html":"800-silber-rechner.html","silver-purity-chart.html":"silber-reinheitstabelle.html","silver-price-per-gram.html":"silberpreis-pro-gramm.html","silver-price-per-ounce.html":"silberpreis-pro-unze.html","silver-price-all-currencies.html":"silberpreis-alle-waehrungen.html","1-10oz-silver-value.html":"1-10oz-silberwert.html","1oz-silver-value.html":"1oz-silberwert.html","2oz-silver-value.html":"2oz-silberwert.html","5oz-silver-value.html":"5oz-silberwert.html","10oz-silver-value.html":"10oz-silberwert.html","100oz-silver-value.html":"100oz-silberwert.html","1kg-silver-value.html":"1kg-silberwert.html","silver-profit-calculator.html":"silber-gewinn-rechner.html","silver-batch-calculator.html":"silber-stapel-rechner.html","sona-chandi-calculator.html":"sona-chandi-rechner.html","face-value-silver-calculator.html":"nennwert-silber-rechner.html","silver-weight-converter.html":"silber-gewichtsumrechner.html","pennyweight-calculator.html":"pennyweight-dwt-rechner.html","tola-calculator.html":"tola-rechner.html","silver-sell-or-hold.html":"silber-verkaufen-oder-halten.html","identify-silver.html":"silber-identifizieren.html","how-to-use-silver-calculators.html":"wie-man-silberrechner-verwendet.html","what-is-silver-scrap.html":"was-ist-silberschrott.html","what-is-silver-melt-value.html":"was-ist-silberschmelzwert.html","what-is-junk-silver.html":"was-ist-billon-silber.html","what-is-troy-ounce.html":"was-ist-eine-feinunze.html","what-is-silver-bullion.html":"was-sind-silberbarren.html","how-silver-prices-work.html":"wie-silberpreise-funktionieren.html","silver-hallmarks-guide.html":"silberstempel-ratgeber.html","what-does-925-mean.html":"was-bedeutet-925.html","what-is-sterling-silver.html":"was-ist-sterlingsilber.html","how-to-sell-silver.html":"wie-man-silber-verkauft.html","silver-bracelet-value.html":"silberarmband-wert.html","silver-chain-value.html":"silberkette-wert.html","silver-cup-value.html":"silberbecher-wert.html","silver-dime-calculator.html":"silber-dime-rechner.html","silver-dollar-calculator.html":"silber-dollar-rechner.html","silver-fork-value.html":"silbergabel-wert.html","silver-knife-value.html":"silbermesser-wert.html","silver-necklace-value.html":"silberhalskette-wert.html","silver-plate-value.html":"silberteller-wert.html","silver-quarter-calculator.html":"silber-quarter-rechner.html","silver-ring-value.html":"silberring-wert.html","silver-spoon-value.html":"silberloeffel-wert.html","silver-tray-value.html":"silbertablett-wert.html","canadian-silver-coin-calculator.html":"kanadische-silbermuenzen-rechner.html"},"Home":"Startseite","Calculators":"Rechner","Silver Scrap Calculator":"Silberschrott-Rechner","Gold & Silver Calculator":"Gold- & Silber-Rechner","Silver Melt Value":"Silberschmelzwert","Sterling Silver Calculator":"Sterlingsilber-Rechner","Junk Silver Calculator":"Billon-Silber-Rechner","Silver Coin Value":"Silbermünzen-Wert","Silver Bar Value":"Silberbarren-Wert","Silver Jewelry Value":"Silberschmuck-Wert","Silverware Value":"Silberbesteck-Wert","Purity":"Reinheit","999 Fine Silver":"999 Feinsilber","958 Britannia Silver":"958 Britannia-Silber","925 Sterling Silver":"925 Sterlingsilber","900 Coin Silver":"900 Münzsilber","835 Silver":"835 Silber","800 Silver":"800 Silber","Silver Purity Chart":"Silber-Reinheitstabelle","Pricing":"Preise","Silver Price Per Gram":"Silberpreis pro Gramm","Silver Price Per Ounce":"Silberpreis pro Unze","Price in All Currencies":"Preis in allen Währungen","1/10oz Silver Value":"1/10oz Silberwert","1oz Silver Value":"1oz Silberwert","2oz Silver Value":"2oz Silberwert","5oz Silver Value":"5oz Silberwert","10oz Silver Value":"10oz Silberwert","100oz Silver Value":"100oz Silberwert","1kg Silver Value":"1kg Silberwert","Tools":"Werkzeuge","Silver Profit Calculator":"Silber-Gewinn-Rechner","Batch Calculator":"Stapel-Rechner","Sona Chandi Calculator":"Sona Chandi Rechner","Face Value Calculator":"Nennwert-Rechner","Weight Converter":"Gewichtsumrechner","Pennyweight (DWT) Calc":"Pennyweight (DWT) Rechner","Tola Calculator":"Tola-Rechner","Sell or Hold Analysis":"Verkaufen oder Halten Analyse","Silver Identifier":"Silber-Identifikator","Guides":"Ratgeber","How to Use Our Calculators":"Wie man unsere Rechner nutzt","What Is Silver Scrap?":"Was ist Silberschrott?","What Is Melt Value?":"Was ist Schmelzwert?","What Is Junk Silver?":"Was ist Billonsilber?","What Is a Troy Ounce?":"Was ist eine Feinunze?","What Is Silver Bullion?":"Was sind Silberbarren?","How Silver Prices Work":"Wie Silberpreise funktionieren","Silver Hallmarks Guide":"Silberstempel Ratgeber","What Does 925 Mean?":"Was bedeutet 925?","What Is Sterling Silver?":"Was ist Sterlingsilber?","How to Sell Silver":"Wie man Silber verkauft","Scrap Silver":"Silberschrott","Gold & Silver":"Gold & Silber","Silver Profit":"Silber-Gewinn","Melt Value":"Schmelzwert","Junk Silver":"Billonsilber","Silver Coins":"Silbermünzen","Silver Dollar":"Silberdollar","Silver Quarter":"Silber-Quarter","Silver Dime":"Silber-Dime","Jewelry Value":"Schmuckwert","925 Sterling":"925 Sterling","Purity Chart":"Reinheitstabelle","How to Use Calculators":"Rechner verwenden","Sona Chandi Calc":"Sona Chandi Rechner","Face Value Calc":"Nennwert-Rechner","Sell or Hold":"Verkaufen oder Halten","About":"Über uns","Privacy":"Datenschutz","Terms":"Bedingungen","All rights reserved.":"Alle Rechte vorbehalten.","Prices are for informational purposes only.":"Preise dienen nur zu Informationszwecken.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Kostenlose, präzise Silberrechner mit Live-Spotpreisen. Berechnen Sie blitzschnell den Schmelzwert Ihres Silberschrotts, Ihrer Münzen, Ihres Schmucks und Ihrer Barren."};
+</script>
+</body></html>

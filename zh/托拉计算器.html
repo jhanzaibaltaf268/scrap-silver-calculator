@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>托拉银计算器 — 将托拉转换为克 &amp; 白银价值</title>
+  <meta name="description" content="免费的银托拉计算器。将托拉转换为克、金衡盎司，并按今天的实时现货价格计算每托拉的白银价值。">
+  <meta name="keywords" content="tola calculator, tola to grams, silver tola price, silver price per tola, tola converter, 1 tola silver price">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/tola-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" style="padding: var(--space-2xl) 0 var(--space-xl);">
+      <div class="container hero-content">
+        <div id="breadcrumb"></div>
+        
+        <h1>银牌 <span class="highlight">Tola Calculator</span></h1>
+        <p class="hero-subtitle">将托拉转换为克、金衡盎司，并按今天的实时现货价格计算每托拉的白银价值。在印度、巴基斯坦、孟加拉国和中东地区使用。</p>
+
+        <div class="calc-widget slide-up" id="tola-calc">
+          <div class="calc-widget-title"><span class="icon">🌙</span> Silver Tola Value Calculator</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="tola-weight">托拉重量</label>
+              <input type="number" class="form-input" id="tola-weight" placeholder="Enter weight in tola" step="0.01" min="0" value="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="tola-purity">银纯度</label>
+              <select class="form-select" id="tola-purity">
+                <option value="0.999">999 — 纯银 (99.9%)</option>
+                <option value="0.958">958 — 不列颠尼亚 (95.8%)</option>
+                <option value="0.925" selected="">925 — 英镑 (92.5%)</option>
+                <option value="0.900">900 — 银币 (90%)</option>
+                <option value="0.835">835 — 欧洲 (83.5%)</option>
+                <option value="0.800">800 — 欧洲 (80%)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Conversion results -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-md);margin-bottom:var(--space-lg);">
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Grams</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-grams">11.66</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Troy Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-ozt">0.3750</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Pennyweight</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-dwt">7.500</div>
+            </div>
+          </div>
+
+          <div class="result-display" id="tola-result">
+            <div class="result-label">每托拉的白银价值</div>
+            <div class="result-value" id="tola-result-value">$0.00</div>
+            <div class="result-detail" id="tola-result-detail">Enter weight in tola to calculate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick reference table -->
+    <section class="section" style="padding:var(--space-2xl) 0;">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:var(--space-lg);">托拉换算表</h2>
+        <div style="max-width:700px;margin:0 auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border-medium);">
+                <th style="padding:var(--space-md);text-align:left;color:var(--text-muted);font-size:var(--fs-sm);">托拉</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">克</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">特洛伊奥兹</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">925价值</th>
+              </tr>
+            </thead>
+            <tbody id="tola-table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+      <div class="container">
+        <div class="content-body">
+          <h2>什么是托拉？</h2>
+          <p>A <strong>tola</strong> 是南亚和中东地区用于测量黄金和白银的传统重量单位。一托拉等于 <strong>11.6638 grams</strong> 或大约 0.375 金衡盎司。该术语源自印地语/乌尔都语单词“तोला”，历史上与卢比银币的重量有关。</p>
+
+          <h3>Tola 在哪里使用？</h3>
+          <p>tola 常用在 <strong>India, Pakistan, Bangladesh, Nepal, Sri Lanka,</strong> 以及部分 <strong>Middle East</strong> 买卖贵金属时。当您在当地珠宝商或市场看到以“per tola”报价的银价时，此计算器可以帮助您将该价格转换为国际标准进行比较。</p>
+
+          <h3>托拉转换公式</h3>
+          <ul style="list-style:disc;margin-left:var(--space-xl);">
+            <li style="padding:4px 0;color:var(--text-secondary);">1 托拉 = 11.6638 克</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 托拉 = 0.375 金衡盎司 (3/8 盎司)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 托拉 = 7.5 便士 (DWT)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 克 = 0.08573 托拉</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 金衡盎司 = 2.6667 托拉</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">10 托拉 = 116.638 克 = 3.75 金衡盎司</li>
+          </ul>
+
+          <h3>今日每托拉白银价格</h3>
+          <p>每托拉的白银价格根据全球现货价格而变化。由于 1 托拉 = 0.375 金衡盎司，因此将现货价格乘以 0.375（然后乘以纯度）即可得到每托拉的价值。我们的计算器使用实时价格自动执行此操作。</p>
+
+          <h3>相关计算器</h3>
+          <p>使用我们的 <a href="便士计算器.html">pennyweight calculator</a> 对于 DWT 转换， <a href="银重量转换器.html">weight converter</a> 对于所有单位，或者 <a href="所有货币白银价格.html">multi-currency price page</a> 查看今天以巴基斯坦卢比、印度卢比和其他当地货币表示的白银价格。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      { label: 'Home', href: 'index.html' },
+      { label: 'Tools', href: '#' },
+      { label: 'Tola Calculator' }
+    ]);
+
+    const TOLA_TO_GRAMS = 11.6638;
+    const tolaWeight = document.getElementById('tola-weight');
+    const tolaPurity = document.getElementById('tola-purity');
+    const tolaGrams = document.getElementById('tola-grams');
+    const tolaOzt = document.getElementById('tola-ozt');
+    const tolaDwt = document.getElementById('tola-dwt');
+    const tolaResultValue = document.getElementById('tola-result-value');
+    const tolaResultDetail = document.getElementById('tola-result-detail');
+
+    function calcTola() {
+      const tola = parseFloat(tolaWeight.value) || 0;
+      const purity = parseFloat(tolaPurity.value);
+      const spotPrice = SilverPrice.getPrice();
+
+      const grams = tola * TOLA_TO_GRAMS;
+      const troyOz = grams / 31.1035;
+      const dwt = troyOz * 20;
+
+      tolaGrams.textContent = grams.toFixed(2);
+      tolaOzt.textContent = troyOz.toFixed(4);
+      tolaDwt.textContent = dwt.toFixed(3);
+
+      if (tola <= 0) {
+        tolaResultValue.textContent = '$0.00';
+        tolaResultDetail.textContent = 'Enter weight in tola to calculate';
+        return;
+      }
+
+      const value = troyOz * purity * spotPrice;
+      const pureGrams = grams * purity;
+      tolaResultValue.textContent = SilverCalc.formatCurrency(value);
+      tolaResultDetail.textContent = `${pureGrams.toFixed(2)}g pure silver · ${(troyOz * purity).toFixed(4)} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+    }
+
+    tolaWeight.addEventListener('input', calcTola);
+    tolaPurity.addEventListener('change', calcTola);
+    SilverPrice.onPriceUpdate(() => calcTola());
+    calcTola();
+
+    // Conversion table
+    const tableBody = document.getElementById('tola-table');
+    [0.5, 1, 2, 3, 5, 10, 15, 20, 50].forEach(tola => {
+      const g = (tola * TOLA_TO_GRAMS).toFixed(2);
+      const ozt = (tola * TOLA_TO_GRAMS / 31.1035).toFixed(3);
+      const spotPrice = SilverPrice.getPrice();
+      const val = SilverCalc.formatCurrency((tola * TOLA_TO_GRAMS / 31.1035) * 0.925 * spotPrice);
+      tableBody.innerHTML += `<tr style="border-bottom:1px solid var(--border-subtle);">
+        <td style="padding:var(--space-md);color:var(--text-primary);font-weight:600;">${tola} tola</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${g}g</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${ozt} oz</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--accent-primary);font-weight:600;">${val}</td>
+      </tr>`;
+    });
+
+    SiteComponents.injectFAQSchema([
+      { q: 'What is a tola?', a: 'A tola is a traditional unit of weight used in South Asia and the Middle East for precious metals. 1 tola equals 11.6638 grams or 0.375 troy ounces.' },
+      { q: 'How many grams in a tola?', a: '1 tola equals exactly 11.6638 grams.' },
+      { q: 'What is the silver price per tola today?', a: 'The silver price per tola depends on the current spot price. Since 1 tola = 0.375 troy ounces, multiply today\'s spot price by 0.375 and the purity to get the value.' },
+      { q: 'How many tola in a troy ounce?', a: 'There are approximately 2.6667 tola in one troy ounce (1 ozt = 31.1035g ÷ 11.6638g per tola).' }
+    ]);
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10-盎司银币价值.html","100oz-silver-value.html":"100盎司银币价值.html","10oz-silver-value.html":"10盎司银币价值.html","1kg-silver-value.html":"1公斤白银价值.html","1oz-silver-value.html":"1盎司银币价值.html","2oz-silver-value.html":"2盎司银币价值.html","5oz-silver-value.html":"5盎司银币价值.html","800-silver-calculator.html":"800银计算器.html","835-silver-calculator.html":"835银计算器.html","900-silver-calculator.html":"900银计算器.html","925-silver-calculator.html":"925银计算器.html","925-sterling-silver-price-per-gram.html":"925纯银每克价格.html","958-silver-calculator.html":"958银计算器.html","999-silver-calculator.html":"999银计算器.html","canadian-silver-coin-calculator.html":"加拿大银币计算器.html","face-value-silver-calculator.html":"白银面值计算器.html","gold-and-silver-calculator.html":"黄金和白银计算器.html","how-silver-prices-work.html":"白银价格如何运作.html","how-to-sell-silver.html":"如何卖白银.html","how-to-use-silver-calculators.html":"如何使用银计算器.html","identify-silver.html":"识别银.html","junk-silver-calculator.html":"垃圾银计算器.html","pennyweight-calculator.html":"便士计算器.html","silver-bar-value-calculator.html":"银条价值计算器.html","silver-batch-calculator.html":"白银批量计算器.html","silver-bracelet-value.html":"银手镯价值.html","silver-chain-value.html":"银链价值.html","silver-coin-value-calculator.html":"银币价值计算器.html","silver-cup-value.html":"银杯价值.html","silver-dime-calculator.html":"银币计算器.html","silver-dollar-calculator.html":"银元计算器.html","silver-fork-value.html":"银叉价值.html","silver-hallmarks-guide.html":"银色标志指南.html","silver-jewelry-value-calculator.html":"银首饰价值计算器.html","silver-knife-value.html":"银刀价值.html","silver-melt-value-calculator.html":"白银熔化值计算器.html","silver-necklace-value.html":"银项链价值.html","silver-plate-value.html":"银板价值.html","silver-price-all-currencies.html":"所有货币白银价格.html","silver-price-per-gram.html":"每克白银价格.html","silver-price-per-ounce.html":"每盎司白银价格.html","silver-profit-calculator.html":"白银利润计算器.html","silver-purity-chart.html":"银纯度表.html","silver-quarter-calculator.html":"银币计算器.html","silver-ring-value.html":"银戒指价值.html","silver-scrap-calculator.html":"银废料计算器.html","silver-sell-or-hold.html":"白银卖出或持有.html","silver-spoon-value.html":"银汤匙价值.html","silver-spot-price-today.html":"今日白银现货价格.html","silver-tray-value.html":"银托盘价值.html","silver-weight-converter.html":"银重量转换器.html","silverware-value-calculator.html":"银器价值计算器.html","sona-chandi-calculator.html":"索娜钱迪-计算器.html","sterling-silver-calculator.html":"纯银计算器.html","tola-calculator.html":"托拉计算器.html","what-does-925-mean.html":"925是什么意思.html","what-is-junk-silver.html":"什么是垃圾银.html","what-is-silver-bullion.html":"什么是银条.html","what-is-silver-melt-value.html":"什么是白银熔化值.html","what-is-silver-scrap.html":"什么是废银.html","what-is-sterling-silver.html":"什么是纯银.html","what-is-troy-ounce.html":"什么是金衡盎司.html"},"Home":"首页","Calculators":"计算器","Silver Scrap Calculator":"银废料计算器","Gold & Silver Calculator":"黄金白银计算器","Silver Melt Value":"银熔化值","Sterling Silver Calculator":"纯银计算器","Junk Silver Calculator":"垃圾银计算器","Silver Coin Value":"银币价值","Silver Bar Value":"银条价值","Silver Jewelry Value":"银首饰价值","Silverware Value":"银器价值","Purity":"纯度","999 Fine Silver":"999纯银","958 Britannia Silver":"958 不列颠银","925 Sterling Silver":"925 纯银","900 Coin Silver":"900 银币","835 Silver":"835银","800 Silver":"800银","Silver Purity Chart":"银纯度表","Pricing":"定价","Silver Spot Price Today":"今日白银现货价格","925 Sterling Price / Gram":"925 英镑价格/克","Silver Price Per Gram":"每克白银价格","Silver Price Per Ounce":"每盎司白银价格","Price in All Currencies":"所有货币的价格","1/10oz Silver Value":"1/10 盎司银币价值","1oz Silver Value":"1盎司白银价值","2oz Silver Value":"2盎司银币价值","5oz Silver Value":"5盎司银币价值","10oz Silver Value":"10盎司银币价值","100oz Silver Value":"100盎司银币价值","1kg Silver Value":"1公斤银值","Tools":"工具","Silver Profit Calculator":"白银利润计算器","Batch Calculator":"批量计算器","Sona Chandi Calculator":"索纳·昌迪计算器","Face Value Calculator":"面值计算器","Weight Converter":"重量转换器","Pennyweight (DWT) Calc":"Pennyweight (DWT) 计算","Tola Calculator":"托拉计算器","Sell or Hold Analysis":"卖出或持有分析","Silver Identifier":"银牌标识符","Guides":"指南","How to Use Our Calculators":"如何使用我们的计算器","What Is Silver Scrap?":"什么是银废料？","What Is Melt Value?":"什么是熔体值？","What Is Junk Silver?":"什么是垃圾银？","What Is a Troy Ounce?":"什么是金衡盎司？","What Is Silver Bullion?":"什么是银条？","How Silver Prices Work":"白银价格如何运作","Silver Hallmarks Guide":"银色标志指南","What Does 925 Mean?":"925是什么意思？","What Is Sterling Silver?":"什么是纯银？","How to Sell Silver":"如何出售白银","Scrap Silver":"废银","Gold & Silver":"金银","Silver Profit":"白银利润","Melt Value":"熔融值","Junk Silver":"垃圾银","Silver Coins":"银币","Silver Dollar":"银元","Silver Quarter":"银季","Silver Dime":"银币","Jewelry Value":"珠宝价值","925 Sterling":"第925章","Purity Chart":"纯度表","How to Use Calculators":"如何使用计算器","Sona Chandi Calc":"索纳·昌迪计算器","Face Value Calc":"面值计算","Sell or Hold":"卖出或持有","About":"关于","Privacy":"隐私","Terms":"条款","All rights reserved.":"保留所有权利。","Prices are for informational purposes only.":"价格仅供参考。","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"使用实时现货价格的免费、准确的白银计算器。立即计算银废料、硬币、珠宝和金条的熔化值。"};
+</script>
+</body></html>

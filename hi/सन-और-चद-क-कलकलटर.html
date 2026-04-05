@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="hi"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>सोना और चांदी कैलकुलेटर और अनुपात - लाइव स्पॉट कीमतें</title>
+  <meta name="description" content="लाइव स्पॉट कीमतों का उपयोग करके निःशुल्क सोने और चांदी का कैलकुलेटर। सोने और चांदी के स्क्रैप मूल्य की गणना करें, सोने और चांदी के अनुपात की जांच करें, और मिश्रित धातु के वजन को मिलाएं।">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/gold-and-silver-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Gold and Silver Calculator","description":"Calculate gold and silver value and the live gold-to-silver ratio.","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container">
+      <div id="breadcrumb"></div>
+    </div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>सोना और चाँदी <span class="highlight">Calculator</span></h1>
+        <p>अपने सोने और चांदी की वस्तुओं के पिघले हुए मूल्य की एक साथ गणना करें, और लाइव सोने/चांदी अनुपात की जांच करें।</p>
+      </div>
+    </section>
+    
+    <div class="calc-page-layout">
+      <!-- Calculators Section -->
+      <div style="display:flex; flex-direction:column; gap:var(--space-lg);">
+        
+        <!-- Gold Calculation -->
+        <div class="calc-widget" style="border-top: 4px solid #FCD34D;">
+          <div class="calc-widget-title"><span class="icon">🥇</span> Gold Value</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="g-weight">वज़न</label>
+              <input type="number" class="form-input" id="g-weight" placeholder="e.g. 10" step="0.01" min="0" value="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="g-unit">इकाई</label>
+              <select class="form-select" id="g-unit">
+                <option value="g" selected="">ग्राम (जी)</option>
+                <option value="oz">ट्रॉय औंस (औंस)</option>
+                <option value="dwt">पेनीवेट (डीडब्ल्यूटी)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="g-purity">सोने की शुद्धता (कैरेट)</label>
+            <select class="form-select" id="g-purity">
+              <option value="0.999">24K - शुद्ध सोना (99.9%)</option>
+              <option value="0.916">22K - आभूषण (91.6%)</option>
+              <option value="0.750">18K - आभूषण (75.0%)</option>
+              <option value="0.585" selected="">14K - आभूषण (58.5%)</option>
+              <option value="0.417">10K - आभूषण (41.7%)</option>
+            </select>
+          </div>
+          <div class="result-display">
+            <div class="result-label">सोना पिघलने का मूल्य</div>
+            <div class="result-value" id="res-gold-val" style="color: #FBBF24;">$0.00</div>
+            <div class="result-detail" id="res-gold-det">Enter weight to calculate</div>
+          </div>
+        </div>
+
+        <!-- Silver Calculation -->
+        <div class="calc-widget" style="border-top: 4px solid #E5E7EB;">
+          <div class="calc-widget-title"><span class="icon">🥈</span> Silver Value</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="s-weight">वज़न</label>
+              <input type="number" class="form-input" id="s-weight" placeholder="e.g. 50" step="0.01" min="0" value="0">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="s-unit">इकाई</label>
+              <select class="form-select" id="s-unit">
+                <option value="g" selected="">ग्राम (जी)</option>
+                <option value="oz">ट्रॉय औंस (औंस)</option>
+                <option value="dwt">पेनीवेट (डीडब्ल्यूटी)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="s-purity">चाँदी की शुद्धता</label>
+            <select class="form-select" id="s-purity">
+              <option value="0.999">999 - फाइन सिल्वर (99.9%)</option>
+              <option value="0.925" selected="">925 - स्टर्लिंग (92.5%)</option>
+              <option value="0.900">900 - सिक्का चाँदी (90%)</option>
+              <option value="0.800">800 - यूरोपीय (80%)</option>
+            </select>
+          </div>
+          <div class="result-display">
+            <div class="result-label">चाँदी का पिघला हुआ मूल्य</div>
+            <div class="result-value" id="res-silver-val">$0.00</div>
+            <div class="result-detail" id="res-silver-det">Enter weight to calculate</div>
+          </div>
+        </div>
+
+        <!-- Combined Total & Ratio -->
+        <div class="calc-widget" style="background: linear-gradient(135deg, rgba(52,211,153,0.08) 0%, rgba(52,211,153,0.02) 100%); border-color: var(--accent-green);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+            <div>
+              <div class="result-label">संयुक्त कुल मूल्य</div>
+              <div class="result-value" id="res-total-val" style="background: linear-gradient(135deg, #34d399, #6ee7b7); -webkit-background-clip: text; background-clip: text;">$0.00</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="result-label">लाइव गोल्ड/सिल्वर अनुपात</div>
+              <div class="result-value" id="res-ratio" style="font-size:var(--fs-2xl); color:var(--text-primary);">0:1</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Content Section -->
+      <div class="content-body">
+        <h2>सोने और चांदी के कैलकुलेटर के बारे में</h2>
+        <p>यह डुअल-मेटल कैलकुलेटर उन निवेशकों, संग्राहकों और स्क्रैपर्स के लिए डिज़ाइन किया गया है जो मिश्रित कीमती धातुओं से निपटते हैं। एक साथ सोने और चांदी दोनों की हाजिर कीमतें प्राप्त करके, आप तुरंत दोनों धातुओं के पिघले हुए मूल्य को अलग-अलग और संयुक्त पोर्टफोलियो कुल के रूप में देख सकते हैं।</p>
+        
+        <h3>सोने से चांदी का अनुपात क्या है?</h3>
+        <p>द <strong>Gold/Silver Ratio</strong> यह दर्शाता है कि मौजूदा हाजिर कीमतों के आधार पर एक औंस सोना खरीदने के लिए कितने औंस चांदी की आवश्यकता होती है। यह कीमती धातु निवेशकों द्वारा सबसे पुराने और सबसे अधिक ध्यान से देखे जाने वाले मेट्रिक्स में से एक है।</p>
+        <ul>
+          <li><strong>High Ratio (e.g., 85:1 or higher):</strong> सोने की तुलना में चांदी को सस्ता या कम मूल्य वाला माना जाता है। इस दौरान कई निवेशक चांदी के बदले अपने सोने का व्यापार करते हैं।</li>
+          <li><strong>Low Ratio (e.g., 50:1 or lower):</strong> चांदी के मुकाबले सोना सस्ता माना जाता है। निवेशक लाभ कमाने के लिए अपनी चांदी को सोने में बदल सकते हैं।</li>
+          <li><strong>Historical Average:</strong> आधुनिक समय में (1900 से), अनुपात औसतन 47:1 से 60:1 के आसपास रहा है, हालांकि ऐतिहासिक रूप से प्राचीन काल में यह 15:1 के करीब था।</li>
+        </ul>
+
+        <h3>सोने के कैरेट की गणना कैसे करें</h3>
+        <p>चांदी के विपरीत, जो 3-अंकीय मिलीसिमल प्रणाली (जैसे 925) का उपयोग करती है, सोने की शुद्धता आमतौर पर कैरेट (24 में से) में मापी जाती है:</p>
+        <ul>
+          <li><strong>24K Gold:</strong> 99.9% शुद्ध सोना (बुलियन बार और कुछ सिक्कों के लिए मानक)।</li>
+          <li><strong>22K Gold:</strong> 91.6% शुद्ध सोना (उच्च श्रेणी के भारतीय और मध्य पूर्वी आभूषणों में आम)।</li>
+          <li><strong>18K Gold:</strong> 75.0% शुद्ध सोना (यूरोप में प्रीमियम बढ़िया आभूषण मानक)।</li>
+          <li><strong>14K Gold:</strong> 58.5% शुद्ध सोना (संयुक्त राज्य अमेरिका में सबसे आम आभूषण मानक)।</li>
+          <li><strong>10K Gold:</strong> 41.7% शुद्ध सोना (टिकाऊ आभूषण, अमेरिका में सबसे कम कानूनी कैरेट मानक)।</li>
+        </ul>
+
+        <h3>मिश्रित स्क्रैप बेचना</h3>
+        <p>किसी डीलर को सोना और चांदी दोनों बेचते समय, उनकी अलग-अलग गणना करना महत्वपूर्ण है। क्योंकि सोना प्रति ग्राम कहीं अधिक मूल्यवान है, डीलर अक्सर अलग-अलग छूट दरों की पेशकश करेंगे। उदाहरण के लिए, एक डीलर सोने के पिघले हुए मूल्य का 95% भुगतान कर सकता है, लेकिन चांदी के पिघले हुए मूल्य का केवल 85%। इसका उपयोग कर रहे हैं <strong>Gold and Silver Calculator</strong> यह सुनिश्चित करता है कि बातचीत करने से पहले आपको ठीक-ठीक पता हो कि कच्ची धातुओं का मूल्य क्या है।</p>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom: var(--space-lg);">संबंधित कैलकुलेटर</h3>
+        <div class="related-grid">
+          <a href="चद-सकरप-कलकलटर.html" class="related-link"><span class="r-icon">♻️</span> Silver Scrap</a>
+          <a href="चद-क-कमत-सभ-मदरए.html" class="related-link"><span class="r-icon">🌍</span> Live Prices</a>
+          <a href="चद-बच-य-रख.html" class="related-link"><span class="r-icon">📈</span> Sell or Hold</a>
+          <a href="चद-बच-कलकलटर.html" class="related-link"><span class="r-icon">📋</span> Batch Calculator</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      {label: window.MenuTranslations['Home'] || 'घर', href:'index.html'},
+      {label:'Gold and Silver Calculator'}
+    ]);
+
+    const gw = document.getElementById('g-weight');
+    const gu = document.getElementById('g-unit');
+    const gp = document.getElementById('g-purity');
+    const resGoldVal = document.getElementById('res-gold-val');
+    const resGoldDet = document.getElementById('res-gold-det');
+
+    const sw = document.getElementById('s-weight');
+    const su = document.getElementById('s-unit');
+    const sp = document.getElementById('s-purity');
+    const resSilverVal = document.getElementById('res-silver-val');
+    const resSilverDet = document.getElementById('res-silver-det');
+
+    const resTotal = document.getElementById('res-total-val');
+    const resRatio = document.getElementById('res-ratio');
+
+    function calc() {
+      const gWeight = parseFloat(gw.value) || 0;
+      const sWeight = parseFloat(sw.value) || 0;
+      
+      const gGrams = SilverCalc.toGrams(gWeight, gu.value);
+      const sGrams = SilverCalc.toGrams(sWeight, su.value);
+      
+      const gPurity = parseFloat(gp.value);
+      const sPurity = parseFloat(sp.value);
+      
+      const sSpot = SilverPrice.getPrice();
+      const gSpot = SilverPrice.getGoldPrice() || 2500.00; // Fallback if not loaded
+      
+      let gRes = SilverCalc.meltValue(gGrams, gPurity, gSpot);
+      let sRes = SilverCalc.meltValue(sGrams, sPurity, sSpot);
+
+      // Render Gold
+      if (gWeight > 0) {
+        resGoldVal.textContent = SilverCalc.formatCurrency(gRes.value);
+        resGoldDet.textContent = `${gRes.silverContentGrams}g pure gold · Spot: $${gSpot.toFixed(2)}/oz`;
+      } else {
+        resGoldVal.textContent = '$0.00';
+        resGoldDet.textContent = `Spot: $${gSpot.toFixed(2)}/oz`;
+      }
+
+      // Render Silver
+      if (sWeight > 0) {
+        resSilverVal.textContent = SilverCalc.formatCurrency(sRes.value);
+        resSilverDet.textContent = `${sRes.silverContentGrams}g pure silver · Spot: $${sSpot.toFixed(2)}/oz`;
+      } else {
+        resSilverVal.textContent = '$0.00';
+        resSilverDet.textContent = `Spot: $${sSpot.toFixed(2)}/oz`;
+      }
+
+      // Render Totals
+      const total = (gWeight > 0 ? gRes.value : 0) + (sWeight > 0 ? sRes.value : 0);
+      resTotal.textContent = SilverCalc.formatCurrency(total);
+
+      // Render Ratio
+      if (gSpot && sSpot) {
+        const ratio = gSpot / sSpot;
+        resRatio.textContent = ratio.toFixed(1) + ':1';
+      }
+    }
+
+    [gw, gu, gp, sw, su, sp].forEach(el => el.addEventListener('input', calc));
+    [gu, gp, su, sp].forEach(el => el.addEventListener('change', calc));
+    
+    SilverPrice.onPriceUpdate(() => calc());
+    calc();
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10oz-चद-क-मलय.html","100oz-silver-value.html":"100-औस-चद-क-मलय.html","10oz-silver-value.html":"10-औस-चद-क-मलय.html","1kg-silver-value.html":"1-कल-चद-क-मलय.html","1oz-silver-value.html":"1-औस-चद-क-मलय.html","2oz-silver-value.html":"2-औस-चद-क-मलय.html","5oz-silver-value.html":"5-औस-चद-क-मलय.html","800-silver-calculator.html":"800-चद-कलकलटर.html","835-silver-calculator.html":"835-चद-कलकलटर.html","900-silver-calculator.html":"900-चद-कलकलटर.html","925-silver-calculator.html":"925-चद-कलकलटर.html","925-sterling-silver-price-per-gram.html":"परत-गरम-925-सटरलग-चद-क-कमत.html","958-silver-calculator.html":"958-चद-कलकलटर.html","999-silver-calculator.html":"999-चद-कलकलटर.html","canadian-silver-coin-calculator.html":"कनडई-चद-क-सकक-कलकलटर.html","face-value-silver-calculator.html":"अकत-मलय-चद-कलकलटर.html","gold-and-silver-calculator.html":"सन-और-चद-क-कलकलटर.html","how-silver-prices-work.html":"चद-क-कमत-कस-कम-करत-ह.html","how-to-sell-silver.html":"चद-कस-बच.html","how-to-use-silver-calculators.html":"सलवर-कलकलटर-क-उपयग-कस-कर.html","identify-silver.html":"चद-क-पहचन-कर.html","junk-silver-calculator.html":"जक-सलवर-कलकलटर.html","pennyweight-calculator.html":"पनवट-कलकलटर.html","silver-bar-value-calculator.html":"सलवर-बर-वलय-कलकलटर.html","silver-batch-calculator.html":"चद-बच-कलकलटर.html","silver-bracelet-value.html":"चद-क-कगन-क-मलय.html","silver-chain-value.html":"चद-क-चन-क-मलय.html","silver-coin-value-calculator.html":"चद-क-सकक-क-मलय-कलकलटर.html","silver-cup-value.html":"चद-क-कप-क-मलय.html","silver-dime-calculator.html":"सलवर-डइम-कलकलटर.html","silver-dollar-calculator.html":"चद-डलर-कलकलटर.html","silver-fork-value.html":"चद-कट-मलय.html","silver-hallmarks-guide.html":"चद-हलमरक-गइड.html","silver-jewelry-value-calculator.html":"चद-क-आभषण-मलय-कलकलटर.html","silver-knife-value.html":"चद-क-चक-क-मलय.html","silver-melt-value-calculator.html":"चद-पघल-मलय-कलकलटर.html","silver-necklace-value.html":"चद-क-हर-क-मलय.html","silver-plate-value.html":"चद-क-पलट-क-मलय.html","silver-price-all-currencies.html":"चद-क-कमत-सभ-मदरए.html","silver-price-per-gram.html":"चद-क-कमत-परत-गरम.html","silver-price-per-ounce.html":"चद-क-कमत-परत-औस.html","silver-profit-calculator.html":"चद-लभ-कलकलटर.html","silver-purity-chart.html":"चद-क-शदधत-चरट.html","silver-quarter-calculator.html":"चद-तमह-कलकलटर.html","silver-ring-value.html":"चद-क-अगठ-क-मलय.html","silver-scrap-calculator.html":"चद-सकरप-कलकलटर.html","silver-sell-or-hold.html":"चद-बच-य-रख.html","silver-spoon-value.html":"चद-क-चममच-क-मलय.html","silver-spot-price-today.html":"चद-क-हजर-कमत-आज.html","silver-tray-value.html":"चद-क-टर-क-मलय.html","silver-weight-converter.html":"चद-वजन-कनवरटर.html","silverware-value-calculator.html":"चद-क-बरतन-मलय-कलकलटर.html","sona-chandi-calculator.html":"सन-चड-कलकलटर.html","sterling-silver-calculator.html":"सटरलग-सलवर-कलकलटर.html","tola-calculator.html":"तल-कलकलटर.html","what-does-925-mean.html":"925-क-कय-मतलब-ह.html","what-is-junk-silver.html":"जक-सलवर-कय-ह.html","what-is-silver-bullion.html":"चद-बलयन-कय-ह.html","what-is-silver-melt-value.html":"चद-क-पघल-हआ-मलय-कय-ह.html","what-is-silver-scrap.html":"चद-सकरप-कय-ह.html","what-is-sterling-silver.html":"सटरलग-सलवर-कय-ह.html","what-is-troy-ounce.html":"टरय-औस-कय-ह.html"},"Home":"घर","Calculators":"कैलकुलेटर","Silver Scrap Calculator":"सिल्वर स्क्रैप कैलकुलेटर","Gold & Silver Calculator":"सोना और चांदी कैलकुलेटर","Silver Melt Value":"चाँदी का पिघला हुआ मूल्य","Sterling Silver Calculator":"स्टर्लिंग सिल्वर कैलकुलेटर","Junk Silver Calculator":"जंक सिल्वर कैलकुलेटर","Silver Coin Value":"चांदी के सिक्के का मूल्य","Silver Bar Value":"सिल्वर बार वैल्यू","Silver Jewelry Value":"चाँदी के आभूषणों का मूल्य","Silverware Value":"चांदी के बर्तन का मूल्य","Purity":"पवित्रता","999 Fine Silver":"999 बढ़िया चाँदी","958 Britannia Silver":"958 ब्रिटानिया सिल्वर","925 Sterling Silver":"925 स्टर्लिंग सिल्वर","900 Coin Silver":"900 सिक्का चांदी","835 Silver":"835 रजत","800 Silver":"800 रजत","Silver Purity Chart":"चांदी की शुद्धता चार्ट","Pricing":"मूल्य निर्धारण","Silver Spot Price Today":"चाँदी की हाजिर कीमत आज","925 Sterling Price / Gram":"925 स्टर्लिंग मूल्य/ग्राम","Silver Price Per Gram":"चांदी की कीमत प्रति ग्राम","Silver Price Per Ounce":"चांदी की कीमत प्रति औंस","Price in All Currencies":"सभी मुद्राओं में मूल्य","1/10oz Silver Value":"1/10oz चांदी का मूल्य","1oz Silver Value":"1oz चांदी का मूल्य","2oz Silver Value":"2oz चांदी का मूल्य","5oz Silver Value":"5 औंस चांदी का मूल्य","10oz Silver Value":"10oz चांदी का मूल्य","100oz Silver Value":"100oz चांदी का मूल्य","1kg Silver Value":"1 किलो चांदी का मूल्य","Tools":"उपकरण","Silver Profit Calculator":"रजत लाभ कैलकुलेटर","Batch Calculator":"बैच कैलकुलेटर","Sona Chandi Calculator":"सोना चंडी कैलकुलेटर","Face Value Calculator":"अंकित मूल्य कैलकुलेटर","Weight Converter":"वजन परिवर्तक","Pennyweight (DWT) Calc":"पेनीवेट (डीडब्ल्यूटी) कैल्क","Tola Calculator":"तोला कैलकुलेटर","Sell or Hold Analysis":"विश्लेषण बेचें या रखें","Silver Identifier":"रजत पहचानकर्ता","Guides":"मार्गदर्शक","How to Use Our Calculators":"हमारे कैलकुलेटर का उपयोग कैसे करें","What Is Silver Scrap?":"सिल्वर स्क्रैप क्या है?","What Is Melt Value?":"पिघला हुआ मूल्य क्या है?","What Is Junk Silver?":"जंक सिल्वर क्या है?","What Is a Troy Ounce?":"ट्रॉय औंस क्या है?","What Is Silver Bullion?":"सिल्वर बुलियन क्या है?","How Silver Prices Work":"चांदी की कीमतें कैसे काम करती हैं","Silver Hallmarks Guide":"सिल्वर हॉलमार्क गाइड","What Does 925 Mean?":"925 का क्या मतलब है?","What Is Sterling Silver?":"स्टर्लिंग सिल्वर क्या है?","How to Sell Silver":"चाँदी कैसे बेचें","Scrap Silver":"चाँदी का स्क्रैप","Gold & Silver":"सोना और चाँदी","Silver Profit":"चाँदी का लाभ","Melt Value":"पिघला हुआ मूल्य","Junk Silver":"जंक सिल्वर","Silver Coins":"चाँदी के सिक्के","Silver Dollar":"चाँदी का डॉलर","Silver Quarter":"सिल्वर क्वार्टर","Silver Dime":"सिल्वर डाइम","Jewelry Value":"आभूषण मूल्य","925 Sterling":"925 स्टर्लिंग","Purity Chart":"शुद्धता चार्ट","How to Use Calculators":"कैलकुलेटर का उपयोग कैसे करें","Sona Chandi Calc":"सोना चांदी कैल्क","Face Value Calc":"अंकित मूल्य कैल्क","Sell or Hold":"बेचो या पकड़ो","About":"के बारे में","Privacy":"गोपनीयता","Terms":"शर्तें","All rights reserved.":"सर्वाधिकार सुरक्षित.","Prices are for informational purposes only.":"कीमतें केवल सूचनात्मक उद्देश्यों के लिए हैं।","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"लाइव स्पॉट कीमतों का उपयोग करके मुफ़्त, सटीक चांदी कैलकुलेटर। अपने चांदी के स्क्रैप, सिक्कों, गहनों और छड़ों के पिघले हुए मूल्य की तुरंत गणना करें।"};
+</script>
+</body></html>

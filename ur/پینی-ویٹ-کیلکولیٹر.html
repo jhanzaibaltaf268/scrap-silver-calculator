@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="ur"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پینی ویٹ (DWT) کیلکولیٹر — DWT کو گرام اور سلور ویلیو میں تبدیل کریں۔</title>
+  <meta name="description" content="مفت پینی ویٹ کیلکولیٹر۔ DWT کو گرام، ٹرائے اونس میں تبدیل کریں، اور پینی ویٹ میں وزنی اشیاء کی چاندی کی قیمت کا حساب لگائیں۔ براہ راست جگہ کی قیمتیں۔">
+  <meta name="keywords" content="pennyweight calculator, dwt to grams, pennyweight to grams, dwt calculator, silver pennyweight value">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/pennyweight-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" style="padding: var(--space-2xl) 0 var(--space-xl);">
+      <div class="container hero-content">
+        <div id="breadcrumb"></div>
+        
+        <h1>پینی ویٹ (DWT) <span class="highlight">Silver Calculator</span></h1>
+        <p class="hero-subtitle">پینی ویٹ کو گرام، ٹرائے اونس میں تبدیل کریں، اور DWT میں وزنی اشیاء کی چاندی کی قیمت کا حساب لگائیں۔</p>
+
+        <div class="calc-widget slide-up" id="dwt-calc">
+          <div class="calc-widget-title"><span class="icon">⚙️</span> Pennyweight Value Calculator</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="dwt-weight">پینی ویٹ میں وزن (DWT)</label>
+              <input type="number" class="form-input" id="dwt-weight" placeholder="Enter weight in DWT" step="0.01" min="0" value="10">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dwt-purity">چاندی کی پاکیزگی</label>
+              <select class="form-select" id="dwt-purity">
+                <option value="0.999">999 - عمدہ چاندی (99.9%)</option>
+                <option value="0.958">958 — برٹانیہ (95.8%)</option>
+                <option value="0.925" selected="">925 — سٹرلنگ (92.5%)</option>
+                <option value="0.900">900 - چاندی کا سکہ (90%)</option>
+                <option value="0.835">835 — یورپی (83.5%)</option>
+                <option value="0.800">800 - یورپی (80%)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Conversion results -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-md);margin-bottom:var(--space-lg);">
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Grams</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="dwt-grams">15.55</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Troy Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="dwt-ozt">0.500</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Regular Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="dwt-oz">0.549</div>
+            </div>
+          </div>
+
+          <div class="result-display" id="dwt-result">
+            <div class="result-label">سلور میلٹ ویلیو</div>
+            <div class="result-value" id="dwt-result-value">$0.00</div>
+            <div class="result-detail" id="dwt-result-detail">Enter weight in DWT to calculate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick reference table -->
+    <section class="section" style="padding:var(--space-2xl) 0;">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:var(--space-lg);">پینی ویٹ کنورژن ٹیبل</h2>
+        <div style="max-width:700px;margin:0 auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border-medium);">
+                <th style="padding:var(--space-md);text-align:left;color:var(--text-muted);font-size:var(--fs-sm);">ڈی ڈبلیو ٹی</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">گرام</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">ٹرائے اوز</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">925 ویلیو</th>
+              </tr>
+            </thead>
+            <tbody id="dwt-table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+      <div class="container">
+        <div class="content-body">
+          <h2>پینی ویٹ کیا ہے؟</h2>
+          <p>A <strong>pennyweight (DWT)</strong> وزن کی ایک اکائی ہے جو بنیادی طور پر زیورات اور قیمتی دھاتوں کے ڈیلروں کے ذریعہ استعمال ہوتی ہے۔ یہ ٹرائے اونس کے 1/20 یا بالکل 1.55517 گرام کے برابر ہے۔ مخفف "DWT" لاطینی زبان کے "ڈیناریس وزن" سے آیا ہے - قرون وسطی کے انگلینڈ میں چاندی کے ایک پیسے کا وزن۔</p>
+
+          <h3>جیولرز پینی ویٹ کیوں استعمال کرتے ہیں؟</h3>
+          <p>امریکہ میں بہت سے زیورات کے ترازو اور تاجروں کے ترازو وزن کو گرام کے بجائے پینی ویٹ میں ظاہر کرتے ہیں۔ جب کوئی جیولر آپ کے سکریپ سلور کے لیے فی DWT قیمت بتاتا ہے، تو آپ کو یہ جاننا ہوگا کہ پیشکش کی تصدیق کرنے کے لیے کس طرح تبدیل کیا جائے۔ ہمارا کیلکولیٹر یہ تبدیلی فوری طور پر کرتا ہے اور آپ کو پگھلنے کی اصل قیمت دکھاتا ہے۔</p>
+
+          <h3>پینی ویٹ تبادلوں کے فارمولے۔</h3>
+          <ul style="list-style:disc;margin-left:var(--space-xl);">
+            <li style="padding:4px 0;color:var(--text-secondary);">1 DWT = 1.55517 گرام</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 DWT = 0.05 ٹرائے اونس (1/20 ozt)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">20 DWT = 1 ٹرائے اونس</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 گرام = 0.6430 DWT</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 ٹرائے اونس = 20 DWT = 31.1035 گرام</li>
+          </ul>
+
+          <h3>متعلقہ کیلکولیٹر</h3>
+          <p>ہمارا استعمال کریں۔ <a href="چاندی-وزن-کنورٹر.html">weight converter</a> مزید یونٹ تبادلوں کے لیے، یا آزمائیں۔ <a href="سلور-سکریپ-کیلکولیٹر.html">scrap silver calculator</a> ڈیلر ڈسکاؤنٹ تخمینوں کے ساتھ مکمل تشخیص کے لیے۔</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      { label: 'Home', href: 'index.html' },
+      { label: 'Tools', href: '#' },
+      { label: 'Pennyweight Calculator' }
+    ]);
+
+    const dwtWeight = document.getElementById('dwt-weight');
+    const dwtPurity = document.getElementById('dwt-purity');
+    const dwtGrams = document.getElementById('dwt-grams');
+    const dwtOzt = document.getElementById('dwt-ozt');
+    const dwtOz = document.getElementById('dwt-oz');
+    const dwtResultValue = document.getElementById('dwt-result-value');
+    const dwtResultDetail = document.getElementById('dwt-result-detail');
+
+    function calcDWT() {
+      const dwt = parseFloat(dwtWeight.value) || 0;
+      const purity = parseFloat(dwtPurity.value);
+      const spotPrice = SilverPrice.getPrice();
+
+      const grams = dwt * 1.55517;
+      const troyOz = dwt / 20;
+      const regOz = grams / 28.3495;
+
+      dwtGrams.textContent = grams.toFixed(2);
+      dwtOzt.textContent = troyOz.toFixed(4);
+      dwtOz.textContent = regOz.toFixed(3);
+
+      if (dwt <= 0) {
+        dwtResultValue.textContent = '$0.00';
+        dwtResultDetail.textContent = 'Enter weight in DWT to calculate';
+        return;
+      }
+
+      const value = troyOz * purity * spotPrice;
+      const pureGrams = grams * purity;
+      dwtResultValue.textContent = SilverCalc.formatCurrency(value);
+      dwtResultDetail.textContent = `${pureGrams.toFixed(2)}g pure silver · ${(troyOz * purity).toFixed(4)} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+    }
+
+    dwtWeight.addEventListener('input', calcDWT);
+    dwtPurity.addEventListener('change', calcDWT);
+    SilverPrice.onPriceUpdate(() => calcDWT());
+    calcDWT();
+
+    // Conversion table
+    const tableBody = document.getElementById('dwt-table');
+    [1, 2, 5, 10, 15, 20, 25, 50, 100].forEach(dwt => {
+      const g = (dwt * 1.55517).toFixed(2);
+      const ozt = (dwt / 20).toFixed(3);
+      const spotPrice = SilverPrice.getPrice();
+      const val = SilverCalc.formatCurrency((dwt / 20) * 0.925 * spotPrice);
+      tableBody.innerHTML += `<tr style="border-bottom:1px solid var(--border-subtle);">
+        <td style="padding:var(--space-md);color:var(--text-primary);font-weight:600;">${dwt} DWT</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${g}g</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${ozt} oz</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--accent-primary);font-weight:600;">${val}</td>
+      </tr>`;
+    });
+
+    SiteComponents.injectFAQSchema([
+      { q: 'What is a pennyweight (DWT)?', a: 'A pennyweight is a unit of weight equal to 1.55517 grams or 1/20 of a troy ounce. It is commonly used by jewelers to weigh precious metals.' },
+      { q: 'How many pennyweight in a troy ounce?', a: 'There are exactly 20 pennyweight (DWT) in one troy ounce.' },
+      { q: 'How do I convert DWT to grams?', a: 'Multiply the DWT value by 1.55517 to get grams. For example, 10 DWT = 15.55 grams.' }
+    ]);
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10-اوز-چاندی-کی-قیمت.html","100oz-silver-value.html":"100oz-چاندی-کی-قیمت.html","10oz-silver-value.html":"10-اوز-چاندی-کی-قیمت.html","1kg-silver-value.html":"1-کلو-چاندی-کی-قیمت.html","1oz-silver-value.html":"1-اوز-چاندی-کی-قیمت.html","2oz-silver-value.html":"2oz-چاندی-کی-قیمت.html","5oz-silver-value.html":"5oz-چاندی-کی-قیمت.html","800-silver-calculator.html":"800-چاندی-کا-کیلکولیٹر.html","835-silver-calculator.html":"835-سلور-کیلکولیٹر.html","900-silver-calculator.html":"900-چاندی-کا-کیلکولیٹر.html","925-silver-calculator.html":"925-سلور-کیلکولیٹر.html","925-sterling-silver-price-per-gram.html":"925-سٹرلنگ-چاندی-کی-قیمت-فی-گرام.html","958-silver-calculator.html":"958-سلور-کیلکولیٹر.html","999-silver-calculator.html":"999-سلور-کیلکولیٹر.html","canadian-silver-coin-calculator.html":"کینیڈین-چاندی-کے-سکے-کیلکولیٹر.html","face-value-silver-calculator.html":"چاندی-کی-قیمت-کا-کیلکولیٹر.html","gold-and-silver-calculator.html":"سونے-اور-چاندی-کا-کیلکولیٹر.html","how-silver-prices-work.html":"چاندی-کی-قیمتیں-کیسے-کام-کرتی-ہیں.html","how-to-sell-silver.html":"چاندی-فروخت-کرنے-کا-طریقہ.html","how-to-use-silver-calculators.html":"سلور-کیلکولیٹر-استعمال-کرنے-کا-طریقہ.html","identify-silver.html":"چاندی-کی-شناخت.html","junk-silver-calculator.html":"ردی-چاندی-کا-کیلکولیٹر.html","pennyweight-calculator.html":"پینی-ویٹ-کیلکولیٹر.html","silver-bar-value-calculator.html":"سلور-بار-ویلیو-کیلکولیٹر.html","silver-batch-calculator.html":"سلور-بیچ-کیلکولیٹر.html","silver-bracelet-value.html":"چاندی-کے-کڑا-کی-قیمت.html","silver-chain-value.html":"چاندی-کی-زنجیر-کی-قیمت.html","silver-coin-value-calculator.html":"چاندی-کے-سکے-کی-قیمت-کا-کیلکولیٹر.html","silver-cup-value.html":"چاندی-کے-کپ-کی-قیمت.html","silver-dime-calculator.html":"سلور-ڈائم-کیلکولیٹر.html","silver-dollar-calculator.html":"سلور-ڈالر-کیلکولیٹر.html","silver-fork-value.html":"چاندی-کے-کانٹے-کی-قیمت.html","silver-hallmarks-guide.html":"سلور-ہال-مارکس-گائیڈ.html","silver-jewelry-value-calculator.html":"چاندی-کے-زیورات-کی-قیمت-کا-کیلکولیٹر.html","silver-knife-value.html":"چاندی-کی-چاقو-کی-قیمت.html","silver-melt-value-calculator.html":"چاندی-پگھل-قیمت-کیلکولیٹر.html","silver-necklace-value.html":"چاندی-کے-ہار-کی-قیمت.html","silver-plate-value.html":"چاندی-کی-پلیٹ-کی-قیمت.html","silver-price-all-currencies.html":"چاندی-کی-قیمت-تمام-کرنسیوں.html","silver-price-per-gram.html":"چاندی-کی-قیمت-فی-گرام.html","silver-price-per-ounce.html":"چاندی-کی-قیمت-فی-اونس.html","silver-profit-calculator.html":"چاندی-کے-منافع-کا-کیلکولیٹر.html","silver-purity-chart.html":"چاندی-کی-پاکیزگی-کا-چارٹ.html","silver-quarter-calculator.html":"سلور-کوارٹر-کیلکولیٹر.html","silver-ring-value.html":"چاندی-کی-انگوٹھی-کی-قیمت.html","silver-scrap-calculator.html":"سلور-سکریپ-کیلکولیٹر.html","silver-sell-or-hold.html":"چاندی-بیچیں-یا-پکڑیں.html","silver-spoon-value.html":"چاندی-کے-چمچ-کی-قیمت.html","silver-spot-price-today.html":"چاندی-کی-اسپاٹ-قیمت-آج.html","silver-tray-value.html":"چاندی-کی-ٹرے-کی-قیمت.html","silver-weight-converter.html":"چاندی-وزن-کنورٹر.html","silverware-value-calculator.html":"سلور-ویئر-ویلیو-کیلکولیٹر.html","sona-chandi-calculator.html":"سونا-چندی-کیلکولیٹر.html","sterling-silver-calculator.html":"سٹرلنگ-سلور-کیلکولیٹر.html","tola-calculator.html":"تولہ-کیلکولیٹر.html","what-does-925-mean.html":"925-کا-کیا-مطلب-ہے.html","what-is-junk-silver.html":"ردی-چاندی-کیا-ہے.html","what-is-silver-bullion.html":"چاندی-بلین-کیا-ہے.html","what-is-silver-melt-value.html":"چاندی-کی-پگھل-قیمت-کیا-ہے.html","what-is-silver-scrap.html":"چاندی-کا-سکریپ-کیا-ہے.html","what-is-sterling-silver.html":"سٹرلنگ-چاندی-کیا-ہے.html","what-is-troy-ounce.html":"ٹرائے-اونس-کیا-ہے.html"},"Home":"گھر","Calculators":"کیلکولیٹر","Silver Scrap Calculator":"سلور سکریپ کیلکولیٹر","Gold & Silver Calculator":"سونے اور چاندی کا کیلکولیٹر","Silver Melt Value":"سلور میلٹ ویلیو","Sterling Silver Calculator":"سٹرلنگ سلور کیلکولیٹر","Junk Silver Calculator":"جنک سلور کیلکولیٹر","Silver Coin Value":"چاندی کے سکے کی قیمت","Silver Bar Value":"سلور بار ویلیو","Silver Jewelry Value":"چاندی کے زیورات کی قیمت","Silverware Value":"سلور ویئر ویلیو","Purity":"طہارت","999 Fine Silver":"999 فائن سلور","958 Britannia Silver":"958 برٹانیہ سلور","925 Sterling Silver":"925 سٹرلنگ سلور","900 Coin Silver":"900 سکے چاندی","835 Silver":"835 چاندی","800 Silver":"800 چاندی","Silver Purity Chart":"سلور پیوریٹی چارٹ","Pricing":"قیمتوں کا تعین","Silver Spot Price Today":"چاندی کی اسپاٹ قیمت آج","925 Sterling Price / Gram":"925 سٹرلنگ قیمت/گرام","Silver Price Per Gram":"چاندی کی قیمت فی گرام","Silver Price Per Ounce":"چاندی کی قیمت فی اونس","Price in All Currencies":"تمام کرنسیوں میں قیمت","1/10oz Silver Value":"1/10oz سلور ویلیو","1oz Silver Value":"1oz سلور ویلیو","2oz Silver Value":"2oz سلور ویلیو","5oz Silver Value":"5oz سلور ویلیو","10oz Silver Value":"10oz سلور ویلیو","100oz Silver Value":"100oz سلور ویلیو","1kg Silver Value":"1 کلو چاندی کی قیمت","Tools":"اوزار","Silver Profit Calculator":"سلور منافع کیلکولیٹر","Batch Calculator":"بیچ کیلکولیٹر","Sona Chandi Calculator":"سونا چندی کیلکولیٹر","Face Value Calculator":"فیس ویلیو کیلکولیٹر","Weight Converter":"وزن کنورٹر","Pennyweight (DWT) Calc":"پینی ویٹ (DWT) کیلک","Tola Calculator":"تولہ کیلکولیٹر","Sell or Hold Analysis":"تجزیہ بیچیں یا ہولڈ کریں۔","Silver Identifier":"سلور شناخت کنندہ","Guides":"رہنما","How to Use Our Calculators":"ہمارے کیلکولیٹرز کا استعمال کیسے کریں۔","What Is Silver Scrap?":"سلور سکریپ کیا ہے؟","What Is Melt Value?":"پگھل قدر کیا ہے؟","What Is Junk Silver?":"جنک سلور کیا ہے؟","What Is a Troy Ounce?":"ٹرائے اونس کیا ہے؟","What Is Silver Bullion?":"سلور بلین کیا ہے؟","How Silver Prices Work":"چاندی کی قیمتیں کیسے کام کرتی ہیں۔","Silver Hallmarks Guide":"سلور ہال مارکس گائیڈ","What Does 925 Mean?":"925 کا کیا مطلب ہے؟","What Is Sterling Silver?":"سٹرلنگ سلور کیا ہے؟","How to Sell Silver":"چاندی فروخت کرنے کا طریقہ","Scrap Silver":"سکریپ سلور","Gold & Silver":"سونا اور چاندی","Silver Profit":"چاندی کا منافع","Melt Value":"پگھلنے والی قدر","Junk Silver":"جنک سلور","Silver Coins":"چاندی کے سکے ۔","Silver Dollar":"سلور ڈالر","Silver Quarter":"سلور کوارٹر","Silver Dime":"سلور ڈائم","Jewelry Value":"زیورات کی قیمت","925 Sterling":"925 سٹرلنگ","Purity Chart":"طہارت کا چارٹ","How to Use Calculators":"کیلکولیٹر کا استعمال کیسے کریں۔","Sona Chandi Calc":"سونا چندی کیلک","Face Value Calc":"فیس ویلیو کیلک","Sell or Hold":"بیچیں یا پکڑیں۔","About":"کے بارے میں","Privacy":"رازداری","Terms":"شرائط","All rights reserved.":"جملہ حقوق محفوظ ہیں۔","Prices are for informational purposes only.":"قیمتیں صرف معلوماتی مقاصد کے لیے ہیں۔","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"براہ راست اسپاٹ قیمتوں کا استعمال کرتے ہوئے مفت، درست سلور کیلکولیٹر۔ اپنے چاندی کے سکریپ، سکے، زیورات، اور سلاخوں کی پگھلنے والی قیمت کا فوری حساب لگائیں۔"};
+</script>
+</body></html>

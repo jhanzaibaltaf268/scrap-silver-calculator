@@ -1,0 +1,542 @@
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>废银计算器 — 免费白银熔化价值计算器 [实时价格]</title>
+  <meta name="description" content="使用这个免费的废银计算器可以立即检查您的物品的价值。作为一款高度准确的银废料计算器，它可以根据重量、纯度和最新的实时市场价格为您的旧珠宝、硬币、金条和碎片提供可靠的熔化价值估算。">
+  <meta name="keywords" content="scrap silver calculator, silver scrap calculator, silver melt value calculator, sterling silver calculator, junk silver calculator, silver value calculator">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/">
+  <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/">
+  <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/">
+  <link rel="alternate" hreflang="es" href="https://scrapsilvercalculater.com/es/">
+  <link rel="alternate" hreflang="fr" href="https://scrapsilvercalculater.com/fr/">
+  <link rel="alternate" hreflang="de" href="https://scrapsilvercalculater.com/de/">
+  <link rel="alternate" hreflang="pt" href="https://scrapsilvercalculater.com/pt/">
+  <link rel="alternate" hreflang="hi" href="https://scrapsilvercalculater.com/hi/">
+  <link rel="alternate" hreflang="ur" href="https://scrapsilvercalculater.com/ur/">
+  <link rel="alternate" hreflang="ar" href="https://scrapsilvercalculater.com/ar/">
+  <link rel="alternate" hreflang="tr" href="https://scrapsilvercalculater.com/tr/">
+  <link rel="alternate" hreflang="it" href="https://scrapsilvercalculater.com/it/">
+  <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/">
+  <link rel="alternate" hreflang="ru" href="https://scrapsilvercalculater.com/ru/">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Scrap Silver Calculator",
+    "description": "Use this free Scrap Silver Calculator to instantly check what your items are worth. As a highly accurate silver scrap calculator, it provides a reliable melt value estimate for your old jewelry, coins, bars, and broken pieces based on weight, purity, and the latest live market prices.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <style>
+    /* Homepage-specific compact spacing */
+    .section-compact { padding: var(--space-2xl) 0; }
+    .section-compact .section-title { margin-bottom: var(--space-sm); }
+    .section-compact .section-subtitle { margin: 0 auto var(--space-lg); }
+    .hero-compact { padding: var(--space-2xl) 0 var(--space-xl); }
+    .hero-compact h1 { margin-bottom: var(--space-sm); }
+    .hero-compact .hero-subtitle { margin: 0 auto var(--space-lg); }
+    .trust-bar-compact { padding: var(--space-lg) 0; }
+
+    /* Scrollable FAQ panel */
+    .faq-scroll-panel { max-height: 480px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-sm); }
+    .faq-scroll-panel::-webkit-scrollbar { width: 6px; }
+    .faq-scroll-panel::-webkit-scrollbar-track { background: transparent; }
+    .faq-scroll-panel::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+
+    /* Scrollable content block */
+    .content-scroll-block { max-height: 500px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-md); margin: var(--space-lg) 0; }
+    .content-scroll-block::-webkit-scrollbar { width: 6px; }
+    .content-scroll-block::-webkit-scrollbar-track { background: transparent; }
+    .content-scroll-block::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .content-scroll-block h3 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+    .content-scroll-block p, .content-scroll-block ul, .content-scroll-block ol { margin-bottom: var(--space-md); }
+    .content-scroll-block ul li, .content-scroll-block ol li { padding: var(--space-xs) 0; color: var(--text-secondary); }
+    .content-scroll-block ul li::before { content: '•'; color: var(--accent-primary); margin-right: var(--space-sm); }
+
+    /* Entity pills */
+    .entity-scroller { display: flex; flex-wrap: nowrap; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0 var(--space-md); scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; -webkit-overflow-scrolling: touch; }
+    .entity-scroller::-webkit-scrollbar { height: 5px; }
+    .entity-scroller::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .entity-pill { flex-shrink: 0; padding: 6px var(--space-md); background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(192,192,192,0.02)); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: var(--fs-xs); color: var(--text-muted); white-space: nowrap; }
+    .lang-switcher { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 8px 0; background: rgba(5,5,10,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 1100; }
+    body { padding-top: calc(var(--header-height) + 36px) !important; }
+    .site-header { top: 36px !important; }
+    .lang-btn { padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; background: rgba(255,255,255,0.05); }
+    .lang-btn:hover, .lang-btn.active { background: var(--accent-primary); color: #fff; }
+  </style>
+</head>
+<body>
+
+  <div class="lang-switcher">
+    <a href="../index.html" class="lang-btn">🇬🇧 EN</a>
+    <a href="../es/index.html" class="lang-btn">🇪🇸 ES</a>
+    <a href="../fr/index.html" class="lang-btn">🇫🇷 FR</a>
+    <a href="../de/index.html" class="lang-btn">🇩🇪 DE</a>
+    <a href="../pt/index.html" class="lang-btn">🇧🇷 PT</a>
+    <a href="../hi/index.html" class="lang-btn">🇮🇳 HI</a>
+    <a href="../ur/index.html" class="lang-btn">🇵🇰 UR</a>
+    <a href="../ar/index.html" class="lang-btn">🇸🇦 AR</a>
+    <a href="../tr/index.html" class="lang-btn">🇹🇷 TR</a>
+    <a href="../it/index.html" class="lang-btn">🇮🇹 IT</a>
+    <a href="../zh/index.html" class="lang-btn active">🇨🇳 ZH</a>
+    <a href="../ru/index.html" class="lang-btn">🇷🇺 RU</a>
+  </div>
+
+  <div id="site-header"></div>
+
+  <main>
+    <!-- Hero Section — compact -->
+    <section class="hero hero-compact">
+      <div class="container hero-content">
+        <h1><span class="highlight">银废料计算器</span></h1>
+
+        <!-- Main Calculator Widget -->
+        <div class="calc-widget slide-up" id="hero-calc">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="calc-weight">重量</label>
+              <div class="input-group">
+                <input type="number" class="form-input" id="calc-weight" placeholder="Enter weight" step="0.01" min="0" value="10">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="calc-unit">单位</label>
+              <select class="form-select" id="calc-unit">
+                <option value="g" selected="">Grams (g)</option>
+                <option value="oz">Troy Ounces (oz)</option>
+                <option value="dwt">Pennyweight (dwt)</option>
+                <option value="kg">Kilograms (kg)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="calc-purity">银纯度</label>
+            <select class="form-select" id="calc-purity">
+              <option value="0.999">999 — Fine Silver (99.9%)</option>
+              <option value="0.958">958 — Britannia Silver (95.8%)</option>
+              <option value="0.925" selected="">925 — Sterling Silver (92.5%)</option>
+              <option value="0.900">900 — Coin Silver (90.0%)</option>
+              <option value="0.835">835 — European Silver (83.5%)</option>
+              <option value="0.800">800 — European Silver (80.0%)</option>
+            </select>
+          </div>
+
+          <div class="result-display" id="hero-result">
+            <div class="result-label">估计熔化值</div>
+            <div class="result-value" id="hero-result-value">$0.00</div>
+            <div class="result-detail" id="hero-result-detail">输入重量进行计算</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Bar — compact -->
+    <section class="trust-bar-compact">
+      <div class="container">
+        <div class="trust-bar">
+          <div class="trust-item"><span class="icon">🔄</span> 实时现货价格</div>
+          <div class="trust-item"><span class="icon">🔒</span> 100% 私人</div>
+          <div class="trust-item"><span class="icon">⚡</span> 即时结果</div>
+          <div class="trust-item"><span class="icon">📱</span> 适用于任何设备</div>
+          <div class="trust-item"><span class="icon">💰</span> 永远免费</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- All Silver Calculators -->
+    <section class="section-compact" id="calculators">
+      <div class="container text-center">
+        <span class="section-badge">🧮 我们的计算器</span>
+        <h2 class="section-title">免费银熔化值和纯度计算器</h2>
+        <p class="section-subtitle">您需要的每一款白银计算器 - 适用于废料、硬币、珠宝、金条等。</p>
+
+        <div class="category-grid stagger">
+
+          <a href="白银熔化值计算器.html" class="category-card" id="card-melt">
+            <div class="category-icon">🔥</div>
+            <h3>白银熔化值计算器</h3>
+            <p>根据重量和成色查找任何银制品的纯银含量和熔化值。</p>
+            <span class="card-arrow">Calculate →</span>
+          </a>
+
+          <a href="纯银计算器.html" class="category-card" id="card-sterling">
+            <div class="category-icon">✨</div>
+            <h3>纯银计算器</h3>
+            <p>立即按重量计算 925 纯银物品的价值。</p>
+            <span class="card-arrow">Calculate →</span>
+          </a>
+
+          <a href="垃圾银计算器.html" class="category-card" id="card-junk">
+            <div class="category-icon">🪙</div>
+            <h3>垃圾银计算器</h3>
+            <p>求 1965 年之前美国银币的熔化价值——10 角、25 角、半角和 1 美元。</p>
+            <span class="card-arrow">Calculate →</span>
+          </a>
+
+          <a href="银币价值计算器.html" class="category-card" id="card-coins">
+            <div class="category-icon">🏛️</div>
+            <h3>银币价值计算器</h3>
+            <p>通过输入银币的重量、纯度和数量来计算其熔化价值。</p>
+            <span class="card-arrow">Calculate →</span>
+          </a>
+
+          <a href="黄金和白银计算器.html" class="category-card" id="card-gold-silver">
+            <div class="category-icon">🥇</div>
+            <h3>黄金和白银计算器</h3>
+            <p>计算混合在一起的金银废料并查看实时比率。</p>
+            <span class="card-arrow">Calculate →</span>
+          </a>
+
+          <a href="银条价值计算器.html" class="category-card" id="card-bars">
+            <div class="category-icon">🧱</div>
+            <h3>银条价值计算器</h3>
+            <p>查找 1 盎司、5 盎司、10 盎司、100 盎司和 1 公斤尺寸的银条的当前价值。</p>
+            <span class="card-arrow">Calculate →</span>
+          </a>
+
+          <a href="银首饰价值计算器.html" class="category-card" id="card-jewelry">
+            <div class="category-icon">💍</div>
+            <h3>银首饰价值计算器</h3>
+            <p>计算银戒指、银链、项链和手镯的熔化值。</p>
+            <span class="card-arrow">Calculate →</span>
+          </a>
+
+          <a href="银器价值计算器.html" class="category-card" id="card-silverware">
+            <div class="category-icon">🍴</div>
+            <h3>银器价值计算器</h3>
+            <p>求勺子、叉子、托盘、刀子、杯子和盘子的银价。</p>
+            <span class="card-arrow">Calculate →</span>
+          </a>
+
+          <a href="每克白银价格.html" class="category-card" id="card-price-gram">
+            <div class="category-icon">📊</div>
+            <h3>每克白银价格计算器</h3>
+            <p>当前每克白银价格以及所有常见重量单位的转换器。</p>
+            <span class="card-arrow">View Price →</span>
+          </a>
+
+          <a href="每盎司白银价格.html" class="category-card" id="card-price-oz">
+            <div class="category-icon">💲</div>
+            <h3>每盎司白银价格计算器</h3>
+            <p>每金衡盎司的实时白银现货价格从全球市场实时更新。</p>
+            <span class="card-arrow">View Price →</span>
+          </a>
+
+          <a href="索娜钱迪-计算器.html" class="category-card" id="card-sona-chandi">
+            <div class="category-icon">✨</div>
+            <h3>索纳·昌迪计算器</h3>
+            <p>使用 Tunch 计算以 Tola 和克为单位的 Sona（金）和 Chandi（银）值。</p>
+            <span class="card-arrow">Calculate →</span>
+          </a>
+
+          <a href="便士计算器.html" class="category-card" id="card-dwt">
+            <div class="category-icon">⚖️</div>
+            <h3>便士计算器</h3>
+            <p>计算银制品的重量，以便士重量 (dwt) 为单位，这是传统珠宝商的标准。</p>
+            <span class="card-arrow">Calculate →</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools Section — user-focused language -->
+    <section class="section-compact" id="tools">
+      <div class="container text-center">
+        <span class="section-badge">🛠️ 强大的工具</span>
+        <h2 class="section-title">这些银色工具如何帮助您获得更多价值</h2>
+        <p class="section-subtitle">使用这些免费的白银工具可以节省时间、比较价格并做出更好的销售决策。</p>
+
+        <div class="category-grid stagger" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+          <a href="白银利润计算器.html" class="category-card" id="card-profit">
+            <div class="category-icon">📈</div>
+            <h3>白银利润计算器</h3>
+            <p>投资者：根据您的平均购买价格计算您的总投资回报率（ROI）。</p>
+            <span class="card-arrow">Calculate ROI →</span>
+          </a>
+          <a href="白银面值计算器.html" class="category-card" id="card-face-val">
+            <div class="category-icon">💵</div>
+            <h3>面值计算器</h3>
+            <p>只需输入 90% 银币的面值（例如 10 美元 FV）即可找到其熔化价值。</p>
+            <span class="card-arrow">Calculate →</span>
+          </a>
+          <a href="白银批量计算器.html" class="category-card" id="card-batch">
+            <div class="category-icon">📋</div>
+            <h3>批量白银计算器</h3>
+            <p>有很多银制品吗？将它们全部添加并查看总价值 - 然后为经销商打印或复制您的清单。</p>
+            <span class="card-arrow">Try It →</span>
+          </a>
+          <a href="银重量转换器.html" class="category-card" id="card-converter">
+            <div class="category-icon">⚖️</div>
+            <h3>银重量转换器</h3>
+            <p>不确定您的体重秤显示的是金衡盎司还是普通盎司？在 6 个重量单位之间进行转换，这样您就不会多付或低价出售。</p>
+            <span class="card-arrow">Convert →</span>
+          </a>
+          <a href="白银卖出或持有.html" class="category-card" id="card-hold">
+            <div class="category-icon">📈</div>
+            <h3>卖出或持有计算器</h3>
+            <p>想知道现在是否是出售的合适时机？比较您的白银现在的价值与更高或更低的现货价格。</p>
+            <span class="card-arrow">Analyze →</span>
+          </a>
+          <a href="所有货币白银价格.html" class="category-card" id="card-currencies">
+            <div class="category-icon">🌍</div>
+            <h3>12 种货币的白银价格</h3>
+            <p>查看以美元、欧元、英镑、印度卢比、巴基斯坦卢比、澳元、加元等表示的实时白银价格 — 这样您就可以准确了解您的白银在全球的价值。</p>
+            <span class="card-arrow">View Prices →</span>
+          </a>
+          <a href="托拉计算器.html" class="category-card" id="card-tola">
+            <div class="category-icon">⚖️</div>
+            <h3>托拉计算器</h3>
+            <p>使用南亚市场常见的 Tola 和 Masha 测量值转换和计算废银。</p>
+            <span class="card-arrow">Calculate →</span>
+          </a>
+          <a href="识别银.html" class="category-card" id="card-ident">
+            <div class="category-icon">🔎</div>
+            <h3>银牌识别工具</h3>
+            <p>不知道是不是真银？了解如何在家识别标志、磁性测试和酸测试。</p>
+            <span class="card-arrow">Read Guide →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works — compact -->
+    <section class="section-compact" style="background: var(--bg-secondary);">
+      <div class="container text-center">
+        <span class="section-badge">📋 简单的过程</span>
+        <h2 class="section-title">工作原理 — 3 个简单步骤</h2>
+        <p class="section-subtitle">在几秒钟内获得准确的白银估价。</p>
+
+        <div class="steps-grid stagger">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h4>称量你的银子</h4>
+            <p>使用厨房秤以克、金衡盎司或任何单位来称量您的银制品。</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h4>选择银纯度</h4>
+            <p>选择纯度 — 925 为纯银，999 为纯银，900 为硬币银，或其他。</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h4>获取即时熔化值</h4>
+            <p>查看基于实时白银现货价格的熔化值——从全球市场实时更新。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Semantic SEO Content -->
+    <section class="section-compact" id="guide">
+      <div class="container">
+        <div class="content-body" style="max-width: 800px; margin: 0 auto; text-align: left; line-height: 1.8;">
+
+          <h2>什么是废银计算器——什么时候应该使用它？</h2>
+          <p>废银计算器的核心是确定 <strong>intrinsic melt value</strong> 银器的价值——不是它的零售价，不是它的情感价值，也不是任何收藏家的溢价。它回答了一个具体问题：如果您今天将此物品熔化成纯银，该金属值多少钱？为此，它使用三项信息：物品的重量、银的成色（纯度）以及当前的银含量。 <strong>spot price</strong> 在全球大宗商品市场上交易的白银。</p>
+          <p>任何时候你要出售废银时，你都应该使用它——无论是破损的手镯、一套旧餐具、硬币收藏品，还是一袋纯银边角料。提前了解熔体价值是避免经销商或炼油厂支付过低费用的最有效方法。您可以检查 <a href="每盎司白银价格.html">live silver price per troy ounce</a> 或 <a href="每克白银价格.html">silver price per gram</a> 在您决定出售之前随时了解市场的走势。</p>
+
+          <h2>白银熔化价值实际上是如何计算的</h2>
+          <p>公式很简单，但单位非常重要。白银的国际定价始终是 <strong>troy ounces</strong> — 不是您在厨房秤上使用的标准常量盎司。一金衡盎司为 31.1035 克，而标准盎司为 28.35 克。仅这种区别就是人们错误计算白银价值的最常见原因之一。</p>
+          <p style="background: var(--bg-secondary); border-left: 3px solid var(--accent-primary); padding: var(--space-md) var(--space-lg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-family: monospace; font-size: var(--fs-sm);">熔体值 = 重量（单位为金衡盎司）× 纯度（小数）× 现货价格（每金衡盎司）</p>
+          <p>例如：一条 50 克纯银链（纯度 0.925），银价为 30 美元/盎司，则为 (50 ÷ 31.1035) × 0.925 × 30 = <strong>approximately $44.75</strong>。我们的 <a href="白银熔化值计算器.html">silver melt value calculator</a> 所有这一切都会自动完成。如果您的商品以不同的单位测量，我们的 <a href="银重量转换器.html">silver weight converter</a> 处理克、金衡盎司、便士、托拉和千克之间的转换，以便您始终输入正确的数字。</p>
+
+          <h2>了解银的纯度标记和标志</h2>
+          <p>每一块银币的印记上都蕴藏着一个故事，被称为 <strong>hallmarks</strong>。这些微小的雕刻告诉您银的纯度——合金中纯银的比例。学会阅读它们对于准确评估至关重要。</p>
+          <p>您会遇到的最常见的纯度是：</p>
+          <ul>
+            <li><strong>999 (Fine Silver)</strong> — 99.9% 纯银。通常存在于金条和硬币中，例如美国鹰银币。使用我们的 <a href="999银计算器.html">999 silver calculator</a> 对于这些项目。</li>
+            <li><strong>958 (Britannia Silver)</strong> — 纯度为 95.8%，用于一些英国银器。我们的 <a href="958银计算器.html">958 silver calculator</a> 精确地处理这种精细度。</li>
+            <li><strong>925 (Sterling Silver)</strong> — 全球最受认可的标准。 92.5% 银，7.5% 铜合金。今天出售的大多数珠宝和餐具都是英镑的。专注的 <a href="纯银计算器.html">sterling silver calculator</a> 或 <a href="925银计算器.html">925 silver calculator</a> 在这里都很有用。</li>
+            <li><strong>900 (Coin Silver)</strong> — 用于 1965 年之前铸造的美国旧硬币。 <a href="900银计算器.html">900 silver calculator</a> 是为这些项目而构建的。</li>
+            <li><strong>835 &amp; 800 (European Silver)</strong> — 常见于欧洲大陆空心器皿和餐具。使用 <a href="835银计算器.html">835 silver calculator</a> 或 <a href="800银计算器.html">800 silver calculator</a> 分别。</li>
+          </ul>
+          <p>如果您看到印有“STERLING”、“925”或“925/1000”的邮票，那么您几乎可以肯定看到的是纯银。如果根本没有标记，珠宝商或当铺可以进行酸测试或 XRF 分析来确认。我们的 <a href="925纯银每克价格.html">925 sterling silver price per gram</a> 页面为您提供最常见纯度的实时基线参考。</p>
+
+          <h2>评估银首饰、餐具和空心物品的价值</h2>
+          <p>银首饰的内在价值完全取决于其含银量，而不是设计、工艺或品牌名称。沉重的纯银手镯作为废品比轻质的设计师戒指更有价值。重量是主要因素，因此在评估物品的价值之前一定要先称重。</p>
+          <p>对于特定的珠宝类型，请使用专用工具： <a href="银戒指价值.html">silver ring calculator</a>, <a href="银链价值.html">silver chain calculator</a>, <a href="银项链价值.html">silver necklace calculator</a>, 和 <a href="银手镯价值.html">silver bracelet calculator</a> 所有这些都可以让您输入准确的重量并获得即时废品价值。对于任何广泛的可穿戴设备来说， <a href="银首饰价值计算器.html">silver jewelry value calculator</a> 是最好的起点。</p>
+          <p>银器和餐具（勺子、叉子、刀、托盘、杯子和盘子）的定价相同。全套纯银餐具可代表相当大的银重量。从 <a href="银器价值计算器.html">silverware value calculator</a>，或直接转到各个页面 <a href="银汤匙价值.html">silver spoons</a>, <a href="银叉价值.html">silver forks</a>, <a href="银刀价值.html">silver knives</a>, <a href="银托盘价值.html">silver trays</a>, <a href="银杯价值.html">silver cups</a>, 和 <a href="银板价值.html">silver plates</a>.</p>
+          <p>一个重要的警告： <em>silver-plated</em> 物品在贱金属上仅具有微观的银涂层。作为银废料，它们的熔化值基本上为零，不应在此输入。</p>
+
+          <h2>银币——熔化价值与钱币价值</h2>
+          <p>这是白银市场上最容易被误解的领域之一。硬币的熔化价值（仅含银量的价值）始终是下限。但许多硬币都带有额外的 <strong>numismatic premium</strong> 因为它们的稀有性、年代、状况或收藏家的需求。以废银价格出售 1881 年质朴的摩根美元将是一个代价高昂的错误。</p>
+          <p>对于大量流通的普通硬币——通常称为 <strong>junk silver</strong> — 熔化值基本上就是您所能得到的全部。 1965 年之前的美国 10 角硬币、25 美分硬币、5 美元硬币和 1 美元硬币的 90% 都是银。我们的 <a href="垃圾银计算器.html">junk silver calculator</a> 是专门为这些量身定制的，并且 <a href="白银面值计算器.html">face value silver calculator</a> 让您只需输入零钱袋的总面值（例如 10 美元 FV）即可获得即时估算。</p>
+          <p>对于单个硬币，请使用 <a href="银币价值计算器.html">silver coin value calculator</a>, 的 <a href="银元计算器.html">silver dollar calculator</a>, 的 <a href="银币计算器.html">silver quarter calculator</a>, 的 <a href="银币计算器.html">silver dime calculator</a>，或 <a href="加拿大银币计算器.html">Canadian silver coin calculator</a>.</p>
+          <p>对于银条来说， <a href="银条价值计算器.html">silver bar value calculator</a> 支持 1 盎司至 100 盎司和 1 公斤的常见尺寸。存在专用页面 <a href="1盎司银币价值.html">1oz</a>, <a href="2盎司银币价值.html">2oz</a>, <a href="5盎司银币价值.html">5oz</a>, <a href="10盎司银币价值.html">10oz</a>, <a href="100盎司银币价值.html">100oz</a>, 和 <a href="1公斤白银价值.html">1kg</a> 酒吧。如果您有大量混合收藏， <a href="白银批量计算器.html">silver batch calculator</a> 允许您添加无限的行项目并获得可以打印或复制给经销商的合并总数。</p>
+
+          <h2>正确称量白银：金衡盎司、克、便士和托拉</h2>
+          <p>贵金属交易使用多种重量单位，这些单位并不总是与您的厨房秤相匹配。犯这个错误是最容易误算的方法之一。一金衡盎司为 31.1035 克；一标准盎司仅为 28.35 克。的 <strong>pennyweight (dwt)</strong> — 在美国珠宝贸易中常见 — 等于 1.555 克，我们的 <a href="便士计算器.html">pennyweight calculator</a> 自动在载重吨和现货价格之间转换。在南亚市场， <strong>tola</strong> (11.664克)为标准单位；的 <a href="托拉计算器.html">tola silver calculator</a> 是专门为此而设计的。</p>
+          <p>如果您需要在这些单位之间切换， <a href="银重量转换器.html">silver weight converter</a> 通过单个条目即可处理两个方向上的所有六个单元。它还显示每个单位的等效现货价格，以便您可以立即交叉检查您的秤读数。</p>
+
+          <h2>黄金和白银在一起——知道何时卖出</h2>
+          <p>许多房地产销售和经销商拍品都包含金银物品。的 <a href="黄金和白银计算器.html">gold and silver calculator</a> 同时处理两种金属并实时显示 <strong>gold-to-silver ratio</strong> — 投资者在做出买入和卖出决策时所关注的一个关键指标。对于南亚市场，黄金的计量方式为 <em>Sona</em> 和银作为 <em>Chandi</em>, 的 <a href="索娜钱迪-计算器.html">Sona Chandi calculator</a> 支持内置 Tunch（纯度）的 Tola 和 Gram 单位。</p>
+          <p>如果您持有白银作为投资，您可以通过 <a href="白银利润计算器.html">silver profit calculator</a> 根据您的原始购买价格查看您的投资回报率。不确定是立即出售还是等待？的 <a href="白银卖出或持有.html">sell or hold calculator</a> 模拟不同的未来价格情景，以便您做出明智的决定。通过我们的网站还可以获取 12 种主要货币的白银价格，包括美元、欧元、英镑、印度卢比、巴基斯坦卢比、澳元和加元 <a href="所有货币白银价格.html">silver price in all currencies</a> 页。</p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Silver & Precious Metals Entities -->
+    <section class="section-compact" style="background: var(--bg-secondary);">
+      <div class="container">
+        <h3 class="text-center" style="font-size:var(--fs-lg);margin-bottom:var(--space-md);">白银和贵金属话题</h3>
+        <div class="entity-scroller">
+          <span class="entity-pill">Silver (Ag)</span>
+          <span class="entity-pill">Troy Ounce</span>
+          <span class="entity-pill">Spot Price</span>
+          <span class="entity-pill">COMEX Exchange</span>
+          <span class="entity-pill">LBMA</span>
+          <span class="entity-pill">Sterling Silver 925</span>
+          <span class="entity-pill">Fine Silver 999</span>
+          <span class="entity-pill">Coin Silver 900</span>
+          <span class="entity-pill">Melt Value</span>
+          <span class="entity-pill">Scrap Metal</span>
+          <span class="entity-pill">Precious Metals</span>
+          <span class="entity-pill">Bullion</span>
+          <span class="entity-pill">Hallmark</span>
+          <span class="entity-pill">Assay</span>
+          <span class="entity-pill">Pennyweight (DWT)</span>
+          <span class="entity-pill">Silver Refining</span>
+          <span class="entity-pill">Numismatic Value</span>
+          <span class="entity-pill">Junk Silver Coins</span>
+          <span class="entity-pill">Silver Alloy</span>
+          <span class="entity-pill">Tola</span>
+          <span class="entity-pill">Silver Purity Testing</span>
+          <span class="entity-pill">XRF Analysis</span>
+          <span class="entity-pill">Acid Test</span>
+          <span class="entity-pill">Morgan Dollar</span>
+          <span class="entity-pill">American Silver Eagle</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ — People Also Ask targeted -->
+    <section class="section-compact" id="faq" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">常见问题解答</h2>
+          <p class="section-subtitle">直接回答人们最常询问的有关白银废料价值的问题。</p>
+        </div>
+
+        <div class="faq-list" style="max-width: 800px; margin: 0 auto; text-align: left;">
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-1"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">如何计算废银的价值？</h3> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>将物品的重量（以金衡盎司为单位）乘以其纯度（以小数表示），然后乘以当前的白银现货价格。例如，10 克 925 英镑的价格为 30 美元/盎司 = (10 ÷ 31.1035) × 0.925 × 30 = 大约 8.95 美元。这个 <a href="白银熔化值计算器.html">silver melt value calculator</a> 输入重量、纯度和单位后，立即进行数学计算。</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-2"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">熔体价值和现货价格有什么区别？</h3> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>的 <strong>spot price</strong> 是全球商品交易所一金衡盎司纯银 (999) 的当前市场价格。的 <strong>melt value</strong> 是您的特定物品的价值，基于其重量和纯度 - 它始终等于或低于现货价格，因为大多数现实世界的银制品都含有铜或其他合金。检查今天的 <a href="今日白银现货价格.html">live silver spot price</a> 保持更新。</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-3"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">我如何知道我的银是否是真银以及纯度如何？</h3> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>寻找物品上的印记或标记 - 常见的包括 925、900、800、999 或 STERLING 一词。来自英国的物品通常带有狮子路人标志。如果没有标记，信誉良好的珠宝商或当铺可以进行酸性测试或 XRF 分析。镀银物品通常会写上“EPNS”、“银盘”或“谢菲尔德盘”——这些物品的废品价值可以忽略不计。</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-4"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">废品经销商实际上会付给我多少钱？</h3> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>大多数废银买家支付计算熔化值的 70% 至 95%。该百分比取决于买家类型（当地当铺与在线精炼厂）、纯度信心以及您销售的数量。当地当铺的报价往往较少；专业的在线白银精炼厂通常提供 85-95% 的熔体。始终获得多个报价，并在做出承诺之前使用此计算器来验证您是否获得了公平的交易。</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-5"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">废银和废银一样吗？</h3> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>不完全是。 <em>Junk silver</em> 特指 1965 年之前的美国硬币（10 角硬币、25 美分硬币、25 美分硬币、25 美分硬币、10 美元硬币），其含银量为 90%，没有可收藏的溢价 - 它们的价值纯粹取决于其金属含量。 <em>Scrap silver</em> 是一个更广泛的术语，涵盖破损的珠宝、餐具、牙科银以及任何以其金属出售的银制品。使用 <a href="垃圾银计算器.html">junk silver calculator</a> 对于硬币和这个废银计算器对于其他一切。</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-6"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">我可以用这个计算器计算银币吗？</h3> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>是的 — 输入硬币的重量并选择其纯度（1965 年之前的美国硬币为 90%，银鹰为 99.9%）。但是，为了提高特定硬币类型的精度，请使用 <a href="银币价值计算器.html">silver coin value calculator</a> 或专用的 <a href="银元计算器.html">silver dollar</a>, <a href="银币计算器.html">silver quarter</a>, 和 <a href="银币计算器.html">silver dime</a> 计算器，自动使用官方硬币重量。</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-7"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">最好使用什么重量单位——克还是金衡盎司？</h3> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>使用您的体重秤显示的任何内容 — 该计算器会为您进行转换。克是大多数家用秤最简单的单位。金衡盎司是行业标准，在直接与现货价格进行比较时很有用。要避免的关键错误：令人困惑 <em>standard</em> 盎司（28.35 克） <em>troy</em> 盎司（31.10 克）。这是一个非常常见且代价高昂的错误。使用我们的 <a href="银重量转换器.html">silver weight converter</a> 如果您需要切换单位。</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-8"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">镀银首饰有废品价值吗？</h3> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>很少。镀银物品只有一层薄薄的银（通常只有几微米）粘合在铜或镍等贱金属上。按重量计算，实际银含量只占总量的一小部分——太小而无法从废料中经济地回收。寻找 EPNS、EP 或“Silver Plate”等标记来识别电镀物品。只有纯银或纯银才具有有意义的废品价值。</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-9"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">黄金与白银的比率如何影响我的卖出决定？</h3> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>的 <strong>gold-to-silver ratio</strong> 告诉您购买一盎司黄金需要多少盎司白银。从历史上看，平均分在 60-80 左右；当白银升至80以上时，与黄金相比，白银被认为相对便宜，许多投资者会购买白银。当跌破60时，白银相对昂贵，可能是卖出的好时机。使用我们的产品检查活率以及熔化值 <a href="黄金和白银计算器.html">gold and silver calculator</a>.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-10"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">我可以用美元以外的货币计算白银的价值吗？</h3> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>是的。我们的 <a href="所有货币白银价格.html">silver price in all currencies</a> 页面显示美元、欧元、英镑、印度卢比、巴基斯坦卢比、澳元、加元等形式的实时白银价格。对于南亚市场来说， <a href="索娜钱迪-计算器.html">Sona Chandi calculator</a> 支持当地市场熟悉的 Tola 测量和 Tunch（纯度）。</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    // Hero Calculator Logic
+    const weightInput = document.getElementById('calc-weight');
+    const unitSelect = document.getElementById('calc-unit');
+    const puritySelect = document.getElementById('calc-purity');
+    const resultValue = document.getElementById('hero-result-value');
+    const resultDetail = document.getElementById('hero-result-detail');
+
+    function calculate() {
+      const weight = parseFloat(weightInput.value) || 0;
+      const unit = unitSelect.value;
+      const purity = parseFloat(puritySelect.value);
+      const spotPrice = SilverPrice.getPrice();
+
+      if (weight <= 0) {
+        resultValue.textContent = '$0.00';
+        resultDetail.textContent = 'Enter weight to calculate';
+        return;
+      }
+
+      const weightGrams = SilverCalc.toGrams(weight, unit);
+      const result = SilverCalc.meltValue(weightGrams, purity, spotPrice);
+
+      resultValue.textContent = SilverCalc.formatCurrency(result.value);
+      resultDetail.textContent = `${result.silverContentGrams}g pure silver · ${result.silverContentOz} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+    }
+
+    weightInput.addEventListener('input', calculate);
+    unitSelect.addEventListener('change', calculate);
+    puritySelect.addEventListener('change', calculate);
+
+    // Update calc when price loads
+    SilverPrice.onPriceUpdate(() => calculate());
+
+    // Initial calc
+    calculate();
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.closest('.faq-item').classList.toggle('open');
+      });
+    });
+
+    SiteComponents.injectFAQSchema([
+      { q: 'How do I calculate the value of scrap silver?', a: 'Multiply the item\'s weight in troy ounces by its purity (as a decimal) and then by the current silver spot price. For example, 10 grams of 925 sterling at $30/oz equals approximately $8.95. A silver melt value calculator does this math instantly.' },
+      { q: 'What is the difference between melt value and spot price?', a: 'The spot price is the current market price for one troy ounce of pure 999 silver. The melt value is what your specific item is worth based on its weight and purity — it is always equal to or less than spot price, because most silver items contain alloys.' },
+      { q: 'How do I know if my silver is real and what purity it is?', a: 'Look for a hallmark stamp on the item — common ones include 925, 900, 800, 999, or the word STERLING. If there is no marking, a jeweler or pawn shop can run an acid test or XRF analysis to confirm.' },
+      { q: 'How much will a scrap dealer actually pay me?', a: 'Most scrap silver buyers pay between 70% and 95% of the calculated melt value. Local pawn shops tend to offer less; specialist online silver refiners often offer 85-95% of melt. Always get multiple offers and use a calculator to verify fairness.' },
+      { q: 'Is junk silver the same as scrap silver?', a: 'Not exactly. Junk silver refers specifically to pre-1965 US coins (dimes, quarters, halves, dollars) that are 90% silver with no collectible premium. Scrap silver is a broader term covering broken jewelry, flatware, dental silver, and any silver sold for its metal.' },
+      { q: 'Can I use this calculator for silver coins?', a: 'Yes — enter the coin\'s weight and select its purity (90% for pre-1965 US coins, 99.9% for Silver Eagles). For more precision, use dedicated coin calculators for silver dollars, quarters, or dimes which use official coin weights automatically.' },
+      { q: 'What is the best weight unit to use — grams or troy ounces?', a: 'Use whatever your scale shows — the calculator converts for you. Grams are easiest for home scales. Avoid confusing standard ounces (28.35 g) with troy ounces (31.10 g), which is a very common and costly mistake.' },
+      { q: 'Does silver-plated jewelry have any scrap value?', a: 'Very little. Silver-plated items have only a thin coating of silver over base metal. The actual silver content is too small to recover economically. Look for stamps like EPNS or Silver Plate to identify plated items — only solid sterling or fine silver has meaningful scrap value.' },
+      { q: 'How does the gold-to-silver ratio affect my decision to sell?', a: 'The gold-to-silver ratio tells you how many ounces of silver it takes to buy one ounce of gold. When the ratio rises above 80, silver is relatively cheap and investors buy; when it falls below 60, silver is relatively expensive and may be a good time to sell.' },
+      { q: 'Can I calculate silver value in currencies other than US dollars?', a: 'Yes. Silver prices are available in USD, EUR, GBP, INR, PKR, AUD, CAD, and more. For South Asian markets, Tola measurements and Tunch (purity) are also supported.' }
+    ]);
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10-盎司银币价值.html","100oz-silver-value.html":"100盎司银币价值.html","10oz-silver-value.html":"10盎司银币价值.html","1kg-silver-value.html":"1公斤白银价值.html","1oz-silver-value.html":"1盎司银币价值.html","2oz-silver-value.html":"2盎司银币价值.html","5oz-silver-value.html":"5盎司银币价值.html","800-silver-calculator.html":"800银计算器.html","835-silver-calculator.html":"835银计算器.html","900-silver-calculator.html":"900银计算器.html","925-silver-calculator.html":"925银计算器.html","925-sterling-silver-price-per-gram.html":"925纯银每克价格.html","958-silver-calculator.html":"958银计算器.html","999-silver-calculator.html":"999银计算器.html","canadian-silver-coin-calculator.html":"加拿大银币计算器.html","face-value-silver-calculator.html":"白银面值计算器.html","gold-and-silver-calculator.html":"黄金和白银计算器.html","how-silver-prices-work.html":"白银价格如何运作.html","how-to-sell-silver.html":"如何卖白银.html","how-to-use-silver-calculators.html":"如何使用银计算器.html","identify-silver.html":"识别银.html","junk-silver-calculator.html":"垃圾银计算器.html","pennyweight-calculator.html":"便士计算器.html","silver-bar-value-calculator.html":"银条价值计算器.html","silver-batch-calculator.html":"白银批量计算器.html","silver-bracelet-value.html":"银手镯价值.html","silver-chain-value.html":"银链价值.html","silver-coin-value-calculator.html":"银币价值计算器.html","silver-cup-value.html":"银杯价值.html","silver-dime-calculator.html":"银币计算器.html","silver-dollar-calculator.html":"银元计算器.html","silver-fork-value.html":"银叉价值.html","silver-hallmarks-guide.html":"银色标志指南.html","silver-jewelry-value-calculator.html":"银首饰价值计算器.html","silver-knife-value.html":"银刀价值.html","silver-melt-value-calculator.html":"白银熔化值计算器.html","silver-necklace-value.html":"银项链价值.html","silver-plate-value.html":"银板价值.html","silver-price-all-currencies.html":"所有货币白银价格.html","silver-price-per-gram.html":"每克白银价格.html","silver-price-per-ounce.html":"每盎司白银价格.html","silver-profit-calculator.html":"白银利润计算器.html","silver-purity-chart.html":"银纯度表.html","silver-quarter-calculator.html":"银币计算器.html","silver-ring-value.html":"银戒指价值.html","silver-scrap-calculator.html":"银废料计算器.html","silver-sell-or-hold.html":"白银卖出或持有.html","silver-spoon-value.html":"银汤匙价值.html","silver-spot-price-today.html":"今日白银现货价格.html","silver-tray-value.html":"银托盘价值.html","silver-weight-converter.html":"银重量转换器.html","silverware-value-calculator.html":"银器价值计算器.html","sona-chandi-calculator.html":"索娜钱迪-计算器.html","sterling-silver-calculator.html":"纯银计算器.html","tola-calculator.html":"托拉计算器.html","what-does-925-mean.html":"925是什么意思.html","what-is-junk-silver.html":"什么是垃圾银.html","what-is-silver-bullion.html":"什么是银条.html","what-is-silver-melt-value.html":"什么是白银熔化值.html","what-is-silver-scrap.html":"什么是废银.html","what-is-sterling-silver.html":"什么是纯银.html","what-is-troy-ounce.html":"什么是金衡盎司.html"},"Home":"首页","Calculators":"计算器","Silver Scrap Calculator":"银废料计算器","Gold & Silver Calculator":"黄金白银计算器","Silver Melt Value":"银熔化值","Sterling Silver Calculator":"纯银计算器","Junk Silver Calculator":"垃圾银计算器","Silver Coin Value":"银币价值","Silver Bar Value":"银条价值","Silver Jewelry Value":"银首饰价值","Silverware Value":"银器价值","Purity":"纯度","999 Fine Silver":"999纯银","958 Britannia Silver":"958 不列颠银","925 Sterling Silver":"925 纯银","900 Coin Silver":"900 银币","835 Silver":"835银","800 Silver":"800银","Silver Purity Chart":"银纯度表","Pricing":"定价","Silver Spot Price Today":"今日白银现货价格","925 Sterling Price / Gram":"925 英镑价格/克","Silver Price Per Gram":"每克白银价格","Silver Price Per Ounce":"每盎司白银价格","Price in All Currencies":"所有货币的价格","1/10oz Silver Value":"1/10 盎司银币价值","1oz Silver Value":"1盎司白银价值","2oz Silver Value":"2盎司银币价值","5oz Silver Value":"5盎司银币价值","10oz Silver Value":"10盎司银币价值","100oz Silver Value":"100盎司银币价值","1kg Silver Value":"1公斤银值","Tools":"工具","Silver Profit Calculator":"白银利润计算器","Batch Calculator":"批量计算器","Sona Chandi Calculator":"索纳·昌迪计算器","Face Value Calculator":"面值计算器","Weight Converter":"重量转换器","Pennyweight (DWT) Calc":"Pennyweight (DWT) 计算","Tola Calculator":"托拉计算器","Sell or Hold Analysis":"卖出或持有分析","Silver Identifier":"银牌标识符","Guides":"指南","How to Use Our Calculators":"如何使用我们的计算器","What Is Silver Scrap?":"什么是银废料？","What Is Melt Value?":"什么是熔体值？","What Is Junk Silver?":"什么是垃圾银？","What Is a Troy Ounce?":"什么是金衡盎司？","What Is Silver Bullion?":"什么是银条？","How Silver Prices Work":"白银价格如何运作","Silver Hallmarks Guide":"银色标志指南","What Does 925 Mean?":"925是什么意思？","What Is Sterling Silver?":"什么是纯银？","How to Sell Silver":"如何出售白银","Scrap Silver":"废银","Gold & Silver":"金银","Silver Profit":"白银利润","Melt Value":"熔融值","Junk Silver":"垃圾银","Silver Coins":"银币","Silver Dollar":"银元","Silver Quarter":"银季","Silver Dime":"银币","Jewelry Value":"珠宝价值","925 Sterling":"第925章","Purity Chart":"纯度表","How to Use Calculators":"如何使用计算器","Sona Chandi Calc":"索纳·昌迪计算器","Face Value Calc":"面值计算","Sell or Hold":"卖出或持有","About":"关于","Privacy":"隐私","Terms":"条款","All rights reserved.":"保留所有权利。","Prices are for informational purposes only.":"价格仅供参考。","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"使用实时现货价格的免费、准确的白银计算器。立即计算银废料、硬币、珠宝和金条的熔化值。"};
+</script>
+</body></html>

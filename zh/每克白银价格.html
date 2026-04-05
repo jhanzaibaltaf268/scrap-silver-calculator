@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>今日每克白银价格 — 实时价格和换算</title>
+  <meta name="description" content="当前每克白银价格并实时更新。立即在克、盎司、千克和便士之间进行转换。">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-price-per-gram.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>每枚白银价格 <span class="highlight">Gram</span></h1>
+        <p>今日每克活银价格基于当前现货价格，带有单位换算工具。</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">📊</span> Silver Price Converter</div>
+        <div class="result-display" style="margin-bottom:var(--space-xl);">
+          <div class="result-label">每克白银价格</div>
+          <div class="result-value" id="price-gram">$0.00</div>
+          <div class="result-detail" id="price-update">Based on live spot price</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);">
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">每金衡盎司</div>
+            <div id="price-oz" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">每公斤</div>
+            <div id="price-kg" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">每便士重量</div>
+            <div id="price-dwt" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">佩尔·托拉</div>
+            <div id="price-tola" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+        </div>
+        <h4 style="margin:var(--space-xl) 0 var(--space-md);">按纯度定价（每克）</h4>
+        <table class="purity-table">
+          <thead><tr><th>纯度</th><th>银含量%</th><th>价格/克</th></tr></thead>
+          <tbody id="purity-rows"></tbody>
+        </table>
+      </div>
+      <div class="content-body">
+        <h2>每克白银的价格是如何计算的</h2>
+        <p>白银在全球大宗商品市场上以金衡盎司定价。一金衡盎司等于 31.1035 克。要找到每克的价格，只需将现货价格除以 31.1035 即可。</p>
+        <p>例如，现货价格为每金衡盎司 32.50 美元，每克价格约为 1.045 美元。</p>
+        <h3>为什么克对白银估值很重要</h3>
+        <p>大多数厨房和珠宝商秤都以克为单位进行计量，这使得每克价格成为日常白银估价中最实用的单位。当您在秤上称量银戒指或银链时，通常会得到以克为单位的重量。</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:var(--space-lg);">相关页面</h3>
+        <div class="related-grid">
+          <a href="每盎司白银价格.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+          <a href="1盎司银币价值.html" class="related-link"><span class="r-icon">🧱</span> 1oz Silver Value</a>
+          <a href="银废料计算器.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+          <a href="银纯度表.html" class="related-link"><span class="r-icon">📋</span> Purity Chart</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || '首页',href:'index.html'},{label:'Silver Price Per Gram'}]);
+    function update(){
+      const spot=SilverPrice.getPrice();
+      const perGram=spot/31.1035;
+      const perKg=spot*(1000/31.1035);
+      const perDwt=spot/20;
+      const perTola=spot*(11.6638/31.1035);
+      document.getElementById('price-gram').textContent='$'+perGram.toFixed(4);
+      document.getElementById('price-oz').textContent='$'+spot.toFixed(2);
+      document.getElementById('price-kg').textContent='$'+perKg.toFixed(2);
+      document.getElementById('price-dwt').textContent='$'+perDwt.toFixed(4);
+      document.getElementById('price-tola').textContent='$'+perTola.toFixed(4);
+      document.getElementById('price-update').textContent=`Spot: $${spot.toFixed(2)}/oz`;
+      const purities=[{l:'999 Fine',p:0.999},{l:'958 Britannia',p:0.958},{l:'925 Sterling',p:0.925},{l:'900 Coin',p:0.900},{l:'835 European',p:0.835},{l:'800 European',p:0.800}];
+      document.getElementById('purity-rows').innerHTML=purities.map(pu=>`<tr><td>${pu.l}</td><td>${(pu.p*100).toFixed(1)}%</td><td>$${(perGram*pu.p).toFixed(4)}</td></tr>`).join('');
+    }
+    SilverPrice.onPriceUpdate(()=>update());
+    update();
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10-盎司银币价值.html","100oz-silver-value.html":"100盎司银币价值.html","10oz-silver-value.html":"10盎司银币价值.html","1kg-silver-value.html":"1公斤白银价值.html","1oz-silver-value.html":"1盎司银币价值.html","2oz-silver-value.html":"2盎司银币价值.html","5oz-silver-value.html":"5盎司银币价值.html","800-silver-calculator.html":"800银计算器.html","835-silver-calculator.html":"835银计算器.html","900-silver-calculator.html":"900银计算器.html","925-silver-calculator.html":"925银计算器.html","925-sterling-silver-price-per-gram.html":"925纯银每克价格.html","958-silver-calculator.html":"958银计算器.html","999-silver-calculator.html":"999银计算器.html","canadian-silver-coin-calculator.html":"加拿大银币计算器.html","face-value-silver-calculator.html":"白银面值计算器.html","gold-and-silver-calculator.html":"黄金和白银计算器.html","how-silver-prices-work.html":"白银价格如何运作.html","how-to-sell-silver.html":"如何卖白银.html","how-to-use-silver-calculators.html":"如何使用银计算器.html","identify-silver.html":"识别银.html","junk-silver-calculator.html":"垃圾银计算器.html","pennyweight-calculator.html":"便士计算器.html","silver-bar-value-calculator.html":"银条价值计算器.html","silver-batch-calculator.html":"白银批量计算器.html","silver-bracelet-value.html":"银手镯价值.html","silver-chain-value.html":"银链价值.html","silver-coin-value-calculator.html":"银币价值计算器.html","silver-cup-value.html":"银杯价值.html","silver-dime-calculator.html":"银币计算器.html","silver-dollar-calculator.html":"银元计算器.html","silver-fork-value.html":"银叉价值.html","silver-hallmarks-guide.html":"银色标志指南.html","silver-jewelry-value-calculator.html":"银首饰价值计算器.html","silver-knife-value.html":"银刀价值.html","silver-melt-value-calculator.html":"白银熔化值计算器.html","silver-necklace-value.html":"银项链价值.html","silver-plate-value.html":"银板价值.html","silver-price-all-currencies.html":"所有货币白银价格.html","silver-price-per-gram.html":"每克白银价格.html","silver-price-per-ounce.html":"每盎司白银价格.html","silver-profit-calculator.html":"白银利润计算器.html","silver-purity-chart.html":"银纯度表.html","silver-quarter-calculator.html":"银币计算器.html","silver-ring-value.html":"银戒指价值.html","silver-scrap-calculator.html":"银废料计算器.html","silver-sell-or-hold.html":"白银卖出或持有.html","silver-spoon-value.html":"银汤匙价值.html","silver-spot-price-today.html":"今日白银现货价格.html","silver-tray-value.html":"银托盘价值.html","silver-weight-converter.html":"银重量转换器.html","silverware-value-calculator.html":"银器价值计算器.html","sona-chandi-calculator.html":"索娜钱迪-计算器.html","sterling-silver-calculator.html":"纯银计算器.html","tola-calculator.html":"托拉计算器.html","what-does-925-mean.html":"925是什么意思.html","what-is-junk-silver.html":"什么是垃圾银.html","what-is-silver-bullion.html":"什么是银条.html","what-is-silver-melt-value.html":"什么是白银熔化值.html","what-is-silver-scrap.html":"什么是废银.html","what-is-sterling-silver.html":"什么是纯银.html","what-is-troy-ounce.html":"什么是金衡盎司.html"},"Home":"首页","Calculators":"计算器","Silver Scrap Calculator":"银废料计算器","Gold & Silver Calculator":"黄金白银计算器","Silver Melt Value":"银熔化值","Sterling Silver Calculator":"纯银计算器","Junk Silver Calculator":"垃圾银计算器","Silver Coin Value":"银币价值","Silver Bar Value":"银条价值","Silver Jewelry Value":"银首饰价值","Silverware Value":"银器价值","Purity":"纯度","999 Fine Silver":"999纯银","958 Britannia Silver":"958 不列颠银","925 Sterling Silver":"925 纯银","900 Coin Silver":"900 银币","835 Silver":"835银","800 Silver":"800银","Silver Purity Chart":"银纯度表","Pricing":"定价","Silver Spot Price Today":"今日白银现货价格","925 Sterling Price / Gram":"925 英镑价格/克","Silver Price Per Gram":"每克白银价格","Silver Price Per Ounce":"每盎司白银价格","Price in All Currencies":"所有货币的价格","1/10oz Silver Value":"1/10 盎司银币价值","1oz Silver Value":"1盎司白银价值","2oz Silver Value":"2盎司银币价值","5oz Silver Value":"5盎司银币价值","10oz Silver Value":"10盎司银币价值","100oz Silver Value":"100盎司银币价值","1kg Silver Value":"1公斤银值","Tools":"工具","Silver Profit Calculator":"白银利润计算器","Batch Calculator":"批量计算器","Sona Chandi Calculator":"索纳·昌迪计算器","Face Value Calculator":"面值计算器","Weight Converter":"重量转换器","Pennyweight (DWT) Calc":"Pennyweight (DWT) 计算","Tola Calculator":"托拉计算器","Sell or Hold Analysis":"卖出或持有分析","Silver Identifier":"银牌标识符","Guides":"指南","How to Use Our Calculators":"如何使用我们的计算器","What Is Silver Scrap?":"什么是银废料？","What Is Melt Value?":"什么是熔体值？","What Is Junk Silver?":"什么是垃圾银？","What Is a Troy Ounce?":"什么是金衡盎司？","What Is Silver Bullion?":"什么是银条？","How Silver Prices Work":"白银价格如何运作","Silver Hallmarks Guide":"银色标志指南","What Does 925 Mean?":"925是什么意思？","What Is Sterling Silver?":"什么是纯银？","How to Sell Silver":"如何出售白银","Scrap Silver":"废银","Gold & Silver":"金银","Silver Profit":"白银利润","Melt Value":"熔融值","Junk Silver":"垃圾银","Silver Coins":"银币","Silver Dollar":"银元","Silver Quarter":"银季","Silver Dime":"银币","Jewelry Value":"珠宝价值","925 Sterling":"第925章","Purity Chart":"纯度表","How to Use Calculators":"如何使用计算器","Sona Chandi Calc":"索纳·昌迪计算器","Face Value Calc":"面值计算","Sell or Hold":"卖出或持有","About":"关于","Privacy":"隐私","Terms":"条款","All rights reserved.":"保留所有权利。","Prices are for informational purposes only.":"价格仅供参考。","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"使用实时现货价格的免费、准确的白银计算器。立即计算银废料、硬币、珠宝和金条的熔化值。"};
+</script>
+</body></html>

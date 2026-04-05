@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="pt"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preço da prata por onça hoje – preço ao vivo da onça troy</title>
+  <meta name="description" content="Preço atual da prata por onça troy com atualizações ao vivo. Veja o preço à vista e converta em gramas, quilogramas e centavos.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-price-per-ounce.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>Preço da prata por <span class="highlight">Ounce</span></h1>
+        <p>Preço atual da prata em tempo real por onça troy com conversões para todas as unidades de peso comuns.</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">📊</span> Silver Spot Price</div>
+        <div class="result-display" style="margin-bottom:var(--space-xl);">
+          <div class="result-label">Preço da prata por onça troy</div>
+          <div class="result-value" id="price-oz">$0.00</div>
+          <div class="result-detail">1 troy ounce = 31.1035 grams</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);">
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Por grama</div>
+            <div id="price-gram" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Por quilograma</div>
+            <div id="price-kg" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+        </div>
+        <h4 style="margin:var(--space-xl) 0 var(--space-md);">Valor por quantidade (à vista)</h4>
+        <table class="purity-table">
+          <thead><tr><th>Quantidade</th><th>Peso</th><th>Valor</th></tr></thead>
+          <tbody id="qty-rows"></tbody>
+        </table>
+      </div>
+      <div class="content-body">
+        <h2>Compreendendo o preço à vista da prata</h2>
+        <p>O preço à vista da prata é o preço de mercado atual para uma onça troy de prata fina 0,999. É definido pelo comércio global em bolsas de mercadorias como a COMEX e a London Bullion Market Association (LBMA).</p>
+        <h3>Onça Troy vs. Onça Regular</h3>
+        <p>Uma onça troy (31,1035g) é mais pesada que uma onça padrão (28,3495g). Os metais preciosos são sempre medidos em onças troy – então quando você vê “preço da prata por onça”, significa por <em>troy</em> onça.</p>
+        <h3>Fatores que afetam os preços da prata</h3>
+        <ul>
+          <li><strong>Industrial demand</strong> — A prata é usada em eletrônicos, painéis solares e dispositivos médicos</li>
+          <li><strong>Investment demand</strong> — ETFs, futuros e compras físicas de metais preciosos</li>
+          <li><strong>US Dollar strength</strong> — A prata geralmente se move inversamente ao dólar</li>
+          <li><strong>Inflation expectations</strong> — A prata é vista como uma proteção contra a inflação</li>
+          <li><strong>Mining supply</strong> — Níveis globais de produção de prata</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:var(--space-lg);">Páginas relacionadas</h3>
+        <div class="related-grid">
+          <a href="preço-da-prata-por-grama.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+          <a href="valor-de-1-onça-de-prata.html" class="related-link"><span class="r-icon">🧱</span> 1oz Silver Value</a>
+          <a href="valor-de-prata-de-10-onças.html" class="related-link"><span class="r-icon">🧱</span> 10oz Silver Value</a>
+          <a href="valor-de-1kg-de-prata.html" class="related-link"><span class="r-icon">🧱</span> 1kg Silver Value</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Página inicial',href:'index.html'},{label:'Silver Price Per Ounce'}]);
+    function update(){
+      const spot=SilverPrice.getPrice();
+      document.getElementById('price-oz').textContent='$'+spot.toFixed(2);
+      document.getElementById('price-gram').textContent='$'+(spot/31.1035).toFixed(4);
+      document.getElementById('price-kg').textContent='$'+(spot*1000/31.1035).toFixed(2);
+      const qtys=[{l:'1 oz',w:'31.1g',q:1},{l:'5 oz',w:'155.5g',q:5},{l:'10 oz',w:'311.0g',q:10},{l:'50 oz',w:'1,555g',q:50},{l:'100 oz',w:'3,110g',q:100}];
+      document.getElementById('qty-rows').innerHTML=qtys.map(q=>`<tr><td>${q.l}</td><td>${q.w}</td><td>$${(spot*q.q).toFixed(2)}</td></tr>`).join('');
+    }
+    SilverPrice.onPriceUpdate(()=>update());
+    update();
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"valor-de-1-10-onças-de-prata.html","100oz-silver-value.html":"valor-de-prata-de-100-onças.html","10oz-silver-value.html":"valor-de-prata-de-10-onças.html","1kg-silver-value.html":"valor-de-1kg-de-prata.html","1oz-silver-value.html":"valor-de-1-onça-de-prata.html","2oz-silver-value.html":"valor-de-prata-de-2-onças.html","5oz-silver-value.html":"valor-de-prata-de-5-onças.html","800-silver-calculator.html":"calculadora-de-prata-800.html","835-silver-calculator.html":"calculadora-de-prata-835.html","900-silver-calculator.html":"calculadora-de-prata-900.html","925-silver-calculator.html":"calculadora-de-prata-925.html","925-sterling-silver-price-per-gram.html":"preço-da-prata-esterlina-925-por-grama.html","958-silver-calculator.html":"calculadora-de-prata-958.html","999-silver-calculator.html":"calculadora-de-prata-999.html","canadian-silver-coin-calculator.html":"calculadora-de-moeda-de-prata-canadense.html","face-value-silver-calculator.html":"calculadora-de-prata-com-valor-nominal.html","gold-and-silver-calculator.html":"calculadora-de-ouro-e-prata.html","how-silver-prices-work.html":"como-funcionam-os-preços-da-prata.html","how-to-sell-silver.html":"como-vender-prata.html","how-to-use-silver-calculators.html":"como-usar-calculadoras-de-prata.html","identify-silver.html":"identificar-prata.html","junk-silver-calculator.html":"calculadora-de-prata-lixo.html","pennyweight-calculator.html":"calculadora-de-centavo.html","silver-bar-value-calculator.html":"calculadora-de-valor-de-barra-de-prata.html","silver-batch-calculator.html":"calculadora-de-lote-de-prata.html","silver-bracelet-value.html":"valor-da-pulseira-de-prata.html","silver-chain-value.html":"valor-da-corrente-de-prata.html","silver-coin-value-calculator.html":"calculadora-do-valor-da-moeda-de-prata.html","silver-cup-value.html":"valor-da-taça-de-prata.html","silver-dime-calculator.html":"calculadora-de-moeda-de-prata.html","silver-dollar-calculator.html":"calculadora-dólar-de-prata.html","silver-fork-value.html":"valor-do-garfo-de-prata.html","silver-hallmarks-guide.html":"guia-de-marcas-de-prata.html","silver-jewelry-value-calculator.html":"calculadora-de-valor-de-joias-de-prata.html","silver-knife-value.html":"valor-da-faca-de-prata.html","silver-melt-value-calculator.html":"calculadora-de-valor-de-fusão-de-prata.html","silver-necklace-value.html":"valor-do-colar-de-prata.html","silver-plate-value.html":"valor-da-placa-de-prata.html","silver-price-all-currencies.html":"preço-da-prata-todas-as-moedas.html","silver-price-per-gram.html":"preço-da-prata-por-grama.html","silver-price-per-ounce.html":"preço-da-prata-por-onça.html","silver-profit-calculator.html":"calculadora-de-lucro-de-prata.html","silver-purity-chart.html":"gráfico-de-pureza-de-prata.html","silver-quarter-calculator.html":"calculadora-do-quarto-de-prata.html","silver-ring-value.html":"valor-do-anel-de-prata.html","silver-scrap-calculator.html":"calculadora-de-sucata-de-prata.html","silver-sell-or-hold.html":"prata-vender-ou-manter.html","silver-spoon-value.html":"valor-da-colher-de-prata.html","silver-spot-price-today.html":"preço-à-vista-da-prata-hoje.html","silver-tray-value.html":"valor-da-bandeja-de-prata.html","silver-weight-converter.html":"conversor-de-peso-de-prata.html","silverware-value-calculator.html":"calculadora-de-valor-de-talheres.html","sona-chandi-calculator.html":"calculadora-sona-chandi.html","sterling-silver-calculator.html":"calculadora-de-prata-esterlina.html","tola-calculator.html":"calculadora-tola.html","what-does-925-mean.html":"o-que-significa-925.html","what-is-junk-silver.html":"o-que-é-prata-lixo.html","what-is-silver-bullion.html":"o-que-é-barras-de-prata.html","what-is-silver-melt-value.html":"o-que-é-o-valor-de-fusão-da-prata.html","what-is-silver-scrap.html":"o-que-é-sucata-de-prata.html","what-is-sterling-silver.html":"o-que-é-prata-esterlina.html","what-is-troy-ounce.html":"o-que-é-onça-troy.html"},"Home":"Página inicial","Calculators":"Calculadoras","Silver Scrap Calculator":"Calculadora de sucata de prata","Gold & Silver Calculator":"Calculadora de Ouro e Prata","Silver Melt Value":"Valor de fusão de prata","Sterling Silver Calculator":"Calculadora de prata esterlina","Junk Silver Calculator":"Calculadora de prata lixo","Silver Coin Value":"Valor da moeda de prata","Silver Bar Value":"Valor da barra de prata","Silver Jewelry Value":"Valor das joias de prata","Silverware Value":"Valor dos talheres","Purity":"Pureza","999 Fine Silver":"Prata Fina 999","958 Britannia Silver":"Prata Britânia 958","925 Sterling Silver":"Prata Esterlina 925","900 Coin Silver":"900 moedas de prata","835 Silver":"835 Prata","800 Silver":"800 prata","Silver Purity Chart":"Gráfico de pureza de prata","Pricing":"Preços","Silver Spot Price Today":"Preço à vista da prata hoje","925 Sterling Price / Gram":"Preço de 925 libras esterlinas / grama","Silver Price Per Gram":"Preço da prata por grama","Silver Price Per Ounce":"Preço da prata por onça","Price in All Currencies":"Preço em todas as moedas","1/10oz Silver Value":"Valor de prata de 1/10 onças","1oz Silver Value":"Valor de prata de 1 onça","2oz Silver Value":"Valor de prata de 2 onças","5oz Silver Value":"Valor de prata de 5 onças","10oz Silver Value":"Valor de prata de 10 onças","100oz Silver Value":"Valor de prata de 100 onças","1kg Silver Value":"Valor de prata de 1kg","Tools":"Ferramentas","Silver Profit Calculator":"Calculadora de lucro de prata","Batch Calculator":"Calculadora de lote","Sona Chandi Calculator":"Calculadora Sona Chandi","Face Value Calculator":"Calculadora de valor nominal","Weight Converter":"Conversor de peso","Pennyweight (DWT) Calc":"Cálculo Pennyweight (DWT)","Tola Calculator":"Calculadora Tola","Sell or Hold Analysis":"Análise de vender ou reter","Silver Identifier":"Identificador Prata","Guides":"Guias","How to Use Our Calculators":"Como usar nossas calculadoras","What Is Silver Scrap?":"O que é sucata de prata?","What Is Melt Value?":"O que é valor de fusão?","What Is Junk Silver?":"O que é prata lixo?","What Is a Troy Ounce?":"O que é uma onça troy?","What Is Silver Bullion?":"O que é barras de prata?","How Silver Prices Work":"Como funcionam os preços da prata","Silver Hallmarks Guide":"Guia de marcas de prata","What Does 925 Mean?":"O que significa 925?","What Is Sterling Silver?":"O que é prata esterlina?","How to Sell Silver":"Como Vender Prata","Scrap Silver":"Sucata de prata","Gold & Silver":"Ouro e Prata","Silver Profit":"Lucro de Prata","Melt Value":"Valor de fusão","Junk Silver":"Lixo de prata","Silver Coins":"Moedas de Prata","Silver Dollar":"Dólar de prata","Silver Quarter":"Quarto de Prata","Silver Dime":"Moeda de prata","Jewelry Value":"Valor das joias","925 Sterling":"925 libras esterlinas","Purity Chart":"Gráfico de Pureza","How to Use Calculators":"Como usar calculadoras","Sona Chandi Calc":"Sona Chandi Calc","Face Value Calc":"Cálculo do valor nominal","Sell or Hold":"Vender ou Manter","About":"Sobre","Privacy":"Privacidade","Terms":"Termos","All rights reserved.":"Todos os direitos reservados.","Prices are for informational purposes only.":"Os preços são apenas para fins informativos.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calculadoras de prata precisas e gratuitas usando preços spot ao vivo. Calcule o valor de fusão de sucata de prata, moedas, joias e barras instantaneamente."};
+</script>
+</body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="fr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>925 Sterling Silver Price Per Gram Today — Live Melt Value</title>
+  <meta name="description" content="Calculate the live 925 sterling silver price per gram. Find the exact melt value of your 925 silver jewelry and scrap instantly.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/925-sterling-silver-price-per-gram.html">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1><span class="highlight">925 Sterling Silver Price Per Gram</span></h1>
+        <p>Today's live 925 sterling silver price per gram based on the current spot price. Find out exactly how much your silver is worth.</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">💍</span> 925 Sterling Value Calculator</div>
+        
+        <div class="form-group">
+          <label class="form-label" for="weight">Weight (in Grams)</label>
+          <input type="number" class="form-input" id="weight" value="1" min="0.1" step="0.1">
+        </div>
+
+        <div class="result-display" style="margin-bottom:var(--space-xl);">
+          <div class="result-label">925 Sterling Silver Value</div>
+          <div class="result-value" id="total-value">$0.00</div>
+          <div class="result-detail" id="price-update">Based on live spot price</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);">
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">925 Price Per Gram</div>
+            <div id="price-gram" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">925 Price Per Ounce</div>
+            <div id="price-oz" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>How Is the 925 Sterling Silver Price Per Gram Calculated?</h2>
+        <p>The calculation is simple but relies on knowing the current spot price. Sterling silver is an alloy made of 92.5% pure silver and 7.5% other metals (usually copper).</p>
+        <p>To find the exact melt value per gram:</p>
+        <ol>
+          <li>Take the global spot price of pure silver (priced per troy ounce).</li>
+          <li>Divide it by 31.1035 to get the price of pure silver per gram.</li>
+          <li>Multiply that by 0.925 (the purity of sterling silver).</li>
+        </ol>
+
+        <h3>Why Grams Matter for 925 Jewelry</h3>
+        <p>If you are weighing necklaces, rings, or silverware, you are almost definitely using a digital scale that measures in grams. Precious metal dealers and pawn shops also weigh scrap 925 silver in grams before making an offer.</p>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom:var(--space-lg);">Related Pages</h3>
+        <div class="related-grid">
+          <a href="sterling-silver-calculator.html" class="related-link"><span class="r-icon">💍</span> Sterling Calculator</a>
+          <a href="silver-price-per-gram.html" class="related-link"><span class="r-icon">📊</span> Pure Silver Per Gram</a>
+          <a href="silver-jewelry-value-calculator.html" class="related-link"><span class="r-icon">💎</span> Jewelry Value</a>
+          <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/silver-price.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Accueil',href:'index.html'},{label:'925 Sterling Price Per Gram'}]);
+    
+    const wInput = document.getElementById('weight');
+
+    function update(){
+      const weight = parseFloat(wInput.value) || 0;
+      const spot = SilverPrice.getPrice();
+      const perGram = spot / 31.1035;
+      const sterlingPerGram = perGram * 0.925;
+      const sterlingPerOz = spot * 0.925;
+      
+      const total = weight * sterlingPerGram;
+
+      document.getElementById('total-value').textContent = '$' + total.toFixed(2);
+      document.getElementById('price-gram').textContent = '$' + sterlingPerGram.toFixed(4);
+      document.getElementById('price-oz').textContent = '$' + sterlingPerOz.toFixed(2);
+      document.getElementById('price-update').textContent = `${weight}g · Spot: $${spot.toFixed(2)}/oz`;
+    }
+
+    wInput.addEventListener('input', update);
+    SilverPrice.onPriceUpdate(() => update());
+    update();
+  </script>
+
+
+
+<script>
+  window.MenuTranslations = {}; 
+</script>
+</body></html>

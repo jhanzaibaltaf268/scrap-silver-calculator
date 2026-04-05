@@ -1,0 +1,154 @@
+<!DOCTYPE html><html lang="fr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculateur de ferraille d'argent - Calculez la valeur de la ferraille d'argent en fonction du poids et de la pureté</title>
+  <meta name="description" content="Calculez la valeur de rebut de vos objets en argent à l'aide des prix spot en direct. Entrez le poids et la pureté pour obtenir des estimations instantanées de la valeur de fusion.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-scrap-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Silver Scrap Calculator","description":"Calculate scrap silver value by weight and purity","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container">
+      <div id="breadcrumb"></div>
+    </div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>Débris d'argent <span class="highlight">Calculator</span></h1>
+        <p>Calculez exactement la valeur de vos déchets d'argent en fonction de leur poids, de leur pureté et du prix au comptant en direct du jour.</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">♻️</span> Scrap Silver Calculator</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="weight">Poids</label>
+            <input type="number" class="form-input" id="weight" placeholder="e.g. 15" step="0.01" min="0" value="10">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="unit">Unité</label>
+            <select class="form-select" id="unit">
+              <option value="g" selected="">Grammes (g)</option>
+              <option value="oz">Onces Troy (oz)</option>
+              <option value="dwt">Pennyweight (dwt)</option>
+              <option value="kg">Kilogrammes (kg)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="purity">Pureté de l'argent</label>
+          <select class="form-select" id="purity">
+            <option value="0.999">999 — Argent fin (99,9 %)</option>
+            <option value="0.958">958 — Bretagne (95,8 %)</option>
+            <option value="0.925" selected="">925 — Livre sterling (92,5 %)</option>
+            <option value="0.900">900 — Pièce d'argent (90 %)</option>
+            <option value="0.835">835 — Européen (83,5 %)</option>
+            <option value="0.800">800 — Européen (80 %)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="discount">Rabais du concessionnaire (%)</label>
+          <select class="form-select" id="discount">
+            <option value="0">0&nbsp;%&nbsp;– Valeur de fusion totale</option>
+            <option value="0.05">5%</option>
+            <option value="0.10">10%</option>
+            <option value="0.15" selected="">15&nbsp;%&nbsp;–&nbsp;Concessionnaire typique</option>
+            <option value="0.20">20%</option>
+            <option value="0.25">25%</option>
+          </select>
+        </div>
+        <div class="result-display">
+          <div class="result-label">Valeur de fusion</div>
+          <div class="result-value" id="result-melt">$0.00</div>
+          <div class="result-detail" id="result-melt-detail"></div>
+        </div>
+        <div class="result-display" style="margin-top: var(--space-md); border-color: var(--accent-green); background: linear-gradient(135deg, rgba(52,211,153,0.08) 0%, rgba(52,211,153,0.02) 100%);">
+          <div class="result-label">Paiement estimé du concessionnaire</div>
+          <div class="result-value" id="result-scrap" style="background: linear-gradient(135deg, #34d399, #6ee7b7); -webkit-background-clip: text; background-clip: text;">$0.00</div>
+          <div class="result-detail" id="result-scrap-detail"></div>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>Comment utiliser le calculateur de ferraille d'argent</h2>
+        <p>Notre calculateur de ferraille d'argent vous aide à déterminer la juste valeur de vos déchets d'argent avant de les vendre à un revendeur ou à un raffineur. Voici comment procéder&nbsp;:</p>
+        <ul>
+          <li><strong>Weigh your silver</strong> à l'aide d'une balance de cuisine ou d'une balance de bijoutier. La précision compte : même un gramme peut faire la différence.</li>
+          <li><strong>Identify the purity</strong> en vérifiant les poinçons (925, 999, 800, etc.) sur votre article.</li>
+          <li><strong>Set dealer discount</strong> pour estimer ce qu'un acheteur paiera réellement. La plupart des revendeurs paient 80 à 95 % de la valeur de fusion.</li>
+        </ul>
+        <h2>Qu'est-ce qui compte comme ferraille d'argent&nbsp;?</h2>
+        <p>La ferraille d'argent comprend tout objet en argent vendu principalement pour sa teneur en métal plutôt que comme produit fini&nbsp;:</p>
+        <ul>
+          <li>Bijoux cassés ou endommagés (bagues, chaînes, bracelets)</li>
+          <li>Argenterie ancienne ou ternie</li>
+          <li>Pièces en argent sans prime numismatique</li>
+          <li>Travaux dentaires en argent ou déchets électroniques</li>
+          <li>Pièces en argent sterling dépareillées ou indésirables</li>
+        </ul>
+        <h2>Conseils pour obtenir le meilleur prix</h2>
+        <ul>
+          <li>Connaissez la pureté de votre argent avant de vous rendre chez un revendeur</li>
+          <li>Obtenez des devis de plusieurs acheteurs</li>
+          <li>Vérifiez le prix spot le jour de la vente</li>
+          <li>Envisagez de vendre en ligne aux raffineurs pour obtenir des paiements plus élevés</li>
+          <li>Séparez les articles par pureté pour obtenir des devis précis</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom: var(--space-lg);">Calculatrices associées</h3>
+        <div class="related-grid">
+          <a href="calculateur-de-valeur-de-fonte.html" class="related-link"><span class="r-icon">🔥</span> Melt Value Calculator</a>
+          <a href="calculateur-d-argent-sterling.html" class="related-link"><span class="r-icon">✨</span> Sterling Silver Calculator</a>
+          <a href="valeur-des-bijoux-en-argent.html" class="related-link"><span class="r-icon">💍</span> Jewelry Value</a>
+          <a href="valeur-de-l-argenterie.html" class="related-link"><span class="r-icon">🍴</span> Silverware Value</a>
+          <a href="comment-vendre-de-l-argent.html" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>
+          <a href="tableau-de-purete-de-l-argent.html" class="related-link"><span class="r-icon">📊</span> Purity Chart</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      {label: window.MenuTranslations['Home'] || 'Accueil', href:'index.html'},
+      {label:'Silver Scrap Calculator'}
+    ]);
+    const w = document.getElementById('weight');
+    const u = document.getElementById('unit');
+    const p = document.getElementById('purity');
+    const d = document.getElementById('discount');
+    function calc() {
+      const weight = parseFloat(w.value) || 0;
+      const grams = SilverCalc.toGrams(weight, u.value);
+      const purity = parseFloat(p.value);
+      const disc = parseFloat(d.value);
+      const spot = SilverPrice.getPrice();
+      const result = SilverCalc.scrapValue(grams, purity, spot, disc);
+      document.getElementById('result-melt').textContent = SilverCalc.formatCurrency(result.value);
+      document.getElementById('result-melt-detail').textContent = `${result.silverContentGrams}g silver · ${result.silverContentOz} oz · Spot: $${spot.toFixed(2)}/oz`;
+      document.getElementById('result-scrap').textContent = SilverCalc.formatCurrency(result.scrapValue);
+      document.getElementById('result-scrap-detail').textContent = `After ${(disc*100).toFixed(0)}% dealer discount (−${SilverCalc.formatCurrency(result.discount)})`;
+    }
+    [w,u,p,d].forEach(el => el.addEventListener('input', calc));
+    [u,p,d].forEach(el => el.addEventListener('change', calc));
+    SilverPrice.onPriceUpdate(() => calc());
+    calc();
+  </script>
+
+
+
+<script>
+    window.MenuTranslations = {"slugs":{"silver-scrap-calculator.html":"calculateur-de-ferraille-d-argent.html","gold-and-silver-calculator.html":"calculateur-or-et-argent.html","silver-melt-value-calculator.html":"calculateur-de-valeur-de-fonte.html","sterling-silver-calculator.html":"calculateur-d-argent-sterling.html","junk-silver-calculator.html":"calculateur-d-argent-de-circulation.html","silver-coin-value-calculator.html":"valeur-des-pieces-d-argent.html","silver-bar-value-calculator.html":"valeur-des-lingots-d-argent.html","silver-jewelry-value-calculator.html":"valeur-des-bijoux-en-argent.html","silverware-value-calculator.html":"valeur-de-l-argenterie.html","999-silver-calculator.html":"argent-fin-999.html","958-silver-calculator.html":"argent-britannia-958.html","925-silver-calculator.html":"argent-sterling-925.html","900-silver-calculator.html":"argent-de-piece-900.html","835-silver-calculator.html":"argent-835.html","800-silver-calculator.html":"argent-800.html","silver-purity-chart.html":"tableau-de-purete-de-l-argent.html","silver-price-per-gram.html":"prix-de-l-argent-au-gramme.html","silver-price-per-ounce.html":"prix-de-l-argent-a-l-once.html","silver-price-all-currencies.html":"prix-dans-toutes-les-devises.html","1-10oz-silver-value.html":"valeur-de-l-argent-1-10oz.html","1oz-silver-value.html":"valeur-de-l-argent-1oz.html","2oz-silver-value.html":"valeur-de-l-argent-2oz.html","5oz-silver-value.html":"valeur-de-l-argent-5oz.html","10oz-silver-value.html":"valeur-de-l-argent-10oz.html","100oz-silver-value.html":"valeur-de-l-argent-100oz.html","1kg-silver-value.html":"valeur-de-l-argent-1kg.html","silver-profit-calculator.html":"calculateur-de-profit-d-argent.html","silver-batch-calculator.html":"calculateur-par-lots.html","sona-chandi-calculator.html":"calculateur-sona-chandi.html","face-value-silver-calculator.html":"calculateur-de-valeur-nominale.html","silver-weight-converter.html":"convertisseur-de-poids.html","pennyweight-calculator.html":"calculateur-pennyweight-dwt.html","tola-calculator.html":"calculateur-tola.html","silver-sell-or-hold.html":"analyse-vendre-ou-garder.html","identify-silver.html":"identificateur-d-argent.html","how-to-use-silver-calculators.html":"comment-utiliser-nos-calculateurs.html","what-is-silver-scrap.html":"qu-est-ce-que-la-ferraille-d-argent.html","what-is-silver-melt-value.html":"qu-est-ce-que-la-valeur-de-fonte.html","what-is-junk-silver.html":"qu-est-ce-que-l-argent-de-circulation.html","what-is-troy-ounce.html":"qu-est-ce-qu-une-once-troy.html","what-is-silver-bullion.html":"qu-est-ce-qu-un-lingot-d-argent.html","how-silver-prices-work.html":"comment-fonctionnent-les-prix-de-l-argent.html","silver-hallmarks-guide.html":"guide-des-poincons-d-argent.html","what-does-925-mean.html":"que-signifie-925.html","what-is-sterling-silver.html":"qu-est-ce-que-l-argent-sterling.html","how-to-sell-silver.html":"comment-vendre-de-l-argent.html","silver-bracelet-value.html":"valeur-d-un-bracelet-en-argent.html","silver-chain-value.html":"valeur-d-une-chaine-en-argent.html","silver-cup-value.html":"valeur-d-une-coupe-en-argent.html","silver-dime-calculator.html":"calculateur-piece-de-dix-cents-en-argent.html","silver-dollar-calculator.html":"calculateur-dollar-en-argent.html","silver-fork-value.html":"valeur-d-une-fourchette-en-argent.html","silver-knife-value.html":"valeur-d-un-couteau-en-argent.html","silver-necklace-value.html":"valeur-d-un-collier-en-argent.html","silver-plate-value.html":"valeur-d-une-assiette-en-argent.html","silver-quarter-calculator.html":"calculateur-quart-de-dollar-en-argent.html","silver-ring-value.html":"valeur-d-une-bague-en-argent.html","silver-spoon-value.html":"valeur-d-une-cuillere-en-argent.html","silver-tray-value.html":"valeur-d-un-plateau-en-argent.html","canadian-silver-coin-calculator.html":"calculateur-piece-en-argent-canadienne.html"},"Home":"Accueil","Calculators":"Calculateurs","Silver Scrap Calculator":"Calculateur de Ferraille d'Argent","Gold & Silver Calculator":"Calculateur Or et Argent","Silver Melt Value":"Valeur de Fonte de l'Argent","Sterling Silver Calculator":"Calculateur d'Argent Sterling","Junk Silver Calculator":"Calculateur d'Argent de Circulation","Silver Coin Value":"Valeur des Pièces d'Argent","Silver Bar Value":"Valeur des Lingots d'Argent","Silver Jewelry Value":"Valeur des Bijoux en Argent","Silverware Value":"Valeur de l'Argenterie","Purity":"Pureté","999 Fine Silver":"Argent Fin 999","958 Britannia Silver":"Argent Britannia 958","925 Sterling Silver":"Argent Sterling 925","900 Coin Silver":"Argent de Pièce 900","835 Silver":"Argent 835","800 Silver":"Argent 800","Silver Purity Chart":"Tableau de Pureté de l'Argent","Pricing":"Prix","Silver Price Per Gram":"Prix de l'Argent au Gramme","Silver Price Per Ounce":"Prix de l'Argent à l'Once","Price in All Currencies":"Prix dans Toutes les Devises","1/10oz Silver Value":"Valeur de l'Argent 1/10oz","1oz Silver Value":"Valeur de l'Argent 1oz","2oz Silver Value":"Valeur de l'Argent 2oz","5oz Silver Value":"Valeur de l'Argent 5oz","10oz Silver Value":"Valeur de l'Argent 10oz","100oz Silver Value":"Valeur de l'Argent 100oz","1kg Silver Value":"Valeur de l'Argent 1kg","Tools":"Outils","Silver Profit Calculator":"Calculateur de Profit d'Argent","Batch Calculator":"Calculateur par Lots","Sona Chandi Calculator":"Calculateur Sona Chandi","Face Value Calculator":"Calculateur de Valeur Nominale","Weight Converter":"Convertisseur de Poids","Pennyweight (DWT) Calc":"Calculateur Pennyweight (DWT)","Tola Calculator":"Calculateur Tola","Sell or Hold Analysis":"Analyse Vendre ou Garder","Silver Identifier":"Identificateur d'Argent","Guides":"Guides","How to Use Our Calculators":"Comment Utiliser nos Calculateurs","What Is Silver Scrap?":"Qu'est-ce que la Ferraille d'Argent ?","What Is Melt Value?":"Qu'est-ce que la Valeur de Fonte ?","What Is Junk Silver?":"Qu'est-ce que l'Argent de Circulation ?","What Is a Troy Ounce?":"Qu'est-ce qu'une Once Troy ?","What Is Silver Bullion?":"Qu'est-ce qu'un Lingot d'Argent ?","How Silver Prices Work":"Comment Fonctionnent les Prix de l'Argent","Silver Hallmarks Guide":"Guide des Poinçons d'Argent","What Does 925 Mean?":"Que Signifie 925 ?","What Is Sterling Silver?":"Qu'est-ce que l'Argent Sterling ?","How to Sell Silver":"Comment Vendre de l'Argent","Scrap Silver":"Ferraille d'Argent","Gold & Silver":"Or et Argent","Silver Profit":"Profit d'Argent","Melt Value":"Valeur de Fonte","Junk Silver":"Argent de Circulation","Silver Coins":"Pièces d'Argent","Silver Dollar":"Dollar en Argent","Silver Quarter":"Quart de Dollar en Argent","Silver Dime":"Pièce de Dix Cents en Argent","Jewelry Value":"Valeur des Bijoux","925 Sterling":"Sterling 925","Purity Chart":"Tableau de Pureté","How to Use Calculators":"Comment Utiliser les Calculateurs","Sona Chandi Calc":"Calc. Sona Chandi","Face Value Calc":"Calc. Valeur Nominale","Sell or Hold":"Vendre ou Garder","About":"À Propos","Privacy":"Confidentialité","Terms":"Conditions","All rights reserved.":"Tous droits réservés.","Prices are for informational purposes only.":"Les prix sont à titre informatif.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calculateurs gratuits utilisant les prix en direct. Calculez la valeur de votre ferraille d'argent instantanément."};
+  </script>
+</body></html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html><html lang="fr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1kg Silver Value — Current Price of 1kg Silver</title>
+  <meta name="description" content="Current value of 1 kilogram of silver. International standard bar size.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>1kg Silver <span class="highlight">Value</span></h1><p>Current value of 1kg of silver at today's live spot price.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">🧱</span> 1kg Silver Value</div>
+        <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
+        <div class="result-display">
+          <div class="result-label">1kg Silver Value</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+        <h4 style="margin:var(--space-xl) 0 var(--space-md);">Value by Quantity</h4>
+        <table class="purity-table">
+          <thead><tr><th>Quantity</th><th>Total Weight</th><th>Value</th></tr></thead>
+          <tbody id="qty-table"></tbody>
+        </table>
+      </div>
+      <div class="content-body"><h2>How Much Is 1 Kilogram of Silver Worth?</h2><p>One kilogram of silver equals 32.1507 troy ounces (1,000 grams). Kilo bars are the international standard size, especially popular in Europe, Asia, and Australia.</p><p>Kilo bars offer some of the lowest premiums over spot price, making them efficient for larger investments.</p></div>
+      <div><h3 style="margin-bottom:var(--space-lg);">Related Pages</h3><div class="related-grid">
+        <a href="silver-bar-value-calculator.html" class="related-link"><span class="r-icon">🧱</span> Bar Calculator</a>
+        <a href="silver-price-per-ounce.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+        <a href="silver-price-per-gram.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+        <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Accueil',href:'index.html'},{label:'1kg Silver Value'}]);
+    const q=document.getElementById('qty');
+    function calc(){const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const totalOz=32.1507*qty;const val=totalOz*spot;document.getElementById('result-value').textContent='$'+val.toFixed(2);document.getElementById('result-detail').textContent=qty+'× 1kg · '+totalOz.toFixed(2)+' oz total · Spot: $'+spot.toFixed(2)+'/oz';
+      const qtys=[1,2,5,10,25,50,100];document.getElementById('qty-table').innerHTML=qtys.map(n=>'<tr><td>'+n+'</td><td>'+(32.1507*n).toFixed(2)+' oz</td><td>$'+(32.1507*n*spot).toFixed(2)+'</td></tr>').join('');}
+    q.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+  </script>
+
+
+<script>
+  window.MenuTranslations = {}; 
+</script>
+</body></html>

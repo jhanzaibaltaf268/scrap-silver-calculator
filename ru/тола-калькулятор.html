@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="ru"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silver Tola Calculator — Convert Tola to Grams &amp; Silver Value</title>
+  <meta name="description" content="Free silver tola calculator. Convert tola to grams, troy ounces, and calculate the silver value per tola at today's live spot price.">
+  <meta name="keywords" content="tola calculator, tola to grams, silver tola price, silver price per tola, tola converter, 1 tola silver price">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/tola-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" style="padding: var(--space-2xl) 0 var(--space-xl);">
+      <div class="container hero-content">
+        <div id="breadcrumb"></div>
+        
+        <h1>Silver <span class="highlight">Tola Calculator</span></h1>
+        <p class="hero-subtitle">Convert tola to grams, troy ounces, and calculate the silver value per tola at today's live spot price. Used across India, Pakistan, Bangladesh, and the Middle East.</p>
+
+        <div class="calc-widget slide-up" id="tola-calc">
+          <div class="calc-widget-title"><span class="icon">🌙</span> Silver Tola Value Calculator</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="tola-weight">Weight in Tola</label>
+              <input type="number" class="form-input" id="tola-weight" placeholder="Enter weight in tola" step="0.01" min="0" value="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="tola-purity">Чистота серебра</label>
+              <select class="form-select" id="tola-purity">
+                <option value="0.999">999 — Чистое серебро (99,9%)</option>
+                <option value="0.958">958 — Британия (95,8%)</option>
+                <option value="0.925" selected="">925 — Стерлинг (92,5%)</option>
+                <option value="0.900">900 — Монета Серебро (90%)</option>
+                <option value="0.835">835 — European (83.5%)</option>
+                <option value="0.800">800 — Европейский (80%)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Conversion results -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-md);margin-bottom:var(--space-lg);">
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Grams</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-grams">11.66</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Troy Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-ozt">0.3750</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Pennyweight</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-dwt">7.500</div>
+            </div>
+          </div>
+
+          <div class="result-display" id="tola-result">
+            <div class="result-label">Silver Value Per Tola</div>
+            <div class="result-value" id="tola-result-value">$0.00</div>
+            <div class="result-detail" id="tola-result-detail">Enter weight in tola to calculate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick reference table -->
+    <section class="section" style="padding:var(--space-2xl) 0;">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:var(--space-lg);">Tola Conversion Table</h2>
+        <div style="max-width:700px;margin:0 auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border-medium);">
+                <th style="padding:var(--space-md);text-align:left;color:var(--text-muted);font-size:var(--fs-sm);">Tola</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Грамм</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Troy Oz</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">925 Value</th>
+              </tr>
+            </thead>
+            <tbody id="tola-table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+      <div class="container">
+        <div class="content-body">
+          <h2>What Is a Tola?</h2>
+          <p>A <strong>tola</strong> is a traditional unit of weight used across South Asia and the Middle East for measuring gold and silver. One tola equals <strong>11.6638 grams</strong> or approximately 0.375 troy ounces. The term comes from the Hindi/Urdu word "तोला" and was historically tied to the weight of a silver rupee coin.</p>
+
+          <h3>Where Is Tola Used?</h3>
+          <p>The tola is commonly used in <strong>India, Pakistan, Bangladesh, Nepal, Sri Lanka,</strong> and parts of the <strong>Middle East</strong> when buying and selling precious metals. When you see silver prices quoted in "per tola" at a local jeweler or market, this calculator helps you convert that price to international standards for comparison.</p>
+
+          <h3>Tola Conversion Formulas</h3>
+          <ul style="list-style:disc;margin-left:var(--space-xl);">
+            <li style="padding:4px 0;color:var(--text-secondary);">1 Tola = 11.6638 grams</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 Tola = 0.375 troy ounces (3/8 ozt)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 Tola = 7.5 pennyweight (DWT)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 gram = 0.08573 tola</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 troy ounce = 2.6667 tola</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">10 tola = 116.638 grams = 3.75 troy ounces</li>
+          </ul>
+
+          <h3>Silver Price Per Tola Today</h3>
+          <p>The silver price per tola changes based on the global spot price. Since 1 tola = 0.375 troy ounces, multiply the spot price by 0.375 (and then by purity) to get the value per tola. Our calculator does this automatically using live prices.</p>
+
+          <h3>Похожие калькуляторы</h3>
+          <p>Используйте наш <a href="калькулятор-пеннивейта.html">pennyweight calculator</a> for DWT conversions, the <a href="преобразователь-веса-серебра.html">weight converter</a> for all units, or the <a href="цена-серебра-во-всех-валютах.html">multi-currency price page</a> to see today's silver price in PKR, INR, and other local currencies.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      { label: 'Home', href: 'index.html' },
+      { label: 'Tools', href: '#' },
+      { label: 'Tola Calculator' }
+    ]);
+
+    const TOLA_TO_GRAMS = 11.6638;
+    const tolaWeight = document.getElementById('tola-weight');
+    const tolaPurity = document.getElementById('tola-purity');
+    const tolaGrams = document.getElementById('tola-grams');
+    const tolaOzt = document.getElementById('tola-ozt');
+    const tolaDwt = document.getElementById('tola-dwt');
+    const tolaResultValue = document.getElementById('tola-result-value');
+    const tolaResultDetail = document.getElementById('tola-result-detail');
+
+    function calcTola() {
+      const tola = parseFloat(tolaWeight.value) || 0;
+      const purity = parseFloat(tolaPurity.value);
+      const spotPrice = SilverPrice.getPrice();
+
+      const grams = tola * TOLA_TO_GRAMS;
+      const troyOz = grams / 31.1035;
+      const dwt = troyOz * 20;
+
+      tolaGrams.textContent = grams.toFixed(2);
+      tolaOzt.textContent = troyOz.toFixed(4);
+      tolaDwt.textContent = dwt.toFixed(3);
+
+      if (tola <= 0) {
+        tolaResultValue.textContent = '$0.00';
+        tolaResultDetail.textContent = 'Enter weight in tola to calculate';
+        return;
+      }
+
+      const value = troyOz * purity * spotPrice;
+      const pureGrams = grams * purity;
+      tolaResultValue.textContent = SilverCalc.formatCurrency(value);
+      tolaResultDetail.textContent = `${pureGrams.toFixed(2)}g pure silver · ${(troyOz * purity).toFixed(4)} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+    }
+
+    tolaWeight.addEventListener('input', calcTola);
+    tolaPurity.addEventListener('change', calcTola);
+    SilverPrice.onPriceUpdate(() => calcTola());
+    calcTola();
+
+    // Conversion table
+    const tableBody = document.getElementById('tola-table');
+    [0.5, 1, 2, 3, 5, 10, 15, 20, 50].forEach(tola => {
+      const g = (tola * TOLA_TO_GRAMS).toFixed(2);
+      const ozt = (tola * TOLA_TO_GRAMS / 31.1035).toFixed(3);
+      const spotPrice = SilverPrice.getPrice();
+      const val = SilverCalc.formatCurrency((tola * TOLA_TO_GRAMS / 31.1035) * 0.925 * spotPrice);
+      tableBody.innerHTML += `<tr style="border-bottom:1px solid var(--border-subtle);">
+        <td style="padding:var(--space-md);color:var(--text-primary);font-weight:600;">${tola} tola</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${g}g</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${ozt} oz</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--accent-primary);font-weight:600;">${val}</td>
+      </tr>`;
+    });
+
+    SiteComponents.injectFAQSchema([
+      { q: 'What is a tola?', a: 'A tola is a traditional unit of weight used in South Asia and the Middle East for precious metals. 1 tola equals 11.6638 grams or 0.375 troy ounces.' },
+      { q: 'How many grams in a tola?', a: '1 tola equals exactly 11.6638 grams.' },
+      { q: 'What is the silver price per tola today?', a: 'The silver price per tola depends on the current spot price. Since 1 tola = 0.375 troy ounces, multiply today\'s spot price by 0.375 and the purity to get the value.' },
+      { q: 'How many tola in a troy ounce?', a: 'There are approximately 2.6667 tola in one troy ounce (1 ozt = 31.1035g ÷ 11.6638g per tola).' }
+    ]);
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-серебро-стоимостью-10-унций.html","100oz-silver-value.html":"стоимость-серебра-100-унций.html","10oz-silver-value.html":"стоимость-серебра-10-унций.html","1kg-silver-value.html":"стоимость-серебра-за-1-кг.html","1oz-silver-value.html":"стоимость-серебра-1-унция.html","2oz-silver-value.html":"стоимость-серебра-2-унции.html","5oz-silver-value.html":"стоимость-серебра-5-унций.html","800-silver-calculator.html":"калькулятор-серебра-800.html","835-silver-calculator.html":"калькулятор-серебра-835-пробы.html","900-silver-calculator.html":"калькулятор-серебра-900-пробы.html","925-silver-calculator.html":"калькулятор-серебра-925-пробы.html","925-sterling-silver-price-per-gram.html":"цена-серебра-925-пробы-за-грамм.html","958-silver-calculator.html":"калькулятор-серебра-958-пробы.html","999-silver-calculator.html":"калькулятор-серебра-999-пробы.html","canadian-silver-coin-calculator.html":"калькулятор-канадских-серебряных-монет.html","face-value-silver-calculator.html":"калькулятор-номинальной-стоимости-серебра.html","gold-and-silver-calculator.html":"калькулятор-золота-и-серебра.html","how-silver-prices-work.html":"как-работают-цены-на-серебро.html","how-to-sell-silver.html":"как-продать-серебро.html","how-to-use-silver-calculators.html":"как-пользоваться-серебряными-калькуляторами.html","identify-silver.html":"идентифицировать-серебро.html","junk-silver-calculator.html":"калькулятор-ненужного-серебра.html","pennyweight-calculator.html":"калькулятор-пеннивейта.html","silver-bar-value-calculator.html":"калькулятор-стоимости-серебряных-слитков.html","silver-batch-calculator.html":"калькулятор-партии-серебра.html","silver-bracelet-value.html":"стоимость-серебряного-браслета.html","silver-chain-value.html":"стоимость-серебряной-цепочки.html","silver-coin-value-calculator.html":"калькулятор-стоимости-серебряной-монеты.html","silver-cup-value.html":"стоимость-серебряного-кубка.html","silver-dime-calculator.html":"калькулятор-серебряных-десятицентовиков.html","silver-dollar-calculator.html":"калькулятор-серебряного-доллара.html","silver-fork-value.html":"стоимость-серебряной-вилки.html","silver-hallmarks-guide.html":"руководство-по-клеймам-серебра.html","silver-jewelry-value-calculator.html":"калькулятор-стоимости-серебряных-украшений.html","silver-knife-value.html":"стоимость-серебряного-ножа.html","silver-melt-value-calculator.html":"калькулятор-стоимости-расплава-серебра.html","silver-necklace-value.html":"стоимость-серебряного-ожерелья.html","silver-plate-value.html":"стоимость-серебряной-тарелки.html","silver-price-all-currencies.html":"цена-серебра-во-всех-валютах.html","silver-price-per-gram.html":"цена-серебра-за-грамм.html","silver-price-per-ounce.html":"цена-серебра-за-унцию.html","silver-profit-calculator.html":"калькулятор-прибыли-по-серебру.html","silver-purity-chart.html":"таблица-чистоты-серебра.html","silver-quarter-calculator.html":"калькулятор-серебряных-четвертей.html","silver-ring-value.html":"стоимость-серебряного-кольца.html","silver-scrap-calculator.html":"калькулятор-лома-серебра.html","silver-sell-or-hold.html":"серебро-продавать-или-держать.html","silver-spoon-value.html":"стоимость-серебряной-ложки.html","silver-spot-price-today.html":"спотовая-цена-серебра-сегодня.html","silver-tray-value.html":"стоимость-серебряного-подноса.html","silver-weight-converter.html":"преобразователь-веса-серебра.html","silverware-value-calculator.html":"калькулятор-стоимости-столового-серебра.html","sona-chandi-calculator.html":"калькулятор-соны-чанди.html","sterling-silver-calculator.html":"калькулятор-из-стерлингового-серебра.html","tola-calculator.html":"тола-калькулятор.html","what-does-925-mean.html":"что-означает-925.html","what-is-junk-silver.html":"что-такое-мусорное-серебро.html","what-is-silver-bullion.html":"что-такое-серебряные-слитки.html","what-is-silver-melt-value.html":"какова-ценность-плавления-серебра.html","what-is-silver-scrap.html":"что-такое-серебряный-лом.html","what-is-sterling-silver.html":"что-такое-стерлинговое-серебро.html","what-is-troy-ounce.html":"что-такое-тройская-унция.html"},"Home":"Главная","Calculators":"Калькуляторы","Silver Scrap Calculator":"Калькулятор лома серебра","Gold & Silver Calculator":"Калькулятор золота и серебра","Silver Melt Value":"Стоимость плавления серебра","Sterling Silver Calculator":"Калькулятор стерлингового серебра","Junk Silver Calculator":"Калькулятор нежелательного серебра","Silver Coin Value":"Стоимость серебряной монеты","Silver Bar Value":"Стоимость серебряного слитка","Silver Jewelry Value":"Стоимость серебряных украшений","Silverware Value":"Стоимость серебра","Purity":"Чистота","999 Fine Silver":"Серебро 999 пробы","958 Britannia Silver":"958 Британия Серебро","925 Sterling Silver":"Серебро 925 пробы","900 Coin Silver":"900 монет серебро","835 Silver":"Серебро 835 пробы","800 Silver":"800 Серебро","Silver Purity Chart":"Таблица чистоты серебра","Pricing":"Цены","Silver Spot Price Today":"Спотовая цена серебра сегодня","925 Sterling Price / Gram":"Цена 925 фунтов стерлингов за грамм","Silver Price Per Gram":"Цена серебра за грамм","Silver Price Per Ounce":"Цена серебра за унцию","Price in All Currencies":"Цена во всех валютах","1/10oz Silver Value":"Стоимость серебра 1/10 унции","1oz Silver Value":"Стоимость серебра 1 унция","2oz Silver Value":"Стоимость серебра 2 унции","5oz Silver Value":"Стоимость серебра 5 унций","10oz Silver Value":"Стоимость серебра 10 унций","100oz Silver Value":"Стоимость серебра 100 унций","1kg Silver Value":"Стоимость серебра 1 кг","Tools":"Инструменты","Silver Profit Calculator":"Калькулятор прибыли серебра","Batch Calculator":"Пакетный калькулятор","Sona Chandi Calculator":"Калькулятор Соны Чанди","Face Value Calculator":"Калькулятор номинальной стоимости","Weight Converter":"Конвертер веса","Pennyweight (DWT) Calc":"Пеннивейт (DWT), расчет","Tola Calculator":"Тола Калькулятор","Sell or Hold Analysis":"Продавайте или держите анализ","Silver Identifier":"Серебряный идентификатор","Guides":"Путеводители","How to Use Our Calculators":"Как пользоваться нашими калькуляторами","What Is Silver Scrap?":"Что такое серебряный лом?","What Is Melt Value?":"Что такое ценность плавления?","What Is Junk Silver?":"Что такое мусорное серебро?","What Is a Troy Ounce?":"Что такое тройская унция?","What Is Silver Bullion?":"Что такое серебряные слитки?","How Silver Prices Work":"Как работают цены на серебро","Silver Hallmarks Guide":"Руководство по серебряным клеймам","What Does 925 Mean?":"Что означает 925?","What Is Sterling Silver?":"Что такое стерлинговое серебро?","How to Sell Silver":"Как продать серебро","Scrap Silver":"Лом серебра","Gold & Silver":"Золото и серебро","Silver Profit":"Серебряная прибыль","Melt Value":"Значение плавления","Junk Silver":"Мусорное серебро","Silver Coins":"Серебряные монеты","Silver Dollar":"Серебряный доллар","Silver Quarter":"Серебряный квартал","Silver Dime":"Серебряный Дайм","Jewelry Value":"Стоимость ювелирных изделий","925 Sterling":"925 Стерлингов","Purity Chart":"Диаграмма чистоты","How to Use Calculators":"Как пользоваться калькуляторами","Sona Chandi Calc":"Сона Чанди Кальк","Face Value Calc":"Расчет номинальной стоимости","Sell or Hold":"Продать или держать","About":"О","Privacy":"Конфиденциальность","Terms":"Условия","All rights reserved.":"Все права защищены.","Prices are for informational purposes only.":"Цены предназначены только для информационных целей.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Бесплатные и точные калькуляторы серебра с использованием текущих спотовых цен. Мгновенно рассчитайте стоимость плавления вашего серебряного лома, монет, ювелирных изделий и слитков."};
+</script>
+</body></html>

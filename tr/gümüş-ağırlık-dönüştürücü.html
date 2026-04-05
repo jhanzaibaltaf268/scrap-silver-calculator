@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="tr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gümüş Ağırlık Dönüştürücü - Gram, Troy Ons, Pennyweight, Kilogram, Tola</title>
+  <meta name="description" content="Gümüş ağırlığını gram, troy ons, pennyweight (dwt), kilogram ve tola arasında anında dönüştürün. Ücretsiz gümüş ağırlığı dönüşüm hesaplayıcısı.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .converter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+    .converter-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-lg); transition: all var(--transition-fast); }
+    .converter-card:focus-within { border-color: var(--accent-primary); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .converter-card label { display: block; font-size: var(--fs-xs); font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-sm); }
+    .converter-card input { width: 100%; background: transparent; border: none; color: var(--text-primary); font-family: var(--font-display); font-size: var(--fs-xl); font-weight: 700; outline: none; }
+    .converter-card .unit-label { font-size: var(--fs-sm); color: var(--text-secondary); margin-top: var(--space-xs); }
+    @media (max-width: 768px) { .converter-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>Gümüş Ağırlığı <span class="highlight">Converter</span></h1><p>Değerli metal ticaretinde kullanılan tüm ortak birimler arasında gümüş ağırlığını anında dönüştürün.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">⚖️</span> Weight Converter</div>
+        <div class="converter-grid">
+          <div class="converter-card">
+            <label for="grams">Gram (g)</label>
+            <input type="number" id="grams" step="0.001" value="31.1035">
+            <div class="unit-label">1 gram = 0.0322 troy oz</div>
+          </div>
+          <div class="converter-card">
+            <label for="troy-oz">Troy Ons (oz t)</label>
+            <input type="number" id="troy-oz" step="0.0001" value="1">
+            <div class="unit-label">1 troy oz = 31.1035 g</div>
+          </div>
+          <div class="converter-card">
+            <label for="dwt">Kuruş ağırlığı (dwt)</label>
+            <input type="number" id="dwt" step="0.01" value="20">
+            <div class="unit-label">1 dwt = 1.5552 g</div>
+          </div>
+          <div class="converter-card">
+            <label for="kg">Kilogram (kg)</label>
+            <input type="number" id="kg" step="0.000001" value="0.0311035">
+            <div class="unit-label">1 kg = 32.1507 troy oz</div>
+          </div>
+          <div class="converter-card">
+            <label for="tola">Tola</label>
+            <input type="number" id="tola" step="0.001" value="2.667">
+            <div class="unit-label">1 tola = 11.6638 g</div>
+          </div>
+          <div class="converter-card">
+            <label for="av-oz">Avoirdupois Ons (oz)</label>
+            <input type="number" id="av-oz" step="0.0001" value="1.0971">
+            <div class="unit-label">1 av oz = 28.3495 g (regular ounce)</div>
+          </div>
+        </div>
+        <div class="result-display" style="margin-top:var(--space-xl);">
+          <div class="result-label">Mevcut Spot Fiyattaki Değer</div>
+          <div class="result-value" id="value-display">$0.00</div>
+          <div class="result-detail" id="value-detail">Based on 999 fine silver</div>
+        </div>
+      </div>
+      <div class="content-body">
+        <h2>Gümüş Ağırlık Birimlerinin Açıklaması</h2>
+        <h3>Troy Ons ve Normal Ons</h3>
+        <p>Kıymetli maden sektörünün kullandığı <strong>troy ounces</strong> (31.1035g), standart avoirdupois onstan (28.3495g) daha ağırdır. "Ons başına gümüş fiyatı" gördüğünüzde bu her zaman ons başına gümüş fiyatı anlamına gelir. <em>troy</em> ons.</p>
+        <h3>Kuruş ağırlığı (dwt)</h3>
+        <p>Kuyumcular genellikle eşyaları kuruş ağırlığıyla tartarlar. Bir onsta 20 pennyweight var. Bir dwt yaklaşık 1.555 grama eşittir.</p>
+        <h3>Tola</h3>
+        <p>Tola, Güney Asya ülkelerinde (Hindistan, Pakistan, Bangladeş) değerli metal ticaretinde kullanılmaktadır. Bir tola = 11,6638 gram.</p>
+        <h3>Ağırlık Birimleri Neden Önemlidir?</h3>
+        <p>Gümüş satarken her zaman alıcının hangi birimi kullandığını teyit edin. Troy ons cinsinden "ons başına" teklif, normal onstan yaklaşık %10 daha değerlidir. Bu yaygın bir kafa karışıklığı kaynağıdır.</p>
+
+        <h2>Hızlı Referans Tablosu</h2>
+        <table class="purity-table">
+          <thead><tr><th>Birim</th><th>Kısaltma</th><th>gram</th><th>Troy Ons</th></tr></thead>
+          <tbody>
+            <tr><td>1 gram</td><td>g</td><td>1.000</td><td>0.0322</td></tr>
+            <tr><td>1 Troy Ons</td><td>oz t</td><td>31.1035</td><td>1.000</td></tr>
+            <tr><td>1 Pennyweight</td><td>dwt</td><td>1.5552</td><td>0.0500</td></tr>
+            <tr><td>1 Kilogram</td><td>kilo</td><td>1,000</td><td>32.1507</td></tr>
+            <tr><td>1 tola</td><td>tola</td><td>11.6638</td><td>0.3750</td></tr>
+            <tr><td>1 Avoirdupois Ozu</td><td>ons</td><td>28.3495</td><td>0.9115</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div><h3 style="margin-bottom:var(--space-lg);">İlgili</h3><div class="related-grid">
+        <a href="gram-başına-gümüş-fiyatı.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+        <a href="ons-başına-gümüş-fiyatı.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+        <a href="gümüş-toplu-hesap-makinesi.html" class="related-link"><span class="r-icon">📋</span> Batch Calculator</a>
+        <a href="gümüş-hurda-hesaplayıcı.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Ana sayfa',href:'index.html'},{label:'Silver Weight Converter'}]);
+
+    const TROY_OZ_G = 31.1035;
+    const DWT_G = 1.55517;
+    const TOLA_G = 11.6638;
+    const AV_OZ_G = 28.3495;
+
+    const fields = {
+      grams: document.getElementById('grams'),
+      'troy-oz': document.getElementById('troy-oz'),
+      dwt: document.getElementById('dwt'),
+      kg: document.getElementById('kg'),
+      tola: document.getElementById('tola'),
+      'av-oz': document.getElementById('av-oz')
+    };
+
+    let activeField = null;
+
+    function gFromField(field, value) {
+      switch(field) {
+        case 'grams': return value;
+        case 'troy-oz': return value * TROY_OZ_G;
+        case 'dwt': return value * DWT_G;
+        case 'kg': return value * 1000;
+        case 'tola': return value * TOLA_G;
+        case 'av-oz': return value * AV_OZ_G;
+      }
+    }
+
+    function updateAll(grams, sourceField) {
+      if (sourceField !== 'grams') fields.grams.value = grams.toFixed(4);
+      if (sourceField !== 'troy-oz') fields['troy-oz'].value = (grams / TROY_OZ_G).toFixed(4);
+      if (sourceField !== 'dwt') fields.dwt.value = (grams / DWT_G).toFixed(4);
+      if (sourceField !== 'kg') fields.kg.value = (grams / 1000).toFixed(6);
+      if (sourceField !== 'tola') fields.tola.value = (grams / TOLA_G).toFixed(4);
+      if (sourceField !== 'av-oz') fields['av-oz'].value = (grams / AV_OZ_G).toFixed(4);
+
+      const spot = SilverPrice.getPrice();
+      const oz = grams / TROY_OZ_G;
+      const val = oz * spot;
+      document.getElementById('value-display').textContent = SilverCalc.formatCurrency(val);
+      document.getElementById('value-detail').textContent = `${oz.toFixed(4)} troy oz × $${spot.toFixed(2)} · Spot: $${spot.toFixed(2)}/oz`;
+    }
+
+    Object.entries(fields).forEach(([key, input]) => {
+      input.addEventListener('input', () => {
+        const val = parseFloat(input.value) || 0;
+        const grams = gFromField(key, val);
+        updateAll(grams, key);
+      });
+      input.addEventListener('focus', () => activeField = key);
+    });
+
+    SilverPrice.onPriceUpdate(() => {
+      const val = parseFloat(fields.grams.value) || 0;
+      updateAll(val, 'grams');
+    });
+
+    // Initial
+    updateAll(31.1035, 'grams');
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10oz-gümüş-değeri.html","100oz-silver-value.html":"100oz-gümüş-değeri.html","10oz-silver-value.html":"10oz-gümüş-değeri.html","1kg-silver-value.html":"1kg-gümüş-değeri.html","1oz-silver-value.html":"1oz-gümüş-değeri.html","2oz-silver-value.html":"2-ons-gümüş-değeri.html","5oz-silver-value.html":"5oz-gümüş-değeri.html","800-silver-calculator.html":"800-gümüş-hesap-makinesi.html","835-silver-calculator.html":"835-gümüş-hesap-makinesi.html","900-silver-calculator.html":"900-gümüş-hesap-makinesi.html","925-silver-calculator.html":"925-gümüş-hesap-makinesi.html","925-sterling-silver-price-per-gram.html":"925-ayar-gümüş-gram-fiyatı.html","958-silver-calculator.html":"958-gümüş-hesap-makinesi.html","999-silver-calculator.html":"999-gümüş-hesap-makinesi.html","canadian-silver-coin-calculator.html":"kanada-gümüş-para-hesaplayıcısı.html","face-value-silver-calculator.html":"nominal-değer-gümüş-hesaplayıcı.html","gold-and-silver-calculator.html":"altın-ve-gümüş-hesaplayıcı.html","how-silver-prices-work.html":"gümüş-fiyatları-nasıl-çalışır.html","how-to-sell-silver.html":"gümüş-nasıl-satılır.html","how-to-use-silver-calculators.html":"gümüş-hesap-makineleri-nasıl-kullanılır.html","identify-silver.html":"gümüşü-tanımla.html","junk-silver-calculator.html":"önemsiz-gümüş-hesaplayıcı.html","pennyweight-calculator.html":"kuruşluk-hesap-makinesi.html","silver-bar-value-calculator.html":"gümüş-külçe-değeri-hesaplayıcı.html","silver-batch-calculator.html":"gümüş-toplu-hesap-makinesi.html","silver-bracelet-value.html":"gümüş-bilezik-değeri.html","silver-chain-value.html":"gümüş-zincir-değeri.html","silver-coin-value-calculator.html":"gümüş-para-değeri-hesaplama.html","silver-cup-value.html":"gümüş-kupa-değeri.html","silver-dime-calculator.html":"gümüş-kuruş-hesaplayıcı.html","silver-dollar-calculator.html":"gümüş-dolar-hesaplama.html","silver-fork-value.html":"gümüş-çatal-değeri.html","silver-hallmarks-guide.html":"gümüşün-ayırt-edici-özellikleri-kılavuzu.html","silver-jewelry-value-calculator.html":"gümüş-takı-değeri-hesaplama.html","silver-knife-value.html":"gümüş-bıçak-değeri.html","silver-melt-value-calculator.html":"gümüş-erime-değeri-hesaplayıcısı.html","silver-necklace-value.html":"gümüş-kolye-değeri.html","silver-plate-value.html":"gümüş-tabak-değeri.html","silver-price-all-currencies.html":"gümüş-fiyatı-tüm-para-birimleri.html","silver-price-per-gram.html":"gram-başına-gümüş-fiyatı.html","silver-price-per-ounce.html":"ons-başına-gümüş-fiyatı.html","silver-profit-calculator.html":"gümüş-kar-hesaplama.html","silver-purity-chart.html":"gümüş-saflık-tablosu.html","silver-quarter-calculator.html":"gümüş-çeyrek-hesaplayıcı.html","silver-ring-value.html":"gümüş-yüzük-değeri.html","silver-scrap-calculator.html":"gümüş-hurda-hesaplayıcı.html","silver-sell-or-hold.html":"gümüş-sat-veya-tut.html","silver-spoon-value.html":"gümüş-kaşık-değeri.html","silver-spot-price-today.html":"bugünkü-gümüş-spot-fiyatı.html","silver-tray-value.html":"gümüş-tepsi-değeri.html","silver-weight-converter.html":"gümüş-ağırlık-dönüştürücü.html","silverware-value-calculator.html":"gümüş-eşya-değeri-hesaplayıcı.html","sona-chandi-calculator.html":"sona-chandi-hesaplayıcı.html","sterling-silver-calculator.html":"gümüş-hesap-makinesi.html","tola-calculator.html":"tola-hesap-makinesi.html","what-does-925-mean.html":"925-ne-anlama-geliyor.html","what-is-junk-silver.html":"hurda-gümüş-nedir.html","what-is-silver-bullion.html":"külçe-gümüş-nedir.html","what-is-silver-melt-value.html":"gümüşün-erime-değeri-nedir.html","what-is-silver-scrap.html":"gümüş-hurdası-nedir.html","what-is-sterling-silver.html":"saf-gümüş-nedir.html","what-is-troy-ounce.html":"troy-ons-nedir.html"},"Home":"Ana sayfa","Calculators":"Hesap makineleri","Silver Scrap Calculator":"Gümüş Hurda Hesaplayıcı","Gold & Silver Calculator":"Altın ve Gümüş Hesaplayıcı","Silver Melt Value":"Gümüş Erime Değeri","Sterling Silver Calculator":"Gümüş Hesaplayıcı","Junk Silver Calculator":"Önemsiz Gümüş Hesaplayıcı","Silver Coin Value":"Gümüş Para Değeri","Silver Bar Value":"Gümüş Külçe Değeri","Silver Jewelry Value":"Gümüş Takı Değeri","Silverware Value":"Gümüş Eşya Değeri","Purity":"saflık","999 Fine Silver":"999 İnce Gümüş","958 Britannia Silver":"958 Britanya Gümüşü","925 Sterling Silver":"925 Ayar Gümüş","900 Coin Silver":"900 Sikke Gümüş","835 Silver":"835 Gümüş","800 Silver":"800 Gümüş","Silver Purity Chart":"Gümüş Saflık Tablosu","Pricing":"Fiyatlandırma","Silver Spot Price Today":"Gümüş Spot Fiyatı Bugün","925 Sterling Price / Gram":"925 Sterlin Fiyat / Gram","Silver Price Per Gram":"Gümüşün Gram Fiyatı","Silver Price Per Ounce":"Gümüş Ons Başına Fiyatı","Price in All Currencies":"Tüm Para Birimlerinde Fiyat","1/10oz Silver Value":"1/10oz Gümüş Değeri","1oz Silver Value":"1oz Gümüş Değeri","2oz Silver Value":"2oz Gümüş Değeri","5oz Silver Value":"5oz Gümüş Değeri","10oz Silver Value":"10oz Gümüş Değeri","100oz Silver Value":"100oz Gümüş Değeri","1kg Silver Value":"1kg Gümüş Değeri","Tools":"Araçlar","Silver Profit Calculator":"Gümüş Kar Hesaplayıcı","Batch Calculator":"Toplu Hesap Makinesi","Sona Chandi Calculator":"Sona Chandi Hesap Makinesi","Face Value Calculator":"Nominal Değer Hesaplayıcı","Weight Converter":"Ağırlık Dönüştürücü","Pennyweight (DWT) Calc":"Pennyweight (DWT) Hesaplaması","Tola Calculator":"Tola Hesaplayıcı","Sell or Hold Analysis":"Satış veya Tutma Analizi","Silver Identifier":"Gümüş Tanımlayıcı","Guides":"Kılavuzlar","How to Use Our Calculators":"Hesap Makinelerimiz Nasıl Kullanılır?","What Is Silver Scrap?":"Gümüş Hurda Nedir?","What Is Melt Value?":"Erime Değeri Nedir?","What Is Junk Silver?":"Önemsiz Gümüş Nedir?","What Is a Troy Ounce?":"Troy Ons Nedir?","What Is Silver Bullion?":"Gümüş Külçe Nedir?","How Silver Prices Work":"Gümüş Fiyatları Nasıl Çalışır?","Silver Hallmarks Guide":"Gümüş Nitelikler Kılavuzu","What Does 925 Mean?":"925 Ne Demektir?","What Is Sterling Silver?":"Gümüş Nedir?","How to Sell Silver":"Gümüş Nasıl Satılır","Scrap Silver":"Hurda Gümüş","Gold & Silver":"Altın ve Gümüş","Silver Profit":"Gümüş Karı","Melt Value":"Erime Değeri","Junk Silver":"Önemsiz Gümüş","Silver Coins":"Gümüş Paralar","Silver Dollar":"Gümüş Dolar","Silver Quarter":"Gümüş Çeyrek","Silver Dime":"Gümüş Kuruş","Jewelry Value":"Takı Değeri","925 Sterling":"925 Sterlin","Purity Chart":"Saflık Tablosu","How to Use Calculators":"Hesap Makineleri Nasıl Kullanılır","Sona Chandi Calc":"Sona Chandi Calc","Face Value Calc":"Nominal Değer Hesabı","Sell or Hold":"Sat veya Tut","About":"Hakkında","Privacy":"Gizlilik","Terms":"Şartlar","All rights reserved.":"Tüm hakları saklıdır.","Prices are for informational purposes only.":"Fiyatlar yalnızca bilgilendirme amaçlıdır.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Canlı spot fiyatları kullanan ücretsiz, doğru gümüş hesaplayıcıları. Gümüş hurdalarınızın, madeni paralarınızın, mücevherlerinizin ve külçelerinizin erime değerini anında hesaplayın."};
+</script>
+</body></html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="it"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calcolatore del peso in penny (DWT): converti DWT in grammi e valore dell'argento</title>
+  <meta name="description" content="Calcolatore del peso in penny gratuito. Converti DWT in grammi, once troy e calcola il valore dell'argento degli articoli pesati in penny. Prezzi spot in tempo reale.">
+  <meta name="keywords" content="pennyweight calculator, dwt to grams, pennyweight to grams, dwt calculator, silver pennyweight value">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/pennyweight-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" style="padding: var(--space-2xl) 0 var(--space-xl);">
+      <div class="container hero-content">
+        <div id="breadcrumb"></div>
+        
+        <h1>Pennyweight (DWT) <span class="highlight">Silver Calculator</span></h1>
+        <p class="hero-subtitle">Converti il pennyweight in grammi, once troy e calcola il valore dell'argento degli articoli pesati in DWT.</p>
+
+        <div class="calc-widget slide-up" id="dwt-calc">
+          <div class="calc-widget-title"><span class="icon">⚙️</span> Pennyweight Value Calculator</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="dwt-weight">Peso in Pennyweight (DWT)</label>
+              <input type="number" class="form-input" id="dwt-weight" placeholder="Enter weight in DWT" step="0.01" min="0" value="10">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dwt-purity">Purezza dell'argento</label>
+              <select class="form-select" id="dwt-purity">
+                <option value="0.999">999 — Argento pregiato (99,9%)</option>
+                <option value="0.958">958 - Britannia (95,8%)</option>
+                <option value="0.925" selected="">925 — Sterlina (92,5%)</option>
+                <option value="0.900">900 — Moneta d'argento (90%)</option>
+                <option value="0.835">835 - Europeo (83,5%)</option>
+                <option value="0.800">800 — Europeo (80%)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Conversion results -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-md);margin-bottom:var(--space-lg);">
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Grams</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="dwt-grams">15.55</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Troy Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="dwt-ozt">0.500</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Regular Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="dwt-oz">0.549</div>
+            </div>
+          </div>
+
+          <div class="result-display" id="dwt-result">
+            <div class="result-label">Valore di fusione dell'argento</div>
+            <div class="result-value" id="dwt-result-value">$0.00</div>
+            <div class="result-detail" id="dwt-result-detail">Enter weight in DWT to calculate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick reference table -->
+    <section class="section" style="padding:var(--space-2xl) 0;">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:var(--space-lg);">Tabella di conversione dei pesi penny</h2>
+        <div style="max-width:700px;margin:0 auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border-medium);">
+                <th style="padding:var(--space-md);text-align:left;color:var(--text-muted);font-size:var(--fs-sm);">DWT</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Grammi</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Troy Oz</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">925 Valore</th>
+              </tr>
+            </thead>
+            <tbody id="dwt-table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+      <div class="container">
+        <div class="content-body">
+          <h2>Cos'è un Pennyweight?</h2>
+          <p>A <strong>pennyweight (DWT)</strong> è un'unità di peso utilizzata principalmente dai gioiellieri e dai commercianti di metalli preziosi. Corrisponde a 1/20 di oncia troy o esattamente 1,55517 grammi. L'abbreviazione "DWT" deriva dal latino "denarius peso" - il peso di un penny d'argento nell'Inghilterra medievale.</p>
+
+          <h3>Perché i gioiellieri usano Pennyweight?</h3>
+          <p>Molte bilance per gioielli e per commercianti negli Stati Uniti mostrano il peso in penny anziché in grammi. Quando un gioielliere ti propone un prezzo per DWT per i tuoi rottami d'argento, devi sapere come convertire per verificare l'offerta. Il nostro calcolatore esegue questa conversione istantaneamente e mostra il valore di fusione effettivo.</p>
+
+          <h3>Formule di conversione del peso penny</h3>
+          <ul style="list-style:disc;margin-left:var(--space-xl);">
+            <li style="padding:4px 0;color:var(--text-secondary);">1 DWT = 1,55517 grammi</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 DWT = 0,05 once troy (1/20 ozt)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">20 DWT = 1 oncia troy</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 grammo = 0,6430 DWT</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 oncia troy = 20 DWT = 31,1035 grammi</li>
+          </ul>
+
+          <h3>Calcolatori correlati</h3>
+          <p>Utilizza il nostro <a href="convertitore-del-peso-dellargento.html">weight converter</a> per ulteriori conversioni di unità, oppure prova il <a href="calcolatore-di-rottami-dargento.html">scrap silver calculator</a> per una valutazione completa con stime di sconto del rivenditore.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      { label: 'Home', href: 'index.html' },
+      { label: 'Tools', href: '#' },
+      { label: 'Pennyweight Calculator' }
+    ]);
+
+    const dwtWeight = document.getElementById('dwt-weight');
+    const dwtPurity = document.getElementById('dwt-purity');
+    const dwtGrams = document.getElementById('dwt-grams');
+    const dwtOzt = document.getElementById('dwt-ozt');
+    const dwtOz = document.getElementById('dwt-oz');
+    const dwtResultValue = document.getElementById('dwt-result-value');
+    const dwtResultDetail = document.getElementById('dwt-result-detail');
+
+    function calcDWT() {
+      const dwt = parseFloat(dwtWeight.value) || 0;
+      const purity = parseFloat(dwtPurity.value);
+      const spotPrice = SilverPrice.getPrice();
+
+      const grams = dwt * 1.55517;
+      const troyOz = dwt / 20;
+      const regOz = grams / 28.3495;
+
+      dwtGrams.textContent = grams.toFixed(2);
+      dwtOzt.textContent = troyOz.toFixed(4);
+      dwtOz.textContent = regOz.toFixed(3);
+
+      if (dwt <= 0) {
+        dwtResultValue.textContent = '$0.00';
+        dwtResultDetail.textContent = 'Enter weight in DWT to calculate';
+        return;
+      }
+
+      const value = troyOz * purity * spotPrice;
+      const pureGrams = grams * purity;
+      dwtResultValue.textContent = SilverCalc.formatCurrency(value);
+      dwtResultDetail.textContent = `${pureGrams.toFixed(2)}g pure silver · ${(troyOz * purity).toFixed(4)} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+    }
+
+    dwtWeight.addEventListener('input', calcDWT);
+    dwtPurity.addEventListener('change', calcDWT);
+    SilverPrice.onPriceUpdate(() => calcDWT());
+    calcDWT();
+
+    // Conversion table
+    const tableBody = document.getElementById('dwt-table');
+    [1, 2, 5, 10, 15, 20, 25, 50, 100].forEach(dwt => {
+      const g = (dwt * 1.55517).toFixed(2);
+      const ozt = (dwt / 20).toFixed(3);
+      const spotPrice = SilverPrice.getPrice();
+      const val = SilverCalc.formatCurrency((dwt / 20) * 0.925 * spotPrice);
+      tableBody.innerHTML += `<tr style="border-bottom:1px solid var(--border-subtle);">
+        <td style="padding:var(--space-md);color:var(--text-primary);font-weight:600;">${dwt} DWT</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${g}g</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${ozt} oz</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--accent-primary);font-weight:600;">${val}</td>
+      </tr>`;
+    });
+
+    SiteComponents.injectFAQSchema([
+      { q: 'What is a pennyweight (DWT)?', a: 'A pennyweight is a unit of weight equal to 1.55517 grams or 1/20 of a troy ounce. It is commonly used by jewelers to weigh precious metals.' },
+      { q: 'How many pennyweight in a troy ounce?', a: 'There are exactly 20 pennyweight (DWT) in one troy ounce.' },
+      { q: 'How do I convert DWT to grams?', a: 'Multiply the DWT value by 1.55517 to get grams. For example, 10 DWT = 15.55 grams.' }
+    ]);
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-valore-dargento-da-10-once.html","100oz-silver-value.html":"valore-dargento-100-once.html","10oz-silver-value.html":"valore-dargento-da-10-once.html","1kg-silver-value.html":"valore-dargento-da-1-kg.html","1oz-silver-value.html":"valore-dargento-di-1-oncia.html","2oz-silver-value.html":"valore-dargento-da-2-once.html","5oz-silver-value.html":"valore-dargento-di-5-once.html","800-silver-calculator.html":"calcolatrice-in-argento-800.html","835-silver-calculator.html":"calcolatrice-in-argento-835.html","900-silver-calculator.html":"calcolatrice-in-argento-900.html","925-silver-calculator.html":"calcolatrice-in-argento-925.html","925-sterling-silver-price-per-gram.html":"prezzo-argento-sterling-925-al-grammo.html","958-silver-calculator.html":"calcolatrice-in-argento-958.html","999-silver-calculator.html":"calcolatrice-in-argento-999.html","canadian-silver-coin-calculator.html":"calcolatore-di-monete-dargento-canadesi.html","face-value-silver-calculator.html":"calcolatrice-in-argento-con-valore-nominale.html","gold-and-silver-calculator.html":"calcolatrice-per-oro-e-argento.html","how-silver-prices-work.html":"come-funzionano-i-prezzi-dellargento.html","how-to-sell-silver.html":"come-vendere-argento.html","how-to-use-silver-calculators.html":"come-usare-le-calcolatrici-dargento.html","identify-silver.html":"identificare-largento.html","junk-silver-calculator.html":"calcolatrice-dargento-spazzatura.html","pennyweight-calculator.html":"calcolatore-del-peso-di-un-centesimo.html","silver-bar-value-calculator.html":"calcolatore-del-valore-del-lingotto-dargento.html","silver-batch-calculator.html":"calcolatore-batch-argento.html","silver-bracelet-value.html":"valore-del-braccialetto-in-argento.html","silver-chain-value.html":"valore-della-catena-dargento.html","silver-coin-value-calculator.html":"calcolatore-del-valore-delle-monete-dargento.html","silver-cup-value.html":"valore-della-coppa-dargento.html","silver-dime-calculator.html":"calcolatrice-da-dieci-centesimi-dargento.html","silver-dollar-calculator.html":"calcolatore-del-dollaro-dargento.html","silver-fork-value.html":"valore-della-forchetta-dargento.html","silver-hallmarks-guide.html":"guida-ai-marchi-dargento.html","silver-jewelry-value-calculator.html":"calcolatore-del-valore-dei-gioielli-in-argento.html","silver-knife-value.html":"valore-del-coltello-dargento.html","silver-melt-value-calculator.html":"calcolatore-del-valore-di-fusione-dellargento.html","silver-necklace-value.html":"valore-della-collana-in-argento.html","silver-plate-value.html":"valore-piatto-dargento.html","silver-price-all-currencies.html":"prezzo-dellargento-in-tutte-le-valute.html","silver-price-per-gram.html":"prezzo-dellargento-al-grammo.html","silver-price-per-ounce.html":"prezzo-dellargento-per-oncia.html","silver-profit-calculator.html":"calcolatore-del-profitto-dargento.html","silver-purity-chart.html":"grafico-della-purezza-dellargento.html","silver-quarter-calculator.html":"calcolatrice-dei-quarti-dargento.html","silver-ring-value.html":"valore-dellanello-in-argento.html","silver-scrap-calculator.html":"calcolatore-di-rottami-dargento.html","silver-sell-or-hold.html":"vendere-o-trattenere-largento.html","silver-spoon-value.html":"valore-del-cucchiaio-dargento.html","silver-spot-price-today.html":"prezzo-spot-dellargento-oggi.html","silver-tray-value.html":"valore-del-vassoio-dargento.html","silver-weight-converter.html":"convertitore-del-peso-dellargento.html","silverware-value-calculator.html":"calcolatore-del-valore-dellargenteria.html","sona-chandi-calculator.html":"calcolatrice-sona-chandi.html","sterling-silver-calculator.html":"calcolatrice-in-argento-sterling.html","tola-calculator.html":"calcolatrice-tola.html","what-does-925-mean.html":"cosa-significa-925.html","what-is-junk-silver.html":"cosè-largento-spazzatura.html","what-is-silver-bullion.html":"cosè-il-lingotto-dargento.html","what-is-silver-melt-value.html":"qual-è-il-valore-di-fusione-dellargento.html","what-is-silver-scrap.html":"cosè-il-rottame-dargento.html","what-is-sterling-silver.html":"cosè-largento-sterling.html","what-is-troy-ounce.html":"cosè-loncia-troy.html"},"Home":"Casa","Calculators":"Calcolatrici","Silver Scrap Calculator":"Calcolatore dei rottami d'argento","Gold & Silver Calculator":"Calcolatore di oro e argento","Silver Melt Value":"Valore di fusione dell'argento","Sterling Silver Calculator":"Calcolatrice in argento sterling","Junk Silver Calculator":"Calcolatrice dell'argento spazzatura","Silver Coin Value":"Valore della moneta d'argento","Silver Bar Value":"Valore del lingotto d'argento","Silver Jewelry Value":"Valore dei gioielli in argento","Silverware Value":"Valore dell'argenteria","Purity":"Purezza","999 Fine Silver":"Argento pregiato 999","958 Britannia Silver":"Argento Britannia 958","925 Sterling Silver":"Argento sterling 925","900 Coin Silver":"Moneta d'argento da 900","835 Silver":"835 Argento","800 Silver":"Argento 800","Silver Purity Chart":"Grafico della purezza dell'argento","Pricing":"Prezzi","Silver Spot Price Today":"Prezzo spot dell'argento oggi","925 Sterling Price / Gram":"925 Sterline Prezzo/grammo","Silver Price Per Gram":"Prezzo dell'argento al grammo","Silver Price Per Ounce":"Prezzo dell'argento per oncia","Price in All Currencies":"Prezzo in tutte le valute","1/10oz Silver Value":"Valore argento 1/10 oz","1oz Silver Value":"Valore d'argento da 1 oncia","2oz Silver Value":"Valore d'argento da 2 once","5oz Silver Value":"Valore d'argento da 5 once","10oz Silver Value":"Valore dell'argento da 10 once","100oz Silver Value":"Valore dell'argento da 100 once","1kg Silver Value":"Valore argento 1 kg","Tools":"Strumenti","Silver Profit Calculator":"Calcolatore del profitto d'argento","Batch Calculator":"Calcolatore batch","Sona Chandi Calculator":"Calcolatrice Sona Chandi","Face Value Calculator":"Calcolatore del valore nominale","Weight Converter":"Convertitore di peso","Pennyweight (DWT) Calc":"Calcolo del peso penny (DWT).","Tola Calculator":"Calcolatrice Tola","Sell or Hold Analysis":"Vendi o mantieni l'analisi","Silver Identifier":"Identificatore d'argento","Guides":"Guide","How to Use Our Calculators":"Come utilizzare le nostre calcolatrici","What Is Silver Scrap?":"Cos'è il rottame d'argento?","What Is Melt Value?":"Cos'è il valore di fusione?","What Is Junk Silver?":"Cos'è l'argento spazzatura?","What Is a Troy Ounce?":"Cos'è un'oncia troy?","What Is Silver Bullion?":"Cos'è il lingotto d'argento?","How Silver Prices Work":"Come funzionano i prezzi dell'argento","Silver Hallmarks Guide":"Guida ai marchi d'argento","What Does 925 Mean?":"Cosa significa 925?","What Is Sterling Silver?":"Cos'è l'argento sterling?","How to Sell Silver":"Come vendere argento","Scrap Silver":"Rottami d'argento","Gold & Silver":"Oro e argento","Silver Profit":"Profitto d'argento","Melt Value":"Valore di fusione","Junk Silver":"Argento spazzatura","Silver Coins":"Monete d'argento","Silver Dollar":"Dollaro d'argento","Silver Quarter":"Quarto d'argento","Silver Dime":"Moneta d'argento","Jewelry Value":"Valore dei gioielli","925 Sterling":"925 sterline","Purity Chart":"Grafico della purezza","How to Use Calculators":"Come utilizzare le calcolatrici","Sona Chandi Calc":"Sona Chandi Calcolo","Face Value Calc":"Calcolo del valore nominale","Sell or Hold":"Vendi o mantieni","About":"Circa","Privacy":"Privacy","Terms":"Termini","All rights reserved.":"Tutti i diritti riservati.","Prices are for informational purposes only.":"I prezzi sono solo a scopo informativo.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calcolatori d'argento gratuiti e accurati che utilizzano prezzi spot in tempo reale. Calcola istantaneamente il valore di fusione dei tuoi rottami d'argento, monete, gioielli e lingotti."};
+</script>
+</body></html>

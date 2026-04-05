@@ -1,0 +1,179 @@
+<!DOCTYPE html><html lang="de"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silberinvestitions- und Gewinnrechner</title>
+  <meta name="description" content="Berechnen Sie den Gewinn oder Verlust Ihrer Silberanlage. Geben Sie Ihr Gesamtsilbergewicht und den durchschnittlichen Kaufpreis ein und sehen Sie Ihren ROI basierend auf dem heutigen Live-Spotpreis.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-profit-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Silver Profit Calculator","description":"Calculate return on investment for silver bullion and scrap.","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container">
+      <div id="breadcrumb"></div>
+    </div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>Silbergewinn <span class="highlight">Calculator</span></h1>
+        <p>Berechnen Sie Ihren gesamten Return on Investment (ROI) und sehen Sie genau, wie viel Gewinn oder Verlust Ihr Silberstapel generiert hat.</p>
+      </div>
+    </section>
+    
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">📈</span> Profit &amp; Loss Calculator</div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="weight">Gesamtsilbergewicht</label>
+            <input type="number" class="form-input" id="weight" placeholder="e.g. 100" step="1" min="0" value="10">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="unit">Einheit</label>
+            <select class="form-select" id="unit">
+              <option value="oz" selected="">Feinunzen (oz)</option>
+              <option value="g">Gramm (g)</option>
+              <option value="kg">Kilogramm (kg)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="purity">Reinheit</label>
+            <select class="form-select" id="purity">
+              <option value="0.999" selected="">999 – Feinsilber</option>
+              <option value="0.925">925 – Sterling</option>
+              <option value="0.900">900 – Münzsilber</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="buy-price">Durchschn. Kaufpreis (pro Einheit)</label>
+            <div class="input-group">
+              <span class="input-prefix">$</span>
+              <input type="number" class="form-input" id="buy-price" placeholder="e.g. 24.50" step="0.01" min="0" value="25.00">
+            </div>
+            <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;">Price paid per <span id="lbl-unit">Troy Ounce</span></div>
+          </div>
+        </div>
+
+        <div class="result-display" style="margin-top: var(--space-md); padding-bottom: var(--space-md);">
+          <div style="display:flex; justify-content:space-between; margin-bottom: var(--space-sm);">
+            <div style="color:var(--text-secondary);">Total Investment Cost:</div>
+            <div id="res-cost" style="font-weight:600;">$0.00</div>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom: var(--space-md); border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-sm);">
+            <div style="color:var(--text-secondary);">Current Melt Value:</div>
+            <div id="res-current" style="font-weight:600;">$0.00</div>
+          </div>
+          
+          <div class="result-label">Gesamtgewinn/-verlust</div>
+          <div class="result-value" id="res-profit">$0.00</div>
+          <div class="result-detail" id="res-roi" style="font-size: var(--fs-lg); margin-top: 4px; font-weight: 500;">0.00% ROI</div>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>So verfolgen Sie Ihre Silberinvestitionen</h2>
+        <p>Der Silver Profit Calculator wurde für Stacker, Investoren und Scrapper entwickelt, um schnell und genau zu überprüfen, wie stark ihr Portfolio gewachsen ist. Es vergleicht Ihren durchschnittlichen Kaufpreis mit dem heutigen Live-Spotpreis für Silber.</p>
+        
+        <h3>Dollar Cost Averaging verstehen</h3>
+        <p>Wenn Sie im Laufe eines Jahres mehrmals Silber kaufen, ist Ihr <strong>Average Purchase Price</strong> ist das, worauf es ankommt. Um es zu berechnen, dividieren Sie den gesamten ausgegebenen Betrag durch die insgesamt erworbenen Unzen. Wenn Sie diesen Durchschnitt in den Rechner eingeben, erhalten Sie einen perfekten Überblick über die Rentabilität Ihres gesamten Stacks.</p>
+
+        <h3>Prämien vs. Spotpreis</h3>
+        <p>Denken Sie daran, dass Sie beim Kauf von Goldbarren (wie American Silver Eagles) eine „Prämie“ über dem Spotpreis zahlen. Um einen genauen ROI auf diesem Rechner zu erhalten, geben Sie Ihren ein <em>total cost per ounce</em> Fügen Sie diese Prämie in das Feld „Kaufpreis“ ein und nicht den Spotpreis am Tag des Kaufs.</p>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom: var(--space-lg);">Verwandte Tools</h3>
+        <div class="related-grid">
+          <a href="gold-und-silber-rechner.html" class="related-link"><span class="r-icon">🥇</span> Gold &amp; Silver Calc</a>
+          <a href="silber-verkaufen-oder-halten.html" class="related-link"><span class="r-icon">📉</span> Sell or Hold</a>
+          <a href="silberpreis-pro-unze.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      {label: window.MenuTranslations['Home'] || 'Startseite', href:'index.html'},
+      {label:'Silver Profit Calculator'}
+    ]);
+
+    const w = document.getElementById('weight');
+    const u = document.getElementById('unit');
+    const p = document.getElementById('purity');
+    const b = document.getElementById('buy-price');
+    const lblUnit = document.getElementById('lbl-unit');
+
+    const resCost = document.getElementById('res-cost');
+    const resCurrent = document.getElementById('res-current');
+    const resProfit = document.getElementById('res-profit');
+    const resRoi = document.getElementById('res-roi');
+
+    function calc() {
+      const weight = parseFloat(w.value) || 0;
+      const buyPrice = parseFloat(b.value) || 0;
+      const purity = parseFloat(p.value);
+      const spot = SilverPrice.getPrice();
+
+      const unitMap = { 'oz': 'Troy Ounce', 'g': 'Gram', 'kg': 'Kilogram' };
+      lblUnit.textContent = unitMap[u.value];
+
+      const grams = SilverCalc.toGrams(weight, u.value);
+      const currentValObj = SilverCalc.meltValue(grams, purity, spot);
+      
+      const totalCost = weight * buyPrice;
+      const currentMeltVal = currentValObj.value;
+      const profit = currentMeltVal - totalCost;
+
+      resCost.textContent = SilverCalc.formatCurrency(totalCost);
+      resCurrent.textContent = SilverCalc.formatCurrency(currentMeltVal);
+
+      if (weight > 0 && buyPrice > 0) {
+        let roi = (profit / totalCost) * 100;
+        
+        if (profit >= 0) {
+          resProfit.textContent = '+' + SilverCalc.formatCurrency(profit);
+          resProfit.style.color = '#34d399'; // green
+          resRoi.textContent = '+' + roi.toFixed(2) + '% ROI';
+          resRoi.style.color = '#34d399';
+        } else {
+          resProfit.textContent = '-' + SilverCalc.formatCurrency(Math.abs(profit));
+          resProfit.style.color = '#ef4444'; // red
+          resRoi.textContent = roi.toFixed(2) + '% ROI';
+          resRoi.style.color = '#ef4444';
+        }
+      } else {
+        resProfit.textContent = '$0.00';
+        resProfit.style.color = '';
+        resRoi.textContent = '0.00% ROI';
+        resRoi.style.color = '';
+      }
+    }
+
+    [w, b].forEach(el => el.addEventListener('input', calc));
+    [u, p].forEach(el => el.addEventListener('change', calc));
+    SilverPrice.onPriceUpdate(() => calc());
+    calc();
+  </script>
+
+
+
+<script>
+   
+</script>
+<script>
+  window.MenuTranslations = {"slugs":{"silver-scrap-calculator.html":"silberschrott-rechner.html","gold-and-silver-calculator.html":"gold-und-silber-rechner.html","silver-melt-value-calculator.html":"silber-schmelzwert-rechner.html","sterling-silver-calculator.html":"sterlingsilber-rechner.html","junk-silver-calculator.html":"billon-silber-rechner.html","silver-coin-value-calculator.html":"silbermuenzen-wert-rechner.html","silver-bar-value-calculator.html":"silberbarren-wert-rechner.html","silver-jewelry-value-calculator.html":"silberschmuck-wert-rechner.html","silverware-value-calculator.html":"silberbesteck-wert-rechner.html","999-silver-calculator.html":"999-feinsilber-rechner.html","958-silver-calculator.html":"958-britanniasilber-rechner.html","925-silver-calculator.html":"925-sterlingsilber-rechner.html","900-silver-calculator.html":"900-muenzsilber-rechner.html","835-silver-calculator.html":"835-silber-rechner.html","800-silver-calculator.html":"800-silber-rechner.html","silver-purity-chart.html":"silber-reinheitstabelle.html","silver-price-per-gram.html":"silberpreis-pro-gramm.html","silver-price-per-ounce.html":"silberpreis-pro-unze.html","silver-price-all-currencies.html":"silberpreis-alle-waehrungen.html","1-10oz-silver-value.html":"1-10oz-silberwert.html","1oz-silver-value.html":"1oz-silberwert.html","2oz-silver-value.html":"2oz-silberwert.html","5oz-silver-value.html":"5oz-silberwert.html","10oz-silver-value.html":"10oz-silberwert.html","100oz-silver-value.html":"100oz-silberwert.html","1kg-silver-value.html":"1kg-silberwert.html","silver-profit-calculator.html":"silber-gewinn-rechner.html","silver-batch-calculator.html":"silber-stapel-rechner.html","sona-chandi-calculator.html":"sona-chandi-rechner.html","face-value-silver-calculator.html":"nennwert-silber-rechner.html","silver-weight-converter.html":"silber-gewichtsumrechner.html","pennyweight-calculator.html":"pennyweight-dwt-rechner.html","tola-calculator.html":"tola-rechner.html","silver-sell-or-hold.html":"silber-verkaufen-oder-halten.html","identify-silver.html":"silber-identifizieren.html","how-to-use-silver-calculators.html":"wie-man-silberrechner-verwendet.html","what-is-silver-scrap.html":"was-ist-silberschrott.html","what-is-silver-melt-value.html":"was-ist-silberschmelzwert.html","what-is-junk-silver.html":"was-ist-billon-silber.html","what-is-troy-ounce.html":"was-ist-eine-feinunze.html","what-is-silver-bullion.html":"was-sind-silberbarren.html","how-silver-prices-work.html":"wie-silberpreise-funktionieren.html","silver-hallmarks-guide.html":"silberstempel-ratgeber.html","what-does-925-mean.html":"was-bedeutet-925.html","what-is-sterling-silver.html":"was-ist-sterlingsilber.html","how-to-sell-silver.html":"wie-man-silber-verkauft.html","silver-bracelet-value.html":"silberarmband-wert.html","silver-chain-value.html":"silberkette-wert.html","silver-cup-value.html":"silberbecher-wert.html","silver-dime-calculator.html":"silber-dime-rechner.html","silver-dollar-calculator.html":"silber-dollar-rechner.html","silver-fork-value.html":"silbergabel-wert.html","silver-knife-value.html":"silbermesser-wert.html","silver-necklace-value.html":"silberhalskette-wert.html","silver-plate-value.html":"silberteller-wert.html","silver-quarter-calculator.html":"silber-quarter-rechner.html","silver-ring-value.html":"silberring-wert.html","silver-spoon-value.html":"silberloeffel-wert.html","silver-tray-value.html":"silbertablett-wert.html","canadian-silver-coin-calculator.html":"kanadische-silbermuenzen-rechner.html"},"Home":"Startseite","Calculators":"Rechner","Silver Scrap Calculator":"Silberschrott-Rechner","Gold & Silver Calculator":"Gold- & Silber-Rechner","Silver Melt Value":"Silberschmelzwert","Sterling Silver Calculator":"Sterlingsilber-Rechner","Junk Silver Calculator":"Billon-Silber-Rechner","Silver Coin Value":"Silbermünzen-Wert","Silver Bar Value":"Silberbarren-Wert","Silver Jewelry Value":"Silberschmuck-Wert","Silverware Value":"Silberbesteck-Wert","Purity":"Reinheit","999 Fine Silver":"999 Feinsilber","958 Britannia Silver":"958 Britannia-Silber","925 Sterling Silver":"925 Sterlingsilber","900 Coin Silver":"900 Münzsilber","835 Silver":"835 Silber","800 Silver":"800 Silber","Silver Purity Chart":"Silber-Reinheitstabelle","Pricing":"Preise","Silver Price Per Gram":"Silberpreis pro Gramm","Silver Price Per Ounce":"Silberpreis pro Unze","Price in All Currencies":"Preis in allen Währungen","1/10oz Silver Value":"1/10oz Silberwert","1oz Silver Value":"1oz Silberwert","2oz Silver Value":"2oz Silberwert","5oz Silver Value":"5oz Silberwert","10oz Silver Value":"10oz Silberwert","100oz Silver Value":"100oz Silberwert","1kg Silver Value":"1kg Silberwert","Tools":"Werkzeuge","Silver Profit Calculator":"Silber-Gewinn-Rechner","Batch Calculator":"Stapel-Rechner","Sona Chandi Calculator":"Sona Chandi Rechner","Face Value Calculator":"Nennwert-Rechner","Weight Converter":"Gewichtsumrechner","Pennyweight (DWT) Calc":"Pennyweight (DWT) Rechner","Tola Calculator":"Tola-Rechner","Sell or Hold Analysis":"Verkaufen oder Halten Analyse","Silver Identifier":"Silber-Identifikator","Guides":"Ratgeber","How to Use Our Calculators":"Wie man unsere Rechner nutzt","What Is Silver Scrap?":"Was ist Silberschrott?","What Is Melt Value?":"Was ist Schmelzwert?","What Is Junk Silver?":"Was ist Billonsilber?","What Is a Troy Ounce?":"Was ist eine Feinunze?","What Is Silver Bullion?":"Was sind Silberbarren?","How Silver Prices Work":"Wie Silberpreise funktionieren","Silver Hallmarks Guide":"Silberstempel Ratgeber","What Does 925 Mean?":"Was bedeutet 925?","What Is Sterling Silver?":"Was ist Sterlingsilber?","How to Sell Silver":"Wie man Silber verkauft","Scrap Silver":"Silberschrott","Gold & Silver":"Gold & Silber","Silver Profit":"Silber-Gewinn","Melt Value":"Schmelzwert","Junk Silver":"Billonsilber","Silver Coins":"Silbermünzen","Silver Dollar":"Silberdollar","Silver Quarter":"Silber-Quarter","Silver Dime":"Silber-Dime","Jewelry Value":"Schmuckwert","925 Sterling":"925 Sterling","Purity Chart":"Reinheitstabelle","How to Use Calculators":"Rechner verwenden","Sona Chandi Calc":"Sona Chandi Rechner","Face Value Calc":"Nennwert-Rechner","Sell or Hold":"Verkaufen oder Halten","About":"Über uns","Privacy":"Datenschutz","Terms":"Bedingungen","All rights reserved.":"Alle Rechte vorbehalten.","Prices are for informational purposes only.":"Preise dienen nur zu Informationszwecken.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Kostenlose, präzise Silberrechner mit Live-Spotpreisen. Berechnen Sie blitzschnell den Schmelzwert Ihres Silberschrotts, Ihrer Münzen, Ihres Schmucks und Ihrer Barren."};
+</script>
+</body></html>

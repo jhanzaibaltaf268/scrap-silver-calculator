@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="hi"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>सिल्वर बैच कैलकुलेटर - एक साथ कई सिल्वर आइटम की गणना करें</title>
+  <meta name="description" content="एक साथ कई चांदी की वस्तुओं के कुल मूल्य की गणना करें। अपने संपूर्ण संग्रह के लिए संयुक्त पिघला हुआ मूल्य प्राप्त करने के लिए अंगूठियां, चेन, सिक्के और चांदी के बर्तन जोड़ें।">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .batch-table { width: 100%; border-collapse: collapse; margin: var(--space-lg) 0; }
+    .batch-table th, .batch-table td { padding: var(--space-sm) var(--space-md); text-align: left; border-bottom: 1px solid var(--border-subtle); font-size: var(--fs-sm); }
+    .batch-table th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: var(--fs-xs); letter-spacing: 0.05em; }
+    .batch-table td input, .batch-table td select { width: 100%; padding: 6px 10px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-primary); font-size: var(--fs-sm); }
+    .batch-table td input:focus, .batch-table td select:focus { border-color: var(--accent-primary); outline: none; }
+    .batch-table .row-value { font-family: var(--font-display); font-weight: 600; color: var(--accent-primary); white-space: nowrap; }
+    .batch-table .remove-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: var(--fs-md); padding: 4px; transition: color var(--transition-fast); }
+    .batch-table .remove-btn:hover { color: #ef4444; }
+    .add-row-btn { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); background: var(--bg-glass); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); color: var(--accent-primary); cursor: pointer; font-size: var(--fs-sm); font-weight: 500; transition: all var(--transition-fast); width: 100%; justify-content: center; }
+    .add-row-btn:hover { background: var(--bg-glass-strong); border-color: var(--accent-primary); }
+    .batch-actions { display: flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap; }
+    .grand-total { background: linear-gradient(135deg, rgba(192,192,192,0.1) 0%, rgba(192,192,192,0.03) 100%); border: 2px solid var(--border-accent); border-radius: var(--radius-lg); padding: var(--space-xl); text-align: center; margin-top: var(--space-xl); }
+    .grand-total .total-label { font-size: var(--fs-sm); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .grand-total .total-value { font-family: var(--font-display); font-size: var(--fs-4xl); font-weight: 800; background: var(--gradient-silver); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .grand-total .total-detail { display: flex; justify-content: center; gap: var(--space-xl); margin-top: var(--space-md); font-size: var(--fs-sm); color: var(--text-secondary); }
+    @media print { .site-header, .site-footer, .mobile-menu-btn, .mobile-nav, .add-row-btn, .batch-actions, .related-grid, .breadcrumb, #price-ticker { display: none !important; } main { padding-top: 0 !important; } .calc-widget { border: 1px solid #ccc; } .grand-total { border: 2px solid #333; } body { background: white; color: black; } .batch-table th, .batch-table td { border-color: #ccc; } .result-value, .total-value, .row-value { -webkit-text-fill-color: initial !important; background: none !important; color: #333 !important; } .result-label, .total-label { color: #666 !important; } .page-hero h1 .highlight { -webkit-text-fill-color: initial !important; background: none !important; color: #333 !important; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>रजत बैच <span class="highlight">Calculator</span></h1><p>एक साथ कई चांदी की वस्तुओं के कुल मूल्य की गणना करें - एक संग्रह बेचने के लिए बिल्कुल सही।</p></div></section>
+    <div class="calc-page-layout" style="max-width:1000px;">
+      <div class="calc-widget" style="max-width:100%;">
+        <div class="calc-widget-title"><span class="icon">📋</span> Batch Calculator</div>
+        <div style="overflow-x:auto;">
+          <table class="batch-table" id="batch-table">
+            <thead>
+              <tr>
+                <th style="width:22%;">विवरण</th>
+                <th style="width:15%;">वज़न</th>
+                <th style="width:14%;">इकाई</th>
+                <th style="width:16%;">पवित्रता</th>
+                <th style="width:8%;">मात्रा</th>
+                <th style="width:15%;">मूल्य</th>
+                <th style="width:5%;"></th>
+              </tr>
+            </thead>
+            <tbody id="batch-body"></tbody>
+          </table>
+        </div>
+        <button type="button" class="add-row-btn" id="add-row-btn">+ Add Another Item</button>
+
+        <div class="grand-total" id="grand-total">
+          <div class="total-label">Total Collection Value</div>
+          <div class="total-value" id="total-value">$0.00</div>
+          <div class="total-detail">
+            <span id="total-items">0 items</span>
+            <span id="total-weight">0g total</span>
+            <span id="total-silver">0g pure silver</span>
+          </div>
+        </div>
+
+        <div class="batch-actions">
+          <button type="button" class="btn btn-primary" onclick="window.print()">🖨️ Print Receipt</button>
+          <button type="button" class="btn btn-secondary" id="copy-btn">📋 Copy Results</button>
+          <button type="button" class="btn btn-secondary" id="clear-btn">🗑️ Clear All</button>
+          <button type="button" class="btn btn-secondary" id="save-btn">💾 Save to Browser</button>
+          <button type="button" class="btn btn-secondary" id="load-btn" style="display:none;">📂 Load Saved</button>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>बैच कैलकुलेटर का उपयोग कैसे करें</h2>
+        <p>बैच कैलकुलेटर आपको कई चांदी की वस्तुओं को जोड़ने और उनके संयुक्त मूल्य की गणना करने की सुविधा देता है - आदर्श जब आप किसी डीलर को संग्रह बेचने की तैयारी कर रहे हों।</p>
+        <ol>
+          <li><strong>Add items</strong> - प्रत्येक टुकड़े के लिए "+ अन्य आइटम जोड़ें" पर क्लिक करें</li>
+          <li><strong>Enter details</strong> - प्रत्येक के लिए विवरण, वजन, इकाई और शुद्धता</li>
+          <li><strong>See total</strong> - कुल योग स्वचालित रूप से अपडेट होता है</li>
+          <li><strong>Print or copy</strong> - रसीद अपने डीलर के पास ले जाएं या संदर्भ के लिए इसे सहेज लें</li>
+        </ol>
+        <div class="callout tip">
+          <div class="callout-title">💡 Pro Tip</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">डीलरों के साथ आसान बातचीत के लिए वस्तुओं को शुद्धता के आधार पर समूहित करें (सभी 925 टुकड़े एक साथ, सभी 800 टुकड़े एक साथ)। विज़िट के बीच अपनी सूची बनाए रखने के लिए "ब्राउज़र में सहेजें" बटन का उपयोग करें।</p>
+        </div>
+      </div>
+
+      <div><h3 style="margin-bottom:var(--space-lg);">संबंधित</h3><div class="related-grid">
+        <a href="चद-सकरप-कलकलटर.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        <a href="चद-वजन-कनवरटर.html" class="related-link"><span class="r-icon">⚖️</span> Weight Converter</a>
+        <a href="चद-कस-बच.html" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>
+        <a href="चद-क-शदधत-चरट.html" class="related-link"><span class="r-icon">📊</span> Purity Chart</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'घर',href:'index.html'},{label:'Batch Calculator'}]);
+
+    let rows = [];
+    let rowId = 0;
+
+    function createRow(desc='', weight='', unit='g', purity='0.925', qty='1') {
+      const id = rowId++;
+      rows.push(id);
+      const tr = document.createElement('tr');
+      tr.id = 'row-' + id;
+      tr.innerHTML = `
+        <td><input type="text" placeholder="e.g. Ring" value="${desc}" data-field="desc"></td>
+        <td><input type="number" placeholder="0" step="0.01" min="0" value="${weight}" data-field="weight"></td>
+        <td><select data-field="unit"><option value="g" ${unit==='g'?'selected':''}>Grams</option><option value="oz" ${unit==='oz'?'selected':''}>Troy Oz</option><option value="dwt" ${unit==='dwt'?'selected':''}>DWT</option><option value="kg" ${unit==='kg'?'selected':''}>KG</option></select></td>
+        <td><select data-field="purity"><option value="0.999" ${purity==='0.999'?'selected':''}>999</option><option value="0.958" ${purity==='0.958'?'selected':''}>958</option><option value="0.925" ${purity==='0.925'?'selected':''}>925</option><option value="0.900" ${purity==='0.900'?'selected':''}>900</option><option value="0.835" ${purity==='0.835'?'selected':''}>835</option><option value="0.800" ${purity==='0.800'?'selected':''}>800</option></select></td>
+        <td><input type="number" min="1" step="1" value="${qty}" data-field="qty" style="width:60px;"></td>
+        <td class="row-value" id="val-${id}">$0.00</td>
+        <td><button type="button" class="remove-btn" onclick="removeRow(${id})">✕</button></td>`;
+      document.getElementById('batch-body').appendChild(tr);
+      tr.querySelectorAll('input, select').forEach(el => { el.addEventListener('input', calcAll); el.addEventListener('change', calcAll); });
+      calcAll();
+    }
+
+    function removeRow(id) {
+      const tr = document.getElementById('row-' + id);
+      if (tr) tr.remove();
+      rows = rows.filter(r => r !== id);
+      calcAll();
+    }
+
+    function calcAll() {
+      const spot = SilverPrice.getPrice();
+      let totalValue = 0, totalWeightG = 0, totalSilverG = 0, itemCount = 0;
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        const w = parseFloat(tr.querySelector('[data-field="weight"]').value) || 0;
+        const u = tr.querySelector('[data-field="unit"]').value;
+        const p = parseFloat(tr.querySelector('[data-field="purity"]').value);
+        const q = parseInt(tr.querySelector('[data-field="qty"]').value) || 1;
+        const grams = SilverCalc.toGrams(w, u) * q;
+        const r = SilverCalc.meltValue(grams, p, spot);
+        const valEl = tr.querySelector('.row-value');
+        if (valEl) valEl.textContent = SilverCalc.formatCurrency(r.value);
+        totalValue += r.value;
+        totalWeightG += grams;
+        totalSilverG += r.silverContentGrams;
+        itemCount += q;
+      });
+      document.getElementById('total-value').textContent = SilverCalc.formatCurrency(totalValue);
+      document.getElementById('total-items').textContent = itemCount + ' item(s)';
+      document.getElementById('total-weight').textContent = totalWeightG.toFixed(1) + 'g total';
+      document.getElementById('total-silver').textContent = totalSilverG.toFixed(1) + 'g pure silver';
+    }
+
+    // Add initial rows
+    createRow('Sterling Ring', '6', 'g', '0.925', '1');
+    createRow('Silver Chain', '25', 'g', '0.925', '1');
+    createRow('Silver Spoon', '40', 'g', '0.925', '4');
+
+    document.getElementById('add-row-btn').addEventListener('click', () => createRow());
+
+    document.getElementById('clear-btn').addEventListener('click', () => {
+      document.getElementById('batch-body').innerHTML = '';
+      rows = [];
+      createRow();
+    });
+
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const spot = SilverPrice.getPrice();
+      let text = `Silver Batch Valuation — ${new Date().toLocaleDateString()}\nSpot Price: $${spot.toFixed(2)}/oz\n\n`;
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        const desc = tr.querySelector('[data-field="desc"]').value || 'Item';
+        const w = tr.querySelector('[data-field="weight"]').value;
+        const u = tr.querySelector('[data-field="unit"]').value;
+        const p = tr.querySelector('[data-field="purity"]').value;
+        const q = tr.querySelector('[data-field="qty"]').value;
+        const val = tr.querySelector('.row-value').textContent;
+        text += `${desc}: ${w}${u} × ${q} @ ${(p*100).toFixed(1)}% = ${val}\n`;
+      });
+      text += `\nTOTAL: ${document.getElementById('total-value').textContent}`;
+      text += `\n${document.getElementById('total-items').textContent} · ${document.getElementById('total-weight').textContent} · ${document.getElementById('total-silver').textContent}`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy Results', 2000);
+      });
+    });
+
+    document.getElementById('save-btn').addEventListener('click', () => {
+      const data = [];
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        data.push({
+          desc: tr.querySelector('[data-field="desc"]').value,
+          weight: tr.querySelector('[data-field="weight"]').value,
+          unit: tr.querySelector('[data-field="unit"]').value,
+          purity: tr.querySelector('[data-field="purity"]').value,
+          qty: tr.querySelector('[data-field="qty"]').value
+        });
+      });
+      localStorage.setItem('silverBatchData', JSON.stringify(data));
+      const btn = document.getElementById('save-btn');
+      btn.textContent = '✅ Saved!';
+      setTimeout(() => btn.textContent = '💾 Save to Browser', 2000);
+      document.getElementById('load-btn').style.display = 'inline-flex';
+    });
+
+    // Check for saved data
+    if (localStorage.getItem('silverBatchData')) {
+      document.getElementById('load-btn').style.display = 'inline-flex';
+    }
+
+    document.getElementById('load-btn').addEventListener('click', () => {
+      try {
+        const data = JSON.parse(localStorage.getItem('silverBatchData'));
+        document.getElementById('batch-body').innerHTML = '';
+        rows = [];
+        data.forEach(d => createRow(d.desc, d.weight, d.unit, d.purity, d.qty));
+      } catch(e) {}
+    });
+
+    SilverPrice.onPriceUpdate(() => calcAll());
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10oz-चद-क-मलय.html","100oz-silver-value.html":"100-औस-चद-क-मलय.html","10oz-silver-value.html":"10-औस-चद-क-मलय.html","1kg-silver-value.html":"1-कल-चद-क-मलय.html","1oz-silver-value.html":"1-औस-चद-क-मलय.html","2oz-silver-value.html":"2-औस-चद-क-मलय.html","5oz-silver-value.html":"5-औस-चद-क-मलय.html","800-silver-calculator.html":"800-चद-कलकलटर.html","835-silver-calculator.html":"835-चद-कलकलटर.html","900-silver-calculator.html":"900-चद-कलकलटर.html","925-silver-calculator.html":"925-चद-कलकलटर.html","925-sterling-silver-price-per-gram.html":"परत-गरम-925-सटरलग-चद-क-कमत.html","958-silver-calculator.html":"958-चद-कलकलटर.html","999-silver-calculator.html":"999-चद-कलकलटर.html","canadian-silver-coin-calculator.html":"कनडई-चद-क-सकक-कलकलटर.html","face-value-silver-calculator.html":"अकत-मलय-चद-कलकलटर.html","gold-and-silver-calculator.html":"सन-और-चद-क-कलकलटर.html","how-silver-prices-work.html":"चद-क-कमत-कस-कम-करत-ह.html","how-to-sell-silver.html":"चद-कस-बच.html","how-to-use-silver-calculators.html":"सलवर-कलकलटर-क-उपयग-कस-कर.html","identify-silver.html":"चद-क-पहचन-कर.html","junk-silver-calculator.html":"जक-सलवर-कलकलटर.html","pennyweight-calculator.html":"पनवट-कलकलटर.html","silver-bar-value-calculator.html":"सलवर-बर-वलय-कलकलटर.html","silver-batch-calculator.html":"चद-बच-कलकलटर.html","silver-bracelet-value.html":"चद-क-कगन-क-मलय.html","silver-chain-value.html":"चद-क-चन-क-मलय.html","silver-coin-value-calculator.html":"चद-क-सकक-क-मलय-कलकलटर.html","silver-cup-value.html":"चद-क-कप-क-मलय.html","silver-dime-calculator.html":"सलवर-डइम-कलकलटर.html","silver-dollar-calculator.html":"चद-डलर-कलकलटर.html","silver-fork-value.html":"चद-कट-मलय.html","silver-hallmarks-guide.html":"चद-हलमरक-गइड.html","silver-jewelry-value-calculator.html":"चद-क-आभषण-मलय-कलकलटर.html","silver-knife-value.html":"चद-क-चक-क-मलय.html","silver-melt-value-calculator.html":"चद-पघल-मलय-कलकलटर.html","silver-necklace-value.html":"चद-क-हर-क-मलय.html","silver-plate-value.html":"चद-क-पलट-क-मलय.html","silver-price-all-currencies.html":"चद-क-कमत-सभ-मदरए.html","silver-price-per-gram.html":"चद-क-कमत-परत-गरम.html","silver-price-per-ounce.html":"चद-क-कमत-परत-औस.html","silver-profit-calculator.html":"चद-लभ-कलकलटर.html","silver-purity-chart.html":"चद-क-शदधत-चरट.html","silver-quarter-calculator.html":"चद-तमह-कलकलटर.html","silver-ring-value.html":"चद-क-अगठ-क-मलय.html","silver-scrap-calculator.html":"चद-सकरप-कलकलटर.html","silver-sell-or-hold.html":"चद-बच-य-रख.html","silver-spoon-value.html":"चद-क-चममच-क-मलय.html","silver-spot-price-today.html":"चद-क-हजर-कमत-आज.html","silver-tray-value.html":"चद-क-टर-क-मलय.html","silver-weight-converter.html":"चद-वजन-कनवरटर.html","silverware-value-calculator.html":"चद-क-बरतन-मलय-कलकलटर.html","sona-chandi-calculator.html":"सन-चड-कलकलटर.html","sterling-silver-calculator.html":"सटरलग-सलवर-कलकलटर.html","tola-calculator.html":"तल-कलकलटर.html","what-does-925-mean.html":"925-क-कय-मतलब-ह.html","what-is-junk-silver.html":"जक-सलवर-कय-ह.html","what-is-silver-bullion.html":"चद-बलयन-कय-ह.html","what-is-silver-melt-value.html":"चद-क-पघल-हआ-मलय-कय-ह.html","what-is-silver-scrap.html":"चद-सकरप-कय-ह.html","what-is-sterling-silver.html":"सटरलग-सलवर-कय-ह.html","what-is-troy-ounce.html":"टरय-औस-कय-ह.html"},"Home":"घर","Calculators":"कैलकुलेटर","Silver Scrap Calculator":"सिल्वर स्क्रैप कैलकुलेटर","Gold & Silver Calculator":"सोना और चांदी कैलकुलेटर","Silver Melt Value":"चाँदी का पिघला हुआ मूल्य","Sterling Silver Calculator":"स्टर्लिंग सिल्वर कैलकुलेटर","Junk Silver Calculator":"जंक सिल्वर कैलकुलेटर","Silver Coin Value":"चांदी के सिक्के का मूल्य","Silver Bar Value":"सिल्वर बार वैल्यू","Silver Jewelry Value":"चाँदी के आभूषणों का मूल्य","Silverware Value":"चांदी के बर्तन का मूल्य","Purity":"पवित्रता","999 Fine Silver":"999 बढ़िया चाँदी","958 Britannia Silver":"958 ब्रिटानिया सिल्वर","925 Sterling Silver":"925 स्टर्लिंग सिल्वर","900 Coin Silver":"900 सिक्का चांदी","835 Silver":"835 रजत","800 Silver":"800 रजत","Silver Purity Chart":"चांदी की शुद्धता चार्ट","Pricing":"मूल्य निर्धारण","Silver Spot Price Today":"चाँदी की हाजिर कीमत आज","925 Sterling Price / Gram":"925 स्टर्लिंग मूल्य/ग्राम","Silver Price Per Gram":"चांदी की कीमत प्रति ग्राम","Silver Price Per Ounce":"चांदी की कीमत प्रति औंस","Price in All Currencies":"सभी मुद्राओं में मूल्य","1/10oz Silver Value":"1/10oz चांदी का मूल्य","1oz Silver Value":"1oz चांदी का मूल्य","2oz Silver Value":"2oz चांदी का मूल्य","5oz Silver Value":"5 औंस चांदी का मूल्य","10oz Silver Value":"10oz चांदी का मूल्य","100oz Silver Value":"100oz चांदी का मूल्य","1kg Silver Value":"1 किलो चांदी का मूल्य","Tools":"उपकरण","Silver Profit Calculator":"रजत लाभ कैलकुलेटर","Batch Calculator":"बैच कैलकुलेटर","Sona Chandi Calculator":"सोना चंडी कैलकुलेटर","Face Value Calculator":"अंकित मूल्य कैलकुलेटर","Weight Converter":"वजन परिवर्तक","Pennyweight (DWT) Calc":"पेनीवेट (डीडब्ल्यूटी) कैल्क","Tola Calculator":"तोला कैलकुलेटर","Sell or Hold Analysis":"विश्लेषण बेचें या रखें","Silver Identifier":"रजत पहचानकर्ता","Guides":"मार्गदर्शक","How to Use Our Calculators":"हमारे कैलकुलेटर का उपयोग कैसे करें","What Is Silver Scrap?":"सिल्वर स्क्रैप क्या है?","What Is Melt Value?":"पिघला हुआ मूल्य क्या है?","What Is Junk Silver?":"जंक सिल्वर क्या है?","What Is a Troy Ounce?":"ट्रॉय औंस क्या है?","What Is Silver Bullion?":"सिल्वर बुलियन क्या है?","How Silver Prices Work":"चांदी की कीमतें कैसे काम करती हैं","Silver Hallmarks Guide":"सिल्वर हॉलमार्क गाइड","What Does 925 Mean?":"925 का क्या मतलब है?","What Is Sterling Silver?":"स्टर्लिंग सिल्वर क्या है?","How to Sell Silver":"चाँदी कैसे बेचें","Scrap Silver":"चाँदी का स्क्रैप","Gold & Silver":"सोना और चाँदी","Silver Profit":"चाँदी का लाभ","Melt Value":"पिघला हुआ मूल्य","Junk Silver":"जंक सिल्वर","Silver Coins":"चाँदी के सिक्के","Silver Dollar":"चाँदी का डॉलर","Silver Quarter":"सिल्वर क्वार्टर","Silver Dime":"सिल्वर डाइम","Jewelry Value":"आभूषण मूल्य","925 Sterling":"925 स्टर्लिंग","Purity Chart":"शुद्धता चार्ट","How to Use Calculators":"कैलकुलेटर का उपयोग कैसे करें","Sona Chandi Calc":"सोना चांदी कैल्क","Face Value Calc":"अंकित मूल्य कैल्क","Sell or Hold":"बेचो या पकड़ो","About":"के बारे में","Privacy":"गोपनीयता","Terms":"शर्तें","All rights reserved.":"सर्वाधिकार सुरक्षित.","Prices are for informational purposes only.":"कीमतें केवल सूचनात्मक उद्देश्यों के लिए हैं।","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"लाइव स्पॉट कीमतों का उपयोग करके मुफ़्त, सटीक चांदी कैलकुलेटर। अपने चांदी के स्क्रैप, सिक्कों, गहनों और छड़ों के पिघले हुए मूल्य की तुरंत गणना करें।"};
+</script>
+</body></html>

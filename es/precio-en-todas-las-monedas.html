@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="es"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Precio de la plata en diferentes monedas: USD, EUR, GBP, INR, AUD y más</title>
+  <meta name="description" content="Precio actual de la plata en 12 monedas mundiales, incluidas USD, EUR, GBP, CAD, AUD, INR, PKR, AED, SAR, CHF, JPY, CNY. Actualizado en vivo.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .currency-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-md); margin: var(--space-xl) 0; }
+    .currency-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg); transition: all var(--transition-fast); }
+    .currency-card:hover { border-color: var(--accent-primary); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .currency-card .cc-code { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); }
+    .currency-card .cc-flag { font-size: var(--fs-2xl); }
+    .currency-card .cc-name { font-size: var(--fs-sm); color: var(--text-muted); }
+    .currency-card .cc-abbr { font-size: var(--fs-sm); font-weight: 700; color: var(--text-secondary); }
+    .currency-card .cc-prices { display: grid; gap: var(--space-xs); }
+    .currency-card .cc-row { display: flex; justify-content: space-between; font-size: var(--fs-sm); }
+    .currency-card .cc-label { color: var(--text-muted); }
+    .currency-card .cc-val { font-family: var(--font-display); font-weight: 600; color: var(--text-primary); }
+    .currency-card .cc-oz { font-family: var(--font-display); font-weight: 800; font-size: var(--fs-xl); color: var(--accent-primary); margin-bottom: var(--space-sm); }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>Precio de la Plata en <span class="highlight">World Currencies</span></h1><p>Precios actuales de la plata convertidos a 12 monedas principales del mundo, actualizados en vivo.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget" style="max-width:100%;">
+        <div class="calc-widget-title"><span class="icon">🌍</span> Silver Prices by Currency</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="weight">Peso</label><input type="number" class="form-input" id="weight" value="1" step="0.01" min="0"></div>
+          <div class="form-group"><label class="form-label" for="unit">Unidad</label><select class="form-select" id="unit"><option value="oz" selected="">Onzas troy</option><option value="g">gramos</option><option value="kg">kilogramos</option></select></div>
+          <div class="form-group"><label class="form-label" for="purity">Pureza</label><select class="form-select" id="purity"><option value="1" selected="">999 multa</option><option value="0.925">Plata de Ley 925</option><option value="0.900">900 monedas</option><option value="0.800">800 Plata</option></select></div>
+        </div>
+        <div class="currency-grid" id="currency-grid"></div>
+      </div>
+      <div class="content-body">
+        <h2>Por qué los precios de la plata difieren según la moneda</h2>
+        <p>El precio de la plata a nivel mundial es en dólares estadounidenses por onza troy. Cuando convierte a otras monedas, el tipo de cambio determina el precio final. Esto significa que la plata puede efectivamente "subir" en una moneda mientras "bajar" en otra, dependiendo de los movimientos del tipo de cambio.</p>
+        <h3>Entendiendo la plata en los mercados del sur de Asia</h3>
+        <p>En India y Pakistán, el precio de la plata suele ser por <a href="conversor-de-peso.html">tola</a> (11,6638 gramos). Nuestro conversor muestra automáticamente los precios en formatos locales.</p>
+        <h3>Factores del precio de la plata</h3>
+        <ul>
+          <li><strong>USD spot price</strong> — El precio base global</li>
+          <li><strong>Exchange rates</strong> — Fluctuan según las condiciones económicas.</li>
+          <li><strong>Local premiums</strong> — La plata física puede conllevar primas adicionales en diferentes mercados.</li>
+          <li><strong>Import duties</strong> — Algunos países añaden aranceles, particularmente India y China.</li>
+        </ul>
+      </div>
+      <div><h3 style="margin-bottom:var(--space-lg);">Relacionado</h3><div class="related-grid">
+        <a href="precio-de-la-plata-por-onza.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+        <a href="precio-de-la-plata-por-gramo.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+        <a href="conversor-de-peso.html" class="related-link"><span class="r-icon">⚖️</span> Weight Converter</a>
+        <a href="calculadora-de-plata-de-desecho.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Inicio',href:'index.html'},{label:'Silver Price in Currencies'}]);
+
+    const flags = { USD:'🇺🇸', EUR:'🇪🇺', GBP:'🇬🇧', CAD:'🇨🇦', AUD:'🇦🇺', INR:'🇮🇳', PKR:'🇵🇰', AED:'🇦🇪', SAR:'🇸🇦', CHF:'🇨🇭', JPY:'🇯🇵', CNY:'🇨🇳' };
+
+    const w=document.getElementById('weight'), u=document.getElementById('unit'), p=document.getElementById('purity');
+
+    function calc() {
+      const weight = parseFloat(w.value) || 0;
+      const grams = SilverCalc.toGrams(weight, u.value);
+      const purity = parseFloat(p.value);
+      const spotUSD = SilverPrice.getPrice();
+      const ozPure = (grams * purity) / 31.1035;
+      const usdValue = ozPure * spotUSD;
+
+      let html = '';
+      Object.entries(SilverPrice.CURRENCIES).forEach(([code, cur]) => {
+        const val = usdValue * cur.rate;
+        const perOz = spotUSD * cur.rate;
+        const perG = (spotUSD / 31.1035) * cur.rate;
+        const perKg = (spotUSD * 32.1507) * cur.rate;
+        html += `
+          <div class="currency-card">
+            <div class="cc-code">
+              <span class="cc-flag">${flags[code] || '🏳️'}</span>
+              <div><span class="cc-abbr">${code}</span><br><span class="cc-name">${cur.name}</span></div>
+            </div>
+            <div class="cc-oz">${cur.symbol}${val.toFixed(2)}</div>
+            <div class="cc-prices">
+              <div class="cc-row"><span class="cc-label">Per Troy Oz</span><span class="cc-val">${cur.symbol}${perOz.toFixed(2)}</span></div>
+              <div class="cc-row"><span class="cc-label">Per Gram</span><span class="cc-val">${cur.symbol}${perG.toFixed(4)}</span></div>
+              <div class="cc-row"><span class="cc-label">Per Kilogram</span><span class="cc-val">${cur.symbol}${perKg.toFixed(2)}</span></div>
+            </div>
+          </div>`;
+      });
+      document.getElementById('currency-grid').innerHTML = html;
+    }
+
+    [w].forEach(el => el.addEventListener('input', calc));
+    [u, p].forEach(el => el.addEventListener('change', calc));
+    SilverPrice.onPriceUpdate(() => calc());
+    calc();
+  </script>
+
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"silver-scrap-calculator.html":"calculadora-de-plata-de-desecho.html","gold-and-silver-calculator.html":"calculadora-de-oro-y-plata.html","silver-melt-value-calculator.html":"calculadora-de-valor-de-fusion-de-la-plata.html","sterling-silver-calculator.html":"calculadora-de-plata-esterlina.html","junk-silver-calculator.html":"calculadora-de-plata-basura.html","silver-coin-value-calculator.html":"valor-de-moneda-de-plata.html","silver-bar-value-calculator.html":"valor-de-lingote-de-plata.html","silver-jewelry-value-calculator.html":"valor-de-joyeria-de-plata.html","silverware-value-calculator.html":"valor-de-cubiertos-de-plata.html","999-silver-calculator.html":"plata-fina-999.html","958-silver-calculator.html":"plata-britannia-958.html","925-silver-calculator.html":"plata-esterlina-925.html","900-silver-calculator.html":"plata-de-moneda-900.html","835-silver-calculator.html":"plata-835.html","800-silver-calculator.html":"plata-800.html","silver-purity-chart.html":"tabla-de-pureza-de-la-plata.html","silver-price-per-gram.html":"precio-de-la-plata-por-gramo.html","silver-price-per-ounce.html":"precio-de-la-plata-por-onza.html","silver-price-all-currencies.html":"precio-en-todas-las-monedas.html","1-10oz-silver-value.html":"valor-de-la-plata-1-10oz.html","1oz-silver-value.html":"valor-de-la-plata-1oz.html","2oz-silver-value.html":"valor-de-la-plata-2oz.html","5oz-silver-value.html":"valor-de-la-plata-5oz.html","10oz-silver-value.html":"valor-de-la-plata-10oz.html","100oz-silver-value.html":"valor-de-la-plata-100oz.html","1kg-silver-value.html":"valor-de-la-plata-1kg.html","silver-profit-calculator.html":"calculadora-de-ganancias-de-plata.html","silver-batch-calculator.html":"calculadora-por-lotes.html","sona-chandi-calculator.html":"calculadora-sona-chandi.html","face-value-silver-calculator.html":"calculadora-de-valor-nominal.html","silver-weight-converter.html":"conversor-de-peso.html","pennyweight-calculator.html":"calculadora-pennyweight-dwt.html","tola-calculator.html":"calculadora-tola.html","silver-sell-or-hold.html":"analisis-de-vender-o-mantener.html","identify-silver.html":"identificador-de-plata.html","how-to-use-silver-calculators.html":"como-usar-nuestras-calculadoras.html","what-is-silver-scrap.html":"que-es-la-plata-de-desecho.html","what-is-silver-melt-value.html":"que-es-el-valor-de-fusion.html","what-is-junk-silver.html":"que-es-la-plata-basura.html","what-is-troy-ounce.html":"que-es-una-onza-troy.html","what-is-silver-bullion.html":"que-es-un-lingote-de-plata.html","how-silver-prices-work.html":"como-funcionan-los-precios-de-la-plata.html","silver-hallmarks-guide.html":"guia-de-sellos-de-plata.html","what-does-925-mean.html":"que-significa-925.html","what-is-sterling-silver.html":"que-es-la-plata-esterlina.html","how-to-sell-silver.html":"como-vender-plata.html","silver-bracelet-value.html":"valor-de-pulsera-de-plata.html","silver-chain-value.html":"valor-de-cadena-de-plata.html","silver-cup-value.html":"valor-de-copa-de-plata.html","silver-dime-calculator.html":"calculadora-de-diez-centavos-de-plata.html","silver-dollar-calculator.html":"calculadora-de-dolar-de-plata.html","silver-fork-value.html":"valor-de-tenedor-de-plata.html","silver-knife-value.html":"valor-de-cuchillo-de-plata.html","silver-necklace-value.html":"valor-de-collar-de-plata.html","silver-plate-value.html":"valor-de-plato-de-plata.html","silver-quarter-calculator.html":"calculadora-de-cuarto-de-dolar-de-plata.html","silver-ring-value.html":"valor-de-anillo-de-plata.html","silver-spoon-value.html":"valor-de-cuchara-de-plata.html","silver-tray-value.html":"valor-de-bandeja-de-plata.html","canadian-silver-coin-calculator.html":"calculadora-de-monedas-de-plata-canadienses.html"},"Home":"Inicio","Calculators":"Calculadoras","Silver Scrap Calculator":"Calculadora de Plata de Desecho","Gold & Silver Calculator":"Calculadora de Oro y Plata","Silver Melt Value":"Valor de Fusión de la Plata","Sterling Silver Calculator":"Calculadora de Plata Esterlina","Junk Silver Calculator":"Calculadora de Plata Basura","Silver Coin Value":"Valor de Moneda de Plata","Silver Bar Value":"Valor de Lingote de Plata","Silver Jewelry Value":"Valor de Joyería de Plata","Silverware Value":"Valor de Cubiertos de Plata","Purity":"Pureza","999 Fine Silver":"Plata Fina 999","958 Britannia Silver":"Plata Britannia 958","925 Sterling Silver":"Plata Esterlina 925","900 Coin Silver":"Plata de Moneda 900","835 Silver":"Plata 835","800 Silver":"Plata 800","Silver Purity Chart":"Tabla de Pureza de la Plata","Pricing":"Precios","Silver Price Per Gram":"Precio de la Plata por Gramo","Silver Price Per Ounce":"Precio de la Plata por Onza","Price in All Currencies":"Precio en Todas las Monedas","1/10oz Silver Value":"Valor de la Plata 1/10oz","1oz Silver Value":"Valor de la Plata 1oz","2oz Silver Value":"Valor de la Plata 2oz","5oz Silver Value":"Valor de la Plata 5oz","10oz Silver Value":"Valor de la Plata 10oz","100oz Silver Value":"Valor de la Plata 100oz","1kg Silver Value":"Valor de la Plata 1kg","Tools":"Herramientas","Silver Profit Calculator":"Calculadora de Ganancias de Plata","Batch Calculator":"Calculadora por Lotes","Sona Chandi Calculator":"Calculadora Sona Chandi","Face Value Calculator":"Calculadora de Valor Nominal","Weight Converter":"Conversor de Peso","Pennyweight (DWT) Calc":"Calculadora Pennyweight (DWT)","Tola Calculator":"Calculadora Tola","Sell or Hold Analysis":"Análisis de Vender o Mantener","Silver Identifier":"Identificador de Plata","Guides":"Guías","How to Use Our Calculators":"Cómo Usar Nuestras Calculadoras","What Is Silver Scrap?":"¿Qué es la Plata de Desecho?","What Is Melt Value?":"¿Qué es el Valor de Fusión?","What Is Junk Silver?":"¿Qué es la Plata Basura?","What Is a Troy Ounce?":"¿Qué es una Onza Troy?","What Is Silver Bullion?":"¿Qué es un Lingote de Plata?","How Silver Prices Work":"Cómo Funcionan los Precios de la Plata","Silver Hallmarks Guide":"Guía de Sellos de Plata","What Does 925 Mean?":"¿Qué Significa 925?","What Is Sterling Silver?":"¿Qué es la Plata Esterlina?","How to Sell Silver":"Cómo Vender Plata","Scrap Silver":"Plata de Desecho","Gold & Silver":"Oro y Plata","Silver Profit":"Ganancia de Plata","Melt Value":"Valor de Fusión","Junk Silver":"Plata Basura","Silver Coins":"Monedas de Plata","Silver Dollar":"Dólar de Plata","Silver Quarter":"Cuarto de Dólar de Plata","Silver Dime":"Moneda de Diez Centavos de Plata","Jewelry Value":"Valor de Joyería","925 Sterling":"Esterlina 925","Purity Chart":"Tabla de Pureza","How to Use Calculators":"Cómo Usar las Calculadoras","Sona Chandi Calc":"Calc. Sona Chandi","Face Value Calc":"Calc. Valor Nominal","Sell or Hold":"Vender o Mantener","About":"Acerca de","Privacy":"Privacidad","Terms":"Términos","All rights reserved.":"Todos los derechos reservados.","Prices are for informational purposes only.":"Los precios son solo para fines informativos.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calculadoras de plata gratuitas usando precios spot en vivo. Calcule el valor de su sucata al instante."}; 
+</script>
+</body></html>

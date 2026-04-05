@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>白银批量计算器 - 一次计算多个白银物品</title>
+  <meta name="description" content="一次计算多个银制品的总价值。添加戒指、链条、硬币和银器，以获得整个收藏品的综合熔化价值。">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .batch-table { width: 100%; border-collapse: collapse; margin: var(--space-lg) 0; }
+    .batch-table th, .batch-table td { padding: var(--space-sm) var(--space-md); text-align: left; border-bottom: 1px solid var(--border-subtle); font-size: var(--fs-sm); }
+    .batch-table th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: var(--fs-xs); letter-spacing: 0.05em; }
+    .batch-table td input, .batch-table td select { width: 100%; padding: 6px 10px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-primary); font-size: var(--fs-sm); }
+    .batch-table td input:focus, .batch-table td select:focus { border-color: var(--accent-primary); outline: none; }
+    .batch-table .row-value { font-family: var(--font-display); font-weight: 600; color: var(--accent-primary); white-space: nowrap; }
+    .batch-table .remove-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: var(--fs-md); padding: 4px; transition: color var(--transition-fast); }
+    .batch-table .remove-btn:hover { color: #ef4444; }
+    .add-row-btn { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); background: var(--bg-glass); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); color: var(--accent-primary); cursor: pointer; font-size: var(--fs-sm); font-weight: 500; transition: all var(--transition-fast); width: 100%; justify-content: center; }
+    .add-row-btn:hover { background: var(--bg-glass-strong); border-color: var(--accent-primary); }
+    .batch-actions { display: flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap; }
+    .grand-total { background: linear-gradient(135deg, rgba(192,192,192,0.1) 0%, rgba(192,192,192,0.03) 100%); border: 2px solid var(--border-accent); border-radius: var(--radius-lg); padding: var(--space-xl); text-align: center; margin-top: var(--space-xl); }
+    .grand-total .total-label { font-size: var(--fs-sm); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .grand-total .total-value { font-family: var(--font-display); font-size: var(--fs-4xl); font-weight: 800; background: var(--gradient-silver); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .grand-total .total-detail { display: flex; justify-content: center; gap: var(--space-xl); margin-top: var(--space-md); font-size: var(--fs-sm); color: var(--text-secondary); }
+    @media print { .site-header, .site-footer, .mobile-menu-btn, .mobile-nav, .add-row-btn, .batch-actions, .related-grid, .breadcrumb, #price-ticker { display: none !important; } main { padding-top: 0 !important; } .calc-widget { border: 1px solid #ccc; } .grand-total { border: 2px solid #333; } body { background: white; color: black; } .batch-table th, .batch-table td { border-color: #ccc; } .result-value, .total-value, .row-value { -webkit-text-fill-color: initial !important; background: none !important; color: #333 !important; } .result-label, .total-label { color: #666 !important; } .page-hero h1 .highlight { -webkit-text-fill-color: initial !important; background: none !important; color: #333 !important; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>银批 <span class="highlight">Calculator</span></h1><p>一次计算多件银制品的总价值——非常适合出售收藏品。</p></div></section>
+    <div class="calc-page-layout" style="max-width:1000px;">
+      <div class="calc-widget" style="max-width:100%;">
+        <div class="calc-widget-title"><span class="icon">📋</span> Batch Calculator</div>
+        <div style="overflow-x:auto;">
+          <table class="batch-table" id="batch-table">
+            <thead>
+              <tr>
+                <th style="width:22%;">描述</th>
+                <th style="width:15%;">重量</th>
+                <th style="width:14%;">单位</th>
+                <th style="width:16%;">纯度</th>
+                <th style="width:8%;">数量</th>
+                <th style="width:15%;">价值</th>
+                <th style="width:5%;"></th>
+              </tr>
+            </thead>
+            <tbody id="batch-body"></tbody>
+          </table>
+        </div>
+        <button type="button" class="add-row-btn" id="add-row-btn">+ Add Another Item</button>
+
+        <div class="grand-total" id="grand-total">
+          <div class="total-label">Total Collection Value</div>
+          <div class="total-value" id="total-value">$0.00</div>
+          <div class="total-detail">
+            <span id="total-items">0 items</span>
+            <span id="total-weight">0g total</span>
+            <span id="total-silver">0g pure silver</span>
+          </div>
+        </div>
+
+        <div class="batch-actions">
+          <button type="button" class="btn btn-primary" onclick="window.print()">🖨️ Print Receipt</button>
+          <button type="button" class="btn btn-secondary" id="copy-btn">📋 Copy Results</button>
+          <button type="button" class="btn btn-secondary" id="clear-btn">🗑️ Clear All</button>
+          <button type="button" class="btn btn-secondary" id="save-btn">💾 Save to Browser</button>
+          <button type="button" class="btn btn-secondary" id="load-btn" style="display:none;">📂 Load Saved</button>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>如何使用批量计算器</h2>
+        <p>批量计算器可让您添加多个银制品并计算它们的综合价值 - 当您准备将藏品出售给经销商时，这是理想的选择。</p>
+        <ol>
+          <li><strong>Add items</strong> — 单击每件作品的“+ 添加另一个项目”</li>
+          <li><strong>Enter details</strong> — 每种的描述、重量、单位和纯度</li>
+          <li><strong>See total</strong> — 总计自动更新</li>
+          <li><strong>Print or copy</strong> — 将收据交给经销商或保存以供参考</li>
+        </ol>
+        <div class="callout tip">
+          <div class="callout-title">💡 Pro Tip</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">按纯度对物品进行分组（所有 925 件在一起，所有 800 件一起），以便于与经销商谈判。使用“保存到浏览器”按钮可以在两次访问之间保留您的库存。</p>
+        </div>
+      </div>
+
+      <div><h3 style="margin-bottom:var(--space-lg);">相关</h3><div class="related-grid">
+        <a href="银废料计算器.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        <a href="银重量转换器.html" class="related-link"><span class="r-icon">⚖️</span> Weight Converter</a>
+        <a href="如何卖白银.html" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>
+        <a href="银纯度表.html" class="related-link"><span class="r-icon">📊</span> Purity Chart</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || '首页',href:'index.html'},{label:'Batch Calculator'}]);
+
+    let rows = [];
+    let rowId = 0;
+
+    function createRow(desc='', weight='', unit='g', purity='0.925', qty='1') {
+      const id = rowId++;
+      rows.push(id);
+      const tr = document.createElement('tr');
+      tr.id = 'row-' + id;
+      tr.innerHTML = `
+        <td><input type="text" placeholder="e.g. Ring" value="${desc}" data-field="desc"></td>
+        <td><input type="number" placeholder="0" step="0.01" min="0" value="${weight}" data-field="weight"></td>
+        <td><select data-field="unit"><option value="g" ${unit==='g'?'selected':''}>Grams</option><option value="oz" ${unit==='oz'?'selected':''}>Troy Oz</option><option value="dwt" ${unit==='dwt'?'selected':''}>DWT</option><option value="kg" ${unit==='kg'?'selected':''}>KG</option></select></td>
+        <td><select data-field="purity"><option value="0.999" ${purity==='0.999'?'selected':''}>999</option><option value="0.958" ${purity==='0.958'?'selected':''}>958</option><option value="0.925" ${purity==='0.925'?'selected':''}>925</option><option value="0.900" ${purity==='0.900'?'selected':''}>900</option><option value="0.835" ${purity==='0.835'?'selected':''}>835</option><option value="0.800" ${purity==='0.800'?'selected':''}>800</option></select></td>
+        <td><input type="number" min="1" step="1" value="${qty}" data-field="qty" style="width:60px;"></td>
+        <td class="row-value" id="val-${id}">$0.00</td>
+        <td><button type="button" class="remove-btn" onclick="removeRow(${id})">✕</button></td>`;
+      document.getElementById('batch-body').appendChild(tr);
+      tr.querySelectorAll('input, select').forEach(el => { el.addEventListener('input', calcAll); el.addEventListener('change', calcAll); });
+      calcAll();
+    }
+
+    function removeRow(id) {
+      const tr = document.getElementById('row-' + id);
+      if (tr) tr.remove();
+      rows = rows.filter(r => r !== id);
+      calcAll();
+    }
+
+    function calcAll() {
+      const spot = SilverPrice.getPrice();
+      let totalValue = 0, totalWeightG = 0, totalSilverG = 0, itemCount = 0;
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        const w = parseFloat(tr.querySelector('[data-field="weight"]').value) || 0;
+        const u = tr.querySelector('[data-field="unit"]').value;
+        const p = parseFloat(tr.querySelector('[data-field="purity"]').value);
+        const q = parseInt(tr.querySelector('[data-field="qty"]').value) || 1;
+        const grams = SilverCalc.toGrams(w, u) * q;
+        const r = SilverCalc.meltValue(grams, p, spot);
+        const valEl = tr.querySelector('.row-value');
+        if (valEl) valEl.textContent = SilverCalc.formatCurrency(r.value);
+        totalValue += r.value;
+        totalWeightG += grams;
+        totalSilverG += r.silverContentGrams;
+        itemCount += q;
+      });
+      document.getElementById('total-value').textContent = SilverCalc.formatCurrency(totalValue);
+      document.getElementById('total-items').textContent = itemCount + ' item(s)';
+      document.getElementById('total-weight').textContent = totalWeightG.toFixed(1) + 'g total';
+      document.getElementById('total-silver').textContent = totalSilverG.toFixed(1) + 'g pure silver';
+    }
+
+    // Add initial rows
+    createRow('Sterling Ring', '6', 'g', '0.925', '1');
+    createRow('Silver Chain', '25', 'g', '0.925', '1');
+    createRow('Silver Spoon', '40', 'g', '0.925', '4');
+
+    document.getElementById('add-row-btn').addEventListener('click', () => createRow());
+
+    document.getElementById('clear-btn').addEventListener('click', () => {
+      document.getElementById('batch-body').innerHTML = '';
+      rows = [];
+      createRow();
+    });
+
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const spot = SilverPrice.getPrice();
+      let text = `Silver Batch Valuation — ${new Date().toLocaleDateString()}\nSpot Price: $${spot.toFixed(2)}/oz\n\n`;
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        const desc = tr.querySelector('[data-field="desc"]').value || 'Item';
+        const w = tr.querySelector('[data-field="weight"]').value;
+        const u = tr.querySelector('[data-field="unit"]').value;
+        const p = tr.querySelector('[data-field="purity"]').value;
+        const q = tr.querySelector('[data-field="qty"]').value;
+        const val = tr.querySelector('.row-value').textContent;
+        text += `${desc}: ${w}${u} × ${q} @ ${(p*100).toFixed(1)}% = ${val}\n`;
+      });
+      text += `\nTOTAL: ${document.getElementById('total-value').textContent}`;
+      text += `\n${document.getElementById('total-items').textContent} · ${document.getElementById('total-weight').textContent} · ${document.getElementById('total-silver').textContent}`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy Results', 2000);
+      });
+    });
+
+    document.getElementById('save-btn').addEventListener('click', () => {
+      const data = [];
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        data.push({
+          desc: tr.querySelector('[data-field="desc"]').value,
+          weight: tr.querySelector('[data-field="weight"]').value,
+          unit: tr.querySelector('[data-field="unit"]').value,
+          purity: tr.querySelector('[data-field="purity"]').value,
+          qty: tr.querySelector('[data-field="qty"]').value
+        });
+      });
+      localStorage.setItem('silverBatchData', JSON.stringify(data));
+      const btn = document.getElementById('save-btn');
+      btn.textContent = '✅ Saved!';
+      setTimeout(() => btn.textContent = '💾 Save to Browser', 2000);
+      document.getElementById('load-btn').style.display = 'inline-flex';
+    });
+
+    // Check for saved data
+    if (localStorage.getItem('silverBatchData')) {
+      document.getElementById('load-btn').style.display = 'inline-flex';
+    }
+
+    document.getElementById('load-btn').addEventListener('click', () => {
+      try {
+        const data = JSON.parse(localStorage.getItem('silverBatchData'));
+        document.getElementById('batch-body').innerHTML = '';
+        rows = [];
+        data.forEach(d => createRow(d.desc, d.weight, d.unit, d.purity, d.qty));
+      } catch(e) {}
+    });
+
+    SilverPrice.onPriceUpdate(() => calcAll());
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10-盎司银币价值.html","100oz-silver-value.html":"100盎司银币价值.html","10oz-silver-value.html":"10盎司银币价值.html","1kg-silver-value.html":"1公斤白银价值.html","1oz-silver-value.html":"1盎司银币价值.html","2oz-silver-value.html":"2盎司银币价值.html","5oz-silver-value.html":"5盎司银币价值.html","800-silver-calculator.html":"800银计算器.html","835-silver-calculator.html":"835银计算器.html","900-silver-calculator.html":"900银计算器.html","925-silver-calculator.html":"925银计算器.html","925-sterling-silver-price-per-gram.html":"925纯银每克价格.html","958-silver-calculator.html":"958银计算器.html","999-silver-calculator.html":"999银计算器.html","canadian-silver-coin-calculator.html":"加拿大银币计算器.html","face-value-silver-calculator.html":"白银面值计算器.html","gold-and-silver-calculator.html":"黄金和白银计算器.html","how-silver-prices-work.html":"白银价格如何运作.html","how-to-sell-silver.html":"如何卖白银.html","how-to-use-silver-calculators.html":"如何使用银计算器.html","identify-silver.html":"识别银.html","junk-silver-calculator.html":"垃圾银计算器.html","pennyweight-calculator.html":"便士计算器.html","silver-bar-value-calculator.html":"银条价值计算器.html","silver-batch-calculator.html":"白银批量计算器.html","silver-bracelet-value.html":"银手镯价值.html","silver-chain-value.html":"银链价值.html","silver-coin-value-calculator.html":"银币价值计算器.html","silver-cup-value.html":"银杯价值.html","silver-dime-calculator.html":"银币计算器.html","silver-dollar-calculator.html":"银元计算器.html","silver-fork-value.html":"银叉价值.html","silver-hallmarks-guide.html":"银色标志指南.html","silver-jewelry-value-calculator.html":"银首饰价值计算器.html","silver-knife-value.html":"银刀价值.html","silver-melt-value-calculator.html":"白银熔化值计算器.html","silver-necklace-value.html":"银项链价值.html","silver-plate-value.html":"银板价值.html","silver-price-all-currencies.html":"所有货币白银价格.html","silver-price-per-gram.html":"每克白银价格.html","silver-price-per-ounce.html":"每盎司白银价格.html","silver-profit-calculator.html":"白银利润计算器.html","silver-purity-chart.html":"银纯度表.html","silver-quarter-calculator.html":"银币计算器.html","silver-ring-value.html":"银戒指价值.html","silver-scrap-calculator.html":"银废料计算器.html","silver-sell-or-hold.html":"白银卖出或持有.html","silver-spoon-value.html":"银汤匙价值.html","silver-spot-price-today.html":"今日白银现货价格.html","silver-tray-value.html":"银托盘价值.html","silver-weight-converter.html":"银重量转换器.html","silverware-value-calculator.html":"银器价值计算器.html","sona-chandi-calculator.html":"索娜钱迪-计算器.html","sterling-silver-calculator.html":"纯银计算器.html","tola-calculator.html":"托拉计算器.html","what-does-925-mean.html":"925是什么意思.html","what-is-junk-silver.html":"什么是垃圾银.html","what-is-silver-bullion.html":"什么是银条.html","what-is-silver-melt-value.html":"什么是白银熔化值.html","what-is-silver-scrap.html":"什么是废银.html","what-is-sterling-silver.html":"什么是纯银.html","what-is-troy-ounce.html":"什么是金衡盎司.html"},"Home":"首页","Calculators":"计算器","Silver Scrap Calculator":"银废料计算器","Gold & Silver Calculator":"黄金白银计算器","Silver Melt Value":"银熔化值","Sterling Silver Calculator":"纯银计算器","Junk Silver Calculator":"垃圾银计算器","Silver Coin Value":"银币价值","Silver Bar Value":"银条价值","Silver Jewelry Value":"银首饰价值","Silverware Value":"银器价值","Purity":"纯度","999 Fine Silver":"999纯银","958 Britannia Silver":"958 不列颠银","925 Sterling Silver":"925 纯银","900 Coin Silver":"900 银币","835 Silver":"835银","800 Silver":"800银","Silver Purity Chart":"银纯度表","Pricing":"定价","Silver Spot Price Today":"今日白银现货价格","925 Sterling Price / Gram":"925 英镑价格/克","Silver Price Per Gram":"每克白银价格","Silver Price Per Ounce":"每盎司白银价格","Price in All Currencies":"所有货币的价格","1/10oz Silver Value":"1/10 盎司银币价值","1oz Silver Value":"1盎司白银价值","2oz Silver Value":"2盎司银币价值","5oz Silver Value":"5盎司银币价值","10oz Silver Value":"10盎司银币价值","100oz Silver Value":"100盎司银币价值","1kg Silver Value":"1公斤银值","Tools":"工具","Silver Profit Calculator":"白银利润计算器","Batch Calculator":"批量计算器","Sona Chandi Calculator":"索纳·昌迪计算器","Face Value Calculator":"面值计算器","Weight Converter":"重量转换器","Pennyweight (DWT) Calc":"Pennyweight (DWT) 计算","Tola Calculator":"托拉计算器","Sell or Hold Analysis":"卖出或持有分析","Silver Identifier":"银牌标识符","Guides":"指南","How to Use Our Calculators":"如何使用我们的计算器","What Is Silver Scrap?":"什么是银废料？","What Is Melt Value?":"什么是熔体值？","What Is Junk Silver?":"什么是垃圾银？","What Is a Troy Ounce?":"什么是金衡盎司？","What Is Silver Bullion?":"什么是银条？","How Silver Prices Work":"白银价格如何运作","Silver Hallmarks Guide":"银色标志指南","What Does 925 Mean?":"925是什么意思？","What Is Sterling Silver?":"什么是纯银？","How to Sell Silver":"如何出售白银","Scrap Silver":"废银","Gold & Silver":"金银","Silver Profit":"白银利润","Melt Value":"熔融值","Junk Silver":"垃圾银","Silver Coins":"银币","Silver Dollar":"银元","Silver Quarter":"银季","Silver Dime":"银币","Jewelry Value":"珠宝价值","925 Sterling":"第925章","Purity Chart":"纯度表","How to Use Calculators":"如何使用计算器","Sona Chandi Calc":"索纳·昌迪计算器","Face Value Calc":"面值计算","Sell or Hold":"卖出或持有","About":"关于","Privacy":"隐私","Terms":"条款","All rights reserved.":"保留所有权利。","Prices are for informational purposes only.":"价格仅供参考。","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"使用实时现货价格的免费、准确的白银计算器。立即计算银废料、硬币、珠宝和金条的熔化值。"};
+</script>
+</body></html>

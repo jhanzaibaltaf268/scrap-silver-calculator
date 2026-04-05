@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="ar"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حاسبة تولة الفضة - تحويل التولة إلى جرام وقيمة الفضة</title>
+  <meta name="description" content="حاسبة التولة الفضية المجانية. قم بتحويل التولا إلى جرام، وأوقية تروي، واحسب قيمة الفضة لكل تولة بالسعر الفوري المباشر لهذا اليوم.">
+  <meta name="keywords" content="tola calculator, tola to grams, silver tola price, silver price per tola, tola converter, 1 tola silver price">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/tola-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" style="padding: var(--space-2xl) 0 var(--space-xl);">
+      <div class="container hero-content">
+        <div id="breadcrumb"></div>
+        
+        <h1>الفضة <span class="highlight">Tola Calculator</span></h1>
+        <p class="hero-subtitle">قم بتحويل التولا إلى جرام، وأوقية تروي، واحسب قيمة الفضة لكل تولة بالسعر الفوري المباشر لهذا اليوم. تستخدم في جميع أنحاء الهند وباكستان وبنغلاديش والشرق الأوسط.</p>
+
+        <div class="calc-widget slide-up" id="tola-calc">
+          <div class="calc-widget-title"><span class="icon">🌙</span> Silver Tola Value Calculator</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="tola-weight">الوزن بالتولة</label>
+              <input type="number" class="form-input" id="tola-weight" placeholder="Enter weight in tola" step="0.01" min="0" value="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="tola-purity">نقاء الفضة</label>
+              <select class="form-select" id="tola-purity">
+                <option value="0.999">999 — الفضة الخالصة (99.9%)</option>
+                <option value="0.958">958 – بريتانيا (95.8%)</option>
+                <option value="0.925" selected="">925 – الجنيه الاسترليني (92.5%)</option>
+                <option value="0.900">900 — عملة فضية (90%)</option>
+                <option value="0.835">835 – الأوروبي (83.5%)</option>
+                <option value="0.800">800 — الأوروبي (80%)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Conversion results -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-md);margin-bottom:var(--space-lg);">
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Grams</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-grams">11.66</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Troy Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-ozt">0.3750</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Pennyweight</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-dwt">7.500</div>
+            </div>
+          </div>
+
+          <div class="result-display" id="tola-result">
+            <div class="result-label">قيمة الفضة لكل تولة</div>
+            <div class="result-value" id="tola-result-value">$0.00</div>
+            <div class="result-detail" id="tola-result-detail">Enter weight in tola to calculate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick reference table -->
+    <section class="section" style="padding:var(--space-2xl) 0;">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:var(--space-lg);">جدول تحويل تولة</h2>
+        <div style="max-width:700px;margin:0 auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border-medium);">
+                <th style="padding:var(--space-md);text-align:left;color:var(--text-muted);font-size:var(--fs-sm);">تولا</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">غرام</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">تروي أوز</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">925 قيمة</th>
+              </tr>
+            </thead>
+            <tbody id="tola-table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+      <div class="container">
+        <div class="content-body">
+          <h2>ما هو التولا؟</h2>
+          <p>A <strong>tola</strong> هي وحدة وزن تقليدية تُستخدم في جميع أنحاء جنوب آسيا والشرق الأوسط لقياس الذهب والفضة. تولة واحدة تساوي <strong>11.6638 grams</strong> أو ما يقرب من 0.375 أوقية تروي. يأتي المصطلح من الكلمة الهندية/الأردية "तोLALA" وكان مرتبطًا تاريخيًا بوزن عملة الروبية الفضية.</p>
+
+          <h3>أين يتم استخدام تولا؟</h3>
+          <p>يتم استخدام التولا بشكل شائع في <strong>India, Pakistan, Bangladesh, Nepal, Sri Lanka,</strong> وأجزاء من <strong>Middle East</strong> عند شراء وبيع المعادن الثمينة. عندما ترى أسعار الفضة مقتبسة "بالتولة" لدى صائغ أو سوق محلي، تساعدك هذه الآلة الحاسبة على تحويل هذا السعر إلى المعايير الدولية للمقارنة.</p>
+
+          <h3>صيغ تحويل التولا</h3>
+          <ul style="list-style:disc;margin-left:var(--space-xl);">
+            <li style="padding:4px 0;color:var(--text-secondary);">1 تولة = 11.6638 جرام</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 تولة = 0.375 أونصة تروي (3/8 أونصة)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 تولة = 7.5 بنس وزن ساكن</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 جرام = 0.08573 تولة</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 أونصة تروي = 2.6667 تولة</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">10 تولة = 116.638 جرام = 3.75 أوقية تروي</li>
+          </ul>
+
+          <h3>سعر الفضة لكل تولة اليوم</h3>
+          <p>يتغير سعر الفضة لكل تولة بناءً على السعر الفوري العالمي. بما أن 1 تولة = 0.375 أونصة تروي، قم بضرب السعر الفوري بـ 0.375 (ثم بالنقاء) للحصول على القيمة لكل تولة. تقوم الآلة الحاسبة الخاصة بنا بذلك تلقائيًا باستخدام الأسعار المباشرة.</p>
+
+          <h3>الآلات الحاسبة ذات الصلة</h3>
+          <p>استخدم لدينا <a href="حاسبة-وزن-البنس.html">pennyweight calculator</a> لتحويلات DWT، فإن <a href="محول-الوزن-الفضي.html">weight converter</a> لجميع الوحدات، أو <a href="أسعار-الفضة-جميع-العملات.html">multi-currency price page</a> لمعرفة أسعار الفضة اليوم بالروبية الباكستانية والروبية الهندية والعملات المحلية الأخرى.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      { label: 'Home', href: 'index.html' },
+      { label: 'Tools', href: '#' },
+      { label: 'Tola Calculator' }
+    ]);
+
+    const TOLA_TO_GRAMS = 11.6638;
+    const tolaWeight = document.getElementById('tola-weight');
+    const tolaPurity = document.getElementById('tola-purity');
+    const tolaGrams = document.getElementById('tola-grams');
+    const tolaOzt = document.getElementById('tola-ozt');
+    const tolaDwt = document.getElementById('tola-dwt');
+    const tolaResultValue = document.getElementById('tola-result-value');
+    const tolaResultDetail = document.getElementById('tola-result-detail');
+
+    function calcTola() {
+      const tola = parseFloat(tolaWeight.value) || 0;
+      const purity = parseFloat(tolaPurity.value);
+      const spotPrice = SilverPrice.getPrice();
+
+      const grams = tola * TOLA_TO_GRAMS;
+      const troyOz = grams / 31.1035;
+      const dwt = troyOz * 20;
+
+      tolaGrams.textContent = grams.toFixed(2);
+      tolaOzt.textContent = troyOz.toFixed(4);
+      tolaDwt.textContent = dwt.toFixed(3);
+
+      if (tola <= 0) {
+        tolaResultValue.textContent = '$0.00';
+        tolaResultDetail.textContent = 'Enter weight in tola to calculate';
+        return;
+      }
+
+      const value = troyOz * purity * spotPrice;
+      const pureGrams = grams * purity;
+      tolaResultValue.textContent = SilverCalc.formatCurrency(value);
+      tolaResultDetail.textContent = `${pureGrams.toFixed(2)}g pure silver · ${(troyOz * purity).toFixed(4)} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+    }
+
+    tolaWeight.addEventListener('input', calcTola);
+    tolaPurity.addEventListener('change', calcTola);
+    SilverPrice.onPriceUpdate(() => calcTola());
+    calcTola();
+
+    // Conversion table
+    const tableBody = document.getElementById('tola-table');
+    [0.5, 1, 2, 3, 5, 10, 15, 20, 50].forEach(tola => {
+      const g = (tola * TOLA_TO_GRAMS).toFixed(2);
+      const ozt = (tola * TOLA_TO_GRAMS / 31.1035).toFixed(3);
+      const spotPrice = SilverPrice.getPrice();
+      const val = SilverCalc.formatCurrency((tola * TOLA_TO_GRAMS / 31.1035) * 0.925 * spotPrice);
+      tableBody.innerHTML += `<tr style="border-bottom:1px solid var(--border-subtle);">
+        <td style="padding:var(--space-md);color:var(--text-primary);font-weight:600;">${tola} tola</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${g}g</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${ozt} oz</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--accent-primary);font-weight:600;">${val}</td>
+      </tr>`;
+    });
+
+    SiteComponents.injectFAQSchema([
+      { q: 'What is a tola?', a: 'A tola is a traditional unit of weight used in South Asia and the Middle East for precious metals. 1 tola equals 11.6638 grams or 0.375 troy ounces.' },
+      { q: 'How many grams in a tola?', a: '1 tola equals exactly 11.6638 grams.' },
+      { q: 'What is the silver price per tola today?', a: 'The silver price per tola depends on the current spot price. Since 1 tola = 0.375 troy ounces, multiply today\'s spot price by 0.375 and the purity to get the value.' },
+      { q: 'How many tola in a troy ounce?', a: 'There are approximately 2.6667 tola in one troy ounce (1 ozt = 31.1035g ÷ 11.6638g per tola).' }
+    ]);
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10-أونصة-من-الفضة.html","100oz-silver-value.html":"قيمة-الفضة-100-أوقية.html","10oz-silver-value.html":"قيمة-الفضة-10-أوقية.html","1kg-silver-value.html":"قيمة-1-كيلو-فضة.html","1oz-silver-value.html":"قيمة-الفضة-1-أوقية.html","2oz-silver-value.html":"قيمة-الفضة-2-أوقية.html","5oz-silver-value.html":"قيمة-الفضة-5-أوقية.html","800-silver-calculator.html":"آلة-حاسبة-فضية-800.html","835-silver-calculator.html":"آلة-حاسبة-فضية-835.html","900-silver-calculator.html":"آلة-حاسبة-فضة-900.html","925-silver-calculator.html":"حاسبة-فضة-925.html","925-sterling-silver-price-per-gram.html":"سعر-الجرام-من-الفضة-الإسترليني-عيار-925.html","958-silver-calculator.html":"آلة-حاسبة-فضية-958.html","999-silver-calculator.html":"آلة-حاسبة-فضية-999.html","canadian-silver-coin-calculator.html":"حاسبة-العملة-الفضية-الكندية.html","face-value-silver-calculator.html":"حاسبة-القيمة-الاسمية-للفضة.html","gold-and-silver-calculator.html":"حاسبة-الذهب-والفضة.html","how-silver-prices-work.html":"كيف-تعمل-أسعار-الفضة.html","how-to-sell-silver.html":"كيفية-بيع-الفضة.html","how-to-use-silver-calculators.html":"كيفية-استخدام-الآلات-الحاسبة-الفضية.html","identify-silver.html":"التعرف-على-الفضة.html","junk-silver-calculator.html":"حاسبة-الفضة-غير-المرغوب-فيه.html","pennyweight-calculator.html":"حاسبة-وزن-البنس.html","silver-bar-value-calculator.html":"حاسبة-قيمة-شريط-الفضة.html","silver-batch-calculator.html":"حاسبة-دفعة-الفضة.html","silver-bracelet-value.html":"قيمة-سوار-الفضة.html","silver-chain-value.html":"قيمة-السلسلة-الفضية.html","silver-coin-value-calculator.html":"حاسبة-قيمة-العملة-الفضية.html","silver-cup-value.html":"قيمة-الكأس-الفضية.html","silver-dime-calculator.html":"حاسبة-الدايم-الفضي.html","silver-dollar-calculator.html":"حاسبة-الدولار-الفضي.html","silver-fork-value.html":"قيمة-الشوكة-الفضية.html","silver-hallmarks-guide.html":"دليل-السمات-المميزة-الفضية.html","silver-jewelry-value-calculator.html":"حاسبة-قيمة-المجوهرات-الفضية.html","silver-knife-value.html":"قيمة-السكين-الفضي.html","silver-melt-value-calculator.html":"حاسبة-قيمة-ذوبان-الفضة.html","silver-necklace-value.html":"قيمة-القلادة-الفضية.html","silver-plate-value.html":"قيمة-لوحة-الفضة.html","silver-price-all-currencies.html":"أسعار-الفضة-جميع-العملات.html","silver-price-per-gram.html":"سعر-الفضة-لكل-جرام.html","silver-price-per-ounce.html":"سعر-الفضة-للأونصة.html","silver-profit-calculator.html":"حاسبة-ربح-الفضة.html","silver-purity-chart.html":"مخطط-نقاء-الفضة.html","silver-quarter-calculator.html":"حاسبة-الربع-الفضي.html","silver-ring-value.html":"قيمة-خاتم-الفضة.html","silver-scrap-calculator.html":"حاسبة-خردة-الفضة.html","silver-sell-or-hold.html":"بيع-الفضة-أو-الاحتفاظ-بها.html","silver-spoon-value.html":"قيمة-ملعقة-فضية.html","silver-spot-price-today.html":"سعر-الفضة-الفوري-اليوم.html","silver-tray-value.html":"قيمة-صينية-الفضة.html","silver-weight-converter.html":"محول-الوزن-الفضي.html","silverware-value-calculator.html":"حاسبة-قيمة-الفضيات.html","sona-chandi-calculator.html":"آلة-حاسبة-سونا-تشاندي.html","sterling-silver-calculator.html":"حاسبة-الفضة.html","tola-calculator.html":"آلة-حاسبة-تولة.html","what-does-925-mean.html":"ماذا-يعني-925.html","what-is-junk-silver.html":"ما-هي-الفضة-غير-المرغوب-فيه.html","what-is-silver-bullion.html":"ما-هي-سبائك-الفضة.html","what-is-silver-melt-value.html":"ما-هي-قيمة-ذوبان-الفضة.html","what-is-silver-scrap.html":"ما-هي-خردة-الفضة.html","what-is-sterling-silver.html":"ما-هي-الفضة-الاسترليني.html","what-is-troy-ounce.html":"ما-هو-أوقية-تروي.html"},"Home":"الصفحة الرئيسية","Calculators":"الآلات الحاسبة","Silver Scrap Calculator":"حاسبة خردة الفضة","Gold & Silver Calculator":"حاسبة الذهب والفضة","Silver Melt Value":"قيمة ذوبان الفضة","Sterling Silver Calculator":"حاسبة الفضة الاسترليني","Junk Silver Calculator":"حاسبة الفضة غير المرغوب فيه","Silver Coin Value":"قيمة العملة الفضية","Silver Bar Value":"قيمة شريط الفضة","Silver Jewelry Value":"قيمة المجوهرات الفضية","Silverware Value":"قيمة الفضيات","Purity":"الطهارة","999 Fine Silver":"999 فضة فاخرة","958 Britannia Silver":"958 بريتانيا فضة","925 Sterling Silver":"925 فضة استرلينية","900 Coin Silver":"900 عملة فضية","835 Silver":"835 فضة","800 Silver":"800 فضة","Silver Purity Chart":"مخطط نقاء الفضة","Pricing":"التسعير","Silver Spot Price Today":"سعر الفضة الفوري اليوم","925 Sterling Price / Gram":"925 سعر الجنيه الاسترليني / جرام","Silver Price Per Gram":"سعر الفضة لكل جرام","Silver Price Per Ounce":"سعر الفضة للأونصة","Price in All Currencies":"الأسعار بجميع العملات","1/10oz Silver Value":"قيمة فضية 1/10 أونصة","1oz Silver Value":"قيمة الفضة 1 أوقية","2oz Silver Value":"قيمة 2 أونصة من الفضة","5oz Silver Value":"قيمة 5 أونصة من الفضة","10oz Silver Value":"قيمة الفضة 10 أونصة","100oz Silver Value":"قيمة الفضة 100 أوقية","1kg Silver Value":"1 كيلو جرام فضة","Tools":"أدوات","Silver Profit Calculator":"حاسبة ربح الفضة","Batch Calculator":"حاسبة الدفعة","Sona Chandi Calculator":"حاسبة سونا تشاندي","Face Value Calculator":"حاسبة القيمة الاسمية","Weight Converter":"محول الوزن","Pennyweight (DWT) Calc":"حساب Pennyweight (DWT).","Tola Calculator":"حاسبة التولة","Sell or Hold Analysis":"بيع أو تعليق التحليل","Silver Identifier":"معرف الفضة","Guides":"أدلة","How to Use Our Calculators":"كيفية استخدام الآلات الحاسبة لدينا","What Is Silver Scrap?":"ما هي الخردة الفضية؟","What Is Melt Value?":"ما هي قيمة الذوبان؟","What Is Junk Silver?":"ما هي الفضة غير المرغوب فيه؟","What Is a Troy Ounce?":"ما هو أوقية تروي؟","What Is Silver Bullion?":"ما هي السبائك الفضية؟","How Silver Prices Work":"كيف تعمل أسعار الفضة","Silver Hallmarks Guide":"دليل السمات المميزة الفضية","What Does 925 Mean?":"ماذا يعني 925؟","What Is Sterling Silver?":"ما هي الفضة الاسترليني؟","How to Sell Silver":"كيفية بيع الفضة","Scrap Silver":"خردة الفضة","Gold & Silver":"الذهب والفضة","Silver Profit":"الربح الفضي","Melt Value":"قيمة الذوبان","Junk Silver":"الفضة غير المرغوب فيها","Silver Coins":"عملات فضية","Silver Dollar":"الدولار الفضي","Silver Quarter":"الربع الفضي","Silver Dime":"الدايم الفضي","Jewelry Value":"قيمة المجوهرات","925 Sterling":"925 جنيه استرليني","Purity Chart":"مخطط النقاء","How to Use Calculators":"كيفية استخدام الآلات الحاسبة","Sona Chandi Calc":"سونا تشاندي احسب","Face Value Calc":"حساب القيمة الاسمية","Sell or Hold":"بيع أو عقد","About":"حول","Privacy":"الخصوصية","Terms":"الشروط","All rights reserved.":"جميع الحقوق محفوظة.","Prices are for informational purposes only.":"الأسعار هي لأغراض إعلامية فقط.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"حاسبات فضية مجانية ودقيقة باستخدام الأسعار الفورية المباشرة. احسب قيمة ذوبان خردة الفضة والعملات المعدنية والمجوهرات والسبائك على الفور."};
+</script>
+</body></html>

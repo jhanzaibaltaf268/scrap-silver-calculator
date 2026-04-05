@@ -1,0 +1,194 @@
+<!DOCTYPE html><html lang="tr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gümüş Satış veya Tutma Hesaplayıcısı — Gümüşümü Şimdi Satmalı mıyım?</title>
+  <meta name="description" content="Gümüşü şimdi mi satmalısınız yoksa bekletmeli misiniz? Mevcut erime değerini varsayımsal gelecek fiyatlarla karşılaştırın. Senaryo analizini kullanarak bilinçli satış kararları alın.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .scenario-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-md); margin: var(--space-lg) 0; }
+    .scenario-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-lg); text-align: center; transition: all var(--transition-fast); }
+    .scenario-card:hover { border-color: var(--accent-primary); transform: translateY(-2px); }
+    .scenario-card.negative { border-color: #ef4444; }
+    .scenario-card.positive { border-color: #22c55e; }
+    .scenario-label { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-xs); }
+    .scenario-price { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-lg); color: var(--text-primary); }
+    .scenario-value { font-family: var(--font-display); font-weight: 800; font-size: var(--fs-xl); margin: var(--space-sm) 0; }
+    .scenario-diff { font-size: var(--fs-sm); font-weight: 600; }
+    .scenario-diff.up { color: #22c55e; }
+    .scenario-diff.down { color: #ef4444; }
+    .custom-spot-section { background: var(--bg-glass); border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: var(--space-lg); margin: var(--space-lg) 0; }
+    .custom-spot-section .cs-title { font-size: var(--fs-sm); font-weight: 600; color: var(--accent-gold); margin-bottom: var(--space-sm); }
+    .breakeven-bar { background: var(--bg-secondary); border-radius: var(--radius-md); height: 24px; overflow: hidden; margin: var(--space-md) 0; position: relative; }
+    .breakeven-fill { height: 100%; border-radius: var(--radius-md); transition: width 0.5s ease; }
+    .breakeven-labels { display: flex; justify-content: space-between; font-size: var(--fs-xs); color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>Sat veya Tut <span class="highlight">Calculator</span></h1><p>Şimdi satmayı beklemeyle karşılaştırın; gelecekteki farklı fiyatlarda gümüşünüzün değerinin ne olacağını görün.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">📈</span> Sell vs. Hold Analysis</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="weight">Toplam Ağırlık</label><input type="number" class="form-input" id="weight" value="100" step="0.1" min="0"></div>
+          <div class="form-group"><label class="form-label" for="unit">Birim</label><select class="form-select" id="unit"><option value="g" selected="">gram</option><option value="oz">Troy Oz</option><option value="kg">Kilogram</option></select></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="purity">saflık</label><select class="form-select" id="purity"><option value="0.999">999 İnce</option><option value="0.925" selected="">925 Sterlin</option><option value="0.900">900 Para</option><option value="0.800">800 Gümüş</option></select></div>
+          <div class="form-group"><label class="form-label" for="discount">Bayi İndirimi %</label><input type="number" class="form-input" id="discount" value="15" min="0" max="50" step="1"></div>
+        </div>
+
+        <div class="result-display">
+          <div class="result-label">Şimdi Sat (bugünkü noktada)</div>
+          <div class="result-value" id="sell-now">$0.00</div>
+          <div class="result-detail" id="sell-detail">After 15% dealer discount</div>
+        </div>
+
+        <div class="custom-spot-section">
+          <div class="cs-title">📊 What If Spot Changes?</div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="custom-spot">Özel Spot Fiyatı ($/oz)</label>
+            <input type="range" id="custom-spot-slider" min="15" max="60" step="0.25" value="32.50" style="width:100%;accent-color:var(--accent-primary);">
+            <div style="display:flex;gap:var(--space-sm);align-items:center;">
+              <input type="number" class="form-input" id="custom-spot" value="32.50" step="0.25" min="1" style="width:120px;">
+              <span style="font-size:var(--fs-sm);color:var(--text-muted);">per troy ounce</span>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="margin: var(--space-xl) 0 var(--space-md);">Senaryo Analizi</h4>
+        <div class="scenario-grid" id="scenarios"></div>
+
+        <h4 style="margin: var(--space-xl) 0 var(--space-md);">Başabaş için Gereken Fiyat</h4>
+        <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin-bottom:var(--space-md);">Yüksek fiyatla satın aldıysanız, satarken kırılmanız için gümüşün hangi fiyata ulaşması gerekiyor?</p>
+        <div class="form-group"><label class="form-label" for="buy-price">Satın Alma Fiyatınız (toplam maliyet)</label><input type="number" class="form-input" id="buy-price" value="0" step="1" min="0" placeholder="e.g. 120"></div>
+        <div id="breakeven-result" style="display:none;">
+          <div class="breakeven-bar"><div class="breakeven-fill" id="breakeven-fill"></div></div>
+          <div class="breakeven-labels"><span id="be-current">Current</span><span id="be-target">Breakeven</span></div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin-top:var(--space-sm);" id="be-text"></p>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>Gümüşü Ne Zaman Satmalısınız?</h2>
+        <p>Bu araç, gümüşünüzü hemen mi satacağınıza yoksa potansiyel olarak daha yüksek fiyatları mı bekleyeceğinize karar vermenize yardımcı olur. Garantili bir cevap yok, ancak şu faktörleri göz önünde bulundurmak yardımcı olabilir:</p>
+        <h3>Şimdi Satmak İçin Nedenler</h3>
+        <ul>
+          <li>Belirli bir amaç için paraya ihtiyacınız var</li>
+          <li>Gümüş fiyatları son yılların en yüksek seviyesinde</li>
+          <li>Diğer yatırımlara yönelmek istiyorsanız</li>
+          <li>Depolama ve sigorta maliyetleri iadeleri etkiliyor</li>
+        </ul>
+        <h3>Bekletme Nedenleri</h3>
+        <ul>
+          <li>Gümüş satın alma fiyatınızın altında</li>
+          <li>Ekonomik belirsizlik değerli metallerin artabileceğini gösteriyor</li>
+          <li>Gümüşü uzun vadeli enflasyondan korunma aracı olarak kullanıyorsunuz</li>
+          <li>Bayi indirimleri şu anda yüksek (kötü piyasa koşulları)</li>
+        </ul>
+        <div class="callout warning">
+          <div class="callout-title">⚠️ Not Financial Advice</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Bu araç yalnızca eğitim amaçlıdır. Gümüş fiyatları yükselebilir veya düşebilir ve geçmiş performans gelecekteki sonuçları öngörmez. Yatırım kararları için bir mali danışmana danışın.</p>
+        </div>
+      </div>
+
+      <div><h3 style="margin-bottom:var(--space-lg);">İlgili</h3><div class="related-grid">
+        <a href="gümüş-hurda-hesaplayıcı.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        <a href="gümüş-toplu-hesap-makinesi.html" class="related-link"><span class="r-icon">📋</span> Batch Calculator</a>
+        <a href="gümüş-nasıl-satılır.html" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>
+        <a href="ons-başına-gümüş-fiyatı.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Ana sayfa',href:'index.html'},{label:'Sell or Hold Calculator'}]);
+
+    const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),d=document.getElementById('discount'),cs=document.getElementById('custom-spot'),sl=document.getElementById('custom-spot-slider'),bp=document.getElementById('buy-price');
+
+    sl.addEventListener('input', () => { cs.value = sl.value; calc(); });
+    cs.addEventListener('input', () => { sl.value = cs.value; calc(); });
+
+    function calc() {
+      const weight = parseFloat(w.value)||0;
+      const grams = SilverCalc.toGrams(weight, u.value);
+      const purity = parseFloat(p.value);
+      const discountPct = parseFloat(d.value)||0;
+      const spot = SilverPrice.getPrice();
+      const customSpot = parseFloat(cs.value)||spot;
+
+      // Sell Now value
+      const melt = SilverCalc.meltValue(grams, purity, spot);
+      const payout = melt.value * (1 - discountPct/100);
+      document.getElementById('sell-now').textContent = SilverCalc.formatCurrency(payout);
+      document.getElementById('sell-detail').textContent = `Melt: ${SilverCalc.formatCurrency(melt.value)} · After ${discountPct}% discount · Spot: $${spot.toFixed(2)}/oz`;
+
+      // Scenarios
+      const scenarios = [
+        { label: '−20%', price: spot * 0.80 },
+        { label: '−10%', price: spot * 0.90 },
+        { label: 'Current', price: spot },
+        { label: '+10%', price: spot * 1.10 },
+        { label: '+20%', price: spot * 1.20 },
+        { label: '+50%', price: spot * 1.50 },
+        { label: 'Custom', price: customSpot },
+      ];
+
+      let html = '';
+      scenarios.forEach(s => {
+        const mv = SilverCalc.meltValue(grams, purity, s.price);
+        const pay = mv.value * (1 - discountPct/100);
+        const diff = pay - payout;
+        const diffPct = payout > 0 ? ((diff / payout) * 100).toFixed(1) : '0';
+        const cls = diff > 0 ? 'positive' : (diff < 0 ? 'negative' : '');
+        const dcls = diff >= 0 ? 'up' : 'down';
+        const sign = diff >= 0 ? '+' : '';
+        html += `
+          <div class="scenario-card ${cls}">
+            <div class="scenario-label">${s.label}</div>
+            <div class="scenario-price">$${s.price.toFixed(2)}/oz</div>
+            <div class="scenario-value">${SilverCalc.formatCurrency(pay)}</div>
+            <div class="scenario-diff ${dcls}">${sign}${SilverCalc.formatCurrency(diff)} (${sign}${diffPct}%)</div>
+          </div>`;
+      });
+      document.getElementById('scenarios').innerHTML = html;
+
+      // Break even
+      const buyPrice = parseFloat(bp.value)||0;
+      const beResult = document.getElementById('breakeven-result');
+      if (buyPrice > 0) {
+        beResult.style.display = 'block';
+        const silverOz = (grams * purity) / 31.1035;
+        const neededMelt = buyPrice / (1 - discountPct/100);
+        const neededSpot = silverOz > 0 ? neededMelt / silverOz : 0;
+        const progress = Math.min((spot / neededSpot) * 100, 100);
+        const fill = document.getElementById('breakeven-fill');
+        fill.style.width = progress + '%';
+        fill.style.background = progress >= 100 ? 'linear-gradient(90deg, #22c55e, #16a34a)' : 'linear-gradient(90deg, var(--accent-primary), var(--accent-blue))';
+        document.getElementById('be-current').textContent = `Current: $${spot.toFixed(2)}`;
+        document.getElementById('be-target').textContent = `Breakeven: $${neededSpot.toFixed(2)}/oz`;
+        if (progress >= 100) {
+          document.getElementById('be-text').textContent = `✅ Silver is at or above your breakeven price. You would profit ${SilverCalc.formatCurrency(payout - buyPrice)} by selling now.`;
+        } else {
+          document.getElementById('be-text').textContent = `Silver needs to reach $${neededSpot.toFixed(2)}/oz (currently at ${progress.toFixed(1)}%) for you to break even after dealer discount.`;
+        }
+      } else {
+        beResult.style.display = 'none';
+      }
+    }
+
+    [w,d,cs,bp].forEach(el=>el.addEventListener('input',calc));
+    [u,p].forEach(el=>el.addEventListener('change',calc));
+    SilverPrice.onPriceUpdate(()=>{sl.value=SilverPrice.getPrice();cs.value=SilverPrice.getPrice();calc();});
+    calc();
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10oz-gümüş-değeri.html","100oz-silver-value.html":"100oz-gümüş-değeri.html","10oz-silver-value.html":"10oz-gümüş-değeri.html","1kg-silver-value.html":"1kg-gümüş-değeri.html","1oz-silver-value.html":"1oz-gümüş-değeri.html","2oz-silver-value.html":"2-ons-gümüş-değeri.html","5oz-silver-value.html":"5oz-gümüş-değeri.html","800-silver-calculator.html":"800-gümüş-hesap-makinesi.html","835-silver-calculator.html":"835-gümüş-hesap-makinesi.html","900-silver-calculator.html":"900-gümüş-hesap-makinesi.html","925-silver-calculator.html":"925-gümüş-hesap-makinesi.html","925-sterling-silver-price-per-gram.html":"925-ayar-gümüş-gram-fiyatı.html","958-silver-calculator.html":"958-gümüş-hesap-makinesi.html","999-silver-calculator.html":"999-gümüş-hesap-makinesi.html","canadian-silver-coin-calculator.html":"kanada-gümüş-para-hesaplayıcısı.html","face-value-silver-calculator.html":"nominal-değer-gümüş-hesaplayıcı.html","gold-and-silver-calculator.html":"altın-ve-gümüş-hesaplayıcı.html","how-silver-prices-work.html":"gümüş-fiyatları-nasıl-çalışır.html","how-to-sell-silver.html":"gümüş-nasıl-satılır.html","how-to-use-silver-calculators.html":"gümüş-hesap-makineleri-nasıl-kullanılır.html","identify-silver.html":"gümüşü-tanımla.html","junk-silver-calculator.html":"önemsiz-gümüş-hesaplayıcı.html","pennyweight-calculator.html":"kuruşluk-hesap-makinesi.html","silver-bar-value-calculator.html":"gümüş-külçe-değeri-hesaplayıcı.html","silver-batch-calculator.html":"gümüş-toplu-hesap-makinesi.html","silver-bracelet-value.html":"gümüş-bilezik-değeri.html","silver-chain-value.html":"gümüş-zincir-değeri.html","silver-coin-value-calculator.html":"gümüş-para-değeri-hesaplama.html","silver-cup-value.html":"gümüş-kupa-değeri.html","silver-dime-calculator.html":"gümüş-kuruş-hesaplayıcı.html","silver-dollar-calculator.html":"gümüş-dolar-hesaplama.html","silver-fork-value.html":"gümüş-çatal-değeri.html","silver-hallmarks-guide.html":"gümüşün-ayırt-edici-özellikleri-kılavuzu.html","silver-jewelry-value-calculator.html":"gümüş-takı-değeri-hesaplama.html","silver-knife-value.html":"gümüş-bıçak-değeri.html","silver-melt-value-calculator.html":"gümüş-erime-değeri-hesaplayıcısı.html","silver-necklace-value.html":"gümüş-kolye-değeri.html","silver-plate-value.html":"gümüş-tabak-değeri.html","silver-price-all-currencies.html":"gümüş-fiyatı-tüm-para-birimleri.html","silver-price-per-gram.html":"gram-başına-gümüş-fiyatı.html","silver-price-per-ounce.html":"ons-başına-gümüş-fiyatı.html","silver-profit-calculator.html":"gümüş-kar-hesaplama.html","silver-purity-chart.html":"gümüş-saflık-tablosu.html","silver-quarter-calculator.html":"gümüş-çeyrek-hesaplayıcı.html","silver-ring-value.html":"gümüş-yüzük-değeri.html","silver-scrap-calculator.html":"gümüş-hurda-hesaplayıcı.html","silver-sell-or-hold.html":"gümüş-sat-veya-tut.html","silver-spoon-value.html":"gümüş-kaşık-değeri.html","silver-spot-price-today.html":"bugünkü-gümüş-spot-fiyatı.html","silver-tray-value.html":"gümüş-tepsi-değeri.html","silver-weight-converter.html":"gümüş-ağırlık-dönüştürücü.html","silverware-value-calculator.html":"gümüş-eşya-değeri-hesaplayıcı.html","sona-chandi-calculator.html":"sona-chandi-hesaplayıcı.html","sterling-silver-calculator.html":"gümüş-hesap-makinesi.html","tola-calculator.html":"tola-hesap-makinesi.html","what-does-925-mean.html":"925-ne-anlama-geliyor.html","what-is-junk-silver.html":"hurda-gümüş-nedir.html","what-is-silver-bullion.html":"külçe-gümüş-nedir.html","what-is-silver-melt-value.html":"gümüşün-erime-değeri-nedir.html","what-is-silver-scrap.html":"gümüş-hurdası-nedir.html","what-is-sterling-silver.html":"saf-gümüş-nedir.html","what-is-troy-ounce.html":"troy-ons-nedir.html"},"Home":"Ana sayfa","Calculators":"Hesap makineleri","Silver Scrap Calculator":"Gümüş Hurda Hesaplayıcı","Gold & Silver Calculator":"Altın ve Gümüş Hesaplayıcı","Silver Melt Value":"Gümüş Erime Değeri","Sterling Silver Calculator":"Gümüş Hesaplayıcı","Junk Silver Calculator":"Önemsiz Gümüş Hesaplayıcı","Silver Coin Value":"Gümüş Para Değeri","Silver Bar Value":"Gümüş Külçe Değeri","Silver Jewelry Value":"Gümüş Takı Değeri","Silverware Value":"Gümüş Eşya Değeri","Purity":"saflık","999 Fine Silver":"999 İnce Gümüş","958 Britannia Silver":"958 Britanya Gümüşü","925 Sterling Silver":"925 Ayar Gümüş","900 Coin Silver":"900 Sikke Gümüş","835 Silver":"835 Gümüş","800 Silver":"800 Gümüş","Silver Purity Chart":"Gümüş Saflık Tablosu","Pricing":"Fiyatlandırma","Silver Spot Price Today":"Gümüş Spot Fiyatı Bugün","925 Sterling Price / Gram":"925 Sterlin Fiyat / Gram","Silver Price Per Gram":"Gümüşün Gram Fiyatı","Silver Price Per Ounce":"Gümüş Ons Başına Fiyatı","Price in All Currencies":"Tüm Para Birimlerinde Fiyat","1/10oz Silver Value":"1/10oz Gümüş Değeri","1oz Silver Value":"1oz Gümüş Değeri","2oz Silver Value":"2oz Gümüş Değeri","5oz Silver Value":"5oz Gümüş Değeri","10oz Silver Value":"10oz Gümüş Değeri","100oz Silver Value":"100oz Gümüş Değeri","1kg Silver Value":"1kg Gümüş Değeri","Tools":"Araçlar","Silver Profit Calculator":"Gümüş Kar Hesaplayıcı","Batch Calculator":"Toplu Hesap Makinesi","Sona Chandi Calculator":"Sona Chandi Hesap Makinesi","Face Value Calculator":"Nominal Değer Hesaplayıcı","Weight Converter":"Ağırlık Dönüştürücü","Pennyweight (DWT) Calc":"Pennyweight (DWT) Hesaplaması","Tola Calculator":"Tola Hesaplayıcı","Sell or Hold Analysis":"Satış veya Tutma Analizi","Silver Identifier":"Gümüş Tanımlayıcı","Guides":"Kılavuzlar","How to Use Our Calculators":"Hesap Makinelerimiz Nasıl Kullanılır?","What Is Silver Scrap?":"Gümüş Hurda Nedir?","What Is Melt Value?":"Erime Değeri Nedir?","What Is Junk Silver?":"Önemsiz Gümüş Nedir?","What Is a Troy Ounce?":"Troy Ons Nedir?","What Is Silver Bullion?":"Gümüş Külçe Nedir?","How Silver Prices Work":"Gümüş Fiyatları Nasıl Çalışır?","Silver Hallmarks Guide":"Gümüş Nitelikler Kılavuzu","What Does 925 Mean?":"925 Ne Demektir?","What Is Sterling Silver?":"Gümüş Nedir?","How to Sell Silver":"Gümüş Nasıl Satılır","Scrap Silver":"Hurda Gümüş","Gold & Silver":"Altın ve Gümüş","Silver Profit":"Gümüş Karı","Melt Value":"Erime Değeri","Junk Silver":"Önemsiz Gümüş","Silver Coins":"Gümüş Paralar","Silver Dollar":"Gümüş Dolar","Silver Quarter":"Gümüş Çeyrek","Silver Dime":"Gümüş Kuruş","Jewelry Value":"Takı Değeri","925 Sterling":"925 Sterlin","Purity Chart":"Saflık Tablosu","How to Use Calculators":"Hesap Makineleri Nasıl Kullanılır","Sona Chandi Calc":"Sona Chandi Calc","Face Value Calc":"Nominal Değer Hesabı","Sell or Hold":"Sat veya Tut","About":"Hakkında","Privacy":"Gizlilik","Terms":"Şartlar","All rights reserved.":"Tüm hakları saklıdır.","Prices are for informational purposes only.":"Fiyatlar yalnızca bilgilendirme amaçlıdır.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Canlı spot fiyatları kullanan ücretsiz, doğru gümüş hesaplayıcıları. Gümüş hurdalarınızın, madeni paralarınızın, mücevherlerinizin ve külçelerinizin erime değerini anında hesaplayın."};
+</script>
+</body></html>

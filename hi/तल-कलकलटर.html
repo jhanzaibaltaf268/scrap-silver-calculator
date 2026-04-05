@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="hi"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>चांदी तोला कैलकुलेटर - तोला को ग्राम और चांदी के मूल्य में बदलें</title>
+  <meta name="description" content="मुफ़्त चाँदी तोला कैलकुलेटर। तोला को ग्राम, ट्रॉय औंस में बदलें और आज के लाइव स्पॉट मूल्य पर प्रति तोला चांदी के मूल्य की गणना करें।">
+  <meta name="keywords" content="tola calculator, tola to grams, silver tola price, silver price per tola, tola converter, 1 tola silver price">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/tola-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" style="padding: var(--space-2xl) 0 var(--space-xl);">
+      <div class="container hero-content">
+        <div id="breadcrumb"></div>
+        
+        <h1>चाँदी <span class="highlight">Tola Calculator</span></h1>
+        <p class="hero-subtitle">तोला को ग्राम, ट्रॉय औंस में बदलें और आज के लाइव स्पॉट मूल्य पर प्रति तोला चांदी के मूल्य की गणना करें। भारत, पाकिस्तान, बांग्लादेश और मध्य पूर्व में उपयोग किया जाता है।</p>
+
+        <div class="calc-widget slide-up" id="tola-calc">
+          <div class="calc-widget-title"><span class="icon">🌙</span> Silver Tola Value Calculator</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="tola-weight">वजन तोला में</label>
+              <input type="number" class="form-input" id="tola-weight" placeholder="Enter weight in tola" step="0.01" min="0" value="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="tola-purity">चाँदी की शुद्धता</label>
+              <select class="form-select" id="tola-purity">
+                <option value="0.999">999 - फाइन सिल्वर (99.9%)</option>
+                <option value="0.958">958 - ब्रिटानिया (95.8%)</option>
+                <option value="0.925" selected="">925 - स्टर्लिंग (92.5%)</option>
+                <option value="0.900">900 - सिक्का चाँदी (90%)</option>
+                <option value="0.835">835 - यूरोपीय (83.5%)</option>
+                <option value="0.800">800 - यूरोपीय (80%)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Conversion results -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-md);margin-bottom:var(--space-lg);">
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Grams</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-grams">11.66</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Troy Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-ozt">0.3750</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Pennyweight</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-dwt">7.500</div>
+            </div>
+          </div>
+
+          <div class="result-display" id="tola-result">
+            <div class="result-label">चांदी का मूल्य प्रति तोला</div>
+            <div class="result-value" id="tola-result-value">$0.00</div>
+            <div class="result-detail" id="tola-result-detail">Enter weight in tola to calculate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick reference table -->
+    <section class="section" style="padding:var(--space-2xl) 0;">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:var(--space-lg);">तोला रूपांतरण तालिका</h2>
+        <div style="max-width:700px;margin:0 auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border-medium);">
+                <th style="padding:var(--space-md);text-align:left;color:var(--text-muted);font-size:var(--fs-sm);">तोला</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">ग्राम</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">ट्रॉय ओज़</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">925 मान</th>
+              </tr>
+            </thead>
+            <tbody id="tola-table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+      <div class="container">
+        <div class="content-body">
+          <h2>एक तोला क्या है?</h2>
+          <p>A <strong>tola</strong> वजन की एक पारंपरिक इकाई है जिसका उपयोग दक्षिण एशिया और मध्य पूर्व में सोने और चांदी को मापने के लिए किया जाता है। एक तोला बराबर होता है <strong>11.6638 grams</strong> या लगभग 0.375 ट्रॉय औंस। यह शब्द हिंदी/उर्दू शब्द "तोला" से आया है और ऐतिहासिक रूप से चांदी के रुपये के सिक्के के वजन से जुड़ा था।</p>
+
+          <h3>तोला का उपयोग कहाँ किया जाता है?</h3>
+          <p>तोला का प्रयोग आमतौर पर किया जाता है <strong>India, Pakistan, Bangladesh, Nepal, Sri Lanka,</strong> और के कुछ भाग <strong>Middle East</strong> कीमती धातुएँ खरीदते और बेचते समय। जब आप स्थानीय जौहरी या बाज़ार में "प्रति तोला" में उद्धृत चांदी की कीमतें देखते हैं, तो यह कैलकुलेटर आपको तुलना के लिए उस कीमत को अंतरराष्ट्रीय मानकों में बदलने में मदद करता है।</p>
+
+          <h3>तोला रूपांतरण सूत्र</h3>
+          <ul style="list-style:disc;margin-left:var(--space-xl);">
+            <li style="padding:4px 0;color:var(--text-secondary);">1 तोला = 11.6638 ग्राम</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 तोला = 0.375 ट्रॉय औंस (3/8 औंस)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 तोला = 7.5 पेनीवेट (DWT)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 ग्राम = 0.08573 तोला</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 ट्रॉय औंस = 2.6667 तोला</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">10 तोला = 116.638 ग्राम = 3.75 ट्रॉय औंस</li>
+          </ul>
+
+          <h3>चांदी की कीमत प्रति तोला आज</h3>
+          <p>प्रति तोला चांदी की कीमत वैश्विक हाजिर कीमत के आधार पर बदलती रहती है। चूँकि 1 तोला = 0.375 ट्रॉय औंस, प्रति तोला मूल्य प्राप्त करने के लिए हाजिर मूल्य को 0.375 (और फिर शुद्धता से) से गुणा करें। हमारा कैलकुलेटर लाइव कीमतों का उपयोग करके स्वचालित रूप से ऐसा करता है।</p>
+
+          <h3>संबंधित कैलकुलेटर</h3>
+          <p>हमारा उपयोग करें <a href="पनवट-कलकलटर.html">pennyweight calculator</a> DWT रूपांतरणों के लिए, <a href="चद-वजन-कनवरटर.html">weight converter</a> सभी इकाइयों के लिए, या <a href="चद-क-कमत-सभ-मदरए.html">multi-currency price page</a> पीकेआर, आईएनआर और अन्य स्थानीय मुद्राओं में आज की चांदी की कीमत देखने के लिए।</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      { label: 'Home', href: 'index.html' },
+      { label: 'Tools', href: '#' },
+      { label: 'Tola Calculator' }
+    ]);
+
+    const TOLA_TO_GRAMS = 11.6638;
+    const tolaWeight = document.getElementById('tola-weight');
+    const tolaPurity = document.getElementById('tola-purity');
+    const tolaGrams = document.getElementById('tola-grams');
+    const tolaOzt = document.getElementById('tola-ozt');
+    const tolaDwt = document.getElementById('tola-dwt');
+    const tolaResultValue = document.getElementById('tola-result-value');
+    const tolaResultDetail = document.getElementById('tola-result-detail');
+
+    function calcTola() {
+      const tola = parseFloat(tolaWeight.value) || 0;
+      const purity = parseFloat(tolaPurity.value);
+      const spotPrice = SilverPrice.getPrice();
+
+      const grams = tola * TOLA_TO_GRAMS;
+      const troyOz = grams / 31.1035;
+      const dwt = troyOz * 20;
+
+      tolaGrams.textContent = grams.toFixed(2);
+      tolaOzt.textContent = troyOz.toFixed(4);
+      tolaDwt.textContent = dwt.toFixed(3);
+
+      if (tola <= 0) {
+        tolaResultValue.textContent = '$0.00';
+        tolaResultDetail.textContent = 'Enter weight in tola to calculate';
+        return;
+      }
+
+      const value = troyOz * purity * spotPrice;
+      const pureGrams = grams * purity;
+      tolaResultValue.textContent = SilverCalc.formatCurrency(value);
+      tolaResultDetail.textContent = `${pureGrams.toFixed(2)}g pure silver · ${(troyOz * purity).toFixed(4)} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+    }
+
+    tolaWeight.addEventListener('input', calcTola);
+    tolaPurity.addEventListener('change', calcTola);
+    SilverPrice.onPriceUpdate(() => calcTola());
+    calcTola();
+
+    // Conversion table
+    const tableBody = document.getElementById('tola-table');
+    [0.5, 1, 2, 3, 5, 10, 15, 20, 50].forEach(tola => {
+      const g = (tola * TOLA_TO_GRAMS).toFixed(2);
+      const ozt = (tola * TOLA_TO_GRAMS / 31.1035).toFixed(3);
+      const spotPrice = SilverPrice.getPrice();
+      const val = SilverCalc.formatCurrency((tola * TOLA_TO_GRAMS / 31.1035) * 0.925 * spotPrice);
+      tableBody.innerHTML += `<tr style="border-bottom:1px solid var(--border-subtle);">
+        <td style="padding:var(--space-md);color:var(--text-primary);font-weight:600;">${tola} tola</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${g}g</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${ozt} oz</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--accent-primary);font-weight:600;">${val}</td>
+      </tr>`;
+    });
+
+    SiteComponents.injectFAQSchema([
+      { q: 'What is a tola?', a: 'A tola is a traditional unit of weight used in South Asia and the Middle East for precious metals. 1 tola equals 11.6638 grams or 0.375 troy ounces.' },
+      { q: 'How many grams in a tola?', a: '1 tola equals exactly 11.6638 grams.' },
+      { q: 'What is the silver price per tola today?', a: 'The silver price per tola depends on the current spot price. Since 1 tola = 0.375 troy ounces, multiply today\'s spot price by 0.375 and the purity to get the value.' },
+      { q: 'How many tola in a troy ounce?', a: 'There are approximately 2.6667 tola in one troy ounce (1 ozt = 31.1035g ÷ 11.6638g per tola).' }
+    ]);
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10oz-चद-क-मलय.html","100oz-silver-value.html":"100-औस-चद-क-मलय.html","10oz-silver-value.html":"10-औस-चद-क-मलय.html","1kg-silver-value.html":"1-कल-चद-क-मलय.html","1oz-silver-value.html":"1-औस-चद-क-मलय.html","2oz-silver-value.html":"2-औस-चद-क-मलय.html","5oz-silver-value.html":"5-औस-चद-क-मलय.html","800-silver-calculator.html":"800-चद-कलकलटर.html","835-silver-calculator.html":"835-चद-कलकलटर.html","900-silver-calculator.html":"900-चद-कलकलटर.html","925-silver-calculator.html":"925-चद-कलकलटर.html","925-sterling-silver-price-per-gram.html":"परत-गरम-925-सटरलग-चद-क-कमत.html","958-silver-calculator.html":"958-चद-कलकलटर.html","999-silver-calculator.html":"999-चद-कलकलटर.html","canadian-silver-coin-calculator.html":"कनडई-चद-क-सकक-कलकलटर.html","face-value-silver-calculator.html":"अकत-मलय-चद-कलकलटर.html","gold-and-silver-calculator.html":"सन-और-चद-क-कलकलटर.html","how-silver-prices-work.html":"चद-क-कमत-कस-कम-करत-ह.html","how-to-sell-silver.html":"चद-कस-बच.html","how-to-use-silver-calculators.html":"सलवर-कलकलटर-क-उपयग-कस-कर.html","identify-silver.html":"चद-क-पहचन-कर.html","junk-silver-calculator.html":"जक-सलवर-कलकलटर.html","pennyweight-calculator.html":"पनवट-कलकलटर.html","silver-bar-value-calculator.html":"सलवर-बर-वलय-कलकलटर.html","silver-batch-calculator.html":"चद-बच-कलकलटर.html","silver-bracelet-value.html":"चद-क-कगन-क-मलय.html","silver-chain-value.html":"चद-क-चन-क-मलय.html","silver-coin-value-calculator.html":"चद-क-सकक-क-मलय-कलकलटर.html","silver-cup-value.html":"चद-क-कप-क-मलय.html","silver-dime-calculator.html":"सलवर-डइम-कलकलटर.html","silver-dollar-calculator.html":"चद-डलर-कलकलटर.html","silver-fork-value.html":"चद-कट-मलय.html","silver-hallmarks-guide.html":"चद-हलमरक-गइड.html","silver-jewelry-value-calculator.html":"चद-क-आभषण-मलय-कलकलटर.html","silver-knife-value.html":"चद-क-चक-क-मलय.html","silver-melt-value-calculator.html":"चद-पघल-मलय-कलकलटर.html","silver-necklace-value.html":"चद-क-हर-क-मलय.html","silver-plate-value.html":"चद-क-पलट-क-मलय.html","silver-price-all-currencies.html":"चद-क-कमत-सभ-मदरए.html","silver-price-per-gram.html":"चद-क-कमत-परत-गरम.html","silver-price-per-ounce.html":"चद-क-कमत-परत-औस.html","silver-profit-calculator.html":"चद-लभ-कलकलटर.html","silver-purity-chart.html":"चद-क-शदधत-चरट.html","silver-quarter-calculator.html":"चद-तमह-कलकलटर.html","silver-ring-value.html":"चद-क-अगठ-क-मलय.html","silver-scrap-calculator.html":"चद-सकरप-कलकलटर.html","silver-sell-or-hold.html":"चद-बच-य-रख.html","silver-spoon-value.html":"चद-क-चममच-क-मलय.html","silver-spot-price-today.html":"चद-क-हजर-कमत-आज.html","silver-tray-value.html":"चद-क-टर-क-मलय.html","silver-weight-converter.html":"चद-वजन-कनवरटर.html","silverware-value-calculator.html":"चद-क-बरतन-मलय-कलकलटर.html","sona-chandi-calculator.html":"सन-चड-कलकलटर.html","sterling-silver-calculator.html":"सटरलग-सलवर-कलकलटर.html","tola-calculator.html":"तल-कलकलटर.html","what-does-925-mean.html":"925-क-कय-मतलब-ह.html","what-is-junk-silver.html":"जक-सलवर-कय-ह.html","what-is-silver-bullion.html":"चद-बलयन-कय-ह.html","what-is-silver-melt-value.html":"चद-क-पघल-हआ-मलय-कय-ह.html","what-is-silver-scrap.html":"चद-सकरप-कय-ह.html","what-is-sterling-silver.html":"सटरलग-सलवर-कय-ह.html","what-is-troy-ounce.html":"टरय-औस-कय-ह.html"},"Home":"घर","Calculators":"कैलकुलेटर","Silver Scrap Calculator":"सिल्वर स्क्रैप कैलकुलेटर","Gold & Silver Calculator":"सोना और चांदी कैलकुलेटर","Silver Melt Value":"चाँदी का पिघला हुआ मूल्य","Sterling Silver Calculator":"स्टर्लिंग सिल्वर कैलकुलेटर","Junk Silver Calculator":"जंक सिल्वर कैलकुलेटर","Silver Coin Value":"चांदी के सिक्के का मूल्य","Silver Bar Value":"सिल्वर बार वैल्यू","Silver Jewelry Value":"चाँदी के आभूषणों का मूल्य","Silverware Value":"चांदी के बर्तन का मूल्य","Purity":"पवित्रता","999 Fine Silver":"999 बढ़िया चाँदी","958 Britannia Silver":"958 ब्रिटानिया सिल्वर","925 Sterling Silver":"925 स्टर्लिंग सिल्वर","900 Coin Silver":"900 सिक्का चांदी","835 Silver":"835 रजत","800 Silver":"800 रजत","Silver Purity Chart":"चांदी की शुद्धता चार्ट","Pricing":"मूल्य निर्धारण","Silver Spot Price Today":"चाँदी की हाजिर कीमत आज","925 Sterling Price / Gram":"925 स्टर्लिंग मूल्य/ग्राम","Silver Price Per Gram":"चांदी की कीमत प्रति ग्राम","Silver Price Per Ounce":"चांदी की कीमत प्रति औंस","Price in All Currencies":"सभी मुद्राओं में मूल्य","1/10oz Silver Value":"1/10oz चांदी का मूल्य","1oz Silver Value":"1oz चांदी का मूल्य","2oz Silver Value":"2oz चांदी का मूल्य","5oz Silver Value":"5 औंस चांदी का मूल्य","10oz Silver Value":"10oz चांदी का मूल्य","100oz Silver Value":"100oz चांदी का मूल्य","1kg Silver Value":"1 किलो चांदी का मूल्य","Tools":"उपकरण","Silver Profit Calculator":"रजत लाभ कैलकुलेटर","Batch Calculator":"बैच कैलकुलेटर","Sona Chandi Calculator":"सोना चंडी कैलकुलेटर","Face Value Calculator":"अंकित मूल्य कैलकुलेटर","Weight Converter":"वजन परिवर्तक","Pennyweight (DWT) Calc":"पेनीवेट (डीडब्ल्यूटी) कैल्क","Tola Calculator":"तोला कैलकुलेटर","Sell or Hold Analysis":"विश्लेषण बेचें या रखें","Silver Identifier":"रजत पहचानकर्ता","Guides":"मार्गदर्शक","How to Use Our Calculators":"हमारे कैलकुलेटर का उपयोग कैसे करें","What Is Silver Scrap?":"सिल्वर स्क्रैप क्या है?","What Is Melt Value?":"पिघला हुआ मूल्य क्या है?","What Is Junk Silver?":"जंक सिल्वर क्या है?","What Is a Troy Ounce?":"ट्रॉय औंस क्या है?","What Is Silver Bullion?":"सिल्वर बुलियन क्या है?","How Silver Prices Work":"चांदी की कीमतें कैसे काम करती हैं","Silver Hallmarks Guide":"सिल्वर हॉलमार्क गाइड","What Does 925 Mean?":"925 का क्या मतलब है?","What Is Sterling Silver?":"स्टर्लिंग सिल्वर क्या है?","How to Sell Silver":"चाँदी कैसे बेचें","Scrap Silver":"चाँदी का स्क्रैप","Gold & Silver":"सोना और चाँदी","Silver Profit":"चाँदी का लाभ","Melt Value":"पिघला हुआ मूल्य","Junk Silver":"जंक सिल्वर","Silver Coins":"चाँदी के सिक्के","Silver Dollar":"चाँदी का डॉलर","Silver Quarter":"सिल्वर क्वार्टर","Silver Dime":"सिल्वर डाइम","Jewelry Value":"आभूषण मूल्य","925 Sterling":"925 स्टर्लिंग","Purity Chart":"शुद्धता चार्ट","How to Use Calculators":"कैलकुलेटर का उपयोग कैसे करें","Sona Chandi Calc":"सोना चांदी कैल्क","Face Value Calc":"अंकित मूल्य कैल्क","Sell or Hold":"बेचो या पकड़ो","About":"के बारे में","Privacy":"गोपनीयता","Terms":"शर्तें","All rights reserved.":"सर्वाधिकार सुरक्षित.","Prices are for informational purposes only.":"कीमतें केवल सूचनात्मक उद्देश्यों के लिए हैं।","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"लाइव स्पॉट कीमतों का उपयोग करके मुफ़्त, सटीक चांदी कैलकुलेटर। अपने चांदी के स्क्रैप, सिक्कों, गहनों और छड़ों के पिघले हुए मूल्य की तुरंत गणना करें।"};
+</script>
+</body></html>

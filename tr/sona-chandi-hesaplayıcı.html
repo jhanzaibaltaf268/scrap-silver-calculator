@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="tr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sona Chandi Hesaplayıcı — Altın ve Gümüş Canlı Kur Hesaplayıcı</title>
+  <meta name="description" content="Gerçek zamanlı Sona (Altın) ve Chandi (Gümüş) oranlarını hesaplayın. Tola, Gram ve Kilo başına canlı piyasa fiyatlarını kullanan ücretsiz çevrimiçi Sona Chandi hesaplayıcısı.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/sona-chandi-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Sona Chandi Calculator","description":"Calculate Sona (Gold) and Chandi (Silver) prices in Tola and Grams.","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container">
+      <div id="breadcrumb"></div>
+    </div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>Sona Chandi <span class="highlight">Calculator</span></h1>
+        <p>Sona (Altın) ve Chandi'nin (Gümüş) canlı piyasa değerini tam ağırlığa, Tunch'a (saflık) ve günün spot kuruna göre hesaplayın.</p>
+      </div>
+    </section>
+    
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">✨</span> Sona Chandi Rate Calculator</div>
+        
+        <div class="form-group" style="display:flex; gap:10px; margin-bottom:var(--space-md);">
+          <label style="flex:1; cursor:pointer;">
+            <input type="radio" name="metalType" value="chandi" checked="" style="display:none;">
+            <div id="btn-chandi" style="padding:10px; text-align:center; border:2px solid var(--accent-primary); border-radius:var(--radius-sm); font-weight:600; background:rgba(59,130,246,0.1);">🥈 Chandi (Silver)</div>
+          </label>
+          <label style="flex:1; cursor:pointer;">
+            <input type="radio" name="metalType" value="sona" style="display:none;">
+            <div id="btn-sona" style="padding:10px; text-align:center; border:2px solid var(--border-subtle); border-radius:var(--radius-sm); font-weight:600; color:var(--text-secondary);">🥇 Sona (Gold)</div>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="weight">Ağırlık</label>
+            <input type="number" class="form-input" id="weight" placeholder="e.g. 1" step="0.01" min="0" value="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="unit">Birim</label>
+            <select class="form-select" id="unit">
+              <option value="tola" selected="">Tola (11.66g)</option>
+              <option value="g">Gram (g)</option>
+              <option value="kg">Kilogram (kg)</option>
+              <option value="oz">Troy Ons (oz)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="tunch">Tunch (Saflık %'si)</label>
+          <div class="input-group">
+            <input type="number" class="form-input" id="tunch" placeholder="e.g. 99.9" step="0.1" min="0" max="100" value="99.9">
+            <span class="input-suffix">%</span>
+          </div>
+          <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;" id="tunch-hint">
+            Standard: 99.9% (Fine), 92.5% (Sterling), 80.0% (Jewelry)
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="currency">Para Birimini Görüntüle</label>
+          <select class="form-select" id="currency">
+            <option value="PKR">Pakistan Rupisi (PKR)</option>
+            <option value="INR">Hindistan Rupisi (INR)</option>
+            <option value="USD" selected="">ABD Doları (USD)</option>
+            <option value="AED">BAE Dirhemi (AED)</option>
+            <option value="SAR">Suudi Arabistan Riyali (SAR)</option>
+          </select>
+        </div>
+
+        <div class="result-display">
+          <div class="result-label" id="res-title">Chandi (Gümüş) Değeri</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>Sona Chandi Hesap Makinesi nedir?</h2>
+        <p>Güney Asya'da (Hindistan, Pakistan, Bangladeş) ve Orta Doğu'da değerli metallere evrensel olarak şu ad verilir: <strong>Sona</strong> (Altın) ve <strong>Chandi</strong> (Gümüş). Bu özel hesaplayıcı, kuyumcuların, alıcıların ve satıcıların bu metallerin canlı değerini aşağıdaki gibi yerel ölçümleri kullanarak doğru bir şekilde hesaplamasına olanak tanır: <strong>Tola</strong> ve <strong>Tunch</strong>.</p>
+        
+        <h3>Tola'yı Anlamak</h3>
+        <p>Tola, Güney Asya'daki değerli metallerin geleneksel kütle birimidir. Tarihsel farklılıklar olsa da, yasal olarak tanımlanan ve evrensel olarak kabul edilen "standart tola" bugün tam olarak aynıdır. <strong>11.6638038 grams</strong> (veya genellikle 11,66g'ye basitleştirilmiştir). Bir Troy Ons yaklaşık olarak 2,66 tolaya eşittir.</p>
+
+        <h3>"Tunç" nedir?</h3>
+        <p><strong>Tunch</strong> metalin saflığı veya inceliği için kullanılan geleneksel terimdir. Kuyumcular genellikle karat veya binde birilik incelik (925 gibi) yerine sadece yüzdeyi referans alır.</p>
+        <ul>
+          <li><strong>99.9% Tunch:</strong> Pure Fine Sona/Chandi (24 Ayar Altın veya 999 Gümüş)</li>
+          <li><strong>91.6% Tunch:</strong> Standart Takı Sona (22 Ayar Altın)</li>
+          <li><strong>92.5% Tunch:</strong> Sterlin Chandi (925 Gümüş)</li>
+          <li><strong>80% - 60% Tunch:</strong> Genellikle eski, geleneksel Chandi halhallarında/payallarında ve ağır mücevherlerde bulunur.</li>
+        </ul>
+
+        <h3>Sona Chandi Canlı Oranlarını Kontrol Etme</h3>
+        <p>Altın ve gümüşün uluslararası spot fiyatları, COMEX gibi borsalarda Troy Ons başına ABD Doları cinsinden belirlenmektedir. INR veya PKR cinsinden yerel fiyatlar, bu canlı USD fiyatının mevcut döviz (forex) kuruyla birleştirilmesiyle belirlenir. Hesap makinemiz bu karmaşık matematiği anında gerçekleştirerek size metallerinizin gerçek piyasa değerini verir.</p>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom: var(--space-lg);">İlgili Bölgesel Hesap Makineleri</h3>
+        <div class="related-grid">
+          <a href="tola-hesap-makinesi.html" class="related-link"><span class="r-icon">🌙</span> Tola Calculator</a>
+          <a href="gümüş-fiyatı-tüm-para-birimleri.html" class="related-link"><span class="r-icon">🌍</span> Prices in PKR/INR</a>
+          <a href="altın-ve-gümüş-hesaplayıcı.html" class="related-link"><span class="r-icon">🥇</span> Gold &amp; Silver Calc</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      {label: window.MenuTranslations['Home'] || 'Ana sayfa', href:'index.html'},
+      {label:'Sona Chandi Calculator'}
+    ]);
+
+    const radios = document.querySelectorAll('input[name="metalType"]');
+    const btnChandi = document.getElementById('btn-chandi');
+    const btnSona = document.getElementById('btn-sona');
+    
+    const w = document.getElementById('weight');
+    const u = document.getElementById('unit');
+    const t = document.getElementById('tunch');
+    const c = document.getElementById('currency');
+    const tunchHint = document.getElementById('tunch-hint');
+    
+    const resTitle = document.getElementById('res-title');
+    const resValue = document.getElementById('result-value');
+    const resDetail = document.getElementById('result-detail');
+
+    // Handle metal toggle styling
+    radios.forEach(r => {
+      r.addEventListener('change', (e) => {
+        if (e.target.value === 'chandi') {
+          btnChandi.style.border = '2px solid var(--accent-primary)';
+          btnChandi.style.background = 'rgba(59,130,246,0.1)';
+          btnChandi.style.color = '';
+          btnSona.style.border = '2px solid var(--border-subtle)';
+          btnSona.style.background = 'transparent';
+          btnSona.style.color = 'var(--text-secondary)';
+          tunchHint.textContent = 'Standard: 99.9% (Fine), 92.5% (Sterling), 80.0% (Jewelry)';
+          t.value = '99.9';
+          resTitle.textContent = 'Chandi (Silver) Value';
+        } else {
+          btnSona.style.border = '2px solid #FCD34D';
+          btnSona.style.background = 'rgba(252,211,77,0.1)';
+          btnSona.style.color = '#B45309';
+          btnChandi.style.border = '2px solid var(--border-subtle)';
+          btnChandi.style.background = 'transparent';
+          btnChandi.style.color = 'var(--text-secondary)';
+          tunchHint.textContent = 'Standard: 99.9% (24K), 91.6% (22K), 75.0% (18K)';
+          t.value = '91.6';
+          resTitle.textContent = 'Sona (Gold) Value';
+        }
+        calc();
+      });
+    });
+
+    function calc() {
+      const metal = document.querySelector('input[name="metalType"]:checked').value;
+      const weight = parseFloat(w.value) || 0;
+      const unit = u.value;
+      const tunch = parseFloat(t.value) || 0;
+      const purity = tunch / 100;
+      const curCode = c.value;
+      
+      const spotUSD = metal === 'chandi' ? SilverPrice.getPrice() : (SilverPrice.getGoldPrice() || 2500);
+      
+      // Convert to grams
+      let grams = 0;
+      if (unit === 'g') grams = weight;
+      else if (unit === 'kg') grams = weight * 1000;
+      else if (unit === 'oz') grams = weight * 31.1035;
+      else if (unit === 'tola') grams = weight * 11.6638;
+
+      // Pure metal weight
+      const pureGrams = grams * purity;
+      const pureOz = pureGrams / 31.1035;
+
+      // Value in USD
+      const valueUSD = pureOz * spotUSD;
+
+      // Final Value in chosen currency
+      const finalValue = valueUSD * SilverPrice.CURRENCIES[curCode].rate;
+      const symbol = SilverPrice.CURRENCIES[curCode].symbol;
+
+      if (weight > 0 && tunch > 0) {
+        // Format with commas, 2 decimals
+        resValue.textContent = symbol + finalValue.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+        
+        const spotLocal = spotUSD * SilverPrice.CURRENCIES[curCode].rate;
+        resDetail.textContent = `${pureGrams.toFixed(2)}g pure metal · Spot: ${symbol}${spotLocal.toFixed(2)}/oz`;
+      } else {
+        resValue.textContent = symbol + '0.00';
+        resDetail.textContent = 'Enter weight and tunch to calculate';
+      }
+    }
+
+    [w, t].forEach(el => el.addEventListener('input', calc));
+    [u, c].forEach(el => el.addEventListener('change', calc));
+    SilverPrice.onPriceUpdate(() => calc());
+    
+    // Attempt to set local currency based on timezone (lazy heuristic)
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (tz.includes('Karachi')) c.value = 'PKR';
+    else if (tz.includes('Calcutta') || tz.includes('Kolkata')) c.value = 'INR';
+    else if (tz.includes('Dubai')) c.value = 'AED';
+    else if (tz.includes('Riyadh')) c.value = 'SAR';
+
+    calc();
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10oz-gümüş-değeri.html","100oz-silver-value.html":"100oz-gümüş-değeri.html","10oz-silver-value.html":"10oz-gümüş-değeri.html","1kg-silver-value.html":"1kg-gümüş-değeri.html","1oz-silver-value.html":"1oz-gümüş-değeri.html","2oz-silver-value.html":"2-ons-gümüş-değeri.html","5oz-silver-value.html":"5oz-gümüş-değeri.html","800-silver-calculator.html":"800-gümüş-hesap-makinesi.html","835-silver-calculator.html":"835-gümüş-hesap-makinesi.html","900-silver-calculator.html":"900-gümüş-hesap-makinesi.html","925-silver-calculator.html":"925-gümüş-hesap-makinesi.html","925-sterling-silver-price-per-gram.html":"925-ayar-gümüş-gram-fiyatı.html","958-silver-calculator.html":"958-gümüş-hesap-makinesi.html","999-silver-calculator.html":"999-gümüş-hesap-makinesi.html","canadian-silver-coin-calculator.html":"kanada-gümüş-para-hesaplayıcısı.html","face-value-silver-calculator.html":"nominal-değer-gümüş-hesaplayıcı.html","gold-and-silver-calculator.html":"altın-ve-gümüş-hesaplayıcı.html","how-silver-prices-work.html":"gümüş-fiyatları-nasıl-çalışır.html","how-to-sell-silver.html":"gümüş-nasıl-satılır.html","how-to-use-silver-calculators.html":"gümüş-hesap-makineleri-nasıl-kullanılır.html","identify-silver.html":"gümüşü-tanımla.html","junk-silver-calculator.html":"önemsiz-gümüş-hesaplayıcı.html","pennyweight-calculator.html":"kuruşluk-hesap-makinesi.html","silver-bar-value-calculator.html":"gümüş-külçe-değeri-hesaplayıcı.html","silver-batch-calculator.html":"gümüş-toplu-hesap-makinesi.html","silver-bracelet-value.html":"gümüş-bilezik-değeri.html","silver-chain-value.html":"gümüş-zincir-değeri.html","silver-coin-value-calculator.html":"gümüş-para-değeri-hesaplama.html","silver-cup-value.html":"gümüş-kupa-değeri.html","silver-dime-calculator.html":"gümüş-kuruş-hesaplayıcı.html","silver-dollar-calculator.html":"gümüş-dolar-hesaplama.html","silver-fork-value.html":"gümüş-çatal-değeri.html","silver-hallmarks-guide.html":"gümüşün-ayırt-edici-özellikleri-kılavuzu.html","silver-jewelry-value-calculator.html":"gümüş-takı-değeri-hesaplama.html","silver-knife-value.html":"gümüş-bıçak-değeri.html","silver-melt-value-calculator.html":"gümüş-erime-değeri-hesaplayıcısı.html","silver-necklace-value.html":"gümüş-kolye-değeri.html","silver-plate-value.html":"gümüş-tabak-değeri.html","silver-price-all-currencies.html":"gümüş-fiyatı-tüm-para-birimleri.html","silver-price-per-gram.html":"gram-başına-gümüş-fiyatı.html","silver-price-per-ounce.html":"ons-başına-gümüş-fiyatı.html","silver-profit-calculator.html":"gümüş-kar-hesaplama.html","silver-purity-chart.html":"gümüş-saflık-tablosu.html","silver-quarter-calculator.html":"gümüş-çeyrek-hesaplayıcı.html","silver-ring-value.html":"gümüş-yüzük-değeri.html","silver-scrap-calculator.html":"gümüş-hurda-hesaplayıcı.html","silver-sell-or-hold.html":"gümüş-sat-veya-tut.html","silver-spoon-value.html":"gümüş-kaşık-değeri.html","silver-spot-price-today.html":"bugünkü-gümüş-spot-fiyatı.html","silver-tray-value.html":"gümüş-tepsi-değeri.html","silver-weight-converter.html":"gümüş-ağırlık-dönüştürücü.html","silverware-value-calculator.html":"gümüş-eşya-değeri-hesaplayıcı.html","sona-chandi-calculator.html":"sona-chandi-hesaplayıcı.html","sterling-silver-calculator.html":"gümüş-hesap-makinesi.html","tola-calculator.html":"tola-hesap-makinesi.html","what-does-925-mean.html":"925-ne-anlama-geliyor.html","what-is-junk-silver.html":"hurda-gümüş-nedir.html","what-is-silver-bullion.html":"külçe-gümüş-nedir.html","what-is-silver-melt-value.html":"gümüşün-erime-değeri-nedir.html","what-is-silver-scrap.html":"gümüş-hurdası-nedir.html","what-is-sterling-silver.html":"saf-gümüş-nedir.html","what-is-troy-ounce.html":"troy-ons-nedir.html"},"Home":"Ana sayfa","Calculators":"Hesap makineleri","Silver Scrap Calculator":"Gümüş Hurda Hesaplayıcı","Gold & Silver Calculator":"Altın ve Gümüş Hesaplayıcı","Silver Melt Value":"Gümüş Erime Değeri","Sterling Silver Calculator":"Gümüş Hesaplayıcı","Junk Silver Calculator":"Önemsiz Gümüş Hesaplayıcı","Silver Coin Value":"Gümüş Para Değeri","Silver Bar Value":"Gümüş Külçe Değeri","Silver Jewelry Value":"Gümüş Takı Değeri","Silverware Value":"Gümüş Eşya Değeri","Purity":"saflık","999 Fine Silver":"999 İnce Gümüş","958 Britannia Silver":"958 Britanya Gümüşü","925 Sterling Silver":"925 Ayar Gümüş","900 Coin Silver":"900 Sikke Gümüş","835 Silver":"835 Gümüş","800 Silver":"800 Gümüş","Silver Purity Chart":"Gümüş Saflık Tablosu","Pricing":"Fiyatlandırma","Silver Spot Price Today":"Gümüş Spot Fiyatı Bugün","925 Sterling Price / Gram":"925 Sterlin Fiyat / Gram","Silver Price Per Gram":"Gümüşün Gram Fiyatı","Silver Price Per Ounce":"Gümüş Ons Başına Fiyatı","Price in All Currencies":"Tüm Para Birimlerinde Fiyat","1/10oz Silver Value":"1/10oz Gümüş Değeri","1oz Silver Value":"1oz Gümüş Değeri","2oz Silver Value":"2oz Gümüş Değeri","5oz Silver Value":"5oz Gümüş Değeri","10oz Silver Value":"10oz Gümüş Değeri","100oz Silver Value":"100oz Gümüş Değeri","1kg Silver Value":"1kg Gümüş Değeri","Tools":"Araçlar","Silver Profit Calculator":"Gümüş Kar Hesaplayıcı","Batch Calculator":"Toplu Hesap Makinesi","Sona Chandi Calculator":"Sona Chandi Hesap Makinesi","Face Value Calculator":"Nominal Değer Hesaplayıcı","Weight Converter":"Ağırlık Dönüştürücü","Pennyweight (DWT) Calc":"Pennyweight (DWT) Hesaplaması","Tola Calculator":"Tola Hesaplayıcı","Sell or Hold Analysis":"Satış veya Tutma Analizi","Silver Identifier":"Gümüş Tanımlayıcı","Guides":"Kılavuzlar","How to Use Our Calculators":"Hesap Makinelerimiz Nasıl Kullanılır?","What Is Silver Scrap?":"Gümüş Hurda Nedir?","What Is Melt Value?":"Erime Değeri Nedir?","What Is Junk Silver?":"Önemsiz Gümüş Nedir?","What Is a Troy Ounce?":"Troy Ons Nedir?","What Is Silver Bullion?":"Gümüş Külçe Nedir?","How Silver Prices Work":"Gümüş Fiyatları Nasıl Çalışır?","Silver Hallmarks Guide":"Gümüş Nitelikler Kılavuzu","What Does 925 Mean?":"925 Ne Demektir?","What Is Sterling Silver?":"Gümüş Nedir?","How to Sell Silver":"Gümüş Nasıl Satılır","Scrap Silver":"Hurda Gümüş","Gold & Silver":"Altın ve Gümüş","Silver Profit":"Gümüş Karı","Melt Value":"Erime Değeri","Junk Silver":"Önemsiz Gümüş","Silver Coins":"Gümüş Paralar","Silver Dollar":"Gümüş Dolar","Silver Quarter":"Gümüş Çeyrek","Silver Dime":"Gümüş Kuruş","Jewelry Value":"Takı Değeri","925 Sterling":"925 Sterlin","Purity Chart":"Saflık Tablosu","How to Use Calculators":"Hesap Makineleri Nasıl Kullanılır","Sona Chandi Calc":"Sona Chandi Calc","Face Value Calc":"Nominal Değer Hesabı","Sell or Hold":"Sat veya Tut","About":"Hakkında","Privacy":"Gizlilik","Terms":"Şartlar","All rights reserved.":"Tüm hakları saklıdır.","Prices are for informational purposes only.":"Fiyatlar yalnızca bilgilendirme amaçlıdır.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Canlı spot fiyatları kullanan ücretsiz, doğru gümüş hesaplayıcıları. Gümüş hurdalarınızın, madeni paralarınızın, mücevherlerinizin ve külçelerinizin erime değerini anında hesaplayın."};
+</script>
+</body></html>

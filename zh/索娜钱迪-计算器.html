@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sona Chandi 计算器 — 黄金和白银实时汇率计算器</title>
+  <meta name="description" content="计算实时 Sona（黄金）和 Chandi（银）汇率。免费在线 Sona Chandi 计算器，使用每托拉、克和公斤的实时市场价格。">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/sona-chandi-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Sona Chandi Calculator","description":"Calculate Sona (Gold) and Chandi (Silver) prices in Tola and Grams.","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container">
+      <div id="breadcrumb"></div>
+    </div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>索纳·昌迪 <span class="highlight">Calculator</span></h1>
+        <p>根据精确重量、Tunch（纯度）和今天的即期汇率计算您的 Sona（黄金）和 Chandi（白银）的实时市场价值。</p>
+      </div>
+    </section>
+    
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">✨</span> Sona Chandi Rate Calculator</div>
+        
+        <div class="form-group" style="display:flex; gap:10px; margin-bottom:var(--space-md);">
+          <label style="flex:1; cursor:pointer;">
+            <input type="radio" name="metalType" value="chandi" checked="" style="display:none;">
+            <div id="btn-chandi" style="padding:10px; text-align:center; border:2px solid var(--accent-primary); border-radius:var(--radius-sm); font-weight:600; background:rgba(59,130,246,0.1);">🥈 Chandi (Silver)</div>
+          </label>
+          <label style="flex:1; cursor:pointer;">
+            <input type="radio" name="metalType" value="sona" style="display:none;">
+            <div id="btn-sona" style="padding:10px; text-align:center; border:2px solid var(--border-subtle); border-radius:var(--radius-sm); font-weight:600; color:var(--text-secondary);">🥇 Sona (Gold)</div>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="weight">重量</label>
+            <input type="number" class="form-input" id="weight" placeholder="e.g. 1" step="0.01" min="0" value="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="unit">单位</label>
+            <select class="form-select" id="unit">
+              <option value="tola" selected="">托拉 (11.66g)</option>
+              <option value="g">克 (g)</option>
+              <option value="kg">公斤 (kg)</option>
+              <option value="oz">金衡盎司 (oz)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="tunch">通奇（纯度%）</label>
+          <div class="input-group">
+            <input type="number" class="form-input" id="tunch" placeholder="e.g. 99.9" step="0.1" min="0" max="100" value="99.9">
+            <span class="input-suffix">%</span>
+          </div>
+          <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;" id="tunch-hint">
+            Standard: 99.9% (Fine), 92.5% (Sterling), 80.0% (Jewelry)
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="currency">显示货币</label>
+          <select class="form-select" id="currency">
+            <option value="PKR">巴基斯坦卢比 (PKR)</option>
+            <option value="INR">印度卢比 (INR)</option>
+            <option value="USD" selected="">美元 (USD)</option>
+            <option value="AED">阿联酋迪拉姆 (AED)</option>
+            <option value="SAR">沙特里亚尔 (SAR)</option>
+          </select>
+        </div>
+
+        <div class="result-display">
+          <div class="result-label" id="res-title">钱迪（银）价值</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>什么是 Sona Chandi 计算器？</h2>
+        <p>在南亚（印度、巴基斯坦、孟加拉国）和中东，贵金属普遍被称为 <strong>Sona</strong> （金）和 <strong>Chandi</strong> （银）。这款专用计算器允许珠宝商、买家和卖家使用本地指标（例如 <strong>Tola</strong> 和 <strong>Tunch</strong>.</p>
+        
+        <h3>了解托拉</h3>
+        <p>托拉是南亚贵金属的传统质量单位。虽然存在历史差异，但今天法律定义和普遍接受的“标准托拉”与 <strong>11.6638038 grams</strong> （或通常简化为 11.66g）。一金衡盎司大约等于 2.66 托拉。</p>
+
+        <h3>什么是“通奇”？</h3>
+        <p><strong>Tunch</strong> 是金属纯度或纯度的传统术语。珠宝商通常只是参考百分比，而不是克拉或千分之一的纯度（如 925）。</p>
+        <ul>
+          <li><strong>99.9% Tunch:</strong> Pure Fine Sona/Chandi（24K 金或 999 银）</li>
+          <li><strong>91.6% Tunch:</strong> 标准珠宝索娜（22K金）</li>
+          <li><strong>92.5% Tunch:</strong> 纯银 Chandi（925 银）</li>
+          <li><strong>80% - 60% Tunch:</strong> 常见于较旧的传统 Chandi 脚链/脚链和重型珠宝中。</li>
+        </ul>
+
+        <h3>查看 Sona Chandi 实时汇率</h3>
+        <p>在纽约商品交易所 (COMEX) 等交易所，黄金和白银的国际现货价格以每金衡盎司美元计算。以印度卢比或巴基斯坦卢比表示的当地价格是通过将此实时美元价格与当前外汇 (forex) 汇率相结合来确定的。我们的计算器可以立即执行这一复杂的数学计算，为您提供金属的真实内在市场价值。</p>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom: var(--space-lg);">相关区域计算器</h3>
+        <div class="related-grid">
+          <a href="托拉计算器.html" class="related-link"><span class="r-icon">🌙</span> Tola Calculator</a>
+          <a href="所有货币白银价格.html" class="related-link"><span class="r-icon">🌍</span> Prices in PKR/INR</a>
+          <a href="黄金和白银计算器.html" class="related-link"><span class="r-icon">🥇</span> Gold &amp; Silver Calc</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      {label: window.MenuTranslations['Home'] || '首页', href:'index.html'},
+      {label:'Sona Chandi Calculator'}
+    ]);
+
+    const radios = document.querySelectorAll('input[name="metalType"]');
+    const btnChandi = document.getElementById('btn-chandi');
+    const btnSona = document.getElementById('btn-sona');
+    
+    const w = document.getElementById('weight');
+    const u = document.getElementById('unit');
+    const t = document.getElementById('tunch');
+    const c = document.getElementById('currency');
+    const tunchHint = document.getElementById('tunch-hint');
+    
+    const resTitle = document.getElementById('res-title');
+    const resValue = document.getElementById('result-value');
+    const resDetail = document.getElementById('result-detail');
+
+    // Handle metal toggle styling
+    radios.forEach(r => {
+      r.addEventListener('change', (e) => {
+        if (e.target.value === 'chandi') {
+          btnChandi.style.border = '2px solid var(--accent-primary)';
+          btnChandi.style.background = 'rgba(59,130,246,0.1)';
+          btnChandi.style.color = '';
+          btnSona.style.border = '2px solid var(--border-subtle)';
+          btnSona.style.background = 'transparent';
+          btnSona.style.color = 'var(--text-secondary)';
+          tunchHint.textContent = 'Standard: 99.9% (Fine), 92.5% (Sterling), 80.0% (Jewelry)';
+          t.value = '99.9';
+          resTitle.textContent = 'Chandi (Silver) Value';
+        } else {
+          btnSona.style.border = '2px solid #FCD34D';
+          btnSona.style.background = 'rgba(252,211,77,0.1)';
+          btnSona.style.color = '#B45309';
+          btnChandi.style.border = '2px solid var(--border-subtle)';
+          btnChandi.style.background = 'transparent';
+          btnChandi.style.color = 'var(--text-secondary)';
+          tunchHint.textContent = 'Standard: 99.9% (24K), 91.6% (22K), 75.0% (18K)';
+          t.value = '91.6';
+          resTitle.textContent = 'Sona (Gold) Value';
+        }
+        calc();
+      });
+    });
+
+    function calc() {
+      const metal = document.querySelector('input[name="metalType"]:checked').value;
+      const weight = parseFloat(w.value) || 0;
+      const unit = u.value;
+      const tunch = parseFloat(t.value) || 0;
+      const purity = tunch / 100;
+      const curCode = c.value;
+      
+      const spotUSD = metal === 'chandi' ? SilverPrice.getPrice() : (SilverPrice.getGoldPrice() || 2500);
+      
+      // Convert to grams
+      let grams = 0;
+      if (unit === 'g') grams = weight;
+      else if (unit === 'kg') grams = weight * 1000;
+      else if (unit === 'oz') grams = weight * 31.1035;
+      else if (unit === 'tola') grams = weight * 11.6638;
+
+      // Pure metal weight
+      const pureGrams = grams * purity;
+      const pureOz = pureGrams / 31.1035;
+
+      // Value in USD
+      const valueUSD = pureOz * spotUSD;
+
+      // Final Value in chosen currency
+      const finalValue = valueUSD * SilverPrice.CURRENCIES[curCode].rate;
+      const symbol = SilverPrice.CURRENCIES[curCode].symbol;
+
+      if (weight > 0 && tunch > 0) {
+        // Format with commas, 2 decimals
+        resValue.textContent = symbol + finalValue.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+        
+        const spotLocal = spotUSD * SilverPrice.CURRENCIES[curCode].rate;
+        resDetail.textContent = `${pureGrams.toFixed(2)}g pure metal · Spot: ${symbol}${spotLocal.toFixed(2)}/oz`;
+      } else {
+        resValue.textContent = symbol + '0.00';
+        resDetail.textContent = 'Enter weight and tunch to calculate';
+      }
+    }
+
+    [w, t].forEach(el => el.addEventListener('input', calc));
+    [u, c].forEach(el => el.addEventListener('change', calc));
+    SilverPrice.onPriceUpdate(() => calc());
+    
+    // Attempt to set local currency based on timezone (lazy heuristic)
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (tz.includes('Karachi')) c.value = 'PKR';
+    else if (tz.includes('Calcutta') || tz.includes('Kolkata')) c.value = 'INR';
+    else if (tz.includes('Dubai')) c.value = 'AED';
+    else if (tz.includes('Riyadh')) c.value = 'SAR';
+
+    calc();
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10-盎司银币价值.html","100oz-silver-value.html":"100盎司银币价值.html","10oz-silver-value.html":"10盎司银币价值.html","1kg-silver-value.html":"1公斤白银价值.html","1oz-silver-value.html":"1盎司银币价值.html","2oz-silver-value.html":"2盎司银币价值.html","5oz-silver-value.html":"5盎司银币价值.html","800-silver-calculator.html":"800银计算器.html","835-silver-calculator.html":"835银计算器.html","900-silver-calculator.html":"900银计算器.html","925-silver-calculator.html":"925银计算器.html","925-sterling-silver-price-per-gram.html":"925纯银每克价格.html","958-silver-calculator.html":"958银计算器.html","999-silver-calculator.html":"999银计算器.html","canadian-silver-coin-calculator.html":"加拿大银币计算器.html","face-value-silver-calculator.html":"白银面值计算器.html","gold-and-silver-calculator.html":"黄金和白银计算器.html","how-silver-prices-work.html":"白银价格如何运作.html","how-to-sell-silver.html":"如何卖白银.html","how-to-use-silver-calculators.html":"如何使用银计算器.html","identify-silver.html":"识别银.html","junk-silver-calculator.html":"垃圾银计算器.html","pennyweight-calculator.html":"便士计算器.html","silver-bar-value-calculator.html":"银条价值计算器.html","silver-batch-calculator.html":"白银批量计算器.html","silver-bracelet-value.html":"银手镯价值.html","silver-chain-value.html":"银链价值.html","silver-coin-value-calculator.html":"银币价值计算器.html","silver-cup-value.html":"银杯价值.html","silver-dime-calculator.html":"银币计算器.html","silver-dollar-calculator.html":"银元计算器.html","silver-fork-value.html":"银叉价值.html","silver-hallmarks-guide.html":"银色标志指南.html","silver-jewelry-value-calculator.html":"银首饰价值计算器.html","silver-knife-value.html":"银刀价值.html","silver-melt-value-calculator.html":"白银熔化值计算器.html","silver-necklace-value.html":"银项链价值.html","silver-plate-value.html":"银板价值.html","silver-price-all-currencies.html":"所有货币白银价格.html","silver-price-per-gram.html":"每克白银价格.html","silver-price-per-ounce.html":"每盎司白银价格.html","silver-profit-calculator.html":"白银利润计算器.html","silver-purity-chart.html":"银纯度表.html","silver-quarter-calculator.html":"银币计算器.html","silver-ring-value.html":"银戒指价值.html","silver-scrap-calculator.html":"银废料计算器.html","silver-sell-or-hold.html":"白银卖出或持有.html","silver-spoon-value.html":"银汤匙价值.html","silver-spot-price-today.html":"今日白银现货价格.html","silver-tray-value.html":"银托盘价值.html","silver-weight-converter.html":"银重量转换器.html","silverware-value-calculator.html":"银器价值计算器.html","sona-chandi-calculator.html":"索娜钱迪-计算器.html","sterling-silver-calculator.html":"纯银计算器.html","tola-calculator.html":"托拉计算器.html","what-does-925-mean.html":"925是什么意思.html","what-is-junk-silver.html":"什么是垃圾银.html","what-is-silver-bullion.html":"什么是银条.html","what-is-silver-melt-value.html":"什么是白银熔化值.html","what-is-silver-scrap.html":"什么是废银.html","what-is-sterling-silver.html":"什么是纯银.html","what-is-troy-ounce.html":"什么是金衡盎司.html"},"Home":"首页","Calculators":"计算器","Silver Scrap Calculator":"银废料计算器","Gold & Silver Calculator":"黄金白银计算器","Silver Melt Value":"银熔化值","Sterling Silver Calculator":"纯银计算器","Junk Silver Calculator":"垃圾银计算器","Silver Coin Value":"银币价值","Silver Bar Value":"银条价值","Silver Jewelry Value":"银首饰价值","Silverware Value":"银器价值","Purity":"纯度","999 Fine Silver":"999纯银","958 Britannia Silver":"958 不列颠银","925 Sterling Silver":"925 纯银","900 Coin Silver":"900 银币","835 Silver":"835银","800 Silver":"800银","Silver Purity Chart":"银纯度表","Pricing":"定价","Silver Spot Price Today":"今日白银现货价格","925 Sterling Price / Gram":"925 英镑价格/克","Silver Price Per Gram":"每克白银价格","Silver Price Per Ounce":"每盎司白银价格","Price in All Currencies":"所有货币的价格","1/10oz Silver Value":"1/10 盎司银币价值","1oz Silver Value":"1盎司白银价值","2oz Silver Value":"2盎司银币价值","5oz Silver Value":"5盎司银币价值","10oz Silver Value":"10盎司银币价值","100oz Silver Value":"100盎司银币价值","1kg Silver Value":"1公斤银值","Tools":"工具","Silver Profit Calculator":"白银利润计算器","Batch Calculator":"批量计算器","Sona Chandi Calculator":"索纳·昌迪计算器","Face Value Calculator":"面值计算器","Weight Converter":"重量转换器","Pennyweight (DWT) Calc":"Pennyweight (DWT) 计算","Tola Calculator":"托拉计算器","Sell or Hold Analysis":"卖出或持有分析","Silver Identifier":"银牌标识符","Guides":"指南","How to Use Our Calculators":"如何使用我们的计算器","What Is Silver Scrap?":"什么是银废料？","What Is Melt Value?":"什么是熔体值？","What Is Junk Silver?":"什么是垃圾银？","What Is a Troy Ounce?":"什么是金衡盎司？","What Is Silver Bullion?":"什么是银条？","How Silver Prices Work":"白银价格如何运作","Silver Hallmarks Guide":"银色标志指南","What Does 925 Mean?":"925是什么意思？","What Is Sterling Silver?":"什么是纯银？","How to Sell Silver":"如何出售白银","Scrap Silver":"废银","Gold & Silver":"金银","Silver Profit":"白银利润","Melt Value":"熔融值","Junk Silver":"垃圾银","Silver Coins":"银币","Silver Dollar":"银元","Silver Quarter":"银季","Silver Dime":"银币","Jewelry Value":"珠宝价值","925 Sterling":"第925章","Purity Chart":"纯度表","How to Use Calculators":"如何使用计算器","Sona Chandi Calc":"索纳·昌迪计算器","Face Value Calc":"面值计算","Sell or Hold":"卖出或持有","About":"关于","Privacy":"隐私","Terms":"条款","All rights reserved.":"保留所有权利。","Prices are for informational purposes only.":"价格仅供参考。","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"使用实时现货价格的免费、准确的白银计算器。立即计算银废料、硬币、珠宝和金条的熔化值。"};
+</script>
+</body></html>

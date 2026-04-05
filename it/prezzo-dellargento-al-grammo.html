@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="it"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prezzo dell'argento al grammo oggi: prezzo in tempo reale e convertitore</title>
+  <meta name="description" content="Prezzo attuale dell'argento al grammo con aggiornamenti in tempo reale. Converti istantaneamente tra grammi, once, chilogrammi e pennyweight.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-price-per-gram.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>Prezzo argento per <span class="highlight">Gram</span></h1>
+        <p>Il prezzo dell'argento in tempo reale per grammo di oggi basato sul prezzo spot attuale, con strumenti di conversione delle unità.</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">📊</span> Silver Price Converter</div>
+        <div class="result-display" style="margin-bottom:var(--space-xl);">
+          <div class="result-label">Prezzo dell'argento al grammo</div>
+          <div class="result-value" id="price-gram">$0.00</div>
+          <div class="result-detail" id="price-update">Based on live spot price</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);">
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Per oncia troy</div>
+            <div id="price-oz" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Per chilogrammo</div>
+            <div id="price-kg" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Per Pennyweight</div>
+            <div id="price-dwt" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Per Tola</div>
+            <div id="price-tola" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+        </div>
+        <h4 style="margin:var(--space-xl) 0 var(--space-md);">Prezzo per purezza (per grammo)</h4>
+        <table class="purity-table">
+          <thead><tr><th>Purezza</th><th>% Argento</th><th>Prezzo/grammo</th></tr></thead>
+          <tbody id="purity-rows"></tbody>
+        </table>
+      </div>
+      <div class="content-body">
+        <h2>Come viene calcolato il prezzo dell'argento al grammo</h2>
+        <p>L’argento ha un prezzo in once troy sui mercati globali delle materie prime. Un'oncia troy equivale a 31,1035 grammi. Per trovare il prezzo al grammo, dividi semplicemente il prezzo spot per 31,1035.</p>
+        <p>Ad esempio, ad un prezzo spot di 32,50 dollari per oncia troy, il prezzo per grammo è di circa 1,045 dollari.</p>
+        <h3>Perché i grammi sono importanti per la valutazione dell’argento</h3>
+        <p>La maggior parte delle bilance da cucina e da gioielliere misurano in grammi, rendendo il prezzo al grammo l'unità più pratica per la valutazione quotidiana dell'argento. Quando pesi un anello o una catena d'argento su una bilancia, in genere otterrai il peso in grammi.</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:var(--space-lg);">Pagine correlate</h3>
+        <div class="related-grid">
+          <a href="prezzo-dellargento-per-oncia.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+          <a href="valore-dargento-di-1-oncia.html" class="related-link"><span class="r-icon">🧱</span> 1oz Silver Value</a>
+          <a href="calcolatore-di-rottami-dargento.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+          <a href="grafico-della-purezza-dellargento.html" class="related-link"><span class="r-icon">📋</span> Purity Chart</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Casa',href:'index.html'},{label:'Silver Price Per Gram'}]);
+    function update(){
+      const spot=SilverPrice.getPrice();
+      const perGram=spot/31.1035;
+      const perKg=spot*(1000/31.1035);
+      const perDwt=spot/20;
+      const perTola=spot*(11.6638/31.1035);
+      document.getElementById('price-gram').textContent='$'+perGram.toFixed(4);
+      document.getElementById('price-oz').textContent='$'+spot.toFixed(2);
+      document.getElementById('price-kg').textContent='$'+perKg.toFixed(2);
+      document.getElementById('price-dwt').textContent='$'+perDwt.toFixed(4);
+      document.getElementById('price-tola').textContent='$'+perTola.toFixed(4);
+      document.getElementById('price-update').textContent=`Spot: $${spot.toFixed(2)}/oz`;
+      const purities=[{l:'999 Fine',p:0.999},{l:'958 Britannia',p:0.958},{l:'925 Sterling',p:0.925},{l:'900 Coin',p:0.900},{l:'835 European',p:0.835},{l:'800 European',p:0.800}];
+      document.getElementById('purity-rows').innerHTML=purities.map(pu=>`<tr><td>${pu.l}</td><td>${(pu.p*100).toFixed(1)}%</td><td>$${(perGram*pu.p).toFixed(4)}</td></tr>`).join('');
+    }
+    SilverPrice.onPriceUpdate(()=>update());
+    update();
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-valore-dargento-da-10-once.html","100oz-silver-value.html":"valore-dargento-100-once.html","10oz-silver-value.html":"valore-dargento-da-10-once.html","1kg-silver-value.html":"valore-dargento-da-1-kg.html","1oz-silver-value.html":"valore-dargento-di-1-oncia.html","2oz-silver-value.html":"valore-dargento-da-2-once.html","5oz-silver-value.html":"valore-dargento-di-5-once.html","800-silver-calculator.html":"calcolatrice-in-argento-800.html","835-silver-calculator.html":"calcolatrice-in-argento-835.html","900-silver-calculator.html":"calcolatrice-in-argento-900.html","925-silver-calculator.html":"calcolatrice-in-argento-925.html","925-sterling-silver-price-per-gram.html":"prezzo-argento-sterling-925-al-grammo.html","958-silver-calculator.html":"calcolatrice-in-argento-958.html","999-silver-calculator.html":"calcolatrice-in-argento-999.html","canadian-silver-coin-calculator.html":"calcolatore-di-monete-dargento-canadesi.html","face-value-silver-calculator.html":"calcolatrice-in-argento-con-valore-nominale.html","gold-and-silver-calculator.html":"calcolatrice-per-oro-e-argento.html","how-silver-prices-work.html":"come-funzionano-i-prezzi-dellargento.html","how-to-sell-silver.html":"come-vendere-argento.html","how-to-use-silver-calculators.html":"come-usare-le-calcolatrici-dargento.html","identify-silver.html":"identificare-largento.html","junk-silver-calculator.html":"calcolatrice-dargento-spazzatura.html","pennyweight-calculator.html":"calcolatore-del-peso-di-un-centesimo.html","silver-bar-value-calculator.html":"calcolatore-del-valore-del-lingotto-dargento.html","silver-batch-calculator.html":"calcolatore-batch-argento.html","silver-bracelet-value.html":"valore-del-braccialetto-in-argento.html","silver-chain-value.html":"valore-della-catena-dargento.html","silver-coin-value-calculator.html":"calcolatore-del-valore-delle-monete-dargento.html","silver-cup-value.html":"valore-della-coppa-dargento.html","silver-dime-calculator.html":"calcolatrice-da-dieci-centesimi-dargento.html","silver-dollar-calculator.html":"calcolatore-del-dollaro-dargento.html","silver-fork-value.html":"valore-della-forchetta-dargento.html","silver-hallmarks-guide.html":"guida-ai-marchi-dargento.html","silver-jewelry-value-calculator.html":"calcolatore-del-valore-dei-gioielli-in-argento.html","silver-knife-value.html":"valore-del-coltello-dargento.html","silver-melt-value-calculator.html":"calcolatore-del-valore-di-fusione-dellargento.html","silver-necklace-value.html":"valore-della-collana-in-argento.html","silver-plate-value.html":"valore-piatto-dargento.html","silver-price-all-currencies.html":"prezzo-dellargento-in-tutte-le-valute.html","silver-price-per-gram.html":"prezzo-dellargento-al-grammo.html","silver-price-per-ounce.html":"prezzo-dellargento-per-oncia.html","silver-profit-calculator.html":"calcolatore-del-profitto-dargento.html","silver-purity-chart.html":"grafico-della-purezza-dellargento.html","silver-quarter-calculator.html":"calcolatrice-dei-quarti-dargento.html","silver-ring-value.html":"valore-dellanello-in-argento.html","silver-scrap-calculator.html":"calcolatore-di-rottami-dargento.html","silver-sell-or-hold.html":"vendere-o-trattenere-largento.html","silver-spoon-value.html":"valore-del-cucchiaio-dargento.html","silver-spot-price-today.html":"prezzo-spot-dellargento-oggi.html","silver-tray-value.html":"valore-del-vassoio-dargento.html","silver-weight-converter.html":"convertitore-del-peso-dellargento.html","silverware-value-calculator.html":"calcolatore-del-valore-dellargenteria.html","sona-chandi-calculator.html":"calcolatrice-sona-chandi.html","sterling-silver-calculator.html":"calcolatrice-in-argento-sterling.html","tola-calculator.html":"calcolatrice-tola.html","what-does-925-mean.html":"cosa-significa-925.html","what-is-junk-silver.html":"cosè-largento-spazzatura.html","what-is-silver-bullion.html":"cosè-il-lingotto-dargento.html","what-is-silver-melt-value.html":"qual-è-il-valore-di-fusione-dellargento.html","what-is-silver-scrap.html":"cosè-il-rottame-dargento.html","what-is-sterling-silver.html":"cosè-largento-sterling.html","what-is-troy-ounce.html":"cosè-loncia-troy.html"},"Home":"Casa","Calculators":"Calcolatrici","Silver Scrap Calculator":"Calcolatore dei rottami d'argento","Gold & Silver Calculator":"Calcolatore di oro e argento","Silver Melt Value":"Valore di fusione dell'argento","Sterling Silver Calculator":"Calcolatrice in argento sterling","Junk Silver Calculator":"Calcolatrice dell'argento spazzatura","Silver Coin Value":"Valore della moneta d'argento","Silver Bar Value":"Valore del lingotto d'argento","Silver Jewelry Value":"Valore dei gioielli in argento","Silverware Value":"Valore dell'argenteria","Purity":"Purezza","999 Fine Silver":"Argento pregiato 999","958 Britannia Silver":"Argento Britannia 958","925 Sterling Silver":"Argento sterling 925","900 Coin Silver":"Moneta d'argento da 900","835 Silver":"835 Argento","800 Silver":"Argento 800","Silver Purity Chart":"Grafico della purezza dell'argento","Pricing":"Prezzi","Silver Spot Price Today":"Prezzo spot dell'argento oggi","925 Sterling Price / Gram":"925 Sterline Prezzo/grammo","Silver Price Per Gram":"Prezzo dell'argento al grammo","Silver Price Per Ounce":"Prezzo dell'argento per oncia","Price in All Currencies":"Prezzo in tutte le valute","1/10oz Silver Value":"Valore argento 1/10 oz","1oz Silver Value":"Valore d'argento da 1 oncia","2oz Silver Value":"Valore d'argento da 2 once","5oz Silver Value":"Valore d'argento da 5 once","10oz Silver Value":"Valore dell'argento da 10 once","100oz Silver Value":"Valore dell'argento da 100 once","1kg Silver Value":"Valore argento 1 kg","Tools":"Strumenti","Silver Profit Calculator":"Calcolatore del profitto d'argento","Batch Calculator":"Calcolatore batch","Sona Chandi Calculator":"Calcolatrice Sona Chandi","Face Value Calculator":"Calcolatore del valore nominale","Weight Converter":"Convertitore di peso","Pennyweight (DWT) Calc":"Calcolo del peso penny (DWT).","Tola Calculator":"Calcolatrice Tola","Sell or Hold Analysis":"Vendi o mantieni l'analisi","Silver Identifier":"Identificatore d'argento","Guides":"Guide","How to Use Our Calculators":"Come utilizzare le nostre calcolatrici","What Is Silver Scrap?":"Cos'è il rottame d'argento?","What Is Melt Value?":"Cos'è il valore di fusione?","What Is Junk Silver?":"Cos'è l'argento spazzatura?","What Is a Troy Ounce?":"Cos'è un'oncia troy?","What Is Silver Bullion?":"Cos'è il lingotto d'argento?","How Silver Prices Work":"Come funzionano i prezzi dell'argento","Silver Hallmarks Guide":"Guida ai marchi d'argento","What Does 925 Mean?":"Cosa significa 925?","What Is Sterling Silver?":"Cos'è l'argento sterling?","How to Sell Silver":"Come vendere argento","Scrap Silver":"Rottami d'argento","Gold & Silver":"Oro e argento","Silver Profit":"Profitto d'argento","Melt Value":"Valore di fusione","Junk Silver":"Argento spazzatura","Silver Coins":"Monete d'argento","Silver Dollar":"Dollaro d'argento","Silver Quarter":"Quarto d'argento","Silver Dime":"Moneta d'argento","Jewelry Value":"Valore dei gioielli","925 Sterling":"925 sterline","Purity Chart":"Grafico della purezza","How to Use Calculators":"Come utilizzare le calcolatrici","Sona Chandi Calc":"Sona Chandi Calcolo","Face Value Calc":"Calcolo del valore nominale","Sell or Hold":"Vendi o mantieni","About":"Circa","Privacy":"Privacy","Terms":"Termini","All rights reserved.":"Tutti i diritti riservati.","Prices are for informational purposes only.":"I prezzi sono solo a scopo informativo.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calcolatori d'argento gratuiti e accurati che utilizzano prezzi spot in tempo reale. Calcola istantaneamente il valore di fusione dei tuoi rottami d'argento, monete, gioielli e lingotti."};
+</script>
+</body></html>

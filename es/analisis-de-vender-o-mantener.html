@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="es"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de venta o retención de plata: ¿debería vender mi plata ahora?</title>
+  <meta name="description" content="¿Debería vender plata ahora o esperar? Compare el valor de fusión actual con los precios futuros hipotéticos. Tome decisiones de venta informadas mediante el análisis de escenarios.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .scenario-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-md); margin: var(--space-lg) 0; }
+    .scenario-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-lg); text-align: center; transition: all var(--transition-fast); }
+    .scenario-card:hover { border-color: var(--accent-primary); transform: translateY(-2px); }
+    .scenario-card.negative { border-color: #ef4444; }
+    .scenario-card.positive { border-color: #22c55e; }
+    .scenario-label { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-xs); }
+    .scenario-price { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-lg); color: var(--text-primary); }
+    .scenario-value { font-family: var(--font-display); font-weight: 800; font-size: var(--fs-xl); margin: var(--space-sm) 0; }
+    .scenario-diff { font-size: var(--fs-sm); font-weight: 600; }
+    .scenario-diff.up { color: #22c55e; }
+    .scenario-diff.down { color: #ef4444; }
+    .custom-spot-section { background: var(--bg-glass); border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: var(--space-lg); margin: var(--space-lg) 0; }
+    .custom-spot-section .cs-title { font-size: var(--fs-sm); font-weight: 600; color: var(--accent-gold); margin-bottom: var(--space-sm); }
+    .breakeven-bar { background: var(--bg-secondary); border-radius: var(--radius-md); height: 24px; overflow: hidden; margin: var(--space-md) 0; position: relative; }
+    .breakeven-fill { height: 100%; border-radius: var(--radius-md); transition: width 0.5s ease; }
+    .breakeven-labels { display: flex; justify-content: space-between; font-size: var(--fs-xs); color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>Vender o mantener <span class="highlight">Calculator</span></h1><p>Compare vender ahora versus esperar: vea cuánto valdría su plata a diferentes precios futuros.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">📈</span> Sell vs. Hold Analysis</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="weight">Peso Total</label><input type="number" class="form-input" id="weight" value="100" step="0.1" min="0"></div>
+          <div class="form-group"><label class="form-label" for="unit">Unidad</label><select class="form-select" id="unit"><option value="g" selected="">gramos</option><option value="oz">Troya Oz</option><option value="kg">kilogramos</option></select></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="purity">Pureza</label><select class="form-select" id="purity"><option value="0.999">999 multa</option><option value="0.925" selected="">Plata de Ley 925</option><option value="0.900">900 monedas</option><option value="0.800">800 Plata</option></select></div>
+          <div class="form-group"><label class="form-label" for="discount">% de descuento del distribuidor</label><input type="number" class="form-input" id="discount" value="15" min="0" max="50" step="1"></div>
+        </div>
+
+        <div class="result-display">
+          <div class="result-label">Vender ahora (en el momento de hoy)</div>
+          <div class="result-value" id="sell-now">$0.00</div>
+          <div class="result-detail" id="sell-detail">After 15% dealer discount</div>
+        </div>
+
+        <div class="custom-spot-section">
+          <div class="cs-title">📊 What If Spot Changes?</div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="custom-spot">Precio al contado personalizado ($/oz)</label>
+            <input type="range" id="custom-spot-slider" min="15" max="60" step="0.25" value="32.50" style="width:100%;accent-color:var(--accent-primary);">
+            <div style="display:flex;gap:var(--space-sm);align-items:center;">
+              <input type="number" class="form-input" id="custom-spot" value="32.50" step="0.25" min="1" style="width:120px;">
+              <span style="font-size:var(--fs-sm);color:var(--text-muted);">per troy ounce</span>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="margin: var(--space-xl) 0 var(--space-md);">Análisis de escenarios</h4>
+        <div class="scenario-grid" id="scenarios"></div>
+
+        <h4 style="margin: var(--space-xl) 0 var(--space-md);">Precio necesario para alcanzar el punto de equilibrio</h4>
+        <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin-bottom:var(--space-md);">Si compró con una prima, ¿qué precio debe alcanzar la plata para alcanzar el punto de equilibrio al venderla?</p>
+        <div class="form-group"><label class="form-label" for="buy-price">Su precio de compra (coste total)</label><input type="number" class="form-input" id="buy-price" value="0" step="1" min="0" placeholder="e.g. 120"></div>
+        <div id="breakeven-result" style="display:none;">
+          <div class="breakeven-bar"><div class="breakeven-fill" id="breakeven-fill"></div></div>
+          <div class="breakeven-labels"><span id="be-current">Current</span><span id="be-target">Breakeven</span></div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin-top:var(--space-sm);" id="be-text"></p>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>¿Cuándo debería vender plata?</h2>
+        <p>Esta herramienta le ayuda a decidir si vender su plata ahora o esperar a precios potencialmente más altos. No hay una respuesta garantizada, pero considerar estos factores puede ayudar:</p>
+        <h3>Razones para vender ahora</h3>
+        <ul>
+          <li>Necesitas el efectivo para un propósito específico</li>
+          <li>Los precios de la plata están en máximos de varios años</li>
+          <li>Quiere diversificarse en otras inversiones.</li>
+          <li>Los costos de almacenamiento y seguro están afectando las devoluciones</li>
+        </ul>
+        <h3>Razones para mantener</h3>
+        <ul>
+          <li>La plata está por debajo de su precio de compra.</li>
+          <li>La incertidumbre económica sugiere que los metales preciosos pueden subir</li>
+          <li>Estás utilizando la plata como cobertura contra la inflación a largo plazo.</li>
+          <li>Los descuentos de los distribuidores son actualmente elevados (malas condiciones del mercado)</li>
+        </ul>
+        <div class="callout warning">
+          <div class="callout-title">⚠️ Not Financial Advice</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Esta herramienta es sólo para fines educativos. Los precios de la plata pueden subir o bajar, y el desempeño pasado no predice resultados futuros. Consulte a un asesor financiero para decisiones de inversión.</p>
+        </div>
+      </div>
+
+      <div><h3 style="margin-bottom:var(--space-lg);">Relacionado</h3><div class="related-grid">
+        <a href="calculadora-de-plata-de-desecho.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        <a href="calculadora-por-lotes.html" class="related-link"><span class="r-icon">📋</span> Batch Calculator</a>
+        <a href="como-vender-plata.html" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>
+        <a href="precio-de-la-plata-por-onza.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Inicio',href:'index.html'},{label:'Sell or Hold Calculator'}]);
+
+    const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),d=document.getElementById('discount'),cs=document.getElementById('custom-spot'),sl=document.getElementById('custom-spot-slider'),bp=document.getElementById('buy-price');
+
+    sl.addEventListener('input', () => { cs.value = sl.value; calc(); });
+    cs.addEventListener('input', () => { sl.value = cs.value; calc(); });
+
+    function calc() {
+      const weight = parseFloat(w.value)||0;
+      const grams = SilverCalc.toGrams(weight, u.value);
+      const purity = parseFloat(p.value);
+      const discountPct = parseFloat(d.value)||0;
+      const spot = SilverPrice.getPrice();
+      const customSpot = parseFloat(cs.value)||spot;
+
+      // Sell Now value
+      const melt = SilverCalc.meltValue(grams, purity, spot);
+      const payout = melt.value * (1 - discountPct/100);
+      document.getElementById('sell-now').textContent = SilverCalc.formatCurrency(payout);
+      document.getElementById('sell-detail').textContent = `Melt: ${SilverCalc.formatCurrency(melt.value)} · After ${discountPct}% discount · Spot: $${spot.toFixed(2)}/oz`;
+
+      // Scenarios
+      const scenarios = [
+        { label: '−20%', price: spot * 0.80 },
+        { label: '−10%', price: spot * 0.90 },
+        { label: 'Current', price: spot },
+        { label: '+10%', price: spot * 1.10 },
+        { label: '+20%', price: spot * 1.20 },
+        { label: '+50%', price: spot * 1.50 },
+        { label: 'Custom', price: customSpot },
+      ];
+
+      let html = '';
+      scenarios.forEach(s => {
+        const mv = SilverCalc.meltValue(grams, purity, s.price);
+        const pay = mv.value * (1 - discountPct/100);
+        const diff = pay - payout;
+        const diffPct = payout > 0 ? ((diff / payout) * 100).toFixed(1) : '0';
+        const cls = diff > 0 ? 'positive' : (diff < 0 ? 'negative' : '');
+        const dcls = diff >= 0 ? 'up' : 'down';
+        const sign = diff >= 0 ? '+' : '';
+        html += `
+          <div class="scenario-card ${cls}">
+            <div class="scenario-label">${s.label}</div>
+            <div class="scenario-price">$${s.price.toFixed(2)}/oz</div>
+            <div class="scenario-value">${SilverCalc.formatCurrency(pay)}</div>
+            <div class="scenario-diff ${dcls}">${sign}${SilverCalc.formatCurrency(diff)} (${sign}${diffPct}%)</div>
+          </div>`;
+      });
+      document.getElementById('scenarios').innerHTML = html;
+
+      // Break even
+      const buyPrice = parseFloat(bp.value)||0;
+      const beResult = document.getElementById('breakeven-result');
+      if (buyPrice > 0) {
+        beResult.style.display = 'block';
+        const silverOz = (grams * purity) / 31.1035;
+        const neededMelt = buyPrice / (1 - discountPct/100);
+        const neededSpot = silverOz > 0 ? neededMelt / silverOz : 0;
+        const progress = Math.min((spot / neededSpot) * 100, 100);
+        const fill = document.getElementById('breakeven-fill');
+        fill.style.width = progress + '%';
+        fill.style.background = progress >= 100 ? 'linear-gradient(90deg, #22c55e, #16a34a)' : 'linear-gradient(90deg, var(--accent-primary), var(--accent-blue))';
+        document.getElementById('be-current').textContent = `Current: $${spot.toFixed(2)}`;
+        document.getElementById('be-target').textContent = `Breakeven: $${neededSpot.toFixed(2)}/oz`;
+        if (progress >= 100) {
+          document.getElementById('be-text').textContent = `✅ Silver is at or above your breakeven price. You would profit ${SilverCalc.formatCurrency(payout - buyPrice)} by selling now.`;
+        } else {
+          document.getElementById('be-text').textContent = `Silver needs to reach $${neededSpot.toFixed(2)}/oz (currently at ${progress.toFixed(1)}%) for you to break even after dealer discount.`;
+        }
+      } else {
+        beResult.style.display = 'none';
+      }
+    }
+
+    [w,d,cs,bp].forEach(el=>el.addEventListener('input',calc));
+    [u,p].forEach(el=>el.addEventListener('change',calc));
+    SilverPrice.onPriceUpdate(()=>{sl.value=SilverPrice.getPrice();cs.value=SilverPrice.getPrice();calc();});
+    calc();
+  </script>
+
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"silver-scrap-calculator.html":"calculadora-de-plata-de-desecho.html","gold-and-silver-calculator.html":"calculadora-de-oro-y-plata.html","silver-melt-value-calculator.html":"calculadora-de-valor-de-fusion-de-la-plata.html","sterling-silver-calculator.html":"calculadora-de-plata-esterlina.html","junk-silver-calculator.html":"calculadora-de-plata-basura.html","silver-coin-value-calculator.html":"valor-de-moneda-de-plata.html","silver-bar-value-calculator.html":"valor-de-lingote-de-plata.html","silver-jewelry-value-calculator.html":"valor-de-joyeria-de-plata.html","silverware-value-calculator.html":"valor-de-cubiertos-de-plata.html","999-silver-calculator.html":"plata-fina-999.html","958-silver-calculator.html":"plata-britannia-958.html","925-silver-calculator.html":"plata-esterlina-925.html","900-silver-calculator.html":"plata-de-moneda-900.html","835-silver-calculator.html":"plata-835.html","800-silver-calculator.html":"plata-800.html","silver-purity-chart.html":"tabla-de-pureza-de-la-plata.html","silver-price-per-gram.html":"precio-de-la-plata-por-gramo.html","silver-price-per-ounce.html":"precio-de-la-plata-por-onza.html","silver-price-all-currencies.html":"precio-en-todas-las-monedas.html","1-10oz-silver-value.html":"valor-de-la-plata-1-10oz.html","1oz-silver-value.html":"valor-de-la-plata-1oz.html","2oz-silver-value.html":"valor-de-la-plata-2oz.html","5oz-silver-value.html":"valor-de-la-plata-5oz.html","10oz-silver-value.html":"valor-de-la-plata-10oz.html","100oz-silver-value.html":"valor-de-la-plata-100oz.html","1kg-silver-value.html":"valor-de-la-plata-1kg.html","silver-profit-calculator.html":"calculadora-de-ganancias-de-plata.html","silver-batch-calculator.html":"calculadora-por-lotes.html","sona-chandi-calculator.html":"calculadora-sona-chandi.html","face-value-silver-calculator.html":"calculadora-de-valor-nominal.html","silver-weight-converter.html":"conversor-de-peso.html","pennyweight-calculator.html":"calculadora-pennyweight-dwt.html","tola-calculator.html":"calculadora-tola.html","silver-sell-or-hold.html":"analisis-de-vender-o-mantener.html","identify-silver.html":"identificador-de-plata.html","how-to-use-silver-calculators.html":"como-usar-nuestras-calculadoras.html","what-is-silver-scrap.html":"que-es-la-plata-de-desecho.html","what-is-silver-melt-value.html":"que-es-el-valor-de-fusion.html","what-is-junk-silver.html":"que-es-la-plata-basura.html","what-is-troy-ounce.html":"que-es-una-onza-troy.html","what-is-silver-bullion.html":"que-es-un-lingote-de-plata.html","how-silver-prices-work.html":"como-funcionan-los-precios-de-la-plata.html","silver-hallmarks-guide.html":"guia-de-sellos-de-plata.html","what-does-925-mean.html":"que-significa-925.html","what-is-sterling-silver.html":"que-es-la-plata-esterlina.html","how-to-sell-silver.html":"como-vender-plata.html","silver-bracelet-value.html":"valor-de-pulsera-de-plata.html","silver-chain-value.html":"valor-de-cadena-de-plata.html","silver-cup-value.html":"valor-de-copa-de-plata.html","silver-dime-calculator.html":"calculadora-de-diez-centavos-de-plata.html","silver-dollar-calculator.html":"calculadora-de-dolar-de-plata.html","silver-fork-value.html":"valor-de-tenedor-de-plata.html","silver-knife-value.html":"valor-de-cuchillo-de-plata.html","silver-necklace-value.html":"valor-de-collar-de-plata.html","silver-plate-value.html":"valor-de-plato-de-plata.html","silver-quarter-calculator.html":"calculadora-de-cuarto-de-dolar-de-plata.html","silver-ring-value.html":"valor-de-anillo-de-plata.html","silver-spoon-value.html":"valor-de-cuchara-de-plata.html","silver-tray-value.html":"valor-de-bandeja-de-plata.html","canadian-silver-coin-calculator.html":"calculadora-de-monedas-de-plata-canadienses.html"},"Home":"Inicio","Calculators":"Calculadoras","Silver Scrap Calculator":"Calculadora de Plata de Desecho","Gold & Silver Calculator":"Calculadora de Oro y Plata","Silver Melt Value":"Valor de Fusión de la Plata","Sterling Silver Calculator":"Calculadora de Plata Esterlina","Junk Silver Calculator":"Calculadora de Plata Basura","Silver Coin Value":"Valor de Moneda de Plata","Silver Bar Value":"Valor de Lingote de Plata","Silver Jewelry Value":"Valor de Joyería de Plata","Silverware Value":"Valor de Cubiertos de Plata","Purity":"Pureza","999 Fine Silver":"Plata Fina 999","958 Britannia Silver":"Plata Britannia 958","925 Sterling Silver":"Plata Esterlina 925","900 Coin Silver":"Plata de Moneda 900","835 Silver":"Plata 835","800 Silver":"Plata 800","Silver Purity Chart":"Tabla de Pureza de la Plata","Pricing":"Precios","Silver Price Per Gram":"Precio de la Plata por Gramo","Silver Price Per Ounce":"Precio de la Plata por Onza","Price in All Currencies":"Precio en Todas las Monedas","1/10oz Silver Value":"Valor de la Plata 1/10oz","1oz Silver Value":"Valor de la Plata 1oz","2oz Silver Value":"Valor de la Plata 2oz","5oz Silver Value":"Valor de la Plata 5oz","10oz Silver Value":"Valor de la Plata 10oz","100oz Silver Value":"Valor de la Plata 100oz","1kg Silver Value":"Valor de la Plata 1kg","Tools":"Herramientas","Silver Profit Calculator":"Calculadora de Ganancias de Plata","Batch Calculator":"Calculadora por Lotes","Sona Chandi Calculator":"Calculadora Sona Chandi","Face Value Calculator":"Calculadora de Valor Nominal","Weight Converter":"Conversor de Peso","Pennyweight (DWT) Calc":"Calculadora Pennyweight (DWT)","Tola Calculator":"Calculadora Tola","Sell or Hold Analysis":"Análisis de Vender o Mantener","Silver Identifier":"Identificador de Plata","Guides":"Guías","How to Use Our Calculators":"Cómo Usar Nuestras Calculadoras","What Is Silver Scrap?":"¿Qué es la Plata de Desecho?","What Is Melt Value?":"¿Qué es el Valor de Fusión?","What Is Junk Silver?":"¿Qué es la Plata Basura?","What Is a Troy Ounce?":"¿Qué es una Onza Troy?","What Is Silver Bullion?":"¿Qué es un Lingote de Plata?","How Silver Prices Work":"Cómo Funcionan los Precios de la Plata","Silver Hallmarks Guide":"Guía de Sellos de Plata","What Does 925 Mean?":"¿Qué Significa 925?","What Is Sterling Silver?":"¿Qué es la Plata Esterlina?","How to Sell Silver":"Cómo Vender Plata","Scrap Silver":"Plata de Desecho","Gold & Silver":"Oro y Plata","Silver Profit":"Ganancia de Plata","Melt Value":"Valor de Fusión","Junk Silver":"Plata Basura","Silver Coins":"Monedas de Plata","Silver Dollar":"Dólar de Plata","Silver Quarter":"Cuarto de Dólar de Plata","Silver Dime":"Moneda de Diez Centavos de Plata","Jewelry Value":"Valor de Joyería","925 Sterling":"Esterlina 925","Purity Chart":"Tabla de Pureza","How to Use Calculators":"Cómo Usar las Calculadoras","Sona Chandi Calc":"Calc. Sona Chandi","Face Value Calc":"Calc. Valor Nominal","Sell or Hold":"Vender o Mantener","About":"Acerca de","Privacy":"Privacidad","Terms":"Términos","All rights reserved.":"Todos los derechos reservados.","Prices are for informational purposes only.":"Los precios son solo para fines informativos.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calculadoras de plata gratuitas usando precios spot en vivo. Calcule el valor de su sucata al instante."}; 
+</script>
+</body></html>

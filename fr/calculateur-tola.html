@@ -1,0 +1,196 @@
+<!DOCTYPE html><html lang="fr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculateur de Tola d'argent — Convertissez le Tola en grammes et la valeur de l'argent</title>
+  <meta name="description" content="Calculateur de tola d'argent gratuit. Convertissez le tola en grammes, en onces troy, et calculez la valeur de l'argent par tola au prix au comptant en direct d'aujourd'hui.">
+  <meta name="keywords" content="tola calculator, tola to grams, silver tola price, silver price per tola, tola converter, 1 tola silver price">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/tola-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" style="padding: var(--space-2xl) 0 var(--space-xl);">
+      <div class="container hero-content">
+        <div id="breadcrumb"></div>
+        
+        <h1>Argent <span class="highlight">Tola Calculator</span></h1>
+        <p class="hero-subtitle">Convertissez le tola en grammes, en onces troy, et calculez la valeur de l'argent par tola au prix au comptant en direct d'aujourd'hui. Utilisé en Inde, au Pakistan, au Bangladesh et au Moyen-Orient.</p>
+
+        <div class="calc-widget slide-up" id="tola-calc">
+          <div class="calc-widget-title"><span class="icon">🌙</span> Silver Tola Value Calculator</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="tola-weight">Poids en Tola</label>
+              <input type="number" class="form-input" id="tola-weight" placeholder="Enter weight in tola" step="0.01" min="0" value="1">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="tola-purity">Pureté de l'argent</label>
+              <select class="form-select" id="tola-purity">
+                <option value="0.999">999 — Argent fin (99,9 %)</option>
+                <option value="0.958">958 — Bretagne (95,8 %)</option>
+                <option value="0.925" selected="">925 — Livre sterling (92,5 %)</option>
+                <option value="0.900">900 — Pièce d'argent (90 %)</option>
+                <option value="0.835">835 — Européen (83,5 %)</option>
+                <option value="0.800">800 — Européen (80 %)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Conversion results -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-md);margin-bottom:var(--space-lg);">
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Grams</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-grams">11.66</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Troy Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-ozt">0.3750</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Pennyweight</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="tola-dwt">7.500</div>
+            </div>
+          </div>
+
+          <div class="result-display" id="tola-result">
+            <div class="result-label">Valeur de l'argent par tola</div>
+            <div class="result-value" id="tola-result-value">$0.00</div>
+            <div class="result-detail" id="tola-result-detail">Enter weight in tola to calculate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick reference table -->
+    <section class="section" style="padding:var(--space-2xl) 0;">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:var(--space-lg);">Table de conversion des tolas</h2>
+        <div style="max-width:700px;margin:0 auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border-medium);">
+                <th style="padding:var(--space-md);text-align:left;color:var(--text-muted);font-size:var(--fs-sm);">Tola</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Grammes</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Troy Oz</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Valeur 925</th>
+              </tr>
+            </thead>
+            <tbody id="tola-table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+      <div class="container">
+        <div class="content-body">
+          <h2>Qu’est-ce qu’un Tola ?</h2>
+          <p>A <strong>tola</strong> est une unité de poids traditionnelle utilisée en Asie du Sud et au Moyen-Orient pour mesurer l’or et l’argent. Un tola équivaut à <strong>11.6638 grams</strong> ou environ 0,375 once troy. Le terme vient du mot hindi/ourdou « तोला » et était historiquement lié au poids d'une pièce de monnaie en roupie en argent.</p>
+
+          <h3>Où Tola est-il utilisé ?</h3>
+          <p>Le tola est couramment utilisé dans <strong>India, Pakistan, Bangladesh, Nepal, Sri Lanka,</strong> et des parties du <strong>Middle East</strong> lors de l'achat et de la vente de métaux précieux. Lorsque vous voyez les prix de l'argent indiqués en «&nbsp;par tola&nbsp;» chez un bijoutier ou sur un marché local, cette calculatrice vous aide à convertir ce prix aux normes internationales à des fins de comparaison.</p>
+
+          <h3>Formules de conversion Tola</h3>
+          <ul style="list-style:disc;margin-left:var(--space-xl);">
+            <li style="padding:4px 0;color:var(--text-secondary);">1 Tola = 11,6638 grammes</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 Tola = 0,375 once troy (3/8 oz)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 Tola = 7,5 pennyweight (DWT)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 gramme = 0,08573 tola</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 once troy = 2,6667 tola</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">10 tola = 116,638 grammes = 3,75 onces troy</li>
+          </ul>
+
+          <h3>Prix de l'argent par tola aujourd'hui</h3>
+          <p>Le prix de l'argent par tola change en fonction du prix au comptant mondial. Puisque 1 tola = 0,375 once troy, multipliez le prix au comptant par 0,375 (puis par la pureté) pour obtenir la valeur par tola. Notre calculateur le fait automatiquement en utilisant les prix en direct.</p>
+
+          <h3>Calculatrices associées</h3>
+          <p>Utilisez notre <a href="calculateur-pennyweight-dwt.html">pennyweight calculator</a> pour les conversions DWT, le <a href="convertisseur-de-poids.html">weight converter</a> pour toutes les unités, ou le <a href="prix-dans-toutes-les-devises.html">multi-currency price page</a> pour voir le prix de l'argent d'aujourd'hui en PKR, INR et autres devises locales.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      { label: 'Home', href: 'index.html' },
+      { label: 'Tools', href: '#' },
+      { label: 'Tola Calculator' }
+    ]);
+
+    const TOLA_TO_GRAMS = 11.6638;
+    const tolaWeight = document.getElementById('tola-weight');
+    const tolaPurity = document.getElementById('tola-purity');
+    const tolaGrams = document.getElementById('tola-grams');
+    const tolaOzt = document.getElementById('tola-ozt');
+    const tolaDwt = document.getElementById('tola-dwt');
+    const tolaResultValue = document.getElementById('tola-result-value');
+    const tolaResultDetail = document.getElementById('tola-result-detail');
+
+    function calcTola() {
+      const tola = parseFloat(tolaWeight.value) || 0;
+      const purity = parseFloat(tolaPurity.value);
+      const spotPrice = SilverPrice.getPrice();
+
+      const grams = tola * TOLA_TO_GRAMS;
+      const troyOz = grams / 31.1035;
+      const dwt = troyOz * 20;
+
+      tolaGrams.textContent = grams.toFixed(2);
+      tolaOzt.textContent = troyOz.toFixed(4);
+      tolaDwt.textContent = dwt.toFixed(3);
+
+      if (tola <= 0) {
+        tolaResultValue.textContent = '$0.00';
+        tolaResultDetail.textContent = 'Enter weight in tola to calculate';
+        return;
+      }
+
+      const value = troyOz * purity * spotPrice;
+      const pureGrams = grams * purity;
+      tolaResultValue.textContent = SilverCalc.formatCurrency(value);
+      tolaResultDetail.textContent = `${pureGrams.toFixed(2)}g pure silver · ${(troyOz * purity).toFixed(4)} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+    }
+
+    tolaWeight.addEventListener('input', calcTola);
+    tolaPurity.addEventListener('change', calcTola);
+    SilverPrice.onPriceUpdate(() => calcTola());
+    calcTola();
+
+    // Conversion table
+    const tableBody = document.getElementById('tola-table');
+    [0.5, 1, 2, 3, 5, 10, 15, 20, 50].forEach(tola => {
+      const g = (tola * TOLA_TO_GRAMS).toFixed(2);
+      const ozt = (tola * TOLA_TO_GRAMS / 31.1035).toFixed(3);
+      const spotPrice = SilverPrice.getPrice();
+      const val = SilverCalc.formatCurrency((tola * TOLA_TO_GRAMS / 31.1035) * 0.925 * spotPrice);
+      tableBody.innerHTML += `<tr style="border-bottom:1px solid var(--border-subtle);">
+        <td style="padding:var(--space-md);color:var(--text-primary);font-weight:600;">${tola} tola</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${g}g</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${ozt} oz</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--accent-primary);font-weight:600;">${val}</td>
+      </tr>`;
+    });
+
+    SiteComponents.injectFAQSchema([
+      { q: 'What is a tola?', a: 'A tola is a traditional unit of weight used in South Asia and the Middle East for precious metals. 1 tola equals 11.6638 grams or 0.375 troy ounces.' },
+      { q: 'How many grams in a tola?', a: '1 tola equals exactly 11.6638 grams.' },
+      { q: 'What is the silver price per tola today?', a: 'The silver price per tola depends on the current spot price. Since 1 tola = 0.375 troy ounces, multiply today\'s spot price by 0.375 and the purity to get the value.' },
+      { q: 'How many tola in a troy ounce?', a: 'There are approximately 2.6667 tola in one troy ounce (1 ozt = 31.1035g ÷ 11.6638g per tola).' }
+    ]);
+  </script>
+
+
+
+<script>
+    window.MenuTranslations = {"slugs":{"silver-scrap-calculator.html":"calculateur-de-ferraille-d-argent.html","gold-and-silver-calculator.html":"calculateur-or-et-argent.html","silver-melt-value-calculator.html":"calculateur-de-valeur-de-fonte.html","sterling-silver-calculator.html":"calculateur-d-argent-sterling.html","junk-silver-calculator.html":"calculateur-d-argent-de-circulation.html","silver-coin-value-calculator.html":"valeur-des-pieces-d-argent.html","silver-bar-value-calculator.html":"valeur-des-lingots-d-argent.html","silver-jewelry-value-calculator.html":"valeur-des-bijoux-en-argent.html","silverware-value-calculator.html":"valeur-de-l-argenterie.html","999-silver-calculator.html":"argent-fin-999.html","958-silver-calculator.html":"argent-britannia-958.html","925-silver-calculator.html":"argent-sterling-925.html","900-silver-calculator.html":"argent-de-piece-900.html","835-silver-calculator.html":"argent-835.html","800-silver-calculator.html":"argent-800.html","silver-purity-chart.html":"tableau-de-purete-de-l-argent.html","silver-price-per-gram.html":"prix-de-l-argent-au-gramme.html","silver-price-per-ounce.html":"prix-de-l-argent-a-l-once.html","silver-price-all-currencies.html":"prix-dans-toutes-les-devises.html","1-10oz-silver-value.html":"valeur-de-l-argent-1-10oz.html","1oz-silver-value.html":"valeur-de-l-argent-1oz.html","2oz-silver-value.html":"valeur-de-l-argent-2oz.html","5oz-silver-value.html":"valeur-de-l-argent-5oz.html","10oz-silver-value.html":"valeur-de-l-argent-10oz.html","100oz-silver-value.html":"valeur-de-l-argent-100oz.html","1kg-silver-value.html":"valeur-de-l-argent-1kg.html","silver-profit-calculator.html":"calculateur-de-profit-d-argent.html","silver-batch-calculator.html":"calculateur-par-lots.html","sona-chandi-calculator.html":"calculateur-sona-chandi.html","face-value-silver-calculator.html":"calculateur-de-valeur-nominale.html","silver-weight-converter.html":"convertisseur-de-poids.html","pennyweight-calculator.html":"calculateur-pennyweight-dwt.html","tola-calculator.html":"calculateur-tola.html","silver-sell-or-hold.html":"analyse-vendre-ou-garder.html","identify-silver.html":"identificateur-d-argent.html","how-to-use-silver-calculators.html":"comment-utiliser-nos-calculateurs.html","what-is-silver-scrap.html":"qu-est-ce-que-la-ferraille-d-argent.html","what-is-silver-melt-value.html":"qu-est-ce-que-la-valeur-de-fonte.html","what-is-junk-silver.html":"qu-est-ce-que-l-argent-de-circulation.html","what-is-troy-ounce.html":"qu-est-ce-qu-une-once-troy.html","what-is-silver-bullion.html":"qu-est-ce-qu-un-lingot-d-argent.html","how-silver-prices-work.html":"comment-fonctionnent-les-prix-de-l-argent.html","silver-hallmarks-guide.html":"guide-des-poincons-d-argent.html","what-does-925-mean.html":"que-signifie-925.html","what-is-sterling-silver.html":"qu-est-ce-que-l-argent-sterling.html","how-to-sell-silver.html":"comment-vendre-de-l-argent.html","silver-bracelet-value.html":"valeur-d-un-bracelet-en-argent.html","silver-chain-value.html":"valeur-d-une-chaine-en-argent.html","silver-cup-value.html":"valeur-d-une-coupe-en-argent.html","silver-dime-calculator.html":"calculateur-piece-de-dix-cents-en-argent.html","silver-dollar-calculator.html":"calculateur-dollar-en-argent.html","silver-fork-value.html":"valeur-d-une-fourchette-en-argent.html","silver-knife-value.html":"valeur-d-un-couteau-en-argent.html","silver-necklace-value.html":"valeur-d-un-collier-en-argent.html","silver-plate-value.html":"valeur-d-une-assiette-en-argent.html","silver-quarter-calculator.html":"calculateur-quart-de-dollar-en-argent.html","silver-ring-value.html":"valeur-d-une-bague-en-argent.html","silver-spoon-value.html":"valeur-d-une-cuillere-en-argent.html","silver-tray-value.html":"valeur-d-un-plateau-en-argent.html","canadian-silver-coin-calculator.html":"calculateur-piece-en-argent-canadienne.html"},"Home":"Accueil","Calculators":"Calculateurs","Silver Scrap Calculator":"Calculateur de Ferraille d'Argent","Gold & Silver Calculator":"Calculateur Or et Argent","Silver Melt Value":"Valeur de Fonte de l'Argent","Sterling Silver Calculator":"Calculateur d'Argent Sterling","Junk Silver Calculator":"Calculateur d'Argent de Circulation","Silver Coin Value":"Valeur des Pièces d'Argent","Silver Bar Value":"Valeur des Lingots d'Argent","Silver Jewelry Value":"Valeur des Bijoux en Argent","Silverware Value":"Valeur de l'Argenterie","Purity":"Pureté","999 Fine Silver":"Argent Fin 999","958 Britannia Silver":"Argent Britannia 958","925 Sterling Silver":"Argent Sterling 925","900 Coin Silver":"Argent de Pièce 900","835 Silver":"Argent 835","800 Silver":"Argent 800","Silver Purity Chart":"Tableau de Pureté de l'Argent","Pricing":"Prix","Silver Price Per Gram":"Prix de l'Argent au Gramme","Silver Price Per Ounce":"Prix de l'Argent à l'Once","Price in All Currencies":"Prix dans Toutes les Devises","1/10oz Silver Value":"Valeur de l'Argent 1/10oz","1oz Silver Value":"Valeur de l'Argent 1oz","2oz Silver Value":"Valeur de l'Argent 2oz","5oz Silver Value":"Valeur de l'Argent 5oz","10oz Silver Value":"Valeur de l'Argent 10oz","100oz Silver Value":"Valeur de l'Argent 100oz","1kg Silver Value":"Valeur de l'Argent 1kg","Tools":"Outils","Silver Profit Calculator":"Calculateur de Profit d'Argent","Batch Calculator":"Calculateur par Lots","Sona Chandi Calculator":"Calculateur Sona Chandi","Face Value Calculator":"Calculateur de Valeur Nominale","Weight Converter":"Convertisseur de Poids","Pennyweight (DWT) Calc":"Calculateur Pennyweight (DWT)","Tola Calculator":"Calculateur Tola","Sell or Hold Analysis":"Analyse Vendre ou Garder","Silver Identifier":"Identificateur d'Argent","Guides":"Guides","How to Use Our Calculators":"Comment Utiliser nos Calculateurs","What Is Silver Scrap?":"Qu'est-ce que la Ferraille d'Argent ?","What Is Melt Value?":"Qu'est-ce que la Valeur de Fonte ?","What Is Junk Silver?":"Qu'est-ce que l'Argent de Circulation ?","What Is a Troy Ounce?":"Qu'est-ce qu'une Once Troy ?","What Is Silver Bullion?":"Qu'est-ce qu'un Lingot d'Argent ?","How Silver Prices Work":"Comment Fonctionnent les Prix de l'Argent","Silver Hallmarks Guide":"Guide des Poinçons d'Argent","What Does 925 Mean?":"Que Signifie 925 ?","What Is Sterling Silver?":"Qu'est-ce que l'Argent Sterling ?","How to Sell Silver":"Comment Vendre de l'Argent","Scrap Silver":"Ferraille d'Argent","Gold & Silver":"Or et Argent","Silver Profit":"Profit d'Argent","Melt Value":"Valeur de Fonte","Junk Silver":"Argent de Circulation","Silver Coins":"Pièces d'Argent","Silver Dollar":"Dollar en Argent","Silver Quarter":"Quart de Dollar en Argent","Silver Dime":"Pièce de Dix Cents en Argent","Jewelry Value":"Valeur des Bijoux","925 Sterling":"Sterling 925","Purity Chart":"Tableau de Pureté","How to Use Calculators":"Comment Utiliser les Calculateurs","Sona Chandi Calc":"Calc. Sona Chandi","Face Value Calc":"Calc. Valeur Nominale","Sell or Hold":"Vendre ou Garder","About":"À Propos","Privacy":"Confidentialité","Terms":"Conditions","All rights reserved.":"Tous droits réservés.","Prices are for informational purposes only.":"Les prix sont à titre informatif.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calculateurs gratuits utilisant les prix en direct. Calculez la valeur de votre ferraille d'argent instantanément."};
+  </script>
+</body></html>

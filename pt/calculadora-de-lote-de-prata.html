@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="pt"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de lote de prata – calcule vários itens de prata de uma só vez</title>
+  <meta name="description" content="Calcule o valor total de vários itens de prata de uma só vez. Adicione anéis, correntes, moedas e talheres para obter um valor de fusão combinado para toda a sua coleção.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .batch-table { width: 100%; border-collapse: collapse; margin: var(--space-lg) 0; }
+    .batch-table th, .batch-table td { padding: var(--space-sm) var(--space-md); text-align: left; border-bottom: 1px solid var(--border-subtle); font-size: var(--fs-sm); }
+    .batch-table th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: var(--fs-xs); letter-spacing: 0.05em; }
+    .batch-table td input, .batch-table td select { width: 100%; padding: 6px 10px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-primary); font-size: var(--fs-sm); }
+    .batch-table td input:focus, .batch-table td select:focus { border-color: var(--accent-primary); outline: none; }
+    .batch-table .row-value { font-family: var(--font-display); font-weight: 600; color: var(--accent-primary); white-space: nowrap; }
+    .batch-table .remove-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: var(--fs-md); padding: 4px; transition: color var(--transition-fast); }
+    .batch-table .remove-btn:hover { color: #ef4444; }
+    .add-row-btn { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); background: var(--bg-glass); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); color: var(--accent-primary); cursor: pointer; font-size: var(--fs-sm); font-weight: 500; transition: all var(--transition-fast); width: 100%; justify-content: center; }
+    .add-row-btn:hover { background: var(--bg-glass-strong); border-color: var(--accent-primary); }
+    .batch-actions { display: flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap; }
+    .grand-total { background: linear-gradient(135deg, rgba(192,192,192,0.1) 0%, rgba(192,192,192,0.03) 100%); border: 2px solid var(--border-accent); border-radius: var(--radius-lg); padding: var(--space-xl); text-align: center; margin-top: var(--space-xl); }
+    .grand-total .total-label { font-size: var(--fs-sm); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .grand-total .total-value { font-family: var(--font-display); font-size: var(--fs-4xl); font-weight: 800; background: var(--gradient-silver); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .grand-total .total-detail { display: flex; justify-content: center; gap: var(--space-xl); margin-top: var(--space-md); font-size: var(--fs-sm); color: var(--text-secondary); }
+    @media print { .site-header, .site-footer, .mobile-menu-btn, .mobile-nav, .add-row-btn, .batch-actions, .related-grid, .breadcrumb, #price-ticker { display: none !important; } main { padding-top: 0 !important; } .calc-widget { border: 1px solid #ccc; } .grand-total { border: 2px solid #333; } body { background: white; color: black; } .batch-table th, .batch-table td { border-color: #ccc; } .result-value, .total-value, .row-value { -webkit-text-fill-color: initial !important; background: none !important; color: #333 !important; } .result-label, .total-label { color: #666 !important; } .page-hero h1 .highlight { -webkit-text-fill-color: initial !important; background: none !important; color: #333 !important; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>Lote de Prata <span class="highlight">Calculator</span></h1><p>Calcule o valor total de vários itens de prata de uma só vez – perfeito para vender uma coleção.</p></div></section>
+    <div class="calc-page-layout" style="max-width:1000px;">
+      <div class="calc-widget" style="max-width:100%;">
+        <div class="calc-widget-title"><span class="icon">📋</span> Batch Calculator</div>
+        <div style="overflow-x:auto;">
+          <table class="batch-table" id="batch-table">
+            <thead>
+              <tr>
+                <th style="width:22%;">Descrição</th>
+                <th style="width:15%;">Peso</th>
+                <th style="width:14%;">Unidade</th>
+                <th style="width:16%;">Pureza</th>
+                <th style="width:8%;">Quantidade</th>
+                <th style="width:15%;">Valor</th>
+                <th style="width:5%;"></th>
+              </tr>
+            </thead>
+            <tbody id="batch-body"></tbody>
+          </table>
+        </div>
+        <button type="button" class="add-row-btn" id="add-row-btn">+ Add Another Item</button>
+
+        <div class="grand-total" id="grand-total">
+          <div class="total-label">Total Collection Value</div>
+          <div class="total-value" id="total-value">$0.00</div>
+          <div class="total-detail">
+            <span id="total-items">0 items</span>
+            <span id="total-weight">0g total</span>
+            <span id="total-silver">0g pure silver</span>
+          </div>
+        </div>
+
+        <div class="batch-actions">
+          <button type="button" class="btn btn-primary" onclick="window.print()">🖨️ Print Receipt</button>
+          <button type="button" class="btn btn-secondary" id="copy-btn">📋 Copy Results</button>
+          <button type="button" class="btn btn-secondary" id="clear-btn">🗑️ Clear All</button>
+          <button type="button" class="btn btn-secondary" id="save-btn">💾 Save to Browser</button>
+          <button type="button" class="btn btn-secondary" id="load-btn" style="display:none;">📂 Load Saved</button>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>Como usar a calculadora de lote</h2>
+        <p>A Calculadora de Lote permite adicionar vários itens de prata e calcular seu valor combinado – ideal quando você está se preparando para vender uma coleção a um revendedor.</p>
+        <ol>
+          <li><strong>Add items</strong> — Clique em "+ Adicionar outro item" para cada peça</li>
+          <li><strong>Enter details</strong> — Descrição, peso, unidade e pureza de cada</li>
+          <li><strong>See total</strong> — O total geral é atualizado automaticamente</li>
+          <li><strong>Print or copy</strong> — Leve o recibo ao seu revendedor ou guarde-o para referência</li>
+        </ol>
+        <div class="callout tip">
+          <div class="callout-title">💡 Pro Tip</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Agrupe itens por pureza (todas as 925 peças juntas, todas as 800 peças juntas) para facilitar a negociação com os revendedores. Use o botão "Salvar no navegador" para manter seu inventário entre as visitas.</p>
+        </div>
+      </div>
+
+      <div><h3 style="margin-bottom:var(--space-lg);">Relacionado</h3><div class="related-grid">
+        <a href="calculadora-de-sucata-de-prata.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        <a href="conversor-de-peso-de-prata.html" class="related-link"><span class="r-icon">⚖️</span> Weight Converter</a>
+        <a href="como-vender-prata.html" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>
+        <a href="gráfico-de-pureza-de-prata.html" class="related-link"><span class="r-icon">📊</span> Purity Chart</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Página inicial',href:'index.html'},{label:'Batch Calculator'}]);
+
+    let rows = [];
+    let rowId = 0;
+
+    function createRow(desc='', weight='', unit='g', purity='0.925', qty='1') {
+      const id = rowId++;
+      rows.push(id);
+      const tr = document.createElement('tr');
+      tr.id = 'row-' + id;
+      tr.innerHTML = `
+        <td><input type="text" placeholder="e.g. Ring" value="${desc}" data-field="desc"></td>
+        <td><input type="number" placeholder="0" step="0.01" min="0" value="${weight}" data-field="weight"></td>
+        <td><select data-field="unit"><option value="g" ${unit==='g'?'selected':''}>Grams</option><option value="oz" ${unit==='oz'?'selected':''}>Troy Oz</option><option value="dwt" ${unit==='dwt'?'selected':''}>DWT</option><option value="kg" ${unit==='kg'?'selected':''}>KG</option></select></td>
+        <td><select data-field="purity"><option value="0.999" ${purity==='0.999'?'selected':''}>999</option><option value="0.958" ${purity==='0.958'?'selected':''}>958</option><option value="0.925" ${purity==='0.925'?'selected':''}>925</option><option value="0.900" ${purity==='0.900'?'selected':''}>900</option><option value="0.835" ${purity==='0.835'?'selected':''}>835</option><option value="0.800" ${purity==='0.800'?'selected':''}>800</option></select></td>
+        <td><input type="number" min="1" step="1" value="${qty}" data-field="qty" style="width:60px;"></td>
+        <td class="row-value" id="val-${id}">$0.00</td>
+        <td><button type="button" class="remove-btn" onclick="removeRow(${id})">✕</button></td>`;
+      document.getElementById('batch-body').appendChild(tr);
+      tr.querySelectorAll('input, select').forEach(el => { el.addEventListener('input', calcAll); el.addEventListener('change', calcAll); });
+      calcAll();
+    }
+
+    function removeRow(id) {
+      const tr = document.getElementById('row-' + id);
+      if (tr) tr.remove();
+      rows = rows.filter(r => r !== id);
+      calcAll();
+    }
+
+    function calcAll() {
+      const spot = SilverPrice.getPrice();
+      let totalValue = 0, totalWeightG = 0, totalSilverG = 0, itemCount = 0;
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        const w = parseFloat(tr.querySelector('[data-field="weight"]').value) || 0;
+        const u = tr.querySelector('[data-field="unit"]').value;
+        const p = parseFloat(tr.querySelector('[data-field="purity"]').value);
+        const q = parseInt(tr.querySelector('[data-field="qty"]').value) || 1;
+        const grams = SilverCalc.toGrams(w, u) * q;
+        const r = SilverCalc.meltValue(grams, p, spot);
+        const valEl = tr.querySelector('.row-value');
+        if (valEl) valEl.textContent = SilverCalc.formatCurrency(r.value);
+        totalValue += r.value;
+        totalWeightG += grams;
+        totalSilverG += r.silverContentGrams;
+        itemCount += q;
+      });
+      document.getElementById('total-value').textContent = SilverCalc.formatCurrency(totalValue);
+      document.getElementById('total-items').textContent = itemCount + ' item(s)';
+      document.getElementById('total-weight').textContent = totalWeightG.toFixed(1) + 'g total';
+      document.getElementById('total-silver').textContent = totalSilverG.toFixed(1) + 'g pure silver';
+    }
+
+    // Add initial rows
+    createRow('Sterling Ring', '6', 'g', '0.925', '1');
+    createRow('Silver Chain', '25', 'g', '0.925', '1');
+    createRow('Silver Spoon', '40', 'g', '0.925', '4');
+
+    document.getElementById('add-row-btn').addEventListener('click', () => createRow());
+
+    document.getElementById('clear-btn').addEventListener('click', () => {
+      document.getElementById('batch-body').innerHTML = '';
+      rows = [];
+      createRow();
+    });
+
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const spot = SilverPrice.getPrice();
+      let text = `Silver Batch Valuation — ${new Date().toLocaleDateString()}\nSpot Price: $${spot.toFixed(2)}/oz\n\n`;
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        const desc = tr.querySelector('[data-field="desc"]').value || 'Item';
+        const w = tr.querySelector('[data-field="weight"]').value;
+        const u = tr.querySelector('[data-field="unit"]').value;
+        const p = tr.querySelector('[data-field="purity"]').value;
+        const q = tr.querySelector('[data-field="qty"]').value;
+        const val = tr.querySelector('.row-value').textContent;
+        text += `${desc}: ${w}${u} × ${q} @ ${(p*100).toFixed(1)}% = ${val}\n`;
+      });
+      text += `\nTOTAL: ${document.getElementById('total-value').textContent}`;
+      text += `\n${document.getElementById('total-items').textContent} · ${document.getElementById('total-weight').textContent} · ${document.getElementById('total-silver').textContent}`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy Results', 2000);
+      });
+    });
+
+    document.getElementById('save-btn').addEventListener('click', () => {
+      const data = [];
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        data.push({
+          desc: tr.querySelector('[data-field="desc"]').value,
+          weight: tr.querySelector('[data-field="weight"]').value,
+          unit: tr.querySelector('[data-field="unit"]').value,
+          purity: tr.querySelector('[data-field="purity"]').value,
+          qty: tr.querySelector('[data-field="qty"]').value
+        });
+      });
+      localStorage.setItem('silverBatchData', JSON.stringify(data));
+      const btn = document.getElementById('save-btn');
+      btn.textContent = '✅ Saved!';
+      setTimeout(() => btn.textContent = '💾 Save to Browser', 2000);
+      document.getElementById('load-btn').style.display = 'inline-flex';
+    });
+
+    // Check for saved data
+    if (localStorage.getItem('silverBatchData')) {
+      document.getElementById('load-btn').style.display = 'inline-flex';
+    }
+
+    document.getElementById('load-btn').addEventListener('click', () => {
+      try {
+        const data = JSON.parse(localStorage.getItem('silverBatchData'));
+        document.getElementById('batch-body').innerHTML = '';
+        rows = [];
+        data.forEach(d => createRow(d.desc, d.weight, d.unit, d.purity, d.qty));
+      } catch(e) {}
+    });
+
+    SilverPrice.onPriceUpdate(() => calcAll());
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"valor-de-1-10-onças-de-prata.html","100oz-silver-value.html":"valor-de-prata-de-100-onças.html","10oz-silver-value.html":"valor-de-prata-de-10-onças.html","1kg-silver-value.html":"valor-de-1kg-de-prata.html","1oz-silver-value.html":"valor-de-1-onça-de-prata.html","2oz-silver-value.html":"valor-de-prata-de-2-onças.html","5oz-silver-value.html":"valor-de-prata-de-5-onças.html","800-silver-calculator.html":"calculadora-de-prata-800.html","835-silver-calculator.html":"calculadora-de-prata-835.html","900-silver-calculator.html":"calculadora-de-prata-900.html","925-silver-calculator.html":"calculadora-de-prata-925.html","925-sterling-silver-price-per-gram.html":"preço-da-prata-esterlina-925-por-grama.html","958-silver-calculator.html":"calculadora-de-prata-958.html","999-silver-calculator.html":"calculadora-de-prata-999.html","canadian-silver-coin-calculator.html":"calculadora-de-moeda-de-prata-canadense.html","face-value-silver-calculator.html":"calculadora-de-prata-com-valor-nominal.html","gold-and-silver-calculator.html":"calculadora-de-ouro-e-prata.html","how-silver-prices-work.html":"como-funcionam-os-preços-da-prata.html","how-to-sell-silver.html":"como-vender-prata.html","how-to-use-silver-calculators.html":"como-usar-calculadoras-de-prata.html","identify-silver.html":"identificar-prata.html","junk-silver-calculator.html":"calculadora-de-prata-lixo.html","pennyweight-calculator.html":"calculadora-de-centavo.html","silver-bar-value-calculator.html":"calculadora-de-valor-de-barra-de-prata.html","silver-batch-calculator.html":"calculadora-de-lote-de-prata.html","silver-bracelet-value.html":"valor-da-pulseira-de-prata.html","silver-chain-value.html":"valor-da-corrente-de-prata.html","silver-coin-value-calculator.html":"calculadora-do-valor-da-moeda-de-prata.html","silver-cup-value.html":"valor-da-taça-de-prata.html","silver-dime-calculator.html":"calculadora-de-moeda-de-prata.html","silver-dollar-calculator.html":"calculadora-dólar-de-prata.html","silver-fork-value.html":"valor-do-garfo-de-prata.html","silver-hallmarks-guide.html":"guia-de-marcas-de-prata.html","silver-jewelry-value-calculator.html":"calculadora-de-valor-de-joias-de-prata.html","silver-knife-value.html":"valor-da-faca-de-prata.html","silver-melt-value-calculator.html":"calculadora-de-valor-de-fusão-de-prata.html","silver-necklace-value.html":"valor-do-colar-de-prata.html","silver-plate-value.html":"valor-da-placa-de-prata.html","silver-price-all-currencies.html":"preço-da-prata-todas-as-moedas.html","silver-price-per-gram.html":"preço-da-prata-por-grama.html","silver-price-per-ounce.html":"preço-da-prata-por-onça.html","silver-profit-calculator.html":"calculadora-de-lucro-de-prata.html","silver-purity-chart.html":"gráfico-de-pureza-de-prata.html","silver-quarter-calculator.html":"calculadora-do-quarto-de-prata.html","silver-ring-value.html":"valor-do-anel-de-prata.html","silver-scrap-calculator.html":"calculadora-de-sucata-de-prata.html","silver-sell-or-hold.html":"prata-vender-ou-manter.html","silver-spoon-value.html":"valor-da-colher-de-prata.html","silver-spot-price-today.html":"preço-à-vista-da-prata-hoje.html","silver-tray-value.html":"valor-da-bandeja-de-prata.html","silver-weight-converter.html":"conversor-de-peso-de-prata.html","silverware-value-calculator.html":"calculadora-de-valor-de-talheres.html","sona-chandi-calculator.html":"calculadora-sona-chandi.html","sterling-silver-calculator.html":"calculadora-de-prata-esterlina.html","tola-calculator.html":"calculadora-tola.html","what-does-925-mean.html":"o-que-significa-925.html","what-is-junk-silver.html":"o-que-é-prata-lixo.html","what-is-silver-bullion.html":"o-que-é-barras-de-prata.html","what-is-silver-melt-value.html":"o-que-é-o-valor-de-fusão-da-prata.html","what-is-silver-scrap.html":"o-que-é-sucata-de-prata.html","what-is-sterling-silver.html":"o-que-é-prata-esterlina.html","what-is-troy-ounce.html":"o-que-é-onça-troy.html"},"Home":"Página inicial","Calculators":"Calculadoras","Silver Scrap Calculator":"Calculadora de sucata de prata","Gold & Silver Calculator":"Calculadora de Ouro e Prata","Silver Melt Value":"Valor de fusão de prata","Sterling Silver Calculator":"Calculadora de prata esterlina","Junk Silver Calculator":"Calculadora de prata lixo","Silver Coin Value":"Valor da moeda de prata","Silver Bar Value":"Valor da barra de prata","Silver Jewelry Value":"Valor das joias de prata","Silverware Value":"Valor dos talheres","Purity":"Pureza","999 Fine Silver":"Prata Fina 999","958 Britannia Silver":"Prata Britânia 958","925 Sterling Silver":"Prata Esterlina 925","900 Coin Silver":"900 moedas de prata","835 Silver":"835 Prata","800 Silver":"800 prata","Silver Purity Chart":"Gráfico de pureza de prata","Pricing":"Preços","Silver Spot Price Today":"Preço à vista da prata hoje","925 Sterling Price / Gram":"Preço de 925 libras esterlinas / grama","Silver Price Per Gram":"Preço da prata por grama","Silver Price Per Ounce":"Preço da prata por onça","Price in All Currencies":"Preço em todas as moedas","1/10oz Silver Value":"Valor de prata de 1/10 onças","1oz Silver Value":"Valor de prata de 1 onça","2oz Silver Value":"Valor de prata de 2 onças","5oz Silver Value":"Valor de prata de 5 onças","10oz Silver Value":"Valor de prata de 10 onças","100oz Silver Value":"Valor de prata de 100 onças","1kg Silver Value":"Valor de prata de 1kg","Tools":"Ferramentas","Silver Profit Calculator":"Calculadora de lucro de prata","Batch Calculator":"Calculadora de lote","Sona Chandi Calculator":"Calculadora Sona Chandi","Face Value Calculator":"Calculadora de valor nominal","Weight Converter":"Conversor de peso","Pennyweight (DWT) Calc":"Cálculo Pennyweight (DWT)","Tola Calculator":"Calculadora Tola","Sell or Hold Analysis":"Análise de vender ou reter","Silver Identifier":"Identificador Prata","Guides":"Guias","How to Use Our Calculators":"Como usar nossas calculadoras","What Is Silver Scrap?":"O que é sucata de prata?","What Is Melt Value?":"O que é valor de fusão?","What Is Junk Silver?":"O que é prata lixo?","What Is a Troy Ounce?":"O que é uma onça troy?","What Is Silver Bullion?":"O que é barras de prata?","How Silver Prices Work":"Como funcionam os preços da prata","Silver Hallmarks Guide":"Guia de marcas de prata","What Does 925 Mean?":"O que significa 925?","What Is Sterling Silver?":"O que é prata esterlina?","How to Sell Silver":"Como Vender Prata","Scrap Silver":"Sucata de prata","Gold & Silver":"Ouro e Prata","Silver Profit":"Lucro de Prata","Melt Value":"Valor de fusão","Junk Silver":"Lixo de prata","Silver Coins":"Moedas de Prata","Silver Dollar":"Dólar de prata","Silver Quarter":"Quarto de Prata","Silver Dime":"Moeda de prata","Jewelry Value":"Valor das joias","925 Sterling":"925 libras esterlinas","Purity Chart":"Gráfico de Pureza","How to Use Calculators":"Como usar calculadoras","Sona Chandi Calc":"Sona Chandi Calc","Face Value Calc":"Cálculo do valor nominal","Sell or Hold":"Vender ou Manter","About":"Sobre","Privacy":"Privacidade","Terms":"Termos","All rights reserved.":"Todos os direitos reservados.","Prices are for informational purposes only.":"Os preços são apenas para fins informativos.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calculadoras de prata precisas e gratuitas usando preços spot ao vivo. Calcule o valor de fusão de sucata de prata, moedas, joias e barras instantaneamente."};
+</script>
+</body></html>

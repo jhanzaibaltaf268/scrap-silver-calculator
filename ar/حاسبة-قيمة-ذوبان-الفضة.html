@@ -1,0 +1,114 @@
+<!DOCTYPE html><html lang="ar"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>حاسبة قيمة الفضة المنصهرة - احسب قيمة الفضة المنصهرة</title>
+  <meta name="description" content="احسب قيمة ذوبان أي قطعة فضية. أدخل الوزن والنقاء للعثور على محتوى الفضة النقية وقيمته بالسعر الفوري اليوم.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-melt-value-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>قيمة ذوبان الفضة <span class="highlight">Calculator</span></h1>
+        <p>تحديد محتوى الفضة النقية وقيمة ذوبان أي قطعة فضية باستخدام السعر الفوري المباشر لهذا اليوم.</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">🔥</span> Melt Value Calculator</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="weight">الوزن</label>
+            <input type="number" class="form-input" id="weight" placeholder="e.g. 31.1" step="0.01" min="0" value="31.1035">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="unit">وحدة</label>
+            <select class="form-select" id="unit">
+              <option value="g" selected="">غرام (ز)</option>
+              <option value="oz">أوقية تروي (أونصة)</option>
+              <option value="dwt">وزن البنس (بالوزن الساكن)</option>
+              <option value="kg">كيلوغرام (كجم)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="purity">الطهارة</label>
+          <select class="form-select" id="purity">
+            <option value="0.999">999 فضة خالصة (99.9%)</option>
+            <option value="0.958">958 بريتانيا (95.8%)</option>
+            <option value="0.925" selected="">925 جنيه استرليني (92.5%)</option>
+            <option value="0.900">900 عملة فضية (90%)</option>
+            <option value="0.835">835 أوروبي (83.5%)</option>
+            <option value="0.800">800 أوروبي (80%)</option>
+            <option value="custom">الطهارة المخصصة...</option>
+          </select>
+        </div>
+        <div class="form-group" id="custom-purity-group" style="display:none;">
+          <label class="form-label" for="custom-purity">الطهارة المخصصة (٪)</label>
+          <input type="number" class="form-input" id="custom-purity" placeholder="e.g. 85" step="0.1" min="0" max="100" value="92.5">
+        </div>
+        <div class="result-display">
+          <div class="result-label">قيمة الذوبان</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+      </div>
+      <div class="content-body">
+        <h2>فهم قيمة ذوبان الفضة</h2>
+        <p>تمثل قيمة ذوبان الفضة القيمة الجوهرية لمعدن الفضة النقي الموجود في السلعة. يتم حسابه عن طريق ضرب وزن السلعة بنسبة نقائها والسعر الفوري الحالي للفضة.</p>
+        <h3>قيمة الذوبان مقابل القيمة السوقية</h3>
+        <p>قيمة الذوبان هي خط الأساس — الحد الأدنى الذي تستحقه الفضة كمعدن خام. بعض العناصر تستحق أكثر من الذوبان:</p>
+        <ul>
+          <li><strong>Collectible coins</strong> غالبًا ما تحمل أقساط نقودية فوق الذوبان</li>
+          <li><strong>Artisan jewelry</strong> يمكن أن تكون قيمتها أكثر بسبب الحرفية</li>
+          <li><strong>Antique silverware</strong> قد يكون لها قيمة جامع</li>
+          <li><strong>Bullion bars and rounds</strong> عادة ما يتم بيعها بالقرب من الذوبان بالإضافة إلى قسط صغير</li>
+        </ul>
+        <h3>متى تكون قيمة الذوبان مهمة؟</h3>
+        <p>تعتبر قيمة الذوبان أكثر أهمية عند بيع العناصر الفضية التالفة أو المكسورة أو العامة إلى تاجر أو مصفاة. إنه يحدد السعر الأدنى - لا ينبغي لأي تاجر نزيه أن يعرض أقل من 80% من الذوبان للفضة الأصلية.</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom: var(--space-lg);">الآلات الحاسبة ذات الصلة</h3>
+        <div class="related-grid">
+          <a href="حاسبة-خردة-الفضة.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+          <a href="حاسبة-الفضة.html" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
+          <a href="حاسبة-قيمة-العملة-الفضية.html" class="related-link"><span class="r-icon">🪙</span> Coin Value</a>
+          <a href="سعر-الفضة-للأونصة.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'الصفحة الرئيسية',href:'index.html'},{label:'Silver Melt Value Calculator'}]);
+    const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),cp=document.getElementById('custom-purity'),cpg=document.getElementById('custom-purity-group');
+    p.addEventListener('change',()=>{cpg.style.display=p.value==='custom'?'block':'none'; calc();});
+    function calc(){
+      const weight=parseFloat(w.value)||0;
+      const grams=SilverCalc.toGrams(weight,u.value);
+      let purity=parseFloat(p.value);
+      if(p.value==='custom') purity=(parseFloat(cp.value)||0)/100;
+      const spot=SilverPrice.getPrice();
+      const r=SilverCalc.meltValue(grams,purity,spot);
+      document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
+      document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure silver · ${r.silverContentOz} troy oz · Spot: $${spot.toFixed(2)}/oz`;
+    }
+    [w,cp].forEach(el=>el.addEventListener('input',calc));
+    [u,p].forEach(el=>el.addEventListener('change',calc));
+    SilverPrice.onPriceUpdate(()=>calc());
+    calc();
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10-أونصة-من-الفضة.html","100oz-silver-value.html":"قيمة-الفضة-100-أوقية.html","10oz-silver-value.html":"قيمة-الفضة-10-أوقية.html","1kg-silver-value.html":"قيمة-1-كيلو-فضة.html","1oz-silver-value.html":"قيمة-الفضة-1-أوقية.html","2oz-silver-value.html":"قيمة-الفضة-2-أوقية.html","5oz-silver-value.html":"قيمة-الفضة-5-أوقية.html","800-silver-calculator.html":"آلة-حاسبة-فضية-800.html","835-silver-calculator.html":"آلة-حاسبة-فضية-835.html","900-silver-calculator.html":"آلة-حاسبة-فضة-900.html","925-silver-calculator.html":"حاسبة-فضة-925.html","925-sterling-silver-price-per-gram.html":"سعر-الجرام-من-الفضة-الإسترليني-عيار-925.html","958-silver-calculator.html":"آلة-حاسبة-فضية-958.html","999-silver-calculator.html":"آلة-حاسبة-فضية-999.html","canadian-silver-coin-calculator.html":"حاسبة-العملة-الفضية-الكندية.html","face-value-silver-calculator.html":"حاسبة-القيمة-الاسمية-للفضة.html","gold-and-silver-calculator.html":"حاسبة-الذهب-والفضة.html","how-silver-prices-work.html":"كيف-تعمل-أسعار-الفضة.html","how-to-sell-silver.html":"كيفية-بيع-الفضة.html","how-to-use-silver-calculators.html":"كيفية-استخدام-الآلات-الحاسبة-الفضية.html","identify-silver.html":"التعرف-على-الفضة.html","junk-silver-calculator.html":"حاسبة-الفضة-غير-المرغوب-فيه.html","pennyweight-calculator.html":"حاسبة-وزن-البنس.html","silver-bar-value-calculator.html":"حاسبة-قيمة-شريط-الفضة.html","silver-batch-calculator.html":"حاسبة-دفعة-الفضة.html","silver-bracelet-value.html":"قيمة-سوار-الفضة.html","silver-chain-value.html":"قيمة-السلسلة-الفضية.html","silver-coin-value-calculator.html":"حاسبة-قيمة-العملة-الفضية.html","silver-cup-value.html":"قيمة-الكأس-الفضية.html","silver-dime-calculator.html":"حاسبة-الدايم-الفضي.html","silver-dollar-calculator.html":"حاسبة-الدولار-الفضي.html","silver-fork-value.html":"قيمة-الشوكة-الفضية.html","silver-hallmarks-guide.html":"دليل-السمات-المميزة-الفضية.html","silver-jewelry-value-calculator.html":"حاسبة-قيمة-المجوهرات-الفضية.html","silver-knife-value.html":"قيمة-السكين-الفضي.html","silver-melt-value-calculator.html":"حاسبة-قيمة-ذوبان-الفضة.html","silver-necklace-value.html":"قيمة-القلادة-الفضية.html","silver-plate-value.html":"قيمة-لوحة-الفضة.html","silver-price-all-currencies.html":"أسعار-الفضة-جميع-العملات.html","silver-price-per-gram.html":"سعر-الفضة-لكل-جرام.html","silver-price-per-ounce.html":"سعر-الفضة-للأونصة.html","silver-profit-calculator.html":"حاسبة-ربح-الفضة.html","silver-purity-chart.html":"مخطط-نقاء-الفضة.html","silver-quarter-calculator.html":"حاسبة-الربع-الفضي.html","silver-ring-value.html":"قيمة-خاتم-الفضة.html","silver-scrap-calculator.html":"حاسبة-خردة-الفضة.html","silver-sell-or-hold.html":"بيع-الفضة-أو-الاحتفاظ-بها.html","silver-spoon-value.html":"قيمة-ملعقة-فضية.html","silver-spot-price-today.html":"سعر-الفضة-الفوري-اليوم.html","silver-tray-value.html":"قيمة-صينية-الفضة.html","silver-weight-converter.html":"محول-الوزن-الفضي.html","silverware-value-calculator.html":"حاسبة-قيمة-الفضيات.html","sona-chandi-calculator.html":"آلة-حاسبة-سونا-تشاندي.html","sterling-silver-calculator.html":"حاسبة-الفضة.html","tola-calculator.html":"آلة-حاسبة-تولة.html","what-does-925-mean.html":"ماذا-يعني-925.html","what-is-junk-silver.html":"ما-هي-الفضة-غير-المرغوب-فيه.html","what-is-silver-bullion.html":"ما-هي-سبائك-الفضة.html","what-is-silver-melt-value.html":"ما-هي-قيمة-ذوبان-الفضة.html","what-is-silver-scrap.html":"ما-هي-خردة-الفضة.html","what-is-sterling-silver.html":"ما-هي-الفضة-الاسترليني.html","what-is-troy-ounce.html":"ما-هو-أوقية-تروي.html"},"Home":"الصفحة الرئيسية","Calculators":"الآلات الحاسبة","Silver Scrap Calculator":"حاسبة خردة الفضة","Gold & Silver Calculator":"حاسبة الذهب والفضة","Silver Melt Value":"قيمة ذوبان الفضة","Sterling Silver Calculator":"حاسبة الفضة الاسترليني","Junk Silver Calculator":"حاسبة الفضة غير المرغوب فيه","Silver Coin Value":"قيمة العملة الفضية","Silver Bar Value":"قيمة شريط الفضة","Silver Jewelry Value":"قيمة المجوهرات الفضية","Silverware Value":"قيمة الفضيات","Purity":"الطهارة","999 Fine Silver":"999 فضة فاخرة","958 Britannia Silver":"958 بريتانيا فضة","925 Sterling Silver":"925 فضة استرلينية","900 Coin Silver":"900 عملة فضية","835 Silver":"835 فضة","800 Silver":"800 فضة","Silver Purity Chart":"مخطط نقاء الفضة","Pricing":"التسعير","Silver Spot Price Today":"سعر الفضة الفوري اليوم","925 Sterling Price / Gram":"925 سعر الجنيه الاسترليني / جرام","Silver Price Per Gram":"سعر الفضة لكل جرام","Silver Price Per Ounce":"سعر الفضة للأونصة","Price in All Currencies":"الأسعار بجميع العملات","1/10oz Silver Value":"قيمة فضية 1/10 أونصة","1oz Silver Value":"قيمة الفضة 1 أوقية","2oz Silver Value":"قيمة 2 أونصة من الفضة","5oz Silver Value":"قيمة 5 أونصة من الفضة","10oz Silver Value":"قيمة الفضة 10 أونصة","100oz Silver Value":"قيمة الفضة 100 أوقية","1kg Silver Value":"1 كيلو جرام فضة","Tools":"أدوات","Silver Profit Calculator":"حاسبة ربح الفضة","Batch Calculator":"حاسبة الدفعة","Sona Chandi Calculator":"حاسبة سونا تشاندي","Face Value Calculator":"حاسبة القيمة الاسمية","Weight Converter":"محول الوزن","Pennyweight (DWT) Calc":"حساب Pennyweight (DWT).","Tola Calculator":"حاسبة التولة","Sell or Hold Analysis":"بيع أو تعليق التحليل","Silver Identifier":"معرف الفضة","Guides":"أدلة","How to Use Our Calculators":"كيفية استخدام الآلات الحاسبة لدينا","What Is Silver Scrap?":"ما هي الخردة الفضية؟","What Is Melt Value?":"ما هي قيمة الذوبان؟","What Is Junk Silver?":"ما هي الفضة غير المرغوب فيه؟","What Is a Troy Ounce?":"ما هو أوقية تروي؟","What Is Silver Bullion?":"ما هي السبائك الفضية؟","How Silver Prices Work":"كيف تعمل أسعار الفضة","Silver Hallmarks Guide":"دليل السمات المميزة الفضية","What Does 925 Mean?":"ماذا يعني 925؟","What Is Sterling Silver?":"ما هي الفضة الاسترليني؟","How to Sell Silver":"كيفية بيع الفضة","Scrap Silver":"خردة الفضة","Gold & Silver":"الذهب والفضة","Silver Profit":"الربح الفضي","Melt Value":"قيمة الذوبان","Junk Silver":"الفضة غير المرغوب فيها","Silver Coins":"عملات فضية","Silver Dollar":"الدولار الفضي","Silver Quarter":"الربع الفضي","Silver Dime":"الدايم الفضي","Jewelry Value":"قيمة المجوهرات","925 Sterling":"925 جنيه استرليني","Purity Chart":"مخطط النقاء","How to Use Calculators":"كيفية استخدام الآلات الحاسبة","Sona Chandi Calc":"سونا تشاندي احسب","Face Value Calc":"حساب القيمة الاسمية","Sell or Hold":"بيع أو عقد","About":"حول","Privacy":"الخصوصية","Terms":"الشروط","All rights reserved.":"جميع الحقوق محفوظة.","Prices are for informational purposes only.":"الأسعار هي لأغراض إعلامية فقط.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"حاسبات فضية مجانية ودقيقة باستخدام الأسعار الفورية المباشرة. احسب قيمة ذوبان خردة الفضة والعملات المعدنية والمجوهرات والسبائك على الفور."};
+</script>
+</body></html>

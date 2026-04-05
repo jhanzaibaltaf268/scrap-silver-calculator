@@ -1,0 +1,190 @@
+<!DOCTYPE html><html lang="es"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Pennyweight (DWT): convierta DWT a gramos y valor de plata</title>
+  <meta name="description" content="Calculadora de peso de centavo gratuita. Convierta DWT a gramos, onzas troy y calcule el valor de plata de los artículos pesados ​​en pennyweight. Precios al contado en vivo.">
+  <meta name="keywords" content="pennyweight calculator, dwt to grams, pennyweight to grams, dwt calculator, silver pennyweight value">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/pennyweight-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" style="padding: var(--space-2xl) 0 var(--space-xl);">
+      <div class="container hero-content">
+        <div id="breadcrumb"></div>
+        
+        <h1>Peso de un centavo (DWT) <span class="highlight">Silver Calculator</span></h1>
+        <p class="hero-subtitle">Convierta pennyweight a gramos, onzas troy y calcule el valor de plata de los artículos pesados en DWT.</p>
+
+        <div class="calc-widget slide-up" id="dwt-calc">
+          <div class="calc-widget-title"><span class="icon">⚙️</span> Pennyweight Value Calculator</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="dwt-weight">Peso en Pennyweight (DWT)</label>
+              <input type="number" class="form-input" id="dwt-weight" placeholder="Enter weight in DWT" step="0.01" min="0" value="10">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dwt-purity">Pureza de plata</label>
+              <select class="form-select" id="dwt-purity">
+                <option value="0.999">999 — Plata fina (99,9%)</option>
+                <option value="0.958">958 - Bretaña (95,8%)</option>
+                <option value="0.925" selected="">925 — Libra esterlina (92,5%)</option>
+                <option value="0.900">900 — Moneda de plata (90%)</option>
+                <option value="0.835">835 — europeos (83,5%)</option>
+                <option value="0.800">800 — europeos (80%)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Conversion results -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-md);margin-bottom:var(--space-lg);">
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Grams</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="dwt-grams">15.55</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Troy Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="dwt-ozt">0.500</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Regular Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="dwt-oz">0.549</div>
+            </div>
+          </div>
+
+          <div class="result-display" id="dwt-result">
+            <div class="result-label">Valor de fusión de plata</div>
+            <div class="result-value" id="dwt-result-value">$0.00</div>
+            <div class="result-detail" id="dwt-result-detail">Enter weight in DWT to calculate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick reference table -->
+    <section class="section" style="padding:var(--space-2xl) 0;">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:var(--space-lg);">Tabla de conversión de peso de un centavo</h2>
+        <div style="max-width:700px;margin:0 auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border-medium);">
+                <th style="padding:var(--space-md);text-align:left;color:var(--text-muted);font-size:var(--fs-sm);">DWT</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">gramos</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Troya Oz</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Valor 925</th>
+              </tr>
+            </thead>
+            <tbody id="dwt-table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+      <div class="container">
+        <div class="content-body">
+          <h2>¿Qué es un centavo?</h2>
+          <p>A <strong>pennyweight (DWT)</strong> es una unidad de peso utilizada principalmente por joyeros y comerciantes de metales preciosos. Equivale a 1/20 de onza troy o exactamente 1,55517 gramos. La abreviatura "DWT" proviene del latín "denariusweight", el peso de un centavo de plata en la Inglaterra medieval.</p>
+
+          <h3>¿Por qué los joyeros utilizan Pennyweight?</h3>
+          <p>Muchas básculas de joyería y de comerciantes en los EE. UU. muestran el peso en centavos en lugar de gramos. Cuando un joyero le cotiza un precio por DWT para su chatarra de plata, necesita saber cómo realizar la conversión para verificar la oferta. Nuestra calculadora realiza esta conversión instantáneamente y le muestra el valor de fusión real.</p>
+
+          <h3>Fórmulas de conversión de centavos</h3>
+          <ul style="list-style:disc;margin-left:var(--space-xl);">
+            <li style="padding:4px 0;color:var(--text-secondary);">1 DWT = 1,55517 gramos</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 DWT = 0,05 onzas troy (1/20 ozt)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">20 DWT = 1 onza troy</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 gramo = 0,6430 DWT</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 onza troy = 20 DWT = 31,1035 gramos</li>
+          </ul>
+
+          <h3>Calculadoras relacionadas</h3>
+          <p>Utilice nuestro <a href="conversor-de-peso.html">weight converter</a> para más conversiones de unidades, o prueba el <a href="calculadora-de-plata-de-desecho.html">scrap silver calculator</a> para obtener una valoración completa con estimaciones de descuento del distribuidor.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      { label: 'Home', href: 'index.html' },
+      { label: 'Tools', href: '#' },
+      { label: 'Pennyweight Calculator' }
+    ]);
+
+    const dwtWeight = document.getElementById('dwt-weight');
+    const dwtPurity = document.getElementById('dwt-purity');
+    const dwtGrams = document.getElementById('dwt-grams');
+    const dwtOzt = document.getElementById('dwt-ozt');
+    const dwtOz = document.getElementById('dwt-oz');
+    const dwtResultValue = document.getElementById('dwt-result-value');
+    const dwtResultDetail = document.getElementById('dwt-result-detail');
+
+    function calcDWT() {
+      const dwt = parseFloat(dwtWeight.value) || 0;
+      const purity = parseFloat(dwtPurity.value);
+      const spotPrice = SilverPrice.getPrice();
+
+      const grams = dwt * 1.55517;
+      const troyOz = dwt / 20;
+      const regOz = grams / 28.3495;
+
+      dwtGrams.textContent = grams.toFixed(2);
+      dwtOzt.textContent = troyOz.toFixed(4);
+      dwtOz.textContent = regOz.toFixed(3);
+
+      if (dwt <= 0) {
+        dwtResultValue.textContent = '$0.00';
+        dwtResultDetail.textContent = 'Enter weight in DWT to calculate';
+        return;
+      }
+
+      const value = troyOz * purity * spotPrice;
+      const pureGrams = grams * purity;
+      dwtResultValue.textContent = SilverCalc.formatCurrency(value);
+      dwtResultDetail.textContent = `${pureGrams.toFixed(2)}g pure silver · ${(troyOz * purity).toFixed(4)} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+    }
+
+    dwtWeight.addEventListener('input', calcDWT);
+    dwtPurity.addEventListener('change', calcDWT);
+    SilverPrice.onPriceUpdate(() => calcDWT());
+    calcDWT();
+
+    // Conversion table
+    const tableBody = document.getElementById('dwt-table');
+    [1, 2, 5, 10, 15, 20, 25, 50, 100].forEach(dwt => {
+      const g = (dwt * 1.55517).toFixed(2);
+      const ozt = (dwt / 20).toFixed(3);
+      const spotPrice = SilverPrice.getPrice();
+      const val = SilverCalc.formatCurrency((dwt / 20) * 0.925 * spotPrice);
+      tableBody.innerHTML += `<tr style="border-bottom:1px solid var(--border-subtle);">
+        <td style="padding:var(--space-md);color:var(--text-primary);font-weight:600;">${dwt} DWT</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${g}g</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${ozt} oz</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--accent-primary);font-weight:600;">${val}</td>
+      </tr>`;
+    });
+
+    SiteComponents.injectFAQSchema([
+      { q: 'What is a pennyweight (DWT)?', a: 'A pennyweight is a unit of weight equal to 1.55517 grams or 1/20 of a troy ounce. It is commonly used by jewelers to weigh precious metals.' },
+      { q: 'How many pennyweight in a troy ounce?', a: 'There are exactly 20 pennyweight (DWT) in one troy ounce.' },
+      { q: 'How do I convert DWT to grams?', a: 'Multiply the DWT value by 1.55517 to get grams. For example, 10 DWT = 15.55 grams.' }
+    ]);
+  </script>
+
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"silver-scrap-calculator.html":"calculadora-de-plata-de-desecho.html","gold-and-silver-calculator.html":"calculadora-de-oro-y-plata.html","silver-melt-value-calculator.html":"calculadora-de-valor-de-fusion-de-la-plata.html","sterling-silver-calculator.html":"calculadora-de-plata-esterlina.html","junk-silver-calculator.html":"calculadora-de-plata-basura.html","silver-coin-value-calculator.html":"valor-de-moneda-de-plata.html","silver-bar-value-calculator.html":"valor-de-lingote-de-plata.html","silver-jewelry-value-calculator.html":"valor-de-joyeria-de-plata.html","silverware-value-calculator.html":"valor-de-cubiertos-de-plata.html","999-silver-calculator.html":"plata-fina-999.html","958-silver-calculator.html":"plata-britannia-958.html","925-silver-calculator.html":"plata-esterlina-925.html","900-silver-calculator.html":"plata-de-moneda-900.html","835-silver-calculator.html":"plata-835.html","800-silver-calculator.html":"plata-800.html","silver-purity-chart.html":"tabla-de-pureza-de-la-plata.html","silver-price-per-gram.html":"precio-de-la-plata-por-gramo.html","silver-price-per-ounce.html":"precio-de-la-plata-por-onza.html","silver-price-all-currencies.html":"precio-en-todas-las-monedas.html","1-10oz-silver-value.html":"valor-de-la-plata-1-10oz.html","1oz-silver-value.html":"valor-de-la-plata-1oz.html","2oz-silver-value.html":"valor-de-la-plata-2oz.html","5oz-silver-value.html":"valor-de-la-plata-5oz.html","10oz-silver-value.html":"valor-de-la-plata-10oz.html","100oz-silver-value.html":"valor-de-la-plata-100oz.html","1kg-silver-value.html":"valor-de-la-plata-1kg.html","silver-profit-calculator.html":"calculadora-de-ganancias-de-plata.html","silver-batch-calculator.html":"calculadora-por-lotes.html","sona-chandi-calculator.html":"calculadora-sona-chandi.html","face-value-silver-calculator.html":"calculadora-de-valor-nominal.html","silver-weight-converter.html":"conversor-de-peso.html","pennyweight-calculator.html":"calculadora-pennyweight-dwt.html","tola-calculator.html":"calculadora-tola.html","silver-sell-or-hold.html":"analisis-de-vender-o-mantener.html","identify-silver.html":"identificador-de-plata.html","how-to-use-silver-calculators.html":"como-usar-nuestras-calculadoras.html","what-is-silver-scrap.html":"que-es-la-plata-de-desecho.html","what-is-silver-melt-value.html":"que-es-el-valor-de-fusion.html","what-is-junk-silver.html":"que-es-la-plata-basura.html","what-is-troy-ounce.html":"que-es-una-onza-troy.html","what-is-silver-bullion.html":"que-es-un-lingote-de-plata.html","how-silver-prices-work.html":"como-funcionan-los-precios-de-la-plata.html","silver-hallmarks-guide.html":"guia-de-sellos-de-plata.html","what-does-925-mean.html":"que-significa-925.html","what-is-sterling-silver.html":"que-es-la-plata-esterlina.html","how-to-sell-silver.html":"como-vender-plata.html","silver-bracelet-value.html":"valor-de-pulsera-de-plata.html","silver-chain-value.html":"valor-de-cadena-de-plata.html","silver-cup-value.html":"valor-de-copa-de-plata.html","silver-dime-calculator.html":"calculadora-de-diez-centavos-de-plata.html","silver-dollar-calculator.html":"calculadora-de-dolar-de-plata.html","silver-fork-value.html":"valor-de-tenedor-de-plata.html","silver-knife-value.html":"valor-de-cuchillo-de-plata.html","silver-necklace-value.html":"valor-de-collar-de-plata.html","silver-plate-value.html":"valor-de-plato-de-plata.html","silver-quarter-calculator.html":"calculadora-de-cuarto-de-dolar-de-plata.html","silver-ring-value.html":"valor-de-anillo-de-plata.html","silver-spoon-value.html":"valor-de-cuchara-de-plata.html","silver-tray-value.html":"valor-de-bandeja-de-plata.html","canadian-silver-coin-calculator.html":"calculadora-de-monedas-de-plata-canadienses.html"},"Home":"Inicio","Calculators":"Calculadoras","Silver Scrap Calculator":"Calculadora de Plata de Desecho","Gold & Silver Calculator":"Calculadora de Oro y Plata","Silver Melt Value":"Valor de Fusión de la Plata","Sterling Silver Calculator":"Calculadora de Plata Esterlina","Junk Silver Calculator":"Calculadora de Plata Basura","Silver Coin Value":"Valor de Moneda de Plata","Silver Bar Value":"Valor de Lingote de Plata","Silver Jewelry Value":"Valor de Joyería de Plata","Silverware Value":"Valor de Cubiertos de Plata","Purity":"Pureza","999 Fine Silver":"Plata Fina 999","958 Britannia Silver":"Plata Britannia 958","925 Sterling Silver":"Plata Esterlina 925","900 Coin Silver":"Plata de Moneda 900","835 Silver":"Plata 835","800 Silver":"Plata 800","Silver Purity Chart":"Tabla de Pureza de la Plata","Pricing":"Precios","Silver Price Per Gram":"Precio de la Plata por Gramo","Silver Price Per Ounce":"Precio de la Plata por Onza","Price in All Currencies":"Precio en Todas las Monedas","1/10oz Silver Value":"Valor de la Plata 1/10oz","1oz Silver Value":"Valor de la Plata 1oz","2oz Silver Value":"Valor de la Plata 2oz","5oz Silver Value":"Valor de la Plata 5oz","10oz Silver Value":"Valor de la Plata 10oz","100oz Silver Value":"Valor de la Plata 100oz","1kg Silver Value":"Valor de la Plata 1kg","Tools":"Herramientas","Silver Profit Calculator":"Calculadora de Ganancias de Plata","Batch Calculator":"Calculadora por Lotes","Sona Chandi Calculator":"Calculadora Sona Chandi","Face Value Calculator":"Calculadora de Valor Nominal","Weight Converter":"Conversor de Peso","Pennyweight (DWT) Calc":"Calculadora Pennyweight (DWT)","Tola Calculator":"Calculadora Tola","Sell or Hold Analysis":"Análisis de Vender o Mantener","Silver Identifier":"Identificador de Plata","Guides":"Guías","How to Use Our Calculators":"Cómo Usar Nuestras Calculadoras","What Is Silver Scrap?":"¿Qué es la Plata de Desecho?","What Is Melt Value?":"¿Qué es el Valor de Fusión?","What Is Junk Silver?":"¿Qué es la Plata Basura?","What Is a Troy Ounce?":"¿Qué es una Onza Troy?","What Is Silver Bullion?":"¿Qué es un Lingote de Plata?","How Silver Prices Work":"Cómo Funcionan los Precios de la Plata","Silver Hallmarks Guide":"Guía de Sellos de Plata","What Does 925 Mean?":"¿Qué Significa 925?","What Is Sterling Silver?":"¿Qué es la Plata Esterlina?","How to Sell Silver":"Cómo Vender Plata","Scrap Silver":"Plata de Desecho","Gold & Silver":"Oro y Plata","Silver Profit":"Ganancia de Plata","Melt Value":"Valor de Fusión","Junk Silver":"Plata Basura","Silver Coins":"Monedas de Plata","Silver Dollar":"Dólar de Plata","Silver Quarter":"Cuarto de Dólar de Plata","Silver Dime":"Moneda de Diez Centavos de Plata","Jewelry Value":"Valor de Joyería","925 Sterling":"Esterlina 925","Purity Chart":"Tabla de Pureza","How to Use Calculators":"Cómo Usar las Calculadoras","Sona Chandi Calc":"Calc. Sona Chandi","Face Value Calc":"Calc. Valor Nominal","Sell or Hold":"Vender o Mantener","About":"Acerca de","Privacy":"Privacidad","Terms":"Términos","All rights reserved.":"Todos los derechos reservados.","Prices are for informational purposes only.":"Los precios son solo para fines informativos.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calculadoras de plata gratuitas usando precios spot en vivo. Calcule el valor de su sucata al instante."}; 
+</script>
+</body></html>

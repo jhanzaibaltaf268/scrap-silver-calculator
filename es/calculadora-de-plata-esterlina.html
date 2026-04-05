@@ -1,0 +1,98 @@
+<!DOCTYPE html><html lang="es"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de plata esterlina: valor de plata 925 por peso</title>
+  <meta name="description" content="Calcula el valor de tus artículos de plata de ley (925) en peso. Utiliza precios al contado en vivo para obtener estimaciones precisas y en tiempo real del valor de fusión.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/sterling-silver-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>Plata de ley <span class="highlight">Calculator</span></h1>
+        <p>Calcule el valor de fusión de sus artículos de plata de ley 925. Simplemente ingrese el peso: la pureza está preestablecida en 92,5 %.</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">✨</span> Sterling Silver Calculator</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="weight">Peso</label>
+            <input type="number" class="form-input" id="weight" placeholder="e.g. 25" step="0.01" min="0" value="10">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="unit">Unidad</label>
+            <select class="form-select" id="unit">
+              <option value="g" selected="">Gramos (g)</option>
+              <option value="oz">Onzas troy (oz)</option>
+              <option value="dwt">Peso de un centavo (tpm)</option>
+              <option value="kg">Kilogramos (kg)</option>
+            </select>
+          </div>
+        </div>
+        <div class="callout info">
+          <div class="callout-title">ℹ️ Purity: 92.5% (Sterling)</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">La plata esterlina es 92,5% de plata pura aleada con 7,5% de cobre para mayor resistencia. Busque un sello "925" en su artículo.</p>
+        </div>
+        <div class="result-display">
+          <div class="result-label">Valor de la plata esterlina</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+      </div>
+      <div class="content-body">
+        <h2>¿Qué es la plata esterlina?</h2>
+        <p>La plata esterlina es una aleación que contiene un 92,5% de plata y un 7,5% de otros metales (normalmente cobre). Es la aleación de plata más común utilizada en joyería, cubertería y artículos decorativos en todo el mundo. El sello "925" que se ve en los artículos de plata indica la pureza de la plata esterlina.</p>
+        <h3>Cómo identificar la plata esterlina</h3>
+        <ul>
+          <li>Busque sellos: "925", "STER", "STERLING" o un león pasante (Reino Unido)</li>
+          <li>La plata esterlina es un poco más dura que la plata fina debido al contenido de cobre.</li>
+          <li>Se empaña más fácilmente que la plata fina.</li>
+          <li>Una prueba magnética puede ayudar: la plata no es magnética</li>
+        </ul>
+        <p>Para una inmersión más profunda, lea nuestra guía: <a href="que-es-la-plata-esterlina.html">What Is Sterling Silver?</a></p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:var(--space-lg);">Calculadoras relacionadas</h3>
+        <div class="related-grid">
+          <a href="plata-esterlina-925.html" class="related-link"><span class="r-icon">🔢</span> 925 Silver Calculator</a>
+          <a href="calculadora-de-plata-de-desecho.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+          <a href="valor-de-joyeria-de-plata.html" class="related-link"><span class="r-icon">💍</span> Jewelry Value</a>
+          <a href="que-significa-925.html" class="related-link"><span class="r-icon">📖</span> What Does 925 Mean?</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Inicio',href:'index.html'},{label:'Sterling Silver Calculator'}]);
+    const w=document.getElementById('weight'),u=document.getElementById('unit');
+    function calc(){
+      const weight=parseFloat(w.value)||0;
+      const grams=SilverCalc.toGrams(weight,u.value);
+      const spot=SilverPrice.getPrice();
+      const r=SilverCalc.meltValue(grams,0.925,spot);
+      document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
+      document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure silver (92.5%) · ${r.silverContentOz} oz · Spot: $${spot.toFixed(2)}/oz`;
+    }
+    w.addEventListener('input',calc);
+    u.addEventListener('change',calc);
+    SilverPrice.onPriceUpdate(()=>calc());
+    calc();
+  </script>
+
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"silver-scrap-calculator.html":"calculadora-de-plata-de-desecho.html","gold-and-silver-calculator.html":"calculadora-de-oro-y-plata.html","silver-melt-value-calculator.html":"calculadora-de-valor-de-fusion-de-la-plata.html","sterling-silver-calculator.html":"calculadora-de-plata-esterlina.html","junk-silver-calculator.html":"calculadora-de-plata-basura.html","silver-coin-value-calculator.html":"valor-de-moneda-de-plata.html","silver-bar-value-calculator.html":"valor-de-lingote-de-plata.html","silver-jewelry-value-calculator.html":"valor-de-joyeria-de-plata.html","silverware-value-calculator.html":"valor-de-cubiertos-de-plata.html","999-silver-calculator.html":"plata-fina-999.html","958-silver-calculator.html":"plata-britannia-958.html","925-silver-calculator.html":"plata-esterlina-925.html","900-silver-calculator.html":"plata-de-moneda-900.html","835-silver-calculator.html":"plata-835.html","800-silver-calculator.html":"plata-800.html","silver-purity-chart.html":"tabla-de-pureza-de-la-plata.html","silver-price-per-gram.html":"precio-de-la-plata-por-gramo.html","silver-price-per-ounce.html":"precio-de-la-plata-por-onza.html","silver-price-all-currencies.html":"precio-en-todas-las-monedas.html","1-10oz-silver-value.html":"valor-de-la-plata-1-10oz.html","1oz-silver-value.html":"valor-de-la-plata-1oz.html","2oz-silver-value.html":"valor-de-la-plata-2oz.html","5oz-silver-value.html":"valor-de-la-plata-5oz.html","10oz-silver-value.html":"valor-de-la-plata-10oz.html","100oz-silver-value.html":"valor-de-la-plata-100oz.html","1kg-silver-value.html":"valor-de-la-plata-1kg.html","silver-profit-calculator.html":"calculadora-de-ganancias-de-plata.html","silver-batch-calculator.html":"calculadora-por-lotes.html","sona-chandi-calculator.html":"calculadora-sona-chandi.html","face-value-silver-calculator.html":"calculadora-de-valor-nominal.html","silver-weight-converter.html":"conversor-de-peso.html","pennyweight-calculator.html":"calculadora-pennyweight-dwt.html","tola-calculator.html":"calculadora-tola.html","silver-sell-or-hold.html":"analisis-de-vender-o-mantener.html","identify-silver.html":"identificador-de-plata.html","how-to-use-silver-calculators.html":"como-usar-nuestras-calculadoras.html","what-is-silver-scrap.html":"que-es-la-plata-de-desecho.html","what-is-silver-melt-value.html":"que-es-el-valor-de-fusion.html","what-is-junk-silver.html":"que-es-la-plata-basura.html","what-is-troy-ounce.html":"que-es-una-onza-troy.html","what-is-silver-bullion.html":"que-es-un-lingote-de-plata.html","how-silver-prices-work.html":"como-funcionan-los-precios-de-la-plata.html","silver-hallmarks-guide.html":"guia-de-sellos-de-plata.html","what-does-925-mean.html":"que-significa-925.html","what-is-sterling-silver.html":"que-es-la-plata-esterlina.html","how-to-sell-silver.html":"como-vender-plata.html","silver-bracelet-value.html":"valor-de-pulsera-de-plata.html","silver-chain-value.html":"valor-de-cadena-de-plata.html","silver-cup-value.html":"valor-de-copa-de-plata.html","silver-dime-calculator.html":"calculadora-de-diez-centavos-de-plata.html","silver-dollar-calculator.html":"calculadora-de-dolar-de-plata.html","silver-fork-value.html":"valor-de-tenedor-de-plata.html","silver-knife-value.html":"valor-de-cuchillo-de-plata.html","silver-necklace-value.html":"valor-de-collar-de-plata.html","silver-plate-value.html":"valor-de-plato-de-plata.html","silver-quarter-calculator.html":"calculadora-de-cuarto-de-dolar-de-plata.html","silver-ring-value.html":"valor-de-anillo-de-plata.html","silver-spoon-value.html":"valor-de-cuchara-de-plata.html","silver-tray-value.html":"valor-de-bandeja-de-plata.html","canadian-silver-coin-calculator.html":"calculadora-de-monedas-de-plata-canadienses.html"},"Home":"Inicio","Calculators":"Calculadoras","Silver Scrap Calculator":"Calculadora de Plata de Desecho","Gold & Silver Calculator":"Calculadora de Oro y Plata","Silver Melt Value":"Valor de Fusión de la Plata","Sterling Silver Calculator":"Calculadora de Plata Esterlina","Junk Silver Calculator":"Calculadora de Plata Basura","Silver Coin Value":"Valor de Moneda de Plata","Silver Bar Value":"Valor de Lingote de Plata","Silver Jewelry Value":"Valor de Joyería de Plata","Silverware Value":"Valor de Cubiertos de Plata","Purity":"Pureza","999 Fine Silver":"Plata Fina 999","958 Britannia Silver":"Plata Britannia 958","925 Sterling Silver":"Plata Esterlina 925","900 Coin Silver":"Plata de Moneda 900","835 Silver":"Plata 835","800 Silver":"Plata 800","Silver Purity Chart":"Tabla de Pureza de la Plata","Pricing":"Precios","Silver Price Per Gram":"Precio de la Plata por Gramo","Silver Price Per Ounce":"Precio de la Plata por Onza","Price in All Currencies":"Precio en Todas las Monedas","1/10oz Silver Value":"Valor de la Plata 1/10oz","1oz Silver Value":"Valor de la Plata 1oz","2oz Silver Value":"Valor de la Plata 2oz","5oz Silver Value":"Valor de la Plata 5oz","10oz Silver Value":"Valor de la Plata 10oz","100oz Silver Value":"Valor de la Plata 100oz","1kg Silver Value":"Valor de la Plata 1kg","Tools":"Herramientas","Silver Profit Calculator":"Calculadora de Ganancias de Plata","Batch Calculator":"Calculadora por Lotes","Sona Chandi Calculator":"Calculadora Sona Chandi","Face Value Calculator":"Calculadora de Valor Nominal","Weight Converter":"Conversor de Peso","Pennyweight (DWT) Calc":"Calculadora Pennyweight (DWT)","Tola Calculator":"Calculadora Tola","Sell or Hold Analysis":"Análisis de Vender o Mantener","Silver Identifier":"Identificador de Plata","Guides":"Guías","How to Use Our Calculators":"Cómo Usar Nuestras Calculadoras","What Is Silver Scrap?":"¿Qué es la Plata de Desecho?","What Is Melt Value?":"¿Qué es el Valor de Fusión?","What Is Junk Silver?":"¿Qué es la Plata Basura?","What Is a Troy Ounce?":"¿Qué es una Onza Troy?","What Is Silver Bullion?":"¿Qué es un Lingote de Plata?","How Silver Prices Work":"Cómo Funcionan los Precios de la Plata","Silver Hallmarks Guide":"Guía de Sellos de Plata","What Does 925 Mean?":"¿Qué Significa 925?","What Is Sterling Silver?":"¿Qué es la Plata Esterlina?","How to Sell Silver":"Cómo Vender Plata","Scrap Silver":"Plata de Desecho","Gold & Silver":"Oro y Plata","Silver Profit":"Ganancia de Plata","Melt Value":"Valor de Fusión","Junk Silver":"Plata Basura","Silver Coins":"Monedas de Plata","Silver Dollar":"Dólar de Plata","Silver Quarter":"Cuarto de Dólar de Plata","Silver Dime":"Moneda de Diez Centavos de Plata","Jewelry Value":"Valor de Joyería","925 Sterling":"Esterlina 925","Purity Chart":"Tabla de Pureza","How to Use Calculators":"Cómo Usar las Calculadoras","Sona Chandi Calc":"Calc. Sona Chandi","Face Value Calc":"Calc. Valor Nominal","Sell or Hold":"Vender o Mantener","About":"Acerca de","Privacy":"Privacidad","Terms":"Términos","All rights reserved.":"Todos los derechos reservados.","Prices are for informational purposes only.":"Los precios son solo para fines informativos.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calculadoras de plata gratuitas usando precios spot en vivo. Calcule el valor de su sucata al instante."}; 
+</script>
+</body></html>

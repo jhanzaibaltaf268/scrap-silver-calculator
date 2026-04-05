@@ -1,0 +1,229 @@
+<!DOCTYPE html><html lang="es"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora Sona Chandi - Calculadora de tarifas en vivo para oro y plata</title>
+  <meta name="description" content="Calcule las tarifas de Sona (oro) y Chandi (plata) en tiempo real. Calculadora Sona Chandi en línea gratuita que utiliza precios de mercado en vivo por tola, gramo y kilo.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/sona-chandi-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Sona Chandi Calculator","description":"Calculate Sona (Gold) and Chandi (Silver) prices in Tola and Grams.","applicationCategory":"FinanceApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container">
+      <div id="breadcrumb"></div>
+    </div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>sona chandi <span class="highlight">Calculator</span></h1>
+        <p>Calcule el valor de mercado en vivo de su Sona (oro) y Chandi (plata) según el peso exacto, Tunch (pureza) y la tasa al contado de hoy.</p>
+      </div>
+    </section>
+    
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">✨</span> Sona Chandi Rate Calculator</div>
+        
+        <div class="form-group" style="display:flex; gap:10px; margin-bottom:var(--space-md);">
+          <label style="flex:1; cursor:pointer;">
+            <input type="radio" name="metalType" value="chandi" checked="" style="display:none;">
+            <div id="btn-chandi" style="padding:10px; text-align:center; border:2px solid var(--accent-primary); border-radius:var(--radius-sm); font-weight:600; background:rgba(59,130,246,0.1);">🥈 Chandi (Silver)</div>
+          </label>
+          <label style="flex:1; cursor:pointer;">
+            <input type="radio" name="metalType" value="sona" style="display:none;">
+            <div id="btn-sona" style="padding:10px; text-align:center; border:2px solid var(--border-subtle); border-radius:var(--radius-sm); font-weight:600; color:var(--text-secondary);">🥇 Sona (Gold)</div>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="weight">Peso</label>
+            <input type="number" class="form-input" id="weight" placeholder="e.g. 1" step="0.01" min="0" value="1">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="unit">Unidad</label>
+            <select class="form-select" id="unit">
+              <option value="tola" selected="">Tola (11,66g)</option>
+              <option value="g">Gramos (g)</option>
+              <option value="kg">Kilogramos (kg)</option>
+              <option value="oz">Onzas troy (oz)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="tunch">Tunca (% de pureza)</label>
+          <div class="input-group">
+            <input type="number" class="form-input" id="tunch" placeholder="e.g. 99.9" step="0.1" min="0" max="100" value="99.9">
+            <span class="input-suffix">%</span>
+          </div>
+          <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;" id="tunch-hint">
+            Standard: 99.9% (Fine), 92.5% (Sterling), 80.0% (Jewelry)
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="currency">Moneda de visualización</label>
+          <select class="form-select" id="currency">
+            <option value="PKR">Rupia paquistaní (PKR)</option>
+            <option value="INR">Rupia india (INR)</option>
+            <option value="USD" selected="">Dólar estadounidense (USD)</option>
+            <option value="AED">Dírham de los Emiratos Árabes Unidos (AED)</option>
+            <option value="SAR">Riyal saudí (SAR)</option>
+          </select>
+        </div>
+
+        <div class="result-display">
+          <div class="result-label" id="res-title">Valor de Chandi (Plata)</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>¿Qué es una calculadora Sona Chandi?</h2>
+        <p>En el sur de Asia (India, Pakistán, Bangladesh) y Oriente Medio, los metales preciosos se conocen universalmente como <strong>Sona</strong> (Oro) y <strong>Chandi</strong> (Plata). Esta calculadora especializada permite a joyeros, compradores y vendedores calcular con precisión el valor vivo de estos metales utilizando métricas locales como la <strong>Tola</strong> y <strong>Tunch</strong>.</p>
+        
+        <h3>Entendiendo la Tola</h3>
+        <p>La Tola es la unidad de masa tradicional de los metales preciosos en el sur de Asia. Si bien existen variaciones históricas, la "tola estándar" legalmente definida y universalmente aceptada hoy en día es exactamente <strong>11.6638038 grams</strong> (o comúnmente simplificado a 11,66 g). Una onza troy equivale aproximadamente a 2,66 tolas.</p>
+
+        <h3>¿Qué es "Tunch"?</h3>
+        <p><strong>Tunch</strong> es el término tradicional para la pureza o finura del metal. En lugar de quilates o finura milesimal (como 925), los joyeros suelen simplemente hacer referencia al porcentaje.</p>
+        <ul>
+          <li><strong>99.9% Tunch:</strong> Sona/Chandi pura y fina (oro de 24 quilates o plata 999)</li>
+          <li><strong>91.6% Tunch:</strong> Joyería estándar Sona (oro de 22 quilates)</li>
+          <li><strong>92.5% Tunch:</strong> Chandi de ley (plata 925)</li>
+          <li><strong>80% - 60% Tunch:</strong> A menudo se encuentra en tobilleras/payals Chandi tradicionales más antiguos y en joyas pesadas.</li>
+        </ul>
+
+        <h3>Verificación de tarifas en vivo de Sona Chandi</h3>
+        <p>Los precios internacionales al contado del oro y la plata se fijan en dólares estadounidenses por onza troy en bolsas como el COMEX. Los precios locales en INR o PKR se determinan combinando este precio en vivo en USD con el tipo de cambio actual (forex). Nuestra calculadora realiza estos complejos cálculos al instante, brindándole el verdadero valor intrínseco de mercado de sus metales.</p>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom: var(--space-lg);">Calculadoras regionales relacionadas</h3>
+        <div class="related-grid">
+          <a href="calculadora-tola.html" class="related-link"><span class="r-icon">🌙</span> Tola Calculator</a>
+          <a href="precio-en-todas-las-monedas.html" class="related-link"><span class="r-icon">🌍</span> Prices in PKR/INR</a>
+          <a href="calculadora-de-oro-y-plata.html" class="related-link"><span class="r-icon">🥇</span> Gold &amp; Silver Calc</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      {label: window.MenuTranslations['Home'] || 'Inicio', href:'index.html'},
+      {label:'Sona Chandi Calculator'}
+    ]);
+
+    const radios = document.querySelectorAll('input[name="metalType"]');
+    const btnChandi = document.getElementById('btn-chandi');
+    const btnSona = document.getElementById('btn-sona');
+    
+    const w = document.getElementById('weight');
+    const u = document.getElementById('unit');
+    const t = document.getElementById('tunch');
+    const c = document.getElementById('currency');
+    const tunchHint = document.getElementById('tunch-hint');
+    
+    const resTitle = document.getElementById('res-title');
+    const resValue = document.getElementById('result-value');
+    const resDetail = document.getElementById('result-detail');
+
+    // Handle metal toggle styling
+    radios.forEach(r => {
+      r.addEventListener('change', (e) => {
+        if (e.target.value === 'chandi') {
+          btnChandi.style.border = '2px solid var(--accent-primary)';
+          btnChandi.style.background = 'rgba(59,130,246,0.1)';
+          btnChandi.style.color = '';
+          btnSona.style.border = '2px solid var(--border-subtle)';
+          btnSona.style.background = 'transparent';
+          btnSona.style.color = 'var(--text-secondary)';
+          tunchHint.textContent = 'Standard: 99.9% (Fine), 92.5% (Sterling), 80.0% (Jewelry)';
+          t.value = '99.9';
+          resTitle.textContent = 'Chandi (Silver) Value';
+        } else {
+          btnSona.style.border = '2px solid #FCD34D';
+          btnSona.style.background = 'rgba(252,211,77,0.1)';
+          btnSona.style.color = '#B45309';
+          btnChandi.style.border = '2px solid var(--border-subtle)';
+          btnChandi.style.background = 'transparent';
+          btnChandi.style.color = 'var(--text-secondary)';
+          tunchHint.textContent = 'Standard: 99.9% (24K), 91.6% (22K), 75.0% (18K)';
+          t.value = '91.6';
+          resTitle.textContent = 'Sona (Gold) Value';
+        }
+        calc();
+      });
+    });
+
+    function calc() {
+      const metal = document.querySelector('input[name="metalType"]:checked').value;
+      const weight = parseFloat(w.value) || 0;
+      const unit = u.value;
+      const tunch = parseFloat(t.value) || 0;
+      const purity = tunch / 100;
+      const curCode = c.value;
+      
+      const spotUSD = metal === 'chandi' ? SilverPrice.getPrice() : (SilverPrice.getGoldPrice() || 2500);
+      
+      // Convert to grams
+      let grams = 0;
+      if (unit === 'g') grams = weight;
+      else if (unit === 'kg') grams = weight * 1000;
+      else if (unit === 'oz') grams = weight * 31.1035;
+      else if (unit === 'tola') grams = weight * 11.6638;
+
+      // Pure metal weight
+      const pureGrams = grams * purity;
+      const pureOz = pureGrams / 31.1035;
+
+      // Value in USD
+      const valueUSD = pureOz * spotUSD;
+
+      // Final Value in chosen currency
+      const finalValue = valueUSD * SilverPrice.CURRENCIES[curCode].rate;
+      const symbol = SilverPrice.CURRENCIES[curCode].symbol;
+
+      if (weight > 0 && tunch > 0) {
+        // Format with commas, 2 decimals
+        resValue.textContent = symbol + finalValue.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
+        
+        const spotLocal = spotUSD * SilverPrice.CURRENCIES[curCode].rate;
+        resDetail.textContent = `${pureGrams.toFixed(2)}g pure metal · Spot: ${symbol}${spotLocal.toFixed(2)}/oz`;
+      } else {
+        resValue.textContent = symbol + '0.00';
+        resDetail.textContent = 'Enter weight and tunch to calculate';
+      }
+    }
+
+    [w, t].forEach(el => el.addEventListener('input', calc));
+    [u, c].forEach(el => el.addEventListener('change', calc));
+    SilverPrice.onPriceUpdate(() => calc());
+    
+    // Attempt to set local currency based on timezone (lazy heuristic)
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (tz.includes('Karachi')) c.value = 'PKR';
+    else if (tz.includes('Calcutta') || tz.includes('Kolkata')) c.value = 'INR';
+    else if (tz.includes('Dubai')) c.value = 'AED';
+    else if (tz.includes('Riyadh')) c.value = 'SAR';
+
+    calc();
+  </script>
+
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"silver-scrap-calculator.html":"calculadora-de-plata-de-desecho.html","gold-and-silver-calculator.html":"calculadora-de-oro-y-plata.html","silver-melt-value-calculator.html":"calculadora-de-valor-de-fusion-de-la-plata.html","sterling-silver-calculator.html":"calculadora-de-plata-esterlina.html","junk-silver-calculator.html":"calculadora-de-plata-basura.html","silver-coin-value-calculator.html":"valor-de-moneda-de-plata.html","silver-bar-value-calculator.html":"valor-de-lingote-de-plata.html","silver-jewelry-value-calculator.html":"valor-de-joyeria-de-plata.html","silverware-value-calculator.html":"valor-de-cubiertos-de-plata.html","999-silver-calculator.html":"plata-fina-999.html","958-silver-calculator.html":"plata-britannia-958.html","925-silver-calculator.html":"plata-esterlina-925.html","900-silver-calculator.html":"plata-de-moneda-900.html","835-silver-calculator.html":"plata-835.html","800-silver-calculator.html":"plata-800.html","silver-purity-chart.html":"tabla-de-pureza-de-la-plata.html","silver-price-per-gram.html":"precio-de-la-plata-por-gramo.html","silver-price-per-ounce.html":"precio-de-la-plata-por-onza.html","silver-price-all-currencies.html":"precio-en-todas-las-monedas.html","1-10oz-silver-value.html":"valor-de-la-plata-1-10oz.html","1oz-silver-value.html":"valor-de-la-plata-1oz.html","2oz-silver-value.html":"valor-de-la-plata-2oz.html","5oz-silver-value.html":"valor-de-la-plata-5oz.html","10oz-silver-value.html":"valor-de-la-plata-10oz.html","100oz-silver-value.html":"valor-de-la-plata-100oz.html","1kg-silver-value.html":"valor-de-la-plata-1kg.html","silver-profit-calculator.html":"calculadora-de-ganancias-de-plata.html","silver-batch-calculator.html":"calculadora-por-lotes.html","sona-chandi-calculator.html":"calculadora-sona-chandi.html","face-value-silver-calculator.html":"calculadora-de-valor-nominal.html","silver-weight-converter.html":"conversor-de-peso.html","pennyweight-calculator.html":"calculadora-pennyweight-dwt.html","tola-calculator.html":"calculadora-tola.html","silver-sell-or-hold.html":"analisis-de-vender-o-mantener.html","identify-silver.html":"identificador-de-plata.html","how-to-use-silver-calculators.html":"como-usar-nuestras-calculadoras.html","what-is-silver-scrap.html":"que-es-la-plata-de-desecho.html","what-is-silver-melt-value.html":"que-es-el-valor-de-fusion.html","what-is-junk-silver.html":"que-es-la-plata-basura.html","what-is-troy-ounce.html":"que-es-una-onza-troy.html","what-is-silver-bullion.html":"que-es-un-lingote-de-plata.html","how-silver-prices-work.html":"como-funcionan-los-precios-de-la-plata.html","silver-hallmarks-guide.html":"guia-de-sellos-de-plata.html","what-does-925-mean.html":"que-significa-925.html","what-is-sterling-silver.html":"que-es-la-plata-esterlina.html","how-to-sell-silver.html":"como-vender-plata.html","silver-bracelet-value.html":"valor-de-pulsera-de-plata.html","silver-chain-value.html":"valor-de-cadena-de-plata.html","silver-cup-value.html":"valor-de-copa-de-plata.html","silver-dime-calculator.html":"calculadora-de-diez-centavos-de-plata.html","silver-dollar-calculator.html":"calculadora-de-dolar-de-plata.html","silver-fork-value.html":"valor-de-tenedor-de-plata.html","silver-knife-value.html":"valor-de-cuchillo-de-plata.html","silver-necklace-value.html":"valor-de-collar-de-plata.html","silver-plate-value.html":"valor-de-plato-de-plata.html","silver-quarter-calculator.html":"calculadora-de-cuarto-de-dolar-de-plata.html","silver-ring-value.html":"valor-de-anillo-de-plata.html","silver-spoon-value.html":"valor-de-cuchara-de-plata.html","silver-tray-value.html":"valor-de-bandeja-de-plata.html","canadian-silver-coin-calculator.html":"calculadora-de-monedas-de-plata-canadienses.html"},"Home":"Inicio","Calculators":"Calculadoras","Silver Scrap Calculator":"Calculadora de Plata de Desecho","Gold & Silver Calculator":"Calculadora de Oro y Plata","Silver Melt Value":"Valor de Fusión de la Plata","Sterling Silver Calculator":"Calculadora de Plata Esterlina","Junk Silver Calculator":"Calculadora de Plata Basura","Silver Coin Value":"Valor de Moneda de Plata","Silver Bar Value":"Valor de Lingote de Plata","Silver Jewelry Value":"Valor de Joyería de Plata","Silverware Value":"Valor de Cubiertos de Plata","Purity":"Pureza","999 Fine Silver":"Plata Fina 999","958 Britannia Silver":"Plata Britannia 958","925 Sterling Silver":"Plata Esterlina 925","900 Coin Silver":"Plata de Moneda 900","835 Silver":"Plata 835","800 Silver":"Plata 800","Silver Purity Chart":"Tabla de Pureza de la Plata","Pricing":"Precios","Silver Price Per Gram":"Precio de la Plata por Gramo","Silver Price Per Ounce":"Precio de la Plata por Onza","Price in All Currencies":"Precio en Todas las Monedas","1/10oz Silver Value":"Valor de la Plata 1/10oz","1oz Silver Value":"Valor de la Plata 1oz","2oz Silver Value":"Valor de la Plata 2oz","5oz Silver Value":"Valor de la Plata 5oz","10oz Silver Value":"Valor de la Plata 10oz","100oz Silver Value":"Valor de la Plata 100oz","1kg Silver Value":"Valor de la Plata 1kg","Tools":"Herramientas","Silver Profit Calculator":"Calculadora de Ganancias de Plata","Batch Calculator":"Calculadora por Lotes","Sona Chandi Calculator":"Calculadora Sona Chandi","Face Value Calculator":"Calculadora de Valor Nominal","Weight Converter":"Conversor de Peso","Pennyweight (DWT) Calc":"Calculadora Pennyweight (DWT)","Tola Calculator":"Calculadora Tola","Sell or Hold Analysis":"Análisis de Vender o Mantener","Silver Identifier":"Identificador de Plata","Guides":"Guías","How to Use Our Calculators":"Cómo Usar Nuestras Calculadoras","What Is Silver Scrap?":"¿Qué es la Plata de Desecho?","What Is Melt Value?":"¿Qué es el Valor de Fusión?","What Is Junk Silver?":"¿Qué es la Plata Basura?","What Is a Troy Ounce?":"¿Qué es una Onza Troy?","What Is Silver Bullion?":"¿Qué es un Lingote de Plata?","How Silver Prices Work":"Cómo Funcionan los Precios de la Plata","Silver Hallmarks Guide":"Guía de Sellos de Plata","What Does 925 Mean?":"¿Qué Significa 925?","What Is Sterling Silver?":"¿Qué es la Plata Esterlina?","How to Sell Silver":"Cómo Vender Plata","Scrap Silver":"Plata de Desecho","Gold & Silver":"Oro y Plata","Silver Profit":"Ganancia de Plata","Melt Value":"Valor de Fusión","Junk Silver":"Plata Basura","Silver Coins":"Monedas de Plata","Silver Dollar":"Dólar de Plata","Silver Quarter":"Cuarto de Dólar de Plata","Silver Dime":"Moneda de Diez Centavos de Plata","Jewelry Value":"Valor de Joyería","925 Sterling":"Esterlina 925","Purity Chart":"Tabla de Pureza","How to Use Calculators":"Cómo Usar las Calculadoras","Sona Chandi Calc":"Calc. Sona Chandi","Face Value Calc":"Calc. Valor Nominal","Sell or Hold":"Vender o Mantener","About":"Acerca de","Privacy":"Privacidad","Terms":"Términos","All rights reserved.":"Todos los derechos reservados.","Prices are for informational purposes only.":"Los precios son solo para fines informativos.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calculadoras de plata gratuitas usando precios spot en vivo. Calcule el valor de su sucata al instante."}; 
+</script>
+</body></html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html><html lang="ru"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Калькулятор пеннивейта (DWT) — конвертируйте DWT в граммы и стоимость серебра</title>
+  <meta name="description" content="Free pennyweight calculator. Convert DWT to grams, troy ounces, and calculate the silver value of items weighed in pennyweight. Live spot prices.">
+  <meta name="keywords" content="pennyweight calculator, dwt to grams, pennyweight to grams, dwt calculator, silver pennyweight value">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/pennyweight-calculator.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <section class="hero" style="padding: var(--space-2xl) 0 var(--space-xl);">
+      <div class="container hero-content">
+        <div id="breadcrumb"></div>
+        
+        <h1>Пеннивейт (DWT) <span class="highlight">Silver Calculator</span></h1>
+        <p class="hero-subtitle">Переведите пеннивейт в граммы, тройские унции и рассчитайте стоимость серебра предметов, взвешенных в DWT.</p>
+
+        <div class="calc-widget slide-up" id="dwt-calc">
+          <div class="calc-widget-title"><span class="icon">⚙️</span> Pennyweight Value Calculator</div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="dwt-weight">Вес в пеннивейте (DWT)</label>
+              <input type="number" class="form-input" id="dwt-weight" placeholder="Enter weight in DWT" step="0.01" min="0" value="10">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="dwt-purity">Чистота серебра</label>
+              <select class="form-select" id="dwt-purity">
+                <option value="0.999">999 — Чистое серебро (99,9%)</option>
+                <option value="0.958">958 — Британия (95,8%)</option>
+                <option value="0.925" selected="">925 — Стерлинг (92,5%)</option>
+                <option value="0.900">900 — Монета Серебро (90%)</option>
+                <option value="0.835">835 — European (83.5%)</option>
+                <option value="0.800">800 — Европейский (80%)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Conversion results -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:var(--space-md);margin-bottom:var(--space-lg);">
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Grams</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="dwt-grams">15.55</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Troy Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="dwt-ozt">0.500</div>
+            </div>
+            <div style="background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center;">
+              <div style="font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.08em;">Regular Ounces</div>
+              <div style="font-size:var(--fs-lg);font-weight:700;color:var(--text-primary);" id="dwt-oz">0.549</div>
+            </div>
+          </div>
+
+          <div class="result-display" id="dwt-result">
+            <div class="result-label">Стоимость плавления серебра</div>
+            <div class="result-value" id="dwt-result-value">$0.00</div>
+            <div class="result-detail" id="dwt-result-detail">Enter weight in DWT to calculate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick reference table -->
+    <section class="section" style="padding:var(--space-2xl) 0;">
+      <div class="container">
+        <h2 style="text-align:center;margin-bottom:var(--space-lg);">Pennyweight Conversion Table</h2>
+        <div style="max-width:700px;margin:0 auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr style="border-bottom:2px solid var(--border-medium);">
+                <th style="padding:var(--space-md);text-align:left;color:var(--text-muted);font-size:var(--fs-sm);">DWT</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Грамм</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Troy Oz</th>
+                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">925 Value</th>
+              </tr>
+            </thead>
+            <tbody id="dwt-table">
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Content -->
+    <section class="content-section">
+      <div class="container">
+        <div class="content-body">
+          <h2>What Is a Pennyweight?</h2>
+          <p>A <strong>pennyweight (DWT)</strong> is a unit of weight used primarily by jewelers and precious metals dealers. It equals 1/20 of a troy ounce or exactly 1.55517 grams. The abbreviation "DWT" comes from the Latin "denarius weight" — the weight of a silver penny in medieval England.</p>
+
+          <h3>Why Do Jewelers Use Pennyweight?</h3>
+          <p>Many jewelry scales and tradesman scales in the US display weight in pennyweight rather than grams. When a jeweler quotes you a price per DWT for your scrap silver, you need to know how to convert to verify the offer. Our calculator does this conversion instantly and shows you the actual melt value.</p>
+
+          <h3>Pennyweight Conversion Formulas</h3>
+          <ul style="list-style:disc;margin-left:var(--space-xl);">
+            <li style="padding:4px 0;color:var(--text-secondary);">1 DWT = 1.55517 grams</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 DWT = 0.05 troy ounces (1/20 ozt)</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">20 DWT = 1 troy ounce</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 gram = 0.6430 DWT</li>
+            <li style="padding:4px 0;color:var(--text-secondary);">1 troy ounce = 20 DWT = 31.1035 grams</li>
+          </ul>
+
+          <h3>Похожие калькуляторы</h3>
+          <p>Используйте наш <a href="преобразователь-веса-серебра.html">weight converter</a> for more unit conversions, or try the <a href="калькулятор-лома-серебра.html">scrap silver calculator</a> for a full valuation with dealer discount estimates.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      { label: 'Home', href: 'index.html' },
+      { label: 'Tools', href: '#' },
+      { label: 'Pennyweight Calculator' }
+    ]);
+
+    const dwtWeight = document.getElementById('dwt-weight');
+    const dwtPurity = document.getElementById('dwt-purity');
+    const dwtGrams = document.getElementById('dwt-grams');
+    const dwtOzt = document.getElementById('dwt-ozt');
+    const dwtOz = document.getElementById('dwt-oz');
+    const dwtResultValue = document.getElementById('dwt-result-value');
+    const dwtResultDetail = document.getElementById('dwt-result-detail');
+
+    function calcDWT() {
+      const dwt = parseFloat(dwtWeight.value) || 0;
+      const purity = parseFloat(dwtPurity.value);
+      const spotPrice = SilverPrice.getPrice();
+
+      const grams = dwt * 1.55517;
+      const troyOz = dwt / 20;
+      const regOz = grams / 28.3495;
+
+      dwtGrams.textContent = grams.toFixed(2);
+      dwtOzt.textContent = troyOz.toFixed(4);
+      dwtOz.textContent = regOz.toFixed(3);
+
+      if (dwt <= 0) {
+        dwtResultValue.textContent = '$0.00';
+        dwtResultDetail.textContent = 'Enter weight in DWT to calculate';
+        return;
+      }
+
+      const value = troyOz * purity * spotPrice;
+      const pureGrams = grams * purity;
+      dwtResultValue.textContent = SilverCalc.formatCurrency(value);
+      dwtResultDetail.textContent = `${pureGrams.toFixed(2)}g pure silver · ${(troyOz * purity).toFixed(4)} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+    }
+
+    dwtWeight.addEventListener('input', calcDWT);
+    dwtPurity.addEventListener('change', calcDWT);
+    SilverPrice.onPriceUpdate(() => calcDWT());
+    calcDWT();
+
+    // Conversion table
+    const tableBody = document.getElementById('dwt-table');
+    [1, 2, 5, 10, 15, 20, 25, 50, 100].forEach(dwt => {
+      const g = (dwt * 1.55517).toFixed(2);
+      const ozt = (dwt / 20).toFixed(3);
+      const spotPrice = SilverPrice.getPrice();
+      const val = SilverCalc.formatCurrency((dwt / 20) * 0.925 * spotPrice);
+      tableBody.innerHTML += `<tr style="border-bottom:1px solid var(--border-subtle);">
+        <td style="padding:var(--space-md);color:var(--text-primary);font-weight:600;">${dwt} DWT</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${g}g</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${ozt} oz</td>
+        <td style="padding:var(--space-md);text-align:right;color:var(--accent-primary);font-weight:600;">${val}</td>
+      </tr>`;
+    });
+
+    SiteComponents.injectFAQSchema([
+      { q: 'What is a pennyweight (DWT)?', a: 'A pennyweight is a unit of weight equal to 1.55517 grams or 1/20 of a troy ounce. It is commonly used by jewelers to weigh precious metals.' },
+      { q: 'How many pennyweight in a troy ounce?', a: 'There are exactly 20 pennyweight (DWT) in one troy ounce.' },
+      { q: 'How do I convert DWT to grams?', a: 'Multiply the DWT value by 1.55517 to get grams. For example, 10 DWT = 15.55 grams.' }
+    ]);
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-серебро-стоимостью-10-унций.html","100oz-silver-value.html":"стоимость-серебра-100-унций.html","10oz-silver-value.html":"стоимость-серебра-10-унций.html","1kg-silver-value.html":"стоимость-серебра-за-1-кг.html","1oz-silver-value.html":"стоимость-серебра-1-унция.html","2oz-silver-value.html":"стоимость-серебра-2-унции.html","5oz-silver-value.html":"стоимость-серебра-5-унций.html","800-silver-calculator.html":"калькулятор-серебра-800.html","835-silver-calculator.html":"калькулятор-серебра-835-пробы.html","900-silver-calculator.html":"калькулятор-серебра-900-пробы.html","925-silver-calculator.html":"калькулятор-серебра-925-пробы.html","925-sterling-silver-price-per-gram.html":"цена-серебра-925-пробы-за-грамм.html","958-silver-calculator.html":"калькулятор-серебра-958-пробы.html","999-silver-calculator.html":"калькулятор-серебра-999-пробы.html","canadian-silver-coin-calculator.html":"калькулятор-канадских-серебряных-монет.html","face-value-silver-calculator.html":"калькулятор-номинальной-стоимости-серебра.html","gold-and-silver-calculator.html":"калькулятор-золота-и-серебра.html","how-silver-prices-work.html":"как-работают-цены-на-серебро.html","how-to-sell-silver.html":"как-продать-серебро.html","how-to-use-silver-calculators.html":"как-пользоваться-серебряными-калькуляторами.html","identify-silver.html":"идентифицировать-серебро.html","junk-silver-calculator.html":"калькулятор-ненужного-серебра.html","pennyweight-calculator.html":"калькулятор-пеннивейта.html","silver-bar-value-calculator.html":"калькулятор-стоимости-серебряных-слитков.html","silver-batch-calculator.html":"калькулятор-партии-серебра.html","silver-bracelet-value.html":"стоимость-серебряного-браслета.html","silver-chain-value.html":"стоимость-серебряной-цепочки.html","silver-coin-value-calculator.html":"калькулятор-стоимости-серебряной-монеты.html","silver-cup-value.html":"стоимость-серебряного-кубка.html","silver-dime-calculator.html":"калькулятор-серебряных-десятицентовиков.html","silver-dollar-calculator.html":"калькулятор-серебряного-доллара.html","silver-fork-value.html":"стоимость-серебряной-вилки.html","silver-hallmarks-guide.html":"руководство-по-клеймам-серебра.html","silver-jewelry-value-calculator.html":"калькулятор-стоимости-серебряных-украшений.html","silver-knife-value.html":"стоимость-серебряного-ножа.html","silver-melt-value-calculator.html":"калькулятор-стоимости-расплава-серебра.html","silver-necklace-value.html":"стоимость-серебряного-ожерелья.html","silver-plate-value.html":"стоимость-серебряной-тарелки.html","silver-price-all-currencies.html":"цена-серебра-во-всех-валютах.html","silver-price-per-gram.html":"цена-серебра-за-грамм.html","silver-price-per-ounce.html":"цена-серебра-за-унцию.html","silver-profit-calculator.html":"калькулятор-прибыли-по-серебру.html","silver-purity-chart.html":"таблица-чистоты-серебра.html","silver-quarter-calculator.html":"калькулятор-серебряных-четвертей.html","silver-ring-value.html":"стоимость-серебряного-кольца.html","silver-scrap-calculator.html":"калькулятор-лома-серебра.html","silver-sell-or-hold.html":"серебро-продавать-или-держать.html","silver-spoon-value.html":"стоимость-серебряной-ложки.html","silver-spot-price-today.html":"спотовая-цена-серебра-сегодня.html","silver-tray-value.html":"стоимость-серебряного-подноса.html","silver-weight-converter.html":"преобразователь-веса-серебра.html","silverware-value-calculator.html":"калькулятор-стоимости-столового-серебра.html","sona-chandi-calculator.html":"калькулятор-соны-чанди.html","sterling-silver-calculator.html":"калькулятор-из-стерлингового-серебра.html","tola-calculator.html":"тола-калькулятор.html","what-does-925-mean.html":"что-означает-925.html","what-is-junk-silver.html":"что-такое-мусорное-серебро.html","what-is-silver-bullion.html":"что-такое-серебряные-слитки.html","what-is-silver-melt-value.html":"какова-ценность-плавления-серебра.html","what-is-silver-scrap.html":"что-такое-серебряный-лом.html","what-is-sterling-silver.html":"что-такое-стерлинговое-серебро.html","what-is-troy-ounce.html":"что-такое-тройская-унция.html"},"Home":"Главная","Calculators":"Калькуляторы","Silver Scrap Calculator":"Калькулятор лома серебра","Gold & Silver Calculator":"Калькулятор золота и серебра","Silver Melt Value":"Стоимость плавления серебра","Sterling Silver Calculator":"Калькулятор стерлингового серебра","Junk Silver Calculator":"Калькулятор нежелательного серебра","Silver Coin Value":"Стоимость серебряной монеты","Silver Bar Value":"Стоимость серебряного слитка","Silver Jewelry Value":"Стоимость серебряных украшений","Silverware Value":"Стоимость серебра","Purity":"Чистота","999 Fine Silver":"Серебро 999 пробы","958 Britannia Silver":"958 Британия Серебро","925 Sterling Silver":"Серебро 925 пробы","900 Coin Silver":"900 монет серебро","835 Silver":"Серебро 835 пробы","800 Silver":"800 Серебро","Silver Purity Chart":"Таблица чистоты серебра","Pricing":"Цены","Silver Spot Price Today":"Спотовая цена серебра сегодня","925 Sterling Price / Gram":"Цена 925 фунтов стерлингов за грамм","Silver Price Per Gram":"Цена серебра за грамм","Silver Price Per Ounce":"Цена серебра за унцию","Price in All Currencies":"Цена во всех валютах","1/10oz Silver Value":"Стоимость серебра 1/10 унции","1oz Silver Value":"Стоимость серебра 1 унция","2oz Silver Value":"Стоимость серебра 2 унции","5oz Silver Value":"Стоимость серебра 5 унций","10oz Silver Value":"Стоимость серебра 10 унций","100oz Silver Value":"Стоимость серебра 100 унций","1kg Silver Value":"Стоимость серебра 1 кг","Tools":"Инструменты","Silver Profit Calculator":"Калькулятор прибыли серебра","Batch Calculator":"Пакетный калькулятор","Sona Chandi Calculator":"Калькулятор Соны Чанди","Face Value Calculator":"Калькулятор номинальной стоимости","Weight Converter":"Конвертер веса","Pennyweight (DWT) Calc":"Пеннивейт (DWT), расчет","Tola Calculator":"Тола Калькулятор","Sell or Hold Analysis":"Продавайте или держите анализ","Silver Identifier":"Серебряный идентификатор","Guides":"Путеводители","How to Use Our Calculators":"Как пользоваться нашими калькуляторами","What Is Silver Scrap?":"Что такое серебряный лом?","What Is Melt Value?":"Что такое ценность плавления?","What Is Junk Silver?":"Что такое мусорное серебро?","What Is a Troy Ounce?":"Что такое тройская унция?","What Is Silver Bullion?":"Что такое серебряные слитки?","How Silver Prices Work":"Как работают цены на серебро","Silver Hallmarks Guide":"Руководство по серебряным клеймам","What Does 925 Mean?":"Что означает 925?","What Is Sterling Silver?":"Что такое стерлинговое серебро?","How to Sell Silver":"Как продать серебро","Scrap Silver":"Лом серебра","Gold & Silver":"Золото и серебро","Silver Profit":"Серебряная прибыль","Melt Value":"Значение плавления","Junk Silver":"Мусорное серебро","Silver Coins":"Серебряные монеты","Silver Dollar":"Серебряный доллар","Silver Quarter":"Серебряный квартал","Silver Dime":"Серебряный Дайм","Jewelry Value":"Стоимость ювелирных изделий","925 Sterling":"925 Стерлингов","Purity Chart":"Диаграмма чистоты","How to Use Calculators":"Как пользоваться калькуляторами","Sona Chandi Calc":"Сона Чанди Кальк","Face Value Calc":"Расчет номинальной стоимости","Sell or Hold":"Продать или держать","About":"О","Privacy":"Конфиденциальность","Terms":"Условия","All rights reserved.":"Все права защищены.","Prices are for informational purposes only.":"Цены предназначены только для информационных целей.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Бесплатные и точные калькуляторы серебра с использованием текущих спотовых цен. Мгновенно рассчитайте стоимость плавления вашего серебряного лома, монет, ювелирных изделий и слитков."};
+</script>
+</body></html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="ur"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سلور ویٹ کنورٹر — گرام، ٹرائے اونس، پینی ویٹ، کلوگرام، تولہ</title>
+  <meta name="description" content="چاندی کے وزن کو گرام، ٹرائے اونس، پینی ویٹ (dwt)، کلوگرام اور تولہ کے درمیان فوری طور پر تبدیل کریں۔ مفت چاندی کے وزن میں تبدیلی کیلکولیٹر۔">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .converter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+    .converter-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-lg); transition: all var(--transition-fast); }
+    .converter-card:focus-within { border-color: var(--accent-primary); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .converter-card label { display: block; font-size: var(--fs-xs); font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-sm); }
+    .converter-card input { width: 100%; background: transparent; border: none; color: var(--text-primary); font-family: var(--font-display); font-size: var(--fs-xl); font-weight: 700; outline: none; }
+    .converter-card .unit-label { font-size: var(--fs-sm); color: var(--text-secondary); margin-top: var(--space-xs); }
+    @media (max-width: 768px) { .converter-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>چاندی کا وزن <span class="highlight">Converter</span></h1><p>قیمتی دھاتوں کی تجارت میں استعمال ہونے والی تمام عام اکائیوں کے درمیان چاندی کے وزن کو فوری طور پر تبدیل کریں۔</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">⚖️</span> Weight Converter</div>
+        <div class="converter-grid">
+          <div class="converter-card">
+            <label for="grams">گرام (g)</label>
+            <input type="number" id="grams" step="0.001" value="31.1035">
+            <div class="unit-label">1 gram = 0.0322 troy oz</div>
+          </div>
+          <div class="converter-card">
+            <label for="troy-oz">ٹرائے اونس (اونس ٹی)</label>
+            <input type="number" id="troy-oz" step="0.0001" value="1">
+            <div class="unit-label">1 troy oz = 31.1035 g</div>
+          </div>
+          <div class="converter-card">
+            <label for="dwt">پینی ویٹ (dwt)</label>
+            <input type="number" id="dwt" step="0.01" value="20">
+            <div class="unit-label">1 dwt = 1.5552 g</div>
+          </div>
+          <div class="converter-card">
+            <label for="kg">کلوگرام (کلوگرام)</label>
+            <input type="number" id="kg" step="0.000001" value="0.0311035">
+            <div class="unit-label">1 kg = 32.1507 troy oz</div>
+          </div>
+          <div class="converter-card">
+            <label for="tola">تولہ</label>
+            <input type="number" id="tola" step="0.001" value="2.667">
+            <div class="unit-label">1 tola = 11.6638 g</div>
+          </div>
+          <div class="converter-card">
+            <label for="av-oz">Avoirdupois Ounces (oz)</label>
+            <input type="number" id="av-oz" step="0.0001" value="1.0971">
+            <div class="unit-label">1 av oz = 28.3495 g (regular ounce)</div>
+          </div>
+        </div>
+        <div class="result-display" style="margin-top:var(--space-xl);">
+          <div class="result-label">موجودہ جگہ کی قیمت پر قیمت</div>
+          <div class="result-value" id="value-display">$0.00</div>
+          <div class="result-detail" id="value-detail">Based on 999 fine silver</div>
+        </div>
+      </div>
+      <div class="content-body">
+        <h2>چاندی کے وزن کی اکائیوں کی وضاحت</h2>
+        <h3>ٹرائے اونس بمقابلہ ریگولر اونس</h3>
+        <p>قیمتی دھاتوں کی صنعت استعمال کرتی ہے۔ <strong>troy ounces</strong> (31.1035 گرام)، جو معیاری ایوائرڈوپوئس اونس (28.3495 گرام) سے زیادہ بھاری ہیں۔ جب آپ "چاندی کی قیمت فی اونس" دیکھتے ہیں، تو اس کا مطلب ہمیشہ فی ہوتا ہے۔ <em>troy</em> اونس</p>
+        <h3>پینی ویٹ (dwt)</h3>
+        <p>جوہری اکثر اشیاء کا وزن پینی ویٹ میں کرتے ہیں۔ ایک ٹرائے اونس میں 20 پینی ویٹ ہوتے ہیں۔ ایک ڈی ڈبلیو ٹی تقریباً 1.555 گرام کے برابر ہے۔</p>
+        <h3>تولہ</h3>
+        <p>تولہ جنوبی ایشیائی ممالک (بھارت، پاکستان، بنگلہ دیش) میں قیمتی دھاتوں کی تجارت کے لیے استعمال ہوتا ہے۔ ایک تولہ = 11.6638 گرام۔</p>
+        <h3>وزن کی اکائیاں کیوں اہمیت رکھتی ہیں۔</h3>
+        <p>چاندی بیچتے وقت ہمیشہ تصدیق کریں کہ خریدار کون سا یونٹ استعمال کر رہا ہے۔ ٹرائے اونس میں ایک "فی اونس" پیشکش ریگولر اونس کے مقابلے میں تقریباً 10% زیادہ ہے۔ یہ الجھن کا ایک عام ذریعہ ہے۔</p>
+
+        <h2>فوری حوالہ جدول</h2>
+        <table class="purity-table">
+          <thead><tr><th>یونٹ</th><th>مخفف</th><th>گرام</th><th>ٹرائے اونس</th></tr></thead>
+          <tbody>
+            <tr><td>1 گرام</td><td>g</td><td>1.000</td><td>0.0322</td></tr>
+            <tr><td>1 ٹرائے اونس</td><td>oz t</td><td>31.1035</td><td>1.000</td></tr>
+            <tr><td>1 پینی ویٹ</td><td>dwt</td><td>1.5552</td><td>0.0500</td></tr>
+            <tr><td>1 کلوگرام</td><td>کلو</td><td>1,000</td><td>32.1507</td></tr>
+            <tr><td>1 تولہ</td><td>تولہ</td><td>11.6638</td><td>0.3750</td></tr>
+            <tr><td>1 Avoirdupois Oz</td><td>اوز</td><td>28.3495</td><td>0.9115</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div><h3 style="margin-bottom:var(--space-lg);">متعلقہ</h3><div class="related-grid">
+        <a href="چاندی-کی-قیمت-فی-گرام.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+        <a href="چاندی-کی-قیمت-فی-اونس.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+        <a href="سلور-بیچ-کیلکولیٹر.html" class="related-link"><span class="r-icon">📋</span> Batch Calculator</a>
+        <a href="سلور-سکریپ-کیلکولیٹر.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'گھر',href:'index.html'},{label:'Silver Weight Converter'}]);
+
+    const TROY_OZ_G = 31.1035;
+    const DWT_G = 1.55517;
+    const TOLA_G = 11.6638;
+    const AV_OZ_G = 28.3495;
+
+    const fields = {
+      grams: document.getElementById('grams'),
+      'troy-oz': document.getElementById('troy-oz'),
+      dwt: document.getElementById('dwt'),
+      kg: document.getElementById('kg'),
+      tola: document.getElementById('tola'),
+      'av-oz': document.getElementById('av-oz')
+    };
+
+    let activeField = null;
+
+    function gFromField(field, value) {
+      switch(field) {
+        case 'grams': return value;
+        case 'troy-oz': return value * TROY_OZ_G;
+        case 'dwt': return value * DWT_G;
+        case 'kg': return value * 1000;
+        case 'tola': return value * TOLA_G;
+        case 'av-oz': return value * AV_OZ_G;
+      }
+    }
+
+    function updateAll(grams, sourceField) {
+      if (sourceField !== 'grams') fields.grams.value = grams.toFixed(4);
+      if (sourceField !== 'troy-oz') fields['troy-oz'].value = (grams / TROY_OZ_G).toFixed(4);
+      if (sourceField !== 'dwt') fields.dwt.value = (grams / DWT_G).toFixed(4);
+      if (sourceField !== 'kg') fields.kg.value = (grams / 1000).toFixed(6);
+      if (sourceField !== 'tola') fields.tola.value = (grams / TOLA_G).toFixed(4);
+      if (sourceField !== 'av-oz') fields['av-oz'].value = (grams / AV_OZ_G).toFixed(4);
+
+      const spot = SilverPrice.getPrice();
+      const oz = grams / TROY_OZ_G;
+      const val = oz * spot;
+      document.getElementById('value-display').textContent = SilverCalc.formatCurrency(val);
+      document.getElementById('value-detail').textContent = `${oz.toFixed(4)} troy oz × $${spot.toFixed(2)} · Spot: $${spot.toFixed(2)}/oz`;
+    }
+
+    Object.entries(fields).forEach(([key, input]) => {
+      input.addEventListener('input', () => {
+        const val = parseFloat(input.value) || 0;
+        const grams = gFromField(key, val);
+        updateAll(grams, key);
+      });
+      input.addEventListener('focus', () => activeField = key);
+    });
+
+    SilverPrice.onPriceUpdate(() => {
+      const val = parseFloat(fields.grams.value) || 0;
+      updateAll(val, 'grams');
+    });
+
+    // Initial
+    updateAll(31.1035, 'grams');
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10-اوز-چاندی-کی-قیمت.html","100oz-silver-value.html":"100oz-چاندی-کی-قیمت.html","10oz-silver-value.html":"10-اوز-چاندی-کی-قیمت.html","1kg-silver-value.html":"1-کلو-چاندی-کی-قیمت.html","1oz-silver-value.html":"1-اوز-چاندی-کی-قیمت.html","2oz-silver-value.html":"2oz-چاندی-کی-قیمت.html","5oz-silver-value.html":"5oz-چاندی-کی-قیمت.html","800-silver-calculator.html":"800-چاندی-کا-کیلکولیٹر.html","835-silver-calculator.html":"835-سلور-کیلکولیٹر.html","900-silver-calculator.html":"900-چاندی-کا-کیلکولیٹر.html","925-silver-calculator.html":"925-سلور-کیلکولیٹر.html","925-sterling-silver-price-per-gram.html":"925-سٹرلنگ-چاندی-کی-قیمت-فی-گرام.html","958-silver-calculator.html":"958-سلور-کیلکولیٹر.html","999-silver-calculator.html":"999-سلور-کیلکولیٹر.html","canadian-silver-coin-calculator.html":"کینیڈین-چاندی-کے-سکے-کیلکولیٹر.html","face-value-silver-calculator.html":"چاندی-کی-قیمت-کا-کیلکولیٹر.html","gold-and-silver-calculator.html":"سونے-اور-چاندی-کا-کیلکولیٹر.html","how-silver-prices-work.html":"چاندی-کی-قیمتیں-کیسے-کام-کرتی-ہیں.html","how-to-sell-silver.html":"چاندی-فروخت-کرنے-کا-طریقہ.html","how-to-use-silver-calculators.html":"سلور-کیلکولیٹر-استعمال-کرنے-کا-طریقہ.html","identify-silver.html":"چاندی-کی-شناخت.html","junk-silver-calculator.html":"ردی-چاندی-کا-کیلکولیٹر.html","pennyweight-calculator.html":"پینی-ویٹ-کیلکولیٹر.html","silver-bar-value-calculator.html":"سلور-بار-ویلیو-کیلکولیٹر.html","silver-batch-calculator.html":"سلور-بیچ-کیلکولیٹر.html","silver-bracelet-value.html":"چاندی-کے-کڑا-کی-قیمت.html","silver-chain-value.html":"چاندی-کی-زنجیر-کی-قیمت.html","silver-coin-value-calculator.html":"چاندی-کے-سکے-کی-قیمت-کا-کیلکولیٹر.html","silver-cup-value.html":"چاندی-کے-کپ-کی-قیمت.html","silver-dime-calculator.html":"سلور-ڈائم-کیلکولیٹر.html","silver-dollar-calculator.html":"سلور-ڈالر-کیلکولیٹر.html","silver-fork-value.html":"چاندی-کے-کانٹے-کی-قیمت.html","silver-hallmarks-guide.html":"سلور-ہال-مارکس-گائیڈ.html","silver-jewelry-value-calculator.html":"چاندی-کے-زیورات-کی-قیمت-کا-کیلکولیٹر.html","silver-knife-value.html":"چاندی-کی-چاقو-کی-قیمت.html","silver-melt-value-calculator.html":"چاندی-پگھل-قیمت-کیلکولیٹر.html","silver-necklace-value.html":"چاندی-کے-ہار-کی-قیمت.html","silver-plate-value.html":"چاندی-کی-پلیٹ-کی-قیمت.html","silver-price-all-currencies.html":"چاندی-کی-قیمت-تمام-کرنسیوں.html","silver-price-per-gram.html":"چاندی-کی-قیمت-فی-گرام.html","silver-price-per-ounce.html":"چاندی-کی-قیمت-فی-اونس.html","silver-profit-calculator.html":"چاندی-کے-منافع-کا-کیلکولیٹر.html","silver-purity-chart.html":"چاندی-کی-پاکیزگی-کا-چارٹ.html","silver-quarter-calculator.html":"سلور-کوارٹر-کیلکولیٹر.html","silver-ring-value.html":"چاندی-کی-انگوٹھی-کی-قیمت.html","silver-scrap-calculator.html":"سلور-سکریپ-کیلکولیٹر.html","silver-sell-or-hold.html":"چاندی-بیچیں-یا-پکڑیں.html","silver-spoon-value.html":"چاندی-کے-چمچ-کی-قیمت.html","silver-spot-price-today.html":"چاندی-کی-اسپاٹ-قیمت-آج.html","silver-tray-value.html":"چاندی-کی-ٹرے-کی-قیمت.html","silver-weight-converter.html":"چاندی-وزن-کنورٹر.html","silverware-value-calculator.html":"سلور-ویئر-ویلیو-کیلکولیٹر.html","sona-chandi-calculator.html":"سونا-چندی-کیلکولیٹر.html","sterling-silver-calculator.html":"سٹرلنگ-سلور-کیلکولیٹر.html","tola-calculator.html":"تولہ-کیلکولیٹر.html","what-does-925-mean.html":"925-کا-کیا-مطلب-ہے.html","what-is-junk-silver.html":"ردی-چاندی-کیا-ہے.html","what-is-silver-bullion.html":"چاندی-بلین-کیا-ہے.html","what-is-silver-melt-value.html":"چاندی-کی-پگھل-قیمت-کیا-ہے.html","what-is-silver-scrap.html":"چاندی-کا-سکریپ-کیا-ہے.html","what-is-sterling-silver.html":"سٹرلنگ-چاندی-کیا-ہے.html","what-is-troy-ounce.html":"ٹرائے-اونس-کیا-ہے.html"},"Home":"گھر","Calculators":"کیلکولیٹر","Silver Scrap Calculator":"سلور سکریپ کیلکولیٹر","Gold & Silver Calculator":"سونے اور چاندی کا کیلکولیٹر","Silver Melt Value":"سلور میلٹ ویلیو","Sterling Silver Calculator":"سٹرلنگ سلور کیلکولیٹر","Junk Silver Calculator":"جنک سلور کیلکولیٹر","Silver Coin Value":"چاندی کے سکے کی قیمت","Silver Bar Value":"سلور بار ویلیو","Silver Jewelry Value":"چاندی کے زیورات کی قیمت","Silverware Value":"سلور ویئر ویلیو","Purity":"طہارت","999 Fine Silver":"999 فائن سلور","958 Britannia Silver":"958 برٹانیہ سلور","925 Sterling Silver":"925 سٹرلنگ سلور","900 Coin Silver":"900 سکے چاندی","835 Silver":"835 چاندی","800 Silver":"800 چاندی","Silver Purity Chart":"سلور پیوریٹی چارٹ","Pricing":"قیمتوں کا تعین","Silver Spot Price Today":"چاندی کی اسپاٹ قیمت آج","925 Sterling Price / Gram":"925 سٹرلنگ قیمت/گرام","Silver Price Per Gram":"چاندی کی قیمت فی گرام","Silver Price Per Ounce":"چاندی کی قیمت فی اونس","Price in All Currencies":"تمام کرنسیوں میں قیمت","1/10oz Silver Value":"1/10oz سلور ویلیو","1oz Silver Value":"1oz سلور ویلیو","2oz Silver Value":"2oz سلور ویلیو","5oz Silver Value":"5oz سلور ویلیو","10oz Silver Value":"10oz سلور ویلیو","100oz Silver Value":"100oz سلور ویلیو","1kg Silver Value":"1 کلو چاندی کی قیمت","Tools":"اوزار","Silver Profit Calculator":"سلور منافع کیلکولیٹر","Batch Calculator":"بیچ کیلکولیٹر","Sona Chandi Calculator":"سونا چندی کیلکولیٹر","Face Value Calculator":"فیس ویلیو کیلکولیٹر","Weight Converter":"وزن کنورٹر","Pennyweight (DWT) Calc":"پینی ویٹ (DWT) کیلک","Tola Calculator":"تولہ کیلکولیٹر","Sell or Hold Analysis":"تجزیہ بیچیں یا ہولڈ کریں۔","Silver Identifier":"سلور شناخت کنندہ","Guides":"رہنما","How to Use Our Calculators":"ہمارے کیلکولیٹرز کا استعمال کیسے کریں۔","What Is Silver Scrap?":"سلور سکریپ کیا ہے؟","What Is Melt Value?":"پگھل قدر کیا ہے؟","What Is Junk Silver?":"جنک سلور کیا ہے؟","What Is a Troy Ounce?":"ٹرائے اونس کیا ہے؟","What Is Silver Bullion?":"سلور بلین کیا ہے؟","How Silver Prices Work":"چاندی کی قیمتیں کیسے کام کرتی ہیں۔","Silver Hallmarks Guide":"سلور ہال مارکس گائیڈ","What Does 925 Mean?":"925 کا کیا مطلب ہے؟","What Is Sterling Silver?":"سٹرلنگ سلور کیا ہے؟","How to Sell Silver":"چاندی فروخت کرنے کا طریقہ","Scrap Silver":"سکریپ سلور","Gold & Silver":"سونا اور چاندی","Silver Profit":"چاندی کا منافع","Melt Value":"پگھلنے والی قدر","Junk Silver":"جنک سلور","Silver Coins":"چاندی کے سکے ۔","Silver Dollar":"سلور ڈالر","Silver Quarter":"سلور کوارٹر","Silver Dime":"سلور ڈائم","Jewelry Value":"زیورات کی قیمت","925 Sterling":"925 سٹرلنگ","Purity Chart":"طہارت کا چارٹ","How to Use Calculators":"کیلکولیٹر کا استعمال کیسے کریں۔","Sona Chandi Calc":"سونا چندی کیلک","Face Value Calc":"فیس ویلیو کیلک","Sell or Hold":"بیچیں یا پکڑیں۔","About":"کے بارے میں","Privacy":"رازداری","Terms":"شرائط","All rights reserved.":"جملہ حقوق محفوظ ہیں۔","Prices are for informational purposes only.":"قیمتیں صرف معلوماتی مقاصد کے لیے ہیں۔","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"براہ راست اسپاٹ قیمتوں کا استعمال کرتے ہوئے مفت، درست سلور کیلکولیٹر۔ اپنے چاندی کے سکریپ، سکے، زیورات، اور سلاخوں کی پگھلنے والی قیمت کا فوری حساب لگائیں۔"};
+</script>
+</body></html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="fr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculateur de vente ou de conservation d’argent : dois-je vendre mon argent maintenant&nbsp;?</title>
+  <meta name="description" content="Devriez-vous vendre de l’argent maintenant ou le conserver ? Comparez la valeur de fusion actuelle avec les prix futurs hypothétiques. Prenez des décisions de vente éclairées à l’aide de l’analyse de scénarios.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .scenario-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-md); margin: var(--space-lg) 0; }
+    .scenario-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-lg); text-align: center; transition: all var(--transition-fast); }
+    .scenario-card:hover { border-color: var(--accent-primary); transform: translateY(-2px); }
+    .scenario-card.negative { border-color: #ef4444; }
+    .scenario-card.positive { border-color: #22c55e; }
+    .scenario-label { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-xs); }
+    .scenario-price { font-family: var(--font-display); font-weight: 700; font-size: var(--fs-lg); color: var(--text-primary); }
+    .scenario-value { font-family: var(--font-display); font-weight: 800; font-size: var(--fs-xl); margin: var(--space-sm) 0; }
+    .scenario-diff { font-size: var(--fs-sm); font-weight: 600; }
+    .scenario-diff.up { color: #22c55e; }
+    .scenario-diff.down { color: #ef4444; }
+    .custom-spot-section { background: var(--bg-glass); border: 1px solid var(--border-medium); border-radius: var(--radius-md); padding: var(--space-lg); margin: var(--space-lg) 0; }
+    .custom-spot-section .cs-title { font-size: var(--fs-sm); font-weight: 600; color: var(--accent-gold); margin-bottom: var(--space-sm); }
+    .breakeven-bar { background: var(--bg-secondary); border-radius: var(--radius-md); height: 24px; overflow: hidden; margin: var(--space-md) 0; position: relative; }
+    .breakeven-fill { height: 100%; border-radius: var(--radius-md); transition: width 0.5s ease; }
+    .breakeven-labels { display: flex; justify-content: space-between; font-size: var(--fs-xs); color: var(--text-muted); }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>Vendre ou conserver <span class="highlight">Calculator</span></h1><p>Comparez la vente maintenant et l'attente : voyez ce que vaudrait votre argent à différents prix futurs.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">📈</span> Sell vs. Hold Analysis</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="weight">Poids total</label><input type="number" class="form-input" id="weight" value="100" step="0.1" min="0"></div>
+          <div class="form-group"><label class="form-label" for="unit">Unité</label><select class="form-select" id="unit"><option value="g" selected="">Grammes</option><option value="oz">Troy Oz</option><option value="kg">Kilogrammes</option></select></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="purity">Pureté</label><select class="form-select" id="purity"><option value="0.999">999 Amende</option><option value="0.925" selected="">925 livres sterling</option><option value="0.900">900 pièces</option><option value="0.800">800 Argent</option></select></div>
+          <div class="form-group"><label class="form-label" for="discount">% de réduction du concessionnaire</label><input type="number" class="form-input" id="discount" value="15" min="0" max="50" step="1"></div>
+        </div>
+
+        <div class="result-display">
+          <div class="result-label">Vendre maintenant (à l'endroit d'aujourd'hui)</div>
+          <div class="result-value" id="sell-now">$0.00</div>
+          <div class="result-detail" id="sell-detail">After 15% dealer discount</div>
+        </div>
+
+        <div class="custom-spot-section">
+          <div class="cs-title">📊 What If Spot Changes?</div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label class="form-label" for="custom-spot">Prix au comptant personnalisé ($/oz)</label>
+            <input type="range" id="custom-spot-slider" min="15" max="60" step="0.25" value="32.50" style="width:100%;accent-color:var(--accent-primary);">
+            <div style="display:flex;gap:var(--space-sm);align-items:center;">
+              <input type="number" class="form-input" id="custom-spot" value="32.50" step="0.25" min="1" style="width:120px;">
+              <span style="font-size:var(--fs-sm);color:var(--text-muted);">per troy ounce</span>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="margin: var(--space-xl) 0 var(--space-md);">Analyse de scénario</h4>
+        <div class="scenario-grid" id="scenarios"></div>
+
+        <h4 style="margin: var(--space-xl) 0 var(--space-md);">Prix nécessaire pour atteindre le seuil de rentabilité</h4>
+        <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin-bottom:var(--space-md);">Si vous avez acheté avec une prime, quel prix l’argent doit-il atteindre pour que vous puissiez atteindre le seuil de rentabilité lors de la vente ?</p>
+        <div class="form-group"><label class="form-label" for="buy-price">Votre prix d'achat (coût total)</label><input type="number" class="form-input" id="buy-price" value="0" step="1" min="0" placeholder="e.g. 120"></div>
+        <div id="breakeven-result" style="display:none;">
+          <div class="breakeven-bar"><div class="breakeven-fill" id="breakeven-fill"></div></div>
+          <div class="breakeven-labels"><span id="be-current">Current</span><span id="be-target">Breakeven</span></div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin-top:var(--space-sm);" id="be-text"></p>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>Quand devriez-vous vendre de l’argent ?</h2>
+        <p>Cet outil vous aide à décider si vous souhaitez vendre votre argent maintenant ou attendre des prix potentiellement plus élevés. Il n'y a pas de réponse garantie, mais la prise en compte de ces facteurs peut aider&nbsp;:</p>
+        <h3>Raisons de vendre maintenant</h3>
+        <ul>
+          <li>Vous avez besoin d’argent dans un but précis</li>
+          <li>Les prix de l’argent atteignent des sommets depuis plusieurs années</li>
+          <li>Vous souhaitez vous diversifier vers d’autres investissements</li>
+          <li>Les coûts de stockage et d’assurance pèsent sur les rendements</li>
+        </ul>
+        <h3>Raisons de retenir</h3>
+        <ul>
+          <li>L'argent est inférieur à votre prix d'achat</li>
+          <li>L'incertitude économique suggère que les métaux précieux pourraient augmenter</li>
+          <li>Vous utilisez l’argent comme couverture contre l’inflation à long terme</li>
+          <li>Les rabais des concessionnaires sont actuellement élevés (mauvaises conditions de marché)</li>
+        </ul>
+        <div class="callout warning">
+          <div class="callout-title">⚠️ Not Financial Advice</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Cet outil est uniquement destiné à des fins éducatives. Les prix de l’argent peuvent augmenter ou diminuer, et les performances passées ne prédisent pas les résultats futurs. Consultez un conseiller financier pour les décisions d’investissement.</p>
+        </div>
+      </div>
+
+      <div><h3 style="margin-bottom:var(--space-lg);">Connexes</h3><div class="related-grid">
+        <a href="calculateur-de-ferraille-d-argent.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        <a href="calculateur-par-lots.html" class="related-link"><span class="r-icon">📋</span> Batch Calculator</a>
+        <a href="comment-vendre-de-l-argent.html" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>
+        <a href="prix-de-l-argent-a-l-once.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Accueil',href:'index.html'},{label:'Sell or Hold Calculator'}]);
+
+    const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),d=document.getElementById('discount'),cs=document.getElementById('custom-spot'),sl=document.getElementById('custom-spot-slider'),bp=document.getElementById('buy-price');
+
+    sl.addEventListener('input', () => { cs.value = sl.value; calc(); });
+    cs.addEventListener('input', () => { sl.value = cs.value; calc(); });
+
+    function calc() {
+      const weight = parseFloat(w.value)||0;
+      const grams = SilverCalc.toGrams(weight, u.value);
+      const purity = parseFloat(p.value);
+      const discountPct = parseFloat(d.value)||0;
+      const spot = SilverPrice.getPrice();
+      const customSpot = parseFloat(cs.value)||spot;
+
+      // Sell Now value
+      const melt = SilverCalc.meltValue(grams, purity, spot);
+      const payout = melt.value * (1 - discountPct/100);
+      document.getElementById('sell-now').textContent = SilverCalc.formatCurrency(payout);
+      document.getElementById('sell-detail').textContent = `Melt: ${SilverCalc.formatCurrency(melt.value)} · After ${discountPct}% discount · Spot: $${spot.toFixed(2)}/oz`;
+
+      // Scenarios
+      const scenarios = [
+        { label: '−20%', price: spot * 0.80 },
+        { label: '−10%', price: spot * 0.90 },
+        { label: 'Current', price: spot },
+        { label: '+10%', price: spot * 1.10 },
+        { label: '+20%', price: spot * 1.20 },
+        { label: '+50%', price: spot * 1.50 },
+        { label: 'Custom', price: customSpot },
+      ];
+
+      let html = '';
+      scenarios.forEach(s => {
+        const mv = SilverCalc.meltValue(grams, purity, s.price);
+        const pay = mv.value * (1 - discountPct/100);
+        const diff = pay - payout;
+        const diffPct = payout > 0 ? ((diff / payout) * 100).toFixed(1) : '0';
+        const cls = diff > 0 ? 'positive' : (diff < 0 ? 'negative' : '');
+        const dcls = diff >= 0 ? 'up' : 'down';
+        const sign = diff >= 0 ? '+' : '';
+        html += `
+          <div class="scenario-card ${cls}">
+            <div class="scenario-label">${s.label}</div>
+            <div class="scenario-price">$${s.price.toFixed(2)}/oz</div>
+            <div class="scenario-value">${SilverCalc.formatCurrency(pay)}</div>
+            <div class="scenario-diff ${dcls}">${sign}${SilverCalc.formatCurrency(diff)} (${sign}${diffPct}%)</div>
+          </div>`;
+      });
+      document.getElementById('scenarios').innerHTML = html;
+
+      // Break even
+      const buyPrice = parseFloat(bp.value)||0;
+      const beResult = document.getElementById('breakeven-result');
+      if (buyPrice > 0) {
+        beResult.style.display = 'block';
+        const silverOz = (grams * purity) / 31.1035;
+        const neededMelt = buyPrice / (1 - discountPct/100);
+        const neededSpot = silverOz > 0 ? neededMelt / silverOz : 0;
+        const progress = Math.min((spot / neededSpot) * 100, 100);
+        const fill = document.getElementById('breakeven-fill');
+        fill.style.width = progress + '%';
+        fill.style.background = progress >= 100 ? 'linear-gradient(90deg, #22c55e, #16a34a)' : 'linear-gradient(90deg, var(--accent-primary), var(--accent-blue))';
+        document.getElementById('be-current').textContent = `Current: $${spot.toFixed(2)}`;
+        document.getElementById('be-target').textContent = `Breakeven: $${neededSpot.toFixed(2)}/oz`;
+        if (progress >= 100) {
+          document.getElementById('be-text').textContent = `✅ Silver is at or above your breakeven price. You would profit ${SilverCalc.formatCurrency(payout - buyPrice)} by selling now.`;
+        } else {
+          document.getElementById('be-text').textContent = `Silver needs to reach $${neededSpot.toFixed(2)}/oz (currently at ${progress.toFixed(1)}%) for you to break even after dealer discount.`;
+        }
+      } else {
+        beResult.style.display = 'none';
+      }
+    }
+
+    [w,d,cs,bp].forEach(el=>el.addEventListener('input',calc));
+    [u,p].forEach(el=>el.addEventListener('change',calc));
+    SilverPrice.onPriceUpdate(()=>{sl.value=SilverPrice.getPrice();cs.value=SilverPrice.getPrice();calc();});
+    calc();
+  </script>
+
+
+
+<script>
+    window.MenuTranslations = {"slugs":{"silver-scrap-calculator.html":"calculateur-de-ferraille-d-argent.html","gold-and-silver-calculator.html":"calculateur-or-et-argent.html","silver-melt-value-calculator.html":"calculateur-de-valeur-de-fonte.html","sterling-silver-calculator.html":"calculateur-d-argent-sterling.html","junk-silver-calculator.html":"calculateur-d-argent-de-circulation.html","silver-coin-value-calculator.html":"valeur-des-pieces-d-argent.html","silver-bar-value-calculator.html":"valeur-des-lingots-d-argent.html","silver-jewelry-value-calculator.html":"valeur-des-bijoux-en-argent.html","silverware-value-calculator.html":"valeur-de-l-argenterie.html","999-silver-calculator.html":"argent-fin-999.html","958-silver-calculator.html":"argent-britannia-958.html","925-silver-calculator.html":"argent-sterling-925.html","900-silver-calculator.html":"argent-de-piece-900.html","835-silver-calculator.html":"argent-835.html","800-silver-calculator.html":"argent-800.html","silver-purity-chart.html":"tableau-de-purete-de-l-argent.html","silver-price-per-gram.html":"prix-de-l-argent-au-gramme.html","silver-price-per-ounce.html":"prix-de-l-argent-a-l-once.html","silver-price-all-currencies.html":"prix-dans-toutes-les-devises.html","1-10oz-silver-value.html":"valeur-de-l-argent-1-10oz.html","1oz-silver-value.html":"valeur-de-l-argent-1oz.html","2oz-silver-value.html":"valeur-de-l-argent-2oz.html","5oz-silver-value.html":"valeur-de-l-argent-5oz.html","10oz-silver-value.html":"valeur-de-l-argent-10oz.html","100oz-silver-value.html":"valeur-de-l-argent-100oz.html","1kg-silver-value.html":"valeur-de-l-argent-1kg.html","silver-profit-calculator.html":"calculateur-de-profit-d-argent.html","silver-batch-calculator.html":"calculateur-par-lots.html","sona-chandi-calculator.html":"calculateur-sona-chandi.html","face-value-silver-calculator.html":"calculateur-de-valeur-nominale.html","silver-weight-converter.html":"convertisseur-de-poids.html","pennyweight-calculator.html":"calculateur-pennyweight-dwt.html","tola-calculator.html":"calculateur-tola.html","silver-sell-or-hold.html":"analyse-vendre-ou-garder.html","identify-silver.html":"identificateur-d-argent.html","how-to-use-silver-calculators.html":"comment-utiliser-nos-calculateurs.html","what-is-silver-scrap.html":"qu-est-ce-que-la-ferraille-d-argent.html","what-is-silver-melt-value.html":"qu-est-ce-que-la-valeur-de-fonte.html","what-is-junk-silver.html":"qu-est-ce-que-l-argent-de-circulation.html","what-is-troy-ounce.html":"qu-est-ce-qu-une-once-troy.html","what-is-silver-bullion.html":"qu-est-ce-qu-un-lingot-d-argent.html","how-silver-prices-work.html":"comment-fonctionnent-les-prix-de-l-argent.html","silver-hallmarks-guide.html":"guide-des-poincons-d-argent.html","what-does-925-mean.html":"que-signifie-925.html","what-is-sterling-silver.html":"qu-est-ce-que-l-argent-sterling.html","how-to-sell-silver.html":"comment-vendre-de-l-argent.html","silver-bracelet-value.html":"valeur-d-un-bracelet-en-argent.html","silver-chain-value.html":"valeur-d-une-chaine-en-argent.html","silver-cup-value.html":"valeur-d-une-coupe-en-argent.html","silver-dime-calculator.html":"calculateur-piece-de-dix-cents-en-argent.html","silver-dollar-calculator.html":"calculateur-dollar-en-argent.html","silver-fork-value.html":"valeur-d-une-fourchette-en-argent.html","silver-knife-value.html":"valeur-d-un-couteau-en-argent.html","silver-necklace-value.html":"valeur-d-un-collier-en-argent.html","silver-plate-value.html":"valeur-d-une-assiette-en-argent.html","silver-quarter-calculator.html":"calculateur-quart-de-dollar-en-argent.html","silver-ring-value.html":"valeur-d-une-bague-en-argent.html","silver-spoon-value.html":"valeur-d-une-cuillere-en-argent.html","silver-tray-value.html":"valeur-d-un-plateau-en-argent.html","canadian-silver-coin-calculator.html":"calculateur-piece-en-argent-canadienne.html"},"Home":"Accueil","Calculators":"Calculateurs","Silver Scrap Calculator":"Calculateur de Ferraille d'Argent","Gold & Silver Calculator":"Calculateur Or et Argent","Silver Melt Value":"Valeur de Fonte de l'Argent","Sterling Silver Calculator":"Calculateur d'Argent Sterling","Junk Silver Calculator":"Calculateur d'Argent de Circulation","Silver Coin Value":"Valeur des Pièces d'Argent","Silver Bar Value":"Valeur des Lingots d'Argent","Silver Jewelry Value":"Valeur des Bijoux en Argent","Silverware Value":"Valeur de l'Argenterie","Purity":"Pureté","999 Fine Silver":"Argent Fin 999","958 Britannia Silver":"Argent Britannia 958","925 Sterling Silver":"Argent Sterling 925","900 Coin Silver":"Argent de Pièce 900","835 Silver":"Argent 835","800 Silver":"Argent 800","Silver Purity Chart":"Tableau de Pureté de l'Argent","Pricing":"Prix","Silver Price Per Gram":"Prix de l'Argent au Gramme","Silver Price Per Ounce":"Prix de l'Argent à l'Once","Price in All Currencies":"Prix dans Toutes les Devises","1/10oz Silver Value":"Valeur de l'Argent 1/10oz","1oz Silver Value":"Valeur de l'Argent 1oz","2oz Silver Value":"Valeur de l'Argent 2oz","5oz Silver Value":"Valeur de l'Argent 5oz","10oz Silver Value":"Valeur de l'Argent 10oz","100oz Silver Value":"Valeur de l'Argent 100oz","1kg Silver Value":"Valeur de l'Argent 1kg","Tools":"Outils","Silver Profit Calculator":"Calculateur de Profit d'Argent","Batch Calculator":"Calculateur par Lots","Sona Chandi Calculator":"Calculateur Sona Chandi","Face Value Calculator":"Calculateur de Valeur Nominale","Weight Converter":"Convertisseur de Poids","Pennyweight (DWT) Calc":"Calculateur Pennyweight (DWT)","Tola Calculator":"Calculateur Tola","Sell or Hold Analysis":"Analyse Vendre ou Garder","Silver Identifier":"Identificateur d'Argent","Guides":"Guides","How to Use Our Calculators":"Comment Utiliser nos Calculateurs","What Is Silver Scrap?":"Qu'est-ce que la Ferraille d'Argent ?","What Is Melt Value?":"Qu'est-ce que la Valeur de Fonte ?","What Is Junk Silver?":"Qu'est-ce que l'Argent de Circulation ?","What Is a Troy Ounce?":"Qu'est-ce qu'une Once Troy ?","What Is Silver Bullion?":"Qu'est-ce qu'un Lingot d'Argent ?","How Silver Prices Work":"Comment Fonctionnent les Prix de l'Argent","Silver Hallmarks Guide":"Guide des Poinçons d'Argent","What Does 925 Mean?":"Que Signifie 925 ?","What Is Sterling Silver?":"Qu'est-ce que l'Argent Sterling ?","How to Sell Silver":"Comment Vendre de l'Argent","Scrap Silver":"Ferraille d'Argent","Gold & Silver":"Or et Argent","Silver Profit":"Profit d'Argent","Melt Value":"Valeur de Fonte","Junk Silver":"Argent de Circulation","Silver Coins":"Pièces d'Argent","Silver Dollar":"Dollar en Argent","Silver Quarter":"Quart de Dollar en Argent","Silver Dime":"Pièce de Dix Cents en Argent","Jewelry Value":"Valeur des Bijoux","925 Sterling":"Sterling 925","Purity Chart":"Tableau de Pureté","How to Use Calculators":"Comment Utiliser les Calculateurs","Sona Chandi Calc":"Calc. Sona Chandi","Face Value Calc":"Calc. Valeur Nominale","Sell or Hold":"Vendre ou Garder","About":"À Propos","Privacy":"Confidentialité","Terms":"Conditions","All rights reserved.":"Tous droits réservés.","Prices are for informational purposes only.":"Les prix sont à titre informatif.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calculateurs gratuits utilisant les prix en direct. Calculez la valeur de votre ferraille d'argent instantanément."};
+  </script>
+</body></html>

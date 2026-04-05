@@ -1,0 +1,92 @@
+<!DOCTYPE html><html lang="ru"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silver Price Per Ounce Today — Live Troy Ounce Price</title>
+  <meta name="description" content="Current silver price per troy ounce with live updates. View the spot price and convert to grams, kilograms, and pennyweight.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-price-per-ounce.html">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>Silver Price Per <span class="highlight">Ounce</span></h1>
+        <p>Today's live silver price per troy ounce with conversions to all common weight units.</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">📊</span> Silver Spot Price</div>
+        <div class="result-display" style="margin-bottom:var(--space-xl);">
+          <div class="result-label">Silver Price Per Troy Ounce</div>
+          <div class="result-value" id="price-oz">$0.00</div>
+          <div class="result-detail">1 troy ounce = 31.1035 grams</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);">
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Per Gram</div>
+            <div id="price-gram" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Per Kilogram</div>
+            <div id="price-kg" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+        </div>
+        <h4 style="margin:var(--space-xl) 0 var(--space-md);">Value by Quantity (at spot)</h4>
+        <table class="purity-table">
+          <thead><tr><th>Количество</th><th>Вес</th><th>Значение</th></tr></thead>
+          <tbody id="qty-rows"></tbody>
+        </table>
+      </div>
+      <div class="content-body">
+        <h2>Understanding the Silver Spot Price</h2>
+        <p>The silver spot price is the current market price for one troy ounce of .999 fine silver. It's set by global trading on commodity exchanges like the COMEX and London Bullion Market Association (LBMA).</p>
+        <h3>Troy Ounce vs. Regular Ounce</h3>
+        <p>A troy ounce (31.1035g) is heavier than a standard ounce (28.3495g). Precious metals are always measured in troy ounces — so when you see "silver price per ounce," it means per <em>troy</em> ounce.</p>
+        <h3>Factors Affecting Silver Prices</h3>
+        <ul>
+          <li><strong>Industrial demand</strong> — Silver is used in electronics, solar panels, and medical devices</li>
+          <li><strong>Investment demand</strong> — ETFs, futures, and physical bullion purchases</li>
+          <li><strong>US Dollar strength</strong> — Silver usually moves inversely to the dollar</li>
+          <li><strong>Inflation expectations</strong> — Silver is seen as an inflation hedge</li>
+          <li><strong>Mining supply</strong> — Global silver production levels</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:var(--space-lg);">Похожие страницы</h3>
+        <div class="related-grid">
+          <a href="цена-серебра-за-грамм.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+          <a href="стоимость-серебра-1-унция.html" class="related-link"><span class="r-icon">🧱</span> 1oz Silver Value</a>
+          <a href="стоимость-серебра-10-унций.html" class="related-link"><span class="r-icon">🧱</span> 10oz Silver Value</a>
+          <a href="стоимость-серебра-за-1-кг.html" class="related-link"><span class="r-icon">🧱</span> 1kg Silver Value</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Главная',href:'index.html'},{label:'Silver Price Per Ounce'}]);
+    function update(){
+      const spot=SilverPrice.getPrice();
+      document.getElementById('price-oz').textContent='$'+spot.toFixed(2);
+      document.getElementById('price-gram').textContent='$'+(spot/31.1035).toFixed(4);
+      document.getElementById('price-kg').textContent='$'+(spot*1000/31.1035).toFixed(2);
+      const qtys=[{l:'1 oz',w:'31.1g',q:1},{l:'5 oz',w:'155.5g',q:5},{l:'10 oz',w:'311.0g',q:10},{l:'50 oz',w:'1,555g',q:50},{l:'100 oz',w:'3,110g',q:100}];
+      document.getElementById('qty-rows').innerHTML=qtys.map(q=>`<tr><td>${q.l}</td><td>${q.w}</td><td>$${(spot*q.q).toFixed(2)}</td></tr>`).join('');
+    }
+    SilverPrice.onPriceUpdate(()=>update());
+    update();
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-серебро-стоимостью-10-унций.html","100oz-silver-value.html":"стоимость-серебра-100-унций.html","10oz-silver-value.html":"стоимость-серебра-10-унций.html","1kg-silver-value.html":"стоимость-серебра-за-1-кг.html","1oz-silver-value.html":"стоимость-серебра-1-унция.html","2oz-silver-value.html":"стоимость-серебра-2-унции.html","5oz-silver-value.html":"стоимость-серебра-5-унций.html","800-silver-calculator.html":"калькулятор-серебра-800.html","835-silver-calculator.html":"калькулятор-серебра-835-пробы.html","900-silver-calculator.html":"калькулятор-серебра-900-пробы.html","925-silver-calculator.html":"калькулятор-серебра-925-пробы.html","925-sterling-silver-price-per-gram.html":"цена-серебра-925-пробы-за-грамм.html","958-silver-calculator.html":"калькулятор-серебра-958-пробы.html","999-silver-calculator.html":"калькулятор-серебра-999-пробы.html","canadian-silver-coin-calculator.html":"калькулятор-канадских-серебряных-монет.html","face-value-silver-calculator.html":"калькулятор-номинальной-стоимости-серебра.html","gold-and-silver-calculator.html":"калькулятор-золота-и-серебра.html","how-silver-prices-work.html":"как-работают-цены-на-серебро.html","how-to-sell-silver.html":"как-продать-серебро.html","how-to-use-silver-calculators.html":"как-пользоваться-серебряными-калькуляторами.html","identify-silver.html":"идентифицировать-серебро.html","junk-silver-calculator.html":"калькулятор-ненужного-серебра.html","pennyweight-calculator.html":"калькулятор-пеннивейта.html","silver-bar-value-calculator.html":"калькулятор-стоимости-серебряных-слитков.html","silver-batch-calculator.html":"калькулятор-партии-серебра.html","silver-bracelet-value.html":"стоимость-серебряного-браслета.html","silver-chain-value.html":"стоимость-серебряной-цепочки.html","silver-coin-value-calculator.html":"калькулятор-стоимости-серебряной-монеты.html","silver-cup-value.html":"стоимость-серебряного-кубка.html","silver-dime-calculator.html":"калькулятор-серебряных-десятицентовиков.html","silver-dollar-calculator.html":"калькулятор-серебряного-доллара.html","silver-fork-value.html":"стоимость-серебряной-вилки.html","silver-hallmarks-guide.html":"руководство-по-клеймам-серебра.html","silver-jewelry-value-calculator.html":"калькулятор-стоимости-серебряных-украшений.html","silver-knife-value.html":"стоимость-серебряного-ножа.html","silver-melt-value-calculator.html":"калькулятор-стоимости-расплава-серебра.html","silver-necklace-value.html":"стоимость-серебряного-ожерелья.html","silver-plate-value.html":"стоимость-серебряной-тарелки.html","silver-price-all-currencies.html":"цена-серебра-во-всех-валютах.html","silver-price-per-gram.html":"цена-серебра-за-грамм.html","silver-price-per-ounce.html":"цена-серебра-за-унцию.html","silver-profit-calculator.html":"калькулятор-прибыли-по-серебру.html","silver-purity-chart.html":"таблица-чистоты-серебра.html","silver-quarter-calculator.html":"калькулятор-серебряных-четвертей.html","silver-ring-value.html":"стоимость-серебряного-кольца.html","silver-scrap-calculator.html":"калькулятор-лома-серебра.html","silver-sell-or-hold.html":"серебро-продавать-или-держать.html","silver-spoon-value.html":"стоимость-серебряной-ложки.html","silver-spot-price-today.html":"спотовая-цена-серебра-сегодня.html","silver-tray-value.html":"стоимость-серебряного-подноса.html","silver-weight-converter.html":"преобразователь-веса-серебра.html","silverware-value-calculator.html":"калькулятор-стоимости-столового-серебра.html","sona-chandi-calculator.html":"калькулятор-соны-чанди.html","sterling-silver-calculator.html":"калькулятор-из-стерлингового-серебра.html","tola-calculator.html":"тола-калькулятор.html","what-does-925-mean.html":"что-означает-925.html","what-is-junk-silver.html":"что-такое-мусорное-серебро.html","what-is-silver-bullion.html":"что-такое-серебряные-слитки.html","what-is-silver-melt-value.html":"какова-ценность-плавления-серебра.html","what-is-silver-scrap.html":"что-такое-серебряный-лом.html","what-is-sterling-silver.html":"что-такое-стерлинговое-серебро.html","what-is-troy-ounce.html":"что-такое-тройская-унция.html"},"Home":"Главная","Calculators":"Калькуляторы","Silver Scrap Calculator":"Калькулятор лома серебра","Gold & Silver Calculator":"Калькулятор золота и серебра","Silver Melt Value":"Стоимость плавления серебра","Sterling Silver Calculator":"Калькулятор стерлингового серебра","Junk Silver Calculator":"Калькулятор нежелательного серебра","Silver Coin Value":"Стоимость серебряной монеты","Silver Bar Value":"Стоимость серебряного слитка","Silver Jewelry Value":"Стоимость серебряных украшений","Silverware Value":"Стоимость серебра","Purity":"Чистота","999 Fine Silver":"Серебро 999 пробы","958 Britannia Silver":"958 Британия Серебро","925 Sterling Silver":"Серебро 925 пробы","900 Coin Silver":"900 монет серебро","835 Silver":"Серебро 835 пробы","800 Silver":"800 Серебро","Silver Purity Chart":"Таблица чистоты серебра","Pricing":"Цены","Silver Spot Price Today":"Спотовая цена серебра сегодня","925 Sterling Price / Gram":"Цена 925 фунтов стерлингов за грамм","Silver Price Per Gram":"Цена серебра за грамм","Silver Price Per Ounce":"Цена серебра за унцию","Price in All Currencies":"Цена во всех валютах","1/10oz Silver Value":"Стоимость серебра 1/10 унции","1oz Silver Value":"Стоимость серебра 1 унция","2oz Silver Value":"Стоимость серебра 2 унции","5oz Silver Value":"Стоимость серебра 5 унций","10oz Silver Value":"Стоимость серебра 10 унций","100oz Silver Value":"Стоимость серебра 100 унций","1kg Silver Value":"Стоимость серебра 1 кг","Tools":"Инструменты","Silver Profit Calculator":"Калькулятор прибыли серебра","Batch Calculator":"Пакетный калькулятор","Sona Chandi Calculator":"Калькулятор Соны Чанди","Face Value Calculator":"Калькулятор номинальной стоимости","Weight Converter":"Конвертер веса","Pennyweight (DWT) Calc":"Пеннивейт (DWT), расчет","Tola Calculator":"Тола Калькулятор","Sell or Hold Analysis":"Продавайте или держите анализ","Silver Identifier":"Серебряный идентификатор","Guides":"Путеводители","How to Use Our Calculators":"Как пользоваться нашими калькуляторами","What Is Silver Scrap?":"Что такое серебряный лом?","What Is Melt Value?":"Что такое ценность плавления?","What Is Junk Silver?":"Что такое мусорное серебро?","What Is a Troy Ounce?":"Что такое тройская унция?","What Is Silver Bullion?":"Что такое серебряные слитки?","How Silver Prices Work":"Как работают цены на серебро","Silver Hallmarks Guide":"Руководство по серебряным клеймам","What Does 925 Mean?":"Что означает 925?","What Is Sterling Silver?":"Что такое стерлинговое серебро?","How to Sell Silver":"Как продать серебро","Scrap Silver":"Лом серебра","Gold & Silver":"Золото и серебро","Silver Profit":"Серебряная прибыль","Melt Value":"Значение плавления","Junk Silver":"Мусорное серебро","Silver Coins":"Серебряные монеты","Silver Dollar":"Серебряный доллар","Silver Quarter":"Серебряный квартал","Silver Dime":"Серебряный Дайм","Jewelry Value":"Стоимость ювелирных изделий","925 Sterling":"925 Стерлингов","Purity Chart":"Диаграмма чистоты","How to Use Calculators":"Как пользоваться калькуляторами","Sona Chandi Calc":"Сона Чанди Кальк","Face Value Calc":"Расчет номинальной стоимости","Sell or Hold":"Продать или держать","About":"О","Privacy":"Конфиденциальность","Terms":"Условия","All rights reserved.":"Все права защищены.","Prices are for informational purposes only.":"Цены предназначены только для информационных целей.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Бесплатные и точные калькуляторы серебра с использованием текущих спотовых цен. Мгновенно рассчитайте стоимость плавления вашего серебряного лома, монет, ювелирных изделий и слитков."};
+</script>
+</body></html>

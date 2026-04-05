@@ -1,0 +1,224 @@
+<!DOCTYPE html><html lang="ur"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سلور بیچ کیلکولیٹر - ایک ہی وقت میں متعدد چاندی کی اشیاء کا حساب لگائیں۔</title>
+  <meta name="description" content="ایک ہی وقت میں متعدد چاندی کی اشیاء کی کل قیمت کا حساب لگائیں۔ انگوٹھیاں، زنجیریں، سکے، اور چاندی کے برتن شامل کریں تاکہ آپ کے پورے مجموعے کے لیے پگھلنے والی مشترکہ قدر حاصل ہو۔">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .batch-table { width: 100%; border-collapse: collapse; margin: var(--space-lg) 0; }
+    .batch-table th, .batch-table td { padding: var(--space-sm) var(--space-md); text-align: left; border-bottom: 1px solid var(--border-subtle); font-size: var(--fs-sm); }
+    .batch-table th { color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: var(--fs-xs); letter-spacing: 0.05em; }
+    .batch-table td input, .batch-table td select { width: 100%; padding: 6px 10px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); color: var(--text-primary); font-size: var(--fs-sm); }
+    .batch-table td input:focus, .batch-table td select:focus { border-color: var(--accent-primary); outline: none; }
+    .batch-table .row-value { font-family: var(--font-display); font-weight: 600; color: var(--accent-primary); white-space: nowrap; }
+    .batch-table .remove-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: var(--fs-md); padding: 4px; transition: color var(--transition-fast); }
+    .batch-table .remove-btn:hover { color: #ef4444; }
+    .add-row-btn { display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm) var(--space-md); background: var(--bg-glass); border: 1px dashed var(--border-medium); border-radius: var(--radius-md); color: var(--accent-primary); cursor: pointer; font-size: var(--fs-sm); font-weight: 500; transition: all var(--transition-fast); width: 100%; justify-content: center; }
+    .add-row-btn:hover { background: var(--bg-glass-strong); border-color: var(--accent-primary); }
+    .batch-actions { display: flex; gap: var(--space-md); margin-top: var(--space-lg); flex-wrap: wrap; }
+    .grand-total { background: linear-gradient(135deg, rgba(192,192,192,0.1) 0%, rgba(192,192,192,0.03) 100%); border: 2px solid var(--border-accent); border-radius: var(--radius-lg); padding: var(--space-xl); text-align: center; margin-top: var(--space-xl); }
+    .grand-total .total-label { font-size: var(--fs-sm); color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+    .grand-total .total-value { font-family: var(--font-display); font-size: var(--fs-4xl); font-weight: 800; background: var(--gradient-silver); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .grand-total .total-detail { display: flex; justify-content: center; gap: var(--space-xl); margin-top: var(--space-md); font-size: var(--fs-sm); color: var(--text-secondary); }
+    @media print { .site-header, .site-footer, .mobile-menu-btn, .mobile-nav, .add-row-btn, .batch-actions, .related-grid, .breadcrumb, #price-ticker { display: none !important; } main { padding-top: 0 !important; } .calc-widget { border: 1px solid #ccc; } .grand-total { border: 2px solid #333; } body { background: white; color: black; } .batch-table th, .batch-table td { border-color: #ccc; } .result-value, .total-value, .row-value { -webkit-text-fill-color: initial !important; background: none !important; color: #333 !important; } .result-label, .total-label { color: #666 !important; } .page-hero h1 .highlight { -webkit-text-fill-color: initial !important; background: none !important; color: #333 !important; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>سلور بیچ <span class="highlight">Calculator</span></h1><p>ایک ہی وقت میں متعدد چاندی کی اشیاء کی کل قیمت کا حساب لگائیں — ایک مجموعہ فروخت کرنے کے لیے بہترین۔</p></div></section>
+    <div class="calc-page-layout" style="max-width:1000px;">
+      <div class="calc-widget" style="max-width:100%;">
+        <div class="calc-widget-title"><span class="icon">📋</span> Batch Calculator</div>
+        <div style="overflow-x:auto;">
+          <table class="batch-table" id="batch-table">
+            <thead>
+              <tr>
+                <th style="width:22%;">تفصیل</th>
+                <th style="width:15%;">وزن</th>
+                <th style="width:14%;">یونٹ</th>
+                <th style="width:16%;">طہارت</th>
+                <th style="width:8%;">مقدار</th>
+                <th style="width:15%;">قدر</th>
+                <th style="width:5%;"></th>
+              </tr>
+            </thead>
+            <tbody id="batch-body"></tbody>
+          </table>
+        </div>
+        <button type="button" class="add-row-btn" id="add-row-btn">+ Add Another Item</button>
+
+        <div class="grand-total" id="grand-total">
+          <div class="total-label">Total Collection Value</div>
+          <div class="total-value" id="total-value">$0.00</div>
+          <div class="total-detail">
+            <span id="total-items">0 items</span>
+            <span id="total-weight">0g total</span>
+            <span id="total-silver">0g pure silver</span>
+          </div>
+        </div>
+
+        <div class="batch-actions">
+          <button type="button" class="btn btn-primary" onclick="window.print()">🖨️ Print Receipt</button>
+          <button type="button" class="btn btn-secondary" id="copy-btn">📋 Copy Results</button>
+          <button type="button" class="btn btn-secondary" id="clear-btn">🗑️ Clear All</button>
+          <button type="button" class="btn btn-secondary" id="save-btn">💾 Save to Browser</button>
+          <button type="button" class="btn btn-secondary" id="load-btn" style="display:none;">📂 Load Saved</button>
+        </div>
+      </div>
+
+      <div class="content-body">
+        <h2>بیچ کیلکولیٹر کا استعمال کیسے کریں۔</h2>
+        <p>بیچ کیلکولیٹر آپ کو چاندی کی متعدد اشیاء شامل کرنے اور ان کی مشترکہ قیمت کا حساب لگانے دیتا ہے — مثالی جب آپ کسی ڈیلر کو مجموعہ فروخت کرنے کی تیاری کر رہے ہوں۔</p>
+        <ol>
+          <li><strong>Add items</strong> - ہر ٹکڑے کے لیے "+ ایک اور آئٹم شامل کریں" پر کلک کریں۔</li>
+          <li><strong>Enter details</strong> - ہر ایک کے لیے تفصیل، وزن، اکائی اور پاکیزگی</li>
+          <li><strong>See total</strong> - گرینڈ کل اپڈیٹس خود بخود</li>
+          <li><strong>Print or copy</strong> - رسید اپنے ڈیلر کے پاس لے جائیں یا اسے حوالہ کے لیے محفوظ کریں۔</li>
+        </ol>
+        <div class="callout tip">
+          <div class="callout-title">💡 Pro Tip</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">ڈیلرز کے ساتھ آسان گفت و شنید کے لیے اشیاء کو پاکیزگی کے مطابق گروپ کریں (تمام 925 ٹکڑے ایک ساتھ، تمام 800 ٹکڑے ایک ساتھ)۔ اپنی انوینٹری کو دوروں کے درمیان رکھنے کے لیے "براؤزر میں محفوظ کریں" بٹن کا استعمال کریں۔</p>
+        </div>
+      </div>
+
+      <div><h3 style="margin-bottom:var(--space-lg);">متعلقہ</h3><div class="related-grid">
+        <a href="سلور-سکریپ-کیلکولیٹر.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        <a href="چاندی-وزن-کنورٹر.html" class="related-link"><span class="r-icon">⚖️</span> Weight Converter</a>
+        <a href="چاندی-فروخت-کرنے-کا-طریقہ.html" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>
+        <a href="چاندی-کی-پاکیزگی-کا-چارٹ.html" class="related-link"><span class="r-icon">📊</span> Purity Chart</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'گھر',href:'index.html'},{label:'Batch Calculator'}]);
+
+    let rows = [];
+    let rowId = 0;
+
+    function createRow(desc='', weight='', unit='g', purity='0.925', qty='1') {
+      const id = rowId++;
+      rows.push(id);
+      const tr = document.createElement('tr');
+      tr.id = 'row-' + id;
+      tr.innerHTML = `
+        <td><input type="text" placeholder="e.g. Ring" value="${desc}" data-field="desc"></td>
+        <td><input type="number" placeholder="0" step="0.01" min="0" value="${weight}" data-field="weight"></td>
+        <td><select data-field="unit"><option value="g" ${unit==='g'?'selected':''}>Grams</option><option value="oz" ${unit==='oz'?'selected':''}>Troy Oz</option><option value="dwt" ${unit==='dwt'?'selected':''}>DWT</option><option value="kg" ${unit==='kg'?'selected':''}>KG</option></select></td>
+        <td><select data-field="purity"><option value="0.999" ${purity==='0.999'?'selected':''}>999</option><option value="0.958" ${purity==='0.958'?'selected':''}>958</option><option value="0.925" ${purity==='0.925'?'selected':''}>925</option><option value="0.900" ${purity==='0.900'?'selected':''}>900</option><option value="0.835" ${purity==='0.835'?'selected':''}>835</option><option value="0.800" ${purity==='0.800'?'selected':''}>800</option></select></td>
+        <td><input type="number" min="1" step="1" value="${qty}" data-field="qty" style="width:60px;"></td>
+        <td class="row-value" id="val-${id}">$0.00</td>
+        <td><button type="button" class="remove-btn" onclick="removeRow(${id})">✕</button></td>`;
+      document.getElementById('batch-body').appendChild(tr);
+      tr.querySelectorAll('input, select').forEach(el => { el.addEventListener('input', calcAll); el.addEventListener('change', calcAll); });
+      calcAll();
+    }
+
+    function removeRow(id) {
+      const tr = document.getElementById('row-' + id);
+      if (tr) tr.remove();
+      rows = rows.filter(r => r !== id);
+      calcAll();
+    }
+
+    function calcAll() {
+      const spot = SilverPrice.getPrice();
+      let totalValue = 0, totalWeightG = 0, totalSilverG = 0, itemCount = 0;
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        const w = parseFloat(tr.querySelector('[data-field="weight"]').value) || 0;
+        const u = tr.querySelector('[data-field="unit"]').value;
+        const p = parseFloat(tr.querySelector('[data-field="purity"]').value);
+        const q = parseInt(tr.querySelector('[data-field="qty"]').value) || 1;
+        const grams = SilverCalc.toGrams(w, u) * q;
+        const r = SilverCalc.meltValue(grams, p, spot);
+        const valEl = tr.querySelector('.row-value');
+        if (valEl) valEl.textContent = SilverCalc.formatCurrency(r.value);
+        totalValue += r.value;
+        totalWeightG += grams;
+        totalSilverG += r.silverContentGrams;
+        itemCount += q;
+      });
+      document.getElementById('total-value').textContent = SilverCalc.formatCurrency(totalValue);
+      document.getElementById('total-items').textContent = itemCount + ' item(s)';
+      document.getElementById('total-weight').textContent = totalWeightG.toFixed(1) + 'g total';
+      document.getElementById('total-silver').textContent = totalSilverG.toFixed(1) + 'g pure silver';
+    }
+
+    // Add initial rows
+    createRow('Sterling Ring', '6', 'g', '0.925', '1');
+    createRow('Silver Chain', '25', 'g', '0.925', '1');
+    createRow('Silver Spoon', '40', 'g', '0.925', '4');
+
+    document.getElementById('add-row-btn').addEventListener('click', () => createRow());
+
+    document.getElementById('clear-btn').addEventListener('click', () => {
+      document.getElementById('batch-body').innerHTML = '';
+      rows = [];
+      createRow();
+    });
+
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const spot = SilverPrice.getPrice();
+      let text = `Silver Batch Valuation — ${new Date().toLocaleDateString()}\nSpot Price: $${spot.toFixed(2)}/oz\n\n`;
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        const desc = tr.querySelector('[data-field="desc"]').value || 'Item';
+        const w = tr.querySelector('[data-field="weight"]').value;
+        const u = tr.querySelector('[data-field="unit"]').value;
+        const p = tr.querySelector('[data-field="purity"]').value;
+        const q = tr.querySelector('[data-field="qty"]').value;
+        const val = tr.querySelector('.row-value').textContent;
+        text += `${desc}: ${w}${u} × ${q} @ ${(p*100).toFixed(1)}% = ${val}\n`;
+      });
+      text += `\nTOTAL: ${document.getElementById('total-value').textContent}`;
+      text += `\n${document.getElementById('total-items').textContent} · ${document.getElementById('total-weight').textContent} · ${document.getElementById('total-silver').textContent}`;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy Results', 2000);
+      });
+    });
+
+    document.getElementById('save-btn').addEventListener('click', () => {
+      const data = [];
+      document.querySelectorAll('#batch-body tr').forEach(tr => {
+        data.push({
+          desc: tr.querySelector('[data-field="desc"]').value,
+          weight: tr.querySelector('[data-field="weight"]').value,
+          unit: tr.querySelector('[data-field="unit"]').value,
+          purity: tr.querySelector('[data-field="purity"]').value,
+          qty: tr.querySelector('[data-field="qty"]').value
+        });
+      });
+      localStorage.setItem('silverBatchData', JSON.stringify(data));
+      const btn = document.getElementById('save-btn');
+      btn.textContent = '✅ Saved!';
+      setTimeout(() => btn.textContent = '💾 Save to Browser', 2000);
+      document.getElementById('load-btn').style.display = 'inline-flex';
+    });
+
+    // Check for saved data
+    if (localStorage.getItem('silverBatchData')) {
+      document.getElementById('load-btn').style.display = 'inline-flex';
+    }
+
+    document.getElementById('load-btn').addEventListener('click', () => {
+      try {
+        const data = JSON.parse(localStorage.getItem('silverBatchData'));
+        document.getElementById('batch-body').innerHTML = '';
+        rows = [];
+        data.forEach(d => createRow(d.desc, d.weight, d.unit, d.purity, d.qty));
+      } catch(e) {}
+    });
+
+    SilverPrice.onPriceUpdate(() => calcAll());
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10-اوز-چاندی-کی-قیمت.html","100oz-silver-value.html":"100oz-چاندی-کی-قیمت.html","10oz-silver-value.html":"10-اوز-چاندی-کی-قیمت.html","1kg-silver-value.html":"1-کلو-چاندی-کی-قیمت.html","1oz-silver-value.html":"1-اوز-چاندی-کی-قیمت.html","2oz-silver-value.html":"2oz-چاندی-کی-قیمت.html","5oz-silver-value.html":"5oz-چاندی-کی-قیمت.html","800-silver-calculator.html":"800-چاندی-کا-کیلکولیٹر.html","835-silver-calculator.html":"835-سلور-کیلکولیٹر.html","900-silver-calculator.html":"900-چاندی-کا-کیلکولیٹر.html","925-silver-calculator.html":"925-سلور-کیلکولیٹر.html","925-sterling-silver-price-per-gram.html":"925-سٹرلنگ-چاندی-کی-قیمت-فی-گرام.html","958-silver-calculator.html":"958-سلور-کیلکولیٹر.html","999-silver-calculator.html":"999-سلور-کیلکولیٹر.html","canadian-silver-coin-calculator.html":"کینیڈین-چاندی-کے-سکے-کیلکولیٹر.html","face-value-silver-calculator.html":"چاندی-کی-قیمت-کا-کیلکولیٹر.html","gold-and-silver-calculator.html":"سونے-اور-چاندی-کا-کیلکولیٹر.html","how-silver-prices-work.html":"چاندی-کی-قیمتیں-کیسے-کام-کرتی-ہیں.html","how-to-sell-silver.html":"چاندی-فروخت-کرنے-کا-طریقہ.html","how-to-use-silver-calculators.html":"سلور-کیلکولیٹر-استعمال-کرنے-کا-طریقہ.html","identify-silver.html":"چاندی-کی-شناخت.html","junk-silver-calculator.html":"ردی-چاندی-کا-کیلکولیٹر.html","pennyweight-calculator.html":"پینی-ویٹ-کیلکولیٹر.html","silver-bar-value-calculator.html":"سلور-بار-ویلیو-کیلکولیٹر.html","silver-batch-calculator.html":"سلور-بیچ-کیلکولیٹر.html","silver-bracelet-value.html":"چاندی-کے-کڑا-کی-قیمت.html","silver-chain-value.html":"چاندی-کی-زنجیر-کی-قیمت.html","silver-coin-value-calculator.html":"چاندی-کے-سکے-کی-قیمت-کا-کیلکولیٹر.html","silver-cup-value.html":"چاندی-کے-کپ-کی-قیمت.html","silver-dime-calculator.html":"سلور-ڈائم-کیلکولیٹر.html","silver-dollar-calculator.html":"سلور-ڈالر-کیلکولیٹر.html","silver-fork-value.html":"چاندی-کے-کانٹے-کی-قیمت.html","silver-hallmarks-guide.html":"سلور-ہال-مارکس-گائیڈ.html","silver-jewelry-value-calculator.html":"چاندی-کے-زیورات-کی-قیمت-کا-کیلکولیٹر.html","silver-knife-value.html":"چاندی-کی-چاقو-کی-قیمت.html","silver-melt-value-calculator.html":"چاندی-پگھل-قیمت-کیلکولیٹر.html","silver-necklace-value.html":"چاندی-کے-ہار-کی-قیمت.html","silver-plate-value.html":"چاندی-کی-پلیٹ-کی-قیمت.html","silver-price-all-currencies.html":"چاندی-کی-قیمت-تمام-کرنسیوں.html","silver-price-per-gram.html":"چاندی-کی-قیمت-فی-گرام.html","silver-price-per-ounce.html":"چاندی-کی-قیمت-فی-اونس.html","silver-profit-calculator.html":"چاندی-کے-منافع-کا-کیلکولیٹر.html","silver-purity-chart.html":"چاندی-کی-پاکیزگی-کا-چارٹ.html","silver-quarter-calculator.html":"سلور-کوارٹر-کیلکولیٹر.html","silver-ring-value.html":"چاندی-کی-انگوٹھی-کی-قیمت.html","silver-scrap-calculator.html":"سلور-سکریپ-کیلکولیٹر.html","silver-sell-or-hold.html":"چاندی-بیچیں-یا-پکڑیں.html","silver-spoon-value.html":"چاندی-کے-چمچ-کی-قیمت.html","silver-spot-price-today.html":"چاندی-کی-اسپاٹ-قیمت-آج.html","silver-tray-value.html":"چاندی-کی-ٹرے-کی-قیمت.html","silver-weight-converter.html":"چاندی-وزن-کنورٹر.html","silverware-value-calculator.html":"سلور-ویئر-ویلیو-کیلکولیٹر.html","sona-chandi-calculator.html":"سونا-چندی-کیلکولیٹر.html","sterling-silver-calculator.html":"سٹرلنگ-سلور-کیلکولیٹر.html","tola-calculator.html":"تولہ-کیلکولیٹر.html","what-does-925-mean.html":"925-کا-کیا-مطلب-ہے.html","what-is-junk-silver.html":"ردی-چاندی-کیا-ہے.html","what-is-silver-bullion.html":"چاندی-بلین-کیا-ہے.html","what-is-silver-melt-value.html":"چاندی-کی-پگھل-قیمت-کیا-ہے.html","what-is-silver-scrap.html":"چاندی-کا-سکریپ-کیا-ہے.html","what-is-sterling-silver.html":"سٹرلنگ-چاندی-کیا-ہے.html","what-is-troy-ounce.html":"ٹرائے-اونس-کیا-ہے.html"},"Home":"گھر","Calculators":"کیلکولیٹر","Silver Scrap Calculator":"سلور سکریپ کیلکولیٹر","Gold & Silver Calculator":"سونے اور چاندی کا کیلکولیٹر","Silver Melt Value":"سلور میلٹ ویلیو","Sterling Silver Calculator":"سٹرلنگ سلور کیلکولیٹر","Junk Silver Calculator":"جنک سلور کیلکولیٹر","Silver Coin Value":"چاندی کے سکے کی قیمت","Silver Bar Value":"سلور بار ویلیو","Silver Jewelry Value":"چاندی کے زیورات کی قیمت","Silverware Value":"سلور ویئر ویلیو","Purity":"طہارت","999 Fine Silver":"999 فائن سلور","958 Britannia Silver":"958 برٹانیہ سلور","925 Sterling Silver":"925 سٹرلنگ سلور","900 Coin Silver":"900 سکے چاندی","835 Silver":"835 چاندی","800 Silver":"800 چاندی","Silver Purity Chart":"سلور پیوریٹی چارٹ","Pricing":"قیمتوں کا تعین","Silver Spot Price Today":"چاندی کی اسپاٹ قیمت آج","925 Sterling Price / Gram":"925 سٹرلنگ قیمت/گرام","Silver Price Per Gram":"چاندی کی قیمت فی گرام","Silver Price Per Ounce":"چاندی کی قیمت فی اونس","Price in All Currencies":"تمام کرنسیوں میں قیمت","1/10oz Silver Value":"1/10oz سلور ویلیو","1oz Silver Value":"1oz سلور ویلیو","2oz Silver Value":"2oz سلور ویلیو","5oz Silver Value":"5oz سلور ویلیو","10oz Silver Value":"10oz سلور ویلیو","100oz Silver Value":"100oz سلور ویلیو","1kg Silver Value":"1 کلو چاندی کی قیمت","Tools":"اوزار","Silver Profit Calculator":"سلور منافع کیلکولیٹر","Batch Calculator":"بیچ کیلکولیٹر","Sona Chandi Calculator":"سونا چندی کیلکولیٹر","Face Value Calculator":"فیس ویلیو کیلکولیٹر","Weight Converter":"وزن کنورٹر","Pennyweight (DWT) Calc":"پینی ویٹ (DWT) کیلک","Tola Calculator":"تولہ کیلکولیٹر","Sell or Hold Analysis":"تجزیہ بیچیں یا ہولڈ کریں۔","Silver Identifier":"سلور شناخت کنندہ","Guides":"رہنما","How to Use Our Calculators":"ہمارے کیلکولیٹرز کا استعمال کیسے کریں۔","What Is Silver Scrap?":"سلور سکریپ کیا ہے؟","What Is Melt Value?":"پگھل قدر کیا ہے؟","What Is Junk Silver?":"جنک سلور کیا ہے؟","What Is a Troy Ounce?":"ٹرائے اونس کیا ہے؟","What Is Silver Bullion?":"سلور بلین کیا ہے؟","How Silver Prices Work":"چاندی کی قیمتیں کیسے کام کرتی ہیں۔","Silver Hallmarks Guide":"سلور ہال مارکس گائیڈ","What Does 925 Mean?":"925 کا کیا مطلب ہے؟","What Is Sterling Silver?":"سٹرلنگ سلور کیا ہے؟","How to Sell Silver":"چاندی فروخت کرنے کا طریقہ","Scrap Silver":"سکریپ سلور","Gold & Silver":"سونا اور چاندی","Silver Profit":"چاندی کا منافع","Melt Value":"پگھلنے والی قدر","Junk Silver":"جنک سلور","Silver Coins":"چاندی کے سکے ۔","Silver Dollar":"سلور ڈالر","Silver Quarter":"سلور کوارٹر","Silver Dime":"سلور ڈائم","Jewelry Value":"زیورات کی قیمت","925 Sterling":"925 سٹرلنگ","Purity Chart":"طہارت کا چارٹ","How to Use Calculators":"کیلکولیٹر کا استعمال کیسے کریں۔","Sona Chandi Calc":"سونا چندی کیلک","Face Value Calc":"فیس ویلیو کیلک","Sell or Hold":"بیچیں یا پکڑیں۔","About":"کے بارے میں","Privacy":"رازداری","Terms":"شرائط","All rights reserved.":"جملہ حقوق محفوظ ہیں۔","Prices are for informational purposes only.":"قیمتیں صرف معلوماتی مقاصد کے لیے ہیں۔","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"براہ راست اسپاٹ قیمتوں کا استعمال کرتے ہوئے مفت، درست سلور کیلکولیٹر۔ اپنے چاندی کے سکریپ، سکے، زیورات، اور سلاخوں کی پگھلنے والی قیمت کا فوری حساب لگائیں۔"};
+</script>
+</body></html>

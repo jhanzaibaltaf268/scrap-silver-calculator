@@ -1,0 +1,51 @@
+<!DOCTYPE html><html lang="hi"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1 किलो चांदी का मूल्य - 1 किलो चांदी की वर्तमान कीमत</title>
+  <meta name="description" content="1 किलोग्राम चांदी का वर्तमान मूल्य। अंतर्राष्ट्रीय मानक बार आकार।">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>1 किलो चांदी <span class="highlight">Value</span></h1><p>आज के लाइव स्पॉट मूल्य पर 1 किलो चांदी का वर्तमान मूल्य।</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">🧱</span> 1kg Silver Value</div>
+        <div class="form-group"><label class="form-label" for="qty">मात्रा</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
+        <div class="result-display">
+          <div class="result-label">1 किलो चांदी का मूल्य</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+        <h4 style="margin:var(--space-xl) 0 var(--space-md);">मात्रा के अनुसार मूल्य</h4>
+        <table class="purity-table">
+          <thead><tr><th>मात्रा</th><th>कुल वजन</th><th>मूल्य</th></tr></thead>
+          <tbody id="qty-table"></tbody>
+        </table>
+      </div>
+      <div class="content-body"><h2>1 किलोग्राम चांदी का मूल्य कितना है?</h2><p>एक किलोग्राम चांदी 32.1507 ट्रॉय औंस (1,000 ग्राम) के बराबर होती है। किलो बार अंतर्राष्ट्रीय मानक आकार हैं, विशेष रूप से यूरोप, एशिया और ऑस्ट्रेलिया में लोकप्रिय हैं।</p><p>किलो बार हाजिर कीमत पर कुछ सबसे कम प्रीमियम की पेशकश करते हैं, जो उन्हें बड़े निवेश के लिए कुशल बनाते हैं।</p></div>
+      <div><h3 style="margin-bottom:var(--space-lg);">संबंधित पृष्ठ</h3><div class="related-grid">
+        <a href="सलवर-बर-वलय-कलकलटर.html" class="related-link"><span class="r-icon">🧱</span> Bar Calculator</a>
+        <a href="चद-क-कमत-परत-औस.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+        <a href="चद-क-कमत-परत-गरम.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+        <a href="चद-सकरप-कलकलटर.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'घर',href:'index.html'},{label:'1kg Silver Value'}]);
+    const q=document.getElementById('qty');
+    function calc(){const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const totalOz=32.1507*qty;const val=totalOz*spot;document.getElementById('result-value').textContent='$'+val.toFixed(2);document.getElementById('result-detail').textContent=qty+'× 1kg · '+totalOz.toFixed(2)+' oz total · Spot: $'+spot.toFixed(2)+'/oz';
+      const qtys=[1,2,5,10,25,50,100];document.getElementById('qty-table').innerHTML=qtys.map(n=>'<tr><td>'+n+'</td><td>'+(32.1507*n).toFixed(2)+' oz</td><td>$'+(32.1507*n*spot).toFixed(2)+'</td></tr>').join('');}
+    q.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+  </script>
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10oz-चद-क-मलय.html","100oz-silver-value.html":"100-औस-चद-क-मलय.html","10oz-silver-value.html":"10-औस-चद-क-मलय.html","1kg-silver-value.html":"1-कल-चद-क-मलय.html","1oz-silver-value.html":"1-औस-चद-क-मलय.html","2oz-silver-value.html":"2-औस-चद-क-मलय.html","5oz-silver-value.html":"5-औस-चद-क-मलय.html","800-silver-calculator.html":"800-चद-कलकलटर.html","835-silver-calculator.html":"835-चद-कलकलटर.html","900-silver-calculator.html":"900-चद-कलकलटर.html","925-silver-calculator.html":"925-चद-कलकलटर.html","925-sterling-silver-price-per-gram.html":"परत-गरम-925-सटरलग-चद-क-कमत.html","958-silver-calculator.html":"958-चद-कलकलटर.html","999-silver-calculator.html":"999-चद-कलकलटर.html","canadian-silver-coin-calculator.html":"कनडई-चद-क-सकक-कलकलटर.html","face-value-silver-calculator.html":"अकत-मलय-चद-कलकलटर.html","gold-and-silver-calculator.html":"सन-और-चद-क-कलकलटर.html","how-silver-prices-work.html":"चद-क-कमत-कस-कम-करत-ह.html","how-to-sell-silver.html":"चद-कस-बच.html","how-to-use-silver-calculators.html":"सलवर-कलकलटर-क-उपयग-कस-कर.html","identify-silver.html":"चद-क-पहचन-कर.html","junk-silver-calculator.html":"जक-सलवर-कलकलटर.html","pennyweight-calculator.html":"पनवट-कलकलटर.html","silver-bar-value-calculator.html":"सलवर-बर-वलय-कलकलटर.html","silver-batch-calculator.html":"चद-बच-कलकलटर.html","silver-bracelet-value.html":"चद-क-कगन-क-मलय.html","silver-chain-value.html":"चद-क-चन-क-मलय.html","silver-coin-value-calculator.html":"चद-क-सकक-क-मलय-कलकलटर.html","silver-cup-value.html":"चद-क-कप-क-मलय.html","silver-dime-calculator.html":"सलवर-डइम-कलकलटर.html","silver-dollar-calculator.html":"चद-डलर-कलकलटर.html","silver-fork-value.html":"चद-कट-मलय.html","silver-hallmarks-guide.html":"चद-हलमरक-गइड.html","silver-jewelry-value-calculator.html":"चद-क-आभषण-मलय-कलकलटर.html","silver-knife-value.html":"चद-क-चक-क-मलय.html","silver-melt-value-calculator.html":"चद-पघल-मलय-कलकलटर.html","silver-necklace-value.html":"चद-क-हर-क-मलय.html","silver-plate-value.html":"चद-क-पलट-क-मलय.html","silver-price-all-currencies.html":"चद-क-कमत-सभ-मदरए.html","silver-price-per-gram.html":"चद-क-कमत-परत-गरम.html","silver-price-per-ounce.html":"चद-क-कमत-परत-औस.html","silver-profit-calculator.html":"चद-लभ-कलकलटर.html","silver-purity-chart.html":"चद-क-शदधत-चरट.html","silver-quarter-calculator.html":"चद-तमह-कलकलटर.html","silver-ring-value.html":"चद-क-अगठ-क-मलय.html","silver-scrap-calculator.html":"चद-सकरप-कलकलटर.html","silver-sell-or-hold.html":"चद-बच-य-रख.html","silver-spoon-value.html":"चद-क-चममच-क-मलय.html","silver-spot-price-today.html":"चद-क-हजर-कमत-आज.html","silver-tray-value.html":"चद-क-टर-क-मलय.html","silver-weight-converter.html":"चद-वजन-कनवरटर.html","silverware-value-calculator.html":"चद-क-बरतन-मलय-कलकलटर.html","sona-chandi-calculator.html":"सन-चड-कलकलटर.html","sterling-silver-calculator.html":"सटरलग-सलवर-कलकलटर.html","tola-calculator.html":"तल-कलकलटर.html","what-does-925-mean.html":"925-क-कय-मतलब-ह.html","what-is-junk-silver.html":"जक-सलवर-कय-ह.html","what-is-silver-bullion.html":"चद-बलयन-कय-ह.html","what-is-silver-melt-value.html":"चद-क-पघल-हआ-मलय-कय-ह.html","what-is-silver-scrap.html":"चद-सकरप-कय-ह.html","what-is-sterling-silver.html":"सटरलग-सलवर-कय-ह.html","what-is-troy-ounce.html":"टरय-औस-कय-ह.html"},"Home":"घर","Calculators":"कैलकुलेटर","Silver Scrap Calculator":"सिल्वर स्क्रैप कैलकुलेटर","Gold & Silver Calculator":"सोना और चांदी कैलकुलेटर","Silver Melt Value":"चाँदी का पिघला हुआ मूल्य","Sterling Silver Calculator":"स्टर्लिंग सिल्वर कैलकुलेटर","Junk Silver Calculator":"जंक सिल्वर कैलकुलेटर","Silver Coin Value":"चांदी के सिक्के का मूल्य","Silver Bar Value":"सिल्वर बार वैल्यू","Silver Jewelry Value":"चाँदी के आभूषणों का मूल्य","Silverware Value":"चांदी के बर्तन का मूल्य","Purity":"पवित्रता","999 Fine Silver":"999 बढ़िया चाँदी","958 Britannia Silver":"958 ब्रिटानिया सिल्वर","925 Sterling Silver":"925 स्टर्लिंग सिल्वर","900 Coin Silver":"900 सिक्का चांदी","835 Silver":"835 रजत","800 Silver":"800 रजत","Silver Purity Chart":"चांदी की शुद्धता चार्ट","Pricing":"मूल्य निर्धारण","Silver Spot Price Today":"चाँदी की हाजिर कीमत आज","925 Sterling Price / Gram":"925 स्टर्लिंग मूल्य/ग्राम","Silver Price Per Gram":"चांदी की कीमत प्रति ग्राम","Silver Price Per Ounce":"चांदी की कीमत प्रति औंस","Price in All Currencies":"सभी मुद्राओं में मूल्य","1/10oz Silver Value":"1/10oz चांदी का मूल्य","1oz Silver Value":"1oz चांदी का मूल्य","2oz Silver Value":"2oz चांदी का मूल्य","5oz Silver Value":"5 औंस चांदी का मूल्य","10oz Silver Value":"10oz चांदी का मूल्य","100oz Silver Value":"100oz चांदी का मूल्य","1kg Silver Value":"1 किलो चांदी का मूल्य","Tools":"उपकरण","Silver Profit Calculator":"रजत लाभ कैलकुलेटर","Batch Calculator":"बैच कैलकुलेटर","Sona Chandi Calculator":"सोना चंडी कैलकुलेटर","Face Value Calculator":"अंकित मूल्य कैलकुलेटर","Weight Converter":"वजन परिवर्तक","Pennyweight (DWT) Calc":"पेनीवेट (डीडब्ल्यूटी) कैल्क","Tola Calculator":"तोला कैलकुलेटर","Sell or Hold Analysis":"विश्लेषण बेचें या रखें","Silver Identifier":"रजत पहचानकर्ता","Guides":"मार्गदर्शक","How to Use Our Calculators":"हमारे कैलकुलेटर का उपयोग कैसे करें","What Is Silver Scrap?":"सिल्वर स्क्रैप क्या है?","What Is Melt Value?":"पिघला हुआ मूल्य क्या है?","What Is Junk Silver?":"जंक सिल्वर क्या है?","What Is a Troy Ounce?":"ट्रॉय औंस क्या है?","What Is Silver Bullion?":"सिल्वर बुलियन क्या है?","How Silver Prices Work":"चांदी की कीमतें कैसे काम करती हैं","Silver Hallmarks Guide":"सिल्वर हॉलमार्क गाइड","What Does 925 Mean?":"925 का क्या मतलब है?","What Is Sterling Silver?":"स्टर्लिंग सिल्वर क्या है?","How to Sell Silver":"चाँदी कैसे बेचें","Scrap Silver":"चाँदी का स्क्रैप","Gold & Silver":"सोना और चाँदी","Silver Profit":"चाँदी का लाभ","Melt Value":"पिघला हुआ मूल्य","Junk Silver":"जंक सिल्वर","Silver Coins":"चाँदी के सिक्के","Silver Dollar":"चाँदी का डॉलर","Silver Quarter":"सिल्वर क्वार्टर","Silver Dime":"सिल्वर डाइम","Jewelry Value":"आभूषण मूल्य","925 Sterling":"925 स्टर्लिंग","Purity Chart":"शुद्धता चार्ट","How to Use Calculators":"कैलकुलेटर का उपयोग कैसे करें","Sona Chandi Calc":"सोना चांदी कैल्क","Face Value Calc":"अंकित मूल्य कैल्क","Sell or Hold":"बेचो या पकड़ो","About":"के बारे में","Privacy":"गोपनीयता","Terms":"शर्तें","All rights reserved.":"सर्वाधिकार सुरक्षित.","Prices are for informational purposes only.":"कीमतें केवल सूचनात्मक उद्देश्यों के लिए हैं।","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"लाइव स्पॉट कीमतों का उपयोग करके मुफ़्त, सटीक चांदी कैलकुलेटर। अपने चांदी के स्क्रैप, सिक्कों, गहनों और छड़ों के पिघले हुए मूल्य की तुरंत गणना करें।"};
+</script>
+</body></html>

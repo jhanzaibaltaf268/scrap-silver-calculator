@@ -1,0 +1,165 @@
+<!DOCTYPE html><html lang="ar"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>محول الوزن الفضي - جرام، أونصة تروي، وزن البنس، كيلوغرام، تولة</title>
+  <meta name="description" content="قم بتحويل وزن الفضة بين الجرام والأوقية الترويية ووزن البنس (dwt) والكيلوجرام والتولة على الفور. آلة حاسبة مجانية لتحويل وزن الفضة.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .converter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+    .converter-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-lg); transition: all var(--transition-fast); }
+    .converter-card:focus-within { border-color: var(--accent-primary); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .converter-card label { display: block; font-size: var(--fs-xs); font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-sm); }
+    .converter-card input { width: 100%; background: transparent; border: none; color: var(--text-primary); font-family: var(--font-display); font-size: var(--fs-xl); font-weight: 700; outline: none; }
+    .converter-card .unit-label { font-size: var(--fs-sm); color: var(--text-secondary); margin-top: var(--space-xs); }
+    @media (max-width: 768px) { .converter-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>وزن الفضة <span class="highlight">Converter</span></h1><p>قم بتحويل وزن الفضة بشكل فوري بين جميع الوحدات الشائعة المستخدمة في تداول المعادن الثمينة.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">⚖️</span> Weight Converter</div>
+        <div class="converter-grid">
+          <div class="converter-card">
+            <label for="grams">غرام (ز)</label>
+            <input type="number" id="grams" step="0.001" value="31.1035">
+            <div class="unit-label">1 gram = 0.0322 troy oz</div>
+          </div>
+          <div class="converter-card">
+            <label for="troy-oz">أوقية تروي (oz t)</label>
+            <input type="number" id="troy-oz" step="0.0001" value="1">
+            <div class="unit-label">1 troy oz = 31.1035 g</div>
+          </div>
+          <div class="converter-card">
+            <label for="dwt">وزن البنس (بالوزن الساكن)</label>
+            <input type="number" id="dwt" step="0.01" value="20">
+            <div class="unit-label">1 dwt = 1.5552 g</div>
+          </div>
+          <div class="converter-card">
+            <label for="kg">كيلوغرام (كجم)</label>
+            <input type="number" id="kg" step="0.000001" value="0.0311035">
+            <div class="unit-label">1 kg = 32.1507 troy oz</div>
+          </div>
+          <div class="converter-card">
+            <label for="tola">تولا</label>
+            <input type="number" id="tola" step="0.001" value="2.667">
+            <div class="unit-label">1 tola = 11.6638 g</div>
+          </div>
+          <div class="converter-card">
+            <label for="av-oz">أونصة أفواردوبوا (oz)</label>
+            <input type="number" id="av-oz" step="0.0001" value="1.0971">
+            <div class="unit-label">1 av oz = 28.3495 g (regular ounce)</div>
+          </div>
+        </div>
+        <div class="result-display" style="margin-top:var(--space-xl);">
+          <div class="result-label">القيمة بالسعر الفوري الحالي</div>
+          <div class="result-value" id="value-display">$0.00</div>
+          <div class="result-detail" id="value-detail">Based on 999 fine silver</div>
+        </div>
+      </div>
+      <div class="content-body">
+        <h2>شرح وحدات الوزن الفضية</h2>
+        <h3>أونصة تروي مقابل أونصة عادية</h3>
+        <p>استخدامات صناعة المعادن الثمينة <strong>troy ounces</strong> (31.1035 جم)، وهي أثقل من أوقية أفواردوبوا القياسية (28.3495 جم). عندما ترى "سعر الفضة للأونصة"، فهذا يعني دائمًا لكل <em>troy</em> أونصة.</p>
+        <h3>وزن البنس (بالوزن الساكن)</h3>
+        <p>غالبًا ما يزن الجواهريون العناصر بوزن قرش. هناك 20 بنسًا في أونصة تروي واحدة. واحد ساكن يساوي حوالي 1.555 جرام.</p>
+        <h3>تولا</h3>
+        <p>يتم استخدام التولا في دول جنوب آسيا (الهند وباكستان وبنغلاديش) لتداول المعادن الثمينة. التولة الواحدة = 11.6638 جرام.</p>
+        <h3>لماذا وحدات الوزن مهمة</h3>
+        <p>عند بيع الفضة، تأكد دائمًا من الوحدة التي يستخدمها المشتري. إن عرض "الأونصة" بالأوقية الترويسية يساوي حوالي 10% أكثر من الأوقية العادية. وهذا مصدر شائع للارتباك.</p>
+
+        <h2>الجدول المرجعي السريع</h2>
+        <table class="purity-table">
+          <thead><tr><th>وحدة</th><th>الاختصار</th><th>غرام</th><th>أوقية تروي</th></tr></thead>
+          <tbody>
+            <tr><td>1 جرام</td><td>g</td><td>1.000</td><td>0.0322</td></tr>
+            <tr><td>1 أونصة تروي</td><td>أوز ر</td><td>31.1035</td><td>1.000</td></tr>
+            <tr><td>1 بيني وييت</td><td>ساكن</td><td>1.5552</td><td>0.0500</td></tr>
+            <tr><td>1 كيلوجرام</td><td>كجم</td><td>1,000</td><td>32.1507</td></tr>
+            <tr><td>1 تولة</td><td>تولا</td><td>11.6638</td><td>0.3750</td></tr>
+            <tr><td>1 أفويردوبوا أوز</td><td>أوقية</td><td>28.3495</td><td>0.9115</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div><h3 style="margin-bottom:var(--space-lg);">ذات صلة</h3><div class="related-grid">
+        <a href="سعر-الفضة-لكل-جرام.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+        <a href="سعر-الفضة-للأونصة.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+        <a href="حاسبة-دفعة-الفضة.html" class="related-link"><span class="r-icon">📋</span> Batch Calculator</a>
+        <a href="حاسبة-خردة-الفضة.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'الصفحة الرئيسية',href:'index.html'},{label:'Silver Weight Converter'}]);
+
+    const TROY_OZ_G = 31.1035;
+    const DWT_G = 1.55517;
+    const TOLA_G = 11.6638;
+    const AV_OZ_G = 28.3495;
+
+    const fields = {
+      grams: document.getElementById('grams'),
+      'troy-oz': document.getElementById('troy-oz'),
+      dwt: document.getElementById('dwt'),
+      kg: document.getElementById('kg'),
+      tola: document.getElementById('tola'),
+      'av-oz': document.getElementById('av-oz')
+    };
+
+    let activeField = null;
+
+    function gFromField(field, value) {
+      switch(field) {
+        case 'grams': return value;
+        case 'troy-oz': return value * TROY_OZ_G;
+        case 'dwt': return value * DWT_G;
+        case 'kg': return value * 1000;
+        case 'tola': return value * TOLA_G;
+        case 'av-oz': return value * AV_OZ_G;
+      }
+    }
+
+    function updateAll(grams, sourceField) {
+      if (sourceField !== 'grams') fields.grams.value = grams.toFixed(4);
+      if (sourceField !== 'troy-oz') fields['troy-oz'].value = (grams / TROY_OZ_G).toFixed(4);
+      if (sourceField !== 'dwt') fields.dwt.value = (grams / DWT_G).toFixed(4);
+      if (sourceField !== 'kg') fields.kg.value = (grams / 1000).toFixed(6);
+      if (sourceField !== 'tola') fields.tola.value = (grams / TOLA_G).toFixed(4);
+      if (sourceField !== 'av-oz') fields['av-oz'].value = (grams / AV_OZ_G).toFixed(4);
+
+      const spot = SilverPrice.getPrice();
+      const oz = grams / TROY_OZ_G;
+      const val = oz * spot;
+      document.getElementById('value-display').textContent = SilverCalc.formatCurrency(val);
+      document.getElementById('value-detail').textContent = `${oz.toFixed(4)} troy oz × $${spot.toFixed(2)} · Spot: $${spot.toFixed(2)}/oz`;
+    }
+
+    Object.entries(fields).forEach(([key, input]) => {
+      input.addEventListener('input', () => {
+        const val = parseFloat(input.value) || 0;
+        const grams = gFromField(key, val);
+        updateAll(grams, key);
+      });
+      input.addEventListener('focus', () => activeField = key);
+    });
+
+    SilverPrice.onPriceUpdate(() => {
+      const val = parseFloat(fields.grams.value) || 0;
+      updateAll(val, 'grams');
+    });
+
+    // Initial
+    updateAll(31.1035, 'grams');
+  </script>
+
+
+<script>
+  window.MenuTranslations = {"slugs":{"1-10oz-silver-value.html":"1-10-أونصة-من-الفضة.html","100oz-silver-value.html":"قيمة-الفضة-100-أوقية.html","10oz-silver-value.html":"قيمة-الفضة-10-أوقية.html","1kg-silver-value.html":"قيمة-1-كيلو-فضة.html","1oz-silver-value.html":"قيمة-الفضة-1-أوقية.html","2oz-silver-value.html":"قيمة-الفضة-2-أوقية.html","5oz-silver-value.html":"قيمة-الفضة-5-أوقية.html","800-silver-calculator.html":"آلة-حاسبة-فضية-800.html","835-silver-calculator.html":"آلة-حاسبة-فضية-835.html","900-silver-calculator.html":"آلة-حاسبة-فضة-900.html","925-silver-calculator.html":"حاسبة-فضة-925.html","925-sterling-silver-price-per-gram.html":"سعر-الجرام-من-الفضة-الإسترليني-عيار-925.html","958-silver-calculator.html":"آلة-حاسبة-فضية-958.html","999-silver-calculator.html":"آلة-حاسبة-فضية-999.html","canadian-silver-coin-calculator.html":"حاسبة-العملة-الفضية-الكندية.html","face-value-silver-calculator.html":"حاسبة-القيمة-الاسمية-للفضة.html","gold-and-silver-calculator.html":"حاسبة-الذهب-والفضة.html","how-silver-prices-work.html":"كيف-تعمل-أسعار-الفضة.html","how-to-sell-silver.html":"كيفية-بيع-الفضة.html","how-to-use-silver-calculators.html":"كيفية-استخدام-الآلات-الحاسبة-الفضية.html","identify-silver.html":"التعرف-على-الفضة.html","junk-silver-calculator.html":"حاسبة-الفضة-غير-المرغوب-فيه.html","pennyweight-calculator.html":"حاسبة-وزن-البنس.html","silver-bar-value-calculator.html":"حاسبة-قيمة-شريط-الفضة.html","silver-batch-calculator.html":"حاسبة-دفعة-الفضة.html","silver-bracelet-value.html":"قيمة-سوار-الفضة.html","silver-chain-value.html":"قيمة-السلسلة-الفضية.html","silver-coin-value-calculator.html":"حاسبة-قيمة-العملة-الفضية.html","silver-cup-value.html":"قيمة-الكأس-الفضية.html","silver-dime-calculator.html":"حاسبة-الدايم-الفضي.html","silver-dollar-calculator.html":"حاسبة-الدولار-الفضي.html","silver-fork-value.html":"قيمة-الشوكة-الفضية.html","silver-hallmarks-guide.html":"دليل-السمات-المميزة-الفضية.html","silver-jewelry-value-calculator.html":"حاسبة-قيمة-المجوهرات-الفضية.html","silver-knife-value.html":"قيمة-السكين-الفضي.html","silver-melt-value-calculator.html":"حاسبة-قيمة-ذوبان-الفضة.html","silver-necklace-value.html":"قيمة-القلادة-الفضية.html","silver-plate-value.html":"قيمة-لوحة-الفضة.html","silver-price-all-currencies.html":"أسعار-الفضة-جميع-العملات.html","silver-price-per-gram.html":"سعر-الفضة-لكل-جرام.html","silver-price-per-ounce.html":"سعر-الفضة-للأونصة.html","silver-profit-calculator.html":"حاسبة-ربح-الفضة.html","silver-purity-chart.html":"مخطط-نقاء-الفضة.html","silver-quarter-calculator.html":"حاسبة-الربع-الفضي.html","silver-ring-value.html":"قيمة-خاتم-الفضة.html","silver-scrap-calculator.html":"حاسبة-خردة-الفضة.html","silver-sell-or-hold.html":"بيع-الفضة-أو-الاحتفاظ-بها.html","silver-spoon-value.html":"قيمة-ملعقة-فضية.html","silver-spot-price-today.html":"سعر-الفضة-الفوري-اليوم.html","silver-tray-value.html":"قيمة-صينية-الفضة.html","silver-weight-converter.html":"محول-الوزن-الفضي.html","silverware-value-calculator.html":"حاسبة-قيمة-الفضيات.html","sona-chandi-calculator.html":"آلة-حاسبة-سونا-تشاندي.html","sterling-silver-calculator.html":"حاسبة-الفضة.html","tola-calculator.html":"آلة-حاسبة-تولة.html","what-does-925-mean.html":"ماذا-يعني-925.html","what-is-junk-silver.html":"ما-هي-الفضة-غير-المرغوب-فيه.html","what-is-silver-bullion.html":"ما-هي-سبائك-الفضة.html","what-is-silver-melt-value.html":"ما-هي-قيمة-ذوبان-الفضة.html","what-is-silver-scrap.html":"ما-هي-خردة-الفضة.html","what-is-sterling-silver.html":"ما-هي-الفضة-الاسترليني.html","what-is-troy-ounce.html":"ما-هو-أوقية-تروي.html"},"Home":"الصفحة الرئيسية","Calculators":"الآلات الحاسبة","Silver Scrap Calculator":"حاسبة خردة الفضة","Gold & Silver Calculator":"حاسبة الذهب والفضة","Silver Melt Value":"قيمة ذوبان الفضة","Sterling Silver Calculator":"حاسبة الفضة الاسترليني","Junk Silver Calculator":"حاسبة الفضة غير المرغوب فيه","Silver Coin Value":"قيمة العملة الفضية","Silver Bar Value":"قيمة شريط الفضة","Silver Jewelry Value":"قيمة المجوهرات الفضية","Silverware Value":"قيمة الفضيات","Purity":"الطهارة","999 Fine Silver":"999 فضة فاخرة","958 Britannia Silver":"958 بريتانيا فضة","925 Sterling Silver":"925 فضة استرلينية","900 Coin Silver":"900 عملة فضية","835 Silver":"835 فضة","800 Silver":"800 فضة","Silver Purity Chart":"مخطط نقاء الفضة","Pricing":"التسعير","Silver Spot Price Today":"سعر الفضة الفوري اليوم","925 Sterling Price / Gram":"925 سعر الجنيه الاسترليني / جرام","Silver Price Per Gram":"سعر الفضة لكل جرام","Silver Price Per Ounce":"سعر الفضة للأونصة","Price in All Currencies":"الأسعار بجميع العملات","1/10oz Silver Value":"قيمة فضية 1/10 أونصة","1oz Silver Value":"قيمة الفضة 1 أوقية","2oz Silver Value":"قيمة 2 أونصة من الفضة","5oz Silver Value":"قيمة 5 أونصة من الفضة","10oz Silver Value":"قيمة الفضة 10 أونصة","100oz Silver Value":"قيمة الفضة 100 أوقية","1kg Silver Value":"1 كيلو جرام فضة","Tools":"أدوات","Silver Profit Calculator":"حاسبة ربح الفضة","Batch Calculator":"حاسبة الدفعة","Sona Chandi Calculator":"حاسبة سونا تشاندي","Face Value Calculator":"حاسبة القيمة الاسمية","Weight Converter":"محول الوزن","Pennyweight (DWT) Calc":"حساب Pennyweight (DWT).","Tola Calculator":"حاسبة التولة","Sell or Hold Analysis":"بيع أو تعليق التحليل","Silver Identifier":"معرف الفضة","Guides":"أدلة","How to Use Our Calculators":"كيفية استخدام الآلات الحاسبة لدينا","What Is Silver Scrap?":"ما هي الخردة الفضية؟","What Is Melt Value?":"ما هي قيمة الذوبان؟","What Is Junk Silver?":"ما هي الفضة غير المرغوب فيه؟","What Is a Troy Ounce?":"ما هو أوقية تروي؟","What Is Silver Bullion?":"ما هي السبائك الفضية؟","How Silver Prices Work":"كيف تعمل أسعار الفضة","Silver Hallmarks Guide":"دليل السمات المميزة الفضية","What Does 925 Mean?":"ماذا يعني 925؟","What Is Sterling Silver?":"ما هي الفضة الاسترليني؟","How to Sell Silver":"كيفية بيع الفضة","Scrap Silver":"خردة الفضة","Gold & Silver":"الذهب والفضة","Silver Profit":"الربح الفضي","Melt Value":"قيمة الذوبان","Junk Silver":"الفضة غير المرغوب فيها","Silver Coins":"عملات فضية","Silver Dollar":"الدولار الفضي","Silver Quarter":"الربع الفضي","Silver Dime":"الدايم الفضي","Jewelry Value":"قيمة المجوهرات","925 Sterling":"925 جنيه استرليني","Purity Chart":"مخطط النقاء","How to Use Calculators":"كيفية استخدام الآلات الحاسبة","Sona Chandi Calc":"سونا تشاندي احسب","Face Value Calc":"حساب القيمة الاسمية","Sell or Hold":"بيع أو عقد","About":"حول","Privacy":"الخصوصية","Terms":"الشروط","All rights reserved.":"جميع الحقوق محفوظة.","Prices are for informational purposes only.":"الأسعار هي لأغراض إعلامية فقط.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"حاسبات فضية مجانية ودقيقة باستخدام الأسعار الفورية المباشرة. احسب قيمة ذوبان خردة الفضة والعملات المعدنية والمجوهرات والسبائك على الفور."};
+</script>
+</body></html>

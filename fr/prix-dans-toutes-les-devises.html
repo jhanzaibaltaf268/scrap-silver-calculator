@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="fr"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prix de l’argent dans différentes devises – USD, EUR, GBP, INR, AUD et plus</title>
+  <meta name="description" content="Prix actuel de l'argent dans 12 devises mondiales, dont USD, EUR, GBP, CAD, AUD, INR, PKR, AED, SAR, CHF, JPY, CNY. Mis à jour en direct.">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .currency-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: var(--space-md); margin: var(--space-xl) 0; }
+    .currency-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg); transition: all var(--transition-fast); }
+    .currency-card:hover { border-color: var(--accent-primary); transform: translateY(-2px); box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .currency-card .cc-code { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: var(--space-md); }
+    .currency-card .cc-flag { font-size: var(--fs-2xl); }
+    .currency-card .cc-name { font-size: var(--fs-sm); color: var(--text-muted); }
+    .currency-card .cc-abbr { font-size: var(--fs-sm); font-weight: 700; color: var(--text-secondary); }
+    .currency-card .cc-prices { display: grid; gap: var(--space-xs); }
+    .currency-card .cc-row { display: flex; justify-content: space-between; font-size: var(--fs-sm); }
+    .currency-card .cc-label { color: var(--text-muted); }
+    .currency-card .cc-val { font-family: var(--font-display); font-weight: 600; color: var(--text-primary); }
+    .currency-card .cc-oz { font-family: var(--font-display); font-weight: 800; font-size: var(--fs-xl); color: var(--accent-primary); margin-bottom: var(--space-sm); }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>Prix de l'argent en <span class="highlight">World Currencies</span></h1><p>Prix actuels de l’argent convertis dans 12 principales devises mondiales — mis à jour en direct.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget" style="max-width:100%;">
+        <div class="calc-widget-title"><span class="icon">🌍</span> Silver Prices by Currency</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="weight">Poids</label><input type="number" class="form-input" id="weight" value="1" step="0.01" min="0"></div>
+          <div class="form-group"><label class="form-label" for="unit">Unité</label><select class="form-select" id="unit"><option value="oz" selected="">Onces Troy</option><option value="g">Grammes</option><option value="kg">Kilogrammes</option></select></div>
+          <div class="form-group"><label class="form-label" for="purity">Pureté</label><select class="form-select" id="purity"><option value="1" selected="">999 Amende</option><option value="0.925">925 livres sterling</option><option value="0.900">900 pièces</option><option value="0.800">800 Argent</option></select></div>
+        </div>
+        <div class="currency-grid" id="currency-grid"></div>
+      </div>
+      <div class="content-body">
+        <h2>Pourquoi les prix de l'argent diffèrent selon la devise</h2>
+        <p>L’argent est évalué mondialement en dollars américains par once troy. Lorsque vous convertissez dans d’autres devises, le taux de change détermine le prix final. Cela signifie que l’argent peut effectivement « augmenter » dans une devise tout en « baisser » dans une autre, en fonction des mouvements du taux de change.</p>
+        <h3>Comprendre l'argent sur les marchés d'Asie du Sud</h3>
+        <p>En Inde et au Pakistan, l'argent est généralement évalué au <a href="convertisseur-de-poids.html">tola</a> (11,6638 grammes). Notre convertisseur affiche automatiquement les prix aux formats locaux.</p>
+        <h3>Facteurs de prix de l’argent</h3>
+        <ul>
+          <li><strong>USD spot price</strong> — Le prix de base global</li>
+          <li><strong>Exchange rates</strong> — Fluctuer en fonction des conditions économiques</li>
+          <li><strong>Local premiums</strong> — L'argent physique peut comporter des primes supplémentaires sur différents marchés</li>
+          <li><strong>Import duties</strong> — Certains pays ajoutent des droits de douane, notamment l'Inde et la Chine</li>
+        </ul>
+      </div>
+      <div><h3 style="margin-bottom:var(--space-lg);">Connexes</h3><div class="related-grid">
+        <a href="prix-de-l-argent-a-l-once.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+        <a href="prix-de-l-argent-au-gramme.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+        <a href="convertisseur-de-poids.html" class="related-link"><span class="r-icon">⚖️</span> Weight Converter</a>
+        <a href="calculateur-de-ferraille-d-argent.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Accueil',href:'index.html'},{label:'Silver Price in Currencies'}]);
+
+    const flags = { USD:'🇺🇸', EUR:'🇪🇺', GBP:'🇬🇧', CAD:'🇨🇦', AUD:'🇦🇺', INR:'🇮🇳', PKR:'🇵🇰', AED:'🇦🇪', SAR:'🇸🇦', CHF:'🇨🇭', JPY:'🇯🇵', CNY:'🇨🇳' };
+
+    const w=document.getElementById('weight'), u=document.getElementById('unit'), p=document.getElementById('purity');
+
+    function calc() {
+      const weight = parseFloat(w.value) || 0;
+      const grams = SilverCalc.toGrams(weight, u.value);
+      const purity = parseFloat(p.value);
+      const spotUSD = SilverPrice.getPrice();
+      const ozPure = (grams * purity) / 31.1035;
+      const usdValue = ozPure * spotUSD;
+
+      let html = '';
+      Object.entries(SilverPrice.CURRENCIES).forEach(([code, cur]) => {
+        const val = usdValue * cur.rate;
+        const perOz = spotUSD * cur.rate;
+        const perG = (spotUSD / 31.1035) * cur.rate;
+        const perKg = (spotUSD * 32.1507) * cur.rate;
+        html += `
+          <div class="currency-card">
+            <div class="cc-code">
+              <span class="cc-flag">${flags[code] || '🏳️'}</span>
+              <div><span class="cc-abbr">${code}</span><br><span class="cc-name">${cur.name}</span></div>
+            </div>
+            <div class="cc-oz">${cur.symbol}${val.toFixed(2)}</div>
+            <div class="cc-prices">
+              <div class="cc-row"><span class="cc-label">Per Troy Oz</span><span class="cc-val">${cur.symbol}${perOz.toFixed(2)}</span></div>
+              <div class="cc-row"><span class="cc-label">Per Gram</span><span class="cc-val">${cur.symbol}${perG.toFixed(4)}</span></div>
+              <div class="cc-row"><span class="cc-label">Per Kilogram</span><span class="cc-val">${cur.symbol}${perKg.toFixed(2)}</span></div>
+            </div>
+          </div>`;
+      });
+      document.getElementById('currency-grid').innerHTML = html;
+    }
+
+    [w].forEach(el => el.addEventListener('input', calc));
+    [u, p].forEach(el => el.addEventListener('change', calc));
+    SilverPrice.onPriceUpdate(() => calc());
+    calc();
+  </script>
+
+
+
+<script>
+    window.MenuTranslations = {"slugs":{"silver-scrap-calculator.html":"calculateur-de-ferraille-d-argent.html","gold-and-silver-calculator.html":"calculateur-or-et-argent.html","silver-melt-value-calculator.html":"calculateur-de-valeur-de-fonte.html","sterling-silver-calculator.html":"calculateur-d-argent-sterling.html","junk-silver-calculator.html":"calculateur-d-argent-de-circulation.html","silver-coin-value-calculator.html":"valeur-des-pieces-d-argent.html","silver-bar-value-calculator.html":"valeur-des-lingots-d-argent.html","silver-jewelry-value-calculator.html":"valeur-des-bijoux-en-argent.html","silverware-value-calculator.html":"valeur-de-l-argenterie.html","999-silver-calculator.html":"argent-fin-999.html","958-silver-calculator.html":"argent-britannia-958.html","925-silver-calculator.html":"argent-sterling-925.html","900-silver-calculator.html":"argent-de-piece-900.html","835-silver-calculator.html":"argent-835.html","800-silver-calculator.html":"argent-800.html","silver-purity-chart.html":"tableau-de-purete-de-l-argent.html","silver-price-per-gram.html":"prix-de-l-argent-au-gramme.html","silver-price-per-ounce.html":"prix-de-l-argent-a-l-once.html","silver-price-all-currencies.html":"prix-dans-toutes-les-devises.html","1-10oz-silver-value.html":"valeur-de-l-argent-1-10oz.html","1oz-silver-value.html":"valeur-de-l-argent-1oz.html","2oz-silver-value.html":"valeur-de-l-argent-2oz.html","5oz-silver-value.html":"valeur-de-l-argent-5oz.html","10oz-silver-value.html":"valeur-de-l-argent-10oz.html","100oz-silver-value.html":"valeur-de-l-argent-100oz.html","1kg-silver-value.html":"valeur-de-l-argent-1kg.html","silver-profit-calculator.html":"calculateur-de-profit-d-argent.html","silver-batch-calculator.html":"calculateur-par-lots.html","sona-chandi-calculator.html":"calculateur-sona-chandi.html","face-value-silver-calculator.html":"calculateur-de-valeur-nominale.html","silver-weight-converter.html":"convertisseur-de-poids.html","pennyweight-calculator.html":"calculateur-pennyweight-dwt.html","tola-calculator.html":"calculateur-tola.html","silver-sell-or-hold.html":"analyse-vendre-ou-garder.html","identify-silver.html":"identificateur-d-argent.html","how-to-use-silver-calculators.html":"comment-utiliser-nos-calculateurs.html","what-is-silver-scrap.html":"qu-est-ce-que-la-ferraille-d-argent.html","what-is-silver-melt-value.html":"qu-est-ce-que-la-valeur-de-fonte.html","what-is-junk-silver.html":"qu-est-ce-que-l-argent-de-circulation.html","what-is-troy-ounce.html":"qu-est-ce-qu-une-once-troy.html","what-is-silver-bullion.html":"qu-est-ce-qu-un-lingot-d-argent.html","how-silver-prices-work.html":"comment-fonctionnent-les-prix-de-l-argent.html","silver-hallmarks-guide.html":"guide-des-poincons-d-argent.html","what-does-925-mean.html":"que-signifie-925.html","what-is-sterling-silver.html":"qu-est-ce-que-l-argent-sterling.html","how-to-sell-silver.html":"comment-vendre-de-l-argent.html","silver-bracelet-value.html":"valeur-d-un-bracelet-en-argent.html","silver-chain-value.html":"valeur-d-une-chaine-en-argent.html","silver-cup-value.html":"valeur-d-une-coupe-en-argent.html","silver-dime-calculator.html":"calculateur-piece-de-dix-cents-en-argent.html","silver-dollar-calculator.html":"calculateur-dollar-en-argent.html","silver-fork-value.html":"valeur-d-une-fourchette-en-argent.html","silver-knife-value.html":"valeur-d-un-couteau-en-argent.html","silver-necklace-value.html":"valeur-d-un-collier-en-argent.html","silver-plate-value.html":"valeur-d-une-assiette-en-argent.html","silver-quarter-calculator.html":"calculateur-quart-de-dollar-en-argent.html","silver-ring-value.html":"valeur-d-une-bague-en-argent.html","silver-spoon-value.html":"valeur-d-une-cuillere-en-argent.html","silver-tray-value.html":"valeur-d-un-plateau-en-argent.html","canadian-silver-coin-calculator.html":"calculateur-piece-en-argent-canadienne.html"},"Home":"Accueil","Calculators":"Calculateurs","Silver Scrap Calculator":"Calculateur de Ferraille d'Argent","Gold & Silver Calculator":"Calculateur Or et Argent","Silver Melt Value":"Valeur de Fonte de l'Argent","Sterling Silver Calculator":"Calculateur d'Argent Sterling","Junk Silver Calculator":"Calculateur d'Argent de Circulation","Silver Coin Value":"Valeur des Pièces d'Argent","Silver Bar Value":"Valeur des Lingots d'Argent","Silver Jewelry Value":"Valeur des Bijoux en Argent","Silverware Value":"Valeur de l'Argenterie","Purity":"Pureté","999 Fine Silver":"Argent Fin 999","958 Britannia Silver":"Argent Britannia 958","925 Sterling Silver":"Argent Sterling 925","900 Coin Silver":"Argent de Pièce 900","835 Silver":"Argent 835","800 Silver":"Argent 800","Silver Purity Chart":"Tableau de Pureté de l'Argent","Pricing":"Prix","Silver Price Per Gram":"Prix de l'Argent au Gramme","Silver Price Per Ounce":"Prix de l'Argent à l'Once","Price in All Currencies":"Prix dans Toutes les Devises","1/10oz Silver Value":"Valeur de l'Argent 1/10oz","1oz Silver Value":"Valeur de l'Argent 1oz","2oz Silver Value":"Valeur de l'Argent 2oz","5oz Silver Value":"Valeur de l'Argent 5oz","10oz Silver Value":"Valeur de l'Argent 10oz","100oz Silver Value":"Valeur de l'Argent 100oz","1kg Silver Value":"Valeur de l'Argent 1kg","Tools":"Outils","Silver Profit Calculator":"Calculateur de Profit d'Argent","Batch Calculator":"Calculateur par Lots","Sona Chandi Calculator":"Calculateur Sona Chandi","Face Value Calculator":"Calculateur de Valeur Nominale","Weight Converter":"Convertisseur de Poids","Pennyweight (DWT) Calc":"Calculateur Pennyweight (DWT)","Tola Calculator":"Calculateur Tola","Sell or Hold Analysis":"Analyse Vendre ou Garder","Silver Identifier":"Identificateur d'Argent","Guides":"Guides","How to Use Our Calculators":"Comment Utiliser nos Calculateurs","What Is Silver Scrap?":"Qu'est-ce que la Ferraille d'Argent ?","What Is Melt Value?":"Qu'est-ce que la Valeur de Fonte ?","What Is Junk Silver?":"Qu'est-ce que l'Argent de Circulation ?","What Is a Troy Ounce?":"Qu'est-ce qu'une Once Troy ?","What Is Silver Bullion?":"Qu'est-ce qu'un Lingot d'Argent ?","How Silver Prices Work":"Comment Fonctionnent les Prix de l'Argent","Silver Hallmarks Guide":"Guide des Poinçons d'Argent","What Does 925 Mean?":"Que Signifie 925 ?","What Is Sterling Silver?":"Qu'est-ce que l'Argent Sterling ?","How to Sell Silver":"Comment Vendre de l'Argent","Scrap Silver":"Ferraille d'Argent","Gold & Silver":"Or et Argent","Silver Profit":"Profit d'Argent","Melt Value":"Valeur de Fonte","Junk Silver":"Argent de Circulation","Silver Coins":"Pièces d'Argent","Silver Dollar":"Dollar en Argent","Silver Quarter":"Quart de Dollar en Argent","Silver Dime":"Pièce de Dix Cents en Argent","Jewelry Value":"Valeur des Bijoux","925 Sterling":"Sterling 925","Purity Chart":"Tableau de Pureté","How to Use Calculators":"Comment Utiliser les Calculateurs","Sona Chandi Calc":"Calc. Sona Chandi","Face Value Calc":"Calc. Valeur Nominale","Sell or Hold":"Vendre ou Garder","About":"À Propos","Privacy":"Confidentialité","Terms":"Conditions","All rights reserved.":"Tous droits réservés.","Prices are for informational purposes only.":"Les prix sont à titre informatif.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calculateurs gratuits utilisant les prix en direct. Calculez la valeur de votre ferraille d'argent instantanément."};
+  </script>
+</body></html>
