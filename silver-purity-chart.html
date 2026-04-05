@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silver Purity Chart — Complete Guide to Silver Fineness Marks</title>
+  <meta name="description" content="Complete silver purity chart showing all hallmarks, percentages, and values. Compare 999, 958, 925, 900, 835, 800 and more silver purities.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>Silver Purity <span class="highlight">Chart</span></h1>
+        <p>Complete reference chart of silver purities, hallmarks, and their current values per gram.</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget" style="max-width:100%;">
+        <div class="calc-widget-title"><span class="icon">📊</span> Silver Purity Reference Table</div>
+        <table class="purity-table" style="margin:0;">
+          <thead><tr><th>Hallmark</th><th>Name</th><th>Silver %</th><th>Per Gram</th><th>Per Ounce</th><th>10g Value</th><th>Calculator</th></tr></thead>
+          <tbody id="purity-chart"></tbody>
+        </table>
+      </div>
+      <div class="article-body">
+        <h2>Understanding Silver Purity</h2>
+        <p>Silver purity, also called "fineness," describes the proportion of pure silver in an alloy. It's expressed as parts per thousand — for example, 925 means 925 parts silver out of 1,000.</p>
+
+        <h2>Common Silver Purities Explained</h2>
+        <h3>999 Fine Silver (99.9%)</h3>
+        <p>The purest commercial form of silver. Used in bullion bars, investment-grade coins (American Silver Eagles, Canadian Maple Leafs), and industrial applications. Too soft for jewelry.</p>
+
+        <h3>958 Britannia Silver (95.8%)</h3>
+        <p>A high-purity silver standard established in England in 1697. Still used today for fine British silverware and specialty items. Higher purity than sterling, but less common.</p>
+
+        <h3>925 Sterling Silver (92.5%)</h3>
+        <p>The world's most popular silver alloy. The standard for jewelry, flatware, and decorative items. Alloyed with copper for durability. More details: <a href="what-is-sterling-silver.html">What Is Sterling Silver?</a></p>
+
+        <h3>900 Coin Silver (90%)</h3>
+        <p>The standard for US silver coinage before 1965 (dimes, quarters, halves, dollars). Also used in some historical jewelry marked "COIN". Calculate values: <a href="junk-silver-calculator.html">Junk Silver Calculator</a></p>
+
+        <h3>835 Silver (83.5%)</h3>
+        <p>A standard commonly found in Germany, the Netherlands, and other European countries. Used for silverware, small items, and some coinage.</p>
+
+        <h3>800 Silver (80%)</h3>
+        <p>Common European standard, especially in Italy, Germany, and Austria. Frequently found in antique silverware, serving pieces, and decorative items.</p>
+
+        <h2>How to Read Silver Hallmarks</h2>
+        <p>Silver items are typically stamped with a fineness number (925, 800, etc.) along with:</p>
+        <ul>
+          <li><strong>Maker's mark</strong> — Identifies the manufacturer</li>
+          <li><strong>Assay office mark</strong> — Where the item was tested</li>
+          <li><strong>Date letter</strong> — Year of manufacture (British system)</li>
+          <li><strong>Country mark</strong> — Country of origin</li>
+        </ul>
+
+        <h2>Silver Purity Testing Methods</h2>
+        <ul>
+          <li><strong>Acid test</strong> — A drop of nitric acid on the silver surface produces different colors based on purity</li>
+          <li><strong>XRF analysis</strong> — Non-destructive electronic testing (most accurate)</li>
+          <li><strong>Specific gravity</strong> — Measuring weight displacement in water</li>
+          <li><strong>Hallmark reading</strong> — Examining stamps with a loupe</li>
+        </ul>
+      </div>
+      <div><h3 style="margin-bottom:var(--space-lg);">Purity Calculators</h3><div class="related-grid">
+        <a href="999-silver-calculator.html" class="related-link"><span class="r-icon">🔢</span> 999 Calculator</a>
+        <a href="958-silver-calculator.html" class="related-link"><span class="r-icon">🔢</span> 958 Calculator</a>
+        <a href="925-silver-calculator.html" class="related-link"><span class="r-icon">🔢</span> 925 Calculator</a>
+        <a href="900-silver-calculator.html" class="related-link"><span class="r-icon">🔢</span> 900 Calculator</a>
+        <a href="835-silver-calculator.html" class="related-link"><span class="r-icon">🔢</span> 835 Calculator</a>
+        <a href="800-silver-calculator.html" class="related-link"><span class="r-icon">🔢</span> 800 Calculator</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Silver Purity Chart'}]);
+    function update(){const spot=SilverPrice.getPrice();const ppg=spot/31.1035;
+    const purities=[
+      {mark:'999',name:'Fine Silver',pct:99.9,link:'999-silver-calculator.html'},
+      {mark:'980',name:'980 Silver',pct:98.0,link:'silver-melt-value-calculator.html'},
+      {mark:'970',name:'970 Silver',pct:97.0,link:'silver-melt-value-calculator.html'},
+      {mark:'958',name:'Britannia Silver',pct:95.8,link:'958-silver-calculator.html'},
+      {mark:'950',name:'950 Silver',pct:95.0,link:'silver-melt-value-calculator.html'},
+      {mark:'925',name:'Sterling Silver',pct:92.5,link:'925-silver-calculator.html'},
+      {mark:'900',name:'Coin Silver',pct:90.0,link:'900-silver-calculator.html'},
+      {mark:'875',name:'875 Silver',pct:87.5,link:'silver-melt-value-calculator.html'},
+      {mark:'835',name:'European Silver',pct:83.5,link:'835-silver-calculator.html'},
+      {mark:'800',name:'European Silver',pct:80.0,link:'800-silver-calculator.html'},
+      {mark:'750',name:'750 Silver',pct:75.0,link:'silver-melt-value-calculator.html'},
+      {mark:'500',name:'500 Silver',pct:50.0,link:'silver-melt-value-calculator.html'}
+    ];
+    document.getElementById('purity-chart').innerHTML=purities.map(p=>{
+      const g=ppg*p.pct/100;
+      const oz=spot*p.pct/100;
+      const ten=g*10;
+      return `<tr><td><strong>${p.mark}</strong></td><td>${p.name}</td><td>${p.pct}%</td><td>$${g.toFixed(4)}</td><td>$${oz.toFixed(2)}</td><td>$${ten.toFixed(2)}</td><td><a href="${p.link}" style="color:var(--accent-blue)">Calculate →</a></td></tr>`;
+    }).join('');}
+    SilverPrice.onPriceUpdate(()=>update());update();
+  </script>
+</body>
+</html>

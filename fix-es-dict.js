@@ -1,0 +1,169 @@
+const fs = require('fs');
+const path = require('path');
+
+const slugsMapping = {
+  "silver-scrap-calculator.html": "calculadora-de-plata-de-desecho.html",
+  "gold-and-silver-calculator.html": "calculadora-de-oro-y-plata.html",
+  "silver-melt-value-calculator.html": "calculadora-de-valor-de-fusion-de-la-plata.html",
+  "sterling-silver-calculator.html": "calculadora-de-plata-esterlina.html",
+  "junk-silver-calculator.html": "calculadora-de-plata-basura.html",
+  "silver-coin-value-calculator.html": "valor-de-moneda-de-plata.html",
+  "silver-bar-value-calculator.html": "valor-de-lingote-de-plata.html",
+  "silver-jewelry-value-calculator.html": "valor-de-joyeria-de-plata.html",
+  "silverware-value-calculator.html": "valor-de-cubiertos-de-plata.html",
+  "999-silver-calculator.html": "plata-fina-999.html",
+  "958-silver-calculator.html": "plata-britannia-958.html",
+  "925-silver-calculator.html": "plata-esterlina-925.html",
+  "900-silver-calculator.html": "plata-de-moneda-900.html",
+  "835-silver-calculator.html": "plata-835.html",
+  "800-silver-calculator.html": "plata-800.html",
+  "silver-purity-chart.html": "tabla-de-pureza-de-la-plata.html",
+  "silver-price-per-gram.html": "precio-de-la-plata-por-gramo.html",
+  "silver-price-per-ounce.html": "precio-de-la-plata-por-onza.html",
+  "silver-price-all-currencies.html": "precio-en-todas-las-monedas.html",
+  "1-10oz-silver-value.html": "valor-de-la-plata-1-10oz.html",
+  "1oz-silver-value.html": "valor-de-la-plata-1oz.html",
+  "2oz-silver-value.html": "valor-de-la-plata-2oz.html",
+  "5oz-silver-value.html": "valor-de-la-plata-5oz.html",
+  "10oz-silver-value.html": "valor-de-la-plata-10oz.html",
+  "100oz-silver-value.html": "valor-de-la-plata-100oz.html",
+  "1kg-silver-value.html": "valor-de-la-plata-1kg.html",
+  "silver-profit-calculator.html": "calculadora-de-ganancias-de-plata.html",
+  "silver-batch-calculator.html": "calculadora-por-lotes.html",
+  "sona-chandi-calculator.html": "calculadora-sona-chandi.html",
+  "face-value-silver-calculator.html": "calculadora-de-valor-nominal.html",
+  "silver-weight-converter.html": "conversor-de-peso.html",
+  "pennyweight-calculator.html": "calculadora-pennyweight-dwt.html",
+  "tola-calculator.html": "calculadora-tola.html",
+  "silver-sell-or-hold.html": "analisis-de-vender-o-mantener.html",
+  "identify-silver.html": "identificador-de-plata.html",
+  "how-to-use-silver-calculators.html": "como-usar-nuestras-calculadoras.html",
+  "what-is-silver-scrap.html": "que-es-la-plata-de-desecho.html",
+  "what-is-silver-melt-value.html": "que-es-el-valor-de-fusion.html",
+  "what-is-junk-silver.html": "que-es-la-plata-basura.html",
+  "what-is-troy-ounce.html": "que-es-una-onza-troy.html",
+  "what-is-silver-bullion.html": "que-es-un-lingote-de-plata.html",
+  "how-silver-prices-work.html": "como-funcionan-los-precios-de-la-plata.html",
+  "silver-hallmarks-guide.html": "guia-de-sellos-de-plata.html",
+  "what-does-925-mean.html": "que-significa-925.html",
+  "what-is-sterling-silver.html": "que-es-la-plata-esterlina.html",
+  "how-to-sell-silver.html": "como-vender-plata.html",
+  "silver-bracelet-value.html": "valor-de-pulsera-de-plata.html",
+  "silver-chain-value.html": "valor-de-cadena-de-plata.html",
+  "silver-cup-value.html": "valor-de-copa-de-plata.html",
+  "silver-dime-calculator.html": "calculadora-de-diez-centavos-de-plata.html",
+  "silver-dollar-calculator.html": "calculadora-de-dolar-de-plata.html",
+  "silver-fork-value.html": "valor-de-tenedor-de-plata.html",
+  "silver-knife-value.html": "valor-de-cuchillo-de-plata.html",
+  "silver-necklace-value.html": "valor-de-collar-de-plata.html",
+  "silver-plate-value.html": "valor-de-plato-de-plata.html",
+  "silver-quarter-calculator.html": "calculadora-de-cuarto-de-dolar-de-plata.html",
+  "silver-ring-value.html": "valor-de-anillo-de-plata.html",
+  "silver-spoon-value.html": "valor-de-cuchara-de-plata.html",
+  "silver-tray-value.html": "valor-de-bandeja-de-plata.html",
+  "canadian-silver-coin-calculator.html": "calculadora-de-monedas-de-plata-canadienses.html"
+};
+
+const labelsMapping = {
+  "Home": "Inicio",
+  "Calculators": "Calculadoras",
+  "Silver Scrap Calculator": "Calculadora de Plata de Desecho",
+  "Gold & Silver Calculator": "Calculadora de Oro y Plata",
+  "Silver Melt Value": "Valor de Fusión de la Plata",
+  "Sterling Silver Calculator": "Calculadora de Plata Esterlina",
+  "Junk Silver Calculator": "Calculadora de Plata Basura",
+  "Silver Coin Value": "Valor de Moneda de Plata",
+  "Silver Bar Value": "Valor de Lingote de Plata",
+  "Silver Jewelry Value": "Valor de Joyería de Plata",
+  "Silverware Value": "Valor de Cubiertos de Plata",
+  "Purity": "Pureza",
+  "999 Fine Silver": "Plata Fina 999",
+  "958 Britannia Silver": "Plata Britannia 958",
+  "925 Sterling Silver": "Plata Esterlina 925",
+  "900 Coin Silver": "Plata de Moneda 900",
+  "835 Silver": "Plata 835",
+  "800 Silver": "Plata 800",
+  "Silver Purity Chart": "Tabla de Pureza de la Plata",
+  "Pricing": "Precios",
+  "Silver Price Per Gram": "Precio de la Plata por Gramo",
+  "Silver Price Per Ounce": "Precio de la Plata por Onza",
+  "Price in All Currencies": "Precio en Todas las Monedas",
+  "1/10oz Silver Value": "Valor de la Plata 1/10oz",
+  "1oz Silver Value": "Valor de la Plata 1oz",
+  "2oz Silver Value": "Valor de la Plata 2oz",
+  "5oz Silver Value": "Valor de la Plata 5oz",
+  "10oz Silver Value": "Valor de la Plata 10oz",
+  "100oz Silver Value": "Valor de la Plata 100oz",
+  "1kg Silver Value": "Valor de la Plata 1kg",
+  "Tools": "Herramientas",
+  "Silver Profit Calculator": "Calculadora de Ganancias de Plata",
+  "Batch Calculator": "Calculadora por Lotes",
+  "Sona Chandi Calculator": "Calculadora Sona Chandi",
+  "Face Value Calculator": "Calculadora de Valor Nominal",
+  "Weight Converter": "Conversor de Peso",
+  "Pennyweight (DWT) Calc": "Calculadora Pennyweight (DWT)",
+  "Tola Calculator": "Calculadora Tola",
+  "Sell or Hold Analysis": "Análisis de Vender o Mantener",
+  "Silver Identifier": "Identificador de Plata",
+  "Guides": "Guías",
+  "How to Use Our Calculators": "Cómo Usar Nuestras Calculadoras",
+  "What Is Silver Scrap?": "¿Qué es la Plata de Desecho?",
+  "What Is Melt Value?": "¿Qué es el Valor de Fusión?",
+  "What Is Junk Silver?": "¿Qué es la Plata Basura?",
+  "What Is a Troy Ounce?": "¿Qué es una Onza Troy?",
+  "What Is Silver Bullion?": "¿Qué es un Lingote de Plata?",
+  "How Silver Prices Work": "Cómo Funcionan los Precios de la Plata",
+  "Silver Hallmarks Guide": "Guía de Sellos de Plata",
+  "What Does 925 Mean?": "¿Qué Significa 925?",
+  "What Is Sterling Silver?": "¿Qué es la Plata Esterlina?",
+  "How to Sell Silver": "Cómo Vender Plata",
+  "Scrap Silver": "Plata de Desecho",
+  "Gold & Silver": "Oro y Plata",
+  "Silver Profit": "Ganancia de Plata",
+  "Melt Value": "Valor de Fusión",
+  "Junk Silver": "Plata Basura",
+  "Silver Coins": "Monedas de Plata",
+  "Silver Dollar": "Dólar de Plata",
+  "Silver Quarter": "Cuarto de Dólar de Plata",
+  "Silver Dime": "Moneda de Diez Centavos de Plata",
+  "Jewelry Value": "Valor de Joyería",
+  "925 Sterling": "Esterlina 925",
+  "Purity Chart": "Tabla de Pureza",
+  "How to Use Calculators": "Cómo Usar las Calculadoras",
+  "Sona Chandi Calc": "Calc. Sona Chandi",
+  "Face Value Calc": "Calc. Valor Nominal",
+  "Sell or Hold": "Vender o Mantener",
+  "About": "Acerca de",
+  "Privacy": "Privacidad",
+  "Terms": "Términos",
+  "All rights reserved.": "Todos los derechos reservados.",
+  "Prices are for informational purposes only.": "Los precios son solo para fines informativos.",
+  "Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.": "Calculadoras de plata gratuitas usando precios spot en vivo. Calcule el valor de su sucata al instante."
+};
+
+const fullDict = Object.assign({ slugs: slugsMapping }, labelsMapping);
+const jsInjection = `window.MenuTranslations = ${JSON.stringify(fullDict)};`;
+
+const esDir = path.join(__dirname, 'es');
+const files = fs.readdirSync(esDir);
+
+let updatedCount = 0;
+
+for (const file of files) {
+  if (file.endsWith('.html')) {
+    const filePath = path.join(esDir, file);
+    let content = fs.readFileSync(filePath, 'utf8');
+
+    // Make sure we catch any format of window.MenuTranslations assignment
+    const updatedContent = content.replace(/window\.MenuTranslations\s*=\s*\{.*?\};/s, jsInjection);
+    
+    if (updatedContent !== content) {
+      fs.writeFileSync(filePath, updatedContent);
+      updatedCount++;
+    } else if (content.includes('window.MenuTranslations')) {
+      console.log('Failed to match regex on', file);
+    }
+  }
+}
+
+console.log(`Updated ${updatedCount} HTML files with correct MenuTranslations including slugs.`);

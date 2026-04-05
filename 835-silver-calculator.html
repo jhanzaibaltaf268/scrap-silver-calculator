@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>835 Silver Calculator — European Silver Value by Weight</title>
+  <meta name="description" content="Calculate the value of 835 silver (83.5% pure). Common European silver standard for silverware and coins.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>835 Silver <span class="highlight">Calculator</span></h1><p>Calculate the value of european silver (83.5% pure) by weight using live spot prices.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">🔢</span> 835 Silver Calculator</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="weight">Weight</label><input type="number" class="form-input" id="weight" placeholder="e.g. 10" step="0.01" min="0" value="10"></div>
+          <div class="form-group"><label class="form-label" for="unit">Unit</label><select class="form-select" id="unit"><option value="g" selected>Grams</option><option value="oz">Troy Ounces</option><option value="dwt">Pennyweight</option><option value="kg">Kilograms</option></select></div>
+        </div>
+        <div class="callout info">
+          <div class="callout-title">Purity: 83.5% (European Silver)</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">European Silver contains 83.5% pure silver. This calculator is pre-set to this purity.</p>
+        </div>
+        <div class="result-display">
+          <div class="result-label">835 Silver Value</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+      </div>
+      <div class="content-body"><h2>What Is 835 Silver?</h2><p>835 silver contains 83.5% silver and 16.5% other metals. It was a common standard in continental Europe, especially in Germany and the Netherlands.</p><ul><li>Common in antique European silverware</li><li>Used in some European coins</li><li>Often found on imported silver items</li><li>Lower silver content than sterling but still valuable</li></ul></div>
+      <div><h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3><div class="related-grid">
+        <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        <a href="silver-melt-value-calculator.html" class="related-link"><span class="r-icon">🔥</span> Melt Value</a>
+        <a href="sterling-silver-calculator.html" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
+        <a href="silver-purity-chart.html" class="related-link"><span class="r-icon">📊</span> Purity Chart</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'835 Silver Calculator'}]);
+    const w=document.getElementById('weight'),u=document.getElementById('unit');
+    function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(grams,0.835,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure silver (83.5%) · ${r.silverContentOz} oz · Spot: $${spot.toFixed(2)}/oz`;}
+    w.addEventListener('input',calc);u.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+  </script>
+</body>
+</html>

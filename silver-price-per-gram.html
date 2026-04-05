@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silver Price Per Gram Today — Live Price & Converter</title>
+  <meta name="description" content="Current silver price per gram with live updates. Convert between grams, ounces, kilograms, and pennyweight instantly.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-price-per-gram.html">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>Silver Price Per <span class="highlight">Gram</span></h1>
+        <p>Today's live silver price per gram based on the current spot price, with unit conversion tools.</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">📊</span> Silver Price Converter</div>
+        <div class="result-display" style="margin-bottom:var(--space-xl);">
+          <div class="result-label">Silver Price Per Gram</div>
+          <div class="result-value" id="price-gram">$0.00</div>
+          <div class="result-detail" id="price-update">Based on live spot price</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);">
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Per Troy Ounce</div>
+            <div id="price-oz" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Per Kilogram</div>
+            <div id="price-kg" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Per Pennyweight</div>
+            <div id="price-dwt" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Per Tola</div>
+            <div id="price-tola" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+        </div>
+        <h4 style="margin:var(--space-xl) 0 var(--space-md);">Price by Purity (per gram)</h4>
+        <table class="purity-table">
+          <thead><tr><th>Purity</th><th>% Silver</th><th>Price/Gram</th></tr></thead>
+          <tbody id="purity-rows"></tbody>
+        </table>
+      </div>
+      <div class="content-body">
+        <h2>How the Silver Price Per Gram Is Calculated</h2>
+        <p>Silver is priced in troy ounces on global commodities markets. One troy ounce equals 31.1035 grams. To find the price per gram, simply divide the spot price by 31.1035.</p>
+        <p>For example, at a spot price of $32.50 per troy ounce, the price per gram is approximately $1.045.</p>
+        <h3>Why Grams Matter for Silver Valuation</h3>
+        <p>Most kitchen and jeweler scales measure in grams, making the price per gram the most practical unit for everyday silver valuation. When you weigh a silver ring or chain on a scale, you'll typically get a weight in grams.</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:var(--space-lg);">Related Pages</h3>
+        <div class="related-grid">
+          <a href="silver-price-per-ounce.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+          <a href="1oz-silver-value.html" class="related-link"><span class="r-icon">🧱</span> 1oz Silver Value</a>
+          <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+          <a href="silver-purity-chart.html" class="related-link"><span class="r-icon">📋</span> Purity Chart</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/silver-price.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Silver Price Per Gram'}]);
+    function update(){
+      const spot=SilverPrice.getPrice();
+      const perGram=spot/31.1035;
+      const perKg=spot*(1000/31.1035);
+      const perDwt=spot/20;
+      const perTola=spot*(11.6638/31.1035);
+      document.getElementById('price-gram').textContent='$'+perGram.toFixed(4);
+      document.getElementById('price-oz').textContent='$'+spot.toFixed(2);
+      document.getElementById('price-kg').textContent='$'+perKg.toFixed(2);
+      document.getElementById('price-dwt').textContent='$'+perDwt.toFixed(4);
+      document.getElementById('price-tola').textContent='$'+perTola.toFixed(4);
+      document.getElementById('price-update').textContent=`Spot: $${spot.toFixed(2)}/oz`;
+      const purities=[{l:'999 Fine',p:0.999},{l:'958 Britannia',p:0.958},{l:'925 Sterling',p:0.925},{l:'900 Coin',p:0.900},{l:'835 European',p:0.835},{l:'800 European',p:0.800}];
+      document.getElementById('purity-rows').innerHTML=purities.map(pu=>`<tr><td>${pu.l}</td><td>${(pu.p*100).toFixed(1)}%</td><td>$${(perGram*pu.p).toFixed(4)}</td></tr>`).join('');
+    }
+    SilverPrice.onPriceUpdate(()=>update());
+    update();
+  </script>
+</body>
+</html>

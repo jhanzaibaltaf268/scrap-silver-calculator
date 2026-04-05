@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silver Spot Price Today — Live Global Market Rate</title>
+  <meta name="description" content="View the silver spot price today with live market updates. Calculate exactly how much your physical silver investments are worth.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-spot-price-today.html">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1><span class="highlight">Silver Spot Price Today</span></h1>
+        <p>The live, real-time global silver spot price. Track the market and convert values instantly.</p>
+      </div>
+    </section>
+    
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">📈</span> Live Silver Spot Price</div>
+        
+        <div class="result-display" style="margin-bottom:var(--space-xl); background: var(--bg-card); border: 2px solid var(--primary-color);">
+          <div class="result-label">Current Spot Price (1 Troy Ounce)</div>
+          <div class="result-value" id="spot-price-main" style="font-size: var(--fs-4xl);">$0.00</div>
+          <div class="result-detail" id="price-status">Market Open · Live Updates</div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));gap:var(--space-md); margin-bottom: var(--space-xl);">
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Spot Price Per Gram</div>
+            <div id="spot-gram" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+          <div class="result-display" style="padding:var(--space-md);">
+            <div class="result-label" style="font-size:var(--fs-xs);">Spot Price Per Kilo</div>
+            <div id="spot-kg" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
+          </div>
+        </div>
+
+        <h4 style="margin:var(--space-xl) 0 var(--space-md);">Spot Value by Common Weight</h4>
+        <table class="purity-table">
+          <thead><tr><th>Item Size</th><th>Pure Silver</th><th>Melt Value</th></tr></thead>
+          <tbody id="spot-table"></tbody>
+        </table>
+      </div>
+
+      <div class="content-body">
+        <h2>What is the Silver Spot Price Today?</h2>
+        <p>The <strong>silver spot price today</strong> represents the current global price to buy or sell one troy ounce of .999 fine silver for immediate delivery. This price updates continuously during trading hours based on supply, demand, and trading on the COMEX and LBMA exchanges.</p>
+        
+        <h3>Why is the Spot Price Important?</h3>
+        <p>The spot price acts as the baseline for all physical silver transactions worldwide. Whether you are buying silver eagles from a coin dealer or selling a sterling silver necklace to a pawn shop, the final payout is calculated starting directly from today's spot price.</p>
+
+        <h3>Premiums vs. Spot Price</h3>
+        <p>It's important to remember that physical silver (like coins and bars) cannot usually be bought at exactly the spot price. Dealers charge a <strong>premium</strong> above the spot price to cover manufacturing, shipping, and business costs.</p>
+        <p>Conversely, when selling scrap silver or jewelry to a refinery, you will usually receive a price slightly <em>below</em> the spot price to account for melting and refining costs.</p>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom:var(--space-lg);">More Tools</h3>
+        <div class="related-grid">
+          <a href="gold-and-silver-calculator.html" class="related-link"><span class="r-icon">⚖️</span> Gold/Silver Ratio</a>
+          <a href="silver-price-per-ounce.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+          <a href="silver-price-per-gram.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+          <a href="1oz-silver-value.html" class="related-link"><span class="r-icon">🧱</span> 1oz Silver Value</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/silver-price.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Silver Spot Price Today'}]);
+
+    function update(){
+      const spot = SilverPrice.getPrice();
+      const perGram = spot / 31.1035;
+      const perKg = spot * (1000 / 31.1035);
+
+      document.getElementById('spot-price-main').textContent = '$' + spot.toFixed(2);
+      document.getElementById('spot-gram').textContent = '$' + perGram.toFixed(4);
+      document.getElementById('spot-kg').textContent = '$' + perKg.toFixed(2);
+
+      const items = [
+        { label: '1 Gram', weight: 1, isOz: false },
+        { label: '1 Troy Ounce', weight: 1, isOz: true },
+        { label: '5 Troy Ounces', weight: 5, isOz: true },
+        { label: '10 Troy Ounces', weight: 10, isOz: true },
+        { label: '1 Kilogram', weight: 1000, isOz: false },
+        { label: '100 Troy Ounces', weight: 100, isOz: true }
+      ];
+
+      document.getElementById('spot-table').innerHTML = items.map(item => {
+        const val = item.isOz ? (spot * item.weight) : (perGram * item.weight);
+        const weightText = item.isOz ? `${(item.weight * 31.1035).toFixed(1)}g` : (item.weight === 1000 ? '1,000g' : `${item.weight}g`);
+        return `<tr><td>${item.label}</td><td>${weightText}</td><td>$${val.toFixed(2)}</td></tr>`;
+      }).join('');
+    }
+
+    SilverPrice.onPriceUpdate(() => update());
+    update();
+  </script>
+</body>
+</html>

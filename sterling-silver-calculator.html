@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sterling Silver Calculator — 925 Silver Value by Weight</title>
+  <meta name="description" content="Calculate the value of your sterling silver (925) items by weight. Uses live spot prices for accurate, real-time melt value estimates.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/sterling-silver-calculator.html">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>Sterling Silver <span class="highlight">Calculator</span></h1>
+        <p>Calculate the melt value of your 925 sterling silver items. Just enter the weight — purity is pre-set to 92.5%.</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">✨</span> Sterling Silver Calculator</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="weight">Weight</label>
+            <input type="number" class="form-input" id="weight" placeholder="e.g. 25" step="0.01" min="0" value="10">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="unit">Unit</label>
+            <select class="form-select" id="unit">
+              <option value="g" selected>Grams (g)</option>
+              <option value="oz">Troy Ounces (oz)</option>
+              <option value="dwt">Pennyweight (dwt)</option>
+              <option value="kg">Kilograms (kg)</option>
+            </select>
+          </div>
+        </div>
+        <div class="callout info">
+          <div class="callout-title">ℹ️ Purity: 92.5% (Sterling)</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Sterling silver is 92.5% pure silver alloyed with 7.5% copper for strength. Look for a "925" stamp on your item.</p>
+        </div>
+        <div class="result-display">
+          <div class="result-label">Sterling Silver Value</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+      </div>
+      <div class="content-body">
+        <h2>What Is Sterling Silver?</h2>
+        <p>Sterling silver is an alloy containing 92.5% silver and 7.5% other metals (usually copper). It's the most common silver alloy used in jewelry, flatware, and decorative items worldwide. The "925" stamp you see on silver items indicates sterling silver purity.</p>
+        <h3>How to Identify Sterling Silver</h3>
+        <ul>
+          <li>Look for hallmarks: "925", "STER", "STERLING", or a lion passant (UK)</li>
+          <li>Sterling silver is slightly harder than fine silver due to the copper content</li>
+          <li>It tarnishes more readily than fine silver</li>
+          <li>A magnet test can help — silver is not magnetic</li>
+        </ul>
+        <p>For a deeper dive, read our guide: <a href="what-is-sterling-silver.html">What Is Sterling Silver?</a></p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3>
+        <div class="related-grid">
+          <a href="925-silver-calculator.html" class="related-link"><span class="r-icon">🔢</span> 925 Silver Calculator</a>
+          <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+          <a href="silver-jewelry-value-calculator.html" class="related-link"><span class="r-icon">💍</span> Jewelry Value</a>
+          <a href="what-does-925-mean.html" class="related-link"><span class="r-icon">📖</span> What Does 925 Mean?</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/silver-price.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Sterling Silver Calculator'}]);
+    const w=document.getElementById('weight'),u=document.getElementById('unit');
+    function calc(){
+      const weight=parseFloat(w.value)||0;
+      const grams=SilverCalc.toGrams(weight,u.value);
+      const spot=SilverPrice.getPrice();
+      const r=SilverCalc.meltValue(grams,0.925,spot);
+      document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
+      document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure silver (92.5%) · ${r.silverContentOz} oz · Spot: $${spot.toFixed(2)}/oz`;
+    }
+    w.addEventListener('input',calc);
+    u.addEventListener('change',calc);
+    SilverPrice.onPriceUpdate(()=>calc());
+    calc();
+  </script>
+</body>
+</html>

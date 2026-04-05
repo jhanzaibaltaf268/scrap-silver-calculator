@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Junk Silver Calculator — Pre-1965 US Coin Melt Value</title>
+  <meta name="description" content="Calculate the melt value of pre-1965 US silver coins. Find the silver value of dimes, quarters, half dollars, Morgan dollars, and more.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/junk-silver-calculator.html">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero">
+      <div class="container">
+        
+        <h1>Junk Silver <span class="highlight">Calculator</span></h1>
+        <p>Calculate the silver melt value of pre-1965 US silver coins and other popular silver coins.</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">🪙</span> Junk Silver Calculator</div>
+        <div class="form-group">
+          <label class="form-label">Select Coin Type</label>
+          <div class="coin-grid" id="coin-grid"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="qty">Quantity</label>
+          <input type="number" class="form-input" id="qty" value="1" min="1" step="1">
+        </div>
+        <div class="result-display">
+          <div class="result-label">Total Silver Value</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+        <h4 style="margin:var(--space-xl) 0 var(--space-md);">All Coin Values (at spot)</h4>
+        <table class="purity-table">
+          <thead><tr><th>Coin</th><th>Silver (oz)</th><th>Value Each</th></tr></thead>
+          <tbody id="coin-table"></tbody>
+        </table>
+      </div>
+      <div class="content-body">
+        <h2>What Is Junk Silver?</h2>
+        <p>"Junk silver" refers to US coins minted before 1965 that contain silver but have no significant numismatic (collector) value. Despite the name, these coins contain genuine silver and their value is based on their metal content.</p>
+        <h3>Common Junk Silver Coins</h3>
+        <ul>
+          <li><strong>Dimes (pre-1965)</strong> — 90% silver, 0.0723 oz each</li>
+          <li><strong>Quarters (pre-1965)</strong> — 90% silver, 0.1808 oz each</li>
+          <li><strong>Half Dollars (pre-1965)</strong> — 90% silver, 0.3617 oz each</li>
+          <li><strong>Kennedy Half (1965-1970)</strong> — 40% silver, 0.1479 oz each</li>
+          <li><strong>Morgan & Peace Dollars</strong> — 90% silver, 0.7734 oz each</li>
+          <li><strong>War Nickels (1942-1945)</strong> — 35% silver, 0.0563 oz each</li>
+        </ul>
+        <h3>How to Calculate Junk Silver Value</h3>
+        <p>The formula is simple: <strong>Silver Content (oz) × Quantity × Spot Price = Value</strong></p>
+        <p>For example, 10 pre-1965 quarters contain 1.808 troy ounces of silver total. At a $32.50 spot price, that's $58.76 in melt value.</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3>
+        <div class="related-grid">
+          <a href="silver-coin-value-calculator.html" class="related-link"><span class="r-icon">🏛️</span> Coin Value Calculator</a>
+          <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+          <a href="900-silver-calculator.html" class="related-link"><span class="r-icon">🔢</span> 900 Silver Calculator</a>
+          <a href="how-to-sell-silver.html" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/silver-price.js"></script>
+  <script src="js/calculator.js"></script>
+  <script src="js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Junk Silver Calculator'}]);
+    let selectedCoin='us-quarter-pre1965';
+    const grid=document.getElementById('coin-grid');
+    const coins=SilverCalc.JUNK_COINS;
+    // Render coin buttons
+    grid.innerHTML=Object.entries(coins).map(([key,c])=>`<button type="button" class="coin-btn ${key===selectedCoin?'active':''}" data-coin="${key}">${c.name}<span class="coin-name">${c.silverOz} oz</span></button>`).join('');
+    grid.addEventListener('click',(e)=>{
+      const btn=e.target.closest('.coin-btn');
+      if(!btn)return;
+      grid.querySelectorAll('.coin-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedCoin=btn.dataset.coin;
+      calc();
+    });
+    const qty=document.getElementById('qty');
+    function calc(){
+      const q=parseInt(qty.value)||0;
+      const spot=SilverPrice.getPrice();
+      const r=SilverCalc.coinValue(selectedCoin,q,spot);
+      if(r){
+        document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
+        document.getElementById('result-detail').textContent=`${r.quantity}× ${r.coin} · ${r.totalSilverOz} oz silver · $${r.valueEach}/coin · Spot: $${spot.toFixed(2)}/oz`;
+      }
+      // Update table
+      document.getElementById('coin-table').innerHTML=Object.entries(coins).map(([k,c])=>{
+        const v=c.silverOz*spot;
+        return `<tr><td>${c.name}</td><td>${c.silverOz}</td><td>$${v.toFixed(2)}</td></tr>`;
+      }).join('');
+    }
+    qty.addEventListener('input',calc);
+    SilverPrice.onPriceUpdate(()=>calc());
+    calc();
+  </script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silver Dime Melt Value Calculator — Live Prices</title>
+  <meta name="description" content="Calculate the live melt value of pre-1965 Roosevelt and Mercury Silver Dimes.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-dime-calculator.html">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>Silver Dime <span class="highlight">Calculator</span></h1><p>Calculate the live silver melt value of silver dimes instantly.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">🪙</span> Silver Dime Calculator</div>
+        
+        <div class="form-group">
+          <label class="form-label" for="qty">Quantity of Coins</label>
+          <input type="number" class="form-input" id="qty" value="1" min="1" step="1">
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="weight">Weight Per Coin (g)</label>
+            <input type="number" class="form-input" id="weight" value="2.5" step="0.01" readonly style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="purity">Purity</label>
+            <input type="text" class="form-input" id="purity" value="90.0%" readonly style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
+          </div>
+        </div>
+
+        <div class="result-display">
+          <div class="result-label">Total Melt Value</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+      </div>
+      <div class="content-body"><h2>How Much is a Silver Dime Worth?</h2><p>Pre-1965 US Dimes (Roosevelt and Mercury series) contain 90% silver. Each coin weighs 2.50 grams and yields <strong>0.0723 troy ounces</strong> of pure silver.</p><h3>The Most Common "Junk Silver"</h3><p>Silver dimes are highly favored by "stackers" and survivalists because their fractional silver content makes them excellent for small bartering scenarios. Remember: 10 silver dimes equals exactly the same amount of silver as 4 silver quarters.</p></div>
+      <div><h3 style="margin-bottom:var(--space-lg);">Related Coin Tools</h3><div class="related-grid">
+        <a href="junk-silver-calculator.html" class="related-link"><span class="r-icon">🪙</span> Junk Silver Calc</a>
+        <a href="face-value-silver-calculator.html" class="related-link"><span class="r-icon">💵</span> Face Value Calc</a>
+        <a href="silver-coin-value-calculator.html" class="related-link"><span class="r-icon">🏛️</span> All Silver Coins</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Silver Dime Calculator'}]);
+    
+    const q=document.getElementById('qty');
+    function calc() {
+      const qty=parseInt(q.value)||0;
+      const totalWeightGrams = qty * 2.5;
+      const purity = 0.9;
+      const spot=SilverPrice.getPrice();
+      
+      const r=SilverCalc.meltValue(totalWeightGrams, purity, spot);
+      
+      if(qty > 0) {
+        document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
+        document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';
+      } else {
+        document.getElementById('result-value').textContent='$0.00';
+        document.getElementById('result-detail').textContent='Enter quantity';
+      }
+    }
+    q.addEventListener('input',calc);
+    SilverPrice.onPriceUpdate(()=>calc());
+    calc();
+  </script>
+</body>
+</html>

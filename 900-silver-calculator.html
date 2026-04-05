@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>900 Silver Calculator — Coin Silver Value by Weight</title>
+  <meta name="description" content="Calculate the value of 900 coin silver (90% pure) by weight. Found in pre-1965 US silver coins.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>900 Silver <span class="highlight">Calculator</span></h1><p>Calculate the value of coin silver (90% pure) by weight using live spot prices.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">🔢</span> 900 Silver Calculator</div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label" for="weight">Weight</label><input type="number" class="form-input" id="weight" placeholder="e.g. 10" step="0.01" min="0" value="10"></div>
+          <div class="form-group"><label class="form-label" for="unit">Unit</label><select class="form-select" id="unit"><option value="g" selected>Grams</option><option value="oz">Troy Ounces</option><option value="dwt">Pennyweight</option><option value="kg">Kilograms</option></select></div>
+        </div>
+        <div class="callout info">
+          <div class="callout-title">Purity: 90% (Coin Silver)</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Coin Silver contains 90% pure silver. This calculator is pre-set to this purity.</p>
+        </div>
+        <div class="result-display">
+          <div class="result-label">900 Silver Value</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+      </div>
+      <div class="content-body"><h2>What Is 900 Coin Silver?</h2><p>900 silver, commonly called "coin silver," contains 90% silver and 10% copper. It is the standard alloy used in US silver coinage minted before 1965.</p><ul><li>US dimes, quarters, and half dollars (pre-1965)</li><li>Morgan and Peace silver dollars</li><li>Some European and Latin American coins</li><li>Historical silverware marked "COIN"</li></ul><p>Use our <a href="junk-silver-calculator.html">Junk Silver Calculator</a> for specific US coin values.</p></div>
+      <div><h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3><div class="related-grid">
+        <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        <a href="silver-melt-value-calculator.html" class="related-link"><span class="r-icon">🔥</span> Melt Value</a>
+        <a href="sterling-silver-calculator.html" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
+        <a href="silver-purity-chart.html" class="related-link"><span class="r-icon">📊</span> Purity Chart</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'900 Silver Calculator'}]);
+    const w=document.getElementById('weight'),u=document.getElementById('unit');
+    function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(grams,0.9,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure silver (90%) · ${r.silverContentOz} oz · Spot: $${spot.toFixed(2)}/oz`;}
+    w.addEventListener('input',calc);u.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+  </script>
+</body>
+</html>

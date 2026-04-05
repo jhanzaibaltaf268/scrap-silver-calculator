@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5oz Silver Value — Current Price of 5oz Silver</title>
+  <meta name="description" content="Current value of 5 ounces of silver. Live spot price and quantity calculator for 5oz bars.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>5oz Silver <span class="highlight">Value</span></h1><p>Current value of 5oz of silver at today's live spot price.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">🧱</span> 5oz Silver Value</div>
+        <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
+        <div class="result-display">
+          <div class="result-label">5oz Silver Value</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+        <h4 style="margin:var(--space-xl) 0 var(--space-md);">Value by Quantity</h4>
+        <table class="purity-table">
+          <thead><tr><th>Quantity</th><th>Total Weight</th><th>Value</th></tr></thead>
+          <tbody id="qty-table"></tbody>
+        </table>
+      </div>
+      <div class="content-body"><h2>How Much Is 5 Ounces of Silver Worth?</h2><p>5 troy ounces (155.517 grams) of .999 fine silver is a popular size for silver bars. It offers lower premiums than 1oz sizes while remaining highly liquid.</p></div>
+      <div><h3 style="margin-bottom:var(--space-lg);">Related Pages</h3><div class="related-grid">
+        <a href="silver-bar-value-calculator.html" class="related-link"><span class="r-icon">🧱</span> Bar Calculator</a>
+        <a href="silver-price-per-ounce.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+        <a href="silver-price-per-gram.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+        <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'5oz Silver Value'}]);
+    const q=document.getElementById('qty');
+    function calc(){const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const totalOz=5*qty;const val=totalOz*spot;document.getElementById('result-value').textContent='$'+val.toFixed(2);document.getElementById('result-detail').textContent=qty+'× 5oz · '+totalOz.toFixed(2)+' oz total · Spot: $'+spot.toFixed(2)+'/oz';
+      const qtys=[1,2,5,10,25,50,100];document.getElementById('qty-table').innerHTML=qtys.map(n=>'<tr><td>'+n+'</td><td>'+(5*n).toFixed(2)+' oz</td><td>$'+(5*n*spot).toFixed(2)+'</td></tr>').join('');}
+    q.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+  </script>
+</body>
+</html>

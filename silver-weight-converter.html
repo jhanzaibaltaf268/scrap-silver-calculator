@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silver Weight Converter — Grams, Troy Ounces, Pennyweight, Kilograms, Tola</title>
+  <meta name="description" content="Convert silver weight between grams, troy ounces, pennyweight (dwt), kilograms, and tola instantly. Free silver weight conversion calculator.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .converter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); }
+    .converter-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-lg); transition: all var(--transition-fast); }
+    .converter-card:focus-within { border-color: var(--accent-primary); box-shadow: 0 0 0 3px var(--accent-glow); }
+    .converter-card label { display: block; font-size: var(--fs-xs); font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: var(--space-sm); }
+    .converter-card input { width: 100%; background: transparent; border: none; color: var(--text-primary); font-family: var(--font-display); font-size: var(--fs-xl); font-weight: 700; outline: none; }
+    .converter-card .unit-label { font-size: var(--fs-sm); color: var(--text-secondary); margin-top: var(--space-xs); }
+    @media (max-width: 768px) { .converter-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+    <section class="page-hero"><div class="container"><h1>Silver Weight <span class="highlight">Converter</span></h1><p>Instantly convert silver weight between all common units used in precious metals trading.</p></div></section>
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">⚖️</span> Weight Converter</div>
+        <div class="converter-grid">
+          <div class="converter-card">
+            <label for="grams">Grams (g)</label>
+            <input type="number" id="grams" step="0.001" value="31.1035">
+            <div class="unit-label">1 gram = 0.0322 troy oz</div>
+          </div>
+          <div class="converter-card">
+            <label for="troy-oz">Troy Ounces (oz t)</label>
+            <input type="number" id="troy-oz" step="0.0001" value="1">
+            <div class="unit-label">1 troy oz = 31.1035 g</div>
+          </div>
+          <div class="converter-card">
+            <label for="dwt">Pennyweight (dwt)</label>
+            <input type="number" id="dwt" step="0.01" value="20">
+            <div class="unit-label">1 dwt = 1.5552 g</div>
+          </div>
+          <div class="converter-card">
+            <label for="kg">Kilograms (kg)</label>
+            <input type="number" id="kg" step="0.000001" value="0.0311035">
+            <div class="unit-label">1 kg = 32.1507 troy oz</div>
+          </div>
+          <div class="converter-card">
+            <label for="tola">Tola</label>
+            <input type="number" id="tola" step="0.001" value="2.667">
+            <div class="unit-label">1 tola = 11.6638 g</div>
+          </div>
+          <div class="converter-card">
+            <label for="av-oz">Avoirdupois Ounces (oz)</label>
+            <input type="number" id="av-oz" step="0.0001" value="1.0971">
+            <div class="unit-label">1 av oz = 28.3495 g (regular ounce)</div>
+          </div>
+        </div>
+        <div class="result-display" style="margin-top:var(--space-xl);">
+          <div class="result-label">Value at Current Spot Price</div>
+          <div class="result-value" id="value-display">$0.00</div>
+          <div class="result-detail" id="value-detail">Based on 999 fine silver</div>
+        </div>
+      </div>
+      <div class="content-body">
+        <h2>Silver Weight Units Explained</h2>
+        <h3>Troy Ounce vs. Regular Ounce</h3>
+        <p>The precious metals industry uses <strong>troy ounces</strong> (31.1035g), which are heavier than standard avoirdupois ounces (28.3495g). When you see "silver price per ounce," it always means per <em>troy</em> ounce.</p>
+        <h3>Pennyweight (dwt)</h3>
+        <p>Jewelers often weigh items in pennyweight. There are 20 pennyweight in one troy ounce. One dwt equals approximately 1.555 grams.</p>
+        <h3>Tola</h3>
+        <p>The tola is used in South Asian countries (India, Pakistan, Bangladesh) for precious metals trading. One tola = 11.6638 grams.</p>
+        <h3>Why Weight Units Matter</h3>
+        <p>When selling silver, always confirm which unit the buyer is using. A "per ounce" offer in troy ounces is worth about 10% more than in regular ounces. This is a common source of confusion.</p>
+
+        <h2>Quick Reference Table</h2>
+        <table class="purity-table">
+          <thead><tr><th>Unit</th><th>Abbreviation</th><th>Grams</th><th>Troy Ounces</th></tr></thead>
+          <tbody>
+            <tr><td>1 Gram</td><td>g</td><td>1.000</td><td>0.0322</td></tr>
+            <tr><td>1 Troy Ounce</td><td>oz t</td><td>31.1035</td><td>1.000</td></tr>
+            <tr><td>1 Pennyweight</td><td>dwt</td><td>1.5552</td><td>0.0500</td></tr>
+            <tr><td>1 Kilogram</td><td>kg</td><td>1,000</td><td>32.1507</td></tr>
+            <tr><td>1 Tola</td><td>tola</td><td>11.6638</td><td>0.3750</td></tr>
+            <tr><td>1 Avoirdupois Oz</td><td>oz</td><td>28.3495</td><td>0.9115</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div><h3 style="margin-bottom:var(--space-lg);">Related</h3><div class="related-grid">
+        <a href="silver-price-per-gram.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+        <a href="silver-price-per-ounce.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+        <a href="silver-batch-calculator.html" class="related-link"><span class="r-icon">📋</span> Batch Calculator</a>
+        <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+      </div></div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
+  <script>
+    
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Silver Weight Converter'}]);
+
+    const TROY_OZ_G = 31.1035;
+    const DWT_G = 1.55517;
+    const TOLA_G = 11.6638;
+    const AV_OZ_G = 28.3495;
+
+    const fields = {
+      grams: document.getElementById('grams'),
+      'troy-oz': document.getElementById('troy-oz'),
+      dwt: document.getElementById('dwt'),
+      kg: document.getElementById('kg'),
+      tola: document.getElementById('tola'),
+      'av-oz': document.getElementById('av-oz')
+    };
+
+    let activeField = null;
+
+    function gFromField(field, value) {
+      switch(field) {
+        case 'grams': return value;
+        case 'troy-oz': return value * TROY_OZ_G;
+        case 'dwt': return value * DWT_G;
+        case 'kg': return value * 1000;
+        case 'tola': return value * TOLA_G;
+        case 'av-oz': return value * AV_OZ_G;
+      }
+    }
+
+    function updateAll(grams, sourceField) {
+      if (sourceField !== 'grams') fields.grams.value = grams.toFixed(4);
+      if (sourceField !== 'troy-oz') fields['troy-oz'].value = (grams / TROY_OZ_G).toFixed(4);
+      if (sourceField !== 'dwt') fields.dwt.value = (grams / DWT_G).toFixed(4);
+      if (sourceField !== 'kg') fields.kg.value = (grams / 1000).toFixed(6);
+      if (sourceField !== 'tola') fields.tola.value = (grams / TOLA_G).toFixed(4);
+      if (sourceField !== 'av-oz') fields['av-oz'].value = (grams / AV_OZ_G).toFixed(4);
+
+      const spot = SilverPrice.getPrice();
+      const oz = grams / TROY_OZ_G;
+      const val = oz * spot;
+      document.getElementById('value-display').textContent = SilverCalc.formatCurrency(val);
+      document.getElementById('value-detail').textContent = `${oz.toFixed(4)} troy oz × $${spot.toFixed(2)} · Spot: $${spot.toFixed(2)}/oz`;
+    }
+
+    Object.entries(fields).forEach(([key, input]) => {
+      input.addEventListener('input', () => {
+        const val = parseFloat(input.value) || 0;
+        const grams = gFromField(key, val);
+        updateAll(grams, key);
+      });
+      input.addEventListener('focus', () => activeField = key);
+    });
+
+    SilverPrice.onPriceUpdate(() => {
+      const val = parseFloat(fields.grams.value) || 0;
+      updateAll(val, 'grams');
+    });
+
+    // Initial
+    updateAll(31.1035, 'grams');
+  </script>
+</body>
+</html>
