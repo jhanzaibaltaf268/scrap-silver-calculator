@@ -1,3 +1,4 @@
+# Forced domain update: scrapsilvercalculater.com
 User-agent: *
 Allow: /
 Sitemap: https://scrapsilvercalculater.com/sitemap.xml
