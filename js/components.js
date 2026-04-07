@@ -6,62 +6,62 @@
 const SiteComponents = (() => {
   /* ---- Navigation Structure ---- */
   const NAV_ITEMS = [
-    { label: 'Home', href: 'index.html' },
+    { label: 'Home', href: '/' },
     {
       label: 'Calculators', dropdown: [
-        { label: 'Gold & Silver Calculator', href: 'gold-and-silver-calculator.html' },
-        { label: 'Silver Melt Value', href: 'silver-melt-value-calculator.html' },
-        { label: 'Sterling Silver Calculator', href: 'sterling-silver-calculator.html' },
-        { label: 'Junk Silver Calculator', href: 'junk-silver-calculator.html' },
-        { label: 'Silver Coin Value', href: 'silver-coin-value-calculator.html' },
-        { label: 'Silver Bar Value', href: 'silver-bar-value-calculator.html' },
-        { label: 'Silver Jewelry Value', href: 'silver-jewelry-value-calculator.html' },
-        { label: 'Silverware Value', href: 'silverware-value-calculator.html' },
+        { label: 'Gold & Silver Calculator', href: '/gold-and-silver-calculator/' },
+        { label: 'Silver Melt Value', href: '/silver-melt-value-calculator/' },
+        { label: 'Sterling Silver Calculator', href: '/sterling-silver-calculator/' },
+        { label: 'Junk Silver Calculator', href: '/junk-silver-calculator/' },
+        { label: 'Silver Coin Value', href: '/silver-coin-value-calculator/' },
+        { label: 'Silver Bar Value', href: '/silver-bar-value-calculator/' },
+        { label: 'Silver Jewelry Value', href: '/silver-jewelry-value-calculator/' },
+        { label: 'Silverware Value', href: '/silverware-value-calculator/' },
       ]
     },
     {
       label: 'Purity', dropdown: [
-        { label: '999 Fine Silver', href: '999-silver-calculator.html' },
-        { label: '958 Britannia Silver', href: '958-silver-calculator.html' },
-        { label: '925 Sterling Silver', href: '925-silver-calculator.html' },
-        { label: '900 Coin Silver', href: '900-silver-calculator.html' },
-        { label: '835 Silver', href: '835-silver-calculator.html' },
-        { label: '800 Silver', href: '800-silver-calculator.html' },
-        { label: 'Silver Purity Chart', href: 'silver-purity-chart.html' },
+        { label: '999 Fine Silver', href: '/999-silver-calculator/' },
+        { label: '958 Britannia Silver', href: '/958-silver-calculator/' },
+        { label: '925 Sterling Silver', href: '/925-silver-calculator/' },
+        { label: '900 Coin Silver', href: '/900-silver-calculator/' },
+        { label: '835 Silver', href: '/835-silver-calculator/' },
+        { label: '800 Silver', href: '/800-silver-calculator/' },
+        { label: 'Silver Purity Chart', href: '/silver-purity-chart/' },
       ]
     },
     {
       label: 'Pricing', dropdown: [
-        { label: 'Silver Spot Price Today', href: 'silver-spot-price-today.html' },
-        { label: 'Silver Price Per Gram', href: 'silver-price-per-gram.html' },
-        { label: '925 Sterling Price / Gram', href: '925-sterling-silver-price-per-gram.html' },
-        { label: 'Silver Price Per Ounce', href: 'silver-price-per-ounce.html' },
-        { label: 'Price in All Currencies', href: 'silver-price-all-currencies.html' },
-        { label: '1/10oz Silver Value', href: '1-10oz-silver-value.html' },
-        { label: '1oz Silver Value', href: '1oz-silver-value.html' },
-        { label: '2oz Silver Value', href: '2oz-silver-value.html' },
-        { label: '5oz Silver Value', href: '5oz-silver-value.html' },
-        { label: '10oz Silver Value', href: '10oz-silver-value.html' },
-        { label: '100oz Silver Value', href: '100oz-silver-value.html' },
-        { label: '1kg Silver Value', href: '1kg-silver-value.html' },
+        { label: 'Silver Spot Price Today', href: '/silver-spot-price-today/' },
+        { label: 'Silver Price Per Gram', href: '/silver-price-per-gram/' },
+        { label: '925 Sterling Price / Gram', href: '/925-sterling-silver-price-per-gram/' },
+        { label: 'Silver Price Per Ounce', href: '/silver-price-per-ounce/' },
+        { label: 'Price in All Currencies', href: '/silver-price-all-currencies/' },
+        { label: '1/10oz Silver Value', href: '/1-10oz-silver-value/' },
+        { label: '1oz Silver Value', href: '/1oz-silver-value/' },
+        { label: '2oz Silver Value', href: '/2oz-silver-value/' },
+        { label: '5oz Silver Value', href: '/5oz-silver-value/' },
+        { label: '10oz Silver Value', href: '/10oz-silver-value/' },
+        { label: '100oz Silver Value', href: '/100oz-silver-value/' },
+        { label: '1kg Silver Value', href: '/1kg-silver-value/' },
       ]
     },
     {
       label: 'Tools', dropdown: [
-        { label: 'Silver Profit Calculator', href: 'silver-profit-calculator.html' },
-        { label: 'Batch Calculator', href: 'silver-batch-calculator.html' },
-        { label: 'Sona Chandi Calculator', href: 'sona-chandi-calculator.html' },
-        { label: 'Face Value Calculator', href: 'face-value-silver-calculator.html' },
-        { label: 'Weight Converter', href: 'silver-weight-converter.html' },
-        { label: 'Pennyweight (DWT) Calc', href: 'pennyweight-calculator.html' },
-        { label: 'Tola Calculator', href: 'tola-calculator.html' },
-        { label: 'Sell or Hold Analysis', href: 'silver-sell-or-hold.html' },
-        { label: 'Silver Identifier', href: 'identify-silver.html' },
+        { label: 'Silver Profit Calculator', href: '/silver-profit-calculator/' },
+        { label: 'Batch Calculator', href: '/silver-batch-calculator/' },
+        { label: 'Sona Chandi Calculator', href: '/sona-chandi-calculator/' },
+        { label: 'Face Value Calculator', href: '/face-value-silver-calculator/' },
+        { label: 'Weight Converter', href: '/silver-weight-converter/' },
+        { label: 'Pennyweight (DWT) Calc', href: '/pennyweight-calculator/' },
+        { label: 'Tola Calculator', href: '/tola-calculator/' },
+        { label: 'Sell or Hold Analysis', href: '/silver-sell-or-hold/' },
+        { label: 'Silver Identifier', href: '/identify-silver/' },
       ]
     },
     {
       label: 'Guides', dropdown: [
-        { label: 'How to Use Our Calculators', href: 'how-to-use-silver-calculators.html' },
+        { label: 'How to Use Our Calculators', href: '/how-to-use-silver-calculators/' },
       ]
     }
   ];
@@ -70,52 +70,69 @@ const SiteComponents = (() => {
     {
       title: 'Calculators',
       links: [
-        { label: 'Gold & Silver', href: 'gold-and-silver-calculator.html' },
-        { label: 'Silver Profit', href: 'silver-profit-calculator.html' },
-        { label: 'Melt Value', href: 'silver-melt-value-calculator.html' },
-        { label: 'Junk Silver', href: 'junk-silver-calculator.html' },
-        { label: 'Silver Coins', href: 'silver-coin-value-calculator.html' },
-        { label: 'Silver Dollar', href: 'silver-dollar-calculator.html' },
-        { label: 'Silver Quarter', href: 'silver-quarter-calculator.html' },
-        { label: 'Silver Dime', href: 'silver-dime-calculator.html' },
-        { label: 'Jewelry Value', href: 'silver-jewelry-value-calculator.html' },
-        { label: 'Silverware Value', href: 'silverware-value-calculator.html' },
+        { label: 'Gold & Silver', href: '/gold-and-silver-calculator/' },
+        { label: 'Silver Profit', href: '/silver-profit-calculator/' },
+        { label: 'Melt Value', href: '/silver-melt-value-calculator/' },
+        { label: 'Junk Silver', href: '/junk-silver-calculator/' },
+        { label: 'Silver Coins', href: '/silver-coin-value-calculator/' },
+        { label: 'Silver Dollar', href: '/silver-dollar-calculator/' },
+        { label: 'Silver Quarter', href: '/silver-quarter-calculator/' },
+        { label: 'Silver Dime', href: '/silver-dime-calculator/' },
+        { label: 'Jewelry Value', href: '/silver-jewelry-value-calculator/' },
+        { label: 'Silverware Value', href: '/silverware-value-calculator/' },
       ]
     },
     {
       title: 'Silver Purity',
       links: [
-        { label: '999 Fine Silver', href: '999-silver-calculator.html' },
-        { label: '925 Sterling', href: '925-silver-calculator.html' },
-        { label: '900 Coin Silver', href: '900-silver-calculator.html' },
-        { label: '835 Silver', href: '835-silver-calculator.html' },
-        { label: '800 Silver', href: '800-silver-calculator.html' },
-        { label: 'Purity Chart', href: 'silver-purity-chart.html' },
+        { label: '999 Fine Silver', href: '/999-silver-calculator/' },
+        { label: '925 Sterling', href: '/925-silver-calculator/' },
+        { label: '900 Coin Silver', href: '/900-silver-calculator/' },
+        { label: '835 Silver', href: '/835-silver-calculator/' },
+        { label: '800 Silver', href: '/800-silver-calculator/' },
+        { label: 'Purity Chart', href: '/silver-purity-chart/' },
       ]
     },
     {
       title: 'Tools & Guides',
       links: [
-        { label: 'How to Use Calculators', href: 'how-to-use-silver-calculators.html' },
-        { label: 'Sona Chandi Calc', href: 'sona-chandi-calculator.html' },
-        { label: 'Face Value Calc', href: 'face-value-silver-calculator.html' },
-        { label: 'Batch Calculator', href: 'silver-batch-calculator.html' },
-        { label: 'Weight Converter', href: 'silver-weight-converter.html' },
-        { label: 'Sell or Hold', href: 'silver-sell-or-hold.html' },
-        { label: 'Silver Identifier', href: 'identify-silver.html' },
+        { label: 'How to Use Calculators', href: '/how-to-use-silver-calculators/' },
+        { label: 'Sona Chandi Calc', href: '/sona-chandi-calculator/' },
+        { label: 'Face Value Calc', href: '/face-value-silver-calculator/' },
+        { label: 'Batch Calculator', href: '/silver-batch-calculator/' },
+        { label: 'Weight Converter', href: '/silver-weight-converter/' },
+        { label: 'Sell or Hold', href: '/silver-sell-or-hold/' },
+        { label: 'Silver Identifier', href: '/identify-silver/' },
       ]
     }
   ];
 
+
   function getCurrentPage() {
     const path = window.location.pathname;
+    if (path === '/' || path === '/index.html') return '/';
+    // If it ends with a slash, we want the name before it
+    if (path.endsWith('/')) {
+      const parts = path.split('/').filter(Boolean);
+      if (parts.length === 0) return '/';
+      const last = parts[parts.length - 1];
+      // If the last part is a language code, it's an index page
+      if (['es','fr','de','pt','hi','ur','ar','tr','it','zh','ru'].includes(last)) return '/';
+      return `/${last}/`;
+    }
     const parts = path.split('/');
-    return parts[parts.length - 1] || 'index.html';
+    const last = parts[parts.length - 1];
+    if (last.endsWith('.html')) return `/${last.replace('.html', '')}/`;
+    return `/${last}/` || '/';
   }
 
   function getBasePath() {
-    return window.location.pathname.match(/\/(es|fr|de|pt|hi|ur|ar|tr|it|zh|ru)\//) ? '../' : '';
+    const path = window.location.pathname;
+    const langMatch = path.match(/\/(es|fr|de|pt|hi|ur|ar|tr|it|zh|ru)\//);
+    if (langMatch) return `/${langMatch[1]}/`;
+    return '/';
   }
+
 
   function t(text) {
     if (window.MenuTranslations && window.MenuTranslations[text]) {
@@ -225,20 +242,21 @@ const SiteComponents = (() => {
       <div class="footer-langs" style="margin-top:var(--space-2xl); padding-top:var(--space-xl); border-top:1px solid var(--border-subtle);">
         <h4 style="margin-bottom:var(--space-md);color:var(--text-muted);font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:0.1em;text-align:center;">${t('Change Language')}</h4>
         <div class="lang-grid" style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:var(--space-xl);">
-          <a href="${bp}index.html" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇬🇧 EN</a>
-          <a href="${bp}es/index.html" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇪🇸 ES</a>
-          <a href="${bp}fr/index.html" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇫🇷 FR</a>
-          <a href="${bp}de/index.html" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇩🇪 DE</a>
-          <a href="${bp}pt/index.html" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇧🇷 PT</a>
-          <a href="${bp}hi/index.html" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇮🇳 HI</a>
-          <a href="${bp}ur/index.html" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇵🇰 UR</a>
-          <a href="${bp}ar/index.html" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇸🇦 AR</a>
-          <a href="${bp}tr/index.html" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇹🇷 TR</a>
-          <a href="${bp}it/index.html" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇮🇹 IT</a>
-          <a href="${bp}zh/index.html" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇨🇳 ZH</a>
-          <a href="${bp}ru/index.html" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇷🇺 RU</a>
+          <a href="/" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇬🇧 EN</a>
+          <a href="/es/" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇪🇸 ES</a>
+          <a href="/fr/" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇫🇷 FR</a>
+          <a href="/de/" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇩🇪 DE</a>
+          <a href="/pt/" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇧🇷 PT</a>
+          <a href="/hi/" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇮🇳 HI</a>
+          <a href="/ur/" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇵🇰 UR</a>
+          <a href="/ar/" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇸🇦 AR</a>
+          <a href="/tr/" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇹🇷 TR</a>
+          <a href="/it/" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇮🇹 IT</a>
+          <a href="/zh/" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇨🇳 ZH</a>
+          <a href="/ru/" class="lang-btn" style="padding:6px 12px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);color:var(--text-secondary);font-size:14px;text-decoration:none;">🇷🇺 RU</a>
         </div>
       </div>
+
     `;
 
     el.innerHTML = `
