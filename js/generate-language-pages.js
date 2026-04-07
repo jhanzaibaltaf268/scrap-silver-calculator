@@ -48,7 +48,7 @@ function generateHomepage(lang) {
   <meta name="description" content="${t.metaDesc}">
   <link rel="canonical" href="https://scrapsilvercalculater.com/${lang.code}/">
   ${hreflangTags()}
-  <link rel="stylesheet" href="../css/style.css?v=2.1">
+  <link rel="stylesheet" href="/css/style.css?v=2.1">
   <style>
     .section-compact { padding: var(--space-2xl) 0; }
     .section-compact .section-title { margin-bottom: var(--space-sm); }
@@ -258,9 +258,9 @@ function generateHomepage(lang) {
   <script>
     window.MenuTranslations = ${JSON.stringify(getMenuTranslations(lang.code))};
   </script>
-  <script src="../js/silver-price.js?v=2.1"></script>
-  <script src="../js/calculator.js?v=2.1"></script>
-  <script src="../js/components.js?v=2.1"></script>
+  <script src="/js/silver-price.js?v=2.1"></script>
+  <script src="/js/calculator.js?v=2.1"></script>
+  <script src="/js/components.js?v=2.1"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
 

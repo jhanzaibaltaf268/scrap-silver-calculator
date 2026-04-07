@@ -12,7 +12,7 @@ function coinPage(coinName, coinWeight, coinPurity, filename, desc, content) {
   <title>${titleName} Melt Value Calculator — Live Prices</title>
   <meta name="description" content="${desc}">
   <link rel="canonical" href="https://scrapsilvercalculater.com/${filename.replace('.html', '/')}/">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <div id="site-header"></div>
@@ -165,7 +165,7 @@ const faceValueHTML = `<!DOCTYPE html>
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
+  <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Face Value Calculator'}]);

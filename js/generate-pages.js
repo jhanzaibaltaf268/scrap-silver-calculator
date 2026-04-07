@@ -13,7 +13,7 @@ function purityPage(purityCode, purityPct, purityName, description, content) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${purityCode} Silver Calculator — ${purityName} Value by Weight</title>
   <meta name="description" content="${description}">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <div id="site-header"></div>
@@ -47,7 +47,7 @@ function purityPage(purityCode, purityPct, purityName, description, content) {
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
+  <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'${purityCode} Silver Calculator'}]);
@@ -90,7 +90,7 @@ function weightPage(sizeLabel, sizeOz, filename, desc, content) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${sizeLabel} Silver Value — Current Price of ${sizeLabel} Silver</title>
   <meta name="description" content="${desc}">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <div id="site-header"></div>
@@ -122,7 +122,7 @@ function weightPage(sizeLabel, sizeOz, filename, desc, content) {
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
+  <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'${sizeLabel} Silver Value'}]);
