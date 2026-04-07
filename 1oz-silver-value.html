@@ -3,30 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>1oz Silver Value — 1 Troy Ounce Silver Price Today</title>
-  <meta name="description" content="Current value of 1 ounce of silver. Find the live 1 troy ounce silver price and calculate total value.">
+  <title>1oz Silver Value — Current Price of 1oz Silver</title>
+  <meta name="description" content="Current value of 1 ounce of silver. Live spot price and quantity calculator.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div id="site-header"></div>
   <main>
     <div class="container"><div id="breadcrumb"></div></div>
-    <section class="page-hero">
-      <div class="container">
-        
-        <h1>1 Troy Ounce Silver <span class="highlight">Value</span></h1>
-        <p>Find the current <strong>1 troy ounce silver price</strong> and calculate exactly what 1 oz of pure silver is worth at today's live spot rate.</p>
-      </div>
-    </section>
+    <section class="page-hero"><div class="container"><div id="price-ticker"></div><h1>1oz Silver <span class="highlight">Value</span></h1><p>Current value of 1oz of silver at today's live spot price.</p></div></section>
     <div class="calc-page-layout">
       <div class="calc-widget">
-        <div class="calc-widget-title"><span class="icon">🧱</span> 1oz Troy Ounce Silver Value</div>
-        <div class="form-group">
-          <label class="form-label" for="qty">Number of Ounces</label>
-          <input type="number" class="form-input" id="qty" value="1" min="1" step="1">
-        </div>
+        <div class="calc-widget-title"><span class="icon">🧱</span> 1oz Silver Value</div>
+        <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         <div class="result-display">
-          <div class="result-label">1 Troy Ounce Silver Value</div>
+          <div class="result-label">1oz Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
         </div>
@@ -36,11 +27,7 @@
           <tbody id="qty-table"></tbody>
         </table>
       </div>
-      <div class="content-body">
-        <h2>What Is the 1 Troy Ounce Silver Price Today?</h2>
-        <p>The <strong>1 troy ounce silver price</strong> is the standard global benchmark for silver valuation. Unlike a regular ounce, a <strong>troy ounce</strong> weighs exactly 31.1035 grams. This measurement is used by every major exchange including the COMEX and LBMA.</p>
-        <p>Whether you have 1oz silver bars, American Silver Eagles, or 1oz silver rounds, their base melt value is determined by the current spot price for one troy ounce of .999 fine silver.</p>
-      </div>
+      <div class="content-body"><h2>How Much Is 1 Ounce of Silver Worth?</h2><p>One troy ounce (31.1035 grams) of .999 fine silver is worth the current spot price. This is the base unit for silver pricing worldwide.</p><p>1oz silver bars and coins are the most popular investment size due to their affordability and easy divisibility.</p></div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Pages</h3><div class="related-grid">
         <a href="/silver-bar-value-calculator/" class="related-link"><span class="r-icon">🧱</span> Bar Calculator</a>
         <a href="/silver-price-per-ounce/" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
@@ -52,7 +39,7 @@
   <div id="site-footer"></div>
   <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
   <script>
-    
+    SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'1oz Silver Value'}]);
     const q=document.getElementById('qty');
     function calc(){const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const totalOz=1*qty;const val=totalOz*spot;document.getElementById('result-value').textContent='$'+val.toFixed(2);document.getElementById('result-detail').textContent=qty+'× 1oz · '+totalOz.toFixed(2)+' oz total · Spot: $'+spot.toFixed(2)+'/oz';

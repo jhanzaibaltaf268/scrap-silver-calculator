@@ -1,10 +1,11 @@
-<!DOCTYPE html><html lang="de"><head>
+<!DOCTYPE html>
+<html lang="de">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Altsilber-Rechner – kostenloser Silber-Schmelzwert-Rechner [Live-Preise]</title>
-  <meta name="description" content="Verwenden Sie diesen kostenlosen Altsilber-Rechner, um sofort den Wert Ihrer Gegenstände zu überprüfen. Als hochpräziser Silberschrottrechner bietet er eine zuverlässige Schätzung des Schmelzwerts Ihres alten Schmucks, Ihrer Münzen, Barren und Scherben auf der Grundlage von Gewicht, Reinheit und den neuesten Live-Marktpreisen.">
-  <meta name="keywords" content="scrap silver calculator, silver scrap calculator, silver melt value calculator, sterling silver calculator, junk silver calculator, silver value calculator">
-  <link rel="canonical" href="https://scrapsilvercalculater.com/">
+  <title>Silberschrott-Rechner — Silber Schmelzwert Live</title>
+  <meta name="description" content="Berechnen Sie sofort den Schmelzwert Ihres Silberschrotts. Live-Spotpreise, kostenlos.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/de/">
   <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/">
   <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/">
   <link rel="alternate" hreflang="es" href="https://scrapsilvercalculater.com/es/">
@@ -18,381 +19,179 @@
   <link rel="alternate" hreflang="it" href="https://scrapsilvercalculater.com/it/">
   <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/">
   <link rel="alternate" hreflang="ru" href="https://scrapsilvercalculater.com/ru/">
-  <link rel="stylesheet" href="../css/style.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Scrap Silver Calculator",
-    "description": "Use this free Scrap Silver Calculator to instantly check what your items are worth. As a highly accurate silver scrap calculator, it provides a reliable melt value estimate for your old jewelry, coins, bars, and broken pieces based on weight, purity, and the latest live market prices.",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Any",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
+
+  <link rel="stylesheet" href="../css/style.css?v=2.1">
   <style>
-    /* Homepage-specific compact spacing */
     .section-compact { padding: var(--space-2xl) 0; }
     .section-compact .section-title { margin-bottom: var(--space-sm); }
     .section-compact .section-subtitle { margin: 0 auto var(--space-lg); }
     .hero-compact { padding: var(--space-2xl) 0 var(--space-xl); }
     .hero-compact h1 { margin-bottom: var(--space-sm); }
     .hero-compact .hero-subtitle { margin: 0 auto var(--space-lg); }
-    .trust-bar-compact { padding: var(--space-lg) 0; }
-
-    /* Scrollable FAQ panel */
-    .faq-scroll-panel { max-height: 480px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-sm); }
-    .faq-scroll-panel::-webkit-scrollbar { width: 6px; }
-    .faq-scroll-panel::-webkit-scrollbar-track { background: transparent; }
-    .faq-scroll-panel::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-
-    /* Scrollable content block */
-    .content-scroll-block { max-height: 500px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-md); margin: var(--space-lg) 0; }
-    .content-scroll-block::-webkit-scrollbar { width: 6px; }
-    .content-scroll-block::-webkit-scrollbar-track { background: transparent; }
-    .content-scroll-block::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-    .content-scroll-block h3 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
-    .content-scroll-block p, .content-scroll-block ul, .content-scroll-block ol { margin-bottom: var(--space-md); }
-    .content-scroll-block ul li, .content-scroll-block ol li { padding: var(--space-xs) 0; color: var(--text-secondary); }
-    .content-scroll-block ul li::before { content: '•'; color: var(--accent-primary); margin-right: var(--space-sm); }
-
-    /* Entity pills */
-    .entity-scroller { display: flex; flex-wrap: nowrap; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0 var(--space-md); scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; -webkit-overflow-scrolling: touch; }
-    .entity-scroller::-webkit-scrollbar { height: 5px; }
-    .entity-scroller::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-    .entity-pill { flex-shrink: 0; padding: 6px var(--space-md); background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(192,192,192,0.02)); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: var(--fs-xs); color: var(--text-muted); white-space: nowrap; }
     .lang-switcher { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 8px 0; background: rgba(5,5,10,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 1100; }
     body { padding-top: calc(var(--header-height) + 36px) !important; }
     .site-header { top: 36px !important; }
     .lang-btn { padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; background: rgba(255,255,255,0.05); }
     .lang-btn:hover, .lang-btn.active { background: var(--accent-primary); color: #fff; }
+    .faq-scroll-panel { max-height: 480px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-sm); }
+    .faq-scroll-panel::-webkit-scrollbar { width: 6px; }
+    .faq-scroll-panel::-webkit-scrollbar-track { background: transparent; }
+    .faq-scroll-panel::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .content-scroll-block { max-height: 500px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-md); margin: var(--space-lg) 0; }
+    .content-scroll-block::-webkit-scrollbar { width: 6px; }
+    .content-scroll-block::-webkit-scrollbar-track { background: transparent; }
+    .content-scroll-block::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .content-scroll-block h3 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+    .content-scroll-block p, .content-scroll-block ul { margin-bottom: var(--space-md); }
+    .content-scroll-block ul li { padding: var(--space-xs) 0; color: var(--text-secondary); }
+    .content-scroll-block ul li::before { content: '•'; color: var(--accent-primary); margin-right: var(--space-sm); }
+    .entity-scroller { display: flex; flex-wrap: nowrap; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0 var(--space-md); scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; -webkit-overflow-scrolling: touch; }
+    .entity-scroller::-webkit-scrollbar { height: 5px; }
+    .entity-scroller::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .entity-pill { flex-shrink: 0; padding: 6px var(--space-md); background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(192,192,192,0.02)); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: var(--fs-xs); color: var(--text-muted); white-space: nowrap; }
+    
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Silberschrott-Rechner",
+    "description": "Berechnen Sie sofort den Schmelzwert Ihres Silberschrotts. Live-Spotpreise, kostenlos.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "de",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
 </head>
 <body>
-
-  <div class="lang-switcher">
-    <a href="../" class="lang-btn">🇬🇧 EN</a>
-    <a href="../es/" class="lang-btn">🇪🇸 ES</a>
-    <a href="../fr/" class="lang-btn">🇫🇷 FR</a>
-    <a href="../de/" class="lang-btn active">🇩🇪 DE</a>
-    <a href="../pt/" class="lang-btn">🇧🇷 PT</a>
-    <a href="../hi/" class="lang-btn">🇮🇳 HI</a>
-    <a href="../ur/" class="lang-btn">🇵🇰 UR</a>
-    <a href="../ar/" class="lang-btn">🇸🇦 AR</a>
-    <a href="../tr/" class="lang-btn">🇹🇷 TR</a>
-    <a href="../it/" class="lang-btn">🇮🇹 IT</a>
-    <a href="../zh/" class="lang-btn">🇨🇳 ZH</a>
-    <a href="../ru/" class="lang-btn">🇷🇺 RU</a>
-  </div>
-
+  <div class="lang-switcher"><a href="/" class="lang-btn ">🇬🇧 EN</a><a href="/es/" class="lang-btn ">🇪🇸 ES</a><a href="/fr/" class="lang-btn ">🇫🇷 FR</a><a href="/de/" class="lang-btn active">🇩🇪 DE</a><a href="/pt/" class="lang-btn ">🇧🇷 PT</a><a href="/hi/" class="lang-btn ">🇮🇳 HI</a><a href="/ur/" class="lang-btn ">🇵🇰 UR</a><a href="/ar/" class="lang-btn ">🇸🇦 AR</a><a href="/tr/" class="lang-btn ">🇹🇷 TR</a><a href="/it/" class="lang-btn ">🇮🇹 IT</a><a href="/zh/" class="lang-btn ">🇨🇳 ZH</a><a href="/ru/" class="lang-btn ">🇷🇺 RU</a></div>
   <div id="site-header"></div>
 
   <main>
-    <!-- Hero Section — compact -->
     <section class="hero hero-compact">
       <div class="container hero-content">
+        <div id="price-ticker"></div>
         <h1><span class="highlight">Silberschrott-Rechner</span></h1>
+        <p class="hero-subtitle">Berechnen Sie sofort den Schmelzwert Ihres Silberschrotts, Münzen, Schmucks und Barren mit Live-Spotpreisen.</p>
 
         <!-- Main Calculator Widget -->
-        <div class="calc-widget slide-up" id="hero-calc">
+        <div class="calc-widget slide-up" id="hero-calc" style="max-width:600px;margin:0 auto;">
+          <div class="calc-widget-title"><span class="icon">⚖️</span> Silberwert-Rechner</div>
 
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="calc-weight">Gewicht</label>
               <div class="input-group">
-                <input type="number" class="form-input" id="calc-weight" placeholder="Enter weight" step="0.01" min="0" value="10">
+                <input type="number" class="form-input" id="calc-weight" placeholder="10" step="0.01" min="0" value="10">
               </div>
             </div>
             <div class="form-group">
               <label class="form-label" for="calc-unit">Einheit</label>
               <select class="form-select" id="calc-unit">
-                <option value="g" selected="">Grams (g)</option>
-                <option value="oz">Troy Ounces (oz)</option>
+                <option value="g" selected>Gramm (g)</option>
+                <option value="ozt">Feinunzen (oz t)</option>
+                <option value="oz">Unzen (oz)</option>
+                <option value="kg">Kilogramm (kg)</option>
                 <option value="dwt">Pennyweight (dwt)</option>
-                <option value="kg">Kilograms (kg)</option>
+                <option value="tola">Tola</option>
               </select>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="calc-purity">Silberreinheit</label>
+            <label class="form-label" for="calc-purity">Reinheit</label>
             <select class="form-select" id="calc-purity">
-              <option value="0.999">999 — Fine Silver (99.9%)</option>
-              <option value="0.958">958 — Britannia Silver (95.8%)</option>
-              <option value="0.925" selected="">925 — Sterling Silver (92.5%)</option>
-              <option value="0.900">900 — Coin Silver (90.0%)</option>
-              <option value="0.835">835 — European Silver (83.5%)</option>
-              <option value="0.800">800 — European Silver (80.0%)</option>
+              <option value="0.999">999 — Fine (99.9%)</option>
+              <option value="0.958">958 — Britannia (95.8%)</option>
+              <option value="0.925" selected>925 — Sterling (92.5%)</option>
+              <option value="0.900">900 — Coin (90.0%)</option>
+              <option value="0.835">835 — (83.5%)</option>
+              <option value="0.800">800 — (80.0%)</option>
+              <option value="0.500">500 — (50.0%)</option>
             </select>
           </div>
 
           <div class="result-display" id="hero-result">
-            <div class="result-label">Geschätzter Schmelzwert</div>
+            <div class="result-label">SCHMELZWERT</div>
             <div class="result-value" id="hero-result-value">$0.00</div>
-            <div class="result-detail" id="hero-result-detail">Geben Sie das zu berechnende Gewicht ein</div>
+            <div class="result-detail" id="hero-result-detail">Spot: $--/oz · Reinheit: 92.5% · Gesamt Silber: 0.000 oz</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Trust Bar — compact -->
-    <section class="trust-bar-compact">
-      <div class="container">
-        <div class="trust-bar">
-          <div class="trust-item"><span class="icon">🔄</span> Live-Spotpreise</div>
-          <div class="trust-item"><span class="icon">🔒</span> 100 % privat</div>
-          <div class="trust-item"><span class="icon">⚡</span> Sofortige Ergebnisse</div>
-          <div class="trust-item"><span class="icon">📱</span> Funktioniert auf jedem Gerät</div>
-          <div class="trust-item"><span class="icon">💰</span> Immer kostenlos</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- All Silver Calculators -->
-    <section class="section-compact" id="calculators">
+    <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container text-center">
-        <span class="section-badge">🧮 Unsere Rechner</span>
-        <h2 class="section-title">Kostenlose Rechner für den Schmelzwert und die Reinheit von Silber</h2>
-        <p class="section-subtitle">Jeder Silberrechner, den Sie brauchen – für Schrott, Münzen, Schmuck, Barren und mehr.</p>
-
+        <span class="section-badge">🧰 Alle Silber-Rechner</span>
+        <h2 class="section-title">Alle Silber-Rechner</h2>
+        <p class="section-subtitle">Spezialisierte Werkzeuge für jede Art von Silber.</p>
         <div class="category-grid stagger">
-
-          <a href="/silber-schmelzwert-rechner/" class="category-card" id="card-melt">
-            <div class="category-icon">🔥</div>
-            <h3>Rechner für den Silberschmelzwert</h3>
-            <p>Ermitteln Sie den Reinsilbergehalt und den Schmelzwert jedes Silberartikels basierend auf Gewicht und Feinheit.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/sterlingsilber-rechner/" class="category-card" id="card-sterling">
-            <div class="category-icon">✨</div>
-            <h3>Rechner für Sterlingsilber</h3>
-            <p>Berechnen Sie sofort den Wert Ihrer Artikel aus 925er Sterlingsilber nach Gewicht.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/billon-silber-rechner/" class="category-card" id="card-junk">
-            <div class="category-icon">🪙</div>
-            <h3>Junk-Silber-Rechner</h3>
-            <p>Finden Sie den Schmelzwert von US-Silbermünzen aus der Zeit vor 1965 – Dimes, Quarters, Halfs und Dollars.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/silbermuenzen-wert-rechner/" class="category-card" id="card-coins">
-            <div class="category-icon">🏛️</div>
-            <h3>Rechner für den Wert von Silbermünzen</h3>
-            <p>Berechnen Sie den Schmelzwert einer Silbermünze, indem Sie Gewicht, Reinheit und Menge eingeben.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/gold-und-silber-rechner/" class="category-card" id="card-gold-silver">
-            <div class="category-icon">🥇</div>
-            <h3>Gold- und Silberrechner</h3>
-            <p>Berechnen Sie den gemischten Gold- und Silberschrott und sehen Sie sich das Live-Verhältnis an.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/silberbarren-wert-rechner/" class="category-card" id="card-bars">
-            <div class="category-icon">🧱</div>
-            <h3>Silberbarren-Wertrechner</h3>
-            <p>Finden Sie den aktuellen Wert von Silberbarren in den Größen 1 Unze, 5 Unzen, 10 Unzen, 100 Unzen und 1 kg.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/silberschmuck-wert-rechner/" class="category-card" id="card-jewelry">
-            <div class="category-icon">💍</div>
-            <h3>Rechner für den Wert von Silberschmuck</h3>
-            <p>Berechnen Sie den Schmelzwert von Silberringen, Ketten, Halsketten und Armbändern.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/silberbesteck-wert-rechner/" class="category-card" id="card-silverware">
-            <div class="category-icon">🍴</div>
-            <h3>Silberwaren-Wertrechner</h3>
-            <p>Finden Sie den Silberwert von Löffeln, Gabeln, Tabletts, Messern, Tassen und Tellern.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/silberpreis-pro-gramm/" class="category-card" id="card-price-gram">
-            <div class="category-icon">📊</div>
-            <h3>Rechner für den Silberpreis pro Gramm</h3>
-            <p>Aktueller Silberpreis pro Gramm mit Umrechner für alle gängigen Gewichtseinheiten.</p>
-            <span class="card-arrow">View Price →</span>
-          </a>
-
-          <a href="/silberpreis-pro-unze/" class="category-card" id="card-price-oz">
-            <div class="category-icon">💲</div>
-            <h3>Rechner für den Silberpreis pro Unze</h3>
-            <p>Live-Silber-Spotpreis pro Feinunze, aktualisiert in Echtzeit von den globalen Märkten.</p>
-            <span class="card-arrow">View Price →</span>
-          </a>
-
-          <a href="/sona-chandi-rechner/" class="category-card" id="card-sona-chandi">
-            <div class="category-icon">✨</div>
-            <h3>Sona Chandi-Rechner</h3>
-            <p>Berechnen Sie die Werte von Sona (Gold) und Chandi (Silber) in Tola und Gramm mit Tunch.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/pennyweight-dwt-rechner/" class="category-card" id="card-dwt">
-            <div class="category-icon">⚖️</div>
-            <h3>Pennyweight-Rechner</h3>
-            <p>Berechnen Sie das Gewicht von Silbergegenständen in Pennyweight (dwt), einem traditionellen Juwelierstandard.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
+          <a href="/silver-scrap-calculator/" class="category-card"><div class="category-icon">♻️</div><h3>Schrottrechner</h3><p>Berechnen Sie den Schmelzwert Ihres Silberschrotts.</p></a>
+          <a href="/silver-melt-value-calculator/" class="category-card"><div class="category-icon">🔥</div><h3>Schmelzwert</h3><p>Finden Sie den Schmelzwert von reinem Silber (.999).</p></a>
+          <a href="/sterling-silver-calculator/" class="category-card"><div class="category-icon">✨</div><h3>Sterlingsilber</h3><p>Berechnen Sie den Wert Ihres .925 Sterlingsilbers.</p></a>
+          <a href="/junk-silver-calculator/" class="category-card"><div class="category-icon">🪙</div><h3>Münzsilber</h3><p>Wert von Silbermünzen vor 1965.</p></a>
+          <a href="/silver-coin-value-calculator/" class="category-card"><div class="category-icon">🏛️</div><h3>Münzwert</h3><p>Berechnen Sie den Schmelzwert jeder Silbermünze.</p></a>
+          <a href="/gold-and-silver-calculator/" class="category-card"><div class="category-icon">🥇</div><h3>Gold & Silber Rechner</h3><p>Berechnen Sie gemischten Gold- und Silberschrott.</p></a>
+          <a href="/silver-bar-value-calculator/" class="category-card"><div class="category-icon">🧱</div><h3>Silberbarren</h3><p>Finden Sie den aktuellen Wert von Silberbarren.</p></a>
+          <a href="/silver-jewelry-value-calculator/" class="category-card"><div class="category-icon">💍</div><h3>Silberschmuck</h3><p>Berechnen Sie den Schmelzwert von Silberschmuck.</p></a>
+          <a href="/silverware-value-calculator/" class="category-card"><div class="category-icon">🍴</div><h3>Silberbesteck</h3><p>Finden Sie den Silberwert von Besteck und Tabletts.</p></a>
+          <a href="/silver-price-per-gram/" class="category-card"><div class="category-icon">📊</div><h3>Preis pro Gramm</h3><p>Aktueller Silberpreis pro Gramm.</p></a>
+          <a href="/silver-price-per-ounce/" class="category-card"><div class="category-icon">💲</div><h3>Preis pro Unze</h3><p>Live-Spotpreis pro Feinunze.</p></a>
         </div>
       </div>
     </section>
 
-    <!-- Tools Section — user-focused language -->
-    <section class="section-compact" id="tools">
+    <section class="section-compact">
       <div class="container text-center">
-        <span class="section-badge">🛠️ Leistungsstarke Tools</span>
-        <h2 class="section-title">Wie diese Silberwerkzeuge Ihnen helfen, mehr Wert zu erzielen</h2>
-        <p class="section-subtitle">Sparen Sie Zeit, vergleichen Sie Preise und treffen Sie bessere Verkaufsentscheidungen mit diesen kostenlosen Silber-Tools.</p>
-
+        <span class="section-badge">🛠️</span>
+        <h2 class="section-title">Leistungsstarke Werkzeuge für Mehr Wert</h2>
+        <p class="section-subtitle">Sparen Sie Zeit und treffen Sie bessere Entscheidungen.</p>
         <div class="category-grid stagger" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
-          <a href="/silber-gewinn-rechner/" class="category-card" id="card-profit">
-            <div class="category-icon">📈</div>
-            <h3>Silbergewinnrechner</h3>
-            <p>Investoren: Berechnen Sie Ihren gesamten Return on Investment (ROI) auf Basis Ihres durchschnittlichen Kaufpreises.</p>
-            <span class="card-arrow">Calculate ROI →</span>
-          </a>
-          <a href="/nennwert-silber-rechner/" class="category-card" id="card-face-val">
-            <div class="category-icon">💵</div>
-            <h3>Nennwertrechner</h3>
-            <p>Finden Sie den Schmelzwert Ihrer 90 %-Silbermünzen, indem Sie einfach ihren Nennwert eingeben (z. B. 10 $ FV).</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-          <a href="/silber-stapel-rechner/" class="category-card" id="card-batch">
-            <div class="category-icon">📋</div>
-            <h3>Batch-Silberrechner</h3>
-            <p>Haben Sie mehrere Silbergegenstände? Addieren Sie sie alle und sehen Sie den kombinierten Gesamtwert – drucken oder kopieren Sie dann Ihre Liste für den Händler.</p>
-            <span class="card-arrow">Try It →</span>
-          </a>
-          <a href="/silber-gewichtsumrechner/" class="category-card" id="card-converter">
-            <div class="category-icon">⚖️</div>
-            <h3>Silber-Gewichtsumrechner</h3>
-            <p>Sie sind sich nicht sicher, ob Ihre Waage Feinunzen oder normale Unzen anzeigt? Rechnen Sie zwischen 6 Gewichtseinheiten um, damit Sie nie zu viel oder zu wenig bezahlen.</p>
-            <span class="card-arrow">Convert →</span>
-          </a>
-          <a href="/silber-verkaufen-oder-halten/" class="category-card" id="card-hold">
-            <div class="category-icon">📈</div>
-            <h3>Rechner zum Verkaufen oder Halten</h3>
-            <p>Sie fragen sich, ob jetzt der richtige Zeitpunkt für den Verkauf ist? Vergleichen Sie den aktuellen Silberwert im Vergleich zu höheren oder niedrigeren Spotpreisen.</p>
-            <span class="card-arrow">Analyze →</span>
-          </a>
-          <a href="/silberpreis-alle-waehrungen/" class="category-card" id="card-currencies">
-            <div class="category-icon">🌍</div>
-            <h3>Silberpreis in 12 Währungen</h3>
-            <p>Sehen Sie sich die Live-Silberpreise in USD, EUR, GBP, INR, PKR, AUD, CAD und mehr an – so wissen Sie genau, was Ihr Silber weltweit wert ist.</p>
-            <span class="card-arrow">View Prices →</span>
-          </a>
-          <a href="/tola-rechner/" class="category-card" id="card-tola">
-            <div class="category-icon">⚖️</div>
-            <h3>Tola-Rechner</h3>
-            <p>Konvertieren und berechnen Sie Altsilber mithilfe der auf südasiatischen Märkten üblichen Tola- und Masha-Maße.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-          <a href="/silber-identifizieren/" class="category-card" id="card-ident">
-            <div class="category-icon">🔎</div>
-            <h3>Silber-Identifizierungstool</h3>
-            <p>Nicht sicher, ob es sich um echtes Silber handelt? Erfahren Sie, wie Sie zu Hause Markenzeichen, Magnettests und Säuretests erkennen.</p>
-            <span class="card-arrow">Read Guide →</span>
-          </a>
+          <a href="/silver-profit-calculator/" class="category-card"><div class="category-icon">📈</div><h3>Gewinnrechner</h3><p>Berechnen Sie Ihre Rendite.</p></a>
+          <a href="/face-value-silver-calculator/" class="category-card"><div class="category-icon">💵</div><h3>Nennwertrechner</h3><p>Finden Sie den Metallwert Ihrer 90% Silbermünzen.</p></a>
+          <a href="/silver-batch-calculator/" class="category-card"><div class="category-icon">📋</div><h3>Stapelrechner</h3><p>Fügen Sie mehrere Artikel hinzu und sehen Sie den Gesamtwert.</p></a>
+          <a href="/silver-weight-converter/" class="category-card"><div class="category-icon">⚖️</div><h3>Gewichtsumrechner</h3><p>Umrechnung zwischen 6 Gewichtseinheiten.</p></a>
+          <a href="/silver-sell-or-hold/" class="category-card"><div class="category-icon">📈</div><h3>Verkaufen oder Halten</h3><p>Vergleichen Sie den aktuellen Wert mit verschiedenen Preisen.</p></a>
+          <a href="/silver-price-all-currencies/" class="category-card"><div class="category-icon">🌍</div><h3>Preis in 12 Währungen</h3><p>Sehen Sie Silberpreise in USD, EUR, GBP und mehr.</p></a>
         </div>
       </div>
     </section>
 
-    <!-- How It Works — compact -->
     <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container text-center">
-        <span class="section-badge">📋 Einfacher Prozess</span>
-        <h2 class="section-title">So funktioniert es – 3 einfache Schritte</h2>
-        <p class="section-subtitle">Erhalten Sie in Sekundenschnelle eine genaue Silberbewertung.</p>
-
+        <span class="section-badge">📋</span>
+        <h2 class="section-title">So Funktioniert Es — 3 Einfache Schritte</h2>
+        <p class="section-subtitle">Erhalten Sie eine genaue Bewertung in Sekunden.</p>
         <div class="steps-grid stagger">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <h4>Wiegen Sie Ihr Silber</h4>
-            <p>Verwenden Sie eine Küchenwaage, um Ihren Silbergegenstand in Gramm, Feinunzen oder einer anderen Einheit zu wiegen.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <h4>Wählen Sie Silberreinheit</h4>
-            <p>Wählen Sie den Reinheitsgrad – 925 für Sterling, 999 für Feinsilber, 900 für Münzsilber oder andere.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <h4>Erhalten Sie sofortigen Schmelzwert</h4>
-            <p>Sehen Sie sich den Schmelzwert basierend auf Live-Silber-Spotpreisen an – aktualisiert in Echtzeit von den globalen Märkten.</p>
-          </div>
+          <div class="step-card"><div class="step-number">1</div><h4>Wiegen Sie Ihr Silber</h4><p>Verwenden Sie eine Waage um Ihr Silber zu wiegen.</p></div>
+          <div class="step-card"><div class="step-number">2</div><h4>Reinheit Wählen</h4><p>Wählen Sie die Reinheit: .999, .925, .900 oder individuell.</p></div>
+          <div class="step-card"><div class="step-number">3</div><h4>Sofortergebnis</h4><p>Der Wert wird sofort mit dem Live-Spotpreis berechnet.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- Semantic SEO Content -->
-    <section class="section-compact" id="guide">
+    <section class="section-compact">
       <div class="container">
-        <div class="content-body" style="max-width: 800px; margin: 0 auto; text-align: left; line-height: 1.8;">
-
-          <h2>Was ist ein Altsilberrechner – und wann sollten Sie ihn verwenden?</h2>
-          <p>Im Kern ermittelt ein Altsilberrechner den <strong>intrinsic melt value</strong> eines Silbergegenstandes – nicht seinen Verkaufspreis, nicht seinen sentimentalen Wert und keine Sammlerprämie. Es beantwortet eine konkrete Frage: Wenn Sie diesen Gegenstand heute zu reinem Silber einschmelzen würden, welchen Wert hätte dieses Metall? Dazu werden drei Informationen verwendet: das Gewicht des Artikels, sein Silberfeinheitsgrad (Reinheit) und der Strom <strong>spot price</strong> Silber, wie es auf dem globalen Rohstoffmarkt gehandelt wird.</p>
-          <p>Sie sollten es immer dann verwenden, wenn Sie Altsilber verkaufen möchten – sei es ein kaputtes Armband, ein Satz altes Besteck, eine Münzsammlung oder eine Tüte Reststücke aus Sterlingsilber. Den Schmelzwert im Voraus zu kennen, ist der effektivste Weg, um eine Unterbezahlung durch einen Händler oder eine Raffinerie zu vermeiden. Sie können das überprüfen <a href="/silberpreis-pro-unze/">live silver price per troy ounce</a> oder die <a href="/silberpreis-pro-gramm/">silver price per gram</a> Sie können jederzeit sehen, wie sich der Markt entwickelt, bevor Sie sich zu einem Verkauf verpflichten.</p>
-
-          <h2>Wie der Silberschmelzwert tatsächlich berechnet wird</h2>
-          <p>Die Formel ist einfach, aber die Einheiten sind enorm wichtig. Der Silberpreis ist immer international <strong>troy ounces</strong> – nicht die Standard-Avoirdupois-Unzen, die Sie auf einer Küchenwaage verwenden würden. Eine Feinunze wiegt 31,1035 Gramm, verglichen mit 28,35 Gramm in einer Standardunze. Allein diese Unterscheidung ist einer der häufigsten Gründe, warum Menschen den Wert ihres Silbers falsch einschätzen.</p>
-          <p style="background: var(--bg-secondary); border-left: 3px solid var(--accent-primary); padding: var(--space-md) var(--space-lg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-family: monospace; font-size: var(--fs-sm);">Schmelzwert = Gewicht (in Feinunzen) × Reinheit (dezimal) × Spotpreis (pro Feinunze)</p>
-          <p>Beispiel: Eine 50-Gramm-Kette aus Sterlingsilber (Reinheit 0,925) mit Silber zu 30 $/Unze ergibt (50 ÷ 31,1035) × 0,925 × 30 = <strong>approximately $44.75</strong>. Unser <a href="/silber-schmelzwert-rechner/">silver melt value calculator</a> erledigt das alles automatisch. Wenn Ihr Artikel in einer anderen Einheit gemessen wird, ist unsere <a href="/silber-gewichtsumrechner/">silver weight converter</a> übernimmt die Umrechnung zwischen Gramm, Feinunzen, Pennyweights, Tolas und Kilogramm, sodass Sie immer die richtige Zahl eingeben.</p>
-
-          <h2>Reinheitszeichen und Punzen von Silber verstehen</h2>
-          <p>Jedes Silberstück trägt in seinen Stempelzeichen eine Geschichte, die sogenannte <strong>hallmarks</strong>. Diese winzigen Gravuren verraten Ihnen den Feingehalt des Silbers – den Anteil an reinem Silber in der Legierung. Für eine genaue Bewertung ist es unerlässlich, zu lernen, sie zu lesen.</p>
-          <p>Die häufigsten Reinheiten, denen Sie begegnen werden, sind:</p>
-          <ul>
-            <li><strong>999 (Fine Silver)</strong> — 99,9 % reines Silber. Typischerweise in Anlagebarren und Münzen wie dem American Silver Eagle zu finden. Nutzen Sie unsere <a href="/999-feinsilber-rechner/">999 silver calculator</a> für diese Artikel.</li>
-            <li><strong>958 (Britannia Silver)</strong> – 95,8 % rein, wird in einigen britischen Silberwaren verwendet. Unser <a href="/958-britanniasilber-rechner/">958 silver calculator</a> geht präzise mit dieser Feinheit um.</li>
-            <li><strong>925 (Sterling Silver)</strong> — Der weltweit anerkannteste Standard. 92,5 % Silber, 7,5 % Kupferlegierung. Die meisten heute verkauften Schmuckstücke und Bestecke bestehen aus Sterlingsilber. Der engagierte <a href="/sterlingsilber-rechner/">sterling silver calculator</a> oder <a href="/925-sterlingsilber-rechner/">925 silver calculator</a> sind hier beide nützlich.</li>
-            <li><strong>900 (Coin Silver)</strong> – Wird in älteren US-Münzen verwendet, die vor 1965 geprägt wurden. Unsere <a href="/900-muenzsilber-rechner/">900 silver calculator</a> ist für diese Gegenstände gebaut.</li>
-            <li><strong>835 &amp; 800 (European Silver)</strong> — Häufig in kontinentaleuropäischem Hohlgeschirr und Besteck. Benutzen Sie die <a href="/835-silber-rechner/">835 silver calculator</a> oder <a href="/800-silber-rechner/">800 silver calculator</a> bzw.</li>
-          </ul>
-          <p>Wenn Sie einen Stempel mit der Aufschrift „STERLING“, „925“ oder „925/1000“ sehen, handelt es sich mit ziemlicher Sicherheit um Sterlingsilber. Wenn überhaupt keine Markierung vorhanden ist, kann ein Juwelier oder Pfandhaus zur Bestätigung einen Säuretest oder eine RFA-Analyse durchführen. Unser <a href="/925-sterling-silver-price-per-gram/">925 sterling silver price per gram</a> Auf dieser Seite erhalten Sie eine Live-Basisreferenz für die gängigste Reinheit.</p>
-
-          <h2>Wertschätzung von Silberschmuck, Besteck und Hohlgegenständen</h2>
-          <p>Der eigentliche Wert von Silberschmuck ergibt sich ausschließlich aus seinem Silbergehalt – nicht aus dem Design, der Handwerkskunst oder dem Markennamen. Ein schwerer schlichter Silberarmreif ist als Schrott weitaus mehr wert als ein leichter Designerring. Das Gewicht ist der entscheidende Faktor. Wägen Sie Gegenstände daher immer ab, bevor Sie ihren Wert ermitteln.</p>
-          <p>Verwenden Sie für bestimmte Schmuckarten die speziell entwickelten Werkzeuge: die <a href="/silberring-wert/">silver ring calculator</a>, <a href="/silberkette-wert/">silver chain calculator</a>, <a href="/silberhalskette-wert/">silver necklace calculator</a>, und <a href="/silberarmband-wert/">silver bracelet calculator</a> Bei allen können Sie genaue Gewichte eingeben und sofort Ausschusswerte erhalten. Für jedes tragbare Stück im Großen und Ganzen gilt das <a href="/silberschmuck-wert-rechner/">silver jewelry value calculator</a> ist der beste Ausgangspunkt.</p>
-          <p>Silberwaren und Besteck – Löffel, Gabeln, Messer, Tabletts, Tassen und Teller – haben die gleichen Preise. Ein kompletter Satz Besteck aus Sterlingsilber kann ein beträchtliches Silbergewicht darstellen. Beginnen Sie mit dem <a href="/silberbesteck-wert-rechner/">silverware value calculator</a>, oder gehen Sie direkt zu den einzelnen Seiten für <a href="/silberloeffel-wert/">silver spoons</a>, <a href="/silbergabel-wert/">silver forks</a>, <a href="/silbermesser-wert/">silver knives</a>, <a href="/silbertablett-wert/">silver trays</a>, <a href="/silberbecher-wert/">silver cups</a>, und <a href="/silberteller-wert/">silver plates</a>.</p>
-          <p>Ein wichtiger Vorbehalt: <em>silver-plated</em> Gegenstände haben nur eine mikroskopisch kleine Silberschicht auf einem unedlen Metall. Sie haben als Silberschrott praktisch keinen Schmelzwert und sollten hier nicht eingegeben werden.</p>
-
-          <h2>Silbermünzen – Schmelzwert versus Numismatikwert</h2>
-          <p>Dies ist einer der am meisten missverstandenen Bereiche auf dem Silbermarkt. Der Schmelzwert einer Münze – allein der Wert ihres Silbergehalts – ist immer der Mindestwert. Aber viele Münzen tragen einen Zusatz <strong>numismatic premium</strong> aufgrund ihrer Seltenheit, ihres Alters, ihres Zustands oder der Sammlernachfrage. Es wäre ein kostspieliger Fehler, einen makellosen Morgan Dollar von 1881 zum Schrottpreis zu verkaufen.</p>
-          <p>Für gängige Umlaufmünzen in großen Mengen – die Art, die typischerweise genannt wird <strong>junk silver</strong> – Der Schmelzwert ist im Wesentlichen alles, was Sie erhalten. US-Cent-, Quarter-, Half-Dollar- und Dollar-Münzen aus der Zeit vor 1965 bestehen zu 90 % aus Silber. Unser <a href="/billon-silber-rechner/">junk silver calculator</a> ist speziell auf diese zugeschnitten und die <a href="/nennwert-silber-rechner/">face value silver calculator</a> können Sie einfach den Gesamtnennwert Ihres Münzbeutels eingeben (z. B. 10 $ FV), um eine sofortige Schätzung zu erhalten.</p>
-          <p>Für einzelne Münzen verwenden Sie die <a href="/silbermuenzen-wert-rechner/">silver coin value calculator</a>, die <a href="/silber-dollar-rechner/">silver dollar calculator</a>, die <a href="/silber-quarter-rechner/">silver quarter calculator</a>, die <a href="/silber-dime-rechner/">silver dime calculator</a>, oder die <a href="/kanadische-silbermuenzen-rechner/">Canadian silver coin calculator</a>.</p>
-          <p>Für Silberbarren gilt: <a href="/silberbarren-wert-rechner/">silver bar value calculator</a> unterstützt gängige Größen von 1oz bis 100oz und 1kg. Es gibt spezielle Seiten für <a href="/1oz-silberwert/">1oz</a>, <a href="/2oz-silberwert/">2oz</a>, <a href="/5oz-silberwert/">5oz</a>, <a href="/10oz-silberwert/">10oz</a>, <a href="/100oz-silberwert/">100oz</a>, und <a href="/1kg-silberwert/">1kg</a> Balken. Wenn Sie eine große gemischte Sammlung haben, ist die <a href="/silber-stapel-rechner/">silver batch calculator</a> Sie können unbegrenzt Einzelposten hinzufügen und eine Gesamtsumme erhalten, die Sie ausdrucken oder an einen Händler kopieren können.</p>
-
-          <h2>Silber richtig wiegen: Feinunzen, Gramm, Pennyweight und Tola</h2>
-          <p>Im Edelmetallhandel werden verschiedene Gewichtseinheiten verwendet, die nicht immer mit Ihrer Küchenwaage übereinstimmen. Dies falsch zu verstehen, ist eine der einfachsten Möglichkeiten, sich zu verrechnen. Eine Feinunze ist 31,1035 g; Eine Standardunze wiegt nur 28,35 g. Die <strong>pennyweight (dwt)</strong> – im US-Schmuckhandel üblich – entspricht 1,555 g, und unser <a href="/pennyweight-dwt-rechner/">pennyweight calculator</a> wandelt automatisch zwischen DWT und Spotpreis um. In südasiatischen Märkten ist die <strong>tola</strong> (11,664 g) ist die Standardeinheit; die <a href="/tola-rechner/">tola silver calculator</a> ist speziell dafür gebaut.</p>
-          <p>Wenn Sie jemals zwischen einer dieser Einheiten wechseln müssen, können Sie dies tun <a href="/silber-gewichtsumrechner/">silver weight converter</a> verwaltet alle sechs Einheiten in beide Richtungen mit einem einzigen Eintrag. Außerdem wird der entsprechende Spotpreis für jede Einheit angezeigt, sodass Sie Ihren Skalenwert sofort überprüfen können.</p>
-
-          <h2>Gold und Silber zusammen – und wissen, wann man es verkaufen sollte</h2>
-          <p>Viele Nachlassverkäufe und Händlerlose umfassen sowohl Gold- als auch Silbergegenstände. Die <a href="/gold-und-silber-rechner/">gold and silver calculator</a> verarbeitet beide Metalle gleichzeitig und zeigt auch das Live an <strong>gold-to-silver ratio</strong> – eine wichtige Kennzahl, auf die Anleger achten, um ihre Kauf- und Verkaufsentscheidungen zeitlich abzustimmen. Für südasiatische Märkte, in denen Gold gemessen wird als <em>Sona</em> und Silber als <em>Chandi</em>, die <a href="/sona-chandi-rechner/">Sona Chandi calculator</a> unterstützt Tola- und Gram-Einheiten mit integriertem Tunch (Reinheit).</p>
-          <p>Wenn Sie Silber als Investition halten, können Sie die Zahlen durchgehen <a href="/silber-gewinn-rechner/">silver profit calculator</a> um Ihren ROI basierend auf Ihrem ursprünglichen Kaufpreis zu sehen. Sie sind sich nicht sicher, ob Sie jetzt verkaufen oder warten sollen? Die <a href="/silber-verkaufen-oder-halten/">sell or hold calculator</a> modelliert verschiedene zukünftige Preisszenarien, damit Sie eine fundierte Entscheidung treffen können. Silberpreise sind auch in 12 Hauptwährungen verfügbar – darunter USD, EUR, GBP, INR, PKR, AUD und CAD – über unsere <a href="/silberpreis-alle-waehrungen/">silver price in all currencies</a> Seite.</p>
-
+        <div class="content-body">
+          <h2>Silberwert Verstehen — Vom Schrott zum Spotpreis</h2>
+          <div class="content-scroll-block">
+            <h3>Wie der Schmelzwert Berechnet Wird</h3><p>Der Wert eines Silberartikels hängt von drei Faktoren ab: <strong>Gewicht</strong>, <strong>Reinheit</strong> und <strong>Spotpreis</strong>. Formel: Wert = Gewicht (Feinunzen) × Reinheit × Spotpreis.</p><ul><li><strong>Gewicht</strong> — In Gramm, Feinunzen oder Kilogramm</li><li><strong>Reinheit</strong> — Silberanteil: 999 (99.9%), 925 Sterling (92.5%), 900 Münze (90%)</li><li><strong>Spotpreis</strong> — Aktueller Marktpreis an Börsen wie COMEX</li></ul><h3>Was ist Silberschrott?</h3><p>Silberschrott umfasst beschädigten Schmuck, altes Besteck, Silbermünzen und industrielle Abfälle — alles, was für seinen Silbergehalt verkauft wird.</p><h3>Echtes Silber Erkennen</h3><p>Suchen Sie nach Stempeln: 925, 800, 999, STERLING. Silber ist NICHT magnetisch. Versilberte Gegenstände (EP, EPNS) haben kaum Silberwert.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Silver & Precious Metals Entities -->
     <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container">
-        <h3 class="text-center" style="font-size:var(--fs-lg);margin-bottom:var(--space-md);">Themen rund um Silber und Edelmetalle</h3>
+        <h3 class="text-center" style="font-size:var(--fs-lg);margin-bottom:var(--space-md);">Silver & Precious Metals</h3>
         <div class="entity-scroller">
           <span class="entity-pill">Silver (Ag)</span>
           <span class="entity-pill">Troy Ounce</span>
           <span class="entity-pill">Spot Price</span>
-          <span class="entity-pill">COMEX Exchange</span>
+          <span class="entity-pill">COMEX</span>
           <span class="entity-pill">LBMA</span>
-          <span class="entity-pill">Sterling Silver 925</span>
+          <span class="entity-pill">Sterling 925</span>
           <span class="entity-pill">Fine Silver 999</span>
           <span class="entity-pill">Coin Silver 900</span>
           <span class="entity-pill">Melt Value</span>
@@ -400,85 +199,54 @@
           <span class="entity-pill">Precious Metals</span>
           <span class="entity-pill">Bullion</span>
           <span class="entity-pill">Hallmark</span>
-          <span class="entity-pill">Assay</span>
-          <span class="entity-pill">Pennyweight (DWT)</span>
-          <span class="entity-pill">Silver Refining</span>
-          <span class="entity-pill">Numismatic Value</span>
-          <span class="entity-pill">Junk Silver Coins</span>
+          <span class="entity-pill">Pennyweight</span>
+          <span class="entity-pill">Numismatic</span>
+          <span class="entity-pill">Junk Silver</span>
           <span class="entity-pill">Silver Alloy</span>
           <span class="entity-pill">Tola</span>
-          <span class="entity-pill">Silver Purity Testing</span>
           <span class="entity-pill">XRF Analysis</span>
-          <span class="entity-pill">Acid Test</span>
           <span class="entity-pill">Morgan Dollar</span>
-          <span class="entity-pill">American Silver Eagle</span>
+          <span class="entity-pill">Silver Eagle</span>
         </div>
       </div>
     </section>
 
-    <!-- FAQ — People Also Ask targeted -->
-    <section class="section-compact" id="faq" style="background: var(--bg-secondary);">
+    <section class="section-compact" id="faq">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">Häufig gestellte Fragen</h2>
-          <p class="section-subtitle">Klare Antworten auf die Fragen, die am häufigsten zum Wert von Silberschrott gestellt werden.</p>
+          <h2 class="section-title">Häufig Gestellte Fragen zum Silberwert</h2>
         </div>
-
-        <div class="faq-list" style="max-width: 800px; margin: 0 auto; text-align: left;">
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-1"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Wie berechne ich den Wert von Altsilber?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Multiplizieren Sie das Gewicht des Artikels in Feinunzen mit seinem Reinheitsgrad (als Dezimalzahl) und dann mit dem aktuellen Spotpreis für Silber. Zum Beispiel: 10 Gramm 925er Sterling zu 30 $/Unze = (10 ÷ 31,1035) × 0,925 × 30 = ungefähr 8,95 $. Dies <a href="/silber-schmelzwert-rechner/">silver melt value calculator</a> führt die Berechnung sofort durch, sobald Sie Gewicht, Reinheit und Einheit eingegeben haben.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-2"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Was ist der Unterschied zwischen Schmelzwert und Spotpreis?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Die <strong>spot price</strong> ist der aktuelle Marktpreis für eine Feinunze reines (999) Silber an der globalen Rohstoffbörse. Die <strong>melt value</strong> ist der Wert Ihres spezifischen Artikels basierend auf seinem Gewicht und seiner Reinheit. Er entspricht immer dem Spotpreis oder liegt darunter, da die meisten echten Silbergegenstände Kupfer oder andere Legierungen enthalten. Überprüfen Sie die heutige <a href="/silver-spot-price-today/">live silver spot price</a> um auf dem Laufenden zu bleiben.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-3"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Woher weiß ich, ob mein Silber echt ist und welchen Reinheitsgrad es hat?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Achten Sie auf einen Stempel oder eine Punze auf dem Artikel – häufige Stempel sind 925, 900, 800, 999 oder das Wort STERLING. Artikel aus dem Vereinigten Königreich tragen häufig das Passant-Löwen-Punze. Wenn keine Markierung vorhanden ist, kann ein seriöser Juwelier oder ein Pfandhaus einen Säuretest oder eine RFA-Analyse durchführen. Auf einem versilberten Gegenstand steht normalerweise „EPNS“, „Silver Plate“ oder „Sheffield Plate“ – diese haben einen vernachlässigbaren Schrottwert.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-4"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Wie viel zahlt mir ein Schrotthändler tatsächlich?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Die meisten Käufer von Altsilber zahlen zwischen 70 % und 95 % des berechneten Schmelzwertes. Der Prozentsatz hängt vom Käufertyp (örtliches Pfandhaus vs. Online-Raffinerie), der Reinheitszuversicht und der Menge, die Sie verkaufen, ab. Lokale Pfandleihhäuser bieten tendenziell weniger an; Spezialisierte Online-Silberveredler bieten oft 85–95 % der Schmelze an. Holen Sie immer mehrere Angebote ein und nutzen Sie diesen Rechner, um sicherzustellen, dass Sie ein faires Angebot erhalten, bevor Sie sich verpflichten.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-5"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Ist Altsilber dasselbe wie Altsilber?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Nicht ganz. <em>Junk silver</em> bezieht sich speziell auf US-Münzen aus der Zeit vor 1965 (Dimes, Quarters, Halfs, Dollars), die zu 90 % aus Silber bestehen und keinen Sammelaufschlag haben – sie werden allein aufgrund ihres Metallgehalts bewertet. <em>Scrap silver</em> ist ein weiter gefasster Begriff für zerbrochenen Schmuck, Besteck, Zahnsilber und alle Silberartikel, die wegen ihres Metalls verkauft werden. Benutzen Sie die <a href="/billon-silber-rechner/">junk silver calculator</a> für Münzen und diesen Altsilberrechner für alles andere.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-6"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Kann ich diesen Rechner für Silbermünzen verwenden?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Ja – geben Sie das Gewicht der Münze ein und wählen Sie ihren Reinheitsgrad (90 % für US-Münzen vor 1965, 99,9 % für Silver Eagles). Für mehr Präzision bei bestimmten Münztypen verwenden Sie jedoch die <a href="/silbermuenzen-wert-rechner/">silver coin value calculator</a> oder die dedizierte <a href="/silber-dollar-rechner/">silver dollar</a>, <a href="/silber-quarter-rechner/">silver quarter</a>, und <a href="/silber-dime-rechner/">silver dime</a> Taschenrechner, die automatisch das offizielle Münzgewicht verwenden.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-7"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Welche Gewichtseinheit eignet sich am besten – Gramm oder Feinunzen?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Nutzen Sie alles, was Ihre Waage anzeigt – dieser Rechner rechnet für Sie um. Gramm ist die einfachste Einheit für die meisten Haushaltswaagen. Troy-Unzen sind der Industriestandard und nützlich, wenn man sie direkt mit dem Spotpreis vergleicht. Der entscheidende Fehler, den es zu vermeiden gilt: verwirrend <em>standard</em> Unzen (28,35 g) mit <em>troy</em> Unzen (31,10 g). Dies ist ein sehr häufiger und kostspieliger Fehler. Nutzen Sie unsere <a href="/silber-gewichtsumrechner/">silver weight converter</a> wenn Sie die Einheit wechseln müssen.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-8"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Hat versilberter Schmuck einen Schrottwert?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Sehr wenig. Bei versilberten Gegenständen ist nur eine dünne Silberschicht (normalerweise nur wenige Mikrometer) auf ein Grundmetall wie Kupfer oder Nickel geklebt. Der tatsächliche Gewichtsanteil an Silber beträgt nur einen winzigen Bruchteil des Gesamtgewichts – viel zu gering, um ihn wirtschaftlich aus Schrott zu gewinnen. Suchen Sie nach Stempeln wie EPNS, EP oder „Silver Plate“, um plattierte Artikel zu identifizieren. Nur massives Sterling- oder Feinsilber hat einen sinnvollen Schrottwert.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-9"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Wie beeinflusst das Gold-Silber-Verhältnis meine Verkaufsentscheidung?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Die <strong>gold-to-silver ratio</strong> gibt an, wie viele Unzen Silber man braucht, um eine Unze Gold zu kaufen. Historisch gesehen liegt der Durchschnitt bei etwa 60–80; Wenn er über 80 steigt, gilt Silber im Vergleich zu Gold als relativ günstig und viele Anleger kaufen Silber. Wenn er unter 60 fällt, ist Silber relativ teuer und könnte ein guter Zeitpunkt zum Verkauf sein. Überprüfen Sie das Live-Verhältnis zusammen mit Ihrem Schmelzwert mit unserem <a href="/gold-und-silber-rechner/">gold and silver calculator</a>.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-10"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Kann ich den Silberwert in anderen Währungen als US-Dollar berechnen?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Ja. Unser <a href="/silberpreis-alle-waehrungen/">silver price in all currencies</a> Die Seite zeigt Live-Silberpreise in USD, EUR, GBP, INR, PKR, AUD, CAD und mehr. Für südasiatische Märkte gilt das <a href="/sona-chandi-rechner/">Sona Chandi calculator</a> unterstützt Tola-Messungen und Tunch (Reinheit) in einem Format, das den lokalen Märkten bekannt ist.</p></div>
+        <div class="faq-scroll-panel">
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" id="faq-btn-1"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Wie genau ist dieser Rechner?</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>Unser Rechner verwendet Live-Spotpreise. Der angezeigte Wert ist theoretisch; Händler zahlen 80-97% des Schmelzwerts.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" id="faq-btn-2"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Why does the price change?</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>Silver trades on global exchanges. Price fluctuates with supply and demand.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" id="faq-btn-3"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">What is a troy ounce?</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>A troy ounce (31.1035g) is the standard unit for precious metals, ~10% heavier than a regular ounce.</p></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <div id="site-footer"></div>
 
-  <!-- Scripts -->
-  <script src="../js/silver-price.js"></script>
-  <script src="../js/calculator.js"></script>
-  <script src="../js/components.js"></script>
   <script>
-    // Hero Calculator Logic
+    window.MenuTranslations = {"Home":"Startseite","Calculators":"Rechner","Purity":"Reinheit","Pricing":"Preise","Tools":"Werkzeuge","Guides":"Ratgeber","Primary Calculators":"Hauptrechner","Item Calculators":"Artikelrechner","Popular Coins":"Beliebte Münzen","Silver Purity":"Silberreinheit","Silver Scrap Calculator":"Silberschrott-Rechner","About":"Über uns","Privacy":"Datenschutz","Terms":"Bedingungen","All rights reserved.":"Alle Rechte vorbehalten.","Prices are for informational purposes only.":"Preise dienen nur zu Informationszwecken.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Kostenlose Rechner mit Live-Spotpreisen. Berechnen Sie den Schmelzwert Ihres Silbers blitzschnell."};
+  </script>
+  <script src="../js/silver-price.js?v=2.1"></script>
+  <script src="../js/calculator.js?v=2.1"></script>
+  <script src="../js/components.js?v=2.1"></script>
+  <script>
+    SiteComponents.renderPriceTicker('price-ticker');
+
     const weightInput = document.getElementById('calc-weight');
     const unitSelect = document.getElementById('calc-unit');
     const puritySelect = document.getElementById('calc-purity');
@@ -490,53 +258,22 @@
       const unit = unitSelect.value;
       const purity = parseFloat(puritySelect.value);
       const spotPrice = SilverPrice.getPrice();
-
-      if (weight <= 0) {
-        resultValue.textContent = '$0.00';
-        resultDetail.textContent = 'Enter weight to calculate';
-        return;
-      }
-
+      if (weight <= 0) { resultValue.textContent = '$0.00'; resultDetail.textContent = t.spot + ': --'; return; }
       const weightGrams = SilverCalc.toGrams(weight, unit);
       const result = SilverCalc.meltValue(weightGrams, purity, spotPrice);
-
       resultValue.textContent = SilverCalc.formatCurrency(result.value);
-      resultDetail.textContent = `${result.silverContentGrams}g pure silver · ${result.silverContentOz} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+      resultDetail.textContent = result.silverContentGrams + 'g · ' + result.silverContentOz + ' troy oz · ' + t.spot + ': $' + spotPrice.toFixed(2) + '/oz';
     }
 
     weightInput.addEventListener('input', calculate);
     unitSelect.addEventListener('change', calculate);
     puritySelect.addEventListener('change', calculate);
-
-    // Update calc when price loads
     SilverPrice.onPriceUpdate(() => calculate());
-
-    // Initial calc
     calculate();
 
-    // FAQ toggle
     document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.closest('.faq-item').classList.toggle('open');
-      });
+      btn.addEventListener('click', () => { btn.closest('.faq-item').classList.toggle('open'); });
     });
-
-    SiteComponents.injectFAQSchema([
-      { q: 'How do I calculate the value of scrap silver?', a: 'Multiply the item\'s weight in troy ounces by its purity (as a decimal) and then by the current silver spot price. For example, 10 grams of 925 sterling at $30/oz equals approximately $8.95. A silver melt value calculator does this math instantly.' },
-      { q: 'What is the difference between melt value and spot price?', a: 'The spot price is the current market price for one troy ounce of pure 999 silver. The melt value is what your specific item is worth based on its weight and purity — it is always equal to or less than spot price, because most silver items contain alloys.' },
-      { q: 'How do I know if my silver is real and what purity it is?', a: 'Look for a hallmark stamp on the item — common ones include 925, 900, 800, 999, or the word STERLING. If there is no marking, a jeweler or pawn shop can run an acid test or XRF analysis to confirm.' },
-      { q: 'How much will a scrap dealer actually pay me?', a: 'Most scrap silver buyers pay between 70% and 95% of the calculated melt value. Local pawn shops tend to offer less; specialist online silver refiners often offer 85-95% of melt. Always get multiple offers and use a calculator to verify fairness.' },
-      { q: 'Is junk silver the same as scrap silver?', a: 'Not exactly. Junk silver refers specifically to pre-1965 US coins (dimes, quarters, halves, dollars) that are 90% silver with no collectible premium. Scrap silver is a broader term covering broken jewelry, flatware, dental silver, and any silver sold for its metal.' },
-      { q: 'Can I use this calculator for silver coins?', a: 'Yes — enter the coin\'s weight and select its purity (90% for pre-1965 US coins, 99.9% for Silver Eagles). For more precision, use dedicated coin calculators for silver dollars, quarters, or dimes which use official coin weights automatically.' },
-      { q: 'What is the best weight unit to use — grams or troy ounces?', a: 'Use whatever your scale shows — the calculator converts for you. Grams are easiest for home scales. Avoid confusing standard ounces (28.35 g) with troy ounces (31.10 g), which is a very common and costly mistake.' },
-      { q: 'Does silver-plated jewelry have any scrap value?', a: 'Very little. Silver-plated items have only a thin coating of silver over base metal. The actual silver content is too small to recover economically. Look for stamps like EPNS or Silver Plate to identify plated items — only solid sterling or fine silver has meaningful scrap value.' },
-      { q: 'How does the gold-to-silver ratio affect my decision to sell?', a: 'The gold-to-silver ratio tells you how many ounces of silver it takes to buy one ounce of gold. When the ratio rises above 80, silver is relatively cheap and investors buy; when it falls below 60, silver is relatively expensive and may be a good time to sell.' },
-      { q: 'Can I calculate silver value in currencies other than US dollars?', a: 'Yes. Silver prices are available in USD, EUR, GBP, INR, PKR, AUD, CAD, and more. For South Asian markets, Tola measurements and Tunch (purity) are also supported.' }
-    ]);
   </script>
-
-
-<script>
-  window.MenuTranslations = {"slugs":{"silver-scrap-calculator":"silberschrott-rechner","gold-and-silver-calculator":"gold-und-silber-rechner","silver-melt-value-calculator":"silber-schmelzwert-rechner","sterling-silver-calculator":"sterlingsilber-rechner","junk-silver-calculator":"billon-silber-rechner","silver-coin-value-calculator":"silbermuenzen-wert-rechner","silver-bar-value-calculator":"silberbarren-wert-rechner","silver-jewelry-value-calculator":"silberschmuck-wert-rechner","silverware-value-calculator":"silberbesteck-wert-rechner","999-silver-calculator":"999-feinsilber-rechner","958-silver-calculator":"958-britanniasilber-rechner","925-silver-calculator":"925-sterlingsilber-rechner","900-silver-calculator":"900-muenzsilber-rechner","835-silver-calculator":"835-silber-rechner","800-silver-calculator":"800-silber-rechner","silver-purity-chart":"silber-reinheitstabelle","silver-price-per-gram":"silberpreis-pro-gramm","silver-price-per-ounce":"silberpreis-pro-unze","silver-price-all-currencies":"silberpreis-alle-waehrungen","1-10oz-silver-value":"1-10oz-silberwert","1oz-silver-value":"1oz-silberwert","2oz-silver-value":"2oz-silberwert","5oz-silver-value":"5oz-silberwert","10oz-silver-value":"10oz-silberwert","100oz-silver-value":"100oz-silberwert","1kg-silver-value":"1kg-silberwert","silver-profit-calculator":"silber-gewinn-rechner","silver-batch-calculator":"silber-stapel-rechner","sona-chandi-calculator":"sona-chandi-rechner","face-value-silver-calculator":"nennwert-silber-rechner","silver-weight-converter":"silber-gewichtsumrechner","pennyweight-calculator":"pennyweight-dwt-rechner","tola-calculator":"tola-rechner","silver-sell-or-hold":"silber-verkaufen-oder-halten","identify-silver":"silber-identifizieren","how-to-use-silver-calculators":"wie-man-silberrechner-verwendet","what-is-silver-scrap":"was-ist-silberschrott","what-is-silver-melt-value":"was-ist-silberschmelzwert","what-is-junk-silver":"was-ist-billon-silber","what-is-troy-ounce":"was-ist-eine-feinunze","what-is-silver-bullion":"was-sind-silberbarren","how-silver-prices-work":"wie-silberpreise-funktionieren","silver-hallmarks-guide":"silberstempel-ratgeber","what-does-925-mean":"was-bedeutet-925","what-is-sterling-silver":"was-ist-sterlingsilber","how-to-sell-silver":"wie-man-silber-verkauft","silver-bracelet-value":"silberarmband-wert","silver-chain-value":"silberkette-wert","silver-cup-value":"silberbecher-wert","silver-dime-calculator":"silber-dime-rechner","silver-dollar-calculator":"silber-dollar-rechner","silver-fork-value":"silbergabel-wert","silver-knife-value":"silbermesser-wert","silver-necklace-value":"silberhalskette-wert","silver-plate-value":"silberteller-wert","silver-quarter-calculator":"silber-quarter-rechner","silver-ring-value":"silberring-wert","silver-spoon-value":"silberloeffel-wert","silver-tray-value":"silbertablett-wert","canadian-silver-coin-calculator":"kanadische-silbermuenzen-rechner"},"Home":"Startseite","Calculators":"Rechner","Silver Scrap Calculator":"Silberschrott-Rechner","Gold & Silver Calculator":"Gold- & Silber-Rechner","Silver Melt Value":"Silberschmelzwert","Sterling Silver Calculator":"Sterlingsilber-Rechner","Junk Silver Calculator":"Billon-Silber-Rechner","Silver Coin Value":"Silbermünzen-Wert","Silver Bar Value":"Silberbarren-Wert","Silver Jewelry Value":"Silberschmuck-Wert","Silverware Value":"Silberbesteck-Wert","Purity":"Reinheit","999 Fine Silver":"999 Feinsilber","958 Britannia Silver":"958 Britannia-Silber","925 Sterling Silver":"925 Sterlingsilber","900 Coin Silver":"900 Münzsilber","835 Silver":"835 Silber","800 Silver":"800 Silber","Silver Purity Chart":"Silber-Reinheitstabelle","Pricing":"Preise","Silver Price Per Gram":"Silberpreis pro Gramm","Silver Price Per Ounce":"Silberpreis pro Unze","Price in All Currencies":"Preis in allen Währungen","1/10oz Silver Value":"1/10oz Silberwert","1oz Silver Value":"1oz Silberwert","2oz Silver Value":"2oz Silberwert","5oz Silver Value":"5oz Silberwert","10oz Silver Value":"10oz Silberwert","100oz Silver Value":"100oz Silberwert","1kg Silver Value":"1kg Silberwert","Tools":"Werkzeuge","Silver Profit Calculator":"Silber-Gewinn-Rechner","Batch Calculator":"Stapel-Rechner","Sona Chandi Calculator":"Sona Chandi Rechner","Face Value Calculator":"Nennwert-Rechner","Weight Converter":"Gewichtsumrechner","Pennyweight (DWT) Calc":"Pennyweight (DWT) Rechner","Tola Calculator":"Tola-Rechner","Sell or Hold Analysis":"Verkaufen oder Halten Analyse","Silver Identifier":"Silber-Identifikator","Guides":"Ratgeber","How to Use Our Calculators":"Wie man unsere Rechner nutzt","What Is Silver Scrap?":"Was ist Silberschrott?","What Is Melt Value?":"Was ist Schmelzwert?","What Is Junk Silver?":"Was ist Billonsilber?","What Is a Troy Ounce?":"Was ist eine Feinunze?","What Is Silver Bullion?":"Was sind Silberbarren?","How Silver Prices Work":"Wie Silberpreise funktionieren","Silver Hallmarks Guide":"Silberstempel Ratgeber","What Does 925 Mean?":"Was bedeutet 925?","What Is Sterling Silver?":"Was ist Sterlingsilber?","How to Sell Silver":"Wie man Silber verkauft","Scrap Silver":"Silberschrott","Gold & Silver":"Gold & Silber","Silver Profit":"Silber-Gewinn","Melt Value":"Schmelzwert","Junk Silver":"Billonsilber","Silver Coins":"Silbermünzen","Silver Dollar":"Silberdollar","Silver Quarter":"Silber-Quarter","Silver Dime":"Silber-Dime","Jewelry Value":"Schmuckwert","925 Sterling":"925 Sterling","Purity Chart":"Reinheitstabelle","How to Use Calculators":"Rechner verwenden","Sona Chandi Calc":"Sona Chandi Rechner","Face Value Calc":"Nennwert-Rechner","Sell or Hold":"Verkaufen oder Halten","About":"Über uns","Privacy":"Datenschutz","Terms":"Bedingungen","All rights reserved.":"Alle Rechte vorbehalten.","Prices are for informational purposes only.":"Preise dienen nur zu Informationszwecken.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Kostenlose, präzise Silberrechner mit Live-Spotpreisen. Berechnen Sie blitzschnell den Schmelzwert Ihres Silberschrotts, Ihrer Münzen, Ihres Schmucks und Ihrer Barren."};
-</script>
-</body></html>
+</body>
+</html>

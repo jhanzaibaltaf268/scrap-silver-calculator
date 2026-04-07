@@ -8,10 +8,10 @@ const allLangs = [...languages, ...moreLangs];
 const allCodes = allLangs.map(l => l.code);
 
 function hreflangTags() {
-  let tags = `<link rel="alternate" hreflang="en" href="https://silvercalc.com/">\n`;
-  tags += `  <link rel="alternate" hreflang="x-default" href="https://silvercalc.com/">\n`;
+  let tags = `<link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/">\n`;
+  tags += `  <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/">\n`;
   allCodes.forEach(c => {
-    tags += `  <link rel="alternate" hreflang="${c}" href="https://silvercalc.com/${c}/">\n`;
+    tags += `  <link rel="alternate" hreflang="${c}" href="https://scrapsilvercalculater.com/${c}/">\n`;
   });
   return tags;
 }
@@ -19,9 +19,9 @@ function hreflangTags() {
 function langSwitcher(currentCode) {
   const flags = {es:'🇪🇸',fr:'🇫🇷',de:'🇩🇪',pt:'🇧🇷',hi:'🇮🇳',ur:'🇵🇰',ar:'🇸🇦',tr:'🇹🇷',it:'🇮🇹',zh:'🇨🇳',ru:'🇷🇺'};
   let html = '<div class="lang-switcher">';
-  html += `<a href="../index.html" class="lang-btn ${currentCode === 'en' ? 'active' : ''}">🇬🇧 EN</a>`;
+  html += `<a href="/" class="lang-btn ${currentCode === 'en' ? 'active' : ''}">🇬🇧 EN</a>`;
   allLangs.forEach(l => {
-    html += `<a href="../${l.code}/index.html" class="lang-btn ${l.code===currentCode?'active':''}">${flags[l.code]||'🌐'} ${l.code.toUpperCase()}</a>`;
+    html += `<a href="/${l.code}/" class="lang-btn ${l.code===currentCode?'active':''}">${flags[l.code]||'🌐'} ${l.code.toUpperCase()}</a>`;
   });
   html += '</div>';
   return html;
@@ -46,7 +46,7 @@ function generateHomepage(lang) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${t.siteTitle}</title>
   <meta name="description" content="${t.metaDesc}">
-  <link rel="canonical" href="https://silvercalc.com/${lang.code}/">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/${lang.code}/">
   ${hreflangTags()}
   <link rel="stylesheet" href="../css/style.css?v=2.1">
   <style>
@@ -155,17 +155,17 @@ function generateHomepage(lang) {
         <h2 class="section-title">${t.allCalcTitle}</h2>
         <p class="section-subtitle">${t.allCalcSub}</p>
         <div class="category-grid stagger">
-          <a href="../silver-scrap-calculator.html" class="category-card"><div class="category-icon">♻️</div><h3>${t.scrapCalc}</h3><p>${t.scrapCalcDesc}</p></a>
-          <a href="../silver-melt-value-calculator.html" class="category-card"><div class="category-icon">🔥</div><h3>${t.meltCalc}</h3><p>${t.meltCalcDesc}</p></a>
-          <a href="../sterling-silver-calculator.html" class="category-card"><div class="category-icon">✨</div><h3>${t.sterlingCalc}</h3><p>${t.sterlingCalcDesc}</p></a>
-          <a href="../junk-silver-calculator.html" class="category-card"><div class="category-icon">🪙</div><h3>${t.junkCalc}</h3><p>${t.junkCalcDesc}</p></a>
-          <a href="../silver-coin-value-calculator.html" class="category-card"><div class="category-icon">🏛️</div><h3>${t.coinCalc}</h3><p>${t.coinCalcDesc}</p></a>
-          <a href="../gold-and-silver-calculator.html" class="category-card"><div class="category-icon">🥇</div><h3>${t.goldSilverCalc}</h3><p>${t.goldSilverCalcDesc}</p></a>
-          <a href="../silver-bar-value-calculator.html" class="category-card"><div class="category-icon">🧱</div><h3>${t.barCalc}</h3><p>${t.barCalcDesc}</p></a>
-          <a href="../silver-jewelry-value-calculator.html" class="category-card"><div class="category-icon">💍</div><h3>${t.jewelryCalc}</h3><p>${t.jewelryCalcDesc}</p></a>
-          <a href="../silverware-value-calculator.html" class="category-card"><div class="category-icon">🍴</div><h3>${t.silverwareCalc}</h3><p>${t.silverwareCalcDesc}</p></a>
-          <a href="../silver-price-per-gram.html" class="category-card"><div class="category-icon">📊</div><h3>${t.priceGram}</h3><p>${t.priceGramDesc}</p></a>
-          <a href="../silver-price-per-ounce.html" class="category-card"><div class="category-icon">💲</div><h3>${t.priceOz}</h3><p>${t.priceOzDesc}</p></a>
+          <a href="/silver-scrap-calculator/" class="category-card"><div class="category-icon">♻️</div><h3>${t.scrapCalc}</h3><p>${t.scrapCalcDesc}</p></a>
+          <a href="/silver-melt-value-calculator/" class="category-card"><div class="category-icon">🔥</div><h3>${t.meltCalc}</h3><p>${t.meltCalcDesc}</p></a>
+          <a href="/sterling-silver-calculator/" class="category-card"><div class="category-icon">✨</div><h3>${t.sterlingCalc}</h3><p>${t.sterlingCalcDesc}</p></a>
+          <a href="/junk-silver-calculator/" class="category-card"><div class="category-icon">🪙</div><h3>${t.junkCalc}</h3><p>${t.junkCalcDesc}</p></a>
+          <a href="/silver-coin-value-calculator/" class="category-card"><div class="category-icon">🏛️</div><h3>${t.coinCalc}</h3><p>${t.coinCalcDesc}</p></a>
+          <a href="/gold-and-silver-calculator/" class="category-card"><div class="category-icon">🥇</div><h3>${t.goldSilverCalc}</h3><p>${t.goldSilverCalcDesc}</p></a>
+          <a href="/silver-bar-value-calculator/" class="category-card"><div class="category-icon">🧱</div><h3>${t.barCalc}</h3><p>${t.barCalcDesc}</p></a>
+          <a href="/silver-jewelry-value-calculator/" class="category-card"><div class="category-icon">💍</div><h3>${t.jewelryCalc}</h3><p>${t.jewelryCalcDesc}</p></a>
+          <a href="/silverware-value-calculator/" class="category-card"><div class="category-icon">🍴</div><h3>${t.silverwareCalc}</h3><p>${t.silverwareCalcDesc}</p></a>
+          <a href="/silver-price-per-gram/" class="category-card"><div class="category-icon">📊</div><h3>${t.priceGram}</h3><p>${t.priceGramDesc}</p></a>
+          <a href="/silver-price-per-ounce/" class="category-card"><div class="category-icon">💲</div><h3>${t.priceOz}</h3><p>${t.priceOzDesc}</p></a>
         </div>
       </div>
     </section>
@@ -176,12 +176,12 @@ function generateHomepage(lang) {
         <h2 class="section-title">${t.toolsTitle}</h2>
         <p class="section-subtitle">${t.toolsSub}</p>
         <div class="category-grid stagger" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
-          <a href="../silver-profit-calculator.html" class="category-card"><div class="category-icon">📈</div><h3>${t.profitCalc}</h3><p>${t.profitCalcDesc}</p></a>
-          <a href="../face-value-silver-calculator.html" class="category-card"><div class="category-icon">💵</div><h3>${t.faceValCalc}</h3><p>${t.faceValCalcDesc}</p></a>
-          <a href="../silver-batch-calculator.html" class="category-card"><div class="category-icon">📋</div><h3>${t.batchCalc}</h3><p>${t.batchCalcDesc}</p></a>
-          <a href="../silver-weight-converter.html" class="category-card"><div class="category-icon">⚖️</div><h3>${t.converterCalc}</h3><p>${t.converterCalcDesc}</p></a>
-          <a href="../silver-sell-or-hold.html" class="category-card"><div class="category-icon">📈</div><h3>${t.sellHold}</h3><p>${t.sellHoldDesc}</p></a>
-          <a href="../silver-price-all-currencies.html" class="category-card"><div class="category-icon">🌍</div><h3>${t.currencies}</h3><p>${t.currenciesDesc}</p></a>
+          <a href="/silver-profit-calculator/" class="category-card"><div class="category-icon">📈</div><h3>${t.profitCalc}</h3><p>${t.profitCalcDesc}</p></a>
+          <a href="/face-value-silver-calculator/" class="category-card"><div class="category-icon">💵</div><h3>${t.faceValCalc}</h3><p>${t.faceValCalcDesc}</p></a>
+          <a href="/silver-batch-calculator/" class="category-card"><div class="category-icon">📋</div><h3>${t.batchCalc}</h3><p>${t.batchCalcDesc}</p></a>
+          <a href="/silver-weight-converter/" class="category-card"><div class="category-icon">⚖️</div><h3>${t.converterCalc}</h3><p>${t.converterCalcDesc}</p></a>
+          <a href="/silver-sell-or-hold/" class="category-card"><div class="category-icon">📈</div><h3>${t.sellHold}</h3><p>${t.sellHoldDesc}</p></a>
+          <a href="/silver-price-all-currencies/" class="category-card"><div class="category-icon">🌍</div><h3>${t.currencies}</h3><p>${t.currenciesDesc}</p></a>
         </div>
       </div>
     </section>
@@ -314,7 +314,7 @@ function generateScrapCalculatorPage(lang) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${t.innerScrapTitle}</title>
   <meta name="description" content="${t.innerScrapDesc}">
-  <link rel="canonical" href="https://silvercalc.com/${lang.code}/silver-scrap-calculator.html">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/${lang.code}/silver-scrap-calculator/">
   <link rel="stylesheet" href="../css/style.css">
   <style>
     .lang-switcher { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 8px 0; background: rgba(5,5,10,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 1100; }
@@ -424,9 +424,9 @@ function generateScrapCalculatorPage(lang) {
       <div class="container text-center" style="max-width: 800px; margin: 0 auto; margin-bottom: var(--space-4xl);">
         <h3 style="margin-bottom: var(--space-lg);">${t.relatedCalcs}</h3>
         <div class="category-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
-          <a href="../silver-melt-value-calculator.html" class="category-card" style="padding: var(--space-md);">🔥 ${t.meltCalc}</a>
-          <a href="../sterling-silver-calculator.html" class="category-card" style="padding: var(--space-md);">✨ ${t.sterlingCalc}</a>
-          <a href="../silver-jewelry-value-calculator.html" class="category-card" style="padding: var(--space-md);">💍 ${t.jewelryCalc}</a>
+          <a href="/silver-melt-value-calculator/" class="category-card" style="padding: var(--space-md);">🔥 ${t.meltCalc}</a>
+          <a href="/sterling-silver-calculator/" class="category-card" style="padding: var(--space-md);">✨ ${t.sterlingCalc}</a>
+          <a href="/silver-jewelry-value-calculator/" class="category-card" style="padding: var(--space-md);">💍 ${t.jewelryCalc}</a>
         </div>
       </div>
     </div>
@@ -444,7 +444,7 @@ function generateScrapCalculatorPage(lang) {
     // Attempting to render simple translated breadcrumb
     const homeMenuText = window.MenuTranslations["Home"] || "Home";
     SiteComponents.renderBreadcrumb('breadcrumb', [
-      {label: homeMenuText, href:'index.html'},
+      {label: homeMenuText, href:'/${lang.code}/'},
       {label:'${t.calcWidgetTitleScrap}'}
     ]);
     

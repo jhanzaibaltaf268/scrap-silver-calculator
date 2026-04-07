@@ -11,7 +11,7 @@
   <div id="site-header"></div>
   <main>
     <div class="container"><div id="breadcrumb"></div></div>
-    <section class="page-hero"><div class="container"><h1>925 Silver <span class="highlight">Calculator</span></h1><p>Calculate the value of sterling silver (92.5% pure) by weight using live spot prices.</p></div></section>
+    <section class="page-hero"><div class="container"><div id="price-ticker"></div><h1>925 Silver <span class="highlight">Calculator</span></h1><p>Calculate the value of sterling silver (92.5% pure) by weight using live spot prices.</p></div></section>
     <div class="calc-page-layout">
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🔢</span> 925 Silver Calculator</div>
@@ -41,7 +41,7 @@
   <div id="site-footer"></div>
   <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
   <script>
-    
+    SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'925 Silver Calculator'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit');
     function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(grams,0.925,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure silver (92.5%) · ${r.silverContentOz} oz · Spot: $${spot.toFixed(2)}/oz`;}

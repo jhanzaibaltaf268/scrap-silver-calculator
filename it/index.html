@@ -1,10 +1,11 @@
-<!DOCTYPE html><html lang="it"><head>
+<!DOCTYPE html>
+<html lang="it">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calcolatore dell'argento di scarto: calcolatore gratuito del valore di fusione dell'argento [Prezzi in tempo reale]</title>
-  <meta name="description" content="Utilizza questo calcolatore gratuito di rottami d'argento per verificare immediatamente il valore dei tuoi articoli. Essendo un calcolatore di rottami d'argento altamente accurato, fornisce una stima affidabile del valore di fusione per i tuoi vecchi gioielli, monete, lingotti e pezzi rotti in base al peso, alla purezza e agli ultimi prezzi di mercato in tempo reale.">
-  <meta name="keywords" content="scrap silver calculator, silver scrap calculator, silver melt value calculator, sterling silver calculator, junk silver calculator, silver value calculator">
-  <link rel="canonical" href="https://scrapsilvercalculater.com/">
+  <title>Calcolatore Argento Rottame — Valore di Fusione in Tempo Reale</title>
+  <meta name="description" content="Usa il calcolatore gratuito per trovare il valore di fusione del tuo argento. Prezzi spot in tempo reale.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/it/">
   <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/">
   <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/">
   <link rel="alternate" hreflang="es" href="https://scrapsilvercalculater.com/es/">
@@ -18,381 +19,179 @@
   <link rel="alternate" hreflang="it" href="https://scrapsilvercalculater.com/it/">
   <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/">
   <link rel="alternate" hreflang="ru" href="https://scrapsilvercalculater.com/ru/">
-  <link rel="stylesheet" href="../css/style.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Scrap Silver Calculator",
-    "description": "Use this free Scrap Silver Calculator to instantly check what your items are worth. As a highly accurate silver scrap calculator, it provides a reliable melt value estimate for your old jewelry, coins, bars, and broken pieces based on weight, purity, and the latest live market prices.",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Any",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
+
+  <link rel="stylesheet" href="../css/style.css?v=2.1">
   <style>
-    /* Homepage-specific compact spacing */
     .section-compact { padding: var(--space-2xl) 0; }
     .section-compact .section-title { margin-bottom: var(--space-sm); }
     .section-compact .section-subtitle { margin: 0 auto var(--space-lg); }
     .hero-compact { padding: var(--space-2xl) 0 var(--space-xl); }
     .hero-compact h1 { margin-bottom: var(--space-sm); }
     .hero-compact .hero-subtitle { margin: 0 auto var(--space-lg); }
-    .trust-bar-compact { padding: var(--space-lg) 0; }
-
-    /* Scrollable FAQ panel */
-    .faq-scroll-panel { max-height: 480px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-sm); }
-    .faq-scroll-panel::-webkit-scrollbar { width: 6px; }
-    .faq-scroll-panel::-webkit-scrollbar-track { background: transparent; }
-    .faq-scroll-panel::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-
-    /* Scrollable content block */
-    .content-scroll-block { max-height: 500px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-md); margin: var(--space-lg) 0; }
-    .content-scroll-block::-webkit-scrollbar { width: 6px; }
-    .content-scroll-block::-webkit-scrollbar-track { background: transparent; }
-    .content-scroll-block::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-    .content-scroll-block h3 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
-    .content-scroll-block p, .content-scroll-block ul, .content-scroll-block ol { margin-bottom: var(--space-md); }
-    .content-scroll-block ul li, .content-scroll-block ol li { padding: var(--space-xs) 0; color: var(--text-secondary); }
-    .content-scroll-block ul li::before { content: '•'; color: var(--accent-primary); margin-right: var(--space-sm); }
-
-    /* Entity pills */
-    .entity-scroller { display: flex; flex-wrap: nowrap; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0 var(--space-md); scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; -webkit-overflow-scrolling: touch; }
-    .entity-scroller::-webkit-scrollbar { height: 5px; }
-    .entity-scroller::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-    .entity-pill { flex-shrink: 0; padding: 6px var(--space-md); background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(192,192,192,0.02)); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: var(--fs-xs); color: var(--text-muted); white-space: nowrap; }
     .lang-switcher { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 8px 0; background: rgba(5,5,10,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 1100; }
     body { padding-top: calc(var(--header-height) + 36px) !important; }
     .site-header { top: 36px !important; }
     .lang-btn { padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; background: rgba(255,255,255,0.05); }
     .lang-btn:hover, .lang-btn.active { background: var(--accent-primary); color: #fff; }
+    .faq-scroll-panel { max-height: 480px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-sm); }
+    .faq-scroll-panel::-webkit-scrollbar { width: 6px; }
+    .faq-scroll-panel::-webkit-scrollbar-track { background: transparent; }
+    .faq-scroll-panel::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .content-scroll-block { max-height: 500px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-md); margin: var(--space-lg) 0; }
+    .content-scroll-block::-webkit-scrollbar { width: 6px; }
+    .content-scroll-block::-webkit-scrollbar-track { background: transparent; }
+    .content-scroll-block::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .content-scroll-block h3 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+    .content-scroll-block p, .content-scroll-block ul { margin-bottom: var(--space-md); }
+    .content-scroll-block ul li { padding: var(--space-xs) 0; color: var(--text-secondary); }
+    .content-scroll-block ul li::before { content: '•'; color: var(--accent-primary); margin-right: var(--space-sm); }
+    .entity-scroller { display: flex; flex-wrap: nowrap; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0 var(--space-md); scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; -webkit-overflow-scrolling: touch; }
+    .entity-scroller::-webkit-scrollbar { height: 5px; }
+    .entity-scroller::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .entity-pill { flex-shrink: 0; padding: 6px var(--space-md); background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(192,192,192,0.02)); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: var(--fs-xs); color: var(--text-muted); white-space: nowrap; }
+    
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Calcolatore Argento Rottame",
+    "description": "Usa il calcolatore gratuito per trovare il valore di fusione del tuo argento. Prezzi spot in tempo reale.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "it",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
 </head>
 <body>
-
-  <div class="lang-switcher">
-    <a href="../" class="lang-btn">🇬🇧 EN</a>
-    <a href="../es/" class="lang-btn">🇪🇸 ES</a>
-    <a href="../fr/" class="lang-btn">🇫🇷 FR</a>
-    <a href="../de/" class="lang-btn">🇩🇪 DE</a>
-    <a href="../pt/" class="lang-btn">🇧🇷 PT</a>
-    <a href="../hi/" class="lang-btn">🇮🇳 HI</a>
-    <a href="../ur/" class="lang-btn">🇵🇰 UR</a>
-    <a href="../ar/" class="lang-btn">🇸🇦 AR</a>
-    <a href="../tr/" class="lang-btn">🇹🇷 TR</a>
-    <a href="../it/" class="lang-btn active">🇮🇹 IT</a>
-    <a href="../zh/" class="lang-btn">🇨🇳 ZH</a>
-    <a href="../ru/" class="lang-btn">🇷🇺 RU</a>
-  </div>
-
+  <div class="lang-switcher"><a href="/" class="lang-btn ">🇬🇧 EN</a><a href="/es/" class="lang-btn ">🇪🇸 ES</a><a href="/fr/" class="lang-btn ">🇫🇷 FR</a><a href="/de/" class="lang-btn ">🇩🇪 DE</a><a href="/pt/" class="lang-btn ">🇧🇷 PT</a><a href="/hi/" class="lang-btn ">🇮🇳 HI</a><a href="/ur/" class="lang-btn ">🇵🇰 UR</a><a href="/ar/" class="lang-btn ">🇸🇦 AR</a><a href="/tr/" class="lang-btn ">🇹🇷 TR</a><a href="/it/" class="lang-btn active">🇮🇹 IT</a><a href="/zh/" class="lang-btn ">🇨🇳 ZH</a><a href="/ru/" class="lang-btn ">🇷🇺 RU</a></div>
   <div id="site-header"></div>
 
   <main>
-    <!-- Hero Section — compact -->
     <section class="hero hero-compact">
       <div class="container hero-content">
-        <h1><span class="highlight">Calcolatore dei rottami d'argento</span></h1>
+        <div id="price-ticker"></div>
+        <h1><span class="highlight">Calcolatore Argento Rottame</span></h1>
+        <p class="hero-subtitle">Calcola il valore di fusione dei tuoi rottami d'argento, monete, gioielli e lingotti con prezzi spot in tempo reale.</p>
 
         <!-- Main Calculator Widget -->
-        <div class="calc-widget slide-up" id="hero-calc">
+        <div class="calc-widget slide-up" id="hero-calc" style="max-width:600px;margin:0 auto;">
+          <div class="calc-widget-title"><span class="icon">⚖️</span> Calcolatore Valore Argento</div>
 
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="calc-weight">Peso</label>
               <div class="input-group">
-                <input type="number" class="form-input" id="calc-weight" placeholder="Enter weight" step="0.01" min="0" value="10">
+                <input type="number" class="form-input" id="calc-weight" placeholder="10" step="0.01" min="0" value="10">
               </div>
             </div>
             <div class="form-group">
               <label class="form-label" for="calc-unit">Unità</label>
               <select class="form-select" id="calc-unit">
-                <option value="g" selected="">Grams (g)</option>
-                <option value="oz">Troy Ounces (oz)</option>
+                <option value="g" selected>Grammi (g)</option>
+                <option value="ozt">Once Troy (oz t)</option>
+                <option value="oz">Once (oz)</option>
+                <option value="kg">Chilogrammi (kg)</option>
                 <option value="dwt">Pennyweight (dwt)</option>
-                <option value="kg">Kilograms (kg)</option>
+                <option value="tola">Tola</option>
               </select>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="calc-purity">Purezza dell'argento</label>
+            <label class="form-label" for="calc-purity">Purezza</label>
             <select class="form-select" id="calc-purity">
-              <option value="0.999">999 — Fine Silver (99.9%)</option>
-              <option value="0.958">958 — Britannia Silver (95.8%)</option>
-              <option value="0.925" selected="">925 — Sterling Silver (92.5%)</option>
-              <option value="0.900">900 — Coin Silver (90.0%)</option>
-              <option value="0.835">835 — European Silver (83.5%)</option>
-              <option value="0.800">800 — European Silver (80.0%)</option>
+              <option value="0.999">999 — Fine (99.9%)</option>
+              <option value="0.958">958 — Britannia (95.8%)</option>
+              <option value="0.925" selected>925 — Sterling (92.5%)</option>
+              <option value="0.900">900 — Coin (90.0%)</option>
+              <option value="0.835">835 — (83.5%)</option>
+              <option value="0.800">800 — (80.0%)</option>
+              <option value="0.500">500 — (50.0%)</option>
             </select>
           </div>
 
           <div class="result-display" id="hero-result">
-            <div class="result-label">Valore di fusione stimato</div>
+            <div class="result-label">VALORE DI FUSIONE</div>
             <div class="result-value" id="hero-result-value">$0.00</div>
-            <div class="result-detail" id="hero-result-detail">Inserisci il peso per calcolare</div>
+            <div class="result-detail" id="hero-result-detail">Spot: $--/oz · Purezza: 92.5% · Argento Totale: 0.000 oz</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Trust Bar — compact -->
-    <section class="trust-bar-compact">
-      <div class="container">
-        <div class="trust-bar">
-          <div class="trust-item"><span class="icon">🔄</span> Prezzi spot in tempo reale</div>
-          <div class="trust-item"><span class="icon">🔒</span> 100% privato</div>
-          <div class="trust-item"><span class="icon">⚡</span> Risultati immediati</div>
-          <div class="trust-item"><span class="icon">📱</span> Funziona su qualsiasi dispositivo</div>
-          <div class="trust-item"><span class="icon">💰</span> Sempre gratuito</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- All Silver Calculators -->
-    <section class="section-compact" id="calculators">
+    <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container text-center">
-        <span class="section-badge">🧮 Le nostre calcolatrici</span>
-        <h2 class="section-title">Calcolatori gratuiti del valore di fusione e della purezza dell'argento</h2>
-        <p class="section-subtitle">Ogni calcolatrice d'argento di cui hai bisogno: per rottami, monete, gioielli, lingotti e altro ancora.</p>
-
+        <span class="section-badge">🧰 Tutti i Calcolatori d'Argento</span>
+        <h2 class="section-title">Tutti i Calcolatori d'Argento</h2>
+        <p class="section-subtitle">Strumenti specializzati per ogni tipo di argento.</p>
         <div class="category-grid stagger">
-
-          <a href="/calcolatore-del-valore-di-fusione-dellargento/" class="category-card" id="card-melt">
-            <div class="category-icon">🔥</div>
-            <h3>Calcolatore del valore di fusione dell'argento</h3>
-            <p>Trova il contenuto di argento puro e il valore di fusione di qualsiasi oggetto in argento in base al peso e alla finezza.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/calcolatrice-in-argento-sterling/" class="category-card" id="card-sterling">
-            <div class="category-icon">✨</div>
-            <h3>Calcolatrice in argento sterling</h3>
-            <p>Calcola istantaneamente il valore dei tuoi oggetti in argento sterling 925 in base al peso.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/calcolatrice-dargento-spazzatura/" class="category-card" id="card-junk">
-            <div class="category-icon">🪙</div>
-            <h3>Calcolatrice dell'argento spazzatura</h3>
-            <p>Trova il valore di fusione delle monete d'argento americane precedenti al 1965: centesimi, quarti, metà e dollari.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/calcolatore-del-valore-delle-monete-dargento/" class="category-card" id="card-coins">
-            <div class="category-icon">🏛️</div>
-            <h3>Calcolatore del valore delle monete d'argento</h3>
-            <p>Calcola il valore di fusione di qualsiasi moneta d'argento inserendone il peso, la purezza e la quantità.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/calcolatrice-per-oro-e-argento/" class="category-card" id="card-gold-silver">
-            <div class="category-icon">🥇</div>
-            <h3>Calcolatore di oro e argento</h3>
-            <p>Calcola i rottami d'oro e d'argento mescolati insieme e visualizza il rapporto in tempo reale.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/calcolatore-del-valore-del-lingotto-dargento/" class="category-card" id="card-bars">
-            <div class="category-icon">🧱</div>
-            <h3>Calcolatore del valore del lingotto d'argento</h3>
-            <p>Trova il valore attuale dei lingotti d'argento nelle dimensioni da 1 oncia, 5 once, 10 once, 100 once e 1 kg.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/calcolatore-del-valore-dei-gioielli-in-argento/" class="category-card" id="card-jewelry">
-            <div class="category-icon">💍</div>
-            <h3>Calcolatore del valore dei gioielli in argento</h3>
-            <p>Calcola il valore di fusione di anelli, catene, collane e braccialetti d'argento.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/calcolatore-del-valore-dellargenteria/" class="category-card" id="card-silverware">
-            <div class="category-icon">🍴</div>
-            <h3>Calcolatore del valore dell'argenteria</h3>
-            <p>Trova il valore dell'argento di cucchiai, forchette, vassoi, coltelli, tazze e piatti.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/prezzo-dellargento-al-grammo/" class="category-card" id="card-price-gram">
-            <div class="category-icon">📊</div>
-            <h3>Calcolatore del prezzo dell'argento al grammo</h3>
-            <p>Prezzo attuale dell'argento al grammo con convertitore per tutte le unità di peso comuni.</p>
-            <span class="card-arrow">View Price →</span>
-          </a>
-
-          <a href="/prezzo-dellargento-per-oncia/" class="category-card" id="card-price-oz">
-            <div class="category-icon">💲</div>
-            <h3>Calcolatore del prezzo dell'argento per oncia</h3>
-            <p>Prezzo spot dell'argento in tempo reale per oncia troy aggiornato in tempo reale dai mercati globali.</p>
-            <span class="card-arrow">View Price →</span>
-          </a>
-
-          <a href="/calcolatrice-sona-chandi/" class="category-card" id="card-sona-chandi">
-            <div class="category-icon">✨</div>
-            <h3>Calcolatrice Sona Chandi</h3>
-            <p>Calcola i valori Sona (Oro) e Chandi (Argento) in Tola e Grammi utilizzando Tunch.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/calcolatore-del-peso-di-un-centesimo/" class="category-card" id="card-dwt">
-            <div class="category-icon">⚖️</div>
-            <h3>Calcolatore del peso di un centesimo</h3>
-            <p>Calcola gli oggetti d'argento pesati in pennyweight (dwt), uno standard di gioielleria tradizionale.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
+          <a href="/silver-scrap-calculator/" class="category-card"><div class="category-icon">♻️</div><h3>Calcolatore Rottame</h3><p>Calcola il valore di fusione del tuo argento rottame.</p></a>
+          <a href="/silver-melt-value-calculator/" class="category-card"><div class="category-icon">🔥</div><h3>Valore di Fusione</h3><p>Trova il valore di fusione dell'argento puro.</p></a>
+          <a href="/sterling-silver-calculator/" class="category-card"><div class="category-icon">✨</div><h3>Argento Sterling</h3><p>Calcola il valore del tuo argento .925.</p></a>
+          <a href="/junk-silver-calculator/" class="category-card"><div class="category-icon">🪙</div><h3>Monete Antiche</h3><p>Valore delle monete d'argento antiche.</p></a>
+          <a href="/silver-coin-value-calculator/" class="category-card"><div class="category-icon">🏛️</div><h3>Valore Monete</h3><p>Calcola il valore di fusione di qualsiasi moneta.</p></a>
+          <a href="/gold-and-silver-calculator/" class="category-card"><div class="category-icon">🥇</div><h3>Calcolatore Oro e Argento</h3><p>Calcola rottame misto oro e argento.</p></a>
+          <a href="/silver-bar-value-calculator/" class="category-card"><div class="category-icon">🧱</div><h3>Lingotti d'Argento</h3><p>Trova il valore attuale dei lingotti.</p></a>
+          <a href="/silver-jewelry-value-calculator/" class="category-card"><div class="category-icon">💍</div><h3>Gioielli d'Argento</h3><p>Calcola il valore di fusione dei gioielli.</p></a>
+          <a href="/silverware-value-calculator/" class="category-card"><div class="category-icon">🍴</div><h3>Argenteria</h3><p>Trova il valore della tua argenteria.</p></a>
+          <a href="/silver-price-per-gram/" class="category-card"><div class="category-icon">📊</div><h3>Prezzo al Grammo</h3><p>Prezzo attuale dell'argento al grammo.</p></a>
+          <a href="/silver-price-per-ounce/" class="category-card"><div class="category-icon">💲</div><h3>Prezzo all'Oncia</h3><p>Prezzo spot in tempo reale per oncia troy.</p></a>
         </div>
       </div>
     </section>
 
-    <!-- Tools Section — user-focused language -->
-    <section class="section-compact" id="tools">
+    <section class="section-compact">
       <div class="container text-center">
-        <span class="section-badge">🛠️ Strumenti potenti</span>
-        <h2 class="section-title">In che modo questi strumenti Silver ti aiutano a ottenere più valore</h2>
-        <p class="section-subtitle">Risparmia tempo, confronta i prezzi e prendi decisioni di vendita migliori con questi strumenti Silver gratuiti.</p>
-
+        <span class="section-badge">🛠️</span>
+        <h2 class="section-title">Strumenti Potenti per Più Valore</h2>
+        <p class="section-subtitle">Risparmia tempo e prendi decisioni migliori.</p>
         <div class="category-grid stagger" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
-          <a href="/calcolatore-del-profitto-dargento/" class="category-card" id="card-profit">
-            <div class="category-icon">📈</div>
-            <h3>Calcolatore del profitto d'argento</h3>
-            <p>Investitori: calcola il ritorno sull'investimento totale (ROI) in base al prezzo di acquisto medio.</p>
-            <span class="card-arrow">Calculate ROI →</span>
-          </a>
-          <a href="/calcolatrice-in-argento-con-valore-nominale/" class="category-card" id="card-face-val">
-            <div class="category-icon">💵</div>
-            <h3>Calcolatore del valore nominale</h3>
-            <p>Trova il valore di fusione delle tue monete d'argento al 90% semplicemente inserendo il loro valore nominale (ad esempio, $ 10 FV).</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-          <a href="/calcolatore-batch-argento/" class="category-card" id="card-batch">
-            <div class="category-icon">📋</div>
-            <h3>Calcolatore batch argento</h3>
-            <p>Hai più oggetti d'argento? Aggiungili tutti e visualizza il valore totale combinato, quindi stampa o copia l'elenco per il rivenditore.</p>
-            <span class="card-arrow">Try It →</span>
-          </a>
-          <a href="/convertitore-del-peso-dellargento/" class="category-card" id="card-converter">
-            <div class="category-icon">⚖️</div>
-            <h3>Convertitore del peso dell'argento</h3>
-            <p>Non sei sicuro se la tua bilancia mostra once troy o once normali? Converti tra 6 unità di peso in modo da non pagare più del dovuto o svendere.</p>
-            <span class="card-arrow">Convert →</span>
-          </a>
-          <a href="/vendere-o-trattenere-largento/" class="category-card" id="card-hold">
-            <div class="category-icon">📈</div>
-            <h3>Calcolatore Vendi o Mantieni</h3>
-            <p>Ti chiedi se è il momento giusto per vendere? Confronta il valore attuale del tuo argento con quello a prezzi spot più alti o più bassi.</p>
-            <span class="card-arrow">Analyze →</span>
-          </a>
-          <a href="/prezzo-dellargento-in-tutte-le-valute/" class="category-card" id="card-currencies">
-            <div class="category-icon">🌍</div>
-            <h3>Prezzo dell'argento in 12 valute</h3>
-            <p>Visualizza i prezzi dell'argento in tempo reale in USD, EUR, GBP, INR, PKR, AUD, CAD e altro ancora, così saprai esattamente quanto vale il tuo argento a livello globale.</p>
-            <span class="card-arrow">View Prices →</span>
-          </a>
-          <a href="/calcolatrice-tola/" class="category-card" id="card-tola">
-            <div class="category-icon">⚖️</div>
-            <h3>Calcolatrice Tola</h3>
-            <p>Converti e calcola i rottami d'argento utilizzando le misurazioni Tola e Masha comuni nei mercati dell'Asia meridionale.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-          <a href="/identificare-largento/" class="category-card" id="card-ident">
-            <div class="category-icon">🔎</div>
-            <h3>Strumento identificatore d'argento</h3>
-            <p>Non sei sicuro che sia vero argento? Scopri come identificare i segni distintivi, i test magnetici e gli acidi test a casa.</p>
-            <span class="card-arrow">Read Guide →</span>
-          </a>
+          <a href="/silver-profit-calculator/" class="category-card"><div class="category-icon">📈</div><h3>Calcolatore Profitto</h3><p>Calcola il tuo ritorno sull'investimento.</p></a>
+          <a href="/face-value-silver-calculator/" class="category-card"><div class="category-icon">💵</div><h3>Valore Nominale</h3><p>Trova il valore delle tue monete al 90%.</p></a>
+          <a href="/silver-batch-calculator/" class="category-card"><div class="category-icon">📋</div><h3>Calcolatore Batch</h3><p>Aggiungi più articoli e vedi il totale.</p></a>
+          <a href="/silver-weight-converter/" class="category-card"><div class="category-icon">⚖️</div><h3>Convertitore Peso</h3><p>Converti tra 6 unità di peso.</p></a>
+          <a href="/silver-sell-or-hold/" class="category-card"><div class="category-icon">📈</div><h3>Vendere o Tenere</h3><p>Confronta il valore attuale con prezzi diversi.</p></a>
+          <a href="/silver-price-all-currencies/" class="category-card"><div class="category-icon">🌍</div><h3>Prezzo in 12 Valute</h3><p>Vedi prezzi in USD, EUR e altro.</p></a>
         </div>
       </div>
     </section>
 
-    <!-- How It Works — compact -->
     <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container text-center">
-        <span class="section-badge">📋Processo semplice</span>
-        <h2 class="section-title">Come funziona: 3 semplici passaggi</h2>
-        <p class="section-subtitle">Ottieni una valutazione accurata dell'argento in pochi secondi.</p>
-
+        <span class="section-badge">📋</span>
+        <h2 class="section-title">Come Funziona — 3 Semplici Passi</h2>
+        <p class="section-subtitle">Ottieni una valutazione precisa in secondi.</p>
         <div class="steps-grid stagger">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <h4>Pesa il tuo argento</h4>
-            <p>Usa una bilancia da cucina per pesare il tuo oggetto d'argento in grammi, once troy o qualsiasi unità.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <h4>Seleziona Purezza dell'argento</h4>
-            <p>Scegli la purezza: 925 per sterline, 999 per argento pregiato, 900 per monete d'argento o altri.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <h4>Ottieni un valore di fusione istantaneo</h4>
-            <p>Visualizza il valore di fusione in base ai prezzi spot dell'argento in tempo reale, aggiornati in tempo reale dai mercati globali.</p>
-          </div>
+          <div class="step-card"><div class="step-number">1</div><h4>Pesa il Tuo Argento</h4><p>Usa una bilancia per pesare il tuo argento.</p></div>
+          <div class="step-card"><div class="step-number">2</div><h4>Seleziona la Purezza</h4><p>Scegli la purezza: .999, .925, .900 o personalizzata.</p></div>
+          <div class="step-card"><div class="step-number">3</div><h4>Ottieni il Valore</h4><p>Il valore si calcola con il prezzo spot in tempo reale.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- Semantic SEO Content -->
-    <section class="section-compact" id="guide">
+    <section class="section-compact">
       <div class="container">
-        <div class="content-body" style="max-width: 800px; margin: 0 auto; text-align: left; line-height: 1.8;">
-
-          <h2>Che cos'è un calcolatore di rottami d'argento e quando dovresti usarne uno?</h2>
-          <p>Al centro, un calcolatore di rottami d'argento determina il <strong>intrinsic melt value</strong> di un oggetto d'argento: non il suo prezzo al dettaglio, non il suo valore sentimentale e nemmeno il premio da collezionista. Risponde a una domanda specifica: se oggi fondessi questo oggetto in argento puro, quanto varrebbe quel metallo? Per fare ciò, utilizza tre informazioni: il peso dell'oggetto, il titolo dell'argento (purezza) e l'attuale <strong>spot price</strong> dell’argento scambiato sul mercato globale delle materie prime.</p>
-          <p>Dovresti usarlo ogni volta che stai per vendere rottami d'argento, che si tratti di un braccialetto rotto, un set di vecchie posate, una collezione di monete o un sacchetto di ritagli di sterline. Conoscere in anticipo il valore di fusione è il modo più efficace per evitare di essere sottopagati da un rivenditore o da una raffineria. Puoi controllare il <a href="/prezzo-dellargento-per-oncia/">live silver price per troy ounce</a> o il <a href="/prezzo-dellargento-al-grammo/">silver price per gram</a> in qualsiasi momento per vedere come si sta muovendo il mercato prima di impegnarti in una vendita.</p>
-
-          <h2>Come viene effettivamente calcolato il valore di fusione dell'argento</h2>
-          <p>La formula è semplice ma le unità contano enormemente. L'argento ha sempre un prezzo internazionale <strong>troy ounces</strong> - non le once avoirdupois standard che utilizzeresti su una bilancia da cucina. Un'oncia troy equivale a 31,1035 grammi, rispetto ai 28,35 grammi di un'oncia standard. Questa distinzione da sola è uno dei motivi più comuni per cui le persone calcolano erroneamente il valore del proprio argento.</p>
-          <p style="background: var(--bg-secondary); border-left: 3px solid var(--accent-primary); padding: var(--space-md) var(--space-lg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-family: monospace; font-size: var(--fs-sm);">Valore di fusione = Peso (in once troy) × Purezza (decimale) × Prezzo spot (per once troy)</p>
-          <p>Ad esempio: una catena in argento sterling da 50 grammi (purezza 0,925) con argento a $ 30/oz dà (50 ÷ 31,1035) × 0,925 × 30 = <strong>approximately $44.75</strong>. Il nostro <a href="/calcolatore-del-valore-di-fusione-dellargento/">silver melt value calculator</a> fa tutto questo automaticamente. Se il tuo articolo viene misurato in un'unità diversa, il ns <a href="/convertitore-del-peso-dellargento/">silver weight converter</a> gestisce la conversione tra grammi, once troy, pennyweight, tola e chilogrammi in modo da inserire sempre il numero giusto.</p>
-
-          <h2>Comprensione dei marchi di purezza e dei segni distintivi dell'argento</h2>
-          <p>Ogni pezzo d'argento porta una storia nei suoi timbri, conosciuti come <strong>hallmarks</strong>. Queste minuscole incisioni indicano la finezza dell'argento, ovvero la proporzione di argento puro nella lega. Imparare a leggerli è essenziale per una valutazione accurata.</p>
-          <p>Le purezza più comuni che incontrerai sono:</p>
-          <ul>
-            <li><strong>999 (Fine Silver)</strong> — Argento puro al 99,9%. Tipicamente si trova in lingotti e monete come l'American Silver Eagle. Utilizza il nostro <a href="/calcolatrice-in-argento-999/">999 silver calculator</a> per questi articoli.</li>
-            <li><strong>958 (Britannia Silver)</strong> - Puro al 95,8%, utilizzato in alcune argenterie britanniche. Il nostro <a href="/calcolatrice-in-argento-958/">958 silver calculator</a> gestisce questa finezza con precisione.</li>
-            <li><strong>925 (Sterling Silver)</strong> — Lo standard più riconosciuto a livello mondiale. 92,5% argento, 7,5% lega di rame. La maggior parte dei gioielli e delle posate venduti oggi sono in sterline. Il dedicato <a href="/calcolatrice-in-argento-sterling/">sterling silver calculator</a> o <a href="/calcolatrice-in-argento-925/">925 silver calculator</a> sono entrambi utili qui.</li>
-            <li><strong>900 (Coin Silver)</strong> — Utilizzato nelle monete statunitensi più vecchie coniate prima del 1965. Our <a href="/calcolatrice-in-argento-900/">900 silver calculator</a> è costruito per questi articoli.</li>
-            <li><strong>835 &amp; 800 (European Silver)</strong> — Comune nelle stoviglie e nelle posate dell'Europa continentale. Usa il <a href="/calcolatrice-in-argento-835/">835 silver calculator</a> o <a href="/calcolatrice-in-argento-800/">800 silver calculator</a> rispettivamente.</li>
-          </ul>
-          <p>Se vedi un francobollo che dice "STERLING", "925" o "925/1000", quasi sicuramente stai guardando argento sterling. Se non è presente alcun contrassegno, un gioielliere o un banco dei pegni può eseguire un test dell'acido o un'analisi XRF per confermare. Il nostro <a href="/prezzo-argento-sterling-925-al-grammo/">925 sterling silver price per gram</a> La pagina fornisce un riferimento di riferimento in tempo reale per la purezza più comune.</p>
-
-          <h2>Valutazione di gioielli in argento, posate e oggetti cavi</h2>
-          <p>Il valore intrinseco dei gioielli in argento deriva interamente dal loro contenuto di argento, non dal design, dalla lavorazione artigianale o dal nome del marchio. Un pesante braccialetto d'argento semplice vale molto di più come rottame di un leggero anello firmato. Il peso è il fattore dominante, quindi pesa sempre gli articoli prima di valutarne il valore.</p>
-          <p>Per tipi di gioielli specifici, utilizzare gli strumenti appositamente creati: il <a href="/valore-dellanello-in-argento/">silver ring calculator</a>, <a href="/valore-della-catena-dargento/">silver chain calculator</a>, <a href="/valore-della-collana-in-argento/">silver necklace calculator</a>, e <a href="/valore-del-braccialetto-in-argento/">silver bracelet calculator</a> tutti ti consentono di inserire pesi esatti e ottenere valori di scarto istantanei. Per qualsiasi capo indossabile in generale, il <a href="/calcolatore-del-valore-dei-gioielli-in-argento/">silver jewelry value calculator</a> è il miglior punto di partenza.</p>
-          <p>Argenteria e posate (cucchiai, forchette, coltelli, vassoi, tazze e piatti) hanno lo stesso prezzo. Un set completo di posate in sterline può rappresentare un peso d'argento significativo. Inizia con il <a href="/calcolatore-del-valore-dellargenteria/">silverware value calculator</a>, oppure vai direttamente alle singole pagine per <a href="/valore-del-cucchiaio-dargento/">silver spoons</a>, <a href="/valore-della-forchetta-dargento/">silver forks</a>, <a href="/valore-del-coltello-dargento/">silver knives</a>, <a href="/valore-del-vassoio-dargento/">silver trays</a>, <a href="/valore-della-coppa-dargento/">silver cups</a>, e <a href="/valore-piatto-dargento/">silver plates</a>.</p>
-          <p>Un avvertimento importante: <em>silver-plated</em> gli oggetti hanno solo un rivestimento microscopico di argento su un metallo di base. Hanno essenzialmente un valore di fusione pari a zero come rottame d'argento e non devono essere inseriti qui.</p>
-
-          <h2>Monete d'argento: valore di fusione e valore numismatico</h2>
-          <p>Questa è una delle aree più fraintese nel mercato dell'argento. Il valore di fusione di una moneta – il valore del solo contenuto d’argento – è sempre il punto fondamentale. Ma molte monete ne portano un altro <strong>numismatic premium</strong> a causa della loro rarità, età, condizione o richiesta da parte dei collezionisti. Vendere un dollaro Morgan del 1881 intatto per il prezzo dell'argento di scarto sarebbe un errore costoso.</p>
-          <p>Per le monete comuni circolate in grandi quantità, il tipo tipicamente chiamato <strong>junk silver</strong> - il valore di fusione è essenzialmente tutto ciò che otterrai. Le monete da dieci centesimi, quarti, mezzi dollari e dollari statunitensi precedenti al 1965 sono al 90% d'argento. Il nostro <a href="/calcolatrice-dargento-spazzatura/">junk silver calculator</a> è studiato appositamente per questi e il <a href="/calcolatrice-in-argento-con-valore-nominale/">face value silver calculator</a> ti consente di inserire semplicemente il valore nominale totale del tuo sacchetto di monete (ad esempio, $ 10 FV) per ottenere una stima immediata.</p>
-          <p>Per le singole monete, utilizzare il <a href="/calcolatore-del-valore-delle-monete-dargento/">silver coin value calculator</a>, il <a href="/calcolatore-del-dollaro-dargento/">silver dollar calculator</a>, il <a href="/calcolatrice-dei-quarti-dargento/">silver quarter calculator</a>, il <a href="/calcolatrice-da-dieci-centesimi-dargento/">silver dime calculator</a>, o il <a href="/calcolatore-di-monete-dargento-canadesi/">Canadian silver coin calculator</a>.</p>
-          <p>Per i lingotti d'argento, il <a href="/calcolatore-del-valore-del-lingotto-dargento/">silver bar value calculator</a> supporta dimensioni comuni da 1 oncia a 100 once e 1 kg. Esistono pagine dedicate per <a href="/valore-dargento-di-1-oncia/">1oz</a>, <a href="/valore-dargento-da-2-once/">2oz</a>, <a href="/valore-dargento-di-5-once/">5oz</a>, <a href="/valore-dargento-da-10-once/">10oz</a>, <a href="/valore-dargento-100-once/">100oz</a>, e <a href="/valore-dargento-da-1-kg/">1kg</a> bar. Se hai una vasta collezione mista, il file <a href="/calcolatore-batch-argento/">silver batch calculator</a> ti consente di aggiungere voci illimitate e ottenere un totale combinato che puoi stampare o copiare a un rivenditore.</p>
-
-          <h2>Pesare correttamente l'argento: once troy, grammi, penny e tola</h2>
-          <p>Il commercio dei metalli preziosi utilizza una varietà di unità di peso che non sempre corrispondono alla bilancia da cucina. Sbagliare è uno dei modi più semplici per sbagliare i calcoli. Un'oncia troy equivale a 31,1035 g; un'oncia standard pesa solo 28,35 g. Il <strong>pennyweight (dwt)</strong> - comune nel commercio di gioielli negli Stati Uniti - equivale a 1.555 ge il nostro <a href="/calcolatore-del-peso-di-un-centesimo/">pennyweight calculator</a> converte automaticamente tra prezzo dwt e prezzo spot. Nei mercati dell'Asia meridionale, il <strong>tola</strong> (11.664 g) è l'unità standard; il <a href="/calcolatrice-tola/">tola silver calculator</a> è costruito appositamente per questo.</p>
-          <p>Se mai avessi bisogno di passare da una di queste unità all'altra, il <a href="/convertitore-del-peso-dellargento/">silver weight converter</a> gestisce tutte e sei le unità in entrambe le direzioni con un unico ingresso. Visualizza inoltre il prezzo spot equivalente per ciascuna unità in modo da poter effettuare immediatamente un controllo incrociato sulla lettura della bilancia.</p>
-
-          <h2>Oro e argento insieme e sapere quando vendere</h2>
-          <p>Molte vendite immobiliari e lotti di rivenditori includono sia oggetti in oro che in argento. Il <a href="/calcolatrice-per-oro-e-argento/">gold and silver calculator</a> gestisce entrambi i metalli contemporaneamente e visualizza anche il live <strong>gold-to-silver ratio</strong> - un parametro chiave che gli investitori osservano per cronometrare le loro decisioni di acquisto e vendita. Per i mercati dell'Asia meridionale in cui l'oro viene misurato come <em>Sona</em> e argento come <em>Chandi</em>, il <a href="/calcolatrice-sona-chandi/">Sona Chandi calculator</a> supporta le unità Tola e Gram con Tunch (purezza) integrato.</p>
-          <p>Se detieni argento come investimento, puoi scorrere i numeri attraverso <a href="/calcolatore-del-profitto-dargento/">silver profit calculator</a> per visualizzare il ROI in base al prezzo di acquisto originale. Non sei sicuro se vendere adesso o aspettare? Il <a href="/vendere-o-trattenere-largento/">sell or hold calculator</a> modella diversi scenari di prezzo futuri in modo da poter prendere una decisione informata. I prezzi dell'argento sono disponibili anche nelle 12 principali valute, tra cui USD, EUR, GBP, INR, PKR, AUD e CAD, tramite il nostro <a href="/prezzo-dellargento-in-tutte-le-valute/">silver price in all currencies</a> pagina.</p>
-
+        <div class="content-body">
+          <h2>Capire il Valore dell'Argento</h2>
+          <div class="content-scroll-block">
+            <h3>Come si Calcola il Valore di Fusione</h3><p>Il valore di qualsiasi articolo in argento dipende da: <strong>peso</strong>, <strong>purezza</strong> e <strong>prezzo spot</strong>. Formula: Valore = Peso (oncia troy) × Purezza × Prezzo Spot.</p><ul><li><strong>Peso</strong> — In grammi, once troy o chilogrammi</li><li><strong>Purezza</strong> — Percentuale di argento: 999 (99.9%), 925 sterling (92.5%), 900 moneta (90%)</li><li><strong>Prezzo Spot</strong> — Prezzo attuale dai mercati globali</li></ul><h3>Cos'è l'Argento Rottame?</h3><p>Gioielli rotti, argenteria vecchia, monete d'argento — qualsiasi cosa venduta per il suo contenuto metallico.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Silver & Precious Metals Entities -->
     <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container">
-        <h3 class="text-center" style="font-size:var(--fs-lg);margin-bottom:var(--space-md);">Argomenti sull'argento e sui metalli preziosi</h3>
+        <h3 class="text-center" style="font-size:var(--fs-lg);margin-bottom:var(--space-md);">Silver & Precious Metals</h3>
         <div class="entity-scroller">
           <span class="entity-pill">Silver (Ag)</span>
           <span class="entity-pill">Troy Ounce</span>
           <span class="entity-pill">Spot Price</span>
-          <span class="entity-pill">COMEX Exchange</span>
+          <span class="entity-pill">COMEX</span>
           <span class="entity-pill">LBMA</span>
-          <span class="entity-pill">Sterling Silver 925</span>
+          <span class="entity-pill">Sterling 925</span>
           <span class="entity-pill">Fine Silver 999</span>
           <span class="entity-pill">Coin Silver 900</span>
           <span class="entity-pill">Melt Value</span>
@@ -400,85 +199,54 @@
           <span class="entity-pill">Precious Metals</span>
           <span class="entity-pill">Bullion</span>
           <span class="entity-pill">Hallmark</span>
-          <span class="entity-pill">Assay</span>
-          <span class="entity-pill">Pennyweight (DWT)</span>
-          <span class="entity-pill">Silver Refining</span>
-          <span class="entity-pill">Numismatic Value</span>
-          <span class="entity-pill">Junk Silver Coins</span>
+          <span class="entity-pill">Pennyweight</span>
+          <span class="entity-pill">Numismatic</span>
+          <span class="entity-pill">Junk Silver</span>
           <span class="entity-pill">Silver Alloy</span>
           <span class="entity-pill">Tola</span>
-          <span class="entity-pill">Silver Purity Testing</span>
           <span class="entity-pill">XRF Analysis</span>
-          <span class="entity-pill">Acid Test</span>
           <span class="entity-pill">Morgan Dollar</span>
-          <span class="entity-pill">American Silver Eagle</span>
+          <span class="entity-pill">Silver Eagle</span>
         </div>
       </div>
     </section>
 
-    <!-- FAQ — People Also Ask targeted -->
-    <section class="section-compact" id="faq" style="background: var(--bg-secondary);">
+    <section class="section-compact" id="faq">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">Domande frequenti</h2>
-          <p class="section-subtitle">Risposte dirette alle domande che le persone pongono maggiormente sul valore dei rottami d'argento.</p>
+          <h2 class="section-title">Domande Frequenti sul Valore dell'Argento</h2>
         </div>
-
-        <div class="faq-list" style="max-width: 800px; margin: 0 auto; text-align: left;">
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-1"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Come calcolo il valore dell'argento di scarto?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Moltiplica il peso dell'oggetto in once troy per la sua purezza (come decimale) e poi per il prezzo spot attuale dell'argento. Ad esempio, 10 grammi di 925 sterline a $ 30/oz = (10 ÷ 31,1035) × 0,925 × 30 = circa $ 8,95. Questo <a href="/calcolatore-del-valore-di-fusione-dellargento/">silver melt value calculator</a> esegue i calcoli immediatamente una volta immessi peso, purezza e unità.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-2"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Qual è la differenza tra valore di fusione e prezzo spot?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Il <strong>spot price</strong> è l'attuale prezzo di mercato per un'oncia troy di argento puro (999) sulla borsa globale delle materie prime. Il <strong>melt value</strong> è il valore del tuo articolo specifico in base al suo peso e alla sua purezza: è sempre uguale o inferiore al prezzo spot, perché la maggior parte degli articoli in argento del mondo reale contengono rame o altre leghe. Controlla quello di oggi <a href="/prezzo-spot-dellargento-oggi/">live silver spot price</a> per rimanere aggiornato.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-3"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Come faccio a sapere se il mio argento è autentico e di che purezza è?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Cerca un timbro o un segno distintivo sull'articolo: quelli comuni includono 925, 900, 800, 999 o la parola STERLING. Gli articoli provenienti dal Regno Unito hanno spesso il segno distintivo del leone passante. Se non è presente alcun contrassegno, un gioielliere o un banco dei pegni rispettabile può eseguire un test dell'acido o un'analisi XRF. Un oggetto placcato in argento di solito riporta la dicitura "EPNS", "Silver Plate" o "Sheffield Plate": questi hanno un valore di scarto trascurabile.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-4"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Quanto mi pagherà effettivamente un commerciante di rottami?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>La maggior parte degli acquirenti di argento di scarto paga tra il 70% e il 95% del valore di fusione calcolato. La percentuale dipende dal tipo di acquirente (banco dei pegni locale o raffineria online), dall'affidabilità della purezza e dal volume che stai vendendo. I banchi dei pegni locali tendono ad offrire meno; I raffinatori d'argento online specializzati spesso offrono l'85-95% della fusione. Ricevi sempre più offerte e utilizza questo calcolatore per verificare che stai ottenendo un accordo equo prima di impegnarti.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-5"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">L'argento spazzatura è uguale all'argento di scarto?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Non esattamente. <em>Junk silver</em> si riferisce specificamente alle monete statunitensi pre-1965 (monete da dieci centesimi, quarti, metà, dollari) che sono al 90% d'argento e non hanno alcun premio da collezione: sono valutate esclusivamente per il loro contenuto di metallo. <em>Scrap silver</em> è un termine più ampio che copre gioielli rotti, posate, argento dentale e qualsiasi oggetto in argento venduto per il suo metallo. Usa il <a href="/calcolatrice-dargento-spazzatura/">junk silver calculator</a> per le monete e questa calcolatrice per rottami d'argento per tutto il resto.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-6"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Posso usare questa calcolatrice per le monete d'argento?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Sì: inserisci il peso della moneta e seleziona la sua purezza (90% per le monete statunitensi pre-1965, 99,9% per le Silver Eagle). Tuttavia, per una maggiore precisione con tipi di monete specifici, utilizzare il file <a href="/calcolatore-del-valore-delle-monete-dargento/">silver coin value calculator</a> o il dedicato <a href="/calcolatore-del-dollaro-dargento/">silver dollar</a>, <a href="/calcolatrice-dei-quarti-dargento/">silver quarter</a>, e <a href="/calcolatrice-da-dieci-centesimi-dargento/">silver dime</a> calcolatori, che utilizzano automaticamente i pesi ufficiali delle monete.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-7"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Qual è la migliore unità di peso da utilizzare: grammi o once troy?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Usa ciò che mostra la tua scala: questa calcolatrice converte per te. I grammi sono l'unità più semplice per la maggior parte delle bilance domestiche. Le once troy sono lo standard del settore e sono utili se confrontate direttamente con il prezzo spot. L’errore critico da evitare: confusione <em>standard</em> once (28,35 g) con <em>troy</em> once (31,10 g). Questo è un errore molto comune e costoso. Utilizza il nostro <a href="/convertitore-del-peso-dellargento/">silver weight converter</a> se è necessario cambiare unità.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-8"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">I gioielli placcati in argento hanno un valore di rottame?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Molto poco. Gli articoli placcati in argento hanno solo un sottile strato di argento (di solito solo pochi micron) incollato su un metallo base come rame o nichel. Il contenuto effettivo di argento in peso è una piccola frazione del totale: troppo piccolo per essere recuperato economicamente dai rottami. Cerca timbri come EPNS, EP o "Silver Plate" per identificare gli articoli placcati. Solo l'argento massiccio o l'argento pregiato hanno un valore di rottame significativo.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-9"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">In che modo il rapporto oro/argento influisce sulla mia decisione di vendere?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Il <strong>gold-to-silver ratio</strong> ti dice quante once d'argento sono necessarie per acquistare un'oncia d'oro. Storicamente la media è intorno a 60-80; quando supera 80, l'argento è considerato relativamente economico rispetto all'oro e molti investitori acquistano argento. Quando scende al di sotto di 60, l’argento è relativamente costoso e potrebbe essere un buon momento per vendere. Controlla il rapporto vivo insieme al tuo valore di fusione con il nostro <a href="/calcolatrice-per-oro-e-argento/">gold and silver calculator</a>.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-10"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Posso calcolare il valore dell'argento in valute diverse dal dollaro statunitense?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>SÌ. Il nostro <a href="/prezzo-dellargento-in-tutte-le-valute/">silver price in all currencies</a> la pagina mostra i prezzi dell'argento in tempo reale in USD, EUR, GBP, INR, PKR, AUD, CAD e altro. Per i mercati dell’Asia meridionale, il <a href="/calcolatrice-sona-chandi/">Sona Chandi calculator</a> supporta le misurazioni Tola e Tunch (purezza) in un formato familiare ai mercati locali.</p></div>
+        <div class="faq-scroll-panel">
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" id="faq-btn-1"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Quanto è accurato questo calcolatore?</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>Usiamo prezzi spot in tempo reale. Il valore mostrato è teorico; gli acquirenti pagano l'80-97%.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" id="faq-btn-2"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Come verifico la purezza?</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>Cerca i marchi: 925, 999, 800. Un gioielliere può fare un test con acido.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" id="faq-btn-3"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Perché il prezzo cambia?</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>L'argento è scambiato sui mercati globali. Il prezzo fluttua con la domanda e l'offerta.</p></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <div id="site-footer"></div>
 
-  <!-- Scripts -->
-  <script src="../js/silver-price.js"></script>
-  <script src="../js/calculator.js"></script>
-  <script src="../js/components.js"></script>
   <script>
-    // Hero Calculator Logic
+    window.MenuTranslations = {"Home":"Home","Calculators":"Calcolatori","Purity":"Purezza","Pricing":"Prezzi","Tools":"Strumenti","Guides":"Guide","Primary Calculators":"Calcolatori Principali","Item Calculators":"Calcolatori di Articoli","Popular Coins":"Monete Popolari","Silver Purity":"Purezza dell'Argento","Silver Scrap Calculator":"Calcolatore di Argento","About":"Chi siamo","Privacy":"Privacy","Terms":"Termini","All rights reserved.":"Tutti i diritti riservati.","Prices are for informational purposes only.":"I prezzi sono solo a scopo informativo.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calcolatori gratuiti che utilizzano i prezzi spot. Calcola il valore del tuo rottame d'argento all'istante."};
+  </script>
+  <script src="../js/silver-price.js?v=2.1"></script>
+  <script src="../js/calculator.js?v=2.1"></script>
+  <script src="../js/components.js?v=2.1"></script>
+  <script>
+    SiteComponents.renderPriceTicker('price-ticker');
+
     const weightInput = document.getElementById('calc-weight');
     const unitSelect = document.getElementById('calc-unit');
     const puritySelect = document.getElementById('calc-purity');
@@ -490,53 +258,22 @@
       const unit = unitSelect.value;
       const purity = parseFloat(puritySelect.value);
       const spotPrice = SilverPrice.getPrice();
-
-      if (weight <= 0) {
-        resultValue.textContent = '$0.00';
-        resultDetail.textContent = 'Enter weight to calculate';
-        return;
-      }
-
+      if (weight <= 0) { resultValue.textContent = '$0.00'; resultDetail.textContent = t.spot + ': --'; return; }
       const weightGrams = SilverCalc.toGrams(weight, unit);
       const result = SilverCalc.meltValue(weightGrams, purity, spotPrice);
-
       resultValue.textContent = SilverCalc.formatCurrency(result.value);
-      resultDetail.textContent = `${result.silverContentGrams}g pure silver · ${result.silverContentOz} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+      resultDetail.textContent = result.silverContentGrams + 'g · ' + result.silverContentOz + ' troy oz · ' + t.spot + ': $' + spotPrice.toFixed(2) + '/oz';
     }
 
     weightInput.addEventListener('input', calculate);
     unitSelect.addEventListener('change', calculate);
     puritySelect.addEventListener('change', calculate);
-
-    // Update calc when price loads
     SilverPrice.onPriceUpdate(() => calculate());
-
-    // Initial calc
     calculate();
 
-    // FAQ toggle
     document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.closest('.faq-item').classList.toggle('open');
-      });
+      btn.addEventListener('click', () => { btn.closest('.faq-item').classList.toggle('open'); });
     });
-
-    SiteComponents.injectFAQSchema([
-      { q: 'How do I calculate the value of scrap silver?', a: 'Multiply the item\'s weight in troy ounces by its purity (as a decimal) and then by the current silver spot price. For example, 10 grams of 925 sterling at $30/oz equals approximately $8.95. A silver melt value calculator does this math instantly.' },
-      { q: 'What is the difference between melt value and spot price?', a: 'The spot price is the current market price for one troy ounce of pure 999 silver. The melt value is what your specific item is worth based on its weight and purity — it is always equal to or less than spot price, because most silver items contain alloys.' },
-      { q: 'How do I know if my silver is real and what purity it is?', a: 'Look for a hallmark stamp on the item — common ones include 925, 900, 800, 999, or the word STERLING. If there is no marking, a jeweler or pawn shop can run an acid test or XRF analysis to confirm.' },
-      { q: 'How much will a scrap dealer actually pay me?', a: 'Most scrap silver buyers pay between 70% and 95% of the calculated melt value. Local pawn shops tend to offer less; specialist online silver refiners often offer 85-95% of melt. Always get multiple offers and use a calculator to verify fairness.' },
-      { q: 'Is junk silver the same as scrap silver?', a: 'Not exactly. Junk silver refers specifically to pre-1965 US coins (dimes, quarters, halves, dollars) that are 90% silver with no collectible premium. Scrap silver is a broader term covering broken jewelry, flatware, dental silver, and any silver sold for its metal.' },
-      { q: 'Can I use this calculator for silver coins?', a: 'Yes — enter the coin\'s weight and select its purity (90% for pre-1965 US coins, 99.9% for Silver Eagles). For more precision, use dedicated coin calculators for silver dollars, quarters, or dimes which use official coin weights automatically.' },
-      { q: 'What is the best weight unit to use — grams or troy ounces?', a: 'Use whatever your scale shows — the calculator converts for you. Grams are easiest for home scales. Avoid confusing standard ounces (28.35 g) with troy ounces (31.10 g), which is a very common and costly mistake.' },
-      { q: 'Does silver-plated jewelry have any scrap value?', a: 'Very little. Silver-plated items have only a thin coating of silver over base metal. The actual silver content is too small to recover economically. Look for stamps like EPNS or Silver Plate to identify plated items — only solid sterling or fine silver has meaningful scrap value.' },
-      { q: 'How does the gold-to-silver ratio affect my decision to sell?', a: 'The gold-to-silver ratio tells you how many ounces of silver it takes to buy one ounce of gold. When the ratio rises above 80, silver is relatively cheap and investors buy; when it falls below 60, silver is relatively expensive and may be a good time to sell.' },
-      { q: 'Can I calculate silver value in currencies other than US dollars?', a: 'Yes. Silver prices are available in USD, EUR, GBP, INR, PKR, AUD, CAD, and more. For South Asian markets, Tola measurements and Tunch (purity) are also supported.' }
-    ]);
   </script>
-
-
-<script>
-  window.MenuTranslations = {"slugs":{"1-10oz-silver-value":"1-valore-dargento-da-10-once","100oz-silver-value":"valore-dargento-100-once","10oz-silver-value":"valore-dargento-da-10-once","1kg-silver-value":"valore-dargento-da-1-kg","1oz-silver-value":"valore-dargento-di-1-oncia","2oz-silver-value":"valore-dargento-da-2-once","5oz-silver-value":"valore-dargento-di-5-once","800-silver-calculator":"calcolatrice-in-argento-800","835-silver-calculator":"calcolatrice-in-argento-835","900-silver-calculator":"calcolatrice-in-argento-900","925-silver-calculator":"calcolatrice-in-argento-925","925-sterling-silver-price-per-gram":"prezzo-argento-sterling-925-al-grammo","958-silver-calculator":"calcolatrice-in-argento-958","999-silver-calculator":"calcolatrice-in-argento-999","canadian-silver-coin-calculator":"calcolatore-di-monete-dargento-canadesi","face-value-silver-calculator":"calcolatrice-in-argento-con-valore-nominale","gold-and-silver-calculator":"calcolatrice-per-oro-e-argento","how-silver-prices-work":"come-funzionano-i-prezzi-dellargento","how-to-sell-silver":"come-vendere-argento","how-to-use-silver-calculators":"come-usare-le-calcolatrici-dargento","identify-silver":"identificare-largento","junk-silver-calculator":"calcolatrice-dargento-spazzatura","pennyweight-calculator":"calcolatore-del-peso-di-un-centesimo","silver-bar-value-calculator":"calcolatore-del-valore-del-lingotto-dargento","silver-batch-calculator":"calcolatore-batch-argento","silver-bracelet-value":"valore-del-braccialetto-in-argento","silver-chain-value":"valore-della-catena-dargento","silver-coin-value-calculator":"calcolatore-del-valore-delle-monete-dargento","silver-cup-value":"valore-della-coppa-dargento","silver-dime-calculator":"calcolatrice-da-dieci-centesimi-dargento","silver-dollar-calculator":"calcolatore-del-dollaro-dargento","silver-fork-value":"valore-della-forchetta-dargento","silver-hallmarks-guide":"guida-ai-marchi-dargento","silver-jewelry-value-calculator":"calcolatore-del-valore-dei-gioielli-in-argento","silver-knife-value":"valore-del-coltello-dargento","silver-melt-value-calculator":"calcolatore-del-valore-di-fusione-dellargento","silver-necklace-value":"valore-della-collana-in-argento","silver-plate-value":"valore-piatto-dargento","silver-price-all-currencies":"prezzo-dellargento-in-tutte-le-valute","silver-price-per-gram":"prezzo-dellargento-al-grammo","silver-price-per-ounce":"prezzo-dellargento-per-oncia","silver-profit-calculator":"calcolatore-del-profitto-dargento","silver-purity-chart":"grafico-della-purezza-dellargento","silver-quarter-calculator":"calcolatrice-dei-quarti-dargento","silver-ring-value":"valore-dellanello-in-argento","silver-scrap-calculator":"calcolatore-di-rottami-dargento","silver-sell-or-hold":"vendere-o-trattenere-largento","silver-spoon-value":"valore-del-cucchiaio-dargento","silver-spot-price-today":"prezzo-spot-dellargento-oggi","silver-tray-value":"valore-del-vassoio-dargento","silver-weight-converter":"convertitore-del-peso-dellargento","silverware-value-calculator":"calcolatore-del-valore-dellargenteria","sona-chandi-calculator":"calcolatrice-sona-chandi","sterling-silver-calculator":"calcolatrice-in-argento-sterling","tola-calculator":"calcolatrice-tola","what-does-925-mean":"cosa-significa-925","what-is-junk-silver":"cosè-largento-spazzatura","what-is-silver-bullion":"cosè-il-lingotto-dargento","what-is-silver-melt-value":"qual-è-il-valore-di-fusione-dellargento","what-is-silver-scrap":"cosè-il-rottame-dargento","what-is-sterling-silver":"cosè-largento-sterling","what-is-troy-ounce":"cosè-loncia-troy"},"Home":"Casa","Calculators":"Calcolatrici","Silver Scrap Calculator":"Calcolatore dei rottami d'argento","Gold & Silver Calculator":"Calcolatore di oro e argento","Silver Melt Value":"Valore di fusione dell'argento","Sterling Silver Calculator":"Calcolatrice in argento sterling","Junk Silver Calculator":"Calcolatrice dell'argento spazzatura","Silver Coin Value":"Valore della moneta d'argento","Silver Bar Value":"Valore del lingotto d'argento","Silver Jewelry Value":"Valore dei gioielli in argento","Silverware Value":"Valore dell'argenteria","Purity":"Purezza","999 Fine Silver":"Argento pregiato 999","958 Britannia Silver":"Argento Britannia 958","925 Sterling Silver":"Argento sterling 925","900 Coin Silver":"Moneta d'argento da 900","835 Silver":"835 Argento","800 Silver":"Argento 800","Silver Purity Chart":"Grafico della purezza dell'argento","Pricing":"Prezzi","Silver Spot Price Today":"Prezzo spot dell'argento oggi","925 Sterling Price / Gram":"925 Sterline Prezzo/grammo","Silver Price Per Gram":"Prezzo dell'argento al grammo","Silver Price Per Ounce":"Prezzo dell'argento per oncia","Price in All Currencies":"Prezzo in tutte le valute","1/10oz Silver Value":"Valore argento 1/10 oz","1oz Silver Value":"Valore d'argento da 1 oncia","2oz Silver Value":"Valore d'argento da 2 once","5oz Silver Value":"Valore d'argento da 5 once","10oz Silver Value":"Valore dell'argento da 10 once","100oz Silver Value":"Valore dell'argento da 100 once","1kg Silver Value":"Valore argento 1 kg","Tools":"Strumenti","Silver Profit Calculator":"Calcolatore del profitto d'argento","Batch Calculator":"Calcolatore batch","Sona Chandi Calculator":"Calcolatrice Sona Chandi","Face Value Calculator":"Calcolatore del valore nominale","Weight Converter":"Convertitore di peso","Pennyweight (DWT) Calc":"Calcolo del peso penny (DWT).","Tola Calculator":"Calcolatrice Tola","Sell or Hold Analysis":"Vendi o mantieni l'analisi","Silver Identifier":"Identificatore d'argento","Guides":"Guide","How to Use Our Calculators":"Come utilizzare le nostre calcolatrici","What Is Silver Scrap?":"Cos'è il rottame d'argento?","What Is Melt Value?":"Cos'è il valore di fusione?","What Is Junk Silver?":"Cos'è l'argento spazzatura?","What Is a Troy Ounce?":"Cos'è un'oncia troy?","What Is Silver Bullion?":"Cos'è il lingotto d'argento?","How Silver Prices Work":"Come funzionano i prezzi dell'argento","Silver Hallmarks Guide":"Guida ai marchi d'argento","What Does 925 Mean?":"Cosa significa 925?","What Is Sterling Silver?":"Cos'è l'argento sterling?","How to Sell Silver":"Come vendere argento","Scrap Silver":"Rottami d'argento","Gold & Silver":"Oro e argento","Silver Profit":"Profitto d'argento","Melt Value":"Valore di fusione","Junk Silver":"Argento spazzatura","Silver Coins":"Monete d'argento","Silver Dollar":"Dollaro d'argento","Silver Quarter":"Quarto d'argento","Silver Dime":"Moneta d'argento","Jewelry Value":"Valore dei gioielli","925 Sterling":"925 sterline","Purity Chart":"Grafico della purezza","How to Use Calculators":"Come utilizzare le calcolatrici","Sona Chandi Calc":"Sona Chandi Calcolo","Face Value Calc":"Calcolo del valore nominale","Sell or Hold":"Vendi o mantieni","About":"Circa","Privacy":"Privacy","Terms":"Termini","All rights reserved.":"Tutti i diritti riservati.","Prices are for informational purposes only.":"I prezzi sono solo a scopo informativo.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calcolatori d'argento gratuiti e accurati che utilizzano prezzi spot in tempo reale. Calcola istantaneamente il valore di fusione dei tuoi rottami d'argento, monete, gioielli e lingotti."};
-</script>
-</body></html>
+</body>
+</html>

@@ -39,10 +39,10 @@ function purityPage(purityCode, purityPct, purityName, description, content) {
       </div>
       <div class="content-body">${content}</div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3><div class="related-grid">
-        <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
-        <a href="silver-melt-value-calculator.html" class="related-link"><span class="r-icon">🔥</span> Melt Value</a>
-        <a href="sterling-silver-calculator.html" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
-        <a href="silver-purity-chart.html" class="related-link"><span class="r-icon">📊</span> Purity Chart</a>
+        <a href="/silver-scrap-calculator/" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        <a href="/silver-melt-value-calculator/" class="related-link"><span class="r-icon">🔥</span> Melt Value</a>
+        <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
+        <a href="/silver-purity-chart/" class="related-link"><span class="r-icon">📊</span> Purity Chart</a>
       </div></div>
     </div>
   </main>
@@ -50,7 +50,7 @@ function purityPage(purityCode, purityPct, purityName, description, content) {
   <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'${purityCode} Silver Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'${purityCode} Silver Calculator'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit');
     function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(grams,${purityPct/100},spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=\`\${r.silverContentGrams}g pure silver (${purityPct}%) · \${r.silverContentOz} oz · Spot: $\${spot.toFixed(2)}/oz\`;}
     w.addEventListener('input',calc);u.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
@@ -66,9 +66,9 @@ const purities = [
   { code: '958', pct: 95.8, name: 'Britannia Silver', desc: 'Calculate the value of 958 Britannia silver (95.8% pure). A high-purity silver alloy used in British silver.',
     content: '<h2>What Is Britannia Silver?</h2><p>Britannia silver is a silver alloy containing 95.8% silver and 4.2% copper. It was introduced in Britain in 1697 and is still used today.</p><ul><li>Higher purity than sterling silver (92.5%)</li><li>Used in fine British silverware and specialty items</li><li>Hallmarked with the Britannia figure</li><li>More valuable per gram than sterling due to higher silver content</li></ul>' },
   { code: '925', pct: 92.5, name: 'Sterling Silver', desc: 'Calculate the value of 925 sterling silver (92.5% pure) by weight using live prices.',
-    content: '<h2>What Is 925 Sterling Silver?</h2><p>925 sterling silver is the world\'s most popular silver alloy, containing 92.5% silver and 7.5% other metals (usually copper). The "925" stamp indicates this standard.</p><ul><li>Standard for silver jewelry worldwide</li><li>Used in flatware, decorative items, and high-end accessories</li><li>Harder and more durable than fine silver</li><li>The most commonly traded form of silver items</li></ul><p>Learn more: <a href="what-does-925-mean.html">What Does 925 Mean on Silver?</a></p>' },
+    content: '<h2>What Is 925 Sterling Silver?</h2><p>925 sterling silver is the world\'s most popular silver alloy, containing 92.5% silver and 7.5% other metals (usually copper). The "925" stamp indicates this standard.</p><ul><li>Standard for silver jewelry worldwide</li><li>Used in flatware, decorative items, and high-end accessories</li><li>Harder and more durable than fine silver</li><li>The most commonly traded form of silver items</li></ul><p>Learn more: <a href="/what-does-925-mean/">What Does 925 Mean on Silver?</a></p>' },
   { code: '900', pct: 90.0, name: 'Coin Silver', desc: 'Calculate the value of 900 coin silver (90% pure) by weight. Found in pre-1965 US silver coins.',
-    content: '<h2>What Is 900 Coin Silver?</h2><p>900 silver, commonly called "coin silver," contains 90% silver and 10% copper. It is the standard alloy used in US silver coinage minted before 1965.</p><ul><li>US dimes, quarters, and half dollars (pre-1965)</li><li>Morgan and Peace silver dollars</li><li>Some European and Latin American coins</li><li>Historical silverware marked "COIN"</li></ul><p>Use our <a href="junk-silver-calculator.html">Junk Silver Calculator</a> for specific US coin values.</p>' },
+    content: '<h2>What Is 900 Coin Silver?</h2><p>900 silver, commonly called "coin silver," contains 90% silver and 10% copper. It is the standard alloy used in US silver coinage minted before 1965.</p><ul><li>US dimes, quarters, and half dollars (pre-1965)</li><li>Morgan and Peace silver dollars</li><li>Some European and Latin American coins</li><li>Historical silverware marked "COIN"</li></ul><p>Use our <a href="/junk-silver-calculator/">Junk Silver Calculator</a> for specific US coin values.</p>' },
   { code: '835', pct: 83.5, name: 'European Silver', desc: 'Calculate the value of 835 silver (83.5% pure). Common European silver standard for silverware and coins.',
     content: '<h2>What Is 835 Silver?</h2><p>835 silver contains 83.5% silver and 16.5% other metals. It was a common standard in continental Europe, especially in Germany and the Netherlands.</p><ul><li>Common in antique European silverware</li><li>Used in some European coins</li><li>Often found on imported silver items</li><li>Lower silver content than sterling but still valuable</li></ul>' },
   { code: '800', pct: 80.0, name: 'European Silver', desc: 'Calculate the value of 800 silver (80% pure). A common European silverware standard.',
@@ -114,10 +114,10 @@ function weightPage(sizeLabel, sizeOz, filename, desc, content) {
       </div>
       <div class="content-body">${content}</div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Pages</h3><div class="related-grid">
-        <a href="silver-bar-value-calculator.html" class="related-link"><span class="r-icon">🧱</span> Bar Calculator</a>
-        <a href="silver-price-per-ounce.html" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
-        <a href="silver-price-per-gram.html" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
-        <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+        <a href="/silver-bar-value-calculator/" class="related-link"><span class="r-icon">🧱</span> Bar Calculator</a>
+        <a href="/silver-price-per-ounce/" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+        <a href="/silver-price-per-gram/" class="related-link"><span class="r-icon">📊</span> Price Per Gram</a>
+        <a href="/silver-scrap-calculator/" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
       </div></div>
     </div>
   </main>
@@ -125,7 +125,7 @@ function weightPage(sizeLabel, sizeOz, filename, desc, content) {
   <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'${sizeLabel} Silver Value'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'${sizeLabel} Silver Value'}]);
     const q=document.getElementById('qty');
     function calc(){const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const totalOz=${sizeOz}*qty;const val=totalOz*spot;document.getElementById('result-value').textContent='$'+val.toFixed(2);document.getElementById('result-detail').textContent=qty+'× ${sizeLabel} · '+totalOz.toFixed(2)+' oz total · Spot: $'+spot.toFixed(2)+'/oz';
       const qtys=[1,2,5,10,25,50,100];document.getElementById('qty-table').innerHTML=qtys.map(n=>'<tr><td>'+n+'</td><td>'+(${sizeOz}*n).toFixed(2)+' oz</td><td>$'+(${sizeOz}*n*spot).toFixed(2)+'</td></tr>').join('');}
@@ -196,7 +196,7 @@ function itemPage(itemName, itemEmoji, defaultWeight, defaultPurity, pageFile, d
   <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Silver ${titleName} Value'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Silver ${titleName} Value'}]);
     const w=document.getElementById('weight'),q=document.getElementById('qty'),p=document.getElementById('purity');
     function calc(){const weight=(parseFloat(w.value)||0)*(parseInt(q.value)||1);const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
     [w,q].forEach(el=>el.addEventListener('input',calc));p.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
@@ -207,10 +207,10 @@ function itemPage(itemName, itemEmoji, defaultWeight, defaultPurity, pageFile, d
 
 // Jewelry pages
 const jewelryRelated = `
-  <a href="silver-jewelry-value-calculator.html" class="related-link"><span class="r-icon">💍</span> Jewelry Calculator</a>
-  <a href="sterling-silver-calculator.html" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
-  <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
-  <a href="925-silver-calculator.html" class="related-link"><span class="r-icon">🔢</span> 925 Silver</a>`;
+  <a href="/silver-jewelry-value-calculator/" class="related-link"><span class="r-icon">💍</span> Jewelry Calculator</a>
+  <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
+  <a href="/silver-scrap-calculator/" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+  <a href="/925-silver-calculator/" class="related-link"><span class="r-icon">🔢</span> 925 Silver</a>`;
 
 const jewelry = [
   { name: 'Ring', emoji: '💍', weight: 6, purity: 0.925, file: 'silver-ring-value.html',
@@ -234,10 +234,10 @@ jewelry.forEach(j => {
 
 // Silverware pages
 const silverwareRelated = `
-  <a href="silverware-value-calculator.html" class="related-link"><span class="r-icon">🍴</span> Silverware Calculator</a>
-  <a href="sterling-silver-calculator.html" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
-  <a href="silver-scrap-calculator.html" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
-  <a href="how-to-sell-silver.html" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>`;
+  <a href="/silverware-value-calculator/" class="related-link"><span class="r-icon">🍴</span> Silverware Calculator</a>
+  <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
+  <a href="/silver-scrap-calculator/" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+  <a href="/how-to-sell-silver/" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>`;
 
 const silverware = [
   { name: 'Spoon', emoji: '🥄', weight: 40, purity: 0.925, file: 'silver-spoon-value.html',

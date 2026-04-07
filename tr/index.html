@@ -1,10 +1,11 @@
-<!DOCTYPE html><html lang="tr"><head>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hurda Gümüş Hesaplayıcı — Ücretsiz Gümüş Erime Değeri Hesaplayıcı [Canlı Fiyatlar]</title>
-  <meta name="description" content="Öğelerinizin değerini anında kontrol etmek için bu ücretsiz Hurda Gümüş Hesaplayıcıyı kullanın. Son derece doğru bir gümüş hurda hesaplayıcısı olarak, eski mücevherleriniz, madeni paralarınız, külçeleriniz ve kırık parçalarınız için ağırlık, saflık ve en son canlı piyasa fiyatlarına dayalı olarak güvenilir bir erime değeri tahmini sağlar.">
-  <meta name="keywords" content="scrap silver calculator, silver scrap calculator, silver melt value calculator, sterling silver calculator, junk silver calculator, silver value calculator">
-  <link rel="canonical" href="https://scrapsilvercalculater.com/">
+  <title>Hurda Gümüş Hesaplayıcı — Canlı Eritme Değeri</title>
+  <meta name="description" content="Hurda gümüşünüzün eritme değerini anında öğrenin. Canlı spot fiyatlar.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/tr/">
   <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/">
   <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/">
   <link rel="alternate" hreflang="es" href="https://scrapsilvercalculater.com/es/">
@@ -18,381 +19,179 @@
   <link rel="alternate" hreflang="it" href="https://scrapsilvercalculater.com/it/">
   <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/">
   <link rel="alternate" hreflang="ru" href="https://scrapsilvercalculater.com/ru/">
-  <link rel="stylesheet" href="../css/style.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Scrap Silver Calculator",
-    "description": "Use this free Scrap Silver Calculator to instantly check what your items are worth. As a highly accurate silver scrap calculator, it provides a reliable melt value estimate for your old jewelry, coins, bars, and broken pieces based on weight, purity, and the latest live market prices.",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Any",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
+
+  <link rel="stylesheet" href="../css/style.css?v=2.1">
   <style>
-    /* Homepage-specific compact spacing */
     .section-compact { padding: var(--space-2xl) 0; }
     .section-compact .section-title { margin-bottom: var(--space-sm); }
     .section-compact .section-subtitle { margin: 0 auto var(--space-lg); }
     .hero-compact { padding: var(--space-2xl) 0 var(--space-xl); }
     .hero-compact h1 { margin-bottom: var(--space-sm); }
     .hero-compact .hero-subtitle { margin: 0 auto var(--space-lg); }
-    .trust-bar-compact { padding: var(--space-lg) 0; }
-
-    /* Scrollable FAQ panel */
-    .faq-scroll-panel { max-height: 480px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-sm); }
-    .faq-scroll-panel::-webkit-scrollbar { width: 6px; }
-    .faq-scroll-panel::-webkit-scrollbar-track { background: transparent; }
-    .faq-scroll-panel::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-
-    /* Scrollable content block */
-    .content-scroll-block { max-height: 500px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-md); margin: var(--space-lg) 0; }
-    .content-scroll-block::-webkit-scrollbar { width: 6px; }
-    .content-scroll-block::-webkit-scrollbar-track { background: transparent; }
-    .content-scroll-block::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-    .content-scroll-block h3 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
-    .content-scroll-block p, .content-scroll-block ul, .content-scroll-block ol { margin-bottom: var(--space-md); }
-    .content-scroll-block ul li, .content-scroll-block ol li { padding: var(--space-xs) 0; color: var(--text-secondary); }
-    .content-scroll-block ul li::before { content: '•'; color: var(--accent-primary); margin-right: var(--space-sm); }
-
-    /* Entity pills */
-    .entity-scroller { display: flex; flex-wrap: nowrap; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0 var(--space-md); scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; -webkit-overflow-scrolling: touch; }
-    .entity-scroller::-webkit-scrollbar { height: 5px; }
-    .entity-scroller::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-    .entity-pill { flex-shrink: 0; padding: 6px var(--space-md); background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(192,192,192,0.02)); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: var(--fs-xs); color: var(--text-muted); white-space: nowrap; }
     .lang-switcher { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 8px 0; background: rgba(5,5,10,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 1100; }
     body { padding-top: calc(var(--header-height) + 36px) !important; }
     .site-header { top: 36px !important; }
     .lang-btn { padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; background: rgba(255,255,255,0.05); }
     .lang-btn:hover, .lang-btn.active { background: var(--accent-primary); color: #fff; }
+    .faq-scroll-panel { max-height: 480px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-sm); }
+    .faq-scroll-panel::-webkit-scrollbar { width: 6px; }
+    .faq-scroll-panel::-webkit-scrollbar-track { background: transparent; }
+    .faq-scroll-panel::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .content-scroll-block { max-height: 500px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-md); margin: var(--space-lg) 0; }
+    .content-scroll-block::-webkit-scrollbar { width: 6px; }
+    .content-scroll-block::-webkit-scrollbar-track { background: transparent; }
+    .content-scroll-block::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .content-scroll-block h3 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+    .content-scroll-block p, .content-scroll-block ul { margin-bottom: var(--space-md); }
+    .content-scroll-block ul li { padding: var(--space-xs) 0; color: var(--text-secondary); }
+    .content-scroll-block ul li::before { content: '•'; color: var(--accent-primary); margin-right: var(--space-sm); }
+    .entity-scroller { display: flex; flex-wrap: nowrap; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0 var(--space-md); scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; -webkit-overflow-scrolling: touch; }
+    .entity-scroller::-webkit-scrollbar { height: 5px; }
+    .entity-scroller::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .entity-pill { flex-shrink: 0; padding: 6px var(--space-md); background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(192,192,192,0.02)); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: var(--fs-xs); color: var(--text-muted); white-space: nowrap; }
+    
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Hurda Gümüş Hesaplayıcı",
+    "description": "Hurda gümüşünüzün eritme değerini anında öğrenin. Canlı spot fiyatlar.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "tr",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
 </head>
 <body>
-
-  <div class="lang-switcher">
-    <a href="../" class="lang-btn">🇬🇧 EN</a>
-    <a href="../es/" class="lang-btn">🇪🇸 ES</a>
-    <a href="../fr/" class="lang-btn">🇫🇷 FR</a>
-    <a href="../de/" class="lang-btn">🇩🇪 DE</a>
-    <a href="../pt/" class="lang-btn">🇧🇷 PT</a>
-    <a href="../hi/" class="lang-btn">🇮🇳 HI</a>
-    <a href="../ur/" class="lang-btn">🇵🇰 UR</a>
-    <a href="../ar/" class="lang-btn">🇸🇦 AR</a>
-    <a href="../tr/" class="lang-btn active">🇹🇷 TR</a>
-    <a href="../it/" class="lang-btn">🇮🇹 IT</a>
-    <a href="../zh/" class="lang-btn">🇨🇳 ZH</a>
-    <a href="../ru/" class="lang-btn">🇷🇺 RU</a>
-  </div>
-
+  <div class="lang-switcher"><a href="/" class="lang-btn ">🇬🇧 EN</a><a href="/es/" class="lang-btn ">🇪🇸 ES</a><a href="/fr/" class="lang-btn ">🇫🇷 FR</a><a href="/de/" class="lang-btn ">🇩🇪 DE</a><a href="/pt/" class="lang-btn ">🇧🇷 PT</a><a href="/hi/" class="lang-btn ">🇮🇳 HI</a><a href="/ur/" class="lang-btn ">🇵🇰 UR</a><a href="/ar/" class="lang-btn ">🇸🇦 AR</a><a href="/tr/" class="lang-btn active">🇹🇷 TR</a><a href="/it/" class="lang-btn ">🇮🇹 IT</a><a href="/zh/" class="lang-btn ">🇨🇳 ZH</a><a href="/ru/" class="lang-btn ">🇷🇺 RU</a></div>
   <div id="site-header"></div>
 
   <main>
-    <!-- Hero Section — compact -->
     <section class="hero hero-compact">
       <div class="container hero-content">
-        <h1><span class="highlight">Gümüş Hurda Hesaplayıcı</span></h1>
+        <div id="price-ticker"></div>
+        <h1><span class="highlight">Hurda Gümüş Hesaplayıcı</span></h1>
+        <p class="hero-subtitle">Canlı spot fiyatlarla hurda gümüş, madeni para, takı ve külçelerinizin eritme değerini anında hesaplayın.</p>
 
         <!-- Main Calculator Widget -->
-        <div class="calc-widget slide-up" id="hero-calc">
+        <div class="calc-widget slide-up" id="hero-calc" style="max-width:600px;margin:0 auto;">
+          <div class="calc-widget-title"><span class="icon">⚖️</span> Gümüş Değer Hesaplayıcı</div>
 
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="calc-weight">Ağırlık</label>
               <div class="input-group">
-                <input type="number" class="form-input" id="calc-weight" placeholder="Enter weight" step="0.01" min="0" value="10">
+                <input type="number" class="form-input" id="calc-weight" placeholder="10" step="0.01" min="0" value="10">
               </div>
             </div>
             <div class="form-group">
               <label class="form-label" for="calc-unit">Birim</label>
               <select class="form-select" id="calc-unit">
-                <option value="g" selected="">Grams (g)</option>
-                <option value="oz">Troy Ounces (oz)</option>
+                <option value="g" selected>Gram (g)</option>
+                <option value="ozt">Troy Ons (oz t)</option>
+                <option value="oz">Ons (oz)</option>
+                <option value="kg">Kilogram (kg)</option>
                 <option value="dwt">Pennyweight (dwt)</option>
-                <option value="kg">Kilograms (kg)</option>
+                <option value="tola">Tola</option>
               </select>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="calc-purity">Gümüş Saflığı</label>
+            <label class="form-label" for="calc-purity">Saflık</label>
             <select class="form-select" id="calc-purity">
-              <option value="0.999">999 — Fine Silver (99.9%)</option>
-              <option value="0.958">958 — Britannia Silver (95.8%)</option>
-              <option value="0.925" selected="">925 — Sterling Silver (92.5%)</option>
-              <option value="0.900">900 — Coin Silver (90.0%)</option>
-              <option value="0.835">835 — European Silver (83.5%)</option>
-              <option value="0.800">800 — European Silver (80.0%)</option>
+              <option value="0.999">999 — Fine (99.9%)</option>
+              <option value="0.958">958 — Britannia (95.8%)</option>
+              <option value="0.925" selected>925 — Sterling (92.5%)</option>
+              <option value="0.900">900 — Coin (90.0%)</option>
+              <option value="0.835">835 — (83.5%)</option>
+              <option value="0.800">800 — (80.0%)</option>
+              <option value="0.500">500 — (50.0%)</option>
             </select>
           </div>
 
           <div class="result-display" id="hero-result">
-            <div class="result-label">Tahmini Erime Değeri</div>
+            <div class="result-label">ERİTME DEĞERİ</div>
             <div class="result-value" id="hero-result-value">$0.00</div>
-            <div class="result-detail" id="hero-result-detail">Hesaplanacak ağırlığı girin</div>
+            <div class="result-detail" id="hero-result-detail">Spot: $--/oz · Saflık: 92.5% · Toplam Gümüş: 0.000 oz</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Trust Bar — compact -->
-    <section class="trust-bar-compact">
-      <div class="container">
-        <div class="trust-bar">
-          <div class="trust-item"><span class="icon">🔄</span> Canlı Spot Fiyatları</div>
-          <div class="trust-item"><span class="icon">🔒</span> %100 Özel</div>
-          <div class="trust-item"><span class="icon">⚡</span> Anında Sonuçlar</div>
-          <div class="trust-item"><span class="icon">📱</span> Her Cihazda Çalışır</div>
-          <div class="trust-item"><span class="icon">💰</span> Daima Ücretsiz</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- All Silver Calculators -->
-    <section class="section-compact" id="calculators">
+    <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container text-center">
-        <span class="section-badge">🧮 Hesap Makinelerimiz</span>
-        <h2 class="section-title">Ücretsiz Gümüş Erime Değeri ve Saflık Hesaplayıcıları</h2>
-        <p class="section-subtitle">Hurda, madeni para, mücevher, külçe ve daha fazlası için ihtiyacınız olan her gümüş hesap makinesi.</p>
-
+        <span class="section-badge">🧰 Tüm Gümüş Hesaplayıcılar</span>
+        <h2 class="section-title">Tüm Gümüş Hesaplayıcılar</h2>
+        <p class="section-subtitle">Her tür gümüş için özel araçlar.</p>
         <div class="category-grid stagger">
-
-          <a href="/gümüş-erime-değeri-hesaplayıcısı/" class="category-card" id="card-melt">
-            <div class="category-icon">🔥</div>
-            <h3>Gümüş Erime Değeri Hesaplayıcı</h3>
-            <p>Ağırlığa ve inceliğe göre herhangi bir gümüş ürünün saf gümüş içeriğini ve erime değerini bulun.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/gümüş-hesap-makinesi/" class="category-card" id="card-sterling">
-            <div class="category-icon">✨</div>
-            <h3>Gümüş Hesaplayıcı</h3>
-            <p>925 ayar gümüş eşyalarınızın ağırlığına göre değerini anında hesaplayın.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/önemsiz-gümüş-hesaplayıcı/" class="category-card" id="card-junk">
-            <div class="category-icon">🪙</div>
-            <h3>Önemsiz Gümüş Hesaplayıcı</h3>
-            <p>1965 öncesi ABD gümüş paralarının (on sent, çeyreklik, yarım ve dolar) erime değerini bulun.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/gümüş-para-değeri-hesaplama/" class="category-card" id="card-coins">
-            <div class="category-icon">🏛️</div>
-            <h3>Gümüş Para Değeri Hesaplayıcı</h3>
-            <p>Ağırlığını, saflığını ve miktarını girerek herhangi bir gümüş madalyonun erime değerini hesaplayın.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/altın-ve-gümüş-hesaplayıcı/" class="category-card" id="card-gold-silver">
-            <div class="category-icon">🥇</div>
-            <h3>Altın ve Gümüş Hesaplayıcı</h3>
-            <p>Birlikte karıştırılan altın ve gümüş hurdayı hesaplayın ve canlı oranı görüntüleyin.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/gümüş-külçe-değeri-hesaplayıcı/" class="category-card" id="card-bars">
-            <div class="category-icon">🧱</div>
-            <h3>Gümüş Külçe Değeri Hesaplayıcı</h3>
-            <p>1oz, 5oz, 10oz, 100oz ve 1kg boyutlarında gümüş külçelerin mevcut değerini bulun.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/gümüş-takı-değeri-hesaplama/" class="category-card" id="card-jewelry">
-            <div class="category-icon">💍</div>
-            <h3>Gümüş Takı Değeri Hesaplayıcı</h3>
-            <p>Gümüş yüzük, zincir, kolye ve bileziklerin erime değerini hesaplayın.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/gümüş-eşya-değeri-hesaplayıcı/" class="category-card" id="card-silverware">
-            <div class="category-icon">🍴</div>
-            <h3>Gümüş Eşya Değeri Hesaplayıcı</h3>
-            <p>Kaşık, çatal, tepsi, bıçak, bardak ve tabakların gümüş değerini bulun.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/gram-başına-gümüş-fiyatı/" class="category-card" id="card-price-gram">
-            <div class="category-icon">📊</div>
-            <h3>Gümüş Gram Başına Fiyat Hesaplayıcı</h3>
-            <p>Tüm yaygın ağırlık birimleri için dönüştürücüyle birlikte gram başına geçerli gümüş fiyatı.</p>
-            <span class="card-arrow">View Price →</span>
-          </a>
-
-          <a href="/ons-başına-gümüş-fiyatı/" class="category-card" id="card-price-oz">
-            <div class="category-icon">💲</div>
-            <h3>Gümüş Ons Başına Fiyat Hesaplayıcı</h3>
-            <p>Troy ons başına canlı gümüş spot fiyatı, küresel piyasalardan gerçek zamanlı olarak güncellenir.</p>
-            <span class="card-arrow">View Price →</span>
-          </a>
-
-          <a href="/sona-chandi-hesaplayıcı/" class="category-card" id="card-sona-chandi">
-            <div class="category-icon">✨</div>
-            <h3>Sona Chandi Hesap Makinesi</h3>
-            <p>Tunch'ı kullanarak Tola ve Gram cinsinden Sona (Altın) ve Chandi (Gümüş) değerlerini hesaplayın.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/kuruşluk-hesap-makinesi/" class="category-card" id="card-dwt">
-            <div class="category-icon">⚖️</div>
-            <h3>Pennyweight Hesaplayıcı</h3>
-            <p>Geleneksel bir kuyumcu standardı olan kuruş ağırlığı (dwt) cinsinden tartılan gümüş eşyaları hesaplayın.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
+          <a href="/silver-scrap-calculator/" class="category-card"><div class="category-icon">♻️</div><h3>Hurda Hesaplayıcı</h3><p>Hurda gümüşünüzün eritme değerini hesaplayın.</p></a>
+          <a href="/silver-melt-value-calculator/" class="category-card"><div class="category-icon">🔥</div><h3>Eritme Değeri</h3><p>Saf gümüşün eritme değerini bulun.</p></a>
+          <a href="/sterling-silver-calculator/" class="category-card"><div class="category-icon">✨</div><h3>Ayar Gümüş</h3><p>.925 ayar gümüşünüzün değeri.</p></a>
+          <a href="/junk-silver-calculator/" class="category-card"><div class="category-icon">🪙</div><h3>Eski Paralar</h3><p>Eski gümüş paraların değeri.</p></a>
+          <a href="/silver-coin-value-calculator/" class="category-card"><div class="category-icon">🏛️</div><h3>Para Değeri</h3><p>Herhangi bir gümüş paranın eritme değeri.</p></a>
+          <a href="/gold-and-silver-calculator/" class="category-card"><div class="category-icon">🥇</div><h3>Altın ve Gümüş</h3><p>Karışık altın ve gümüş hesabı.</p></a>
+          <a href="/silver-bar-value-calculator/" class="category-card"><div class="category-icon">🧱</div><h3>Gümüş Külçe</h3><p>Gümüş külçelerin güncel değeri.</p></a>
+          <a href="/silver-jewelry-value-calculator/" class="category-card"><div class="category-icon">💍</div><h3>Gümüş Takı</h3><p>Gümüş takıların eritme değeri.</p></a>
+          <a href="/silverware-value-calculator/" class="category-card"><div class="category-icon">🍴</div><h3>Gümüş Sofra Takımı</h3><p>Gümüş sofra takımınızın değeri.</p></a>
+          <a href="/silver-price-per-gram/" class="category-card"><div class="category-icon">📊</div><h3>Gram Fiyatı</h3><p>Güncel gram gümüş fiyatı.</p></a>
+          <a href="/silver-price-per-ounce/" class="category-card"><div class="category-icon">💲</div><h3>Ons Fiyatı</h3><p>Canlı troy ons spot fiyatı.</p></a>
         </div>
       </div>
     </section>
 
-    <!-- Tools Section — user-focused language -->
-    <section class="section-compact" id="tools">
+    <section class="section-compact">
       <div class="container text-center">
-        <span class="section-badge">🛠️ Güçlü Araçlar</span>
-        <h2 class="section-title">Bu Gümüş Araçlar Daha Fazla Değer Elde Etmenize Nasıl Yardımcı Olur?</h2>
-        <p class="section-subtitle">Bu ücretsiz gümüş araçlarla zamandan tasarruf edin, fiyatları karşılaştırın ve daha iyi satış kararları verin.</p>
-
+        <span class="section-badge">🛠️</span>
+        <h2 class="section-title">Daha Fazla Değer İçin Güçlü Araçlar</h2>
+        <p class="section-subtitle">Zamandan tasarruf edin, daha iyi kararlar verin.</p>
         <div class="category-grid stagger" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
-          <a href="/gümüş-kar-hesaplama/" class="category-card" id="card-profit">
-            <div class="category-icon">📈</div>
-            <h3>Gümüş Kar Hesaplayıcı</h3>
-            <p>Yatırımcılar: Ortalama satın alma fiyatınıza göre toplam Yatırım Getirinizi (ROI) hesaplayın.</p>
-            <span class="card-arrow">Calculate ROI →</span>
-          </a>
-          <a href="/nominal-değer-gümüş-hesaplayıcı/" class="category-card" id="card-face-val">
-            <div class="category-icon">💵</div>
-            <h3>Nominal Değer Hesaplayıcı</h3>
-            <p>%90'lık gümüş paralarınızın erime değerini, yalnızca nominal değerlerini (ör. 10 $ FV) girerek bulun.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-          <a href="/gümüş-toplu-hesap-makinesi/" class="category-card" id="card-batch">
-            <div class="category-icon">📋</div>
-            <h3>Toplu Gümüş Hesaplayıcı</h3>
-            <p>Birden fazla gümüş eşyanız mı var? Hepsini ekleyin ve toplam değeri görün; ardından listenizi bayi için yazdırın veya kopyalayın.</p>
-            <span class="card-arrow">Try It →</span>
-          </a>
-          <a href="/gümüş-ağırlık-dönüştürücü/" class="category-card" id="card-converter">
-            <div class="category-icon">⚖️</div>
-            <h3>Gümüş Ağırlık Dönüştürücü</h3>
-            <p>Terazinizin troy oz mu yoksa normal oz mu gösterdiğinden emin değil misiniz? 6 ağırlık birimi arasında dönüşüm yapın, böylece asla fazla ödemez veya eksik satış yapmazsınız.</p>
-            <span class="card-arrow">Convert →</span>
-          </a>
-          <a href="/gümüş-sat-veya-tut/" class="category-card" id="card-hold">
-            <div class="category-icon">📈</div>
-            <h3>Satış veya Tutma Hesaplayıcısı</h3>
-            <p>Şu an satış yapmak için doğru zaman olup olmadığını mı merak ediyorsunuz? Gümüşünüzün şimdiki değerini, daha yüksek veya daha düşük spot fiyatlarla karşılaştırın.</p>
-            <span class="card-arrow">Analyze →</span>
-          </a>
-          <a href="/gümüş-fiyatı-tüm-para-birimleri/" class="category-card" id="card-currencies">
-            <div class="category-icon">🌍</div>
-            <h3>12 Para Biriminde Gümüş Fiyatı</h3>
-            <p>USD, EUR, GBP, INR, PKR, AUD, CAD ve daha fazlası cinsinden canlı gümüş fiyatlarını görün; böylece gümüşünüzün dünya çapındaki değerinin tam olarak ne olduğunu bilirsiniz.</p>
-            <span class="card-arrow">View Prices →</span>
-          </a>
-          <a href="/tola-hesap-makinesi/" class="category-card" id="card-tola">
-            <div class="category-icon">⚖️</div>
-            <h3>Tola Hesaplayıcı</h3>
-            <p>Güney Asya pazarlarında yaygın olarak kullanılan Tola ve Masha ölçümlerini kullanarak hurda gümüşü dönüştürün ve hesaplayın.</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-          <a href="/gümüşü-tanımla/" class="category-card" id="card-ident">
-            <div class="category-icon">🔎</div>
-            <h3>Gümüş Tanımlama Aracı</h3>
-            <p>Gerçek gümüş olup olmadığından emin değil misiniz? Evde özellikleri, manyetik testleri ve asit testlerini nasıl tanımlayacağınızı öğrenin.</p>
-            <span class="card-arrow">Read Guide →</span>
-          </a>
+          <a href="/silver-profit-calculator/" class="category-card"><div class="category-icon">📈</div><h3>Kâr Hesaplayıcı</h3><p>Yatırım getirinizi hesaplayın.</p></a>
+          <a href="/face-value-silver-calculator/" class="category-card"><div class="category-icon">💵</div><h3>Nominal Değer</h3><p>%90 gümüş paralarınızın metal değeri.</p></a>
+          <a href="/silver-batch-calculator/" class="category-card"><div class="category-icon">📋</div><h3>Toplu Hesaplayıcı</h3><p>Birden fazla öğe ekleyin ve toplam değeri görün.</p></a>
+          <a href="/silver-weight-converter/" class="category-card"><div class="category-icon">⚖️</div><h3>Ağırlık Dönüştürücü</h3><p>6 ağırlık birimi arasında dönüştürün.</p></a>
+          <a href="/silver-sell-or-hold/" class="category-card"><div class="category-icon">📈</div><h3>Sat veya Tut</h3><p>Mevcut değeri farklı fiyatlarla karşılaştırın.</p></a>
+          <a href="/silver-price-all-currencies/" class="category-card"><div class="category-icon">🌍</div><h3>12 Para Biriminde Fiyat</h3><p>USD, EUR, TRY ve daha fazlasında fiyatlar.</p></a>
         </div>
       </div>
     </section>
 
-    <!-- How It Works — compact -->
     <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container text-center">
-        <span class="section-badge">📋 Basit Süreç</span>
+        <span class="section-badge">📋</span>
         <h2 class="section-title">Nasıl Çalışır — 3 Basit Adım</h2>
-        <p class="section-subtitle">Saniyeler içinde doğru bir gümüş değeri elde edin.</p>
-
+        <p class="section-subtitle">Saniyeler içinde doğru değerleme alın.</p>
         <div class="steps-grid stagger">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <h4>Gümüşünüzü Tartın</h4>
-            <p>Gümüş eşyanızı gram, ons veya herhangi bir birim cinsinden tartmak için bir mutfak terazisi kullanın.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <h4>Gümüş Saflığını Seçin</h4>
-            <p>Saflığı seçin: Sterlin için 925, saf gümüş için 999, madeni para gümüşü için 900 veya diğerleri.</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <h4>Anında Erime Değeri Alın</h4>
-            <p>Küresel piyasalardan gerçek zamanlı olarak güncellenen canlı gümüş spot fiyatlarına dayalı erime değerini görün.</p>
-          </div>
+          <div class="step-card"><div class="step-number">1</div><h4>Gümüşünüzü Tartın</h4><p>Bir terazi ile gümüşünüzü tartın.</p></div>
+          <div class="step-card"><div class="step-number">2</div><h4>Saflığı Seçin</h4><p>Saflık seçin: .999, .925, .900 veya özel.</p></div>
+          <div class="step-card"><div class="step-number">3</div><h4>Anında Değer Alın</h4><p>Canlı spot fiyatla hesaplanır.</p></div>
         </div>
       </div>
     </section>
 
-    <!-- Semantic SEO Content -->
-    <section class="section-compact" id="guide">
+    <section class="section-compact">
       <div class="container">
-        <div class="content-body" style="max-width: 800px; margin: 0 auto; text-align: left; line-height: 1.8;">
-
-          <h2>Hurda Gümüş Hesaplayıcı Nedir ve Ne Zaman Kullanmalısınız?</h2>
-          <p>Özünde, bir hurda gümüş hesaplayıcısı, <strong>intrinsic melt value</strong> Gümüş bir eşyanın perakende fiyatı değil, manevi değeri değil, herhangi bir koleksiyoncunun primi değil. Belirli bir soruyu yanıtlıyor: Eğer bu maddeyi bugün eritip saf gümüşe çevirseydiniz, bu metalin değeri ne olurdu? Bunu yapmak için üç bilgi kullanır: eşyanın ağırlığı, gümüş saflığı (saflığı) ve mevcut durumu. <strong>spot price</strong> Küresel emtia piyasasında işlem gören gümüş.</p>
-          <p>İster kırık bir bilezik, ister eski bir sofra takımı, bozuk para koleksiyonu veya bir çanta dolusu sterlin kırıntısı olsun, hurda gümüş satmak üzere olduğunuzda bunu kullanmalısınız. Eriyik değerini önceden bilmek, bayi veya rafineri tarafından eksik ödeme yapılmasını önlemenin en etkili yoludur. Kontrol edebilirsiniz <a href="/ons-başına-gümüş-fiyatı/">live silver price per troy ounce</a> veya <a href="/gram-başına-gümüş-fiyatı/">silver price per gram</a> Bir satışa başlamadan önce piyasanın nasıl hareket ettiğini görmek için istediğiniz zaman.</p>
-
-          <h2>Gümüş Erime Değeri Gerçekte Nasıl Hesaplanır?</h2>
-          <p>Formül basit ama birimler çok önemli. Gümüş her zaman uluslararası olarak fiyatlandırılır. <strong>troy ounces</strong> - mutfak terazisinde kullanacağınız standart avoirdupois ons değil. Troy ons, standart onsun 28,35 gramına kıyasla 31,1035 gramdır. Bu ayrım tek başına insanların gümüşlerinin değerini yanlış hesaplamalarının en yaygın nedenlerinden biridir.</p>
-          <p style="background: var(--bg-secondary); border-left: 3px solid var(--accent-primary); padding: var(--space-md) var(--space-lg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-family: monospace; font-size: var(--fs-sm);">Erime Değeri = Ağırlık (Troy oz cinsinden) × Saflık (ondalık) × Spot Fiyat (Troy oz başına)</p>
-          <p>Örneğin: 30 $/oz değerindeki gümüşe sahip 50 gramlık saf gümüş zincir (saflık 0,925) size (50 ÷ 31,1035) × 0,925 × 30 = verir <strong>approximately $44.75</strong>. Bizim <a href="/gümüş-erime-değeri-hesaplayıcısı/">silver melt value calculator</a> tüm bunları otomatik olarak yapar. Ürününüz farklı bir birimde ölçülmüşse, <a href="/gümüş-ağırlık-dönüştürücü/">silver weight converter</a> gram, ons, kuruş ağırlığı, tolas ve kilogram arasındaki dönüşümü yönetir, böylece her zaman doğru sayıyı girersiniz.</p>
-
-          <h2>Gümüş Saflık İşaretlerini ve Ayar İşaretlerini Anlamak</h2>
-          <p>Her gümüş parçası, damga izlerinde bir hikaye taşır. <strong>hallmarks</strong>. Bu küçük gravürler size gümüşün inceliğini, yani alaşımdaki saf gümüşün oranını anlatır. Doğru değerleme için bunları okumayı öğrenmek önemlidir.</p>
-          <p>Karşılaşacağınız en yaygın saflıklar şunlardır:</p>
-          <ul>
-            <li><strong>999 (Fine Silver)</strong> — %99,9 saf gümüş. Tipik olarak külçe külçelerinde ve Amerikan Gümüş Kartalı gibi madeni paralarda bulunur. Bizim kullanın <a href="/999-gümüş-hesap-makinesi/">999 silver calculator</a> bu öğeler için.</li>
-            <li><strong>958 (Britannia Silver)</strong> — %95,8 saftır, bazı İngiliz gümüş eşyalarında kullanılır. Bizim <a href="/958-gümüş-hesap-makinesi/">958 silver calculator</a> bu inceliği tam olarak işliyor.</li>
-            <li><strong>925 (Sterling Silver)</strong> — Dünya çapında en tanınmış standart. %92,5 gümüş, %7,5 bakır alaşımı. Bugün satılan çoğu mücevher ve sofra takımı sterlindir. Adanmış <a href="/gümüş-hesap-makinesi/">sterling silver calculator</a> veya <a href="/925-gümüş-hesap-makinesi/">925 silver calculator</a> her ikisi de burada faydalıdır.</li>
-            <li><strong>900 (Coin Silver)</strong> — 1965'ten önce basılan eski ABD paralarında kullanılır. <a href="/900-gümüş-hesap-makinesi/">900 silver calculator</a> bu öğeler için üretilmiştir.</li>
-            <li><strong>835 &amp; 800 (European Silver)</strong> — Kıta Avrupası içi boş kaplarda ve çatal bıçak takımlarında yaygındır. Kullanın <a href="/835-gümüş-hesap-makinesi/">835 silver calculator</a> veya <a href="/800-gümüş-hesap-makinesi/">800 silver calculator</a> sırasıyla.</li>
-          </ul>
-          <p>"STERLING", "925" veya "925/1000" yazan bir pul görürseniz, neredeyse kesinlikle saf gümüşe bakıyorsunuzdur. Hiçbir işaret yoksa, bir kuyumcu veya rehin dükkanı doğrulamak için asit testi veya XRF analizi yapabilir. Bizim <a href="/925-ayar-gümüş-gram-fiyatı/">925 sterling silver price per gram</a> sayfa size en yaygın saflık için canlı bir temel referans sunar.</p>
-
-          <h2>Gümüş Takılara, Sofra Takımlarına ve İçi Boş Eşyalara Değer Vermek</h2>
-          <p>Gümüş takıların asıl değeri tasarımdan, işçilikten veya marka adından değil tamamen gümüş içeriğinden gelir. Ağır, sade bir gümüş bileklik, hafif bir tasarım yüzüğünden çok daha değerlidir. Ağırlık baskın faktördür, bu nedenle değerlerini tahmin etmeden önce daima eşyaları tartın.</p>
-          <p>Belirli mücevher türleri için amaca yönelik olarak tasarlanmış araçları kullanın: <a href="/gümüş-yüzük-değeri/">silver ring calculator</a>, <a href="/gümüş-zincir-değeri/">silver chain calculator</a>, <a href="/gümüş-kolye-değeri/">silver necklace calculator</a>ve <a href="/gümüş-bilezik-değeri/">silver bracelet calculator</a> hepsi tam ağırlıkları girmenize ve anında hurda değerleri almanıza olanak tanır. Genel olarak giyilebilir herhangi bir parça için <a href="/gümüş-takı-değeri-hesaplama/">silver jewelry value calculator</a> en iyi başlangıç noktasıdır.</p>
-          <p>Gümüş eşyalar ve sofra takımları (kaşıklar, çatallar, bıçaklar, tepsiler, bardaklar ve tabaklar) aynı şekilde fiyatlandırılır. Tam bir sterlin sofra takımı seti, önemli miktarda gümüş ağırlığını temsil edebilir. Şununla başla: <a href="/gümüş-eşya-değeri-hesaplayıcı/">silverware value calculator</a>veya doğrudan tek tek sayfalara gidin. <a href="/gümüş-kaşık-değeri/">silver spoons</a>, <a href="/gümüş-çatal-değeri/">silver forks</a>, <a href="/gümüş-bıçak-değeri/">silver knives</a>, <a href="/gümüş-tepsi-değeri/">silver trays</a>, <a href="/gümüş-kupa-değeri/">silver cups</a>ve <a href="/gümüş-tabak-değeri/">silver plates</a>.</p>
-          <p>Önemli bir uyarı: <em>silver-plated</em> öğeler, adi metal üzerinde yalnızca mikroskobik bir gümüş kaplamaya sahiptir. Gümüş hurdası olarak esasen sıfır erime değerine sahiptirler ve buraya girilmemelidirler.</p>
-
-          <h2>Gümüş Paralar - Erime Değeri ve Nümismatik Değer</h2>
-          <p>Bu gümüş piyasasında en yanlış anlaşılan alanlardan biridir. Bir madalyonun erime değeri (yalnızca gümüş içeriğinin değeri) her zaman taban değerdir. Ancak birçok madeni para ek bir değer taşır <strong>numismatic premium</strong> nadir olmaları, yaşları, durumları veya koleksiyoncu talepleri nedeniyle. Bozulmamış bir 1881 Morgan Dolarını hurda gümüş fiyatına satmak pahalı bir hata olurdu.</p>
-          <p>Büyük miktarlarda yaygın olarak dolaşan madeni paralar için - tipik olarak adı verilen türden <strong>junk silver</strong> — erime değeri aslında elde edeceğiniz tek şeydir. 1965 öncesi ABD on sentleri, çeyrekleri, yarım dolarları ve dolar madeni paralarının %90'ı gümüştür. Bizim <a href="/önemsiz-gümüş-hesaplayıcı/">junk silver calculator</a> bunlara özel olarak uyarlanmıştır ve <a href="/nominal-değer-gümüş-hesaplayıcı/">face value silver calculator</a> Anında bir tahmin almak için bozuk para çantanızın toplam değerini (örneğin, 10 $ FV) girmenizi sağlar.</p>
-          <p>Bireysel madeni paralar için, <a href="/gümüş-para-değeri-hesaplama/">silver coin value calculator</a>, <a href="/gümüş-dolar-hesaplama/">silver dollar calculator</a>, <a href="/gümüş-çeyrek-hesaplayıcı/">silver quarter calculator</a>, <a href="/gümüş-kuruş-hesaplayıcı/">silver dime calculator</a>veya <a href="/kanada-gümüş-para-hesaplayıcısı/">Canadian silver coin calculator</a>.</p>
-          <p>Gümüş külçeler için, <a href="/gümüş-külçe-değeri-hesaplayıcı/">silver bar value calculator</a> 1oz'dan 100oz'a ve 1kg'a kadar yaygın boyutları destekler. için özel sayfalar mevcuttur <a href="/1oz-gümüş-değeri/">1oz</a>, <a href="/2-ons-gümüş-değeri/">2oz</a>, <a href="/5oz-gümüş-değeri/">5oz</a>, <a href="/10oz-gümüş-değeri/">10oz</a>, <a href="/100oz-gümüş-değeri/">100oz</a>ve <a href="/1kg-gümüş-değeri/">1kg</a> barlar. Büyük bir karma koleksiyonunuz varsa, <a href="/gümüş-toplu-hesap-makinesi/">silver batch calculator</a> sınırsız satır öğesi eklemenizi ve yazdırabileceğiniz veya bir satıcıya kopyalayabileceğiniz birleşik toplamı elde etmenizi sağlar.</p>
-
-          <h2>Gümüşü Doğru Tartmak: Troy Ons, Gram, Pennyweight ve Tola</h2>
-          <p>Değerli metal ticaretinde her zaman mutfak terazinizle eşleşmeyen çeşitli ağırlık birimleri kullanılır. Bunu yanlış anlamak, yanlış hesaplamanın en kolay yollarından biridir. Bir ons 31.1035 g'dır; standart bir ons yalnızca 28,35 gramdır. <strong>pennyweight (dwt)</strong> - ABD mücevher ticaretinde yaygın olan - 1,555 g'a eşittir ve bizim <a href="/kuruşluk-hesap-makinesi/">pennyweight calculator</a> dwt ile spot fiyat arasında otomatik olarak geçiş yapar. Güney Asya pazarlarında ise <strong>tola</strong> (11.664 g) standart birimdir; the <a href="/tola-hesap-makinesi/">tola silver calculator</a> bunun için özel olarak tasarlanmıştır.</p>
-          <p>Bu birimlerden herhangi biri arasında geçiş yapmanız gerekirse, <a href="/gümüş-ağırlık-dönüştürücü/">silver weight converter</a> tek bir girişle her iki yöndeki altı ünitenin tamamını yönetir. Ayrıca her birim için eşdeğer spot fiyatı da görüntüler, böylece terazi okumanızı anında kontrol edebilirsiniz.</p>
-
-          <h2>Altın ve Gümüş Bir Arada — Ne Zaman Satılacağını Bilmek</h2>
-          <p>Birçok emlak satışı ve bayi lotu hem altın hem de gümüş ürünleri içerir. <a href="/altın-ve-gümüş-hesaplayıcı/">gold and silver calculator</a> Her iki metali aynı anda işler ve aynı zamanda canlı olarak görüntüler. <strong>gold-to-silver ratio</strong> — yatırımcıların alım satım kararlarını zamanlamak için izledikleri önemli bir ölçüm. Altının şu şekilde ölçüldüğü Güney Asya pazarları için: <em>Sona</em> ve gümüş olarak <em>Chandi</em>, <a href="/sona-chandi-hesaplayıcı/">Sona Chandi calculator</a> Tunch (saflık) özelliğinin yerleşik olduğu Tola ve Gram birimlerini destekler.</p>
-          <p>Eğer gümüşü yatırım olarak tutuyorsanız rakamları <a href="/gümüş-kar-hesaplama/">silver profit calculator</a> Orijinal satın alma fiyatınıza göre yatırım getirinizi görmek için. Şimdi mi satacağınızdan yoksa bekleyeceğinizden emin değil misiniz? <a href="/gümüş-sat-veya-tut/">sell or hold calculator</a> bilinçli bir karar verebilmeniz için farklı gelecek fiyat senaryolarını modeller. Gümüş fiyatları ayrıca USD, EUR, GBP, INR, PKR, AUD ve CAD dahil olmak üzere 12 ana para biriminde de mevcuttur. <a href="/gümüş-fiyatı-tüm-para-birimleri/">silver price in all currencies</a> sayfa.</p>
-
+        <div class="content-body">
+          <h2>Gümüş Değerini Anlamak</h2>
+          <div class="content-scroll-block">
+            <h3>Eritme Değeri Nasıl Hesaplanır</h3><p>Herhangi bir gümüş eşyanın değeri üç faktöre bağlıdır: <strong>ağırlık</strong>, <strong>saflık</strong> ve <strong>spot fiyat</strong>. Formül: Değer = Ağırlık (troy ons) × Saflık × Spot Fiyat.</p><ul><li><strong>Ağırlık</strong> — Gram, troy ons veya kilogram cinsinden</li><li><strong>Saflık</strong> — Gümüş yüzdesi: 999 (%99.9), 925 ayar (%92.5), 900 (%90)</li><li><strong>Spot Fiyat</strong> — COMEX gibi borsalardan canlı fiyat</li></ul><h3>Hurda Gümüş Nedir?</h3><p>Kırık takılar, eski sofra takımları, gümüş paralar — metal değeri için satılan her şey.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Silver & Precious Metals Entities -->
     <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container">
-        <h3 class="text-center" style="font-size:var(--fs-lg);margin-bottom:var(--space-md);">Gümüş ve Kıymetli Madenler Konuları</h3>
+        <h3 class="text-center" style="font-size:var(--fs-lg);margin-bottom:var(--space-md);">Silver & Precious Metals</h3>
         <div class="entity-scroller">
           <span class="entity-pill">Silver (Ag)</span>
           <span class="entity-pill">Troy Ounce</span>
           <span class="entity-pill">Spot Price</span>
-          <span class="entity-pill">COMEX Exchange</span>
+          <span class="entity-pill">COMEX</span>
           <span class="entity-pill">LBMA</span>
-          <span class="entity-pill">Sterling Silver 925</span>
+          <span class="entity-pill">Sterling 925</span>
           <span class="entity-pill">Fine Silver 999</span>
           <span class="entity-pill">Coin Silver 900</span>
           <span class="entity-pill">Melt Value</span>
@@ -400,85 +199,54 @@
           <span class="entity-pill">Precious Metals</span>
           <span class="entity-pill">Bullion</span>
           <span class="entity-pill">Hallmark</span>
-          <span class="entity-pill">Assay</span>
-          <span class="entity-pill">Pennyweight (DWT)</span>
-          <span class="entity-pill">Silver Refining</span>
-          <span class="entity-pill">Numismatic Value</span>
-          <span class="entity-pill">Junk Silver Coins</span>
+          <span class="entity-pill">Pennyweight</span>
+          <span class="entity-pill">Numismatic</span>
+          <span class="entity-pill">Junk Silver</span>
           <span class="entity-pill">Silver Alloy</span>
           <span class="entity-pill">Tola</span>
-          <span class="entity-pill">Silver Purity Testing</span>
           <span class="entity-pill">XRF Analysis</span>
-          <span class="entity-pill">Acid Test</span>
           <span class="entity-pill">Morgan Dollar</span>
-          <span class="entity-pill">American Silver Eagle</span>
+          <span class="entity-pill">Silver Eagle</span>
         </div>
       </div>
     </section>
 
-    <!-- FAQ — People Also Ask targeted -->
-    <section class="section-compact" id="faq" style="background: var(--bg-secondary);">
+    <section class="section-compact" id="faq">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">Sıkça Sorulan Sorular</h2>
-          <p class="section-subtitle">İnsanların gümüş hurda değeri hakkında en çok sorduğu soruların net yanıtları.</p>
+          <h2 class="section-title">Gümüş Değeri Hakkında Sık Sorulan Sorular</h2>
         </div>
-
-        <div class="faq-list" style="max-width: 800px; margin: 0 auto; text-align: left;">
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-1"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Hurda gümüşün değerini nasıl hesaplarım?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Öğenin ons cinsinden ağırlığını saflığıyla (ondalık sayı olarak) ve ardından mevcut gümüş spot fiyatıyla çarpın. Örneğin, 10 gram 925 sterlin, ons başına 30 ABD Doları = (10 ÷ 31,1035) × 0,925 × 30 = yaklaşık olarak 8,95 ABD Doları. Bu <a href="/gümüş-erime-değeri-hesaplayıcısı/">silver melt value calculator</a> ağırlığı, saflığı ve birimi girdiğinizde anında matematik yapar.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-2"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Erime değeri ile spot fiyat arasındaki fark nedir?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>The <strong>spot price</strong> küresel emtia borsasında bir ons saf (999) gümüşün mevcut piyasa fiyatıdır. <strong>melt value</strong> ağırlığına ve saflığına bağlı olarak belirli bir öğenizin değeridir - gerçek dünyadaki gümüş öğelerin çoğu bakır veya diğer alaşımlar içerdiğinden her zaman spot fiyata eşit veya bundan düşüktür. Bugünü kontrol et <a href="/bugünkü-gümüş-spot-fiyatı/">live silver spot price</a> güncel kalmak için.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-3"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Gümüşümün gerçek olup olmadığını ve saflığını nasıl anlarım?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Öğe üzerinde bir damga veya damga arayın; yaygın olanlar arasında 925, 900, 800, 999 veya STERLING kelimesi bulunur. Birleşik Krallık'tan gelen ürünlerde genellikle aslan geçiş damgası bulunur. Herhangi bir işaret yoksa saygın bir kuyumcu veya rehinci dükkanı asit testi veya XRF analizi yapabilir. Gümüş kaplamalı bir üründe genellikle "EPNS", "Gümüş Plaka" veya "Sheffield Plakası" ifadesi bulunur; bunların hurda değeri ihmal edilebilir düzeydedir.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-4"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Bir hurda satıcısı bana gerçekte ne kadar ödeyecek?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Hurda gümüş alıcılarının çoğu, hesaplanan erime değerinin %70 ila %95'ini öder. Yüzde, alıcı türüne (yerel rehin dükkanı veya çevrimiçi rafineri), saflık güvenine ve sattığınız hacme bağlıdır. Yerel rehinci dükkanları daha az teklif etme eğilimindedir; Uzman çevrimiçi gümüş rafinerileri genellikle %85-95 oranında eriyik sunar. Her zaman birden fazla teklif alın ve taahhütte bulunmadan önce adil bir anlaşma yaptığınızı doğrulamak için bu hesaplayıcıyı kullanın.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-5"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Hurda gümüş ile hurda gümüş aynı mıdır?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Tam olarak değil. <em>Junk silver</em> özellikle %90'ı gümüş olan ve tahsil edilebilir bir primi olmayan 1965 öncesi ABD madeni paralarını (on sent, çeyreklik, yarım, dolar) ifade eder; bunlar yalnızca metal içerikleri nedeniyle değerlenir. <em>Scrap silver</em> kırık mücevherleri, sofra takımlarını, diş gümüşünü ve metali karşılığında satılan herhangi bir gümüş ürünü kapsayan daha geniş bir terimdir. Kullanın <a href="/önemsiz-gümüş-hesaplayıcı/">junk silver calculator</a> madeni paralar için ve diğer her şey için bu hurda gümüş hesaplayıcı.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-6"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Bu hesap makinesini gümüş paralar için kullanabilir miyim?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Evet — madalyonun ağırlığını girin ve saflığını seçin (1965 öncesi ABD madeni paraları için %90, Gümüş Kartallar için %99,9). Ancak belirli madeni para türlerinde daha hassas sonuçlar elde etmek için <a href="/gümüş-para-değeri-hesaplama/">silver coin value calculator</a> veya adanmış <a href="/gümüş-dolar-hesaplama/">silver dollar</a>, <a href="/gümüş-çeyrek-hesaplayıcı/">silver quarter</a>ve <a href="/gümüş-kuruş-hesaplayıcı/">silver dime</a> Resmi madeni para ağırlıklarını otomatik olarak kullanan hesap makineleri.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-7"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Kullanılacak en iyi ağırlık birimi nedir – gram mı yoksa troy ons mu?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Teraziniz ne gösteriyorsa onu kullanın; bu hesap makinesi sizin için dönüştürür. Gram çoğu ev terazisi için en kolay birimdir. Troy ons endüstri standardıdır ve doğrudan spot fiyatla karşılaştırıldığında faydalıdır. Kaçınılması gereken kritik hata: kafa karıştırıcı <em>standard</em> ons (28,35 g) ile <em>troy</em> ons (31,10 g). Bu çok yaygın ve maliyetli bir hatadır. Bizim kullanın <a href="/gümüş-ağırlık-dönüştürücü/">silver weight converter</a> Birimleri değiştirmeniz gerekiyorsa.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-8"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Gümüş kaplama mücevherlerin hurda değeri var mı?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Çok az. Gümüş kaplamalı ürünler, bakır veya nikel gibi bir baz metal üzerine bağlanmış yalnızca ince bir gümüş tabakasına (genellikle sadece birkaç mikron) sahiptir. Ağırlıkça gerçek gümüş içeriği, toplamın çok küçük bir kısmıdır; hurdadan ekonomik olarak geri kazanılmak için çok küçüktür. Kaplamalı ürünleri tanımlamak için EPNS, EP veya "Gümüş Plaka" gibi pulları arayın. Yalnızca katı sterlin veya ince gümüşün anlamlı bir hurda değeri vardır.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-9"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Altın/gümüş oranı satış kararımı nasıl etkiler?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>The <strong>gold-to-silver ratio</strong> Bir ons altın satın almak için kaç ons gümüş gerektiğini söyler. Tarihsel olarak ortalama 60-80 civarındadır; 80'in üzerine çıktığında gümüş, altına göre nispeten ucuz sayılıyor ve birçok yatırımcı gümüş alıyor. 60'ın altına düştüğünde gümüş nispeten pahalıdır ve satış için iyi bir zaman olabilir. Erime değerinizin yanı sıra canlı oranı da kontrol edin. <a href="/altın-ve-gümüş-hesaplayıcı/">gold and silver calculator</a>.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-10"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Gümüş değerini ABD doları dışındaki para birimlerinde hesaplayabilir miyim?</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>Evet. Bizim <a href="/gümüş-fiyatı-tüm-para-birimleri/">silver price in all currencies</a> sayfa USD, EUR, GBP, INR, PKR, AUD, CAD ve daha fazlası cinsinden canlı gümüş fiyatlarını gösterir. Güney Asya pazarları için <a href="/sona-chandi-hesaplayıcı/">Sona Chandi calculator</a> Tola ölçümlerini ve Tunch'ı (saflık) yerel pazarlara tanıdık bir formatta destekler.</p></div>
+        <div class="faq-scroll-panel">
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" id="faq-btn-1"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Bu hesap makinesi ne kadar doğru?</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>Canlı spot fiyatları kullanıyoruz. Gösterilen değer teoriktir; alıcılar %80-97 öder.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" id="faq-btn-2"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Gümüşümün saflığını nasıl anlarım?</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>Damgalara bakın: 925, 999, 800.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" id="faq-btn-3"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Fiyat neden değişiyor?</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>Gümüş küresel borsalarda işlem görür. Fiyat arz ve talebe göre dalgalanır.</p></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <div id="site-footer"></div>
 
-  <!-- Scripts -->
-  <script src="../js/silver-price.js"></script>
-  <script src="../js/calculator.js"></script>
-  <script src="../js/components.js"></script>
   <script>
-    // Hero Calculator Logic
+    window.MenuTranslations = {"Home":"Ana Sayfa","Calculators":"Hesaplayıcılar","Purity":"Saflık","Pricing":"Fiyatlandırma","Tools":"Araçlar","Guides":"Kılavuzlar","Primary Calculators":"Ana Hesaplayıcılar","Item Calculators":"Öğe Hesaplayıcıları","Popular Coins":"Popüler Paralar","Silver Purity":"Gümüş Saflığı","Silver Scrap Calculator":"Hurda Gümüş Hesaplayıcı","About":"Hakkında","Privacy":"Gizlilik","Terms":"Şartlar","All rights reserved.":"Tüm hakları saklıdır.","Prices are for informational purposes only.":"Fiyatlar bilgi amaçlıdır.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Canlı spot fiyatları kullanan ücretsiz gümüş hesaplayıcıları. Hurda gümüşünüzün değerini hemen hesaplayın."};
+  </script>
+  <script src="../js/silver-price.js?v=2.1"></script>
+  <script src="../js/calculator.js?v=2.1"></script>
+  <script src="../js/components.js?v=2.1"></script>
+  <script>
+    SiteComponents.renderPriceTicker('price-ticker');
+
     const weightInput = document.getElementById('calc-weight');
     const unitSelect = document.getElementById('calc-unit');
     const puritySelect = document.getElementById('calc-purity');
@@ -490,53 +258,22 @@
       const unit = unitSelect.value;
       const purity = parseFloat(puritySelect.value);
       const spotPrice = SilverPrice.getPrice();
-
-      if (weight <= 0) {
-        resultValue.textContent = '$0.00';
-        resultDetail.textContent = 'Enter weight to calculate';
-        return;
-      }
-
+      if (weight <= 0) { resultValue.textContent = '$0.00'; resultDetail.textContent = t.spot + ': --'; return; }
       const weightGrams = SilverCalc.toGrams(weight, unit);
       const result = SilverCalc.meltValue(weightGrams, purity, spotPrice);
-
       resultValue.textContent = SilverCalc.formatCurrency(result.value);
-      resultDetail.textContent = `${result.silverContentGrams}g pure silver · ${result.silverContentOz} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+      resultDetail.textContent = result.silverContentGrams + 'g · ' + result.silverContentOz + ' troy oz · ' + t.spot + ': $' + spotPrice.toFixed(2) + '/oz';
     }
 
     weightInput.addEventListener('input', calculate);
     unitSelect.addEventListener('change', calculate);
     puritySelect.addEventListener('change', calculate);
-
-    // Update calc when price loads
     SilverPrice.onPriceUpdate(() => calculate());
-
-    // Initial calc
     calculate();
 
-    // FAQ toggle
     document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.closest('.faq-item').classList.toggle('open');
-      });
+      btn.addEventListener('click', () => { btn.closest('.faq-item').classList.toggle('open'); });
     });
-
-    SiteComponents.injectFAQSchema([
-      { q: 'How do I calculate the value of scrap silver?', a: 'Multiply the item\'s weight in troy ounces by its purity (as a decimal) and then by the current silver spot price. For example, 10 grams of 925 sterling at $30/oz equals approximately $8.95. A silver melt value calculator does this math instantly.' },
-      { q: 'What is the difference between melt value and spot price?', a: 'The spot price is the current market price for one troy ounce of pure 999 silver. The melt value is what your specific item is worth based on its weight and purity — it is always equal to or less than spot price, because most silver items contain alloys.' },
-      { q: 'How do I know if my silver is real and what purity it is?', a: 'Look for a hallmark stamp on the item — common ones include 925, 900, 800, 999, or the word STERLING. If there is no marking, a jeweler or pawn shop can run an acid test or XRF analysis to confirm.' },
-      { q: 'How much will a scrap dealer actually pay me?', a: 'Most scrap silver buyers pay between 70% and 95% of the calculated melt value. Local pawn shops tend to offer less; specialist online silver refiners often offer 85-95% of melt. Always get multiple offers and use a calculator to verify fairness.' },
-      { q: 'Is junk silver the same as scrap silver?', a: 'Not exactly. Junk silver refers specifically to pre-1965 US coins (dimes, quarters, halves, dollars) that are 90% silver with no collectible premium. Scrap silver is a broader term covering broken jewelry, flatware, dental silver, and any silver sold for its metal.' },
-      { q: 'Can I use this calculator for silver coins?', a: 'Yes — enter the coin\'s weight and select its purity (90% for pre-1965 US coins, 99.9% for Silver Eagles). For more precision, use dedicated coin calculators for silver dollars, quarters, or dimes which use official coin weights automatically.' },
-      { q: 'What is the best weight unit to use — grams or troy ounces?', a: 'Use whatever your scale shows — the calculator converts for you. Grams are easiest for home scales. Avoid confusing standard ounces (28.35 g) with troy ounces (31.10 g), which is a very common and costly mistake.' },
-      { q: 'Does silver-plated jewelry have any scrap value?', a: 'Very little. Silver-plated items have only a thin coating of silver over base metal. The actual silver content is too small to recover economically. Look for stamps like EPNS or Silver Plate to identify plated items — only solid sterling or fine silver has meaningful scrap value.' },
-      { q: 'How does the gold-to-silver ratio affect my decision to sell?', a: 'The gold-to-silver ratio tells you how many ounces of silver it takes to buy one ounce of gold. When the ratio rises above 80, silver is relatively cheap and investors buy; when it falls below 60, silver is relatively expensive and may be a good time to sell.' },
-      { q: 'Can I calculate silver value in currencies other than US dollars?', a: 'Yes. Silver prices are available in USD, EUR, GBP, INR, PKR, AUD, CAD, and more. For South Asian markets, Tola measurements and Tunch (purity) are also supported.' }
-    ]);
   </script>
-
-
-<script>
-  window.MenuTranslations = {"slugs":{"1-10oz-silver-value":"1-10oz-gümüş-değeri","100oz-silver-value":"100oz-gümüş-değeri","10oz-silver-value":"10oz-gümüş-değeri","1kg-silver-value":"1kg-gümüş-değeri","1oz-silver-value":"1oz-gümüş-değeri","2oz-silver-value":"2-ons-gümüş-değeri","5oz-silver-value":"5oz-gümüş-değeri","800-silver-calculator":"800-gümüş-hesap-makinesi","835-silver-calculator":"835-gümüş-hesap-makinesi","900-silver-calculator":"900-gümüş-hesap-makinesi","925-silver-calculator":"925-gümüş-hesap-makinesi","925-sterling-silver-price-per-gram":"925-ayar-gümüş-gram-fiyatı","958-silver-calculator":"958-gümüş-hesap-makinesi","999-silver-calculator":"999-gümüş-hesap-makinesi","canadian-silver-coin-calculator":"kanada-gümüş-para-hesaplayıcısı","face-value-silver-calculator":"nominal-değer-gümüş-hesaplayıcı","gold-and-silver-calculator":"altın-ve-gümüş-hesaplayıcı","how-silver-prices-work":"gümüş-fiyatları-nasıl-çalışır","how-to-sell-silver":"gümüş-nasıl-satılır","how-to-use-silver-calculators":"gümüş-hesap-makineleri-nasıl-kullanılır","identify-silver":"gümüşü-tanımla","junk-silver-calculator":"önemsiz-gümüş-hesaplayıcı","pennyweight-calculator":"kuruşluk-hesap-makinesi","silver-bar-value-calculator":"gümüş-külçe-değeri-hesaplayıcı","silver-batch-calculator":"gümüş-toplu-hesap-makinesi","silver-bracelet-value":"gümüş-bilezik-değeri","silver-chain-value":"gümüş-zincir-değeri","silver-coin-value-calculator":"gümüş-para-değeri-hesaplama","silver-cup-value":"gümüş-kupa-değeri","silver-dime-calculator":"gümüş-kuruş-hesaplayıcı","silver-dollar-calculator":"gümüş-dolar-hesaplama","silver-fork-value":"gümüş-çatal-değeri","silver-hallmarks-guide":"gümüşün-ayırt-edici-özellikleri-kılavuzu","silver-jewelry-value-calculator":"gümüş-takı-değeri-hesaplama","silver-knife-value":"gümüş-bıçak-değeri","silver-melt-value-calculator":"gümüş-erime-değeri-hesaplayıcısı","silver-necklace-value":"gümüş-kolye-değeri","silver-plate-value":"gümüş-tabak-değeri","silver-price-all-currencies":"gümüş-fiyatı-tüm-para-birimleri","silver-price-per-gram":"gram-başına-gümüş-fiyatı","silver-price-per-ounce":"ons-başına-gümüş-fiyatı","silver-profit-calculator":"gümüş-kar-hesaplama","silver-purity-chart":"gümüş-saflık-tablosu","silver-quarter-calculator":"gümüş-çeyrek-hesaplayıcı","silver-ring-value":"gümüş-yüzük-değeri","silver-scrap-calculator":"gümüş-hurda-hesaplayıcı","silver-sell-or-hold":"gümüş-sat-veya-tut","silver-spoon-value":"gümüş-kaşık-değeri","silver-spot-price-today":"bugünkü-gümüş-spot-fiyatı","silver-tray-value":"gümüş-tepsi-değeri","silver-weight-converter":"gümüş-ağırlık-dönüştürücü","silverware-value-calculator":"gümüş-eşya-değeri-hesaplayıcı","sona-chandi-calculator":"sona-chandi-hesaplayıcı","sterling-silver-calculator":"gümüş-hesap-makinesi","tola-calculator":"tola-hesap-makinesi","what-does-925-mean":"925-ne-anlama-geliyor","what-is-junk-silver":"hurda-gümüş-nedir","what-is-silver-bullion":"külçe-gümüş-nedir","what-is-silver-melt-value":"gümüşün-erime-değeri-nedir","what-is-silver-scrap":"gümüş-hurdası-nedir","what-is-sterling-silver":"saf-gümüş-nedir","what-is-troy-ounce":"troy-ons-nedir"},"Home":"Ana sayfa","Calculators":"Hesap makineleri","Silver Scrap Calculator":"Gümüş Hurda Hesaplayıcı","Gold & Silver Calculator":"Altın ve Gümüş Hesaplayıcı","Silver Melt Value":"Gümüş Erime Değeri","Sterling Silver Calculator":"Gümüş Hesaplayıcı","Junk Silver Calculator":"Önemsiz Gümüş Hesaplayıcı","Silver Coin Value":"Gümüş Para Değeri","Silver Bar Value":"Gümüş Külçe Değeri","Silver Jewelry Value":"Gümüş Takı Değeri","Silverware Value":"Gümüş Eşya Değeri","Purity":"saflık","999 Fine Silver":"999 İnce Gümüş","958 Britannia Silver":"958 Britanya Gümüşü","925 Sterling Silver":"925 Ayar Gümüş","900 Coin Silver":"900 Sikke Gümüş","835 Silver":"835 Gümüş","800 Silver":"800 Gümüş","Silver Purity Chart":"Gümüş Saflık Tablosu","Pricing":"Fiyatlandırma","Silver Spot Price Today":"Gümüş Spot Fiyatı Bugün","925 Sterling Price / Gram":"925 Sterlin Fiyat / Gram","Silver Price Per Gram":"Gümüşün Gram Fiyatı","Silver Price Per Ounce":"Gümüş Ons Başına Fiyatı","Price in All Currencies":"Tüm Para Birimlerinde Fiyat","1/10oz Silver Value":"1/10oz Gümüş Değeri","1oz Silver Value":"1oz Gümüş Değeri","2oz Silver Value":"2oz Gümüş Değeri","5oz Silver Value":"5oz Gümüş Değeri","10oz Silver Value":"10oz Gümüş Değeri","100oz Silver Value":"100oz Gümüş Değeri","1kg Silver Value":"1kg Gümüş Değeri","Tools":"Araçlar","Silver Profit Calculator":"Gümüş Kar Hesaplayıcı","Batch Calculator":"Toplu Hesap Makinesi","Sona Chandi Calculator":"Sona Chandi Hesap Makinesi","Face Value Calculator":"Nominal Değer Hesaplayıcı","Weight Converter":"Ağırlık Dönüştürücü","Pennyweight (DWT) Calc":"Pennyweight (DWT) Hesaplaması","Tola Calculator":"Tola Hesaplayıcı","Sell or Hold Analysis":"Satış veya Tutma Analizi","Silver Identifier":"Gümüş Tanımlayıcı","Guides":"Kılavuzlar","How to Use Our Calculators":"Hesap Makinelerimiz Nasıl Kullanılır?","What Is Silver Scrap?":"Gümüş Hurda Nedir?","What Is Melt Value?":"Erime Değeri Nedir?","What Is Junk Silver?":"Önemsiz Gümüş Nedir?","What Is a Troy Ounce?":"Troy Ons Nedir?","What Is Silver Bullion?":"Gümüş Külçe Nedir?","How Silver Prices Work":"Gümüş Fiyatları Nasıl Çalışır?","Silver Hallmarks Guide":"Gümüş Nitelikler Kılavuzu","What Does 925 Mean?":"925 Ne Demektir?","What Is Sterling Silver?":"Gümüş Nedir?","How to Sell Silver":"Gümüş Nasıl Satılır","Scrap Silver":"Hurda Gümüş","Gold & Silver":"Altın ve Gümüş","Silver Profit":"Gümüş Karı","Melt Value":"Erime Değeri","Junk Silver":"Önemsiz Gümüş","Silver Coins":"Gümüş Paralar","Silver Dollar":"Gümüş Dolar","Silver Quarter":"Gümüş Çeyrek","Silver Dime":"Gümüş Kuruş","Jewelry Value":"Takı Değeri","925 Sterling":"925 Sterlin","Purity Chart":"Saflık Tablosu","How to Use Calculators":"Hesap Makineleri Nasıl Kullanılır","Sona Chandi Calc":"Sona Chandi Calc","Face Value Calc":"Nominal Değer Hesabı","Sell or Hold":"Sat veya Tut","About":"Hakkında","Privacy":"Gizlilik","Terms":"Şartlar","All rights reserved.":"Tüm hakları saklıdır.","Prices are for informational purposes only.":"Fiyatlar yalnızca bilgilendirme amaçlıdır.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Canlı spot fiyatları kullanan ücretsiz, doğru gümüş hesaplayıcıları. Gümüş hurdalarınızın, madeni paralarınızın, mücevherlerinizin ve külçelerinizin erime değerini anında hesaplayın."};
-</script>
-</body></html>
+</body>
+</html>

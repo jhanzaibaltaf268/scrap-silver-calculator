@@ -1,10 +1,11 @@
-<!DOCTYPE html><html lang="ur"><head>
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>سکریپ سلور کیلکولیٹر - مفت سلور میلٹ ویلیو کیلکولیٹر [لائیو قیمتیں]</title>
-  <meta name="description" content="اس مفت سکریپ سلور کیلکولیٹر کو فوری طور پر چیک کرنے کے لیے استعمال کریں کہ آپ کی اشیاء کی کیا قیمت ہے۔ ایک انتہائی درست سلور سکریپ کیلکولیٹر کے طور پر، یہ آپ کے پرانے زیورات، سکوں، سلاخوں، اور وزن، پاکیزگی اور تازہ ترین لائیو مارکیٹ کی قیمتوں کی بنیاد پر ٹوٹے ہوئے ٹکڑوں کے لیے ایک قابل اعتماد پگھلنے والی قیمت کا تخمینہ فراہم کرتا ہے۔">
-  <meta name="keywords" content="scrap silver calculator, silver scrap calculator, silver melt value calculator, sterling silver calculator, junk silver calculator, silver value calculator">
-  <link rel="canonical" href="https://scrapsilvercalculater.com/">
+  <title>چاندی سکریپ کیلکولیٹر — لائیو چاندی کی قیمت</title>
+  <meta name="description" content="اپنی چاندی کے سکریپ کی پگھل قیمت فوری طور پر معلوم کریں۔ لائیو سپاٹ قیمتیں۔">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/ur/">
   <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/">
   <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/">
   <link rel="alternate" hreflang="es" href="https://scrapsilvercalculater.com/es/">
@@ -18,381 +19,186 @@
   <link rel="alternate" hreflang="it" href="https://scrapsilvercalculater.com/it/">
   <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/">
   <link rel="alternate" hreflang="ru" href="https://scrapsilvercalculater.com/ru/">
-  <link rel="stylesheet" href="../css/style.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "Scrap Silver Calculator",
-    "description": "Use this free Scrap Silver Calculator to instantly check what your items are worth. As a highly accurate silver scrap calculator, it provides a reliable melt value estimate for your old jewelry, coins, bars, and broken pieces based on weight, purity, and the latest live market prices.",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Any",
-    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
-  }
-  </script>
+
+  <link rel="stylesheet" href="../css/style.css?v=2.1">
   <style>
-    /* Homepage-specific compact spacing */
     .section-compact { padding: var(--space-2xl) 0; }
     .section-compact .section-title { margin-bottom: var(--space-sm); }
     .section-compact .section-subtitle { margin: 0 auto var(--space-lg); }
     .hero-compact { padding: var(--space-2xl) 0 var(--space-xl); }
     .hero-compact h1 { margin-bottom: var(--space-sm); }
     .hero-compact .hero-subtitle { margin: 0 auto var(--space-lg); }
-    .trust-bar-compact { padding: var(--space-lg) 0; }
-
-    /* Scrollable FAQ panel */
-    .faq-scroll-panel { max-height: 480px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-sm); }
-    .faq-scroll-panel::-webkit-scrollbar { width: 6px; }
-    .faq-scroll-panel::-webkit-scrollbar-track { background: transparent; }
-    .faq-scroll-panel::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-
-    /* Scrollable content block */
-    .content-scroll-block { max-height: 500px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-md); margin: var(--space-lg) 0; }
-    .content-scroll-block::-webkit-scrollbar { width: 6px; }
-    .content-scroll-block::-webkit-scrollbar-track { background: transparent; }
-    .content-scroll-block::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-    .content-scroll-block h3 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
-    .content-scroll-block p, .content-scroll-block ul, .content-scroll-block ol { margin-bottom: var(--space-md); }
-    .content-scroll-block ul li, .content-scroll-block ol li { padding: var(--space-xs) 0; color: var(--text-secondary); }
-    .content-scroll-block ul li::before { content: '•'; color: var(--accent-primary); margin-right: var(--space-sm); }
-
-    /* Entity pills */
-    .entity-scroller { display: flex; flex-wrap: nowrap; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0 var(--space-md); scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; -webkit-overflow-scrolling: touch; }
-    .entity-scroller::-webkit-scrollbar { height: 5px; }
-    .entity-scroller::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-    .entity-pill { flex-shrink: 0; padding: 6px var(--space-md); background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(192,192,192,0.02)); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: var(--fs-xs); color: var(--text-muted); white-space: nowrap; }
     .lang-switcher { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 8px 0; background: rgba(5,5,10,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 1100; }
     body { padding-top: calc(var(--header-height) + 36px) !important; }
     .site-header { top: 36px !important; }
     .lang-btn { padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; background: rgba(255,255,255,0.05); }
     .lang-btn:hover, .lang-btn.active { background: var(--accent-primary); color: #fff; }
+    .faq-scroll-panel { max-height: 480px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-sm); }
+    .faq-scroll-panel::-webkit-scrollbar { width: 6px; }
+    .faq-scroll-panel::-webkit-scrollbar-track { background: transparent; }
+    .faq-scroll-panel::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .content-scroll-block { max-height: 500px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-md); margin: var(--space-lg) 0; }
+    .content-scroll-block::-webkit-scrollbar { width: 6px; }
+    .content-scroll-block::-webkit-scrollbar-track { background: transparent; }
+    .content-scroll-block::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .content-scroll-block h3 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+    .content-scroll-block p, .content-scroll-block ul { margin-bottom: var(--space-md); }
+    .content-scroll-block ul li { padding: var(--space-xs) 0; color: var(--text-secondary); }
+    .content-scroll-block ul li::before { content: '•'; color: var(--accent-primary); margin-right: var(--space-sm); }
+    .entity-scroller { display: flex; flex-wrap: nowrap; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0 var(--space-md); scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; -webkit-overflow-scrolling: touch; }
+    .entity-scroller::-webkit-scrollbar { height: 5px; }
+    .entity-scroller::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .entity-pill { flex-shrink: 0; padding: 6px var(--space-md); background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(192,192,192,0.02)); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: var(--fs-xs); color: var(--text-muted); white-space: nowrap; }
+    
+      body { direction: rtl; text-align: right; }
+      .nav-links { flex-direction: row-reverse; }
+      .category-grid { direction: rtl; }
+      .step-card { text-align: right; }
+      .lang-switcher { direction: ltr; }
+      .faq-question { text-align: right; }
+      .content-scroll-block ul li::before { margin-right: 0; margin-left: var(--space-sm); }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "چاندی سکریپ کیلکولیٹر",
+    "description": "اپنی چاندی کے سکریپ کی پگھل قیمت فوری طور پر معلوم کریں۔ لائیو سپاٹ قیمتیں۔",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "inLanguage": "ur",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
 </head>
 <body>
-
-  <div class="lang-switcher">
-    <a href="../" class="lang-btn">🇬🇧 EN</a>
-    <a href="../es/" class="lang-btn">🇪🇸 ES</a>
-    <a href="../fr/" class="lang-btn">🇫🇷 FR</a>
-    <a href="../de/" class="lang-btn">🇩🇪 DE</a>
-    <a href="../pt/" class="lang-btn">🇧🇷 PT</a>
-    <a href="../hi/" class="lang-btn">🇮🇳 HI</a>
-    <a href="../ur/" class="lang-btn active">🇵🇰 UR</a>
-    <a href="../ar/" class="lang-btn">🇸🇦 AR</a>
-    <a href="../tr/" class="lang-btn">🇹🇷 TR</a>
-    <a href="../it/" class="lang-btn">🇮🇹 IT</a>
-    <a href="../zh/" class="lang-btn">🇨🇳 ZH</a>
-    <a href="../ru/" class="lang-btn">🇷🇺 RU</a>
-  </div>
-
+  <div class="lang-switcher"><a href="/" class="lang-btn ">🇬🇧 EN</a><a href="/es/" class="lang-btn ">🇪🇸 ES</a><a href="/fr/" class="lang-btn ">🇫🇷 FR</a><a href="/de/" class="lang-btn ">🇩🇪 DE</a><a href="/pt/" class="lang-btn ">🇧🇷 PT</a><a href="/hi/" class="lang-btn ">🇮🇳 HI</a><a href="/ur/" class="lang-btn active">🇵🇰 UR</a><a href="/ar/" class="lang-btn ">🇸🇦 AR</a><a href="/tr/" class="lang-btn ">🇹🇷 TR</a><a href="/it/" class="lang-btn ">🇮🇹 IT</a><a href="/zh/" class="lang-btn ">🇨🇳 ZH</a><a href="/ru/" class="lang-btn ">🇷🇺 RU</a></div>
   <div id="site-header"></div>
 
   <main>
-    <!-- Hero Section — compact -->
     <section class="hero hero-compact">
       <div class="container hero-content">
-        <h1><span class="highlight">سلور سکریپ کیلکولیٹر</span></h1>
+        <div id="price-ticker"></div>
+        <h1><span class="highlight">چاندی سکریپ کیلکولیٹر</span></h1>
+        <p class="hero-subtitle">لائیو سپاٹ قیمتوں کے ساتھ اپنی چاندی کے سکریپ، سکوں، زیورات اور بار کی پگھل قیمت فوری طور پر کیلکولیٹ کریں۔</p>
 
         <!-- Main Calculator Widget -->
-        <div class="calc-widget slide-up" id="hero-calc">
+        <div class="calc-widget slide-up" id="hero-calc" style="max-width:600px;margin:0 auto;">
+          <div class="calc-widget-title"><span class="icon">⚖️</span> چاندی کی قیمت کیلکولیٹر</div>
 
           <div class="form-row">
             <div class="form-group">
               <label class="form-label" for="calc-weight">وزن</label>
               <div class="input-group">
-                <input type="number" class="form-input" id="calc-weight" placeholder="Enter weight" step="0.01" min="0" value="10">
+                <input type="number" class="form-input" id="calc-weight" placeholder="10" step="0.01" min="0" value="10">
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label" for="calc-unit">یونٹ</label>
+              <label class="form-label" for="calc-unit">اکائی</label>
               <select class="form-select" id="calc-unit">
-                <option value="g" selected="">Grams (g)</option>
-                <option value="oz">Troy Ounces (oz)</option>
-                <option value="dwt">Pennyweight (dwt)</option>
-                <option value="kg">Kilograms (kg)</option>
+                <option value="g" selected>گرام</option>
+                <option value="ozt">ٹرائے اونس</option>
+                <option value="oz">اونس</option>
+                <option value="kg">کلوگرام</option>
+                <option value="dwt">پینی ویٹ</option>
+                <option value="tola">تولہ</option>
               </select>
             </div>
           </div>
 
           <div class="form-group">
-            <label class="form-label" for="calc-purity">چاندی کی پاکیزگی</label>
+            <label class="form-label" for="calc-purity">خالصیت</label>
             <select class="form-select" id="calc-purity">
-              <option value="0.999">999 — Fine Silver (99.9%)</option>
-              <option value="0.958">958 — Britannia Silver (95.8%)</option>
-              <option value="0.925" selected="">925 — Sterling Silver (92.5%)</option>
-              <option value="0.900">900 — Coin Silver (90.0%)</option>
-              <option value="0.835">835 — European Silver (83.5%)</option>
-              <option value="0.800">800 — European Silver (80.0%)</option>
+              <option value="0.999">999 — Fine (99.9%)</option>
+              <option value="0.958">958 — Britannia (95.8%)</option>
+              <option value="0.925" selected>925 — Sterling (92.5%)</option>
+              <option value="0.900">900 — Coin (90.0%)</option>
+              <option value="0.835">835 — (83.5%)</option>
+              <option value="0.800">800 — (80.0%)</option>
+              <option value="0.500">500 — (50.0%)</option>
             </select>
           </div>
 
           <div class="result-display" id="hero-result">
-            <div class="result-label">تخمینی پگھلنے والی قدر</div>
+            <div class="result-label">پگھل قیمت</div>
             <div class="result-value" id="hero-result-value">$0.00</div>
-            <div class="result-detail" id="hero-result-detail">حساب کرنے کے لیے وزن درج کریں۔</div>
+            <div class="result-detail" id="hero-result-detail">سپاٹ: $--/oz · خالصیت: 92.5% · کل چاندی: 0.000 oz</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Trust Bar — compact -->
-    <section class="trust-bar-compact">
-      <div class="container">
-        <div class="trust-bar">
-          <div class="trust-item"><span class="icon">🔄</span> لائیو اسپاٹ کی قیمتیں۔</div>
-          <div class="trust-item"><span class="icon">🔒</span> 100% نجی</div>
-          <div class="trust-item"><span class="icon">⚡</span> فوری نتائج</div>
-          <div class="trust-item"><span class="icon">📱</span> کسی بھی ڈیوائس پر کام کرتا ہے۔</div>
-          <div class="trust-item"><span class="icon">💰</span> ہمیشہ مفت</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- All Silver Calculators -->
-    <section class="section-compact" id="calculators">
+    <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container text-center">
-        <span class="section-badge">🧮 ہمارے کیلکولیٹر</span>
-        <h2 class="section-title">مفت سلور میلٹ ویلیو اور پیوریٹی کیلکولیٹر</h2>
-        <p class="section-subtitle">ہر چاندی کا کیلکولیٹر جس کی آپ کو ضرورت ہے — سکریپ، سکے، زیورات، سلاخوں اور مزید کے لیے۔</p>
-
+        <span class="section-badge">🧰 تمام چاندی کیلکولیٹر</span>
+        <h2 class="section-title">تمام چاندی کیلکولیٹر</h2>
+        <p class="section-subtitle">ہر قسم کی چاندی کے لیے خصوصی ٹولز۔</p>
         <div class="category-grid stagger">
-
-          <a href="/چاندی-پگھل-قیمت-کیلکولیٹر/" class="category-card" id="card-melt">
-            <div class="category-icon">🔥</div>
-            <h3>سلور میلٹ ویلیو کیلکولیٹر</h3>
-            <p>خالص چاندی کا مواد تلاش کریں اور وزن اور خوبصورتی کی بنیاد پر چاندی کے کسی بھی شے کی پگھل قیمت معلوم کریں۔</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/سٹرلنگ-سلور-کیلکولیٹر/" class="category-card" id="card-sterling">
-            <div class="category-icon">✨</div>
-            <h3>سٹرلنگ سلور کیلکولیٹر</h3>
-            <p>وزن کے لحاظ سے اپنی 925 سٹرلنگ چاندی کی اشیاء کی قیمت کا فوری حساب لگائیں۔</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/ردی-چاندی-کا-کیلکولیٹر/" class="category-card" id="card-junk">
-            <div class="category-icon">🪙</div>
-            <h3>جنک سلور کیلکولیٹر</h3>
-            <p>1965 سے پہلے کے امریکی چاندی کے سکوں کی پگھلی قیمت تلاش کریں — ڈائمز، کوارٹر، آدھے حصے اور ڈالر۔</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/چاندی-کے-سکے-کی-قیمت-کا-کیلکولیٹر/" class="category-card" id="card-coins">
-            <div class="category-icon">🏛️</div>
-            <h3>چاندی کے سکے کی قدر کیلکولیٹر</h3>
-            <p>کسی بھی چاندی کے سکے کے وزن، پاکیزگی اور مقدار کو درج کرکے اس کی پگھلنے والی قیمت کا حساب لگائیں۔</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/سونے-اور-چاندی-کا-کیلکولیٹر/" class="category-card" id="card-gold-silver">
-            <div class="category-icon">🥇</div>
-            <h3>سونے اور چاندی کا کیلکولیٹر</h3>
-            <p>سونے اور چاندی کے سکریپ کو ایک ساتھ ملا کر حساب لگائیں اور لائیو تناسب دیکھیں۔</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/سلور-بار-ویلیو-کیلکولیٹر/" class="category-card" id="card-bars">
-            <div class="category-icon">🧱</div>
-            <h3>سلور بار ویلیو کیلکولیٹر</h3>
-            <p>چاندی کی سلاخوں کی موجودہ قیمت 1oz، 5oz، 10oz، 100oz، اور 1kg سائز میں تلاش کریں۔</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/چاندی-کے-زیورات-کی-قیمت-کا-کیلکولیٹر/" class="category-card" id="card-jewelry">
-            <div class="category-icon">💍</div>
-            <h3>چاندی کے زیورات کی قیمت کا کیلکولیٹر</h3>
-            <p>چاندی کی انگوٹھیوں، زنجیروں، ہاروں اور کڑا کی پگھلنے والی قیمت کا حساب لگائیں۔</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/سلور-ویئر-ویلیو-کیلکولیٹر/" class="category-card" id="card-silverware">
-            <div class="category-icon">🍴</div>
-            <h3>سلور ویئر ویلیو کیلکولیٹر</h3>
-            <p>چمچ، کانٹے، ٹرے، چاقو، کپ اور پلیٹوں کی چاندی کی قیمت معلوم کریں۔</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/چاندی-کی-قیمت-فی-گرام/" class="category-card" id="card-price-gram">
-            <div class="category-icon">📊</div>
-            <h3>چاندی کی قیمت فی گرام کیلکولیٹر</h3>
-            <p>تمام عام وزنی اکائیوں کے لیے کنورٹر کے ساتھ فی گرام چاندی کی موجودہ قیمت۔</p>
-            <span class="card-arrow">View Price →</span>
-          </a>
-
-          <a href="/چاندی-کی-قیمت-فی-اونس/" class="category-card" id="card-price-oz">
-            <div class="category-icon">💲</div>
-            <h3>چاندی کی قیمت فی اونس کیلکولیٹر</h3>
-            <p>براہ راست چاندی کی جگہ کی قیمت فی ٹرائے اونس عالمی منڈیوں سے حقیقی وقت میں اپ ڈیٹ کی جاتی ہے۔</p>
-            <span class="card-arrow">View Price →</span>
-          </a>
-
-          <a href="/سونا-چندی-کیلکولیٹر/" class="category-card" id="card-sona-chandi">
-            <div class="category-icon">✨</div>
-            <h3>سونا چندی کیلکولیٹر</h3>
-            <p>سونا (سونا) اور چاندی (چاندی) کی قدروں کو تولہ اور گرام میں ٹنچ کا استعمال کرتے ہوئے شمار کریں۔</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
-          <a href="/پینی-ویٹ-کیلکولیٹر/" class="category-card" id="card-dwt">
-            <div class="category-icon">⚖️</div>
-            <h3>پینی ویٹ کیلکولیٹر</h3>
-            <p>چاندی کی اشیاء کا حساب لگائیں جس کا وزن پینی ویٹ (dwt) میں ہوتا ہے، جو ایک روایتی جوہری کا معیار ہے۔</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-
+          <a href="/silver-scrap-calculator/" class="category-card"><div class="category-icon">♻️</div><h3>سکریپ کیلکولیٹر</h3><p>اپنی چاندی کے سکریپ کی صحیح پگھل قیمت کیلکولیٹ کریں۔</p></a>
+          <a href="/silver-melt-value-calculator/" class="category-card"><div class="category-icon">🔥</div><h3>پگھل قیمت</h3><p>خالص چاندی کی پگھل قیمت معلوم کریں۔</p></a>
+          <a href="/sterling-silver-calculator/" class="category-card"><div class="category-icon">✨</div><h3>سٹرلنگ چاندی</h3><p>اپنی .925 سٹرلنگ چاندی کی قیمت۔</p></a>
+          <a href="/junk-silver-calculator/" class="category-card"><div class="category-icon">🪙</div><h3>پرانے سکے</h3><p>پرانے چاندی کے سکوں کی قیمت۔</p></a>
+          <a href="/silver-coin-value-calculator/" class="category-card"><div class="category-icon">🏛️</div><h3>سکے کی قیمت</h3><p>کسی بھی چاندی کے سکے کی پگھل قیمت۔</p></a>
+          <a href="/gold-and-silver-calculator/" class="category-card"><div class="category-icon">🥇</div><h3>سونا اور چاندی</h3><p>ملا ہوا سونے اور چاندی کا حساب۔</p></a>
+          <a href="/silver-bar-value-calculator/" class="category-card"><div class="category-icon">🧱</div><h3>چاندی بار</h3><p>چاندی کے بار کی موجودہ قیمت۔</p></a>
+          <a href="/silver-jewelry-value-calculator/" class="category-card"><div class="category-icon">💍</div><h3>چاندی زیورات</h3><p>چاندی کے زیورات کی پگھل قیمت۔</p></a>
+          <a href="/silverware-value-calculator/" class="category-card"><div class="category-icon">🍴</div><h3>چاندی کے برتن</h3><p>چاندی کے برتنوں کی قیمت۔</p></a>
+          <a href="/silver-price-per-gram/" class="category-card"><div class="category-icon">📊</div><h3>فی گرام قیمت</h3><p>چاندی کی موجودہ فی گرام قیمت۔</p></a>
+          <a href="/silver-price-per-ounce/" class="category-card"><div class="category-icon">💲</div><h3>فی اونس قیمت</h3><p>لائیو سپاٹ فی ٹرائے اونس۔</p></a>
         </div>
       </div>
     </section>
 
-    <!-- Tools Section — user-focused language -->
-    <section class="section-compact" id="tools">
+    <section class="section-compact">
       <div class="container text-center">
-        <span class="section-badge">🛠️ طاقتور ٹولز</span>
-        <h2 class="section-title">یہ سلور ٹولز آپ کو مزید قیمت حاصل کرنے میں کس طرح مدد کرتے ہیں۔</h2>
-        <p class="section-subtitle">وقت کی بچت کریں، قیمتوں کا موازنہ کریں، اور چاندی کے ان مفت ٹولز کے ساتھ فروخت کے بہتر فیصلے کریں۔</p>
-
+        <span class="section-badge">🛠️</span>
+        <h2 class="section-title">طاقتور ٹولز</h2>
+        <p class="section-subtitle">وقت بچائیں اور بہتر فیصلے کریں۔</p>
         <div class="category-grid stagger" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
-          <a href="/چاندی-کے-منافع-کا-کیلکولیٹر/" class="category-card" id="card-profit">
-            <div class="category-icon">📈</div>
-            <h3>سلور منافع کیلکولیٹر</h3>
-            <p>سرمایہ کار: اپنی اوسط خریداری کی قیمت کی بنیاد پر اپنے کل سرمایہ کاری پر منافع (ROI) کا حساب لگائیں۔</p>
-            <span class="card-arrow">Calculate ROI →</span>
-          </a>
-          <a href="/چاندی-کی-قیمت-کا-کیلکولیٹر/" class="category-card" id="card-face-val">
-            <div class="category-icon">💵</div>
-            <h3>فیس ویلیو کیلکولیٹر</h3>
-            <p>اپنے 90% چاندی کے سکوں کی پگھلائی ہوئی قیمت کو صرف ان کی قیمت درج کرکے تلاش کریں (مثال کے طور پر، $10 FV)۔</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-          <a href="/سلور-بیچ-کیلکولیٹر/" class="category-card" id="card-batch">
-            <div class="category-icon">📋</div>
-            <h3>بیچ سلور کیلکولیٹر</h3>
-            <p>ایک سے زیادہ چاندی کی اشیاء ہیں؟ ان سب کو شامل کریں اور مشترکہ کل قیمت دیکھیں — پھر ڈیلر کے لیے اپنی فہرست پرنٹ یا کاپی کریں۔</p>
-            <span class="card-arrow">Try It →</span>
-          </a>
-          <a href="/چاندی-وزن-کنورٹر/" class="category-card" id="card-converter">
-            <div class="category-icon">⚖️</div>
-            <h3>سلور ویٹ کنورٹر</h3>
-            <p>یقین نہیں ہے کہ آیا آپ کا پیمانہ ٹرائے اوز یا ریگولر اوز دکھاتا ہے؟ 6 وزنی اکائیوں کے درمیان تبدیل کریں تاکہ آپ کبھی زیادہ ادائیگی یا کم فروخت نہ کریں۔</p>
-            <span class="card-arrow">Convert →</span>
-          </a>
-          <a href="/چاندی-بیچیں-یا-پکڑیں/" class="category-card" id="card-hold">
-            <div class="category-icon">📈</div>
-            <h3>کیلکولیٹر بیچیں یا پکڑیں۔</h3>
-            <p>حیرت ہے کہ کیا اب فروخت کرنے کا صحیح وقت ہے؟ اس کا موازنہ کریں کہ آپ کی چاندی کی قیمت اب کیا ہے بمقابلہ زیادہ یا کم جگہ کی قیمتوں پر۔</p>
-            <span class="card-arrow">Analyze →</span>
-          </a>
-          <a href="/چاندی-کی-قیمت-تمام-کرنسیوں/" class="category-card" id="card-currencies">
-            <div class="category-icon">🌍</div>
-            <h3>12 کرنسیوں میں چاندی کی قیمت</h3>
-            <p>براہ راست چاندی کی قیمتیں USD, EUR, GBP, INR, PKR, AUD, CAD اور مزید میں دیکھیں — تاکہ آپ کو معلوم ہو کہ عالمی سطح پر آپ کی چاندی کی قیمت کیا ہے۔</p>
-            <span class="card-arrow">View Prices →</span>
-          </a>
-          <a href="/تولہ-کیلکولیٹر/" class="category-card" id="card-tola">
-            <div class="category-icon">⚖️</div>
-            <h3>تولہ کیلکولیٹر</h3>
-            <p>جنوبی ایشیائی منڈیوں میں عام تولہ اور ماشہ کی پیمائش کا استعمال کرتے ہوئے سکریپ سلور کو تبدیل اور حساب لگائیں۔</p>
-            <span class="card-arrow">Calculate →</span>
-          </a>
-          <a href="/چاندی-کی-شناخت/" class="category-card" id="card-ident">
-            <div class="category-icon">🔎</div>
-            <h3>چاندی کی شناخت کرنے والا آلہ</h3>
-            <p>یقین نہیں ہے کہ یہ اصلی چاندی ہے؟ گھر پر نشانات، مقناطیسی ٹیسٹ، اور ایسڈ ٹیسٹ کی شناخت کرنے کا طریقہ سیکھیں۔</p>
-            <span class="card-arrow">Read Guide →</span>
-          </a>
+          <a href="/silver-profit-calculator/" class="category-card"><div class="category-icon">📈</div><h3>منافع کیلکولیٹر</h3><p>اپنی سرمایہ کاری پر منافع معلوم کریں۔</p></a>
+          <a href="/face-value-silver-calculator/" class="category-card"><div class="category-icon">💵</div><h3>ظاہری قیمت</h3><p>اپنے 90% چاندی سکوں کی دھاتی قیمت۔</p></a>
+          <a href="/silver-batch-calculator/" class="category-card"><div class="category-icon">📋</div><h3>بیچ کیلکولیٹر</h3><p>متعدد آئٹمز شامل کریں۔</p></a>
+          <a href="/silver-weight-converter/" class="category-card"><div class="category-icon">⚖️</div><h3>وزن کنورٹر</h3><p>6 وزن اکائیوں کے درمیان کنورٹ کریں۔</p></a>
+          <a href="/silver-sell-or-hold/" class="category-card"><div class="category-icon">📈</div><h3>بیچیں یا رکھیں</h3><p>موجودہ قیمت کا موازنہ کریں۔</p></a>
+          <a href="/silver-price-all-currencies/" class="category-card"><div class="category-icon">🌍</div><h3>12 کرنسیوں میں قیمت</h3><p>PKR، USD، EUR میں قیمتیں دیکھیں۔</p></a>
         </div>
       </div>
     </section>
 
-    <!-- How It Works — compact -->
     <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container text-center">
-        <span class="section-badge">📋 سادہ عمل</span>
-        <h2 class="section-title">یہ کیسے کام کرتا ہے - 3 آسان اقدامات</h2>
-        <p class="section-subtitle">Get an accurate silver valuation in seconds.</p>
-
+        <span class="section-badge">📋</span>
+        <h2 class="section-title">یہ کیسے کام کرتا ہے — 3 آسان مراحل</h2>
+        <p class="section-subtitle">سیکنڈوں میں درست قیمت حاصل کریں۔</p>
         <div class="steps-grid stagger">
-          <div class="step-card">
-            <div class="step-number">1</div>
-            <h4>اپنی چاندی کا وزن کریں۔</h4>
-            <p>اپنی چاندی کی چیز کو گرام، ٹرائے اونس یا کسی بھی یونٹ میں وزن کرنے کے لیے کچن کے پیمانے کا استعمال کریں۔</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">2</div>
-            <h4>سلور پیوریٹی کو منتخب کریں۔</h4>
-            <p>پاکیزگی کا انتخاب کریں — سٹرلنگ کے لیے 925، عمدہ چاندی کے لیے 999، چاندی کے سکے کے لیے 900، یا دیگر۔</p>
-          </div>
-          <div class="step-card">
-            <div class="step-number">3</div>
-            <h4>فوری پگھلنے والی قیمت حاصل کریں۔</h4>
-            <p>براہ راست چاندی کی جگہ کی قیمتوں کی بنیاد پر پگھلنے والی قدر دیکھیں — عالمی منڈیوں سے حقیقی وقت میں اپ ڈیٹ کی گئی ہیں۔</p>
-          </div>
+          <div class="step-card"><div class="step-number">1</div><h4>اپنی چاندی تولیں</h4><p>ترازو سے اپنی چاندی تولیں۔</p></div>
+          <div class="step-card"><div class="step-number">2</div><h4>خالصیت منتخب کریں</h4><p>خالصیت منتخب کریں: .999، .925، .900 یا کسٹم۔</p></div>
+          <div class="step-card"><div class="step-number">3</div><h4>فوری قیمت حاصل کریں</h4><p>لائیو سپاٹ قیمت سے حساب ہوتا ہے۔</p></div>
         </div>
       </div>
     </section>
 
-    <!-- Semantic SEO Content -->
-    <section class="section-compact" id="guide">
+    <section class="section-compact">
       <div class="container">
-        <div class="content-body" style="max-width: 800px; margin: 0 auto; text-align: left; line-height: 1.8;">
-
-          <h2>سکریپ سلور کیلکولیٹر کیا ہے - اور آپ کو کب استعمال کرنا چاہئے؟</h2>
-          <p>اس کے مرکز میں، ایک سکریپ سلور کیلکولیٹر اس کا تعین کرتا ہے۔ <strong>intrinsic melt value</strong> چاندی کی چیز کی — نہ اس کی خوردہ قیمت، نہ اس کی جذباتی قیمت، اور نہ ہی کسی کلکٹر کا پریمیم۔ یہ ایک مخصوص سوال کا جواب دیتا ہے: اگر آپ آج اس چیز کو خالص چاندی میں پگھلا دیتے ہیں، تو اس دھات کی کیا قیمت ہوگی؟ ایسا کرنے کے لیے، یہ معلومات کے تین ٹکڑوں کا استعمال کرتا ہے: شے کا وزن، اس کی چاندی کی خوبصورتی (پاکیزگی)، اور موجودہ <strong>spot price</strong> چاندی کے جیسا کہ عالمی اجناس کی منڈی میں تجارت ہوتی ہے۔</p>
-          <p>آپ کو اسے کسی بھی وقت استعمال کرنا چاہیے جب آپ اسکریپ سلور فروخت کرنے والے ہوں — چاہے وہ ٹوٹا ہوا کڑا ہو، پرانے فلیٹ ویئر کا سیٹ، سکے کا مجموعہ، یا سٹرلنگ آف کٹس کا ایک بیگ۔ ڈیلر یا ریفائنری کی طرف سے کم معاوضے سے بچنے کا واحد سب سے مؤثر طریقہ پگھلنے کی قدر کو پہلے سے جاننا ہے۔ آپ چیک کر سکتے ہیں۔ <a href="/چاندی-کی-قیمت-فی-اونس/">live silver price per troy ounce</a> یا <a href="/چاندی-کی-قیمت-فی-گرام/">silver price per gram</a> کسی بھی وقت یہ دیکھنے کے لیے کہ آپ فروخت کا عہد کرنے سے پہلے مارکیٹ کس طرح آگے بڑھ رہی ہے۔</p>
-
-          <h2>سلور میلٹ ویلیو کا اصل میں حساب کیا جاتا ہے۔</h2>
-          <p>فارمولا آسان ہے لیکن یونٹس بہت زیادہ اہمیت رکھتے ہیں۔ چاندی کی قیمت ہمیشہ بین الاقوامی سطح پر ہوتی ہے۔ <strong>troy ounces</strong> - معیاری avoirdupois آونس نہیں جو آپ باورچی خانے کے پیمانے پر استعمال کریں گے۔ ایک ٹرائے اونس 31.1035 گرام ہے، اس کے مقابلے میں ایک معیاری اونس میں 28.35 گرام۔ صرف یہی فرق سب سے عام وجوہات میں سے ایک ہے جس کی وجہ سے لوگ اپنی چاندی کی قیمت کا غلط اندازہ لگاتے ہیں۔</p>
-          <p style="background: var(--bg-secondary); border-left: 3px solid var(--accent-primary); padding: var(--space-md) var(--space-lg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-family: monospace; font-size: var(--fs-sm);">پگھلنے کی قیمت = وزن (ٹرائے اوز میں) × طہارت (اعشاریہ) × جگہ کی قیمت (فی ٹرائے اوز)</p>
-          <p>مثال کے طور پر: 50 گرام سٹرلنگ سلور چین (پاکیزگی 0.925) چاندی کے ساتھ $30/oz آپ کو (50 ÷ 31.1035) × 0.925 × 30 = <strong>approximately $44.75</strong>. ہماری <a href="/چاندی-پگھل-قیمت-کیلکولیٹر/">silver melt value calculator</a> یہ سب خود بخود کرتا ہے۔ اگر آپ کے آئٹم کو ایک مختلف یونٹ میں ماپا جاتا ہے، تو ہماری <a href="/چاندی-وزن-کنورٹر/">silver weight converter</a> گرام، ٹرائے اونس، پینی ویٹ، تولہ، اور کلوگرام کے درمیان تبدیلی کو سنبھالتا ہے تاکہ آپ ہمیشہ صحیح نمبر ڈالیں۔</p>
-
-          <h2>سلور پیوریٹی مارکس اور ہال مارکس کو سمجھنا</h2>
-          <p>چاندی کا ہر ٹکڑا اس کے ڈاک ٹکٹ کے نشانات میں ایک کہانی رکھتا ہے، جسے جانا جاتا ہے۔ <strong>hallmarks</strong>. یہ چھوٹی چھوٹی نقاشی آپ کو چاندی کی خوبصورتی بتاتی ہے - کھوٹ میں خالص چاندی کا تناسب۔ درست تشخیص کے لیے انہیں پڑھنا سیکھنا ضروری ہے۔</p>
-          <p>سب سے عام پاکیزگی جن کا آپ سامنا کریں گے وہ ہیں:</p>
-          <ul>
-            <li><strong>999 (Fine Silver)</strong> - 99.9٪ خالص چاندی۔ عام طور پر بلین سلاخوں اور امریکی سلور ایگل جیسے سکوں میں پایا جاتا ہے۔ ہمارا استعمال کریں۔ <a href="/999-سلور-کیلکولیٹر/">999 silver calculator</a> ان اشیاء کے لئے.</li>
-            <li><strong>958 (Britannia Silver)</strong> - 95.8% خالص، کچھ برطانوی چاندی کے برتنوں میں استعمال ہوتا ہے۔ ہماری <a href="/958-سلور-کیلکولیٹر/">958 silver calculator</a> اس نفاست کو درست طریقے سے ہینڈل کرتا ہے۔</li>
-            <li><strong>925 (Sterling Silver)</strong> - دنیا بھر میں سب سے زیادہ تسلیم شدہ معیار۔ 92.5% چاندی، 7.5% تانبے کا کھوٹ۔ آج فروخت ہونے والے زیادہ تر زیورات اور فلیٹ ویئر سٹرلنگ ہیں۔ سرشار <a href="/سٹرلنگ-سلور-کیلکولیٹر/">sterling silver calculator</a> یا <a href="/925-سلور-کیلکولیٹر/">925 silver calculator</a> دونوں یہاں مفید ہیں۔</li>
-            <li><strong>900 (Coin Silver)</strong> - 1965 سے پہلے بنائے گئے پرانے امریکی سکوں میں استعمال ہوتے ہیں۔ ہمارا <a href="/900-چاندی-کا-کیلکولیٹر/">900 silver calculator</a> ان اشیاء کے لیے بنایا گیا ہے۔</li>
-            <li><strong>835 &amp; 800 (European Silver)</strong> - کانٹی نینٹل یورپی ہولو ویئر اور کٹلری میں عام۔ استعمال کریں۔ <a href="/835-سلور-کیلکولیٹر/">835 silver calculator</a> یا <a href="/800-چاندی-کا-کیلکولیٹر/">800 silver calculator</a> بالترتیب</li>
-          </ul>
-          <p>اگر آپ کو ایک ڈاک ٹکٹ نظر آتا ہے جس پر لکھا ہوتا ہے "سٹرلنگ،" "925،" یا "925/1000،" آپ تقریباً یقینی طور پر سٹرلنگ سلور کو دیکھ رہے ہیں۔ اگر کوئی نشان نہیں ہے تو، ایک جیولر یا پیاد کی دکان تصدیق کرنے کے لیے تیزاب کا ٹیسٹ یا XRF تجزیہ کر سکتا ہے۔ ہماری <a href="/925-سٹرلنگ-چاندی-کی-قیمت-فی-گرام/">925 sterling silver price per gram</a> صفحہ آپ کو سب سے عام پاکیزگی کے لیے ایک لائیو بیس لائن حوالہ دیتا ہے۔</p>
-
-          <h2>چاندی کے زیورات، فلیٹ ویئر اور کھوکھلی اشیاء کی قدر کرنا</h2>
-          <p>چاندی کے زیورات کی اندرونی قیمت مکمل طور پر اس کے چاندی کے مواد سے آتی ہے — نہ کہ ڈیزائن، کاریگری، یا برانڈ نام سے۔ ایک بھاری سادہ چاندی کی چوڑی کی قیمت ہلکے وزن کی ڈیزائنر انگوٹھی سے کہیں زیادہ ہے۔ وزن غالب عنصر ہے، لہذا ہمیشہ اشیاء کو ان کی قیمت ماننے سے پہلے وزن کریں۔</p>
-          <p>زیورات کی مخصوص اقسام کے لیے، مقصد سے بنائے گئے اوزار استعمال کریں: <a href="/چاندی-کی-انگوٹھی-کی-قیمت/">silver ring calculator</a>, <a href="/چاندی-کی-زنجیر-کی-قیمت/">silver chain calculator</a>, <a href="/چاندی-کے-ہار-کی-قیمت/">silver necklace calculator</a>، اور <a href="/چاندی-کے-کڑا-کی-قیمت/">silver bracelet calculator</a> یہ سب آپ کو صحیح وزن درج کرنے اور فوری سکریپ کی قیمتیں حاصل کرنے دیتے ہیں۔ کسی بھی پہننے کے قابل ٹکڑے کے لیے وسیع پیمانے پر، <a href="/چاندی-کے-زیورات-کی-قیمت-کا-کیلکولیٹر/">silver jewelry value calculator</a> بہترین نقطہ آغاز ہے۔</p>
-          <p>چاندی کے برتن اور فلیٹ ویئر — چمچ، کانٹے، چاقو، ٹرے، کپ اور پلیٹیں — کی قیمت اسی طرح ہے۔ سٹرلنگ فلیٹ ویئر کا ایک مکمل سیٹ چاندی کے اہم وزن کی نمائندگی کر سکتا ہے۔ کے ساتھ شروع کریں۔ <a href="/سلور-ویئر-ویلیو-کیلکولیٹر/">silverware value calculator</a>، یا براہ راست انفرادی صفحات پر جائیں۔ <a href="/چاندی-کے-چمچ-کی-قیمت/">silver spoons</a>, <a href="/چاندی-کے-کانٹے-کی-قیمت/">silver forks</a>, <a href="/چاندی-کی-چاقو-کی-قیمت/">silver knives</a>, <a href="/چاندی-کی-ٹرے-کی-قیمت/">silver trays</a>, <a href="/چاندی-کے-کپ-کی-قیمت/">silver cups</a>، اور <a href="/چاندی-کی-پلیٹ-کی-قیمت/">silver plates</a>.</p>
-          <p>ایک اہم انتباہ: <em>silver-plated</em> اشیاء کی بنیاد دھات پر چاندی کی صرف ایک خوردبین کوٹنگ ہوتی ہے۔ چاندی کے سکریپ کے طور پر ان کے پاس بنیادی طور پر صفر پگھلنے کی قیمت ہے اور اسے یہاں داخل نہیں کیا جانا چاہئے۔</p>
-
-          <h2>چاندی کے سکے - پگھلنے والی قدر بمقابلہ عددی قدر</h2>
-          <p>یہ سلور مارکیٹ میں سب سے زیادہ غلط فہمی والے علاقوں میں سے ایک ہے۔ ایک سکے کی پگھلنے والی قدر - صرف اس کے چاندی کے مواد کی قدر - ہمیشہ منزل ہوتی ہے۔ لیکن بہت سے سکے ایک اضافی لے جاتے ہیں۔ <strong>numismatic premium</strong> ان کی نایابیت، عمر، حالت، یا جمع کرنے والے کی طلب کی وجہ سے۔ 1881 مورگن ڈالر کو اسکریپ سلور کی قیمت میں فروخت کرنا ایک مہنگی غلطی ہوگی۔</p>
-          <p>بڑی مقدار میں عام گردش شدہ سکوں کے لیے — جس قسم کو عام طور پر کہا جاتا ہے۔ <strong>junk silver</strong> - پگھلنے کی قدر بنیادی طور پر وہی ہے جو آپ کو ملے گی۔ 1965 سے پہلے کے امریکی ڈائمز، کوارٹر، آدھے ڈالر، اور ڈالر کے سکے 90% چاندی کے ہیں۔ ہماری <a href="/ردی-چاندی-کا-کیلکولیٹر/">junk silver calculator</a> خاص طور پر ان کے لیے تیار کیا گیا ہے، اور <a href="/چاندی-کی-قیمت-کا-کیلکولیٹر/">face value silver calculator</a> فوری تخمینہ حاصل کرنے کے لیے آپ کو آسانی سے اپنے سکے کے تھیلے کی کل قیمت درج کرنے دیتا ہے (مثال کے طور پر، $10 FV)۔</p>
-          <p>انفرادی سککوں کے لیے، استعمال کریں۔ <a href="/چاندی-کے-سکے-کی-قیمت-کا-کیلکولیٹر/">silver coin value calculator</a>, the <a href="/سلور-ڈالر-کیلکولیٹر/">silver dollar calculator</a>, the <a href="/سلور-کوارٹر-کیلکولیٹر/">silver quarter calculator</a>, the <a href="/سلور-ڈائم-کیلکولیٹر/">silver dime calculator</a>، یا <a href="/کینیڈین-چاندی-کے-سکے-کیلکولیٹر/">Canadian silver coin calculator</a>.</p>
-          <p>چاندی کی سلاخوں کے لیے، <a href="/سلور-بار-ویلیو-کیلکولیٹر/">silver bar value calculator</a> 1oz سے 100oz اور 1kg تک عام سائز کی حمایت کرتا ہے۔ کے لیے سرشار صفحات موجود ہیں۔ <a href="/1-اوز-چاندی-کی-قیمت/">1oz</a>, <a href="/2oz-چاندی-کی-قیمت/">2oz</a>, <a href="/5oz-چاندی-کی-قیمت/">5oz</a>, <a href="/10-اوز-چاندی-کی-قیمت/">10oz</a>, <a href="/100oz-چاندی-کی-قیمت/">100oz</a>، اور <a href="/1-کلو-چاندی-کی-قیمت/">1kg</a> سلاخوں اگر آپ کے پاس ایک بڑا مخلوط مجموعہ ہے، <a href="/سلور-بیچ-کیلکولیٹر/">silver batch calculator</a> آپ کو لامحدود لائن آئٹمز شامل کرنے اور ایک مشترکہ کل حاصل کرنے دیتا ہے جسے آپ پرنٹ یا کاپی کر سکتے ہیں۔</p>
-
-          <h2>چاندی کا صحیح وزن: ٹرائے اونس، گرام، پینی ویٹ اور تولہ</h2>
-          <p>قیمتی دھاتوں کی تجارت میں مختلف قسم کے وزن کی اکائیاں استعمال ہوتی ہیں جو ہمیشہ آپ کے کچن کے پیمانے سے نہیں ملتی ہیں۔ اس کو غلط کرنا غلط حساب لگانے کا ایک آسان ترین طریقہ ہے۔ ایک ٹرائے اونس 31.1035 گرام ہے۔ ایک معیاری اونس صرف 28.35 گرام ہے۔ دی <strong>pennyweight (dwt)</strong> - امریکی زیورات کی تجارت میں عام - 1.555 جی کے برابر ہے، اور ہمارے <a href="/پینی-ویٹ-کیلکولیٹر/">pennyweight calculator</a> dwt اور اسپاٹ قیمت کے درمیان خود بخود بدل جاتا ہے۔ جنوبی ایشیائی منڈیوں میں، <strong>tola</strong> (11.664 جی) معیاری اکائی ہے۔ دی <a href="/تولہ-کیلکولیٹر/">tola silver calculator</a> اس مقصد کے لیے بنایا گیا ہے۔</p>
-          <p>اگر آپ کو کبھی بھی ان یونٹوں میں سے کسی کے درمیان سوئچ کرنے کی ضرورت ہو تو، <a href="/چاندی-وزن-کنورٹر/">silver weight converter</a> ایک ہی اندراج کے ساتھ دونوں سمتوں میں تمام چھ یونٹوں کو ہینڈل کرتا ہے۔ یہ ہر یونٹ کے لیے مساوی جگہ کی قیمت بھی دکھاتا ہے تاکہ آپ فوری طور پر اپنے پیمانے کی ریڈنگ کو کراس چیک کر سکیں۔</p>
-
-          <h2>سونا اور چاندی ایک ساتھ - اور یہ جاننا کہ کب بیچنا ہے۔</h2>
-          <p>بہت سے اسٹیٹ سیلز اور ڈیلر لاٹ میں سونے اور چاندی کی دونوں چیزیں شامل ہیں۔ دی <a href="/سونے-اور-چاندی-کا-کیلکولیٹر/">gold and silver calculator</a> دونوں دھاتوں کو بیک وقت ہینڈل کرتا ہے اور لائیو ڈسپلے بھی کرتا ہے۔ <strong>gold-to-silver ratio</strong> - ایک کلیدی میٹرک سرمایہ کار اپنی خرید و فروخت کے فیصلوں کو وقت پر دیکھتے ہیں۔ جنوبی ایشیائی منڈیوں کے لیے جہاں سونے کی پیمائش کی جاتی ہے۔ <em>Sona</em> اور چاندی کے طور پر <em>Chandi</em>, the <a href="/سونا-چندی-کیلکولیٹر/">Sona Chandi calculator</a> ٹنچ (پاکیزگی) کے ساتھ تولہ اور گرام یونٹس کو سپورٹ کرتا ہے۔</p>
-          <p>اگر آپ کے پاس سرمایہ کاری کے طور پر چاندی ہے، تو آپ نمبروں کو اس کے ذریعے چلا سکتے ہیں۔ <a href="/چاندی-کے-منافع-کا-کیلکولیٹر/">silver profit calculator</a> آپ کی اصل قیمت خرید کی بنیاد پر اپنا ROI دیکھنے کے لیے۔ یقین نہیں ہے کہ اب بیچنا ہے یا انتظار کرنا ہے؟ دی <a href="/چاندی-بیچیں-یا-پکڑیں/">sell or hold calculator</a> مستقبل کی قیمت کے مختلف منظرناموں کو ماڈل بناتا ہے تاکہ آپ باخبر فیصلہ کر سکیں۔ چاندی کی قیمتیں 12 بڑی کرنسیوں میں بھی دستیاب ہیں — بشمول USD, EUR, GBP, INR, PKR, AUD, اور CAD — ہمارے ذریعے <a href="/چاندی-کی-قیمت-تمام-کرنسیوں/">silver price in all currencies</a> صفحہ</p>
-
+        <div class="content-body">
+          <h2>چاندی کی قیمت سمجھنا</h2>
+          <div class="content-scroll-block">
+            <h3>چاندی کی پگھل قیمت کیسے معلوم کریں</h3><p>کسی بھی چاندی کی چیز کی قیمت تین چیزوں پر منحصر ہے: <strong>وزن</strong>، <strong>خالصیت</strong>، اور <strong>سپاٹ قیمت</strong>۔ فارمولا: قیمت = وزن (ٹرائے اونس) × خالصیت × سپاٹ قیمت۔</p><ul><li><strong>وزن</strong> — گرام، ٹرائے اونس یا کلوگرام میں</li><li><strong>خالصیت</strong> — چاندی کا فیصد: 999 (99.9%)، 925 سٹرلنگ (92.5%)، 900 (90%)</li><li><strong>سپاٹ قیمت</strong> — عالمی منڈیوں سے لائیو قیمت</li></ul><h3>چاندی کا سکریپ کیا ہے؟</h3><p>ٹوٹے ہوئے زیورات، پرانے برتن، چاندی کے سکے — کوئی بھی چیز جو اپنی دھاتی قیمت کے لیے بیچی جائے۔</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Silver & Precious Metals Entities -->
     <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container">
-        <h3 class="text-center" style="font-size:var(--fs-lg);margin-bottom:var(--space-md);">چاندی اور قیمتی دھاتوں کے موضوعات</h3>
+        <h3 class="text-center" style="font-size:var(--fs-lg);margin-bottom:var(--space-md);">Silver & Precious Metals</h3>
         <div class="entity-scroller">
           <span class="entity-pill">Silver (Ag)</span>
           <span class="entity-pill">Troy Ounce</span>
           <span class="entity-pill">Spot Price</span>
-          <span class="entity-pill">COMEX Exchange</span>
+          <span class="entity-pill">COMEX</span>
           <span class="entity-pill">LBMA</span>
-          <span class="entity-pill">Sterling Silver 925</span>
+          <span class="entity-pill">Sterling 925</span>
           <span class="entity-pill">Fine Silver 999</span>
           <span class="entity-pill">Coin Silver 900</span>
           <span class="entity-pill">Melt Value</span>
@@ -400,85 +206,54 @@
           <span class="entity-pill">Precious Metals</span>
           <span class="entity-pill">Bullion</span>
           <span class="entity-pill">Hallmark</span>
-          <span class="entity-pill">Assay</span>
-          <span class="entity-pill">Pennyweight (DWT)</span>
-          <span class="entity-pill">Silver Refining</span>
-          <span class="entity-pill">Numismatic Value</span>
-          <span class="entity-pill">Junk Silver Coins</span>
+          <span class="entity-pill">Pennyweight</span>
+          <span class="entity-pill">Numismatic</span>
+          <span class="entity-pill">Junk Silver</span>
           <span class="entity-pill">Silver Alloy</span>
           <span class="entity-pill">Tola</span>
-          <span class="entity-pill">Silver Purity Testing</span>
           <span class="entity-pill">XRF Analysis</span>
-          <span class="entity-pill">Acid Test</span>
           <span class="entity-pill">Morgan Dollar</span>
-          <span class="entity-pill">American Silver Eagle</span>
+          <span class="entity-pill">Silver Eagle</span>
         </div>
       </div>
     </section>
 
-    <!-- FAQ — People Also Ask targeted -->
-    <section class="section-compact" id="faq" style="background: var(--bg-secondary);">
+    <section class="section-compact" id="faq">
       <div class="container">
         <div class="text-center">
-          <h2 class="section-title">اکثر پوچھے گئے سوالات</h2>
-          <p class="section-subtitle">ان سوالات کے سیدھے جوابات جو لوگ چاندی کے سکریپ کی قیمت کے بارے میں سب سے زیادہ پوچھتے ہیں۔</p>
+          <h2 class="section-title">چاندی کی قیمت کے بارے میں عام سوالات</h2>
         </div>
-
-        <div class="faq-list" style="max-width: 800px; margin: 0 auto; text-align: left;">
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-1"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">میں اسکریپ سلور کی قیمت کا حساب کیسے لگا سکتا ہوں؟</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>شے کے وزن کو ٹرائے اونس میں اس کی پاکیزگی (اعشاریہ کے طور پر) اور پھر چاندی کی موجودہ قیمت سے ضرب دیں۔ مثال کے طور پر، 925 سٹرلنگ کا 10 گرام $30/oz = (10 ÷ 31.1035) × 0.925 × 30 = تقریباً $8.95۔ یہ <a href="/چاندی-پگھل-قیمت-کیلکولیٹر/">silver melt value calculator</a> ایک بار جب آپ وزن، پاکیزگی اور اکائی میں داخل ہوتے ہیں تو فوری طور پر ریاضی کرتا ہے۔</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-2"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">پگھل قیمت اور جگہ کی قیمت میں کیا فرق ہے؟</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>دی <strong>spot price</strong> عالمی کموڈٹی ایکسچینج پر خالص (999) چاندی کے ایک ٹرائے اونس کی موجودہ مارکیٹ قیمت ہے۔ دی <strong>melt value</strong> آپ کی مخصوص شے اس کے وزن اور پاکیزگی کی بنیاد پر قیمتی ہے - یہ ہمیشہ جگہ کی قیمت کے برابر یا اس سے کم ہوتی ہے، کیونکہ زیادہ تر حقیقی دنیا کی چاندی کی اشیاء میں تانبے یا دیگر مرکبات ہوتے ہیں۔ آج کا چیک کریں۔ <a href="/چاندی-کی-اسپاٹ-قیمت-آج/">live silver spot price</a> اپ ڈیٹ رہنے کے لئے.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-3"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">میں کیسے جان سکتا ہوں کہ میری چاندی اصلی ہے اور اس کی پاکیزگی کیا ہے؟</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>آئٹم پر ڈاک ٹکٹ یا ہال مارک تلاش کریں — عام میں 925, 900, 800, 999, یا لفظ STERLING شامل ہیں۔ برطانیہ کی اشیاء میں اکثر شیر پاسنٹ کا نشان ہوتا ہے۔ اگر کوئی نشان نہیں ہے تو، ایک معروف جیولر یا پیادوں کی دکان ایسڈ ٹیسٹ یا XRF تجزیہ کر سکتی ہے۔ سلور چڑھایا ہوا آئٹم عام طور پر کہے گا "EPNS،" "سلور پلیٹ،" یا "Sheffield Plate" — ان کی قیمت نہ ہونے کے برابر ہے۔</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-4"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">ایک سکریپ ڈیلر مجھے اصل میں کتنا ادا کرے گا؟</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>زیادہ تر اسکریپ سلور خریدار حساب شدہ پگھلنے والی قیمت کے 70% اور 95% کے درمیان ادائیگی کرتے ہیں۔ فیصد کا انحصار خریدار کی قسم (مقامی پیاد کی دکان بمقابلہ آن لائن ریفائنری)، پاکیزگی کا اعتماد، اور آپ کی فروخت کی مقدار پر ہے۔ مقامی پیادوں کی دکانیں کم پیشکش کرتی ہیں۔ ماہر آن لائن سلور ریفائنرز اکثر 85-95% پگھلتے ہیں۔ ہمیشہ متعدد پیشکشیں حاصل کریں اور اس کیلکولیٹر کا استعمال اس بات کی تصدیق کرنے کے لیے کریں کہ آپ عہد کرنے سے پہلے منصفانہ ڈیل حاصل کر رہے ہیں۔</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-5"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">کیا ردی چاندی سکریپ سلور جیسی ہے؟</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>بالکل نہیں۔ <em>Junk silver</em> خاص طور پر 1965 سے پہلے کے امریکی سکے (ڈائمز، کوارٹر، آدھے حصے، ڈالر) سے مراد ہے جو 90% چاندی کے ہیں اور ان کا کوئی جمع کرنے والا پریمیم نہیں ہے — ان کی قدر خالصتاً ان کے دھاتی مواد کے لیے کی جاتی ہے۔ <em>Scrap silver</em> ایک وسیع تر اصطلاح ہے جس میں ٹوٹے ہوئے زیورات، فلیٹ ویئر، ڈینٹل سلور، اور اس کی دھات کے لیے فروخت ہونے والی چاندی کی کوئی بھی چیز شامل ہے۔ استعمال کریں۔ <a href="/ردی-چاندی-کا-کیلکولیٹر/">junk silver calculator</a> سککوں کے لیے اور یہ سکریپ سلور کیلکولیٹر ہر چیز کے لیے۔</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-6"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">کیا میں یہ کیلکولیٹر چاندی کے سکوں کے لیے استعمال کر سکتا ہوں؟</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>ہاں — سکے کا وزن درج کریں اور اس کی پاکیزگی کا انتخاب کریں (1965 سے پہلے کے امریکی سکوں کے لیے 90%، سلور ایگلز کے لیے 99.9%)۔ تاہم، سکے کی مخصوص اقسام کے ساتھ زیادہ درستگی کے لیے، استعمال کریں۔ <a href="/چاندی-کے-سکے-کی-قیمت-کا-کیلکولیٹر/">silver coin value calculator</a> یا وقف <a href="/سلور-ڈالر-کیلکولیٹر/">silver dollar</a>, <a href="/سلور-کوارٹر-کیلکولیٹر/">silver quarter</a>، اور <a href="/سلور-ڈائم-کیلکولیٹر/">silver dime</a> کیلکولیٹر، جو سرکاری سکے کا وزن خود بخود استعمال کرتے ہیں۔</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-7"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">استعمال کرنے کے لیے وزن کی بہترین اکائی کیا ہے - گرام یا ٹرائے اونس؟</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>جو بھی آپ کا پیمانہ دکھاتا ہے اسے استعمال کریں — یہ کیلکولیٹر آپ کے لیے بدلتا ہے۔ زیادہ تر گھریلو ترازو کے لیے گرام سب سے آسان اکائی ہیں۔ ٹرائے اونس صنعت کے معیاری اور مفید ہیں جب اسپاٹ قیمت سے براہ راست موازنہ کریں۔ سے بچنے کے لئے اہم غلطی: الجھن <em>standard</em> اونس (28.35 جی) کے ساتھ <em>troy</em> اونس (31.10 گرام)۔ یہ ایک بہت عام اور مہنگی غلطی ہے۔ ہمارا استعمال کریں۔ <a href="/چاندی-وزن-کنورٹر/">silver weight converter</a> اگر آپ کو یونٹوں کو تبدیل کرنے کی ضرورت ہے۔</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-8"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">کیا چاندی کے زیورات کی کوئی قیمت ہوتی ہے؟</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>بہت کم۔ چاندی کی چڑھائی والی اشیاء میں چاندی کی صرف ایک پتلی تہہ ہوتی ہے (عام طور پر صرف چند مائکرون) تانبے یا نکل جیسی بیس میٹل پر جڑی ہوتی ہے۔ وزن کے لحاظ سے چاندی کا اصل مواد کل کا ایک چھوٹا سا حصہ ہے — جو کہ سکریپ سے معاشی طور پر بازیافت کرنے کے لیے بہت چھوٹا ہے۔ چڑھائی ہوئی اشیاء کی شناخت کے لیے EPNS، EP، یا "سلور پلیٹ" جیسے ڈاک ٹکٹ تلاش کریں۔ صرف ٹھوس سٹرلنگ یا باریک چاندی کی بامعنی سکریپ ویلیو ہوتی ہے۔</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-9"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">سونے سے چاندی کا تناسب میرے بیچنے کے فیصلے کو کیسے متاثر کرتا ہے؟</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>دی <strong>gold-to-silver ratio</strong> آپ کو بتاتا ہے کہ ایک اونس سونا خریدنے میں کتنے اونس چاندی کی ضرورت ہوتی ہے۔ تاریخی طور پر اس کی اوسط تقریباً 60-80 ہے؛ جب یہ 80 سے اوپر بڑھتا ہے تو، چاندی کو سونے کے مقابلے میں نسبتاً سستا سمجھا جاتا ہے، اور بہت سے سرمایہ کار چاندی خریدتے ہیں۔ جب یہ 60 سے نیچے آتا ہے، تو چاندی نسبتاً مہنگی ہوتی ہے اور بیچنے کا اچھا وقت ہو سکتا ہے۔ ہمارے ساتھ اپنی پگھل قیمت کے ساتھ لائیو تناسب چیک کریں۔ <a href="/سونے-اور-چاندی-کا-کیلکولیٹر/">gold and silver calculator</a>.</p></div>
-          </div>
-          <div class="faq-item">
-            <button class="faq-question" id="faq-btn-10"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">کیا میں امریکی ڈالر کے علاوہ دیگر کرنسیوں میں چاندی کی قیمت کا حساب لگا سکتا ہوں؟</h3> <span class="faq-icon">+</span></button>
-            <div class="faq-answer"><p>جی ہاں ہماری <a href="/چاندی-کی-قیمت-تمام-کرنسیوں/">silver price in all currencies</a> صفحہ USD، EUR، GBP، INR، PKR، AUD، CAD، اور مزید میں چاندی کی براہ راست قیمتیں دکھاتا ہے۔ جنوبی ایشیائی منڈیوں کے لیے، <a href="/سونا-چندی-کیلکولیٹر/">Sona Chandi calculator</a> مقامی بازاروں سے واقف فارمیٹ میں تولا پیمائش اور ٹنچ (پاکیزگی) کی حمایت کرتا ہے۔</p></div>
+        <div class="faq-scroll-panel">
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" id="faq-btn-1"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">یہ کیلکولیٹر کتنا درست ہے؟</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>ہم لائیو سپاٹ قیمت استعمال کرتے ہیں۔ دکھائی گئی قیمت دھات کی ہے؛ خریدار 80-97٪ دیتے ہیں۔</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" id="faq-btn-2"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">مجھے اپنی چاندی کی خالصیت کیسے پتہ چلے گی؟</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>مہریں دیکھیں: 925، 999، 800۔</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" id="faq-btn-3"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">قیمت کیوں بدلتی ہے؟</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>چاندی کی تجارت عالمی منڈیوں میں ہوتی ہے، قیمت طلب اور رسد سے بدلتی ہے۔</p></div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <div id="site-footer"></div>
 
-  <!-- Scripts -->
-  <script src="../js/silver-price.js"></script>
-  <script src="../js/calculator.js"></script>
-  <script src="../js/components.js"></script>
   <script>
-    // Hero Calculator Logic
+    window.MenuTranslations = {"Home":"ہوم","Calculators":"کیلکولیٹر","Purity":"خالصیت","Pricing":"قیمتیں","Tools":"ٹولز","Guides":"گائیڈز","Primary Calculators":"بنیادی کیلکولیٹرز","Item Calculators":"آئٹم کیلکولیٹرز","Popular Coins":"مشہور سکے","Silver Purity":"چاندی کی خالصیت","Silver Scrap Calculator":"چاندی کا کیلکولیٹر","About":"ہمارے بارے میں","Privacy":"رازداری","Terms":"شرائط","All rights reserved.":"جملہ حقوق محفوظ ہیں۔","Prices are for informational purposes only.":"قیمتیں صرف معلوماتی ہیں۔","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"لائیو قیمتوں کے ساتھ مفت اور درست کیلکولیٹر۔ اپنی چاندی کی پگھل قیمت جانیں۔"};
+  </script>
+  <script src="../js/silver-price.js?v=2.1"></script>
+  <script src="../js/calculator.js?v=2.1"></script>
+  <script src="../js/components.js?v=2.1"></script>
+  <script>
+    SiteComponents.renderPriceTicker('price-ticker');
+
     const weightInput = document.getElementById('calc-weight');
     const unitSelect = document.getElementById('calc-unit');
     const puritySelect = document.getElementById('calc-purity');
@@ -490,53 +265,22 @@
       const unit = unitSelect.value;
       const purity = parseFloat(puritySelect.value);
       const spotPrice = SilverPrice.getPrice();
-
-      if (weight <= 0) {
-        resultValue.textContent = '$0.00';
-        resultDetail.textContent = 'Enter weight to calculate';
-        return;
-      }
-
+      if (weight <= 0) { resultValue.textContent = '$0.00'; resultDetail.textContent = t.spot + ': --'; return; }
       const weightGrams = SilverCalc.toGrams(weight, unit);
       const result = SilverCalc.meltValue(weightGrams, purity, spotPrice);
-
       resultValue.textContent = SilverCalc.formatCurrency(result.value);
-      resultDetail.textContent = `${result.silverContentGrams}g pure silver · ${result.silverContentOz} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
+      resultDetail.textContent = result.silverContentGrams + 'g · ' + result.silverContentOz + ' troy oz · ' + t.spot + ': $' + spotPrice.toFixed(2) + '/oz';
     }
 
     weightInput.addEventListener('input', calculate);
     unitSelect.addEventListener('change', calculate);
     puritySelect.addEventListener('change', calculate);
-
-    // Update calc when price loads
     SilverPrice.onPriceUpdate(() => calculate());
-
-    // Initial calc
     calculate();
 
-    // FAQ toggle
     document.querySelectorAll('.faq-question').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.closest('.faq-item').classList.toggle('open');
-      });
+      btn.addEventListener('click', () => { btn.closest('.faq-item').classList.toggle('open'); });
     });
-
-    SiteComponents.injectFAQSchema([
-      { q: 'How do I calculate the value of scrap silver?', a: 'Multiply the item\'s weight in troy ounces by its purity (as a decimal) and then by the current silver spot price. For example, 10 grams of 925 sterling at $30/oz equals approximately $8.95. A silver melt value calculator does this math instantly.' },
-      { q: 'What is the difference between melt value and spot price?', a: 'The spot price is the current market price for one troy ounce of pure 999 silver. The melt value is what your specific item is worth based on its weight and purity — it is always equal to or less than spot price, because most silver items contain alloys.' },
-      { q: 'How do I know if my silver is real and what purity it is?', a: 'Look for a hallmark stamp on the item — common ones include 925, 900, 800, 999, or the word STERLING. If there is no marking, a jeweler or pawn shop can run an acid test or XRF analysis to confirm.' },
-      { q: 'How much will a scrap dealer actually pay me?', a: 'Most scrap silver buyers pay between 70% and 95% of the calculated melt value. Local pawn shops tend to offer less; specialist online silver refiners often offer 85-95% of melt. Always get multiple offers and use a calculator to verify fairness.' },
-      { q: 'Is junk silver the same as scrap silver?', a: 'Not exactly. Junk silver refers specifically to pre-1965 US coins (dimes, quarters, halves, dollars) that are 90% silver with no collectible premium. Scrap silver is a broader term covering broken jewelry, flatware, dental silver, and any silver sold for its metal.' },
-      { q: 'Can I use this calculator for silver coins?', a: 'Yes — enter the coin\'s weight and select its purity (90% for pre-1965 US coins, 99.9% for Silver Eagles). For more precision, use dedicated coin calculators for silver dollars, quarters, or dimes which use official coin weights automatically.' },
-      { q: 'What is the best weight unit to use — grams or troy ounces?', a: 'Use whatever your scale shows — the calculator converts for you. Grams are easiest for home scales. Avoid confusing standard ounces (28.35 g) with troy ounces (31.10 g), which is a very common and costly mistake.' },
-      { q: 'Does silver-plated jewelry have any scrap value?', a: 'Very little. Silver-plated items have only a thin coating of silver over base metal. The actual silver content is too small to recover economically. Look for stamps like EPNS or Silver Plate to identify plated items — only solid sterling or fine silver has meaningful scrap value.' },
-      { q: 'How does the gold-to-silver ratio affect my decision to sell?', a: 'The gold-to-silver ratio tells you how many ounces of silver it takes to buy one ounce of gold. When the ratio rises above 80, silver is relatively cheap and investors buy; when it falls below 60, silver is relatively expensive and may be a good time to sell.' },
-      { q: 'Can I calculate silver value in currencies other than US dollars?', a: 'Yes. Silver prices are available in USD, EUR, GBP, INR, PKR, AUD, CAD, and more. For South Asian markets, Tola measurements and Tunch (purity) are also supported.' }
-    ]);
   </script>
-
-
-<script>
-  window.MenuTranslations = {"slugs":{"1-10oz-silver-value":"1-10-اوز-چاندی-کی-قیمت","100oz-silver-value":"100oz-چاندی-کی-قیمت","10oz-silver-value":"10-اوز-چاندی-کی-قیمت","1kg-silver-value":"1-کلو-چاندی-کی-قیمت","1oz-silver-value":"1-اوز-چاندی-کی-قیمت","2oz-silver-value":"2oz-چاندی-کی-قیمت","5oz-silver-value":"5oz-چاندی-کی-قیمت","800-silver-calculator":"800-چاندی-کا-کیلکولیٹر","835-silver-calculator":"835-سلور-کیلکولیٹر","900-silver-calculator":"900-چاندی-کا-کیلکولیٹر","925-silver-calculator":"925-سلور-کیلکولیٹر","925-sterling-silver-price-per-gram":"925-سٹرلنگ-چاندی-کی-قیمت-فی-گرام","958-silver-calculator":"958-سلور-کیلکولیٹر","999-silver-calculator":"999-سلور-کیلکولیٹر","canadian-silver-coin-calculator":"کینیڈین-چاندی-کے-سکے-کیلکولیٹر","face-value-silver-calculator":"چاندی-کی-قیمت-کا-کیلکولیٹر","gold-and-silver-calculator":"سونے-اور-چاندی-کا-کیلکولیٹر","how-silver-prices-work":"چاندی-کی-قیمتیں-کیسے-کام-کرتی-ہیں","how-to-sell-silver":"چاندی-فروخت-کرنے-کا-طریقہ","how-to-use-silver-calculators":"سلور-کیلکولیٹر-استعمال-کرنے-کا-طریقہ","identify-silver":"چاندی-کی-شناخت","junk-silver-calculator":"ردی-چاندی-کا-کیلکولیٹر","pennyweight-calculator":"پینی-ویٹ-کیلکولیٹر","silver-bar-value-calculator":"سلور-بار-ویلیو-کیلکولیٹر","silver-batch-calculator":"سلور-بیچ-کیلکولیٹر","silver-bracelet-value":"چاندی-کے-کڑا-کی-قیمت","silver-chain-value":"چاندی-کی-زنجیر-کی-قیمت","silver-coin-value-calculator":"چاندی-کے-سکے-کی-قیمت-کا-کیلکولیٹر","silver-cup-value":"چاندی-کے-کپ-کی-قیمت","silver-dime-calculator":"سلور-ڈائم-کیلکولیٹر","silver-dollar-calculator":"سلور-ڈالر-کیلکولیٹر","silver-fork-value":"چاندی-کے-کانٹے-کی-قیمت","silver-hallmarks-guide":"سلور-ہال-مارکس-گائیڈ","silver-jewelry-value-calculator":"چاندی-کے-زیورات-کی-قیمت-کا-کیلکولیٹر","silver-knife-value":"چاندی-کی-چاقو-کی-قیمت","silver-melt-value-calculator":"چاندی-پگھل-قیمت-کیلکولیٹر","silver-necklace-value":"چاندی-کے-ہار-کی-قیمت","silver-plate-value":"چاندی-کی-پلیٹ-کی-قیمت","silver-price-all-currencies":"چاندی-کی-قیمت-تمام-کرنسیوں","silver-price-per-gram":"چاندی-کی-قیمت-فی-گرام","silver-price-per-ounce":"چاندی-کی-قیمت-فی-اونس","silver-profit-calculator":"چاندی-کے-منافع-کا-کیلکولیٹر","silver-purity-chart":"چاندی-کی-پاکیزگی-کا-چارٹ","silver-quarter-calculator":"سلور-کوارٹر-کیلکولیٹر","silver-ring-value":"چاندی-کی-انگوٹھی-کی-قیمت","silver-scrap-calculator":"سلور-سکریپ-کیلکولیٹر","silver-sell-or-hold":"چاندی-بیچیں-یا-پکڑیں","silver-spoon-value":"چاندی-کے-چمچ-کی-قیمت","silver-spot-price-today":"چاندی-کی-اسپاٹ-قیمت-آج","silver-tray-value":"چاندی-کی-ٹرے-کی-قیمت","silver-weight-converter":"چاندی-وزن-کنورٹر","silverware-value-calculator":"سلور-ویئر-ویلیو-کیلکولیٹر","sona-chandi-calculator":"سونا-چندی-کیلکولیٹر","sterling-silver-calculator":"سٹرلنگ-سلور-کیلکولیٹر","tola-calculator":"تولہ-کیلکولیٹر","what-does-925-mean":"925-کا-کیا-مطلب-ہے","what-is-junk-silver":"ردی-چاندی-کیا-ہے","what-is-silver-bullion":"چاندی-بلین-کیا-ہے","what-is-silver-melt-value":"چاندی-کی-پگھل-قیمت-کیا-ہے","what-is-silver-scrap":"چاندی-کا-سکریپ-کیا-ہے","what-is-sterling-silver":"سٹرلنگ-چاندی-کیا-ہے","what-is-troy-ounce":"ٹرائے-اونس-کیا-ہے"},"Home":"گھر","Calculators":"کیلکولیٹر","Silver Scrap Calculator":"سلور سکریپ کیلکولیٹر","Gold & Silver Calculator":"سونے اور چاندی کا کیلکولیٹر","Silver Melt Value":"سلور میلٹ ویلیو","Sterling Silver Calculator":"سٹرلنگ سلور کیلکولیٹر","Junk Silver Calculator":"جنک سلور کیلکولیٹر","Silver Coin Value":"چاندی کے سکے کی قیمت","Silver Bar Value":"سلور بار ویلیو","Silver Jewelry Value":"چاندی کے زیورات کی قیمت","Silverware Value":"سلور ویئر ویلیو","Purity":"طہارت","999 Fine Silver":"999 فائن سلور","958 Britannia Silver":"958 برٹانیہ سلور","925 Sterling Silver":"925 سٹرلنگ سلور","900 Coin Silver":"900 سکے چاندی","835 Silver":"835 چاندی","800 Silver":"800 چاندی","Silver Purity Chart":"سلور پیوریٹی چارٹ","Pricing":"قیمتوں کا تعین","Silver Spot Price Today":"چاندی کی اسپاٹ قیمت آج","925 Sterling Price / Gram":"925 سٹرلنگ قیمت/گرام","Silver Price Per Gram":"چاندی کی قیمت فی گرام","Silver Price Per Ounce":"چاندی کی قیمت فی اونس","Price in All Currencies":"تمام کرنسیوں میں قیمت","1/10oz Silver Value":"1/10oz سلور ویلیو","1oz Silver Value":"1oz سلور ویلیو","2oz Silver Value":"2oz سلور ویلیو","5oz Silver Value":"5oz سلور ویلیو","10oz Silver Value":"10oz سلور ویلیو","100oz Silver Value":"100oz سلور ویلیو","1kg Silver Value":"1 کلو چاندی کی قیمت","Tools":"اوزار","Silver Profit Calculator":"سلور منافع کیلکولیٹر","Batch Calculator":"بیچ کیلکولیٹر","Sona Chandi Calculator":"سونا چندی کیلکولیٹر","Face Value Calculator":"فیس ویلیو کیلکولیٹر","Weight Converter":"وزن کنورٹر","Pennyweight (DWT) Calc":"پینی ویٹ (DWT) کیلک","Tola Calculator":"تولہ کیلکولیٹر","Sell or Hold Analysis":"تجزیہ بیچیں یا ہولڈ کریں۔","Silver Identifier":"سلور شناخت کنندہ","Guides":"رہنما","How to Use Our Calculators":"ہمارے کیلکولیٹرز کا استعمال کیسے کریں۔","What Is Silver Scrap?":"سلور سکریپ کیا ہے؟","What Is Melt Value?":"پگھل قدر کیا ہے؟","What Is Junk Silver?":"جنک سلور کیا ہے؟","What Is a Troy Ounce?":"ٹرائے اونس کیا ہے؟","What Is Silver Bullion?":"سلور بلین کیا ہے؟","How Silver Prices Work":"چاندی کی قیمتیں کیسے کام کرتی ہیں۔","Silver Hallmarks Guide":"سلور ہال مارکس گائیڈ","What Does 925 Mean?":"925 کا کیا مطلب ہے؟","What Is Sterling Silver?":"سٹرلنگ سلور کیا ہے؟","How to Sell Silver":"چاندی فروخت کرنے کا طریقہ","Scrap Silver":"سکریپ سلور","Gold & Silver":"سونا اور چاندی","Silver Profit":"چاندی کا منافع","Melt Value":"پگھلنے والی قدر","Junk Silver":"جنک سلور","Silver Coins":"چاندی کے سکے ۔","Silver Dollar":"سلور ڈالر","Silver Quarter":"سلور کوارٹر","Silver Dime":"سلور ڈائم","Jewelry Value":"زیورات کی قیمت","925 Sterling":"925 سٹرلنگ","Purity Chart":"طہارت کا چارٹ","How to Use Calculators":"کیلکولیٹر کا استعمال کیسے کریں۔","Sona Chandi Calc":"سونا چندی کیلک","Face Value Calc":"فیس ویلیو کیلک","Sell or Hold":"بیچیں یا پکڑیں۔","About":"کے بارے میں","Privacy":"رازداری","Terms":"شرائط","All rights reserved.":"جملہ حقوق محفوظ ہیں۔","Prices are for informational purposes only.":"قیمتیں صرف معلوماتی مقاصد کے لیے ہیں۔","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"براہ راست اسپاٹ قیمتوں کا استعمال کرتے ہوئے مفت، درست سلور کیلکولیٹر۔ اپنے چاندی کے سکریپ، سکے، زیورات، اور سلاخوں کی پگھلنے والی قیمت کا فوری حساب لگائیں۔"};
-</script>
-</body></html>
+</body>
+</html>

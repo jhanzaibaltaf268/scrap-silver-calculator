@@ -11,7 +11,7 @@ function coinPage(coinName, coinWeight, coinPurity, filename, desc, content) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${titleName} Melt Value Calculator — Live Prices</title>
   <meta name="description" content="${desc}">
-  <link rel="canonical" href="https://silvercalc.com/${filename}">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/${filename.replace('.html', '/')}/">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -47,9 +47,9 @@ function coinPage(coinName, coinWeight, coinPurity, filename, desc, content) {
       </div>
       <div class="content-body">${content}</div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Coin Tools</h3><div class="related-grid">
-        <a href="junk-silver-calculator.html" class="related-link"><span class="r-icon">🪙</span> Junk Silver Calc</a>
-        <a href="face-value-silver-calculator.html" class="related-link"><span class="r-icon">💵</span> Face Value Calc</a>
-        <a href="silver-coin-value-calculator.html" class="related-link"><span class="r-icon">🏛️</span> All Silver Coins</a>
+        <a href="/junk-silver-calculator/" class="related-link"><span class="r-icon">🪙</span> Junk Silver Calc</a>
+        <a href="/face-value-silver-calculator/" class="related-link"><span class="r-icon">💵</span> Face Value Calc</a>
+        <a href="/silver-coin-value-calculator/" class="related-link"><span class="r-icon">🏛️</span> All Silver Coins</a>
       </div></div>
     </div>
   </main>
@@ -57,7 +57,7 @@ function coinPage(coinName, coinWeight, coinPurity, filename, desc, content) {
   <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'${titleName} Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'${titleName} Calculator'}]);
     
     const q=document.getElementById('qty');
     function calc() {
@@ -120,7 +120,7 @@ const faceValueHTML = `<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Face Value Silver Calculator — 90% Junk Silver</title>
   <meta name="description" content="Calculate silver value by entering the total face value of your 90% US silver coins ($1 Face Value = 0.715 oz pure silver).">
-  <link rel="canonical" href="https://silvercalc.com/face-value-silver-calculator.html">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/face-value-silver-calculator/">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -158,9 +158,9 @@ const faceValueHTML = `<!DOCTYPE html>
         <p><em>Note: This 0.715 multiplier applies to circulated 90% silver coins. Uncirculated coins contain closer to 0.723 oz, and Silver Dollars (Morgans/Peace) use a different multiplier entirely (0.7734 oz per dollar).</em></p>
       </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Coin Tools</h3><div class="related-grid">
-        <a href="junk-silver-calculator.html" class="related-link"><span class="r-icon">🪙</span> Junk Silver Calc</a>
-        <a href="silver-dime-calculator.html" class="related-link"><span class="r-icon">🪙</span> Silver Dimes</a>
-        <a href="silver-quarter-calculator.html" class="related-link"><span class="r-icon">🪙</span> Silver Quarters</a>
+        <a href="/junk-silver-calculator/" class="related-link"><span class="r-icon">🪙</span> Junk Silver Calc</a>
+        <a href="/silver-dime-calculator/" class="related-link"><span class="r-icon">🪙</span> Silver Dimes</a>
+        <a href="/silver-quarter-calculator/" class="related-link"><span class="r-icon">🪙</span> Silver Quarters</a>
       </div></div>
     </div>
   </main>
@@ -168,7 +168,7 @@ const faceValueHTML = `<!DOCTYPE html>
   <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Face Value Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Face Value Calculator'}]);
     
     const f=document.getElementById('face-val');
     function calc() {
