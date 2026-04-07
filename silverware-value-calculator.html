@@ -52,7 +52,7 @@
           <li>Complete silverware sets in good condition may be worth more than melt value</li>
           <li>Separate solid silver from silver-plated pieces before selling</li>
           <li>Named patterns (e.g., Tiffany, Georg Jensen) command premiums</li>
-          <li>Read our <a href="how-to-sell-silver.html">How to Sell Silver</a> guide for best practices</li>
+          <li>Read our <a href="how-to-sell-silver/">How to Sell Silver</a> guide for best practices</li>
         </ul>
       </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3><div class="related-grid">
@@ -67,7 +67,7 @@
   <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Silverware Value Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Silverware Value Calculator'}]);
     const t=document.getElementById('type'),w=document.getElementById('weight'),q=document.getElementById('qty'),p=document.getElementById('purity');
     t.addEventListener('change',()=>{const dw=t.options[t.selectedIndex].dataset.w;if(dw!=='0')w.value=dw;calc();});
     function calc(){const weight=(parseFloat(w.value)||0)*(parseInt(q.value)||1);const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}

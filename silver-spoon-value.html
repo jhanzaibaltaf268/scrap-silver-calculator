@@ -31,14 +31,14 @@
   <a href="/silverware-value-calculator/" class="related-link"><span class="r-icon">🍴</span> Silverware Calculator</a>
   <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
   <a href="/silver-scrap-calculator/" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
-  <a href="how-to-sell-silver.html" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a></div></div>
+  <a href="how-to-sell-silver/" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a></div></div>
     </div>
   </main>
   <div id="site-footer"></div>
   <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Silver Spoon Value'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Silver Spoon Value'}]);
     const w=document.getElementById('weight'),q=document.getElementById('qty'),p=document.getElementById('purity');
     function calc(){const weight=(parseFloat(w.value)||0)*(parseInt(q.value)||1);const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
     [w,q].forEach(el=>el.addEventListener('input',calc));p.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();

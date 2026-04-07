@@ -91,7 +91,7 @@
         </div>
 
         <h2>How to Sell Silver Bullion</h2>
-        <p>When you're ready to sell, use our <a href="/silver-sell-or-hold/">sell or hold calculator</a> to compare scenarios, then see our <a href="how-to-sell-silver.html">complete selling guide</a>. Bullion is the easiest form of silver to sell because of its standardized purity and weight.</p>
+        <p>When you're ready to sell, use our <a href="/silver-sell-or-hold/">sell or hold calculator</a> to compare scenarios, then see our <a href="how-to-sell-silver/">complete selling guide</a>. Bullion is the easiest form of silver to sell because of its standardized purity and weight.</p>
       </div>
 
       <div><h3 style="margin-bottom:var(--space-lg);">Related</h3><div class="related-grid">
@@ -107,7 +107,7 @@
   <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Guides'},{label:'What Is Silver Bullion'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Guides'},{label:'What Is Silver Bullion'}]);
     const sz=document.getElementById('size'),qt=document.getElementById('qty');
     function calc(){
       const size=parseFloat(sz.value), qty=parseInt(qt.value)||1, spot=SilverPrice.getPrice();

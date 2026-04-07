@@ -107,7 +107,7 @@
         <a href="/silver-scrap-calculator/" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
         <a href="/silver-sell-or-hold/" class="related-link"><span class="r-icon">📈</span> Sell or Hold</a>
         <a href="/what-is-silver-scrap/" class="related-link"><span class="r-icon">📖</span> What Is Silver Scrap?</a>
-        <a href="how-to-sell-silver.html" class="related-link"><span class="r-icon">💰</span> How to Sell Silver</a>
+        <a href="how-to-sell-silver/" class="related-link"><span class="r-icon">💰</span> How to Sell Silver</a>
       </div></div>
     </div>
   </main>
@@ -115,7 +115,7 @@
   <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'index.html'},{label:'Guides'},{label:'What Is Silver Melt Value'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Guides'},{label:'What Is Silver Melt Value'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity');
     function calc(){
       const grams=SilverCalc.toGrams(parseFloat(w.value)||0,u.value), purity=parseFloat(p.value), spot=SilverPrice.getPrice();

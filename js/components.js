@@ -192,7 +192,7 @@ const SiteComponents = (() => {
     el.innerHTML = `
       <header class="site-header" id="main-header">
         <div class="header-inner">
-          <a href="index.html" class="header-logo">
+          <a href="/" class="header-logo">
             <span>Scrap Silver Calculator</span>
           </a>
           <nav class="main-nav" id="desktop-nav">${navHTML}</nav>
@@ -264,7 +264,7 @@ const SiteComponents = (() => {
         <div class="container">
           <div class="footer-grid">
             <div class="footer-brand">
-              <a href="index.html" class="header-logo">
+              <a href="/" class="header-logo">
                 <span>Scrap Silver Calculator</span>
               </a>
               <p>${t('Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.')}</p>
