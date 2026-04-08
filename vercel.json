@@ -1,22 +1,4 @@
 {
   "cleanUrls": true,
-  "trailingSlash": true,
-  "redirects": [
-    {
-      "source": "/:path*(.html)",
-      "destination": "/:path*/",
-      "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.scrapsilvercalculater.com"
-        }
-      ],
-      "destination": "https://scrapsilvercalculater.com/$1",
-      "permanent": true
-    }
-  ]
+  "trailingSlash": true
 }
