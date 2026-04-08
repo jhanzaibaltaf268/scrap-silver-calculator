@@ -3,8 +3,8 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/(.*).html",
-      "destination": "/$1/",
+      "source": "/:path*(.html)",
+      "destination": "/:path*/",
       "permanent": true
     },
     {
