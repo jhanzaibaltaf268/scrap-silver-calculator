@@ -69,6 +69,9 @@
     .lang-btn { padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; background: rgba(255,255,255,0.05); }
     .lang-btn:hover, .lang-btn.active { background: var(--accent-primary); color: #fff; }
   </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -476,9 +479,9 @@
   <div id="site-footer"></div>
 
   <!-- Scripts -->
-  <script src="/js/silver-price.js"></script>
-  <script src="/js/calculator.js"></script>
-  <script src="/js/components.js"></script>
+  <script src="/js/silver-price.js" defer></script>
+  <script src="/js/calculator.js" defer></script>
+  <script src="/js/components.js" defer></script>
   <script>
     / Hero Calculator Logic
     const weightInput = document.getElementById('calc-weight');

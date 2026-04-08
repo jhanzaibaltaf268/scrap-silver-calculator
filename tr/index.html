@@ -63,6 +63,9 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="lang-switcher"><a href="/" class="lang-btn ">🇬🇧 EN</a><a href="/es/" class="lang-btn ">🇪🇸 ES</a><a href="/fr/" class="lang-btn ">🇫🇷 FR</a><a href="/de/" class="lang-btn ">🇩🇪 DE</a><a href="/pt/" class="lang-btn ">🇧🇷 PT</a><a href="/hi/" class="lang-btn ">🇮🇳 HI</a><a href="/ur/" class="lang-btn ">🇵🇰 UR</a><a href="/ar/" class="lang-btn ">🇸🇦 AR</a><a href="/tr/" class="lang-btn active">🇹🇷 TR</a><a href="/it/" class="lang-btn ">🇮🇹 IT</a><a href="/zh/" class="lang-btn ">🇨🇳 ZH</a><a href="/ru/" class="lang-btn ">🇷🇺 RU</a></div>
@@ -241,9 +244,9 @@
   <script>
     window.MenuTranslations = {"Home":"Ana Sayfa","Calculators":"Hesaplayıcılar","Purity":"Saflık","Pricing":"Fiyatlandırma","Tools":"Araçlar","Guides":"Kılavuzlar","Primary Calculators":"Ana Hesaplayıcılar","Item Calculators":"Öğe Hesaplayıcıları","Popular Coins":"Popüler Paralar","Silver Purity":"Gümüş Saflığı","Silver Scrap Calculator":"Hurda Gümüş Hesaplayıcı","About":"Hakkında","Privacy":"Gizlilik","Terms":"Şartlar","All rights reserved.":"Tüm hakları saklıdır.","Prices are for informational purposes only.":"Fiyatlar bilgi amaçlıdır.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Canlı spot fiyatları kullanan ücretsiz gümüş hesaplayıcıları. Hurda gümüşünüzün değerini hemen hesaplayın."};
   </script>
-  <script src="/js/silver-price.js?v=2.1"></script>
-  <script src="/js/calculator.js?v=2.1"></script>
-  <script src="/js/components.js?v=2.1"></script>
+  <script src="/js/silver-price.js?v=2.1" defer></script>
+  <script src="/js/calculator.js?v=2.1" defer></script>
+  <script src="/js/components.js?v=2.1" defer></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
 

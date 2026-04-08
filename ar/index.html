@@ -70,6 +70,9 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
 </head>
 <body>
   <div class="lang-switcher"><a href="/" class="lang-btn ">🇬🇧 EN</a><a href="/es/" class="lang-btn ">🇪🇸 ES</a><a href="/fr/" class="lang-btn ">🇫🇷 FR</a><a href="/de/" class="lang-btn ">🇩🇪 DE</a><a href="/pt/" class="lang-btn ">🇧🇷 PT</a><a href="/hi/" class="lang-btn ">🇮🇳 HI</a><a href="/ur/" class="lang-btn ">🇵🇰 UR</a><a href="/ar/" class="lang-btn active">🇸🇦 AR</a><a href="/tr/" class="lang-btn ">🇹🇷 TR</a><a href="/it/" class="lang-btn ">🇮🇹 IT</a><a href="/zh/" class="lang-btn ">🇨🇳 ZH</a><a href="/ru/" class="lang-btn ">🇷🇺 RU</a></div>
@@ -248,9 +251,9 @@
   <script>
     window.MenuTranslations = {"Home":"الرئيسية","Calculators":"حاسبات","Purity":"نقاء","Pricing":"التسعير","Tools":"أدوات","Guides":"أدلة","Primary Calculators":"الحاسبات الأساسية","Item Calculators":"حاسبات العناصر","Popular Coins":"العملات الشهيرة","Silver Purity":"نقاء الفضة","Silver Scrap Calculator":"حاسبة خردة الفضة","About":"حول","Privacy":"الخصوصية","Terms":"الشروط","All rights reserved.":"جميع الحقوق محفوظة.","Prices are for informational purposes only.":"الأسعار لأغراض إعلامية فقط.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"حاسبات فضة دقيقة ومجانية تعتمد على الأسعار الفورية. احسب قيمة الفضة فورًا."};
   </script>
-  <script src="/js/silver-price.js?v=2.1"></script>
-  <script src="/js/calculator.js?v=2.1"></script>
-  <script src="/js/components.js?v=2.1"></script>
+  <script src="/js/silver-price.js?v=2.1" defer></script>
+  <script src="/js/calculator.js?v=2.1" defer></script>
+  <script src="/js/components.js?v=2.1" defer></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
 
