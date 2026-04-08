@@ -39,7 +39,30 @@
           <div class="result-detail" id="result-detail"></div>
         </div>
       </div>
-      <div class="content-body"><h2>How Much is a Silver Dollar Worth?</h2><p>Pre-1935 US Silver Dollars (like Morgan Dollars and Peace Dollars) contain 90% silver and 10% copper. Each coin weighs 26.73 grams, meaning it contains exactly <strong>0.7734 troy ounces</strong> of pure silver.</p><h3>Melt Value vs. Numismatic Value</h3><p>Unlike common 90% silver dimes or quarters, Silver Dollars almost always carry a numismatic (collectible) premium. A Morgan Dollar in excellent condition can be worth hundreds of dollars, far above its basic melt value. Always check the mint mark and year before selling a silver dollar for scrap!</p></div>
+      <div class="content-body">
+        <h2>How Much is a Silver Dollar Worth?</h2>
+        <p>A classic US silver dollar, such as the <strong>Morgan Dollar</strong> (1878–1921) or the <strong>Peace Dollar</strong> (1921–1935), is one of the most recognizable and desirable silver coins in the world. Each of these coins was struck with <strong>90% pure silver</strong> and 10% copper to ensure durability for circulation. At today's silver prices, the raw "melt value" of a single silver dollar is a significant portion of its total market price.</p>
+
+        <div class="callout warning">
+          <div class="callout-title">🔍 Check Before You Melt</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Unlike silver dimes and quarters, which are often sold strictly for their metal content ("junk silver"), silver dollars almost always have <strong>numismatic value</strong>. A rare date (like the 1893-S Morgan) can be worth $100,000+ even in poor condition. Never sell silver dollars for scrap without checking a price guide or consulting an expert.</p>
+        </div>
+
+        <h3>The Silver Content of a US Silver Dollar</h3>
+        <p>All standard US silver dollars minted before 1935 follow the same technical specifications:</p>
+        <ul>
+            <li><strong>Total Weight</strong>: 26.73 grams</li>
+            <li><strong>Silver Purity</strong>: 90% silver, 10% copper</li>
+            <li><strong>Pure Silver Weight</strong>: 24.057 grams (approx. 0.7734 troy ounces)</li>
+        </ul>
+        <p>Note that the <strong>Eisenhower Dollar</strong> (1971–1978) is usually made of copper-nickel, although special 40% silver collector versions were produced. Our calculator is designed for the standard 90% silver issues.</p>
+
+        <h3>Peace Dollars vs. Morgan Dollars</h3>
+        <p>The **Morgan Dollar**, named after its designer George T. Morgan, is the most collected coin in American history. It represents the wealth of the Old West and the Comstock Lode. The **Peace Dollar** was created to commemorate the end of World War I and symbolizes the era of prosperity that followed. Both contain identical amounts of silver, but their collector appeal differs based on the mint mark (located on the reverse) and the overall state of preservation (grade).</p>
+        
+        <h3>Using the Silver Dollar Melt Calculator</h3>
+        <p>This tool provides the <strong>pure silver melt value</strong> based on the live 24-hour spot price. Simply enter the number of coins you have to see the total intrinsic value. Remember that this is the absolute "floor" price—you should always expect to receive more if the coin is in decent condition or has a desirable date.</p>
+      </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Coin Tools</h3><div class="related-grid">
         <a href="/junk-silver-calculator/" class="related-link"><span class="r-icon">🪙</span> Junk Silver Calc</a>
         <a href="/face-value-silver-calculator/" class="related-link"><span class="r-icon">💵</span> Face Value Calc</a>
@@ -73,6 +96,13 @@
     q.addEventListener('input',calc);
     SilverPrice.onPriceUpdate(()=>calc());
     calc();
+
+    SiteComponents.injectFAQSchema([
+      {q: 'How much silver is in a Morgan silver dollar?', a: 'A Morgan silver dollar weighs 26.73 grams and is made of 90% silver. This means it contains 24.057 grams (0.77344 troy ounces) of pure silver bullion.'},
+      {q: 'Is every silver dollar worth its weight in silver?', a: 'No. While all pre-1935 dollars contain silver, many have collectible value far exceeding their silver content. Additionally, post-1971 Eisenhower dollars and modern Susan B. Anthony or Sacagawea dollars generally contain zero silver.'},
+      {q: 'What is the "CC" mint mark on a silver dollar?', a: 'The "CC" mark stands for the Carson City Mint in Nevada. These coins are highly prized by collectors because they were minted in relatively small quantities near the source of the silver (the Comstock Lode) and often carry a huge premium over melt value.'},
+      {q: 'Can I sell a worn silver dollar for scrap?', a: 'Yes. Even if a silver dollar is so worn that the date is unreadable (slick), it still retains its intrinsic value of 0.77 troy ounces of silver. However, most coin dealers will still pay a small premium above melt even for worn dollars.'}
+    ]);
   </script>
 </body>
 </html>

@@ -43,19 +43,28 @@
       </div>
       <div class="content-body">
         <h2>What Is Junk Silver?</h2>
-        <p>"Junk silver" refers to US coins minted before 1965 that contain silver but have no significant numismatic (collector) value. Despite the name, these coins contain genuine silver and their value is based on their metal content.</p>
-        <h3>Common Junk Silver Coins</h3>
+        <p>"Junk silver" is a term used by coin dealers and investors to describe United States coins minted in <strong>1964 or earlier</strong> that contain 90% silver. The term "junk" is a misnomer; it simply means the coins have no <strong>numismatic (collectible) value</strong> because they are worn or were minted in such high quantities. However, they are highly valuable for their intrinsic precious metal content.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">🏦 Gresham's Law in Action</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">In 1965, the US Mint switched to copper-nickel "clad" coins. Because the 1964 silver coins were worth more than their face value, they quickly disappeared from circulation—a classic example of Gresham's Law: "Bad money drives out good." Today, finding a silver quarter in your pocket change is a rare event.</p>
+        </div>
+
+        <h3>Common Junk Silver Coins & Their Weights</h3>
+        <p>Investors typically buy junk silver in bulk bags. The following coins are the standard components of a 90% silver mix:</p>
         <ul>
-          <li><strong>Dimes (pre-1965)</strong> — 90% silver, 0.0723 oz each</li>
-          <li><strong>Quarters (pre-1965)</strong> — 90% silver, 0.1808 oz each</li>
-          <li><strong>Half Dollars (pre-1965)</strong> — 90% silver, 0.3617 oz each</li>
-          <li><strong>Kennedy Half (1965-1970)</strong> — 40% silver, 0.1479 oz each</li>
-          <li><strong>Morgan & Peace Dollars</strong> — 90% silver, 0.7734 oz each</li>
-          <li><strong>War Nickels (1942-1945)</strong> — 35% silver, 0.0563 oz each</li>
+          <li><strong>Dimes (Mercury & Roosevelt)</strong> — 0.07234 troy oz pure silver</li>
+          <li><strong>Quarters (Washington)</strong> — 0.18084 troy oz pure silver</li>
+          <li><strong>Half Dollars (Franklin & Kennedy)</strong> — 0.36169 troy oz pure silver</li>
+          <li><strong>Silver Dollars (Morgan & Peace)</strong> — 0.77344 troy oz pure silver</li>
         </ul>
-        <h3>How to Calculate Junk Silver Value</h3>
-        <p>The formula is simple: <strong>Silver Content (oz) × Quantity × Spot Price = Value</strong></p>
-        <p>For example, 10 pre-1965 quarters contain 1.808 troy ounces of silver total. At a $32.50 spot price, that's $58.76 in melt value.</p>
+        <p>Additionally, <strong>War Nickels (1942–1945)</strong> contain 35% silver, and <strong>Kennedy Halves (1965–1970)</strong> contain 40% silver. Our calculator handles all these variations automatically.</p>
+
+        <h3>Why Invest in Junk Silver?</h3>
+        <p>Junk silver is often the first choice for "survivalist" investors because it is government-issued, highly recognizable, and comes in <strong>small, divisible units</strong>. Unlike a 100oz bar, you can sell a single silver dime or quarter if you only need a small amount of cash. Because the coins are no longer being minted, their supply is finite, adding a layer of scarcity to their intrinsic value.</p>
+        
+        <h3>The $1.00 Face Value Rule</h3>
+        <p>A helpful shortcut for investors: **$1.40 in face value** (e.g., 14 dimes or 5 quarters + 1 dime) contains almost exactly <strong>one troy ounce</strong> of pure silver. This makes it easy to calculate the total value of a large collection without a scale.</p>
       </div>
       <div>
         <h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3>
@@ -106,6 +115,13 @@
     qty.addEventListener('input',calc);
     SilverPrice.onPriceUpdate(()=>calc());
     calc();
+
+    SiteComponents.injectFAQSchema([
+      {q: 'What years of US coins are considered "junk silver"?', a: 'Generally, all US dimes, quarters, and half-dollars dated 1964 or earlier are 90% silver. Kennedy half-dollars from 1965-1970 are also common, though they are 40% silver.'},
+      {q: 'How much silver is in $1.00 face value of junk silver?', a: 'A mix of circulated 90% silver coins (dimes, quarters, halves) contains approximately 0.715 troy ounces of pure silver per $1.00 of face value. Uncirculated coins contain 0.723 ounces.'},
+      {q: 'Are junk silver coins a good investment?', a: 'Yes, they are highly liquid, recognizable, and divisible. They often carry a lower premium than modern silver bullion coins like American Silver Eagles.'},
+      {q: 'Should I clean my junk silver coins?', a: 'No! Never clean silver coins. Even if they are just "junk silver," harsh chemicals or abrasives can damage the surface and potentially destroy any residual collector value they might have.'}
+    ]);
   </script>
 </body>
 </html>

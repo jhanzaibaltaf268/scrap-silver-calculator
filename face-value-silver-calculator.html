@@ -33,14 +33,27 @@
       </div>
       <div class="content-body">
         <h2>How to Calculate Silver by Face Value</h2>
-        <p>If you have a mixed bag of pre-1965 US silver dimes, quarters, and half dollars, you don't need to count them out individually. You can simply add up their legal tender "Face Value".</p>
-        <p>Because these coins were minted with proportional weights, <strong>$1.00 Face Value always equals roughly 0.715 troy ounces of pure silver</strong> (accounting for historical wear and tear).</p>
+        <p>If you have a mixed bag of pre-1965 US silver dimes, quarters, and half dollars, you don't need to count them out individually. You can simply add up their legal tender "Face Value". This is the most common way that "junk silver" is bought and sold in the professional bullion industry.</p>
+
+        <div class="callout info">
+          <div class="callout-title">🧮 The 0.715 Multiplier</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">While a brand-new $1.00 face value of 90% silver coins contains exactly 0.723 troy ounces of silver, the industry uses a standard multiplier of <strong>0.715</strong>. This accounts for the <strong>loss of metal due to wear</strong> (circulation) over the last 60+ years. Our calculator uses this professional standard to give you a realistic market valuation.</p>
+        </div>
+
+        <h3>Proportional Silver Weights</h3>
+        <p>The beauty of the US silver system before 1965 was its proportionality. Regardless of the denomination, the weight of silver was perfectly scaled to the face value:</p>
         <ul>
-          <li>10 Dimes = $1.00 FV</li>
-          <li>4 Quarters = $1.00 FV</li>
-          <li>2 Half Dollars = $1.00 FV</li>
+          <li><strong>10 Dimes</strong> ($1.00 FV) = Approx. 0.715 oz silver</li>
+          <li><strong>4 Quarters</strong> ($1.00 FV) = Approx. 0.715 oz silver</li>
+          <li><strong>2 Half Dollars</strong> ($1.00 FV) = Approx. 0.715 oz silver</li>
         </ul>
-        <p><em>Note: This 0.715 multiplier applies to circulated 90% silver coins. Uncirculated coins contain closer to 0.723 oz, and Silver Dollars (Morgans/Peace) use a different multiplier entirely (0.7734 oz per dollar).</em></p>
+        <p>This means you can throw a handful of mixed dimes, quarters, and halves onto a scale (or just count the total dollars) and arrive at an accurate silver weight instantly. <em>Note: This does NOT apply to Silver Dollars (Morgan/Peace), which contain more silver per dollar (0.7734 oz).</em></p>
+
+        <h3>Why Trade Silver by Face Value?</h3>
+        <p>Trading by face value is <strong>fast and efficient</strong>. When silver prices are volatile, dealers don't want to spend time weighing every individual coin. By using the total dollar amount, both buyer and seller can agree on a price based on a "multiple" of face value (e.g., "20x face").</p>
+        
+        <h3>Using the Face Value Calculator</h3>
+        <p>Simply enter the total dollar amount of your 90% silver coins. Our tool will apply the 0.715 multiplier and the live spot price to show you exactly what your "bag" is worth in today's market.</p>
       </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Coin Tools</h3><div class="related-grid">
         <a href="/junk-silver-calculator/" class="related-link"><span class="r-icon">🪙</span> Junk Silver Calc</a>
@@ -74,6 +87,13 @@
     f.addEventListener('input',calc);
     SilverPrice.onPriceUpdate(()=>calc());
     calc();
+
+    SiteComponents.injectFAQSchema([
+      {q: 'What is the silver factor for $1 face value?', a: 'The industry standard factor is 0.715 ounces of pure silver per $1.00 of face value for circulated 90% US silver coins.'},
+      {q: 'Does face value calculation work for silver dollars?', a: 'No. Morgan and Peace silver dollars contain more silver (0.7734 oz per dollar) than dimes/quarters/halves. You should calculate silver dollars separately.'},
+      {q: 'What does "20 times face" mean?', a: 'This is a common way dealers quote prices for junk silver. If a dealer offers "20x face," a silver quarter ($0.25) is worth $5.00, and a silver dime ($0.10) is worth $2.00.'},
+      {q: 'Do 40% silver Kennedy halves use the same multiplier?', a: 'No. 40% silver coins (1965-1970) have a much lower silver content. $1.00 face value of 40% halves contains approximately 0.295 troy ounces of silver.'}
+    ]);
   </script>
 </body>
 </html>

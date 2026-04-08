@@ -26,7 +26,31 @@
           <div class="result-detail" id="result-detail"></div>
         </div>
       </div>
-      <div class="content-body"><h2>How Much Is a Silver Necklace Worth?</h2><p>Silver necklaces include chains with pendants, chokers, and collar necklaces. When weighing, include the pendant for total melt value.</p><h3>Typical Weights</h3><ul><li><strong>Pendant necklace</strong>: 10-20 grams</li><li><strong>Choker</strong>: 15-30 grams</li><li><strong>Statement necklace</strong>: 30-80 grams</li></ul><p>Tip: Weigh the chain and pendant separately if the pendant contains gemstones, as stones don't contribute to silver melt value.</p></div>
+      <div class="content-body">
+        <h2>How Much Is a Silver Necklace Worth?</h2>
+        <p>The value of a silver necklace is primarily calculated by its <strong>total weight</strong> of precious metal. Most modern silver jewelry is made from <strong>925 sterling silver</strong> (92.5% pure silver). For collectors and sellers, knowing the "melt value" is the first step in determining a fair price for scrap jewelry or insurance replacement.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">💎 A Note on Gemstones</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">If your necklace has a pendant with stones (diamonds, turquoise, etc.), you must subtract the weight of the stones to get the accurate silver weight. Most scrap dealers will NOT pay for the weight of semi-precious stones.</p>
+        </div>
+
+        <h3>Typical Silver Necklace Weight Guide</h3>
+        <p>Weights vary dramatically based on the thickness (gauge) and length of the chain. Here are common industry averages:</p>
+        <ul>
+            <li><strong>Thin Box/Cable Chain (18")</strong>: 2 – 5 grams</li>
+            <li><strong>Standard Herringbone/Snake Chain</strong>: 8 – 15 grams</li>
+            <li><strong>Heavy Figaro/Cuban Link</strong>: 25 – 60 grams</li>
+            <li><strong>Ethnic/Statement Collar</strong>: 50 – 150+ grams</li>
+            <li><strong>Small Silver Pendant</strong>: 2 – 10 grams</li>
+        </ul>
+
+        <h3>How to Identify a Real Silver Necklace</h3>
+        <p>Check the clasp or the small metal tag (hang-tag) near the clasp for the <strong>"925"</strong> or <strong>"Sterling"</strong> mark. In Italy, you may see the number "925" inside an oval. If the necklace is marked "GF" (Gold Filled), "RG" (Rolled Gold), or "SP" (Silver Plate), it is not solid silver and has very little scrap value.</p>
+        
+        <h3>Why the Price of Your Necklace Changes</h3>
+        <p>Because the price of silver is traded live on global markets like the COMEX, the value of your jewelry fluctuates daily. Our calculator uses <strong>real-time spot prices</strong> to ensure you get the most accurate valuation for your silver necklace today.</p>
+      </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3><div class="related-grid">
   <a href="/silver-jewelry-value-calculator/" class="related-link"><span class="r-icon">💍</span> Jewelry Calculator</a>
   <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
@@ -42,6 +66,13 @@
     const w=document.getElementById('weight'),q=document.getElementById('qty'),p=document.getElementById('purity');
     function calc(){const weight=(parseFloat(w.value)||0)*(parseInt(q.value)||1);const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
     [w,q].forEach(el=>el.addEventListener('input',calc));p.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+
+    SiteComponents.injectFAQSchema([
+      {q: 'How much is a 925 sterling silver necklace worth?', a: 'A sterling silver necklace is worth its weight in grams multiplied by 0.925 and the current silver market price. A standard 20-gram chain is typically worth $15 - $25 depending on market conditions.'},
+      {q: 'Do I get paid for the weight of the stones in my necklace?', a: 'Generally, no. Scrap silver buyers only pay for the weight of the silver. If your necklace has large or valuable stones, it is better to sell it as a finished piece of jewelry rather than for its melt value.'},
+      {q: 'Where is the silver mark on a necklace chain?', a: 'The hallmark is usually stamped on the clasp (the lobster claw or spring ring) or on a tiny heart-shaped or oval tag connected to the end of the chain.'},
+      {q: 'Is my silver-colored necklace magnetic?', a: 'Real silver is non-magnetic. If your necklace sticks to a strong magnet, it is likely made of steel or iron with a thin silver plating and has no precious metal value.'}
+    ]);
   </script>
 </body>
 </html>

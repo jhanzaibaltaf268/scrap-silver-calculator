@@ -26,7 +26,30 @@
           <div class="result-detail" id="result-detail"></div>
         </div>
       </div>
-      <div class="content-body"><h2>Silver Knife Value</h2><p>Important: Most "silver" knives have solid sterling handles with stainless steel blades. Only the handle is silver.</p><h3>Typical Handle Weights</h3><ul><li><strong>Butter knife (all silver)</strong>: 25-40 grams</li><li><strong>Dinner knife (handle only)</strong>: 30-50 grams silver</li><li><strong>Hollow handle discount</strong>: Deduct 50-60% of total weight for hollow handles</li></ul><p>Weigh the entire knife, then estimate the silver handle weight. Hollow handles contain cement/pitch filler, so actual silver content is less than the handle weight.</p></div>
+      <div class="content-body">
+        <h2>How Much Is a Silver Knife Worth?</h2>
+        <p>Valuing a silver knife is more complex than other flatware because of how they are constructed. Most "silver" dinner and butter knives consist of a <strong>hollow sterling silver handle</strong> attached to a <strong>stainless steel blade</strong>. To find the melt value, you must only calculate the weight of the silver handle, not the entire knife.</p>
+
+        <div class="callout warning">
+          <div class="callout-title">⚖️ The "Hollow Handle" Rule</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Most silver knife handles are filled with a heavy cement, pitch, or resin to keep the blade secure and provide a balanced weight. This filler is <strong>not silver</strong>. A standard dinner knife weighing 75g may only contain **15–20g** of actual sterling silver.</p>
+        </div>
+
+        <h3>Typical Silver Knife Weight Estimations</h3>
+        <p>If you aren't prepared to break the blade off the handle, use these industry-standard estimates for silver content:</p>
+        <ul>
+            <li><strong>Modern Dinner Knife</strong>: 15 – 18 grams of silver</li>
+            <li><strong>Victorian/Large Dinner Knife</strong>: 20 – 25 grams of silver</li>
+            <li><strong>Butter Spreader (Hollow Handle)</strong>: 10 – 12 grams of silver</li>
+            <li><strong>Solid Silver Flat Handle Spreader</strong>: Full weight (usually 25–40g)</li>
+        </ul>
+
+        <h3>How to Identify Your Silver Knife</h3>
+        <p>Look at the handle for the <strong>"Sterling"</strong> or <strong>"925"</strong> stamp. The blade will almost always be marked <strong>"Stainless"</strong> or "Stainless Steel"—this part has zero silver value. If the handle says "EPNS" or "Silver Plate," the item is plated and contains only a microscopic amount of silver.</p>
+        
+        <h3>Using the Knife Value Calculator</h3>
+        <p>To get the most accurate result, enter only the <strong>estimated weight of the silver handle</strong> into our calculator. If you have a set of 12 knives, a good rule of thumb for scrap value is to assume approximately 0.5 to 0.6 troy ounces of pure silver per dinner knife handle.</p>
+      </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3><div class="related-grid">
   <a href="/silverware-value-calculator/" class="related-link"><span class="r-icon">🍴</span> Silverware Calculator</a>
   <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
@@ -42,6 +65,13 @@
     const w=document.getElementById('weight'),q=document.getElementById('qty'),p=document.getElementById('purity');
     function calc(){const weight=(parseFloat(w.value)||0)*(parseInt(q.value)||1);const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
     [w,q].forEach(el=>el.addEventListener('input',calc));p.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+
+    SiteComponents.injectFAQSchema([
+      {q: 'How much silver is actually in a sterling silver knife?', a: 'Most sterling knives have hollow handles filled with resin or cement. A standard dinner knife usually contains between 15 and 20 grams of actual sterling silver, even if the total knife weighs 70-80 grams.'},
+      {q: 'Why does my silver knife blade say "Stainless"?', a: 'Silver is too soft to hold a sharp edge for cutting. Since the early 20th century, almost all silver flatware manufacturers used stainless steel blades for durability while keeping the handles sterling silver.'},
+      {q: 'Can I sell a silver knife with the blade attached?', a: 'Yes, but the buyer will "deduct" the estimated weight of the steel blade and the filler inside the handle. Some people choose to remove the blades manually to get a more accurate weight, but this can be difficult and dangerous.'},
+      {q: 'Is a silver-plated knife worth anything?', a: 'Silver-plated knives have almost no scrap value. Like solid sterling knives, they have base metal blades and often lead or wax-filled handles, but the silver content is only a thin plating over nickel or brass.'}
+    ]);
   </script>
 </body>
 </html>
