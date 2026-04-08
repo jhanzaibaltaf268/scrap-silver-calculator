@@ -40,8 +40,8 @@ async function translateBatch(texts, targetLang, retries = 3) {
 }
 
 async function processIndex(lang) {
-  console.log(`Processing index.html for ${lang.toUpperCase()}...`);
-  const content = fs.readFileSync('index.html', 'utf-8');
+  console.log(`Processing index for ${lang.toUpperCase()}...`);
+  const content = fs.readFileSync('index', 'utf-8');
   const $ = cheerio.load(content);
   
   $('html').attr('lang', lang);
@@ -93,11 +93,11 @@ async function processIndex(lang) {
   // Fix internal links to target subfolder
   $('a[href]').each((i, el) => {
     const href = $(el).attr('href');
-    if (href && href.endsWith('.html') && !href.startsWith('http') && !href.startsWith('#') && href !== 'index.html') {
+    if (href && href.endsWith('.html') && !href.startsWith('http') && !href.startsWith('#') && href !== 'index') {
        // All our base links are in the root. In a subfolder, we need to handle slug mapping.
-       // However, for index.html in subfolders, the links to other calculators should point to the translated slugs.
+       // However, for index in subfolders, the links to other calculators should point to the translated slugs.
        // This is complex. For now, let's at least point them to the root or find the translated slug if possible.
-       // Actually, mass-translate.js handles the slug mapping for index.html.
+       // Actually, mass-translate.js handles the slug mapping for index.
        // So we just need TO TRANSLATE the text. The final link fixing can be done by running mass-translate again.
     }
   });
@@ -106,9 +106,9 @@ async function processIndex(lang) {
   $('link[href^="css/"]').attr('href', (i, val) => '../' + val);
   $('script[src^="js/"]').attr('src', (i, val) => '../' + val);
 
-  const outPath = path.join(__dirname, lang, 'index.html');
+  const outPath = path.join(__dirname, lang, 'index');
   fs.writeFileSync(outPath, $.html());
-  console.log(`✅ Saved ${lang}/index.html`);
+  console.log(`✅ Saved ${lang}/index`);
 }
 
 async function run() {

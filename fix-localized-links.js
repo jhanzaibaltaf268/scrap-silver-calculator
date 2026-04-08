@@ -3,28 +3,28 @@ const path = require('path');
 
 const TARGET_LANGS = ['es', 'fr', 'de', 'pt', 'hi', 'ur', 'ar', 'tr', 'it', 'zh', 'ru'];
 
-// The original english language switcher links inside index.html:
-// <a href="index.html" class="lang-btn">🇬🇧 EN</a>
-// <a href="es/index.html" class="lang-btn">🇪🇸 ES</a>
+// The original english language switcher links inside index:
+// <a href="/" class="lang-btn">🇬🇧 EN</a>
+// <a href="es/index/" class="lang-btn">🇪🇸 ES</a>
 // etc
 
 for (const lang of TARGET_LANGS) {
   const langDir = path.join(__dirname, lang);
   if (!fs.existsSync(langDir)) continue;
 
-  const indexPath = path.join(langDir, 'index.html');
+  const indexPath = path.join(langDir, 'index');
   if (!fs.existsSync(indexPath)) continue;
 
   let content = fs.readFileSync(indexPath, 'utf8');
 
   // Fix Language Switcher Links
-  // We need to replace href="index.html" with href="../index.html"
-  content = content.replace(/href="index\.html"/g, 'href="../index.html"');
+  // We need to replace href="/" with href="../index/"
+  content = content.replace(/href="index\/"/g, 'href="../index/"');
   
-  // Replace href="xx/index.html" with href="../xx/index.html"
+  // Replace href="xx/index/" with href="../xx/index/"
   for (const l of TARGET_LANGS) {
-    const regex = new RegExp(`href="${l}/index\\.html"`, 'g');
-    content = content.replace(regex, `href="../${l}/index.html"`);
+    const regex = new RegExp(`href="${l}/index\\/"`, 'g');
+    content = content.replace(regex, `href="../${l}/index/"`);
   }
 
   // Extract the dictionary to fix calculator links
@@ -45,9 +45,9 @@ for (const lang of TARGET_LANGS) {
       console.error(`Could not parse dictionary for ${lang}:`, e.message);
     }
   } else {
-    console.warn(`No MenuTranslations found in ${lang}/index.html. Run restore-dicts script first!`);
+    console.warn(`No MenuTranslations found in ${lang}/index. Run restore-dicts script first!`);
   }
 
   fs.writeFileSync(indexPath, content, 'utf8');
-  console.log(`✅ Fixed links in ${lang}/index.html`);
+  console.log(`✅ Fixed links in ${lang}/index`);
 }

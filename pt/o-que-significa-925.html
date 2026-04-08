@@ -86,7 +86,7 @@
   <div id="site-footer"></div>
   <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
   <script>
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Página inicial',href:'index.html'},{label:'What Does 925 Mean?'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Página inicial',href:'/'},{label:'What Does 925 Mean?'}]);
     const w=document.getElementById('weight');
     function calc(){const weight=parseFloat(w.value)||0;const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,0.925,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
     w.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();

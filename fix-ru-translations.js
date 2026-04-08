@@ -18,9 +18,9 @@ const fixedTranslations = {
 };
 
 const fixedSlugs = {
-  "sona-chandi-calculator.html": "калькулятор-сона-чанди.html",
-  "silver-weight-converter.html": "конвертер-веса-серебра.html",
-  "tola-calculator.html": "калькулятор-тола.html"
+  "sona-chandi-calculator": "калькулятор-сона-чанди",
+  "silver-weight-converter": "конвертер-веса-серебра",
+  "tola-calculator": "калькулятор-тола"
 };
 
 function slugify(text) {
@@ -33,11 +33,11 @@ function slugify(text) {
 
 function processDirectory() {
   if (!fs.existsSync(outDir)) return;
-  const files = fs.readdirSync(outDir).filter(f => f.endsWith('.html'));
+  const files = fs.readdirSync(outDir).filter(f => f.endsWith(''));
 
-  // First, let's grab the MenuTranslations from index.html (or any file that has it)
+  // First, let's grab the MenuTranslations from index (or any file that has it)
   // to patch it globally.
-  const indexPath = path.join(outDir, 'index.html');
+  const indexPath = path.join(outDir, 'index');
   if (!fs.existsSync(indexPath)) return;
   
   let indexContent = fs.readFileSync(indexPath, 'utf-8');
@@ -72,7 +72,7 @@ function processDirectory() {
     let targetFileName = file;
 
     // Check if this file IS one of the poorly slugged files (Wait, how do we know the file name? 
-    // They were left as 'sona-chandi-calculator.html'!).
+    // They were left as 'sona-chandi-calculator'!).
     if (Object.keys(fixedSlugs).includes(file) || Object.values(fixedSlugs).includes(file)) {
       // It's an English slugged file that needs renaming!
       let originalSlug = file;
@@ -85,7 +85,7 @@ function processDirectory() {
   }
 
   // Refresh files list after renames
-  const updatedFiles = fs.readdirSync(outDir).filter(f => f.endsWith('.html'));
+  const updatedFiles = fs.readdirSync(outDir).filter(f => f.endsWith(''));
   
   const jsInjection = `window.MenuTranslations = ${JSON.stringify(menuDict)};`;
   const jsScriptBlock = `<script>\n  ${jsInjection}\n</script>\n</body>`;

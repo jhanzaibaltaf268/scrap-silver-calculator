@@ -77,7 +77,7 @@ const purities = [
 ];
 
 purities.forEach(p => {
-  const filename = `${p.code}-silver-calculator.html`;
+  const filename = `${p.code}-silver-calculator`;
   // Generate canonical with clean URL
   const cleanUrl = `https://scrapsilvercalculater.com/${p.code}-silver-calculator/`;
   fs.writeFileSync(path.join(baseDir, filename), purityPage(p.code, p.pct, p.name, p.desc, p.content));
@@ -139,19 +139,19 @@ function weightPage(sizeLabel, sizeOz, filename, desc, content) {
 }
 
 const weights = [
-  { label: '1oz', oz: 1, file: '1oz-silver-value.html', slug: '1oz-silver-value', desc: 'Current value of 1 ounce of silver. Live spot price and quantity calculator.',
+  { label: '1oz', oz: 1, file: '1oz-silver-value', slug: '1oz-silver-value', desc: 'Current value of 1 ounce of silver. Live spot price and quantity calculator.',
     content: '<h2>How Much Is 1 Ounce of Silver Worth?</h2><p>One troy ounce (31.1035 grams) of .999 fine silver is worth the current spot price. This is the base unit for silver pricing worldwide.</p><p>1oz silver bars and coins are the most popular investment size due to their affordability and easy divisibility.</p>' },
-  { label: '2oz', oz: 2, file: '2oz-silver-value.html', slug: '2oz-silver-value', desc: 'Current value of 2 ounces of silver. Live spot price and quantity calculator.',
+  { label: '2oz', oz: 2, file: '2oz-silver-value', slug: '2oz-silver-value', desc: 'Current value of 2 ounces of silver. Live spot price and quantity calculator.',
     content: '<h2>How Much Is 2 Ounces of Silver Worth?</h2><p>Two troy ounces (62.207 grams) of .999 fine silver is worth double the current spot price. 2oz silver rounds and high-relief coins are popular collectibles and investments.</p>' },
-  { label: '5oz', oz: 5, file: '5oz-silver-value.html', slug: '5oz-silver-value', desc: 'Current value of 5 ounces of silver. Live spot price and quantity calculator for 5oz bars.',
+  { label: '5oz', oz: 5, file: '5oz-silver-value', slug: '5oz-silver-value', desc: 'Current value of 5 ounces of silver. Live spot price and quantity calculator for 5oz bars.',
     content: '<h2>How Much Is 5 Ounces of Silver Worth?</h2><p>5 troy ounces (155.517 grams) of .999 fine silver is a popular size for silver bars. It offers lower premiums than 1oz sizes while remaining highly liquid.</p>' },
-  { label: '10oz', oz: 10, file: '10oz-silver-value.html', slug: '10oz-silver-value', desc: 'Current value of 10 ounces of silver. The most popular bar size for silver investors.',
+  { label: '10oz', oz: 10, file: '10oz-silver-value', slug: '10oz-silver-value', desc: 'Current value of 10 ounces of silver. The most popular bar size for silver investors.',
     content: '<h2>How Much Is 10 Ounces of Silver Worth?</h2><p>10 troy ounces (311.035 grams) is the most popular silver bar size for individual investors. These bars typically carry lower premiums than smaller sizes.</p><p>10oz silver bars are easy to store, widely recognized, and highly liquid in the secondary market.</p>' },
-  { label: '100oz', oz: 100, file: '100oz-silver-value.html', slug: '100oz-silver-value', desc: 'Current value of 100 ounces of silver bar. Live spot price and quantity calculator for 100oz bars.',
+  { label: '100oz', oz: 100, file: '100oz-silver-value', slug: '100oz-silver-value', desc: 'Current value of 100 ounces of silver bar. Live spot price and quantity calculator for 100oz bars.',
     content: '<h2>How Much Is 100 Ounces of Silver Worth?</h2><p>100 troy ounces (3.11 kilograms) is the standard large-size silver bar for serious investors. 100oz bars typically carry the lowest premium over spot price of any retail silver product.</p>' },
-  { label: '1/10oz', oz: 0.1, file: '1-10oz-silver-value.html', slug: '1-10oz-silver-value', desc: 'Current value of 1/10 ounce of silver. Live spot price for fractional silver rounds.',
+  { label: '1/10oz', oz: 0.1, file: '1-10oz-silver-value', slug: '1-10oz-silver-value', desc: 'Current value of 1/10 ounce of silver. Live spot price for fractional silver rounds.',
     content: '<h2>How Much Is 1/10 Ounce of Silver Worth?</h2><p>Fractional silver, such as 1/10th troy ounce rounds, are popular for bartering and small investments. While they carry higher premiums, calculating their raw melt value is important before buying or selling.</p>' },
-  { label: '1kg', oz: 32.1507, file: '1kg-silver-value.html', slug: '1kg-silver-value', desc: 'Current value of 1 kilogram of silver. International standard bar size.',
+  { label: '1kg', oz: 32.1507, file: '1kg-silver-value', slug: '1kg-silver-value', desc: 'Current value of 1 kilogram of silver. International standard bar size.',
     content: '<h2>How Much Is 1 Kilogram of Silver Worth?</h2><p>One kilogram of silver equals 32.1507 troy ounces (1,000 grams). Kilo bars are the international standard size, especially popular in Europe, Asia, and Australia.</p><p>Kilo bars offer some of the lowest premiums over spot price, making them efficient for larger investments.</p>' }
 ];
 
@@ -216,16 +216,16 @@ const jewelryRelated = `
   <a href="/925-silver-calculator/" class="related-link"><span class="r-icon">🔢</span> 925 Silver</a>`;
 
 const jewelry = [
-  { name: 'Ring', emoji: '💍', weight: 6, purity: 0.925, file: 'silver-ring-value.html',
+  { name: 'Ring', emoji: '💍', weight: 6, purity: 0.925, file: 'silver-ring-value',
     desc: 'Calculate how much a silver ring is worth. Typical silver rings weigh 3-12 grams.',
     content: '<h2>How Much Is a Silver Ring Worth?</h2><p>A typical silver ring weighs between 3 and 12 grams, depending on the style and size. Most silver rings are made from 925 sterling silver.</p><h3>Typical Silver Ring Weights</h3><ul><li><strong>Thin band</strong>: 3-5 grams</li><li><strong>Standard band</strong>: 5-8 grams</li><li><strong>Wide/chunky ring</strong>: 8-12 grams</li><li><strong>Statement ring</strong>: 10-20 grams</li></ul><p>The melt value of a silver ring depends on weight, purity, and the current silver spot price. Designer or antique silver rings may be worth more than their melt value.</p>' },
-  { name: 'Chain', emoji: '⛓️', weight: 25, purity: 0.925, file: 'silver-chain-value.html',
+  { name: 'Chain', emoji: '⛓️', weight: 25, purity: 0.925, file: 'silver-chain-value',
     desc: 'Calculate the value of a silver chain by weight. Typical chains weigh 10-60 grams.',
     content: '<h2>How Much Is a Silver Chain Worth?</h2><p>Silver chains vary widely in weight depending on length, thickness, and link style. Most silver chains are 925 sterling silver.</p><h3>Typical Silver Chain Weights</h3><ul><li><strong>Delicate chain (16")</strong>: 5-10 grams</li><li><strong>Medium chain (18")</strong>: 15-25 grams</li><li><strong>Heavy chain (20-24")</strong>: 30-60 grams</li><li><strong>Cuban link chain</strong>: 40-100+ grams</li></ul>' },
-  { name: 'Necklace', emoji: '📿', weight: 30, purity: 0.925, file: 'silver-necklace-value.html',
+  { name: 'Necklace', emoji: '📿', weight: 30, purity: 0.925, file: 'silver-necklace-value',
     desc: 'Calculate the value of a silver necklace by weight. Includes pendant weight estimation.',
     content: '<h2>How Much Is a Silver Necklace Worth?</h2><p>Silver necklaces include chains with pendants, chokers, and collar necklaces. When weighing, include the pendant for total melt value.</p><h3>Typical Weights</h3><ul><li><strong>Pendant necklace</strong>: 10-20 grams</li><li><strong>Choker</strong>: 15-30 grams</li><li><strong>Statement necklace</strong>: 30-80 grams</li></ul><p>Tip: Weigh the chain and pendant separately if the pendant contains gemstones, as stones don\'t contribute to silver melt value.</p>' },
-  { name: 'Bracelet', emoji: '⌚', weight: 20, purity: 0.925, file: 'silver-bracelet-value.html',
+  { name: 'Bracelet', emoji: '⌚', weight: 20, purity: 0.925, file: 'silver-bracelet-value',
     desc: 'Calculate silver bracelet value by weight. Typical bracelets weigh 10-50 grams.',
     content: '<h2>How Much Is a Silver Bracelet Worth?</h2><p>Silver bracelets range from delicate bangles to heavy cuff styles. Most are made from 925 sterling silver.</p><h3>Typical Bracelet Weights</h3><ul><li><strong>Thin bangle</strong>: 8-15 grams</li><li><strong>Chain bracelet</strong>: 10-25 grams</li><li><strong>Cuff bracelet</strong>: 20-50 grams</li><li><strong>Charm bracelet</strong>: 25-60 grams</li></ul>' }
 ];
@@ -243,22 +243,22 @@ const silverwareRelated = `
   <a href="/how-to-sell-silver/" class="related-link"><span class="r-icon">📖</span> How to Sell Silver</a>`;
 
 const silverware = [
-  { name: 'Spoon', emoji: '🥄', weight: 40, purity: 0.925, file: 'silver-spoon-value.html',
+  { name: 'Spoon', emoji: '🥄', weight: 40, purity: 0.925, file: 'silver-spoon-value',
     desc: 'Calculate the value of a silver spoon. Typical sterling silver spoons weigh 20-80 grams.',
     content: '<h2>How Much Is a Silver Spoon Worth?</h2><p>Silver spoons vary greatly in size and weight, from small teaspoons to large serving spoons.</p><h3>Typical Weights</h3><ul><li><strong>Teaspoon</strong>: 20-30 grams</li><li><strong>Dessert spoon</strong>: 30-40 grams</li><li><strong>Tablespoon</strong>: 40-60 grams</li><li><strong>Serving spoon</strong>: 60-80 grams</li></ul><p>Look for hallmarks: "925", "STERLING", or "800" to determine purity. Some silver-plated spoons are NOT solid silver and have minimal melt value.</p>' },
-  { name: 'Fork', emoji: '🍴', weight: 40, purity: 0.925, file: 'silver-fork-value.html',
+  { name: 'Fork', emoji: '🍴', weight: 40, purity: 0.925, file: 'silver-fork-value',
     desc: 'Calculate silver fork value by weight. Sterling silver forks typically weigh 25-70 grams.',
     content: '<h2>How Much Is a Silver Fork Worth?</h2><p>Silver forks are commonly found in vintage and antique flatware sets.</p><h3>Typical Weights</h3><ul><li><strong>Salad fork</strong>: 25-35 grams</li><li><strong>Dinner fork</strong>: 35-50 grams</li><li><strong>Serving fork</strong>: 50-70 grams</li></ul>' },
-  { name: 'Knife', emoji: '🔪', weight: 55, purity: 0.925, file: 'silver-knife-value.html',
+  { name: 'Knife', emoji: '🔪', weight: 55, purity: 0.925, file: 'silver-knife-value',
     desc: 'Calculate silver knife value. Note: most silver knives have stainless steel blades with silver handles.',
     content: '<h2>Silver Knife Value</h2><p>Important: Most "silver" knives have solid sterling handles with stainless steel blades. Only the handle is silver.</p><h3>Typical Handle Weights</h3><ul><li><strong>Butter knife (all silver)</strong>: 25-40 grams</li><li><strong>Dinner knife (handle only)</strong>: 30-50 grams silver</li><li><strong>Hollow handle discount</strong>: Deduct 50-60% of total weight for hollow handles</li></ul><p>Weigh the entire knife, then estimate the silver handle weight. Hollow handles contain cement/pitch filler, so actual silver content is less than the handle weight.</p>' },
-  { name: 'Tray', emoji: '🍽️', weight: 500, purity: 0.925, file: 'silver-tray-value.html',
+  { name: 'Tray', emoji: '🍽️', weight: 500, purity: 0.925, file: 'silver-tray-value',
     desc: 'Calculate silver tray value. Silver serving trays can weigh 200-2000+ grams.',
     content: '<h2>How Much Is a Silver Tray Worth?</h2><p>Silver trays are among the heaviest pieces of household silver and can contain significant amounts of pure silver.</p><h3>Typical Weights</h3><ul><li><strong>Small bread tray</strong>: 200-400 grams</li><li><strong>Medium serving tray</strong>: 400-800 grams</li><li><strong>Large serving tray</strong>: 800-1,500 grams</li><li><strong>Tea service tray</strong>: 1,000-2,000+ grams</li></ul><p>Silver trays are some of the most valuable scrap silver items due to their substantial weight. Always verify with hallmarks — many trays are silver-plated, not solid silver.</p>' },
-  { name: 'Cup', emoji: '🏆', weight: 150, purity: 0.925, file: 'silver-cup-value.html',
+  { name: 'Cup', emoji: '🏆', weight: 150, purity: 0.925, file: 'silver-cup-value',
     desc: 'Calculate silver cup value. Silver cups and goblets typically weigh 50-300 grams.',
     content: '<h2>Silver Cup Value</h2><p>Silver cups, goblets, and chalices can range from small cordial cups to large trophy-style pieces.</p><h3>Typical Weights</h3><ul><li><strong>Small cordial cup</strong>: 50-80 grams</li><li><strong>Standard cup</strong>: 100-200 grams</li><li><strong>Goblet</strong>: 150-300 grams</li><li><strong>Trophy cup</strong>: 200-500+ grams</li></ul>' },
-  { name: 'Plate', emoji: '🍽️', weight: 250, purity: 0.925, file: 'silver-plate-value.html',
+  { name: 'Plate', emoji: '🍽️', weight: 250, purity: 0.925, file: 'silver-plate-value',
     desc: 'Calculate silver plate value. Solid silver plates typically weigh 100-500 grams.',
     content: '<h2>Silver Plate Value</h2><p><strong>Important distinction:</strong> A "silver plate" (solid silver serving plate) is very different from "silver-plated" items coated with thin silver.</p><h3>How to Tell the Difference</h3><ul><li><strong>Solid silver</strong>: Stamped "925", "STERLING", or "800" — valuable</li><li><strong>Silver-plated</strong>: Stamped "EP", "EPNS", "Silver Plate" — minimal silver value</li></ul><h3>Typical Solid Silver Plate Weights</h3><ul><li><strong>Bread plate</strong>: 100-200 grams</li><li><strong>Dinner plate</strong>: 200-400 grams</li><li><strong>Charger plate</strong>: 300-500 grams</li></ul>' }
 ];

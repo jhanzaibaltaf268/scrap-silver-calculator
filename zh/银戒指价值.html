@@ -36,7 +36,7 @@
   <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || '首页',href:'index.html'},{label:'Silver Ring Value'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || '首页',href:'/'},{label:'Silver Ring Value'}]);
     const w=document.getElementById('weight'),q=document.getElementById('qty'),p=document.getElementById('purity');
     function calc(){const weight=(parseFloat(w.value)||0)*(parseInt(q.value)||1);const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
     [w,q].forEach(el=>el.addEventListener('input',calc));p.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();

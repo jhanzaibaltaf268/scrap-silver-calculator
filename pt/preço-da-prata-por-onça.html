@@ -72,7 +72,7 @@
   <script src="/js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Página inicial',href:'index.html'},{label:'Silver Price Per Ounce'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Página inicial',href:'/'},{label:'Silver Price Per Ounce'}]);
     function update(){
       const spot=SilverPrice.getPrice();
       document.getElementById('price-oz').textContent='$'+spot.toFixed(2);

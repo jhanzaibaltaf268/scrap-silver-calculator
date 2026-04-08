@@ -89,7 +89,7 @@
   <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'घर',href:'index.html'},{label:'Guides'},{label:'What Is a Troy Ounce'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'घर',href:'/'},{label:'Guides'},{label:'What Is a Troy Ounce'}]);
     const to=document.getElementById('troy-oz'),gr=document.getElementById('grams');
     function calc(){
       const oz=parseFloat(to.value)||0; gr.value=(oz*31.1035).toFixed(4);

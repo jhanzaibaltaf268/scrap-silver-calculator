@@ -38,7 +38,7 @@
   <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Ana sayfa',href:'index.html'},{label:'2oz Silver Value'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Ana sayfa',href:'/'},{label:'2oz Silver Value'}]);
     const q=document.getElementById('qty');
     function calc(){const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const totalOz=2*qty;const val=totalOz*spot;document.getElementById('result-value').textContent='$'+val.toFixed(2);document.getElementById('result-detail').textContent=qty+'× 2oz · '+totalOz.toFixed(2)+' oz total · Spot: $'+spot.toFixed(2)+'/oz';
       const qtys=[1,2,5,10,25,50,100];document.getElementById('qty-table').innerHTML=qtys.map(n=>'<tr><td>'+n+'</td><td>'+(2*n).toFixed(2)+' oz</td><td>$'+(2*n*spot).toFixed(2)+'</td></tr>').join('');}

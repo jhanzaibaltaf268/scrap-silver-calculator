@@ -44,7 +44,7 @@
   <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Ana sayfa',href:'index.html'},{label:'Silver Coin Value Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Ana sayfa',href:'/'},{label:'Silver Coin Value Calculator'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),q=document.getElementById('qty');
     function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const purity=parseFloat(p.value);const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(grams*qty,purity,spot);const each=SilverCalc.meltValue(grams,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${qty} coin(s) · ${r.silverContentOz} oz total silver · ${SilverCalc.formatCurrency(each.value)} each · Spot: $${spot.toFixed(2)}/oz`;}
     [w,q].forEach(el=>el.addEventListener('input',calc));[u,p].forEach(el=>el.addEventListener('change',calc));SilverPrice.onPriceUpdate(()=>calc());calc();

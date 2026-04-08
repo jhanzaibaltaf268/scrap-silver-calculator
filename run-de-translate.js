@@ -109,7 +109,7 @@ async function processFile(filename) {
 }
 
 async function run() {
-  const files = fs.readdirSync('.').filter(f => f.endsWith('.html') && f !== 'index.html' && f !== 'graber.html');
+  const files = fs.readdirSync('.').filter(f => f.endsWith('.html') && f !== 'index' && f !== 'graber');
   console.log(`Found ${files.length} files to process.`);
   for (const file of files) {
     await processFile(file);

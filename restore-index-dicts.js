@@ -11,7 +11,7 @@ for (const lang of TARGET_LANGS) {
   let dictionaryInjection = null;
 
   for (const file of files) {
-    if (file.endsWith('.html') && file !== 'index.html') {
+    if (file.endsWith('.html') && file !== 'index') {
       const content = fs.readFileSync(path.join(langDir, file), 'utf8');
       const match = content.match(/window\.MenuTranslations\s*=\s*\{.*?\};/s);
       
@@ -24,7 +24,7 @@ for (const lang of TARGET_LANGS) {
   }
 
   if (dictionaryInjection) {
-    const indexPath = path.join(langDir, 'index.html');
+    const indexPath = path.join(langDir, 'index');
     if (fs.existsSync(indexPath)) {
       let indexContent = fs.readFileSync(indexPath, 'utf8');
       
@@ -36,7 +36,7 @@ for (const lang of TARGET_LANGS) {
       }
       
       fs.writeFileSync(indexPath, indexContent);
-      console.log(`✅ Restored FULL dictionary for ${lang}/index.html (${dictionaryInjection.length} bytes)`);
+      console.log(`✅ Restored FULL dictionary for ${lang}/index (${dictionaryInjection.length} bytes)`);
     }
   } else {
     console.warn(`⚠️ Could not find FULL dictionary for ${lang}`);

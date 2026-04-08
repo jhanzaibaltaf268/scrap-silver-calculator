@@ -8,7 +8,7 @@ function fixAssetsInDir(dirName) {
   let count = 0;
 
   for (const file of files) {
-    if (!file.endsWith('.html') || file === 'index.html') continue;
+    if (!file.endsWith('.html') || file === 'index') continue;
     
     const filePath = path.join(dirPath, file);
     let content = fs.readFileSync(filePath, 'utf8');

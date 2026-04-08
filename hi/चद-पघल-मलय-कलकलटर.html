@@ -88,7 +88,7 @@
   <script src="/js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'घर',href:'index.html'},{label:'Silver Melt Value Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'घर',href:'/'},{label:'Silver Melt Value Calculator'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),cp=document.getElementById('custom-purity'),cpg=document.getElementById('custom-purity-group');
     p.addEventListener('change',()=>{cpg.style.display=p.value==='custom'?'block':'none'; calc();});
     function calc(){

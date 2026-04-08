@@ -113,7 +113,7 @@
   <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'الصفحة الرئيسية',href:'index.html'},{label:'Guides'},{label:'What Is Silver Melt Value'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'الصفحة الرئيسية',href:'/'},{label:'Guides'},{label:'What Is Silver Melt Value'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity');
     function calc(){
       const grams=SilverCalc.toGrams(parseFloat(w.value)||0,u.value), purity=parseFloat(p.value), spot=SilverPrice.getPrice();

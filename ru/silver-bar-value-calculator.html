@@ -50,7 +50,7 @@
   <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Home',href:'index.html'},{label:'Silver Bar Value Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Home',href:'/'},{label:'Silver Bar Value Calculator'}]);
     const s=document.getElementById('size'),q=document.getElementById('qty');
     function calc(){const size=parseFloat(s.value);const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const r=SilverCalc.barValue(size,qty,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${qty}× ${size} oz bar(s) · ${r.totalOz} oz total · ${SilverCalc.formatCurrency(r.valueEach)} each · Spot: $${spot.toFixed(2)}/oz`;
       const bars=[{l:'1 oz',s:1,w:'31.1g'},{l:'5 oz',s:5,w:'155.5g'},{l:'10 oz',s:10,w:'311.0g'},{l:'50 oz',s:50,w:'1,555g'},{l:'100 oz',s:100,w:'3,110g'},{l:'1 kg',s:32.1507,w:'1,000g'}];

@@ -31,8 +31,8 @@ function processHtmlFile(filePath) {
   let content = fs.readFileSync(filePath, 'utf8');
   const original = content;
 
-  // 1. Fix href="something.html" → href="/something/"  (relative, no leading slash)
-  //    But skip hrefs that start with http, mailto, #, or are just "index.html"
+  // 1. Fix href="something/" → href="/something/"  (relative, no leading slash)
+  //    But skip hrefs that start with http, mailto, #, or are just "index"
   content = content.replace(
     /href="(?!https?:\/\/)(?!mailto:)(?!#)(?!\/)([^"]*?)\.html"/g,
     (match, slug) => {
@@ -42,13 +42,13 @@ function processHtmlFile(filePath) {
     }
   );
 
-  // 2. Fix href="/something.html" → href="/something/"  (absolute paths)
+  // 2. Fix href="/something/" → href="/something/"  (absolute paths)
   content = content.replace(
     /href="(\/[^"]*?)\.html"/g,
     (match, slug) => `href="${slug}/"`
   );
 
-  // 3. Fix canonical href="https://...something.html" → "https://...something/"
+  // 3. Fix canonical href="https://...something" → "https://...something/"
   content = content.replace(
     /(rel="canonical"\s+href="https?:\/\/[^"]*?)\.html"/g,
     '$1/"'
@@ -58,7 +58,7 @@ function processHtmlFile(filePath) {
     '$1/"$2'
   );
 
-  // 4. Fix hreflang href="https://...something.html" → "https://...something/"
+  // 4. Fix hreflang href="https://...something" → "https://...something/"
   content = content.replace(
     /(hreflang="[^"]*"\s+href="https?:\/\/[^"]*?)\.html"/g,
     '$1/"'
@@ -68,8 +68,8 @@ function processHtmlFile(filePath) {
     '$1/"$2'
   );
 
-  // 5. Fix JavaScript link arrays where link: 'something.html'
-  //    e.g. {link:'999-silver-calculator.html'} → {link:'/999-silver-calculator/'}
+  // 5. Fix JavaScript link arrays where link: 'something'
+  //    e.g. {link:'999-silver-calculator'} → {link:'/999-silver-calculator/'}
   content = content.replace(
     /link:'([^']*?)\.html'/g,
     (match, slug) => `link:'/${slug}/'`
@@ -79,7 +79,7 @@ function processHtmlFile(filePath) {
     (match, slug) => `link:"/${slug}/"`
   );
 
-  // 6. Fix JS: file: 'something.html' in link contexts used as href targets
+  // 6. Fix JS: file: 'something' in link contexts used as href targets
   //    (these appear in purity chart script data arrays - link property only)
   content = content.replace(
     /,link:'([^']*?)\.html'/g,

@@ -115,7 +115,7 @@
   <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'घर',href:'index.html'},{label:'Guides'},{label:'What Is Junk Silver'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'घर',href:'/'},{label:'Guides'},{label:'What Is Junk Silver'}]);
     const fv=document.getElementById('face-value'),ct=document.getElementById('coin-type');
     function calc(){
       const face=parseFloat(fv.value)||0, ozPerDollar=parseFloat(ct.value), spot=SilverPrice.getPrice();

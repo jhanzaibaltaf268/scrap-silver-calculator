@@ -4,7 +4,7 @@ const path = require('path');
 const TARGET_LANGS = ['es', 'fr', 'de', 'pt', 'hi', 'ur', 'ar', 'tr', 'it', 'zh', 'ru'];
 
 for (const lang of TARGET_LANGS) {
-  const indexPath = path.join(__dirname, lang, 'index.html');
+  const indexPath = path.join(__dirname, lang, 'index');
   if (!fs.existsSync(indexPath)) continue;
 
   let content = fs.readFileSync(indexPath, 'utf8');
@@ -22,9 +22,9 @@ for (const lang of TARGET_LANGS) {
         if (regex.test(content)) {
           content = content.replace(regex, `<h1><span class="highlight">${translatedTitle}</span></h1>`);
           fs.writeFileSync(indexPath, content, 'utf8');
-          console.log(`✅ Fixed H1 in ${lang}/index.html to: ${translatedTitle}`);
+          console.log(`✅ Fixed H1 in ${lang}/index to: ${translatedTitle}`);
         } else {
-          console.log(`ℹ️ H1 not found or already translated in ${lang}/index.html`);
+          console.log(`ℹ️ H1 not found or already translated in ${lang}/index`);
         }
       } else {
          console.warn(`⚠️ No translation found in dictionary for ${lang}`);

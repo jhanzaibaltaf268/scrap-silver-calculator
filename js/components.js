@@ -110,7 +110,7 @@ const SiteComponents = (() => {
 
   function getCurrentPage() {
     const path = window.location.pathname;
-    if (path === '/' || path === '/index.html') return '/';
+    if (path === '/' || path === '/index') return '/';
     // If it ends with a slash, we want the name before it
     if (path.endsWith('/')) {
       const parts = path.split('/').filter(Boolean);
@@ -142,10 +142,22 @@ const SiteComponents = (() => {
   }
 
   function s(href) {
-    if (window.MenuTranslations && window.MenuTranslations.slugs && window.MenuTranslations.slugs[href]) {
-      return window.MenuTranslations.slugs[href];
+    if (!href || href === '/' || href === 'index') return getBasePath();
+    
+    // Normalize href: remove leading/trailing slashes and .html extension for lookup
+    const cleanHref = href.replace(/^\/|\/$/g, '').replace(/\.html$/, '');
+    
+    if (window.MenuTranslations && window.MenuTranslations.slugs && window.MenuTranslations.slugs[cleanHref]) {
+      const slug = window.MenuTranslations.slugs[cleanHref];
+      const bp = getBasePath();
+      // Ensure the translated slug is return as a clean URL with proper slashes
+      return `${bp}${slug}/`;
     }
-    return href;
+    
+    // Fallback: Ensure the original href is returned clean
+    if (href.startsWith('http')) return href;
+    const path = href.startsWith('/') ? href : `/${href}`;
+    return path.replace(/\.html$/, '').replace(/\/$/, '') + '/';
   }
 
   function renderHeader() {
@@ -168,7 +180,7 @@ const SiteComponents = (() => {
             <div class="nav-dropdown-menu">${links}</div>
           </div>`;
       }
-      // Keep Home pointing to the current language's index.html
+      // Keep Home pointing to the current language's index
       const h = s(item.href);
       return `<a href="${h}" class="nav-link ${h===currentPage?'active':''}">${label}</a>`;
     }).join('');

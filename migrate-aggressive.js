@@ -7,13 +7,13 @@ function processFile(filePath) {
     let content = fs.readFileSync(filePath, 'utf8');
     let original = content;
 
-    // 1. Replace index.html with / (handles double and single quotes)
+    // 1. Replace index with / (handles double and single quotes)
     content = content.replace(/href=["']index\.html["']/g, 'href="/"');
     
-    // 2. Fix localized index.html (e.g., ../index.html)
+    // 2. Fix localized index (e.g., ../index)
     content = content.replace(/href=["']\.\.\/index\.html["']/g, 'href="/"');
 
-    // 3. Fix breadcrumbs: label:'Home',href:'index.html' (handles spaces, quotes)
+    // 3. Fix breadcrumbs: label:'Home',href:'/' (handles spaces, quotes)
     content = content.replace(/label\s*:\s*['"]Home['"]\s*,\s*href\s*:\s*['"]index\.html['"]/g, "label:'Home',href:'/'");
 
     // 4. Robust Slug Cleaning
@@ -26,11 +26,11 @@ function processFile(filePath) {
         content = content.replace(slugsMatch[1], cleanedSlugs);
     }
 
-    // 5. Global Internal Link Cleaning: href="/path.html" -> href="/path/"
+    // 5. Global Internal Link Cleaning: href="/path/" -> href="/path/"
     // Added a trailing slash to match vercel.json trailingSlash: true
     content = content.replace(/href=["']\/([^"'>]+?)\.html["']/g, 'href="/$1/"');
 
-    // 6. Global relative Link Cleaning: href="path.html" -> href="path/"
+    // 6. Global relative Link Cleaning: href="path/" -> href="path/"
     // Exclude external links, hashes, and slashes
     content = content.replace(/href=["'](?!(http|\/|#))([^"'>]+?)\.html["']/g, 'href="$2/"');
 

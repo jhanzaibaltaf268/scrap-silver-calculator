@@ -3,7 +3,7 @@ const path = require('path');
 const cheerio = require('cheerio');
 
 const TARGET_LANGS = ['ru'];
-const baseFiles = fs.readdirSync(__dirname).filter(f => f.endsWith('.html') && f !== 'index.html' && f !== 'graber.html');
+const baseFiles = fs.readdirSync(__dirname).filter(f => f.endsWith('.html') && f !== 'index' && f !== 'graber');
 
 const englishUIKeys = [
   "Home", "Calculators", "Silver Scrap Calculator", "Gold & Silver Calculator", "Silver Melt Value", "Sterling Silver Calculator", "Junk Silver Calculator", "Silver Coin Value", "Silver Bar Value", "Silver Jewelry Value", "Silverware Value", "Purity", "999 Fine Silver", "958 Britannia Silver", "925 Sterling Silver", "900 Coin Silver", "835 Silver", "800 Silver", "Silver Purity Chart", "Pricing", "Silver Price Per Gram", "Silver Price Per Ounce", "Price in All Currencies", "1/10oz Silver Value", "1oz Silver Value", "2oz Silver Value", "5oz Silver Value", "10oz Silver Value", "100oz Silver Value", "1kg Silver Value", "Tools", "Silver Profit Calculator", "Batch Calculator", "Sona Chandi Calculator", "Face Value Calculator", "Weight Converter", "Pennyweight (DWT) Calc", "Tola Calculator", "Sell or Hold Analysis", "Silver Identifier", "Guides", "How to Use Our Calculators", "What Is Silver Scrap?", "What Is Melt Value?", "What Is Junk Silver?", "What Is a Troy Ounce?", "What Is Silver Bullion?", "How Silver Prices Work", "Silver Hallmarks Guide", "What Does 925 Mean?", "What Is Sterling Silver?", "How to Sell Silver", "Scrap Silver", "Gold & Silver", "Silver Profit", "Melt Value", "Junk Silver", "Silver Coins", "Silver Dollar", "Silver Quarter", "Silver Dime", "Jewelry Value", "925 Sterling", "Purity Chart", "How to Use Calculators", "Sona Chandi Calc", "Face Value Calc", "Sell or Hold", "About", "Privacy", "Terms", "All rights reserved.", "Prices are for informational purposes only.", "Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly."
@@ -158,7 +158,7 @@ async function processLanguage(lang) {
     fs.writeFileSync(path.join(outDir, translatedFileName), outputHtml);
   }
   
-  const indexPath = path.join(outDir, 'index.html');
+  const indexPath = path.join(outDir, 'index');
   if (fs.existsSync(indexPath)) {
     let indexHtml = fs.readFileSync(indexPath, 'utf-8');
     baseFiles.forEach(slug => {
@@ -172,7 +172,7 @@ async function processLanguage(lang) {
     fs.writeFileSync(indexPath, indexHtml);
   }
   
-  console.log(`✅ Finished ${lang.toUpperCase()}! Generated ${baseFiles.length} translated calculators + updated index.html`);
+  console.log(`✅ Finished ${lang.toUpperCase()}! Generated ${baseFiles.length} translated calculators + updated index`);
 }
 
 async function runAll() {

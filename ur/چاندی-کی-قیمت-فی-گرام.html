@@ -73,7 +73,7 @@
   <script src="/js/components.js"></script>
   <script>
     
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'گھر',href:'index.html'},{label:'Silver Price Per Gram'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'گھر',href:'/'},{label:'Silver Price Per Gram'}]);
     function update(){
       const spot=SilverPrice.getPrice();
       const perGram=spot/31.1035;

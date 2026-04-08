@@ -817,15 +817,15 @@ function getMenuTranslations(code) {
 allLangs.forEach(lang => {
   const dir = path.join(baseDir, lang.code);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), generateHomepage(lang));
+  fs.writeFileSync(path.join(dir, 'index'), generateHomepage(lang));
   
   // If the language supports inner pages, generate them
   if (lang.t.innerScrapTitle) {
-    fs.writeFileSync(path.join(dir, 'silver-scrap-calculator.html'), generateScrapCalculatorPage(lang));
-    console.log(`Created ${lang.code}/silver-scrap-calculator.html`);
+    fs.writeFileSync(path.join(dir, 'silver-scrap-calculator'), generateScrapCalculatorPage(lang));
+    console.log(`Created ${lang.code}/silver-scrap-calculator`);
   }
   
-  console.log(`Created ${lang.code}/index.html (${lang.name})`);
+  console.log(`Created ${lang.code}/index (${lang.name})`);
 });
 
 console.log(`\nGenerated ${allLangs.length} language versions with full content!`);
