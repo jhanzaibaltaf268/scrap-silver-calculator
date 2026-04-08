@@ -7,6 +7,60 @@ const moreLangs = require('./generate-languages-data');
 const allLangs = [...languages, ...moreLangs];
 const allCodes = allLangs.map(l => l.code);
 
+const SLUG_MAP = {
+  fr: {
+    'silver-scrap-calculator': 'calculateur-de-ferraille-d-argent',
+    'silver-melt-value-calculator': 'calculateur-de-valeur-de-fonte',
+    'sterling-silver-calculator': 'calculateur-d-argent-sterling',
+    'junk-silver-calculator': 'calculateur-d-argent-de-circulation',
+    'silver-coin-value-calculator': 'valeur-des-pieces-d-argent',
+    'gold-and-silver-calculator': 'calculateur-or-et-argent',
+    'silver-bar-value-calculator': 'valeur-des-lingots-d-argent',
+    'silver-jewelry-value-calculator': 'valeur-des-bijoux-en-argent',
+    'silverware-value-calculator': 'valeur-de-l-argenterie',
+    'silver-price-per-gram': 'prix-de-l-argent-au-gramme',
+    'silver-price-per-ounce': 'prix-de-l-argent-a-l-once',
+    'silver-profit-calculator': 'calculateur-de-profit-d-argent',
+    'face-value-silver-calculator': 'calculateur-de-valeur-nominale',
+    'silver-batch-calculator': 'calculateur-par-lots',
+    'silver-weight-converter': 'convertisseur-de-poids',
+    'silver-sell-or-hold': 'analyse-vendre-ou-garder',
+    'silver-price-all-currencies': 'prix-dans-toutes-les-devises'
+  },
+  es: {
+    'silver-scrap-calculator': 'calculadora-de-plata-de-desecho',
+    'silver-melt-value-calculator': 'calculadora-de-valor-de-fusion-de-la-plata',
+    'sterling-silver-calculator': 'calculadora-de-plata-esterlina',
+    'junk-silver-calculator': 'calculadora-de-plata-basura',
+    'silver-coin-value-calculator': 'valor-de-moneda-de-plata',
+    'gold-and-silver-calculator': 'calculadora-de-oro-y-plata',
+    'silver-bar-value-calculator': 'valor-de-lingote-de-plata',
+    'silver-jewelry-value-calculator': 'valor-de-joyeria-de-plata',
+    'silverware-value-calculator': 'valor-de-cubiertos-de-plata',
+    'silver-price-per-gram': 'precio-de-la-plata-por-gramo',
+    'silver-price-per-ounce': 'precio-de-la-plata-por-onza',
+    'silver-profit-calculator': 'calculadora-de-ganancias-de-plata',
+    'face-value-silver-calculator': 'calculadora-de-valor-nominal',
+    'silver-batch-calculator': 'calculadora-por-lotes',
+    'silver-weight-converter': 'conversor-de-peso',
+    'silver-sell-or-hold': 'analisis-de-vender-o-mantener',
+    'silver-price-all-currencies': 'precio-en-todas-las-monedas'
+  }
+};
+
+function getLocalizedSlug(engSlug, langCode) {
+  if (SLUG_MAP[langCode] && SLUG_MAP[langCode][engSlug]) {
+    return SLUG_MAP[langCode][engSlug];
+  }
+  const trans = getMenuTranslations(langCode);
+  return (trans.slugs && trans.slugs[engSlug]) ? trans.slugs[engSlug] : engSlug;
+}
+
+function localizeLink(engSlug, langCode) {
+  const slug = getLocalizedSlug(engSlug, langCode);
+  return `/${langCode}/${slug}/`;
+}
+
 function hreflangTags() {
   let tags = `<link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/">\n`;
   tags += `  <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/">\n`;
@@ -155,17 +209,17 @@ function generateHomepage(lang) {
         <h2 class="section-title">${t.allCalcTitle}</h2>
         <p class="section-subtitle">${t.allCalcSub}</p>
         <div class="category-grid stagger">
-          <a href="/silver-scrap-calculator/" class="category-card"><div class="category-icon">♻️</div><h3>${t.scrapCalc}</h3><p>${t.scrapCalcDesc}</p></a>
-          <a href="/silver-melt-value-calculator/" class="category-card"><div class="category-icon">🔥</div><h3>${t.meltCalc}</h3><p>${t.meltCalcDesc}</p></a>
-          <a href="/sterling-silver-calculator/" class="category-card"><div class="category-icon">✨</div><h3>${t.sterlingCalc}</h3><p>${t.sterlingCalcDesc}</p></a>
-          <a href="/junk-silver-calculator/" class="category-card"><div class="category-icon">🪙</div><h3>${t.junkCalc}</h3><p>${t.junkCalcDesc}</p></a>
-          <a href="/silver-coin-value-calculator/" class="category-card"><div class="category-icon">🏛️</div><h3>${t.coinCalc}</h3><p>${t.coinCalcDesc}</p></a>
-          <a href="/gold-and-silver-calculator/" class="category-card"><div class="category-icon">🥇</div><h3>${t.goldSilverCalc}</h3><p>${t.goldSilverCalcDesc}</p></a>
-          <a href="/silver-bar-value-calculator/" class="category-card"><div class="category-icon">🧱</div><h3>${t.barCalc}</h3><p>${t.barCalcDesc}</p></a>
-          <a href="/silver-jewelry-value-calculator/" class="category-card"><div class="category-icon">💍</div><h3>${t.jewelryCalc}</h3><p>${t.jewelryCalcDesc}</p></a>
-          <a href="/silverware-value-calculator/" class="category-card"><div class="category-icon">🍴</div><h3>${t.silverwareCalc}</h3><p>${t.silverwareCalcDesc}</p></a>
-          <a href="/silver-price-per-gram/" class="category-card"><div class="category-icon">📊</div><h3>${t.priceGram}</h3><p>${t.priceGramDesc}</p></a>
-          <a href="/silver-price-per-ounce/" class="category-card"><div class="category-icon">💲</div><h3>${t.priceOz}</h3><p>${t.priceOzDesc}</p></a>
+          <a href="${localizeLink('silver-scrap-calculator', lang.code)}" class="category-card"><div class="category-icon">♻️</div><h3>${t.scrapCalc}</h3><p>${t.scrapCalcDesc}</p></a>
+          <a href="${localizeLink('silver-melt-value-calculator', lang.code)}" class="category-card"><div class="category-icon">🔥</div><h3>${t.meltCalc}</h3><p>${t.meltCalcDesc}</p></a>
+          <a href="${localizeLink('sterling-silver-calculator', lang.code)}" class="category-card"><div class="category-icon">✨</div><h3>${t.sterlingCalc}</h3><p>${t.sterlingCalcDesc}</p></a>
+          <a href="${localizeLink('junk-silver-calculator', lang.code)}" class="category-card"><div class="category-icon">🪙</div><h3>${t.junkCalc}</h3><p>${t.junkCalcDesc}</p></a>
+          <a href="${localizeLink('silver-coin-value-calculator', lang.code)}" class="category-card"><div class="category-icon">🏛️</div><h3>${t.coinCalc}</h3><p>${t.coinCalcDesc}</p></a>
+          <a href="${localizeLink('gold-and-silver-calculator', lang.code)}" class="category-card"><div class="category-icon">🥇</div><h3>${t.goldSilverCalc}</h3><p>${t.goldSilverCalcDesc}</p></a>
+          <a href="${localizeLink('silver-bar-value-calculator', lang.code)}" class="category-card"><div class="category-icon">🧱</div><h3>${t.barCalc}</h3><p>${t.barCalcDesc}</p></a>
+          <a href="${localizeLink('silver-jewelry-value-calculator', lang.code)}" class="category-card"><div class="category-icon">💍</div><h3>${t.jewelryCalc}</h3><p>${t.jewelryCalcDesc}</p></a>
+          <a href="${localizeLink('silverware-value-calculator', lang.code)}" class="category-card"><div class="category-icon">🍴</div><h3>${t.silverwareCalc}</h3><p>${t.silverwareCalcDesc}</p></a>
+          <a href="${localizeLink('silver-price-per-gram', lang.code)}" class="category-card"><div class="category-icon">📊</div><h3>${t.priceGram}</h3><p>${t.priceGramDesc}</p></a>
+          <a href="${localizeLink('silver-price-per-ounce', lang.code)}" class="category-card"><div class="category-icon">💲</div><h3>${t.priceOz}</h3><p>${t.priceOzDesc}</p></a>
         </div>
       </div>
     </section>
@@ -176,12 +230,12 @@ function generateHomepage(lang) {
         <h2 class="section-title">${t.toolsTitle}</h2>
         <p class="section-subtitle">${t.toolsSub}</p>
         <div class="category-grid stagger" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
-          <a href="/silver-profit-calculator/" class="category-card"><div class="category-icon">📈</div><h3>${t.profitCalc}</h3><p>${t.profitCalcDesc}</p></a>
-          <a href="/face-value-silver-calculator/" class="category-card"><div class="category-icon">💵</div><h3>${t.faceValCalc}</h3><p>${t.faceValCalcDesc}</p></a>
-          <a href="/silver-batch-calculator/" class="category-card"><div class="category-icon">📋</div><h3>${t.batchCalc}</h3><p>${t.batchCalcDesc}</p></a>
-          <a href="/silver-weight-converter/" class="category-card"><div class="category-icon">⚖️</div><h3>${t.converterCalc}</h3><p>${t.converterCalcDesc}</p></a>
-          <a href="/silver-sell-or-hold/" class="category-card"><div class="category-icon">📈</div><h3>${t.sellHold}</h3><p>${t.sellHoldDesc}</p></a>
-          <a href="/silver-price-all-currencies/" class="category-card"><div class="category-icon">🌍</div><h3>${t.currencies}</h3><p>${t.currenciesDesc}</p></a>
+          <a href="${localizeLink('silver-profit-calculator', lang.code)}" class="category-card"><div class="category-icon">📈</div><h3>${t.profitCalc}</h3><p>${t.profitCalcDesc}</p></a>
+          <a href="${localizeLink('face-value-silver-calculator', lang.code)}" class="category-card"><div class="category-icon">💵</div><h3>${t.faceValCalc}</h3><p>${t.faceValCalcDesc}</p></a>
+          <a href="${localizeLink('silver-batch-calculator', lang.code)}" class="category-card"><div class="category-icon">📋</div><h3>${t.batchCalc}</h3><p>${t.batchCalcDesc}</p></a>
+          <a href="${localizeLink('silver-weight-converter', lang.code)}" class="category-card"><div class="category-icon">⚖️</div><h3>${t.converterCalc}</h3><p>${t.converterCalcDesc}</p></a>
+          <a href="${localizeLink('silver-sell-or-hold', lang.code)}" class="category-card"><div class="category-icon">📈</div><h3>${t.sellHold}</h3><p>${t.sellHoldDesc}</p></a>
+          <a href="${localizeLink('silver-price-all-currencies', lang.code)}" class="category-card"><div class="category-icon">🌍</div><h3>${t.currencies}</h3><p>${t.currenciesDesc}</p></a>
         </div>
       </div>
     </section>
@@ -314,8 +368,8 @@ function generateScrapCalculatorPage(lang) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${t.innerScrapTitle}</title>
   <meta name="description" content="${t.innerScrapDesc}">
-  <link rel="canonical" href="https://scrapsilvercalculater.com/${lang.code}/silver-scrap-calculator/">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/${lang.code}/${getLocalizedSlug('silver-scrap-calculator', lang.code)}/">
+  <link rel="stylesheet" href="/css/style.css">
   <style>
     .lang-switcher { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 8px 0; background: rgba(5,5,10,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 1100; }
     body { padding-top: calc(var(--header-height) + 36px) !important; }
@@ -424,9 +478,9 @@ function generateScrapCalculatorPage(lang) {
       <div class="container text-center" style="max-width: 800px; margin: 0 auto; margin-bottom: var(--space-4xl);">
         <h3 style="margin-bottom: var(--space-lg);">${t.relatedCalcs}</h3>
         <div class="category-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
-          <a href="/silver-melt-value-calculator/" class="category-card" style="padding: var(--space-md);">🔥 ${t.meltCalc}</a>
-          <a href="/sterling-silver-calculator/" class="category-card" style="padding: var(--space-md);">✨ ${t.sterlingCalc}</a>
-          <a href="/silver-jewelry-value-calculator/" class="category-card" style="padding: var(--space-md);">💍 ${t.jewelryCalc}</a>
+          <a href="${localizeLink('silver-melt-value-calculator', lang.code)}" class="category-card" style="padding: var(--space-md);">🔥 ${t.meltCalc}</a>
+          <a href="${localizeLink('sterling-silver-calculator', lang.code)}" class="category-card" style="padding: var(--space-md);">✨ ${t.sterlingCalc}</a>
+          <a href="${localizeLink('silver-jewelry-value-calculator', lang.code)}" class="category-card" style="padding: var(--space-md);">💍 ${t.jewelryCalc}</a>
         </div>
       </div>
     </div>
@@ -820,9 +874,10 @@ allLangs.forEach(lang => {
   fs.writeFileSync(path.join(dir, 'index.html'), generateHomepage(lang));
   
   // If the language supports inner pages, generate them
-  if (lang.t.innerScrapTitle) {
-    fs.writeFileSync(path.join(dir, 'silver-scrap-calculator.html'), generateScrapCalculatorPage(lang));
-    console.log(`Created ${lang.code}/silver-scrap-calculator.html`);
+  if (lang.t && lang.t.innerScrapTitle) {
+    const slug = getLocalizedSlug('silver-scrap-calculator', lang.code);
+    fs.writeFileSync(path.join(dir, `${slug}.html`), generateScrapCalculatorPage(lang));
+    console.log(`Created ${lang.code}/${slug}.html`);
   }
   
   console.log(`Created ${lang.code}/index.html (${lang.name})`);

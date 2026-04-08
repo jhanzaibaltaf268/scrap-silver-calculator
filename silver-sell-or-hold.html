@@ -123,13 +123,13 @@
       const spot = SilverPrice.getPrice();
       const customSpot = parseFloat(cs.value)||spot;
 
-      // Sell Now value
+      / Sell Now value
       const melt = SilverCalc.meltValue(grams, purity, spot);
       const payout = melt.value * (1 - discountPct/100);
       document.getElementById('sell-now').textContent = SilverCalc.formatCurrency(payout);
       document.getElementById('sell-detail').textContent = `Melt: ${SilverCalc.formatCurrency(melt.value)} · After ${discountPct}% discount · Spot: $${spot.toFixed(2)}/oz`;
 
-      // Scenarios
+      / Scenarios
       const scenarios = [
         { label: '−20%', price: spot * 0.80 },
         { label: '−10%', price: spot * 0.90 },
@@ -159,7 +159,7 @@
       });
       document.getElementById('scenarios').innerHTML = html;
 
-      // Break even
+      / Break even
       const buyPrice = parseFloat(bp.value)||0;
       const beResult = document.getElementById('breakeven-result');
       if (buyPrice > 0) {

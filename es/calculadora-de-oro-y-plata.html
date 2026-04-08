@@ -186,12 +186,12 @@
       const sPurity = parseFloat(sp.value);
       
       const sSpot = SilverPrice.getPrice();
-      const gSpot = SilverPrice.getGoldPrice() || 2500.00; // Fallback if not loaded
+      const gSpot = SilverPrice.getGoldPrice() || 2500.00; / Fallback if not loaded
       
       let gRes = SilverCalc.meltValue(gGrams, gPurity, gSpot);
       let sRes = SilverCalc.meltValue(sGrams, sPurity, sSpot);
 
-      // Render Gold
+      / Render Gold
       if (gWeight > 0) {
         resGoldVal.textContent = SilverCalc.formatCurrency(gRes.value);
         resGoldDet.textContent = `${gRes.silverContentGrams}g pure gold · Spot: $${gSpot.toFixed(2)}/oz`;
@@ -200,7 +200,7 @@
         resGoldDet.textContent = `Spot: $${gSpot.toFixed(2)}/oz`;
       }
 
-      // Render Silver
+      / Render Silver
       if (sWeight > 0) {
         resSilverVal.textContent = SilverCalc.formatCurrency(sRes.value);
         resSilverDet.textContent = `${sRes.silverContentGrams}g pure silver · Spot: $${sSpot.toFixed(2)}/oz`;
@@ -209,11 +209,11 @@
         resSilverDet.textContent = `Spot: $${sSpot.toFixed(2)}/oz`;
       }
 
-      // Render Totals
+      / Render Totals
       const total = (gWeight > 0 ? gRes.value : 0) + (sWeight > 0 ? sRes.value : 0);
       resTotal.textContent = SilverCalc.formatCurrency(total);
 
-      // Render Ratio
+      / Render Ratio
       if (gSpot && sSpot) {
         const ratio = gSpot / sSpot;
         resRatio.textContent = ratio.toFixed(1) + ':1';

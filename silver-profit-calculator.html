@@ -147,12 +147,12 @@
         
         if (profit >= 0) {
           resProfit.textContent = '+' + SilverCalc.formatCurrency(profit);
-          resProfit.style.color = '#34d399'; // green
+          resProfit.style.color = '#34d399'; / green
           resRoi.textContent = '+' + roi.toFixed(2) + '% ROI';
           resRoi.style.color = '#34d399';
         } else {
           resProfit.textContent = '-' + SilverCalc.formatCurrency(Math.abs(profit));
-          resProfit.style.color = '#ef4444'; // red
+          resProfit.style.color = '#ef4444'; / red
           resRoi.textContent = roi.toFixed(2) + '% ROI';
           resRoi.style.color = '#ef4444';
         }

@@ -165,7 +165,7 @@
     SilverPrice.onPriceUpdate(() => calcTola());
     calcTola();
 
-    // Conversion table
+    / Conversion table
     const tableBody = document.getElementById('tola-table');
     [0.5, 1, 2, 3, 5, 10, 15, 20, 50].forEach(tola => {
       const g = (tola * TOLA_TO_GRAMS).toFixed(2);

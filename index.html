@@ -480,7 +480,7 @@
   <script src="/js/calculator.js"></script>
   <script src="/js/components.js"></script>
   <script>
-    // Hero Calculator Logic
+    / Hero Calculator Logic
     const weightInput = document.getElementById('calc-weight');
     const unitSelect = document.getElementById('calc-unit');
     const puritySelect = document.getElementById('calc-purity');
@@ -510,13 +510,13 @@
     unitSelect.addEventListener('change', calculate);
     puritySelect.addEventListener('change', calculate);
 
-    // Update calc when price loads
+    / Update calc when price loads
     SilverPrice.onPriceUpdate(() => calculate());
 
-    // Initial calc
+    / Initial calc
     calculate();
 
-    // FAQ toggle
+    / FAQ toggle
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.closest('.faq-item').classList.toggle('open');

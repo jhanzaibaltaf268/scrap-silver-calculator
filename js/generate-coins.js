@@ -11,7 +11,7 @@ function coinPage(coinName, coinWeight, coinPurity, filename, desc, content) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${titleName} Melt Value Calculator — Live Prices</title>
   <meta name="description" content="${desc}">
-  <link rel="canonical" href="https://scrapsilvercalculater.com/${filename.replace('.html', '/')}/">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/${filename.replace('.html', '')}/>
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -86,22 +86,26 @@ function coinPage(coinName, coinWeight, coinPurity, filename, desc, content) {
 
 const coins = [
   { 
-    name: 'Silver Dollar', weight: 26.73, purity: 0.90, file: 'silver-dollar-calculator.html', 
+    name: 'Silver Dollar', weight: 26.73, purity: 0.90, file: 'silver-dollar-calculator.html',
+    slug: 'silver-dollar-calculator',
     desc: 'Calculate the melt value of Morgan and Peace Silver Dollars based on live silver spot pricing.',
     content: '<h2>How Much is a Silver Dollar Worth?</h2><p>Pre-1935 US Silver Dollars (like Morgan Dollars and Peace Dollars) contain 90% silver and 10% copper. Each coin weighs 26.73 grams, meaning it contains exactly <strong>0.7734 troy ounces</strong> of pure silver.</p><h3>Melt Value vs. Numismatic Value</h3><p>Unlike common 90% silver dimes or quarters, Silver Dollars almost always carry a numismatic (collectible) premium. A Morgan Dollar in excellent condition can be worth hundreds of dollars, far above its basic melt value. Always check the mint mark and year before selling a silver dollar for scrap!</p>' 
   },
   { 
-    name: 'Silver Quarter', weight: 6.25, purity: 0.90, file: 'silver-quarter-calculator.html', 
+    name: 'Silver Quarter', weight: 6.25, purity: 0.90, file: 'silver-quarter-calculator.html',
+    slug: 'silver-quarter-calculator',
     desc: 'Calculate the melt value of pre-1965 Washington Silver Quarters instantly.',
     content: '<h2>How Much is a Silver Quarter Worth?</h2><p>Any US Washington Quarter minted in 1964 or earlier is made of 90% silver. Each quarter weighs 6.25 grams and contains <strong>0.1808 troy ounces</strong> of pure silver content.</p><h3>How to Identify a Silver Quarter</h3><p>Look at the edge of the quarter. If you see a solid silver stripe, it is 90% silver. If you see a copper-colored stripe, it is a modern clad quarter (1965-present) with no silver content.</p>' 
   },
   { 
-    name: 'Silver Dime', weight: 2.50, purity: 0.90, file: 'silver-dime-calculator.html', 
+    name: 'Silver Dime', weight: 2.50, purity: 0.90, file: 'silver-dime-calculator.html',
+    slug: 'silver-dime-calculator',
     desc: 'Calculate the live melt value of pre-1965 Roosevelt and Mercury Silver Dimes.',
     content: '<h2>How Much is a Silver Dime Worth?</h2><p>Pre-1965 US Dimes (Roosevelt and Mercury series) contain 90% silver. Each coin weighs 2.50 grams and yields <strong>0.0723 troy ounces</strong> of pure silver.</p><h3>The Most Common "Junk Silver"</h3><p>Silver dimes are highly favored by "stackers" and survivalists because their fractional silver content makes them excellent for small bartering scenarios. Remember: 10 silver dimes equals exactly the same amount of silver as 4 silver quarters.</p>' 
   },
   { 
-    name: 'Canadian Silver Coin', weight: 23.33, purity: 0.80, file: 'canadian-silver-coin-calculator.html', 
+    name: 'Canadian Silver Coin', weight: 23.33, purity: 0.80, file: 'canadian-silver-coin-calculator.html',
+    slug: 'canadian-silver-coin-calculator',
     desc: 'Calculate the melt value of Canadian 80% and 50% silver coins.',
     content: '<h2>Canadian Silver Coin Value</h2><p>Unlike US junk silver which is uniformly 90%, pre-1968 Canadian silver coins are typically <strong>80% silver</strong>. (Note: 1967 and 1968 coins can be either 80% or 50% silver, requiring a magnet test to be sure).</p><p>This calculator defaults to the standard Canadian 80% silver purity. A pre-1968 Canadian silver dollar contains 0.600 troy ounces of pure silver.</p>' 
   }

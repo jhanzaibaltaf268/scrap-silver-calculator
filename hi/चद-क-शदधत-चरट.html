@@ -81,18 +81,18 @@
     SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'घर',href:'index.html'},{label:'Silver Purity Chart'}]);
     function update(){const spot=SilverPrice.getPrice();const ppg=spot/31.1035;
     const purities=[
-      {mark:'999',name:'Fine Silver',pct:99.9,link:'999-silver-calculator.html'},
-      {mark:'980',name:'980 Silver',pct:98.0,link:'silver-melt-value-calculator.html'},
-      {mark:'970',name:'970 Silver',pct:97.0,link:'silver-melt-value-calculator.html'},
-      {mark:'958',name:'Britannia Silver',pct:95.8,link:'958-silver-calculator.html'},
-      {mark:'950',name:'950 Silver',pct:95.0,link:'silver-melt-value-calculator.html'},
-      {mark:'925',name:'Sterling Silver',pct:92.5,link:'925-silver-calculator.html'},
-      {mark:'900',name:'Coin Silver',pct:90.0,link:'900-silver-calculator.html'},
-      {mark:'875',name:'875 Silver',pct:87.5,link:'silver-melt-value-calculator.html'},
-      {mark:'835',name:'European Silver',pct:83.5,link:'835-silver-calculator.html'},
-      {mark:'800',name:'European Silver',pct:80.0,link:'800-silver-calculator.html'},
-      {mark:'750',name:'750 Silver',pct:75.0,link:'silver-melt-value-calculator.html'},
-      {mark:'500',name:'500 Silver',pct:50.0,link:'silver-melt-value-calculator.html'}
+      {mark:'999',name:'Fine Silver',pct:99.9,link:'/999-silver-calculator/'},
+      {mark:'980',name:'980 Silver',pct:98.0,link:'/silver-melt-value-calculator/'},
+      {mark:'970',name:'970 Silver',pct:97.0,link:'/silver-melt-value-calculator/'},
+      {mark:'958',name:'Britannia Silver',pct:95.8,link:'/958-silver-calculator/'},
+      {mark:'950',name:'950 Silver',pct:95.0,link:'/silver-melt-value-calculator/'},
+      {mark:'925',name:'Sterling Silver',pct:92.5,link:'/925-silver-calculator/'},
+      {mark:'900',name:'Coin Silver',pct:90.0,link:'/900-silver-calculator/'},
+      {mark:'875',name:'875 Silver',pct:87.5,link:'/silver-melt-value-calculator/'},
+      {mark:'835',name:'European Silver',pct:83.5,link:'/835-silver-calculator/'},
+      {mark:'800',name:'European Silver',pct:80.0,link:'/800-silver-calculator/'},
+      {mark:'750',name:'750 Silver',pct:75.0,link:'/silver-melt-value-calculator/'},
+      {mark:'500',name:'500 Silver',pct:50.0,link:'/silver-melt-value-calculator/'}
     ];
     document.getElementById('purity-chart').innerHTML=purities.map(p=>{
       const g=ppg*p.pct/100;
