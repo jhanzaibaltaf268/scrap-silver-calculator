@@ -377,5 +377,30 @@ const SiteComponents = (() => {
     init();
   }
 
-  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, injectFAQSchema, injectCalcSchema, init };
+  function copyCalculation(btn) {
+    const resultValue = document.getElementById('hero-result-value')?.textContent || '';
+    const resultDetail = document.getElementById('hero-result-detail')?.textContent || '';
+    const spotPrice = document.getElementById('spot-price-display')?.textContent || '';
+    const pageTitle = document.title.split('—')[0].trim();
+    
+    if (!resultValue || resultValue === '$0.00') return;
+
+    const shareText = `${pageTitle}\nValue: ${resultValue}\nDetails: ${resultDetail}\nSpot: ${spotPrice}\nCheck yours at: ${window.location.href}`;
+
+    navigator.clipboard.writeText(shareText).then(() => {
+      const originalText = btn.innerHTML;
+      const copiedText = t('copied') || 'Copied!';
+      btn.innerHTML = `<span class="icon">✅</span> ${copiedText}`;
+      btn.classList.add('copied');
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('copied');
+      }, 2000);
+    }).catch(err => {
+      console.error('Failed to copy: ', err);
+    });
+  }
+
+  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, injectFAQSchema, injectCalcSchema, copyCalculation, init };
 })();

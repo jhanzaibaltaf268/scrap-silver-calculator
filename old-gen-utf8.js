@@ -145,6 +145,9 @@ function generateHomepage(lang) {
             <div class="result-label">${t.meltValue || 'Estimated Melt Value'}</div>
             <div class="result-value" id="hero-result-value">$0.00</div>
             <div class="result-detail" id="hero-result-detail">${t.spot}: $--/oz · ${t.purityLabel}: 92.5% · ${t.totalSilver}: 0.000 oz</div>
+            <button class="share-btn" onclick="SiteComponents.copyCalculation(this)">
+              <span class="icon">📋</span> ${t.shareResult || 'Share Result'}
+            </button>
           </div>
         </div>
       </div>
