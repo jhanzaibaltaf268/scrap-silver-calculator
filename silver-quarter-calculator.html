@@ -38,7 +38,9 @@
           </div>
         </div>
 
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Total Melt Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -108,6 +110,13 @@
       {q: 'Is a 1965 quarter worth anything?', a: 'Standard 1965 quarters are made of copper and nickel and are only worth their face value ($0.25). They were the first year the US Mint switched away from 90% silver for circulating quarters.'},
       {q: 'What is a "silver proof" quarter?', a: 'Starting in 1992, the US Mint began issuing special silver proof sets for collectors. These quarters look like modern coins but are 90% silver (or 99.9% silver after 2019). They can be identified by their "S" mint mark and solid silver edges.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

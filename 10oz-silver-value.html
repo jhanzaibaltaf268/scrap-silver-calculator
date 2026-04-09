@@ -21,7 +21,9 @@
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🧱</span> 10oz Silver Value</div>
         <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">10oz Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -74,6 +76,13 @@
       {q: 'What is the best 10oz silver bar to buy?', a: 'Highly reputable brands include the Royal Canadian Mint, Sunshine Mint, Scottsdale Mint, and Engelhard (for vintage collectors). Any bar from an LBMA-approved refinery is a safe investment.'},
       {q: 'Is a 10 oz silver bar too big to sell easily?', a: 'No. 10oz is considered a standard "retail" investment size. Any local coin shop or online bullion dealer will purchase 10oz bars instantly at or near the current spot price.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

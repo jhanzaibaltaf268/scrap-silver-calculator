@@ -21,7 +21,9 @@
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🧱</span> 5oz Silver Value</div>
         <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">5oz Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -74,6 +76,13 @@
       {q: 'What are the most popular 5oz silver bars?', a: 'Popular 5oz bars include those from Sunshine Minting, SilverTowne, Golden State Mint, and the Scottsdales Silver "Stacker" series. Collectors also highly value the 5oz US Mint America the Beautiful coins.'},
       {q: 'Does a 5oz silver bar have a serial number?', a: 'Some premium 5oz bars (like those from Johnson Matthey or Engelhard) feature unique serial numbers, but many modern generic 5oz bars do not. A serial number does not typically add to the raw silver melt value.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

@@ -61,6 +61,8 @@
             </div>
           </div>
 
+          
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
           <div class="result-display" id="dwt-result">
             <div class="result-label">Silver Melt Value</div>
             <div class="result-value" id="dwt-result-value">$0.00</div>
@@ -187,6 +189,13 @@
       { q: 'How many pennyweight in a troy ounce?', a: 'There are exactly 20 pennyweight (DWT) in one troy ounce.' },
       { q: 'How do I convert DWT to grams?', a: 'Multiply the DWT value by 1.55517 to get grams. For example, 10 DWT = 15.55 grams.' }
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

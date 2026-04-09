@@ -133,6 +133,8 @@
             </select>
           </div>
 
+          
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
           <div class="result-display" id="hero-result">
             <div class="result-label">Estimated Melt Value</div>
             <div class="result-value" id="hero-result-value">$0.00</div>
@@ -540,6 +542,13 @@
       { q: 'How does the gold-to-silver ratio affect my decision to sell?', a: 'The gold-to-silver ratio tells you how many ounces of silver it takes to buy one ounce of gold. When the ratio rises above 80, silver is relatively cheap and investors buy; when it falls below 60, silver is relatively expensive and may be a good time to sell.' },
       { q: 'Can I calculate silver value in currencies other than US dollars?', a: 'Yes. Silver prices are available in USD, EUR, GBP, INR, PKR, AUD, CAD, and more. For South Asian markets, Tola measurements and Tunch (purity) are also supported.' }
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

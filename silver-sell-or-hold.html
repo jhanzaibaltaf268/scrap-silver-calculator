@@ -47,7 +47,9 @@
           <div class="form-group"><label class="form-label" for="discount">Dealer Discount %</label><input type="number" class="form-input" id="discount" value="15" min="0" max="50" step="1"></div>
         </div>
 
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Sell Now (at today's spot)</div>
           <div class="result-value" id="sell-now">$0.00</div>
           <div class="result-detail" id="sell-detail">After 15% dealer discount</div>
@@ -192,6 +194,13 @@
     [u,p].forEach(el=>el.addEventListener('change',calc));
     SilverPrice.onPriceUpdate(()=>{sl.value=SilverPrice.getPrice();cs.value=SilverPrice.getPrice();calc();});
     calc();
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

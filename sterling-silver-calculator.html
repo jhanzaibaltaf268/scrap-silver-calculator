@@ -46,7 +46,9 @@
           <div class="callout-title">ℹ️ Purity: 92.5% (Sterling)</div>
           <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Sterling silver is 92.5% pure silver alloyed with 7.5% copper for strength. Look for a "925" stamp on your item.</p>
         </div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Sterling Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -95,6 +97,13 @@
     u.addEventListener('change',calc);
     SilverPrice.onPriceUpdate(()=>calc());
     calc();
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

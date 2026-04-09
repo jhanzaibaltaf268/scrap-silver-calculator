@@ -83,7 +83,9 @@
           </select>
         </div>
 
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label" id="res-title">Chandi (Silver) Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -226,6 +228,13 @@
     else if (tz.includes('Riyadh')) c.value = 'SAR';
 
     calc();
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

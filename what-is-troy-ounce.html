@@ -25,7 +25,9 @@
           <div class="form-group"><label class="form-label" for="troy-oz">Troy Ounces</label><input type="number" class="form-input" id="troy-oz" value="1" step="0.01" min="0"></div>
           <div class="form-group"><label class="form-label" for="grams">= Grams</label><input type="number" class="form-input" id="grams" value="31.1035" step="0.01" readonly style="opacity:0.8;"></div>
         </div>
-        <div class="result-display"><div class="result-label">Value at Spot Price</div><div class="result-value" id="result-value">$0.00</div><div class="result-detail" id="result-detail"></div></div>
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display"><div class="result-label">Value at Spot Price</div><div class="result-value" id="result-value">$0.00</div><div class="result-detail" id="result-detail"></div></div>
         <a href="/silver-weight-converter/" class="btn btn-primary" style="width:100%;text-align:center;margin-top:var(--space-md);">Full Weight Converter →</a>
       </div>
 
@@ -112,6 +114,13 @@
       {q:'How many grams are in a troy ounce?',a:'One troy ounce equals exactly 31.1035 grams.'},
       {q:'What is the difference between a troy ounce and a regular ounce?',a:'A troy ounce weighs 31.1035 grams while a regular avoirdupois ounce weighs 28.3495 grams. The troy ounce is about 10% heavier.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

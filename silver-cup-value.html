@@ -25,7 +25,9 @@
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
         <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected>925 Sterling</option><option value="0.900" >900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800" >800 European</option></select></div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Silver Cup Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -77,6 +79,13 @@
       {q: 'Can I sell a tarnished silver cup for scrap?', a: 'Yes. Tarnish (silver sulfide) is a surface-level oxidation that does not affect the purity or weight of the silver. A scrap dealer will pay the same price for a black, tarnished cup as they would for a polished one.'},
       {q: 'Is my old silver trophy worth melting?', a: 'If the trophy is marked "Sterling", it has significant silver value. If it is high-school or amateur sports trophy without hallmarks, it is likely silver-plated or made of pewter and has very little resale value.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

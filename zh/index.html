@@ -117,6 +117,8 @@
             </select>
           </div>
 
+          
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">计算熔毁价值</button>
           <div class="result-display" id="hero-result">
             <div class="result-label">熔炼价值</div>
             <div class="result-value" id="hero-result-value">$0.00</div>
@@ -279,6 +281,13 @@
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => { btn.closest('.faq-item').classList.toggle('open'); });
     });
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

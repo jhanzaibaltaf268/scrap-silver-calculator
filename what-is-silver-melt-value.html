@@ -26,7 +26,9 @@
           <div class="form-group"><label class="form-label" for="unit">Unit</label><select class="form-select" id="unit"><option value="g" selected>Grams</option><option value="oz">Troy Oz</option><option value="dwt">DWT</option></select></div>
         </div>
         <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine (99.9%)</option><option value="0.925" selected>925 Sterling (92.5%)</option><option value="0.900">900 Coin (90%)</option><option value="0.800">800 Silver (80%)</option></select></div>
-        <div class="result-display"><div class="result-label">Melt Value</div><div class="result-value" id="result-value">$0.00</div><div class="result-detail" id="result-detail"></div></div>
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display"><div class="result-label">Melt Value</div><div class="result-value" id="result-value">$0.00</div><div class="result-detail" id="result-detail"></div></div>
         <a href="/silver-melt-value-calculator/" class="btn btn-primary" style="width:100%;text-align:center;margin-top:var(--space-md);">Open Full Melt Value Calculator →</a>
       </div>
 
@@ -136,6 +138,13 @@
       {q:'Is melt value the same as what a dealer will pay?',a:'No, dealers typically pay 80-97% of melt value depending on the type of buyer. Online refiners pay the most (90-97%), while pawn shops pay the least (50-80%).'},
       {q:'Can silver be worth more than melt value?',a:'Yes. Rare coins, designer jewelry, antiques, and limited edition items can be worth significantly more than their melt value due to collectibility and demand.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

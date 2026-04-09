@@ -61,6 +61,8 @@
               <option value="0.417">10K — Jewelry (41.7%)</option>
             </select>
           </div>
+          
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
           <div class="result-display">
             <div class="result-label">Gold Melt Value</div>
             <div class="result-value" id="res-gold-val" style="color: #FBBF24;">$0.00</div>
@@ -232,6 +234,13 @@
     
     SilverPrice.onPriceUpdate(() => calc());
     calc();
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

@@ -25,7 +25,9 @@
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
         <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected>925 Sterling</option><option value="0.900" >900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800" >800 European</option></select></div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Silver Plate Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -77,6 +79,13 @@
       {q: 'Can I sell silver-plated plates for scrap?', a: 'Most silver refineries do not buy silver-plated items because the cost of refining the tiny amount of silver exceeds the value of the silver itself. These are typically sold as "white metal" scrap for a few cents.'},
       {q: 'Do hallmarks like "A1" or "IS" mean solid silver?', a: 'No. "A1" indicates the highest quality of silver plating, and "IS" stands for International Silver (a brand that mostly made plated ware). These are not solid silver marks.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

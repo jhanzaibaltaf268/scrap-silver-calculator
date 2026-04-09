@@ -68,7 +68,9 @@
           </div>
         </div>
 
-        <div class="result-display" style="margin-top: var(--space-md); padding-bottom: var(--space-md);">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display" style="margin-top: var(--space-md); padding-bottom: var(--space-md);">
           <div style="display:flex; justify-content:space-between; margin-bottom: var(--space-sm);">
             <div style="color:var(--text-secondary);">Total Investment Cost:</div>
             <div id="res-cost" style="font-weight:600;">$0.00</div>
@@ -173,6 +175,13 @@
     [u, p].forEach(el => el.addEventListener('change', calc));
     SilverPrice.onPriceUpdate(() => calc());
     calc();
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

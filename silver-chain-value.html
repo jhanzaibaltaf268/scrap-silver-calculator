@@ -25,7 +25,9 @@
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
         <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected>925 Sterling</option><option value="0.900" >900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800" >800 European</option></select></div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Silver Chain Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -77,6 +79,13 @@
       {q: 'Does the clasp weight count toward the silver value?', a: 'Yes. On solid sterling silver chains, the clasp is also made of sterling silver and should be included in the total weight for calculation.'},
       {q: 'Are Italian silver chains more valuable?', a: 'While Italy is known for high-quality jewelry manufacturing, the "melt value" is based purely on the silver weight and purity. An Italian 925 chain has the same raw silver value as any other 925 chain of the same weight.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

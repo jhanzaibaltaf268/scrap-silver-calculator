@@ -26,7 +26,9 @@
           <div class="callout-title">Purity: 99.9% (Fine Silver)</div>
           <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Fine Silver contains 99.9% pure silver. This calculator is pre-set to this purity.</p>
         </div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculer la Valeur de Fonte</button>
+          <div class="result-display">
           <div class="result-label">999 Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -54,5 +56,12 @@
 
 <script>
   window.MenuTranslations = {}; 
-</script>
+
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
+  </script>
 </body></html>

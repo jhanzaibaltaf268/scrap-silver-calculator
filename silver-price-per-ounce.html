@@ -27,7 +27,9 @@
     <div class="calc-page-layout">
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">📊</span> Silver Spot Price</div>
-        <div class="result-display" style="margin-bottom:var(--space-xl);">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display" style="margin-bottom:var(--space-xl);">
           <div class="result-label">Silver Price Per Troy Ounce</div>
           <div class="result-value" id="price-oz">$0.00</div>
           <div class="result-detail">1 troy ounce = 31.1035 grams</div>
@@ -90,6 +92,13 @@
     }
     SilverPrice.onPriceUpdate(()=>update());
     update();
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

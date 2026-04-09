@@ -19,7 +19,9 @@
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🧱</span> 1oz Silver Value</div>
         <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculer la Valeur de Fonte</button>
+          <div class="result-display">
           <div class="result-label">1oz Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -53,5 +55,12 @@
 
 <script>
   window.MenuTranslations = {}; 
-</script>
+
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
+  </script>
 </body></html>

@@ -21,7 +21,9 @@
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🧱</span> 1kg Silver Value</div>
         <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">1kg Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -74,6 +76,13 @@
       {q: 'How much does a 1kg silver bar weigh in pounds?', a: 'One kilo of silver weighs approximately 2.2046 standard (avoirdupois) pounds.'},
       {q: 'What are the most popular 1kg silver bars?', a: 'The most recognized kilo bars are produced by PAMP Suisse, Valcambi, the Perth Mint, Royal Canadian Mint, and Metalor. Any bar from an LBMA-certified refinery is considered a top-tier investment.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

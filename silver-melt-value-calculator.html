@@ -58,7 +58,9 @@
           <label class="form-label" for="custom-purity">Custom Purity (%)</label>
           <input type="number" class="form-input" id="custom-purity" placeholder="e.g. 85" step="0.1" min="0" max="100" value="92.5">
         </div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Melt Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -112,6 +114,13 @@
     [u,p].forEach(el=>el.addEventListener('change',calc));
     SilverPrice.onPriceUpdate(()=>calc());
     calc();
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

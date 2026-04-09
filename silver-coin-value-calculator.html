@@ -28,7 +28,9 @@
           <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925">925 Sterling</option><option value="0.900" selected>900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800">800 European</option></select></div>
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Total Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -55,6 +57,13 @@
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),q=document.getElementById('qty');
     function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const purity=parseFloat(p.value);const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(grams*qty,purity,spot);const each=SilverCalc.meltValue(grams,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${qty} coin(s) · ${r.silverContentOz} oz total silver · ${SilverCalc.formatCurrency(each.value)} each · Spot: $${spot.toFixed(2)}/oz`;}
     [w,q].forEach(el=>el.addEventListener('input',calc));[u,p].forEach(el=>el.addEventListener('change',calc));SilverPrice.onPriceUpdate(()=>calc());calc();
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

@@ -21,7 +21,9 @@
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🧱</span> 100oz Silver Value</div>
         <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">100oz Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -74,6 +76,13 @@
       {q: 'Which 100oz silver bar has the best resale value?', a: 'Bars from the Royal Canadian Mint or PAMP Suisse often command higher resale premiums because of their government backing or prestigious brand name. Vintage bars like Engelhard or Johnson Matthey are also highly sought after by collectors.'},
       {q: 'Do I need to assay a 100 oz silver bar before selling?', a: 'If you buy from a reputable mint and the bar has clear hallmarks and a serial number, a formal assay is usually not required. Most dealers have modern "Sigma" or XRF testing equipment that can verify the purity instantly without damaging the bar.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

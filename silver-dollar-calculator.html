@@ -38,7 +38,9 @@
           </div>
         </div>
 
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Total Melt Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -108,6 +110,13 @@
       {q: 'What is the "CC" mint mark on a silver dollar?', a: 'The "CC" mark stands for the Carson City Mint in Nevada. These coins are highly prized by collectors because they were minted in relatively small quantities near the source of the silver (the Comstock Lode) and often carry a huge premium over melt value.'},
       {q: 'Can I sell a worn silver dollar for scrap?', a: 'Yes. Even if a silver dollar is so worn that the date is unreadable (slick), it still retains its intrinsic value of 0.77 troy ounces of silver. However, most coin dealers will still pay a small premium above melt even for worn dollars.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

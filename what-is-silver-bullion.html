@@ -25,7 +25,9 @@
           <div class="form-group"><label class="form-label" for="size">Size</label><select class="form-select" id="size"><option value="1" selected>1 oz</option><option value="5">5 oz</option><option value="10">10 oz</option><option value="100">100 oz</option><option value="32.1507">1 kg</option></select></div>
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
-        <div class="result-display"><div class="result-label">Silver Value</div><div class="result-value" id="result-value">$0.00</div><div class="result-detail" id="result-detail"></div></div>
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display"><div class="result-label">Silver Value</div><div class="result-value" id="result-value">$0.00</div><div class="result-detail" id="result-detail"></div></div>
         <a href="/silver-bar-value-calculator/" class="btn btn-primary" style="width:100%;text-align:center;margin-top:var(--space-md);">Full Bar Value Calculator →</a>
       </div>
 
@@ -128,6 +130,13 @@
       {q:'What is a premium on silver bullion?',a:'The premium is the amount paid above the spot price. Premiums cover production, distribution, and dealer profit. Bars have the lowest premiums ($0.50-4/oz), while coins carry higher premiums.'},
       {q:'Is silver bullion a good investment?',a:'Silver bullion is popular as a hedge against inflation and currency devaluation. It is highly liquid, easy to store, and has industrial demand that supports its value.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

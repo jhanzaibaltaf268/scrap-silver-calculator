@@ -24,7 +24,9 @@
           <div class="form-group"><label class="form-label" for="size">Bar Size</label><select class="form-select" id="size"><option value="1">1 oz</option><option value="5">5 oz</option><option value="10" selected>10 oz</option><option value="50">50 oz</option><option value="100">100 oz</option><option value="32.1507">1 kg (32.15 oz)</option></select></div>
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Total Bar Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -63,6 +65,13 @@
       const bars=[{l:'1 oz',s:1,w:'31.1g'},{l:'5 oz',s:5,w:'155.5g'},{l:'10 oz',s:10,w:'311.0g'},{l:'50 oz',s:50,w:'1,555g'},{l:'100 oz',s:100,w:'3,110g'},{l:'1 kg',s:32.1507,w:'1,000g'}];
       document.getElementById('bar-table').innerHTML=bars.map(b=>`<tr><td>${b.l}</td><td>${b.w}</td><td>$${(b.s*spot).toFixed(2)}</td></tr>`).join('');}
     [s].forEach(el=>el.addEventListener('change',calc));q.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

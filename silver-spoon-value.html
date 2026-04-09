@@ -25,7 +25,9 @@
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
         <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected>925 Sterling</option><option value="0.900" >900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800" >800 European</option></select></div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Silver Spoon Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -78,6 +80,13 @@
       {q: 'Does the condition of the spoon affect its scrap value?', a: 'No. If you are selling for melt value, a bent, dented, or heavily tarnished spoon is worth exactly the same as a polished one, as only the raw silver weight matters to the refinery.'},
       {q: 'Are silver-plated spoons worth anything?', a: 'Silver-plated spoons contain only a microscopic layer of silver over base metal (usually copper or nickel). They generally have no scrap value and are typically sold for a few cents as base metal scrap.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

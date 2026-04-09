@@ -21,7 +21,9 @@
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🧱</span> 1oz Silver Value</div>
         <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">1oz Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -74,6 +76,13 @@
       {q: 'Where can I sell my 1 oz silver rounds?', a: '1 oz silver is highly liquid and can be sold at almost any local coin shop, bullion dealer, or reputable online precious metals exchange. Most will pay slightly below or above the spot price depending on the item.'},
       {q: 'Does 1 oz of silver tarnish?', a: 'Yes, silver reacts with sulfur in the air to create tarnish (silver sulfide). While this changes the appearance of a 1 oz bar, it does not decrease the raw metal weight or the intrinsic melt value.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

@@ -24,7 +24,9 @@
         <div class="calc-widget-title"><span class="icon">♻️</span> Quick Scrap Value Calculator</div>
         <div class="form-group"><label class="form-label" for="weight">Weight (grams)</label><input type="number" class="form-input" id="weight" value="50" step="0.1" min="0"></div>
         <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.925" selected>925 Sterling</option><option value="0.900">900 Coin</option><option value="0.800">800 Silver</option></select></div>
-        <div class="result-display"><div class="result-label">Scrap Melt Value</div><div class="result-value" id="result-value">$0.00</div><div class="result-detail" id="result-detail"></div></div>
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display"><div class="result-label">Scrap Melt Value</div><div class="result-value" id="result-value">$0.00</div><div class="result-detail" id="result-detail"></div></div>
         <a href="/silver-scrap-calculator/" class="btn btn-primary" style="width:100%;text-align:center;margin-top:var(--space-md);">Open Full Scrap Calculator →</a>
       </div>
 
@@ -129,6 +131,13 @@
       {q:'What is the difference between silver scrap and collectible silver?',a:'Scrap silver is valued by weight and purity alone, while collectible silver can be worth more due to rarity, design, age, or condition.'},
       {q:'Can I sell silver plated items as scrap?',a:'Silver plated items contain very little actual silver and are typically worth only $1-5 in silver content. Only solid silver items (marked 925, 800, 999, STERLING) have significant scrap value.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

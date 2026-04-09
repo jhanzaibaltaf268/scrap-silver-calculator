@@ -61,6 +61,8 @@
             </div>
           </div>
 
+          
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
           <div class="result-display" id="tola-result">
             <div class="result-label">Silver Value Per Tola</div>
             <div class="result-value" id="tola-result-value">$0.00</div>
@@ -193,6 +195,13 @@
       { q: 'What is the silver price per tola today?', a: 'The silver price per tola depends on the current spot price. Since 1 tola = 0.375 troy ounces, multiply today\'s spot price by 0.375 and the purity to get the value.' },
       { q: 'How many tola in a troy ounce?', a: 'There are approximately 2.6667 tola in one troy ounce (1 ozt = 31.1035g ÷ 11.6638g per tola).' }
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

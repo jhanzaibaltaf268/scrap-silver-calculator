@@ -25,7 +25,9 @@
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
         <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected>925 Sterling</option><option value="0.900" >900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800" >800 European</option></select></div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Silver Tray Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -77,6 +79,13 @@
       {q: 'Does an engraved tray lose value?', a: 'For scrap/melt purposes, an engraving (like a family name or date) does not decrease the value. However, for antique resale, a personalized engraving can sometimes lower the collector value unless it is of historical significance.'},
       {q: 'Can I sell a silver tray with a broken handle?', a: 'Yes. Refineries care only about the raw silver content. A broken or dented tray is worth exactly the same as a perfect one when selling for melt value.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

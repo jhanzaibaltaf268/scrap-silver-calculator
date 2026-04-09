@@ -78,7 +78,9 @@
             <option value="0.25">25%</option>
           </select>
         </div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculer la Valeur de Fonte</button>
+          <div class="result-display">
           <div class="result-label">VALEUR DE FONTE</div>
           <div class="result-value" id="result-melt">$0.00</div>
           <div class="result-detail" id="result-melt-detail"></div>
@@ -168,6 +170,13 @@
     [u,p,d].forEach(el => el.addEventListener('change', calc));
     SilverPrice.onPriceUpdate(() => calc());
     calc();
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

@@ -30,7 +30,9 @@
           </div>
         </div>
 
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Total Silver Melt Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -99,6 +101,13 @@
       {q: 'What does "20 times face" mean?', a: 'This is a common way dealers quote prices for junk silver. If a dealer offers "20x face," a silver quarter ($0.25) is worth $5.00, and a silver dime ($0.10) is worth $2.00.'},
       {q: 'Do 40% silver Kennedy halves use the same multiplier?', a: 'No. 40% silver coins (1965-1970) have a much lower silver content. $1.00 face value of 40% halves contains approximately 0.295 troy ounces of silver.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

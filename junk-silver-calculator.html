@@ -35,7 +35,9 @@
           <label class="form-label" for="qty">Quantity</label>
           <input type="number" class="form-input" id="qty" value="1" min="1" step="1">
         </div>
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Total Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -127,6 +129,13 @@
       {q: 'Are junk silver coins a good investment?', a: 'Yes, they are highly liquid, recognizable, and divisible. They often carry a lower premium than modern silver bullion coins like American Silver Eagles.'},
       {q: 'Should I clean my junk silver coins?', a: 'No! Never clean silver coins. Even if they are just "junk silver," harsh chemicals or abrasives can damage the surface and potentially destroy any residual collector value they might have.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

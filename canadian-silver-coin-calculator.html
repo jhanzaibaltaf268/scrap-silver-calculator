@@ -38,7 +38,9 @@
           </div>
         </div>
 
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Total Melt Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -114,6 +116,13 @@
       {q: 'How much silver is in an 80% Canadian silver dollar?', a: 'An 80% Canadian silver dollar weighs 23.33 grams and contains exactly 18.66 grams (0.600 troy ounces) of pure silver.'},
       {q: 'Are any Canadian nickels made of silver?', a: 'From 1858 to 1921, the Canadian 5-cent piece was a small silver coin (known as a "fishscale"). These are 92.5% silver until 1919 and 80% silver in 1920-1921. Modern nickels from 1922 onwards contain no silver.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>

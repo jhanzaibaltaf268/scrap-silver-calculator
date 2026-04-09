@@ -38,7 +38,9 @@
           </div>
         </div>
 
-        <div class="result-display">
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display">
           <div class="result-label">Total Melt Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -108,6 +110,13 @@
       {q: 'Is a Mercury dime worth more than a Roosevelt dime?', a: 'In terms of silver content, they are identical. However, Mercury dimes are older and more popular with collectors, so they often carry a slightly higher "numismatic" premium than standard Roosevelt junk silver dimes.'},
       {q: 'What is "Junk Silver" junk?', a: 'The term "junk silver" simply refers to silver coins that have no significant collectible value and are sold strictly for the value of their precious metal content. Silver dimes are one of the most popular forms of junk silver.'}
     ]);
+  
+    / Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>
