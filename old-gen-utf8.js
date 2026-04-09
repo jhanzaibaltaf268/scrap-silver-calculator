@@ -105,7 +105,7 @@ function generateHomepage(lang) {
 
         <!-- Main Calculator Widget -->
         <div class="calc-widget slide-up" id="hero-calc" style="max-width:600px;margin:0 auto;">
-          <div class="calc-widget-title"><span class="icon">ΓÜû∩╕Å</span> ${t.calcTitle || t.calcWidgetTitle || 'Silver Scrap Value Calculator'}</div>
+          <div class="calc-widget-title"><span class="icon">⚖️</span> ${t.calcTitle || t.calcWidgetTitle || 'Silver Scrap Value Calculator'}</div>
 
           <div class="form-row">
             <div class="form-group">
@@ -130,20 +130,21 @@ function generateHomepage(lang) {
           <div class="form-group">
             <label class="form-label" for="calc-purity">${t.purity}</label>
             <select class="form-select" id="calc-purity">
-              <option value="0.999">999 ΓÇö Fine (99.9%)</option>
-              <option value="0.958">958 ΓÇö Britannia (95.8%)</option>
-              <option value="0.925" selected>925 ΓÇö Sterling (92.5%)</option>
-              <option value="0.900">900 ΓÇö Coin (90.0%)</option>
-              <option value="0.835">835 ΓÇö (83.5%)</option>
-              <option value="0.800">800 ΓÇö (80.0%)</option>
-              <option value="0.500">500 ΓÇö (50.0%)</option>
+              <option value="0.999">999 — Fine (99.9%)</option>
+              <option value="0.958">958 — Britannia (95.8%)</option>
+              <option value="0.925" selected>925 — Sterling (92.5%)</option>
+              <option value="0.900">900 — Coin (90.0%)</option>
+              <option value="0.835">835 — (83.5%)</option>
+              <option value="0.800">800 — (80.0%)</option>
+              <option value="0.500">500 — (50.0%)</option>
             </select>
           </div>
 
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">${t.calculate || t.calcBtn || 'Calculate Melt Value'}</button>
           <div class="result-display" id="hero-result">
             <div class="result-label">${t.meltValue || 'Estimated Melt Value'}</div>
             <div class="result-value" id="hero-result-value">$0.00</div>
-            <div class="result-detail" id="hero-result-detail">${t.spot}: $--/oz ┬╖ ${t.purityLabel}: 92.5% ┬╖ ${t.totalSilver}: 0.000 oz</div>
+            <div class="result-detail" id="hero-result-detail">${t.spot}: $--/oz · ${t.purityLabel}: 92.5% · ${t.totalSilver}: 0.000 oz</div>
           </div>
         </div>
       </div>
@@ -151,44 +152,44 @@ function generateHomepage(lang) {
 
     <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container text-center">
-        <span class="section-badge">≡ƒº░ ${t.allCalcTitle}</span>
+        <span class="section-badge">🧮 ${t.allCalcTitle}</span>
         <h2 class="section-title">${t.allCalcTitle}</h2>
         <p class="section-subtitle">${t.allCalcSub}</p>
         <div class="category-grid stagger">
-          <a href="/silver-scrap-calculator/" class="category-card"><div class="category-icon">ΓÖ╗∩╕Å</div><h3>${t.scrapCalc}</h3><p>${t.scrapCalcDesc}</p></a>
-          <a href="/silver-melt-value-calculator/" class="category-card"><div class="category-icon">≡ƒöÑ</div><h3>${t.meltCalc}</h3><p>${t.meltCalcDesc}</p></a>
-          <a href="/sterling-silver-calculator/" class="category-card"><div class="category-icon">Γ£¿</div><h3>${t.sterlingCalc}</h3><p>${t.sterlingCalcDesc}</p></a>
-          <a href="/junk-silver-calculator/" class="category-card"><div class="category-icon">≡ƒ¬Ö</div><h3>${t.junkCalc}</h3><p>${t.junkCalcDesc}</p></a>
-          <a href="/silver-coin-value-calculator/" class="category-card"><div class="category-icon">≡ƒÅ¢∩╕Å</div><h3>${t.coinCalc}</h3><p>${t.coinCalcDesc}</p></a>
-          <a href="/gold-and-silver-calculator/" class="category-card"><div class="category-icon">≡ƒÑç</div><h3>${t.goldSilverCalc}</h3><p>${t.goldSilverCalcDesc}</p></a>
-          <a href="/silver-bar-value-calculator/" class="category-card"><div class="category-icon">≡ƒº▒</div><h3>${t.barCalc}</h3><p>${t.barCalcDesc}</p></a>
-          <a href="/silver-jewelry-value-calculator/" class="category-card"><div class="category-icon">≡ƒÆì</div><h3>${t.jewelryCalc}</h3><p>${t.jewelryCalcDesc}</p></a>
-          <a href="/silverware-value-calculator/" class="category-card"><div class="category-icon">≡ƒì┤</div><h3>${t.silverwareCalc}</h3><p>${t.silverwareCalcDesc}</p></a>
-          <a href="/silver-price-per-gram/" class="category-card"><div class="category-icon">≡ƒôè</div><h3>${t.priceGram}</h3><p>${t.priceGramDesc}</p></a>
-          <a href="/silver-price-per-ounce/" class="category-card"><div class="category-icon">≡ƒÆ▓</div><h3>${t.priceOz}</h3><p>${t.priceOzDesc}</p></a>
+          <a href="/silver-scrap-calculator/" class="category-card"><div class="category-icon">♻️</div><h3>${t.scrapCalc}</h3><p>${t.scrapCalcDesc}</p></a>
+          <a href="/silver-melt-value-calculator/" class="category-card"><div class="category-icon">🔥</div><h3>${t.meltCalc}</h3><p>${t.meltCalcDesc}</p></a>
+          <a href="/sterling-silver-calculator/" class="category-card"><div class="category-icon">✨</div><h3>${t.sterlingCalc}</h3><p>${t.sterlingCalcDesc}</p></a>
+          <a href="/junk-silver-calculator/" class="category-card"><div class="category-icon">🪙</div><h3>${t.junkCalc}</h3><p>${t.junkCalcDesc}</p></a>
+          <a href="/silver-coin-value-calculator/" class="category-card"><div class="category-icon">🏛️</div><h3>${t.coinCalc}</h3><p>${t.coinCalcDesc}</p></a>
+          <a href="/gold-and-silver-calculator/" class="category-card"><div class="category-icon">🥇</div><h3>${t.goldSilverCalc}</h3><p>${t.goldSilverCalcDesc}</p></a>
+          <a href="/silver-bar-value-calculator/" class="category-card"><div class="category-icon">🧱</div><h3>${t.barCalc}</h3><p>${t.barCalcDesc}</p></a>
+          <a href="/silver-jewelry-value-calculator/" class="category-card"><div class="category-icon">💍</div><h3>${t.jewelryCalc}</h3><p>${t.jewelryCalcDesc}</p></a>
+          <a href="/silverware-value-calculator/" class="category-card"><div class="category-icon">🍴</div><h3>${t.silverwareCalc}</h3><p>${t.silverwareCalcDesc}</p></a>
+          <a href="/silver-price-per-gram/" class="category-card"><div class="category-icon">📊</div><h3>${t.priceGram}</h3><p>${t.priceGramDesc}</p></a>
+          <a href="/silver-price-per-ounce/" class="category-card"><div class="category-icon">💲</div><h3>${t.priceOz}</h3><p>${t.priceOzDesc}</p></a>
         </div>
       </div>
     </section>
 
     <section class="section-compact">
       <div class="container text-center">
-        <span class="section-badge">≡ƒ¢á∩╕Å</span>
+        <span class="section-badge">🛠️</span>
         <h2 class="section-title">${t.toolsTitle}</h2>
         <p class="section-subtitle">${t.toolsSub}</p>
         <div class="category-grid stagger" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
-          <a href="/silver-profit-calculator/" class="category-card"><div class="category-icon">≡ƒôê</div><h3>${t.profitCalc}</h3><p>${t.profitCalcDesc}</p></a>
-          <a href="/face-value-silver-calculator/" class="category-card"><div class="category-icon">≡ƒÆ╡</div><h3>${t.faceValCalc}</h3><p>${t.faceValCalcDesc}</p></a>
-          <a href="/silver-batch-calculator/" class="category-card"><div class="category-icon">≡ƒôï</div><h3>${t.batchCalc}</h3><p>${t.batchCalcDesc}</p></a>
-          <a href="/silver-weight-converter/" class="category-card"><div class="category-icon">ΓÜû∩╕Å</div><h3>${t.converterCalc}</h3><p>${t.converterCalcDesc}</p></a>
-          <a href="/silver-sell-or-hold/" class="category-card"><div class="category-icon">≡ƒôê</div><h3>${t.sellHold}</h3><p>${t.sellHoldDesc}</p></a>
-          <a href="/silver-price-all-currencies/" class="category-card"><div class="category-icon">≡ƒîì</div><h3>${t.currencies}</h3><p>${t.currenciesDesc}</p></a>
+          <a href="/silver-profit-calculator/" class="category-card"><div class="category-icon">📈</div><h3>${t.profitCalc}</h3><p>${t.profitCalcDesc}</p></a>
+          <a href="/face-value-silver-calculator/" class="category-card"><div class="category-icon">💵</div><h3>${t.faceValCalc}</h3><p>${t.faceValCalcDesc}</p></a>
+          <a href="/silver-batch-calculator/" class="category-card"><div class="category-icon">📋</div><h3>${t.batchCalc}</h3><p>${t.batchCalcDesc}</p></a>
+          <a href="/silver-weight-converter/" class="category-card"><div class="category-icon">⚖️</div><h3>${t.converterCalc}</h3><p>${t.converterCalcDesc}</p></a>
+          <a href="/silver-sell-or-hold/" class="category-card"><div class="category-icon">📈</div><h3>${t.sellHold}</h3><p>${t.sellHoldDesc}</p></a>
+          <a href="/silver-price-all-currencies/" class="category-card"><div class="category-icon">🌍</div><h3>${t.currencies}</h3><p>${t.currenciesDesc}</p></a>
         </div>
       </div>
     </section>
 
     <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container text-center">
-        <span class="section-badge">≡ƒôï</span>
+        <span class="section-badge">📋</span>
         <h2 class="section-title">${t.howTitle}</h2>
         <p class="section-subtitle">${t.howSub}</p>
         <div class="steps-grid stagger">
@@ -351,7 +352,7 @@ function generateScrapCalculatorPage(lang) {
     </section>
     <div class="calc-page-layout">
       <div class="calc-widget" style="max-width: 600px; margin: 0 auto;">
-        <div class="calc-widget-title"><span class="icon">ΓÖ╗∩╕Å</span> ${t.calcWidgetTitleScrap}</div>
+        <div class="calc-widget-title"><span class="icon">♻️</span> ${t.calcWidgetTitleScrap}</div>
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="weight">${t.weight}</label>
@@ -389,6 +390,7 @@ function generateScrapCalculatorPage(lang) {
             <option value="0.25">${t.discount25}</option>
           </select>
         </div>
+        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">${t.calculate || 'Calculate Value'}</button>
         <div class="result-display">
           <div class="result-label">${t.meltValue}</div>
           <div class="result-value" id="result-melt">$0.00</div>
@@ -431,9 +433,9 @@ function generateScrapCalculatorPage(lang) {
       <div class="container text-center" style="max-width: 800px; margin: 0 auto; margin-bottom: var(--space-4xl);">
         <h3 style="margin-bottom: var(--space-lg);">${t.relatedCalcs}</h3>
         <div class="category-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
-          <a href="/silver-melt-value-calculator/" class="category-card" style="padding: var(--space-md);">≡ƒöÑ ${t.meltCalc}</a>
-          <a href="/sterling-silver-calculator/" class="category-card" style="padding: var(--space-md);">Γ£¿ ${t.sterlingCalc}</a>
-          <a href="/silver-jewelry-value-calculator/" class="category-card" style="padding: var(--space-md);">≡ƒÆì ${t.jewelryCalc}</a>
+          <a href="/silver-melt-value-calculator/" class="category-card" style="padding: var(--space-md);">🔥 ${t.meltCalc}</a>
+          <a href="/sterling-silver-calculator/" class="category-card" style="padding: var(--space-md);">✨ ${t.sterlingCalc}</a>
+          <a href="/silver-jewelry-value-calculator/" class="category-card" style="padding: var(--space-md);">💍 ${t.jewelryCalc}</a>
         </div>
       </div>
     </div>
@@ -471,9 +473,9 @@ function generateScrapCalculatorPage(lang) {
       const discountVal = SilverCalc.formatCurrency(result.discount);
       
       document.getElementById('result-melt').textContent = SilverCalc.formatCurrency(result.value);
-      document.getElementById('result-melt-detail').textContent = result.silverContentGrams + 'g ┬╖ ' + result.silverContentOz + ' oz ┬╖ ${t.spot}: $' + spot.toFixed(2) + '/oz';
+      document.getElementById('result-melt-detail').textContent = result.silverContentGrams + 'g · ' + result.silverContentOz + ' oz · ${t.spot}: $' + spot.toFixed(2) + '/oz';
       document.getElementById('result-scrap').textContent = payoutVal;
-      document.getElementById('result-scrap-detail').textContent = '-' + (disc*100).toFixed(0) + '% (ΓêÆ' + discountVal + ')';
+      document.getElementById('result-scrap-detail').textContent = '-' + (disc*100).toFixed(0) + '% (−' + discountVal + ')';
     }
     [w,u,p,d].forEach(el => el.addEventListener('input', calc));
     [u,p,d].forEach(el => el.addEventListener('change', calc));
@@ -493,27 +495,27 @@ function generateScrapCalculatorPage(lang) {
 
 function getDefaultContentBody(code) {
   const content = {
-    es: `<h3>C├│mo se Calcula el Valor de Fusi├│n de la Plata</h3><p>El valor de cualquier art├¡culo de plata depende de tres factores: <strong>peso</strong>, <strong>pureza</strong> y <strong>precio spot</strong>. La f├│rmula es: Valor = Peso (onzas troy) ├ù Pureza ├ù Precio Spot.</p><ul><li><strong>Peso</strong> ΓÇö El peso total en gramos, onzas troy o kilogramos</li><li><strong>Pureza</strong> ΓÇö Porcentaje de plata real: 999 fina (99.9%), 925 esterlina (92.5%), 900 moneda (90%)</li><li><strong>Precio Spot</strong> ΓÇö Precio actual por onza troy en mercados globales como COMEX y LBMA</li></ul><h3>┬┐Qu├⌐ es la Plata de Desecho?</h3><p>La plata de desecho es cualquier art├¡culo de plata valorado principalmente por su contenido met├ílico. Incluye: joyer├¡a rota, cubiertos viejos, monedas de plata anteriores a 1965 y residuos industriales.</p><h3>C├│mo Identificar Plata Real</h3><p>Busque sellos: 925, 800, 999, STERLING. La plata real NO es magn├⌐tica. Los art├¡culos chapados (EP, EPNS) contienen muy poca plata y no valen como desecho.</p><h3>┬┐Cu├ínto Pagan los Compradores?</h3><ul><li>Refinadores en l├¡nea: 90-97% del valor de fusi├│n</li><li>Compradores locales: 85-95%</li><li>Casas de empe├▒o: 50-80%</li></ul>`,
+    es: `<h3>Cómo se Calcula el Valor de Fusión de la Plata</h3><p>El valor de cualquier artículo de plata depende de tres factores: <strong>peso</strong>, <strong>pureza</strong> y <strong>precio spot</strong>. La fórmula es: Valor = Peso (onzas troy) × Pureza × Precio Spot.</p><ul><li><strong>Peso</strong> — El peso total en gramos, onzas troy o kilogramos</li><li><strong>Pureza</strong> — Porcentaje de plata real: 999 fina (99.9%), 925 esterlina (92.5%), 900 moneda (90%)</li><li><strong>Precio Spot</strong> — Precio actual por onza troy en mercados globales como COMEX y LBMA</li></ul><h3>¿Qué es la Plata de Desecho?</h3><p>La plata de desecho es cualquier artículo de plata valorado principalmente por su contenido metálico. Incluye: joyería rota, cubiertos viejos, monedas de plata anteriores a 1965 y residuos industriales.</p><h3>Cómo Identificar Plata Real</h3><p>Busque sellos: 925, 800, 999, STERLING. La plata real NO es magnética. Los artículos chapados (EP, EPNS) contienen muy poca plata y no valen como desecho.</p><h3>¿Cuánto Pagan los Compradores?</h3><ul><li>Refinadores en línea: 90-97% del valor de fusión</li><li>Compradores locales: 85-95%</li><li>Casas de empeño: 50-80%</li></ul>`,
 
-    fr: `<h3>Comment la Valeur de Fonte est Calcul├⌐e</h3><p>La valeur de tout article en argent d├⌐pend de trois facteurs : <strong>poids</strong>, <strong>puret├⌐</strong> et <strong>prix spot</strong>. La formule : Valeur = Poids (once troy) ├ù Puret├⌐ ├ù Prix Spot.</p><ul><li><strong>Poids</strong> ΓÇö En grammes, onces troy ou kilogrammes</li><li><strong>Puret├⌐</strong> ΓÇö Pourcentage d'argent : 999 fin (99.9%), 925 sterling (92.5%), 900 pi├¿ce (90%)</li><li><strong>Prix Spot</strong> ΓÇö Prix actuel sur les march├⌐s mondiaux</li></ul><h3>Qu'est-ce que la Ferraille d'Argent ?</h3><p>Tout article en argent vendu pour sa teneur en m├⌐tal : bijoux cass├⌐s, couverts anciens, pi├¿ces de monnaie en argent. Notre calculateur vous montre la valeur exacte.</p><h3>Comment Identifier le Vrai Argent</h3><p>Cherchez les poin├ºons : 925, 800, 999, STERLING. L'argent r├⌐el n'est PAS magn├⌐tique. Les articles plaqu├⌐s contiennent tr├¿s peu d'argent.</p>`,
+    fr: `<h3>Comment la Valeur de Fonte est Calculée</h3><p>La valeur de tout article en argent dépend de trois facteurs : <strong>poids</strong>, <strong>pureté</strong> et <strong>prix spot</strong>. La formule : Valeur = Poids (once troy) × Pureté × Prix Spot.</p><ul><li><strong>Poids</strong> — En grammes, onces troy ou kilogrammes</li><li><strong>Pureté</strong> — Pourcentage d'argent : 999 fin (99.9%), 925 sterling (92.5%), 900 pièce (90%)</li><li><strong>Prix Spot</strong> — Prix actuel sur les marchés mondiaux</li></ul><h3>Qu'est-ce que la Ferraille d'Argent ?</h3><p>Tout article en argent vendu pour sa teneur en métal : bijoux cassés, couverts anciens, pièces de monnaie en argent. Notre calculateur vous montre la valeur exacte.</p><h3>Comment Identifier le Vrai Argent</h3><p>Cherchez les poin├ºons : 925, 800, 999, STERLING. L'argent réel n'est PAS magnétique. Les articles plaqués contiennent très peu d'argent.</p>`,
 
-    de: `<h3>Wie der Schmelzwert Berechnet Wird</h3><p>Der Wert eines Silberartikels h├ñngt von drei Faktoren ab: <strong>Gewicht</strong>, <strong>Reinheit</strong> und <strong>Spotpreis</strong>. Formel: Wert = Gewicht (Feinunzen) ├ù Reinheit ├ù Spotpreis.</p><ul><li><strong>Gewicht</strong> ΓÇö In Gramm, Feinunzen oder Kilogramm</li><li><strong>Reinheit</strong> ΓÇö Silberanteil: 999 (99.9%), 925 Sterling (92.5%), 900 M├╝nze (90%)</li><li><strong>Spotpreis</strong> ΓÇö Aktueller Marktpreis an B├╢rsen wie COMEX</li></ul><h3>Was ist Silberschrott?</h3><p>Silberschrott umfasst besch├ñdigten Schmuck, altes Besteck, Silberm├╝nzen und industrielle Abf├ñlle ΓÇö alles, was f├╝r seinen Silbergehalt verkauft wird.</p><h3>Echtes Silber Erkennen</h3><p>Suchen Sie nach Stempeln: 925, 800, 999, STERLING. Silber ist NICHT magnetisch. Versilberte Gegenst├ñnde (EP, EPNS) haben kaum Silberwert.</p>`,
+    de: `<h3>Wie der Schmelzwert Berechnet Wird</h3><p>Der Wert eines Silberartikels hängt von drei Faktoren ab: <strong>Gewicht</strong>, <strong>Reinheit</strong> und <strong>Spotpreis</strong>. Formel: Wert = Gewicht (Feinunzen) × Reinheit × Spotpreis.</p><ul><li><strong>Gewicht</strong> — In Gramm, Feinunzen oder Kilogramm</li><li><strong>Reinheit</strong> — Silberanteil: 999 (99.9%), 925 Sterling (92.5%), 900 Münze (90%)</li><li><strong>Spotpreis</strong> — Aktueller Marktpreis an Börsen wie COMEX</li></ul><h3>Was ist Silberschrott?</h3><p>Silberschrott umfasst beschädigten Schmuck, altes Besteck, Silbermünzen und industrielle Abfälle — alles, was für seinen Silbergehalt verkauft wird.</p><h3>Echtes Silber Erkennen</h3><p>Suchen Sie nach Stempeln: 925, 800, 999, STERLING. Silber ist NICHT magnetisch. Versilberte Gegenstände (EP, EPNS) haben kaum Silberwert.</p>`,
 
-    pt: `<h3>Como o Valor de Fus├úo ├⌐ Calculado</h3><p>O valor de qualquer item de prata depende de: <strong>peso</strong>, <strong>pureza</strong> e <strong>pre├ºo spot</strong>. F├│rmula: Valor = Peso (on├ºas troy) ├ù Pureza ├ù Pre├ºo Spot.</p><ul><li><strong>Peso</strong> ΓÇö Em gramas, on├ºas troy ou quilogramas</li><li><strong>Pureza</strong> ΓÇö Porcentagem de prata: 999 (99.9%), 925 esterlina (92.5%), 900 moeda (90%)</li><li><strong>Pre├ºo Spot</strong> ΓÇö Pre├ºo atual nos mercados globais</li></ul><h3>O Que ├⌐ Prata Sucata?</h3><p>Prata sucata inclui joias quebradas, talheres antigos, moedas de prata e res├¡duos industriais vendidos pelo valor do metal.</p>`,
+    pt: `<h3>Como o Valor de Fus├úo é Calculado</h3><p>O valor de qualquer item de prata depende de: <strong>peso</strong>, <strong>pureza</strong> e <strong>pre├ºo spot</strong>. Fórmula: Valor = Peso (on├ºas troy) × Pureza × Pre├ºo Spot.</p><ul><li><strong>Peso</strong> — Em gramas, on├ºas troy ou quilogramas</li><li><strong>Pureza</strong> — Porcentagem de prata: 999 (99.9%), 925 esterlina (92.5%), 900 moeda (90%)</li><li><strong>Pre├ºo Spot</strong> — Pre├ºo atual nos mercados globais</li></ul><h3>O Que é Prata Sucata?</h3><p>Prata sucata inclui joias quebradas, talheres antigos, moedas de prata e resíduos industriais vendidos pelo valor do metal.</p>`,
 
-    hi: `<h3>αñÜαñ╛αñéαñªαÑÇ αñòαñ╛ αñ¬αñ┐αñÿαñ▓ αñ«αÑéαñ▓αÑìαñ» αñòαÑêαñ╕αÑç αñ¿αñ┐αñòαñ╛αñ▓αÑçαñé</h3><p>αñòαñ┐αñ╕αÑÇ αñ¡αÑÇ αñÜαñ╛αñéαñªαÑÇ αñòαÑç αñåαñçαñƒαñ« αñòαñ╛ αñ«αÑéαñ▓αÑìαñ» αññαÑÇαñ¿ αñòαñ╛αñ░αñòαÑïαñé αñ¬αñ░ αñ¿αñ┐αñ░αÑìαñ¡αñ░ αñòαñ░αññαñ╛ αñ╣αÑê: <strong>αñ╡αñ£αñ╝αñ¿</strong>, <strong>αñ╢αÑüαñªαÑìαñºαññαñ╛</strong>, αñöαñ░ <strong>αñ╕αÑìαñ¬αÑëαñƒ αñ«αÑéαñ▓αÑìαñ»</strong>αÑñ αñ╕αÑéαññαÑìαñ░: αñ«αÑéαñ▓αÑìαñ» = αñ╡αñ£αñ╝αñ¿ (αñƒαÑìαñ░αÑëαñ» αñöαñéαñ╕) ├ù αñ╢αÑüαñªαÑìαñºαññαñ╛ ├ù αñ╕αÑìαñ¬αÑëαñƒ αñ«αÑéαñ▓αÑìαñ»αÑñ</p><ul><li><strong>αñ╡αñ£αñ╝αñ¿</strong> ΓÇö αñùαÑìαñ░αñ╛αñ«, αñƒαÑìαñ░αÑëαñ» αñöαñéαñ╕ αñ»αñ╛ αñòαñ┐αñ▓αÑïαñùαÑìαñ░αñ╛αñ« αñ«αÑçαñé</li><li><strong>αñ╢αÑüαñªαÑìαñºαññαñ╛</strong> ΓÇö αñÜαñ╛αñéαñªαÑÇ αñòαñ╛ αñ¬αÑìαñ░αññαñ┐αñ╢αññ: 999 (99.9%), 925 αñ╕αÑìαñƒαñ░αÑìαñ▓αñ┐αñéαñù (92.5%), 900 (90%)</li><li><strong>αñ╕αÑìαñ¬αÑëαñƒ αñ«αÑéαñ▓αÑìαñ»</strong> ΓÇö COMEX αñ£αÑêαñ╕αÑç αñ¼αñ╛αñ£αñ╝αñ╛αñ░αÑïαñé αñ╕αÑç αñ▓αñ╛αñçαñ╡ αñ«αÑéαñ▓αÑìαñ»</li></ul><h3>αñÜαñ╛αñéαñªαÑÇ αñòαñ╛ αñ╕αÑìαñòαÑìαñ░αÑêαñ¬ αñòαÑìαñ»αñ╛ αñ╣αÑê?</h3><p>αñƒαÑéαñƒαÑç αñåαñ¡αÑéαñ╖αñú, αñ¬αÑüαñ░αñ╛αñ¿αÑç αñ¼αñ░αÑìαññαñ¿, αñÜαñ╛αñéαñªαÑÇ αñòαÑç αñ╕αñ┐αñòαÑìαñòαÑç ΓÇö αñòαÑïαñê αñ¡αÑÇ αñÜαÑÇαñ£αñ╝ αñ£αÑï αñàαñ¬αñ¿αÑÇ αñºαñ╛αññαÑü αñ╕αñ╛αñ«αñùαÑìαñ░αÑÇ αñòαÑç αñ▓αñ┐αñÅ αñ¼αÑçαñÜαÑÇ αñ£αñ╛αññαÑÇ αñ╣αÑêαÑñ</p>`,
+    hi: `<h3>αñÜαñ╛αñéαñªαÑÇ αñòαñ╛ αñ¬αñ┐αñÿαñ▓ αñ«αÑéαñ▓αÑìαñ» αñòαÑêαñ╕αÑç αñ¿αñ┐αñòαñ╛αñ▓αÑçαñé</h3><p>αñòαñ┐αñ╕αÑÇ αñ¡αÑÇ αñÜαñ╛αñéαñªαÑÇ αñòαÑç αñåαñçαñƒαñ« αñòαñ╛ αñ«αÑéαñ▓αÑìαñ» αññαÑÇαñ¿ αñòαñ╛αñ░αñòαÑïαñé αñ¬αñ░ αñ¿αñ┐αñ░αÑìαñ¡αñ░ αñòαñ░αññαñ╛ αñ╣αÑê: <strong>αñ╡αñ£αñ╝αñ¿</strong>, <strong>αñ╢αÑüαñªαÑìαñºαññαñ╛</strong>, αñöαñ░ <strong>αñ╕αÑìαñ¬αÑëαñƒ αñ«αÑéαñ▓αÑìαñ»</strong>αÑñ αñ╕αÑéαññαÑìαñ░: αñ«αÑéαñ▓αÑìαñ» = αñ╡αñ£αñ╝αñ¿ (αñƒαÑìαñ░αÑëαñ» αñöαñéαñ╕) × αñ╢αÑüαñªαÑìαñºαññαñ╛ × αñ╕αÑìαñ¬αÑëαñƒ αñ«αÑéαñ▓αÑìαñ»αÑñ</p><ul><li><strong>αñ╡αñ£αñ╝αñ¿</strong> — αñùαÑìαñ░αñ╛αñ«, αñƒαÑìαñ░αÑëαñ» αñöαñéαñ╕ αñ»αñ╛ αñòαñ┐αñ▓αÑïαñùαÑìαñ░αñ╛αñ« αñ«αÑçαñé</li><li><strong>αñ╢αÑüαñªαÑìαñºαññαñ╛</strong> — αñÜαñ╛αñéαñªαÑÇ αñòαñ╛ αñ¬αÑìαñ░αññαñ┐αñ╢αññ: 999 (99.9%), 925 αñ╕αÑìαñƒαñ░αÑìαñ▓αñ┐αñéαñù (92.5%), 900 (90%)</li><li><strong>αñ╕αÑìαñ¬αÑëαñƒ αñ«αÑéαñ▓αÑìαñ»</strong> — COMEX αñ£αÑêαñ╕αÑç αñ¼αñ╛αñ£αñ╝αñ╛αñ░αÑïαñé αñ╕αÑç αñ▓αñ╛αñçαñ╡ αñ«αÑéαñ▓αÑìαñ»</li></ul><h3>αñÜαñ╛αñéαñªαÑÇ αñòαñ╛ αñ╕αÑìαñòαÑìαñ░αÑêαñ¬ αñòαÑìαñ»αñ╛ αñ╣αÑê?</h3><p>αñƒαÑéαñƒαÑç αñåαñ¡αÑéαñ╖αñú, αñ¬αÑüαñ░αñ╛αñ¿αÑç αñ¼αñ░αÑìαññαñ¿, αñÜαñ╛αñéαñªαÑÇ αñòαÑç αñ╕αñ┐αñòαÑìαñòαÑç — αñòαÑïαñê αñ¡αÑÇ αñÜαÑÇαñ£αñ╝ αñ£αÑï αñàαñ¬αñ¿αÑÇ αñºαñ╛αññαÑü αñ╕αñ╛αñ«αñùαÑìαñ░αÑÇ αñòαÑç αñ▓αñ┐αñÅ αñ¼αÑçαñÜαÑÇ αñ£αñ╛αññαÑÇ αñ╣αÑêαÑñ</p>`,
 
-    ur: `<h3>┌å╪º┘å╪»█î ┌⌐█î ┘╛┌»┌╛┘ä ┘é█î┘à╪¬ ┌⌐█î╪│█Æ ┘à╪╣┘ä┘ê┘à ┌⌐╪▒█î┌║</h3><p>┌⌐╪│█î ╪¿┌╛█î ┌å╪º┘å╪»█î ┌⌐█î ┌å█î╪▓ ┌⌐█î ┘é█î┘à╪¬ ╪¬█î┘å ┌å█î╪▓┘ê┌║ ┘╛╪▒ ┘à┘å╪¡╪╡╪▒ █ü█Æ: <strong>┘ê╪▓┘å</strong>╪î <strong>╪«╪º┘ä╪╡█î╪¬</strong>╪î ╪º┘ê╪▒ <strong>╪│┘╛╪º┘╣ ┘é█î┘à╪¬</strong>█ö ┘ü╪º╪▒┘à┘ê┘ä╪º: ┘é█î┘à╪¬ = ┘ê╪▓┘å (┘╣╪▒╪º╪ª█Æ ╪º┘ê┘å╪│) ├ù ╪«╪º┘ä╪╡█î╪¬ ├ù ╪│┘╛╪º┘╣ ┘é█î┘à╪¬█ö</p><ul><li><strong>┘ê╪▓┘å</strong> ΓÇö ┌»╪▒╪º┘à╪î ┘╣╪▒╪º╪ª█Æ ╪º┘ê┘å╪│ █î╪º ┌⌐┘ä┘ê┌»╪▒╪º┘à ┘à█î┌║</li><li><strong>╪«╪º┘ä╪╡█î╪¬</strong> ΓÇö ┌å╪º┘å╪»█î ┌⌐╪º ┘ü█î╪╡╪»: 999 (99.9%)╪î 925 ╪│┘╣╪▒┘ä┘å┌» (92.5%)╪î 900 (90%)</li><li><strong>╪│┘╛╪º┘╣ ┘é█î┘à╪¬</strong> ΓÇö ╪╣╪º┘ä┘à█î ┘à┘å┌ê█î┘ê┌║ ╪│█Æ ┘ä╪º╪ª█î┘ê ┘é█î┘à╪¬</li></ul><h3>┌å╪º┘å╪»█î ┌⌐╪º ╪│┌⌐╪▒█î┘╛ ┌⌐█î╪º █ü█Æ╪ƒ</h3><p>┘╣┘ê┘╣█Æ █ü┘ê╪ª█Æ ╪▓█î┘ê╪▒╪º╪¬╪î ┘╛╪▒╪º┘å█Æ ╪¿╪▒╪¬┘å╪î ┌å╪º┘å╪»█î ┌⌐█Æ ╪│┌⌐█Æ ΓÇö ┌⌐┘ê╪ª█î ╪¿┌╛█î ┌å█î╪▓ ╪¼┘ê ╪º┘╛┘å█î ╪»┌╛╪º╪¬█î ┘é█î┘à╪¬ ┌⌐█Æ ┘ä█î█Æ ╪¿█î┌å█î ╪¼╪º╪ª█Æ█ö</p>`,
+    ur: `<h3>┌å╪º┘å╪»█î ┌⌐█î ┘╛┌»┌╛┘ä ┘é█î┘à╪¬ ┌⌐█î╪│█Æ ┘à╪╣┘ä┘ê┘à ┌⌐╪▒█î┌║</h3><p>┌⌐╪│█î ╪¿┌╛█î ┌å╪º┘å╪»█î ┌⌐█î ┌å█î╪▓ ┌⌐█î ┘é█î┘à╪¬ ╪¬█î┘å ┌å█î╪▓┘ê┌║ ┘╛╪▒ ┘à┘å╪¡╪╡╪▒ █ü█Æ: <strong>┘ê╪▓┘å</strong>╪î <strong>╪«╪º┘ä╪╡█î╪¬</strong>╪î ╪º┘ê╪▒ <strong>╪│┘╛╪º┘╣ ┘é█î┘à╪¬</strong>█ö ┘ü╪º╪▒┘à┘ê┘ä╪º: ┘é█î┘à╪¬ = ┘ê╪▓┘å (┘╣╪▒╪º╪ª█Æ ╪º┘ê┘å╪│) × ╪«╪º┘ä╪╡█î╪¬ × ╪│┘╛╪º┘╣ ┘é█î┘à╪¬█ö</p><ul><li><strong>┘ê╪▓┘å</strong> — ┌»╪▒╪º┘à╪î ┘╣╪▒╪º╪ª█Æ ╪º┘ê┘å╪│ █î╪º ┌⌐┘ä┘ê┌»╪▒╪º┘à ┘à█î┌║</li><li><strong>╪«╪º┘ä╪╡█î╪¬</strong> — ┌å╪º┘å╪»█î ┌⌐╪º ┘ü█î╪╡╪»: 999 (99.9%)╪î 925 ╪│┘╣╪▒┘ä┘å┌» (92.5%)╪î 900 (90%)</li><li><strong>╪│┘╛╪º┘╣ ┘é█î┘à╪¬</strong> — ╪╣╪º┘ä┘à█î ┘à┘å┌ê█î┘ê┌║ ╪│█Æ ┘ä╪º╪ª█î┘ê ┘é█î┘à╪¬</li></ul><h3>┌å╪º┘å╪»█î ┌⌐╪º ╪│┌⌐╪▒█î┘╛ ┌⌐█î╪º █ü█Æ╪ƒ</h3><p>┘╣┘ê┘╣█Æ █ü┘ê╪ª█Æ ╪▓█î┘ê╪▒╪º╪¬╪î ┘╛╪▒╪º┘å█Æ ╪¿╪▒╪¬┘å╪î ┌å╪º┘å╪»█î ┌⌐█Æ ╪│┌⌐█Æ — ┌⌐┘ê╪ª█î ╪¿┌╛█î ┌å█î╪▓ ╪¼┘ê ╪º┘╛┘å█î ╪»┌╛╪º╪¬█î ┘é█î┘à╪¬ ┌⌐█Æ ┘ä█î█Æ ╪¿█î┌å█î ╪¼╪º╪ª█Æ█ö</p>`,
 
-    ar: `<h3>┘â┘è┘ü ┘è╪¬┘à ╪¡╪│╪º╪¿ ┘é┘è┘à╪⌐ ╪º┘ä╪º┘å╪╡┘ç╪º╪▒</h3><p>╪¬╪╣╪¬┘à╪» ┘é┘è┘à╪⌐ ╪ú┘è ┘é╪╖╪╣╪⌐ ┘ü╪╢┘è╪⌐ ╪╣┘ä┘ë ╪½┘ä╪º╪½╪⌐ ╪╣┘ê╪º┘à┘ä: <strong>╪º┘ä┘ê╪▓┘å</strong>╪î <strong>╪º┘ä┘å┘é╪º╪í</strong>╪î ┘ê<strong>╪º┘ä╪│╪╣╪▒ ╪º┘ä┘ü┘ê╪▒┘è</strong>. ╪º┘ä┘à╪╣╪º╪»┘ä╪⌐: ╪º┘ä┘é┘è┘à╪⌐ = ╪º┘ä┘ê╪▓┘å (╪ú┘ê┘é┘è╪⌐ ╪¬╪▒┘ê┘è) ├ù ╪º┘ä┘å┘é╪º╪í ├ù ╪º┘ä╪│╪╣╪▒ ╪º┘ä┘ü┘ê╪▒┘è.</p><ul><li><strong>╪º┘ä┘ê╪▓┘å</strong> ΓÇö ╪¿╪º┘ä╪¼╪▒╪º┘à ╪ú┘ê ╪ú┘ê┘é┘è╪⌐ ╪¬╪▒┘ê┘è ╪ú┘ê ┘â┘è┘ä┘ê╪¼╪▒╪º┘à</li><li><strong>╪º┘ä┘å┘é╪º╪í</strong> ΓÇö ┘å╪│╪¿╪⌐ ╪º┘ä┘ü╪╢╪⌐: 999 (99.9%)╪î 925 ╪Ñ╪│╪¬╪▒┘ä┘è┘å┘è (92.5%)╪î 900 ╪╣┘à┘ä╪⌐ (90%)</li><li><strong>╪º┘ä╪│╪╣╪▒ ╪º┘ä┘ü┘ê╪▒┘è</strong> ΓÇö ╪º┘ä╪│╪╣╪▒ ╪º┘ä╪¡╪º┘ä┘è ┘à┘å ╪º┘ä╪¿┘ê╪▒╪╡╪º╪¬ ╪º┘ä╪╣╪º┘ä┘à┘è╪⌐</li></ul><h3>┘à╪º ┘ç┘è ╪«╪▒╪»╪⌐ ╪º┘ä┘ü╪╢╪⌐╪ƒ</h3><p>╪º┘ä┘à╪¼┘ê┘ç╪▒╪º╪¬ ╪º┘ä┘à┘â╪│┘ê╪▒╪⌐╪î ╪º┘ä╪ú┘ê╪º┘å┘è ╪º┘ä┘é╪»┘è┘à╪⌐╪î ╪º┘ä╪╣┘à┘ä╪º╪¬ ╪º┘ä┘ü╪╢┘è╪⌐ ΓÇö ╪ú┘è ╪┤┘è╪í ┘è┘Å╪¿╪º╪╣ ┘ä┘é┘è┘à╪¬┘ç ╪º┘ä┘à╪╣╪»┘å┘è╪⌐.</p>`,
+    ar: `<h3>┘â┘è┘ü ┘è╪¬┘à ╪¡╪│╪º╪¿ ┘é┘è┘à╪⌐ ╪º┘ä╪º┘å╪╡┘ç╪º╪▒</h3><p>╪¬╪╣╪¬┘à╪» ┘é┘è┘à╪⌐ ╪ú┘è ┘é╪╖╪╣╪⌐ ┘ü╪╢┘è╪⌐ ╪╣┘ä┘ë ╪½┘ä╪º╪½╪⌐ ╪╣┘ê╪º┘à┘ä: <strong>╪º┘ä┘ê╪▓┘å</strong>╪î <strong>╪º┘ä┘å┘é╪º╪í</strong>╪î ┘ê<strong>╪º┘ä╪│╪╣╪▒ ╪º┘ä┘ü┘ê╪▒┘è</strong>. ╪º┘ä┘à╪╣╪º╪»┘ä╪⌐: ╪º┘ä┘é┘è┘à╪⌐ = ╪º┘ä┘ê╪▓┘å (╪ú┘ê┘é┘è╪⌐ ╪¬╪▒┘ê┘è) × ╪º┘ä┘å┘é╪º╪í × ╪º┘ä╪│╪╣╪▒ ╪º┘ä┘ü┘ê╪▒┘è.</p><ul><li><strong>╪º┘ä┘ê╪▓┘å</strong> — ╪¿╪º┘ä╪¼╪▒╪º┘à ╪ú┘ê ╪ú┘ê┘é┘è╪⌐ ╪¬╪▒┘ê┘è ╪ú┘ê ┘â┘è┘ä┘ê╪¼╪▒╪º┘à</li><li><strong>╪º┘ä┘å┘é╪º╪í</strong> — ┘å╪│╪¿╪⌐ ╪º┘ä┘ü╪╢╪⌐: 999 (99.9%)╪î 925 ╪Ñ╪│╪¬╪▒┘ä┘è┘å┘è (92.5%)╪î 900 ╪╣┘à┘ä╪⌐ (90%)</li><li><strong>╪º┘ä╪│╪╣╪▒ ╪º┘ä┘ü┘ê╪▒┘è</strong> — ╪º┘ä╪│╪╣╪▒ ╪º┘ä╪¡╪º┘ä┘è ┘à┘å ╪º┘ä╪¿┘ê╪▒╪╡╪º╪¬ ╪º┘ä╪╣╪º┘ä┘à┘è╪⌐</li></ul><h3>┘à╪º ┘ç┘è ╪«╪▒╪»╪⌐ ╪º┘ä┘ü╪╢╪⌐╪ƒ</h3><p>╪º┘ä┘à╪¼┘ê┘ç╪▒╪º╪¬ ╪º┘ä┘à┘â╪│┘ê╪▒╪⌐╪î ╪º┘ä╪ú┘ê╪º┘å┘è ╪º┘ä┘é╪»┘è┘à╪⌐╪î ╪º┘ä╪╣┘à┘ä╪º╪¬ ╪º┘ä┘ü╪╢┘è╪⌐ — ╪ú┘è ╪┤┘è╪í ┘è┘Å╪¿╪º╪╣ ┘ä┘é┘è┘à╪¬┘ç ╪º┘ä┘à╪╣╪»┘å┘è╪⌐.</p>`,
 
-    tr: `<h3>Eritme De─ƒeri Nas─▒l Hesaplan─▒r</h3><p>Herhangi bir g├╝m├╝┼ƒ e┼ƒyan─▒n de─ƒeri ├╝├º fakt├╢re ba─ƒl─▒d─▒r: <strong>a─ƒ─▒rl─▒k</strong>, <strong>safl─▒k</strong> ve <strong>spot fiyat</strong>. Form├╝l: De─ƒer = A─ƒ─▒rl─▒k (troy ons) ├ù Safl─▒k ├ù Spot Fiyat.</p><ul><li><strong>A─ƒ─▒rl─▒k</strong> ΓÇö Gram, troy ons veya kilogram cinsinden</li><li><strong>Safl─▒k</strong> ΓÇö G├╝m├╝┼ƒ y├╝zdesi: 999 (%99.9), 925 ayar (%92.5), 900 (%90)</li><li><strong>Spot Fiyat</strong> ΓÇö COMEX gibi borsalardan canl─▒ fiyat</li></ul><h3>Hurda G├╝m├╝┼ƒ Nedir?</h3><p>K─▒r─▒k tak─▒lar, eski sofra tak─▒mlar─▒, g├╝m├╝┼ƒ paralar ΓÇö metal de─ƒeri i├ºin sat─▒lan her ┼ƒey.</p>`,
+    tr: `<h3>Eritme De─ƒeri Nas─▒l Hesaplan─▒r</h3><p>Herhangi bir gümü┼ƒ e┼ƒyan─▒n de─ƒeri ü├º faktöre ba─ƒl─▒d─▒r: <strong>a─ƒ─▒rl─▒k</strong>, <strong>safl─▒k</strong> ve <strong>spot fiyat</strong>. Formül: De─ƒer = A─ƒ─▒rl─▒k (troy ons) × Safl─▒k × Spot Fiyat.</p><ul><li><strong>A─ƒ─▒rl─▒k</strong> — Gram, troy ons veya kilogram cinsinden</li><li><strong>Safl─▒k</strong> — Gümü┼ƒ yüzdesi: 999 (%99.9), 925 ayar (%92.5), 900 (%90)</li><li><strong>Spot Fiyat</strong> — COMEX gibi borsalardan canl─▒ fiyat</li></ul><h3>Hurda Gümü┼ƒ Nedir?</h3><p>K─▒r─▒k tak─▒lar, eski sofra tak─▒mlar─▒, gümü┼ƒ paralar — metal de─ƒeri i├ºin sat─▒lan her ┼ƒey.</p>`,
 
-    it: `<h3>Come si Calcola il Valore di Fusione</h3><p>Il valore di qualsiasi articolo in argento dipende da: <strong>peso</strong>, <strong>purezza</strong> e <strong>prezzo spot</strong>. Formula: Valore = Peso (oncia troy) ├ù Purezza ├ù Prezzo Spot.</p><ul><li><strong>Peso</strong> ΓÇö In grammi, once troy o chilogrammi</li><li><strong>Purezza</strong> ΓÇö Percentuale di argento: 999 (99.9%), 925 sterling (92.5%), 900 moneta (90%)</li><li><strong>Prezzo Spot</strong> ΓÇö Prezzo attuale dai mercati globali</li></ul><h3>Cos'├¿ l'Argento Rottame?</h3><p>Gioielli rotti, argenteria vecchia, monete d'argento ΓÇö qualsiasi cosa venduta per il suo contenuto metallico.</p>`,
+    it: `<h3>Come si Calcola il Valore di Fusione</h3><p>Il valore di qualsiasi articolo in argento dipende da: <strong>peso</strong>, <strong>purezza</strong> e <strong>prezzo spot</strong>. Formula: Valore = Peso (oncia troy) × Purezza × Prezzo Spot.</p><ul><li><strong>Peso</strong> — In grammi, once troy o chilogrammi</li><li><strong>Purezza</strong> — Percentuale di argento: 999 (99.9%), 925 sterling (92.5%), 900 moneta (90%)</li><li><strong>Prezzo Spot</strong> — Prezzo attuale dai mercati globali</li></ul><h3>Cos'è l'Argento Rottame?</h3><p>Gioielli rotti, argenteria vecchia, monete d'argento — qualsiasi cosa venduta per il suo contenuto metallico.</p>`,
 
-    zh: `<h3>τÖ╜Θô╢τåöτé╝Σ╗╖σÇ╝σªéΣ╜òΦ«íτ«ù</h3><p>Σ╗╗Σ╜òτÖ╜Θô╢τë⌐σôüτÜäΣ╗╖σÇ╝σÅûσå│Σ║ÄΣ╕ëΣ╕¬σ¢áτ┤á∩╝Ü<strong>ΘçìΘçÅ</strong>πÇü<strong>τ║»σ║ª</strong>σÆî<strong>τÄ░Φ┤ºΣ╗╖µá╝</strong>πÇéσà¼σ╝Å∩╝ÜΣ╗╖σÇ╝ = ΘçìΘçÅ∩╝êΘçæΦííτ¢ÄσÅ╕∩╝ë├ù τ║»σ║ª ├ù τÄ░Φ┤ºΣ╗╖µá╝πÇé</p><ul><li><strong>ΘçìΘçÅ</strong> ΓÇö Σ╗ÑσàïπÇüΘçæΦííτ¢ÄσÅ╕µêûσìâσàïΣ╕║σìòΣ╜ì</li><li><strong>τ║»σ║ª</strong> ΓÇö Θô╢σÉ½ΘçÅτÖ╛σêåµ»ö∩╝Ü999τ║»Θô╢(99.9%)πÇü925τ║»Θô╢(92.5%)πÇü900Θô╢σ╕ü(90%)</li><li><strong>τÄ░Φ┤ºΣ╗╖µá╝</strong> ΓÇö µ¥ÑΦç¬COMEXτ¡ëσà¿τÉâΣ║ñµÿôµëÇτÜäσ«₧µù╢Σ╗╖µá╝</li></ul><h3>Σ╗ÇΣ╣êµÿ»σ║ƒΘô╢∩╝ƒ</h3><p>τá┤µìƒτÜäΘªûΘÑ░πÇüµùºΘô╢σÖ¿πÇüΘô╢σ╕ü ΓÇö Σ╗╗Σ╜òΣ╗Ñσà╢Θçæσ▒₧σÉ½ΘçÅσç║σö«τÜäΘô╢σê╢σôüπÇé</p>`,
+    zh: `<h3>τÖ╜Θô╢τåöτé╝Σ╗╖σÇ╝σªéΣ╜òΦ«íτ«ù</h3><p>Σ╗╗Σ╜òτÖ╜Θô╢τë⌐σôüτÜäΣ╗╖σÇ╝σÅûσå│Σ║ÄΣ╕ëΣ╕¬σ¢áτ┤á∩╝Ü<strong>ΘçìΘçÅ</strong>πÇü<strong>τ║»σ║ª</strong>σÆî<strong>τÄ░Φ┤ºΣ╗╖µá╝</strong>πÇéσà¼σ╝Å∩╝ÜΣ╗╖σÇ╝ = ΘçìΘçÅ∩╝êΘçæΦííτ¢ÄσÅ╕∩╝ë× τ║»σ║ª × τÄ░Φ┤ºΣ╗╖µá╝πÇé</p><ul><li><strong>ΘçìΘçÅ</strong> — Σ╗ÑσàïπÇüΘçæΦííτ¢ÄσÅ╕µêûσìâσàïΣ╕║σìòΣ╜ì</li><li><strong>τ║»σ║ª</strong> — Θô╢σÉ½ΘçÅτÖ╛σêåµ»ö∩╝Ü999τ║»Θô╢(99.9%)πÇü925τ║»Θô╢(92.5%)πÇü900Θô╢σ╕ü(90%)</li><li><strong>τÄ░Φ┤ºΣ╗╖µá╝</strong> — µ¥ÑΦç¬COMEXτ¡ëσà¿τÉâΣ║ñµÿôµëÇτÜäσ«₧µù╢Σ╗╖µá╝</li></ul><h3>Σ╗ÇΣ╣êµÿ»σ║ƒΘô╢∩╝ƒ</h3><p>τá┤µìƒτÜäΘªûΘÑ░πÇüµùºΘô╢σÖ¿πÇüΘô╢σ╕ü — Σ╗╗Σ╜òΣ╗Ñσà╢Θçæσ▒₧σÉ½ΘçÅσç║σö«τÜäΘô╢σê╢σôüπÇé</p>`,
 
-    ru: `<h3>╨Ü╨░╨║ ╨á╨░╤ü╤ü╤ç╨╕╤é╤ï╨▓╨░╨╡╤é╤ü╤Å ╨í╤é╨╛╨╕╨╝╨╛╤ü╤é╤î ╨ƒ╨╗╨░╨▓╨║╨╕</h3><p>╨í╤é╨╛╨╕╨╝╨╛╤ü╤é╤î ╨╗╤Ä╨▒╨╛╨│╨╛ ╤ü╨╡╤Ç╨╡╨▒╤Ç╤Å╨╜╨╛╨│╨╛ ╨╕╨╖╨┤╨╡╨╗╨╕╤Å ╨╖╨░╨▓╨╕╤ü╨╕╤é ╨╛╤é ╤é╤Ç╤æ╤à ╤ä╨░╨║╤é╨╛╤Ç╨╛╨▓: <strong>╨▓╨╡╤ü</strong>, <strong>╤ç╨╕╤ü╤é╨╛╤é╨░</strong> ╨╕ <strong>╤ü╨┐╨╛╤é-╤å╨╡╨╜╨░</strong>. ╨ñ╨╛╤Ç╨╝╤â╨╗╨░: ╨í╤é╨╛╨╕╨╝╨╛╤ü╤é╤î = ╨Æ╨╡╤ü (╤é╤Ç╨╛╨╣╤ü╨║╨╕╨╡ ╤â╨╜╤å╨╕╨╕) ├ù ╨º╨╕╤ü╤é╨╛╤é╨░ ├ù ╨í╨┐╨╛╤é-╤å╨╡╨╜╨░.</p><ul><li><strong>╨Æ╨╡╤ü</strong> ΓÇö ╨Æ ╨│╤Ç╨░╨╝╨╝╨░╤à, ╤é╤Ç╨╛╨╣╤ü╨║╨╕╤à ╤â╨╜╤å╨╕╤Å╤à ╨╕╨╗╨╕ ╨║╨╕╨╗╨╛╨│╤Ç╨░╨╝╨╝╨░╤à</li><li><strong>╨º╨╕╤ü╤é╨╛╤é╨░</strong> ΓÇö ╨ƒ╤Ç╨╛╤å╨╡╨╜╤é ╤ü╨╡╤Ç╨╡╨▒╤Ç╨░: 999 (99.9%), 925 ╤ü╤é╨╡╤Ç╨╗╨╕╨╜╨│ (92.5%), 900 ╨╝╨╛╨╜╨╡╤é╨╜╨╛╨╡ (90%)</li><li><strong>╨í╨┐╨╛╤é-╤å╨╡╨╜╨░</strong> ΓÇö ╨ó╨╡╨║╤â╤ë╨░╤Å ╤å╨╡╨╜╨░ ╤ü ╨╝╨╕╤Ç╨╛╨▓╤ï╤à ╨▒╨╕╤Ç╨╢</li></ul><h3>╨º╤é╨╛ ╨ó╨░╨║╨╛╨╡ ╨í╨╡╤Ç╨╡╨▒╤Ç╤Å╨╜╤ï╨╣ ╨¢╨╛╨╝?</h3><p>╨í╨╗╨╛╨╝╨░╨╜╨╜╤ï╨╡ ╤â╨║╤Ç╨░╤ê╨╡╨╜╨╕╤Å, ╤ü╤é╨░╤Ç╨╛╨╡ ╤ü╤é╨╛╨╗╨╛╨▓╨╛╨╡ ╤ü╨╡╤Ç╨╡╨▒╤Ç╨╛, ╤ü╨╡╤Ç╨╡╨▒╤Ç╤Å╨╜╤ï╨╡ ╨╝╨╛╨╜╨╡╤é╤ï ΓÇö ╨▓╤ü╤æ, ╤ç╤é╨╛ ╨┐╤Ç╨╛╨┤╨░╤æ╤é╤ü╤Å ╨╖╨░ ╨╝╨╡╤é╨░╨╗╨╗╨╕╤ç╨╡╤ü╨║╨╛╨╡ ╤ü╨╛╨┤╨╡╤Ç╨╢╨░╨╜╨╕╨╡.</p>`,
+    ru: `<h3>╨Ü╨░╨║ ╨á╨░╤ü╤ü╤ç╨╕╤é╤ï╨▓╨░╨╡╤é╤ü╤Å ╨í╤é╨╛╨╕╨╝╨╛╤ü╤é╤î ╨ƒ╨╗╨░╨▓╨║╨╕</h3><p>╨í╤é╨╛╨╕╨╝╨╛╤ü╤é╤î ╨╗╤Ä╨▒╨╛╨│╨╛ ╤ü╨╡╤Ç╨╡╨▒╤Ç╤Å╨╜╨╛╨│╨╛ ╨╕╨╖╨┤╨╡╨╗╨╕╤Å ╨╖╨░╨▓╨╕╤ü╨╕╤é ╨╛╤é ╤é╤Ç╤æ╤à ╤ä╨░╨║╤é╨╛╤Ç╨╛╨▓: <strong>╨▓╨╡╤ü</strong>, <strong>╤ç╨╕╤ü╤é╨╛╤é╨░</strong> ╨╕ <strong>╤ü╨┐╨╛╤é-╤å╨╡╨╜╨░</strong>. ╨ñ╨╛╤Ç╨╝╤â╨╗╨░: ╨í╤é╨╛╨╕╨╝╨╛╤ü╤é╤î = ╨Æ╨╡╤ü (╤é╤Ç╨╛╨╣╤ü╨║╨╕╨╡ ╤â╨╜╤å╨╕╨╕) × ╨º╨╕╤ü╤é╨╛╤é╨░ × ╨í╨┐╨╛╤é-╤å╨╡╨╜╨░.</p><ul><li><strong>╨Æ╨╡╤ü</strong> — ╨Æ ╨│╤Ç╨░╨╝╨╝╨░╤à, ╤é╤Ç╨╛╨╣╤ü╨║╨╕╤à ╤â╨╜╤å╨╕╤Å╤à ╨╕╨╗╨╕ ╨║╨╕╨╗╨╛╨│╤Ç╨░╨╝╨╝╨░╤à</li><li><strong>╨º╨╕╤ü╤é╨╛╤é╨░</strong> — ╨ƒ╤Ç╨╛╤å╨╡╨╜╤é ╤ü╨╡╤Ç╨╡╨▒╤Ç╨░: 999 (99.9%), 925 ╤ü╤é╨╡╤Ç╨╗╨╕╨╜╨│ (92.5%), 900 ╨╝╨╛╨╜╨╡╤é╨╜╨╛╨╡ (90%)</li><li><strong>╨í╨┐╨╛╤é-╤å╨╡╨╜╨░</strong> — ╨ó╨╡╨║╤â╤ë╨░╤Å ╤å╨╡╨╜╨░ ╤ü ╨╝╨╕╤Ç╨╛╨▓╤ï╤à ╨▒╨╕╤Ç╨╢</li></ul><h3>╨º╤é╨╛ ╨ó╨░╨║╨╛╨╡ ╨í╨╡╤Ç╨╡╨▒╤Ç╤Å╨╜╤ï╨╣ ╨¢╨╛╨╝?</h3><p>╨í╨╗╨╛╨╝╨░╨╜╨╜╤ï╨╡ ╤â╨║╤Ç╨░╤ê╨╡╨╜╨╕╤Å, ╤ü╤é╨░╤Ç╨╛╨╡ ╤ü╤é╨╛╨╗╨╛╨▓╨╛╨╡ ╤ü╨╡╤Ç╨╡╨▒╤Ç╨╛, ╤ü╨╡╤Ç╨╡╨▒╤Ç╤Å╨╜╤ï╨╡ ╨╝╨╛╨╜╨╡╤é╤ï — ╨▓╤ü╤æ, ╤ç╤é╨╛ ╨┐╤Ç╨╛╨┤╨░╤æ╤é╤ü╤Å ╨╖╨░ ╨╝╨╡╤é╨░╨╗╨╗╨╕╤ç╨╡╤ü╨║╨╛╨╡ ╤ü╨╛╨┤╨╡╤Ç╨╢╨░╨╜╨╕╨╡.</p>`,
   };
   return content[code] || content['es'];
 }
@@ -521,34 +523,34 @@ function getDefaultContentBody(code) {
 function getFAQItems(code, t) {
   const faqs = {
     es: [
-      ['┬┐Qu├⌐ tan precisa es esta calculadora?', 'Nuestra calculadora utiliza precios spot en vivo y f├│rmulas precisas. El valor mostrado es te├│rico; los compradores pagan 80-97% del valor de fusi├│n.'],
-      ['┬┐C├│mo s├⌐ qu├⌐ pureza tiene mi plata?', 'Busque sellos: 925 (esterlina), 999 (fina), 800. Si no hay sello, un joyero puede hacer una prueba de ├ícido.'],
-      ['┬┐Por qu├⌐ cambia el precio durante el d├¡a?', 'La plata se cotiza en mercados globales como COMEX. El precio fluct├║a por oferta, demanda y condiciones econ├│micas.'],
-      ['┬┐Cu├íl es la diferencia entre valor de fusi├│n y valor de reventa?', 'El valor de fusi├│n es el valor del metal puro. Monedas raras o joyer├¡a antigua pueden valer m├ís.'],
-      ['┬┐Qu├⌐ es una onza troy?', 'Una onza troy (31.1035g) es la unidad est├índar para metales preciosos. Es ~10% m├ís pesada que una onza regular.'],
-      ['┬┐Cu├ínto vale mi plata esterlina?', 'La plata esterlina (marcada 925) es 92.5% de plata pura. Utilice nuestra calculadora de plata esterlina o ingrese el peso de su art├¡culo para ver el valor exacto seg├║n el mercado actual.'],
-      ['┬┐Tienen valor de desecho los cubiertos ba├▒ados en plata?', 'Los art├¡culos ba├▒ados en plata (Silver Plate, EPNS) contienen una capa muy delgada sobre metal base y generalmente solo valen $1-5. Solo los art├¡culos de plata s├│lida (marcados 925, 800, 999 o STERLING) tienen valor significativo como desecho.'],
-      ['┬┐Qu├⌐ son las monedas de plata antiguas (junk silver) y c├│mo calculo su valor?', 'Las denominadas "junk silver" son monedas de EE. UU. anteriores a 1965 (de diez, veinticinco centavos y medio d├│lar) que contienen un 90% de plata. $1 de valor nominal contiene 0.715 oz troy de plata. Utilice nuestra calculadora espec├¡fica introduciendo el valor nominal.'],
-      ['┬┐C├│mo vendo mi plata al mejor precio?', 'Primero conozca su valor de fusi├│n con nuestra calculadora. Luego: 1) obtenga 3+ cotizaciones, 2) prefiera refinadores en l├¡nea (pagan 90-97% del valor) frente a casas de empe├▒o (pagan 50-80%), y 3) venda en grandes lotes si es posible.'],
-      ['┬┐Puedo calcular varios art├¡culos de plata a la vez?', '┬íS├¡! Nuestra calculadora por lotes le permite agregar m├║ltiples art├¡culos con diferentes pesos y purezas, y le mostrar├í el valor total combinado listo para imprimir o copiar al visitar al comprador.'],
-      ['┬┐Qu├⌐ significa 925 en la plata?', 'El sello 925 significa que el art├¡culo es de plata esterlina: 92.5% de plata pura y 7.5% de aleaci├│n de cobre. Es la marca de pureza de plata m├ís com├║n en todo el mundo.'],
-      ['┬┐C├│mo afectan los precios spot de la plata al valor de desecho?', 'El valor de la plata se mueve en sincron├¡a con el precio spot internacional. Cuando el spot sube un 10%, su plata de desecho vale un 10% m├ís. Los precios spot se fijan en el mercado COMEX y se negocian casi 24/5.'],
+      ['¿Qué tan precisa es esta calculadora?', 'Nuestra calculadora utiliza precios spot en vivo y fórmulas precisas. El valor mostrado es teórico; los compradores pagan 80-97% del valor de fusión.'],
+      ['¿Cómo sé qué pureza tiene mi plata?', 'Busque sellos: 925 (esterlina), 999 (fina), 800. Si no hay sello, un joyero puede hacer una prueba de ácido.'],
+      ['¿Por qué cambia el precio durante el día?', 'La plata se cotiza en mercados globales como COMEX. El precio fluctúa por oferta, demanda y condiciones económicas.'],
+      ['¿Cuál es la diferencia entre valor de fusión y valor de reventa?', 'El valor de fusión es el valor del metal puro. Monedas raras o joyería antigua pueden valer más.'],
+      ['¿Qué es una onza troy?', 'Una onza troy (31.1035g) es la unidad estándar para metales preciosos. Es ~10% más pesada que una onza regular.'],
+      ['¿Cuánto vale mi plata esterlina?', 'La plata esterlina (marcada 925) es 92.5% de plata pura. Utilice nuestra calculadora de plata esterlina o ingrese el peso de su artículo para ver el valor exacto según el mercado actual.'],
+      ['¿Tienen valor de desecho los cubiertos bañados en plata?', 'Los artículos bañados en plata (Silver Plate, EPNS) contienen una capa muy delgada sobre metal base y generalmente solo valen $1-5. Solo los artículos de plata sólida (marcados 925, 800, 999 o STERLING) tienen valor significativo como desecho.'],
+      ['¿Qué son las monedas de plata antiguas (junk silver) y cómo calculo su valor?', 'Las denominadas "junk silver" son monedas de EE. UU. anteriores a 1965 (de diez, veinticinco centavos y medio dólar) que contienen un 90% de plata. $1 de valor nominal contiene 0.715 oz troy de plata. Utilice nuestra calculadora específica introduciendo el valor nominal.'],
+      ['¿Cómo vendo mi plata al mejor precio?', 'Primero conozca su valor de fusión con nuestra calculadora. Luego: 1) obtenga 3+ cotizaciones, 2) prefiera refinadores en línea (pagan 90-97% del valor) frente a casas de empeño (pagan 50-80%), y 3) venda en grandes lotes si es posible.'],
+      ['¿Puedo calcular varios artículos de plata a la vez?', '¡Sí! Nuestra calculadora por lotes le permite agregar múltiples artículos con diferentes pesos y purezas, y le mostrará el valor total combinado listo para imprimir o copiar al visitar al comprador.'],
+      ['¿Qué significa 925 en la plata?', 'El sello 925 significa que el artículo es de plata esterlina: 92.5% de plata pura y 7.5% de aleación de cobre. Es la marca de pureza de plata más común en todo el mundo.'],
+      ['¿Cómo afectan los precios spot de la plata al valor de desecho?', 'El valor de la plata se mueve en sincronía con el precio spot internacional. Cuando el spot sube un 10%, su plata de desecho vale un 10% más. Los precios spot se fijan en el mercado COMEX y se negocian casi 24/5.'],
     ],
     fr: [
-      ['Quelle est la pr├⌐cision de ce calculateur ?', 'Notre calculateur utilise des prix spot en direct. La valeur affich├⌐e est th├⌐orique ; les acheteurs paient 80-97% de la valeur de fonte.'],
-      ['Comment conna├«tre la puret├⌐ de mon argent ?', 'Cherchez les poin├ºons : 925, 999, 800, STERLING. Un bijoutier peut effectuer un test d\'acide.'],
-      ['Pourquoi le prix change-t-il pendant la journ├⌐e ?', 'L\'argent est cot├⌐ sur les march├⌐s mondiaux. Le prix fluctue selon l\'offre et la demande.'],
-      ['Qu\'est-ce qu\'une once troy ?', 'Une once troy (31.1035g) est l\'unit├⌐ standard des m├⌐taux pr├⌐cieux, ~10% plus lourde qu\'une once r├⌐guli├¿re.'],
+      ['Quelle est la précision de ce calculateur ?', 'Notre calculateur utilise des prix spot en direct. La valeur affichée est théorique ; les acheteurs paient 80-97% de la valeur de fonte.'],
+      ['Comment conna├«tre la pureté de mon argent ?', 'Cherchez les poin├ºons : 925, 999, 800, STERLING. Un bijoutier peut effectuer un test d\'acide.'],
+      ['Pourquoi le prix change-t-il pendant la journée ?', 'L\'argent est coté sur les marchés mondiaux. Le prix fluctue selon l\'offre et la demande.'],
+      ['Qu\'est-ce qu\'une once troy ?', 'Une once troy (31.1035g) est l\'unité standard des métaux précieux, ~10% plus lourde qu\'une once régulière.'],
     ],
     de: [
-      ['Wie genau ist dieser Rechner?', 'Unser Rechner verwendet Live-Spotpreise. Der angezeigte Wert ist theoretisch; H├ñndler zahlen 80-97% des Schmelzwerts.'],
+      ['Wie genau ist dieser Rechner?', 'Unser Rechner verwendet Live-Spotpreise. Der angezeigte Wert ist theoretisch; Händler zahlen 80-97% des Schmelzwerts.'],
       ['Why does the price change?', 'Silver trades on global exchanges. Price fluctuates with supply and demand.'],
       ['What is a troy ounce?', 'A troy ounce (31.1035g) is the standard unit for precious metals, ~10% heavier than a regular ounce.'],
     ],
     pt: [
-      ['Qu├úo precisa ├⌐ esta calculadora?', 'Nossa calculadora usa pre├ºos spot ao vivo. O valor exibido ├⌐ te├│rico; compradores pagam 80-97%.'],
-      ['Como sei a pureza da minha prata?', 'Procure marcas: 925, 999, 800. Um joalheiro pode fazer um teste de ├ícido.'],
-      ['Por que o pre├ºo muda?', 'A prata ├⌐ negociada globalmente. O pre├ºo flutua com a oferta e a demanda.'],
+      ['Qu├úo precisa é esta calculadora?', 'Nossa calculadora usa pre├ºos spot ao vivo. O valor exibido é teórico; compradores pagam 80-97%.'],
+      ['Como sei a pureza da minha prata?', 'Procure marcas: 925, 999, 800. Um joalheiro pode fazer um teste de ácido.'],
+      ['Por que o pre├ºo muda?', 'A prata é negociada globalmente. O pre├ºo flutua com a oferta e a demanda.'],
     ],
     hi: [
       ['αñ»αñ╣ αªòαºìαª»αª╛αª▓αªòαºüαª▓αºçαªƒαª░ αñòαñ┐αññαñ¿αñ╛ αñ╕αñƒαÑÇαñò αñ╣αÑê?', 'αñ╣αñ« αñ▓αñ╛αñçαñ╡ αñ╕αÑìαñ¬αÑëαñƒ αñ«αÑéαñ▓αÑìαñ» αñòαñ╛ αñëαñ¬αñ»αÑïαñù αñòαñ░αññαÑç αñ╣αÑêαñéαÑñ αñªαñ┐αñûαñ╛αñ»αñ╛ αñùαñ»αñ╛ αñ«αÑéαñ▓αÑìαñ» αñºαñ╛αññαÑü αñòαñ╛ αñ╣αÑê; αñûαñ░αÑÇαñªαñ╛αñ░ 80-97% αñªαÑçαññαÑç αñ╣αÑêαñéαÑñ'],
@@ -566,14 +568,14 @@ function getFAQItems(code, t) {
       ['┘ä┘à╪º╪░╪º ┘è╪¬╪║┘è╪▒ ╪º┘ä╪│╪╣╪▒╪ƒ', '╪º┘ä┘ü╪╢╪⌐ ╪¬╪¬╪»╪º┘ê┘ä ┘ü┘è ╪º┘ä╪ú╪│┘ê╪º┘é ╪º┘ä╪╣╪º┘ä┘à┘è╪⌐. ┘è╪¬╪║┘è╪▒ ╪º┘ä╪│╪╣╪▒ ┘à╪╣ ╪º┘ä╪╣╪▒╪╢ ┘ê╪º┘ä╪╖┘ä╪¿.'],
     ],
     tr: [
-      ['Bu hesap makinesi ne kadar do─ƒru?', 'Canl─▒ spot fiyatlar─▒ kullan─▒yoruz. G├╢sterilen de─ƒer teoriktir; al─▒c─▒lar %80-97 ├╢der.'],
-      ['G├╝m├╝┼ƒ├╝m├╝n safl─▒─ƒ─▒n─▒ nas─▒l anlar─▒m?', 'Damgalara bak─▒n: 925, 999, 800.'],
-      ['Fiyat neden de─ƒi┼ƒiyor?', 'G├╝m├╝┼ƒ k├╝resel borsalarda i┼ƒlem g├╢r├╝r. Fiyat arz ve talebe g├╢re dalgalan─▒r.'],
+      ['Bu hesap makinesi ne kadar do─ƒru?', 'Canl─▒ spot fiyatlar─▒ kullan─▒yoruz. Gösterilen de─ƒer teoriktir; al─▒c─▒lar %80-97 öder.'],
+      ['Gümü┼ƒümün safl─▒─ƒ─▒n─▒ nas─▒l anlar─▒m?', 'Damgalara bak─▒n: 925, 999, 800.'],
+      ['Fiyat neden de─ƒi┼ƒiyor?', 'Gümü┼ƒ küresel borsalarda i┼ƒlem görür. Fiyat arz ve talebe göre dalgalan─▒r.'],
     ],
     it: [
-      ['Quanto ├¿ accurato questo calcolatore?', 'Usiamo prezzi spot in tempo reale. Il valore mostrato ├¿ teorico; gli acquirenti pagano l\'80-97%.'],
+      ['Quanto è accurato questo calcolatore?', 'Usiamo prezzi spot in tempo reale. Il valore mostrato è teorico; gli acquirenti pagano l\'80-97%.'],
       ['Come verifico la purezza?', 'Cerca i marchi: 925, 999, 800. Un gioielliere pu├▓ fare un test con acido.'],
-      ['Perch├⌐ il prezzo cambia?', 'L\'argento ├¿ scambiato sui mercati globali. Il prezzo fluttua con la domanda e l\'offerta.'],
+      ['Perché il prezzo cambia?', 'L\'argento è scambiato sui mercati globali. Il prezzo fluttua con la domanda e l\'offerta.'],
     ],
     zh: [
       ['Φ┐ÖΣ╕¬Φ«íτ«ùσÖ¿µ£ëσñÜσçåτí«∩╝ƒ', 'µêæΣ╗¼Σ╜┐τö¿σ«₧µù╢τÄ░Φ┤ºΣ╗╖µá╝πÇéµÿ╛τñ║τÜäσÇ╝µÿ»τÉåΦ«║Σ╕èτÜäτåöτé╝Σ╗╖σÇ╝∩╝¢Σ╣░σ«╢µö»Σ╗ÿ80-97%πÇé'],
@@ -609,12 +611,12 @@ function getMenuTranslations(code) {
       "Calculators": "Calculadoras",
       "Silver Scrap Calculator": "Calculadora de Plata de Desecho",
       "Gold & Silver Calculator": "Calculadora de Oro y Plata",
-      "Silver Melt Value": "Valor de Fusi├│n de la Plata",
+      "Silver Melt Value": "Valor de Fusión de la Plata",
       "Sterling Silver Calculator": "Calculadora de Plata Esterlina",
       "Junk Silver Calculator": "Calculadora de Plata Basura",
       "Silver Coin Value": "Valor de Moneda de Plata",
       "Silver Bar Value": "Valor de Lingote de Plata",
-      "Silver Jewelry Value": "Valor de Joyer├¡a de Plata",
+      "Silver Jewelry Value": "Valor de Joyería de Plata",
       "Silverware Value": "Valor de Cubiertos de Plata",
       "Purity": "Pureza",
       "999 Fine Silver": "Plata Fina 999",
@@ -643,39 +645,39 @@ function getMenuTranslations(code) {
       "Weight Converter": "Conversor de Peso",
       "Pennyweight (DWT) Calc": "Calculadora Pennyweight (DWT)",
       "Tola Calculator": "Calculadora Tola",
-      "Sell or Hold Analysis": "An├ílisis de Vender o Mantener",
+      "Sell or Hold Analysis": "Análisis de Vender o Mantener",
       "Silver Identifier": "Identificador de Plata",
-      "Guides": "Gu├¡as",
-      "How to Use Our Calculators": "C├│mo Usar Nuestras Calculadoras",
-      "What Is Silver Scrap?": "┬┐Qu├⌐ es la Plata de Desecho?",
-      "What Is Melt Value?": "┬┐Qu├⌐ es el Valor de Fusi├│n?",
-      "What Is Junk Silver?": "┬┐Qu├⌐ es la Plata Basura?",
-      "What Is a Troy Ounce?": "┬┐Qu├⌐ es una Onza Troy?",
-      "What Is Silver Bullion?": "┬┐Qu├⌐ es un Lingote de Plata?",
-      "How Silver Prices Work": "C├│mo Funcionan los Precios de la Plata",
-      "Silver Hallmarks Guide": "Gu├¡a de Sellos de Plata",
-      "What Does 925 Mean?": "┬┐Qu├⌐ Significa 925?",
-      "What Is Sterling Silver?": "┬┐Qu├⌐ es la Plata Esterlina?",
-      "How to Sell Silver": "C├│mo Vender Plata",
+      "Guides": "Guías",
+      "How to Use Our Calculators": "Cómo Usar Nuestras Calculadoras",
+      "What Is Silver Scrap?": "¿Qué es la Plata de Desecho?",
+      "What Is Melt Value?": "¿Qué es el Valor de Fusión?",
+      "What Is Junk Silver?": "¿Qué es la Plata Basura?",
+      "What Is a Troy Ounce?": "¿Qué es una Onza Troy?",
+      "What Is Silver Bullion?": "¿Qué es un Lingote de Plata?",
+      "How Silver Prices Work": "Cómo Funcionan los Precios de la Plata",
+      "Silver Hallmarks Guide": "Guía de Sellos de Plata",
+      "What Does 925 Mean?": "¿Qué Significa 925?",
+      "What Is Sterling Silver?": "¿Qué es la Plata Esterlina?",
+      "How to Sell Silver": "Cómo Vender Plata",
       "Scrap Silver": "Plata de Desecho",
       "Gold & Silver": "Oro y Plata",
       "Silver Profit": "Ganancia de Plata",
-      "Melt Value": "Valor de Fusi├│n",
+      "Melt Value": "Valor de Fusión",
       "Junk Silver": "Plata Basura",
       "Silver Coins": "Monedas de Plata",
-      "Silver Dollar": "D├│lar de Plata",
-      "Silver Quarter": "Cuarto de D├│lar de Plata",
+      "Silver Dollar": "Dólar de Plata",
+      "Silver Quarter": "Cuarto de Dólar de Plata",
       "Silver Dime": "Moneda de Diez Centavos de Plata",
-      "Jewelry Value": "Valor de Joyer├¡a",
+      "Jewelry Value": "Valor de Joyería",
       "925 Sterling": "Esterlina 925",
       "Purity Chart": "Tabla de Pureza",
-      "How to Use Calculators": "C├│mo Usar las Calculadoras",
+      "How to Use Calculators": "Cómo Usar las Calculadoras",
       "Sona Chandi Calc": "Calc. Sona Chandi",
       "Face Value Calc": "Calc. Valor Nominal",
       "Sell or Hold": "Vender o Mantener",
       "About": "Acerca de",
       "Privacy": "Privacidad",
-      "Terms": "T├⌐rminos",
+      "Terms": "Términos",
       "All rights reserved.": "Todos los derechos reservados.",
       "Prices are for informational purposes only.": "Los precios son solo para fines informativos.",
       "Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.": "Calculadoras de plata gratuitas usando precios spot en vivo. Calcule el valor de su sucata al instante."
@@ -688,21 +690,21 @@ function getMenuTranslations(code) {
       "Silver Melt Value": "Valeur de Fonte de l'Argent",
       "Sterling Silver Calculator": "Calculateur d'Argent Sterling",
       "Junk Silver Calculator": "Calculateur d'Argent de Circulation",
-      "Silver Coin Value": "Valeur des Pi├¿ces d'Argent",
+      "Silver Coin Value": "Valeur des Pièces d'Argent",
       "Silver Bar Value": "Valeur des Lingots d'Argent",
       "Silver Jewelry Value": "Valeur des Bijoux en Argent",
       "Silverware Value": "Valeur de l'Argenterie",
-      "Purity": "Puret├⌐",
+      "Purity": "Pureté",
       "999 Fine Silver": "Argent Fin 999",
       "958 Britannia Silver": "Argent Britannia 958",
       "925 Sterling Silver": "Argent Sterling 925",
-      "900 Coin Silver": "Argent de Pi├¿ce 900",
+      "900 Coin Silver": "Argent de Pièce 900",
       "835 Silver": "Argent 835",
       "800 Silver": "Argent 800",
-      "Silver Purity Chart": "Tableau de Puret├⌐ de l'Argent",
+      "Silver Purity Chart": "Tableau de Pureté de l'Argent",
       "Pricing": "Prix",
       "Silver Price Per Gram": "Prix de l'Argent au Gramme",
-      "Silver Price Per Ounce": "Prix de l'Argent ├á l'Once",
+      "Silver Price Per Ounce": "Prix de l'Argent à l'Once",
       "Price in All Currencies": "Prix dans Toutes les Devises",
       "1/10oz Silver Value": "Valeur de l'Argent 1/10oz",
       "1oz Silver Value": "Valeur de l'Argent 1oz",
@@ -738,37 +740,37 @@ function getMenuTranslations(code) {
       "Silver Profit": "Profit d'Argent",
       "Melt Value": "Valeur de Fonte",
       "Junk Silver": "Argent de Circulation",
-      "Silver Coins": "Pi├¿ces d'Argent",
+      "Silver Coins": "Pièces d'Argent",
       "Silver Dollar": "Dollar en Argent",
       "Silver Quarter": "Quart de Dollar en Argent",
-      "Silver Dime": "Pi├¿ce de Dix Cents en Argent",
+      "Silver Dime": "Pièce de Dix Cents en Argent",
       "Jewelry Value": "Valeur des Bijoux",
       "925 Sterling": "Sterling 925",
-      "Purity Chart": "Tableau de Puret├⌐",
+      "Purity Chart": "Tableau de Pureté",
       "How to Use Calculators": "Comment Utiliser les Calculateurs",
       "Sona Chandi Calc": "Calc. Sona Chandi",
       "Face Value Calc": "Calc. Valeur Nominale",
       "Sell or Hold": "Vendre ou Garder",
       "About": "├Ç Propos",
-      "Privacy": "Confidentialit├⌐",
+      "Privacy": "Confidentialité",
       "Terms": "Conditions",
-      "All rights reserved.": "Tous droits r├⌐serv├⌐s.",
-      "Prices are for informational purposes only.": "Les prix sont ├á titre informatif.",
+      "All rights reserved.": "Tous droits réservés.",
+      "Prices are for informational purposes only.": "Les prix sont à titre informatif.",
       "Primary Calculators": "Calculateurs Principaux",
       "Item Calculators": "Calculateurs d'Articles",
-      "Popular Coins": "Pi├¿ces Populaires",
-      "Silver Purity": "Puret├⌐ de l'Argent",
-      "Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.": "Calculateurs gratuits utilisant les prix en direct. Calculez la valeur de votre ferraille d'argent instantan├⌐ment."
+      "Popular Coins": "Pièces Populaires",
+      "Silver Purity": "Pureté de l'Argent",
+      "Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.": "Calculateurs gratuits utilisant les prix en direct. Calculez la valeur de votre ferraille d'argent instantanément."
     },
     de: {
       "Home": "Startseite", "Calculators": "Rechner", "Purity": "Reinheit", "Pricing": "Preise", "Tools": "Werkzeuge", "Guides": "Ratgeber",
-      "Primary Calculators": "Hauptrechner", "Item Calculators": "Artikelrechner", "Popular Coins": "Beliebte M├╝nzen", "Silver Purity": "Silberreinheit",
+      "Primary Calculators": "Hauptrechner", "Item Calculators": "Artikelrechner", "Popular Coins": "Beliebte Münzen", "Silver Purity": "Silberreinheit",
       "Silver Scrap Calculator": "Silberschrott-Rechner", "About": "├£ber uns", "Privacy": "Datenschutz", "Terms": "Bedingungen",
       "All rights reserved.": "Alle Rechte vorbehalten.", "Prices are for informational purposes only.": "Preise dienen nur zu Informationszwecken.",
       "Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.": "Kostenlose Rechner mit Live-Spotpreisen. Berechnen Sie den Schmelzwert Ihres Silbers blitzschnell."
     },
     pt: {
-      "Home": "In├¡cio", "Calculators": "Calculadoras", "Purity": "Pureza", "Pricing": "Pre├ºos", "Tools": "Ferramentas", "Guides": "Guias",
+      "Home": "Início", "Calculators": "Calculadoras", "Purity": "Pureza", "Pricing": "Pre├ºos", "Tools": "Ferramentas", "Guides": "Guias",
       "Primary Calculators": "Calculadoras Principais", "Item Calculators": "Calculadoras de Itens", "Popular Coins": "Moedas Populares", "Silver Purity": "Pureza da Prata",
       "Silver Scrap Calculator": "Calculadora de Sucata", "About": "Sobre", "Privacy": "Privacidade", "Terms": "Termos",
       "All rights reserved.": "Todos os direitos reservados.", "Prices are for informational purposes only.": "Os pre├ºos s├úo apenas para fins informativos.",
@@ -797,10 +799,10 @@ function getMenuTranslations(code) {
     },
     tr: {
       "Home": "Ana Sayfa", "Calculators": "Hesaplay─▒c─▒lar", "Purity": "Safl─▒k", "Pricing": "Fiyatland─▒rma", "Tools": "Ara├ºlar", "Guides": "K─▒lavuzlar",
-      "Primary Calculators": "Ana Hesaplay─▒c─▒lar", "Item Calculators": "├û─ƒe Hesaplay─▒c─▒lar─▒", "Popular Coins": "Pop├╝ler Paralar", "Silver Purity": "G├╝m├╝┼ƒ Safl─▒─ƒ─▒",
-      "Silver Scrap Calculator": "Hurda G├╝m├╝┼ƒ Hesaplay─▒c─▒", "About": "Hakk─▒nda", "Privacy": "Gizlilik", "Terms": "┼₧artlar",
-      "All rights reserved.": "T├╝m haklar─▒ sakl─▒d─▒r.", "Prices are for informational purposes only.": "Fiyatlar bilgi ama├ºl─▒d─▒r.",
-      "Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.": "Canl─▒ spot fiyatlar─▒ kullanan ├╝cretsiz g├╝m├╝┼ƒ hesaplay─▒c─▒lar─▒. Hurda g├╝m├╝┼ƒ├╝n├╝z├╝n de─ƒerini hemen hesaplay─▒n."
+      "Primary Calculators": "Ana Hesaplay─▒c─▒lar", "Item Calculators": "├û─ƒe Hesaplay─▒c─▒lar─▒", "Popular Coins": "Popüler Paralar", "Silver Purity": "Gümü┼ƒ Safl─▒─ƒ─▒",
+      "Silver Scrap Calculator": "Hurda Gümü┼ƒ Hesaplay─▒c─▒", "About": "Hakk─▒nda", "Privacy": "Gizlilik", "Terms": "┼₧artlar",
+      "All rights reserved.": "Tüm haklar─▒ sakl─▒d─▒r.", "Prices are for informational purposes only.": "Fiyatlar bilgi ama├ºl─▒d─▒r.",
+      "Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.": "Canl─▒ spot fiyatlar─▒ kullanan ücretsiz gümü┼ƒ hesaplay─▒c─▒lar─▒. Hurda gümü┼ƒünüzün de─ƒerini hemen hesaplay─▒n."
     },
     it: {
       "Home": "Home", "Calculators": "Calcolatori", "Purity": "Purezza", "Pricing": "Prezzi", "Tools": "Strumenti", "Guides": "Guide",
@@ -831,11 +833,11 @@ function getMenuTranslations(code) {
 allLangs.forEach(lang => {
   const dir = path.join(baseDir, lang.code);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), generateHomepage(lang));
+  fs.writeFileSync(path.join(dir, 'index.html'), generateHomepage(lang), 'utf8');
   
   // If the language supports inner pages, generate them
   if (lang.t.innerScrapTitle) {
-    fs.writeFileSync(path.join(dir, 'silver-scrap-calculator.html'), generateScrapCalculatorPage(lang));
+    fs.writeFileSync(path.join(dir, 'silver-scrap-calculator.html'), generateScrapCalculatorPage(lang), 'utf8');
     console.log(`Created ${lang.code}/silver-scrap-calculator.html`);
   }
   
