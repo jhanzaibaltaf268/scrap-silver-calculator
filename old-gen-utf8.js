@@ -148,6 +148,11 @@ function generateHomepage(lang) {
             <button class="share-btn" onclick="SiteComponents.copyCalculation(this)">
               <span class="icon">📋</span> ${t.shareResult || 'Share Result'}
             </button>
+            <div class="social-share-wrap">
+              <button class="social-btn whatsapp" onclick="SiteComponents.shareResult('whatsapp')" title="WhatsApp">💬</button>
+              <button class="social-btn x-twitter" onclick="SiteComponents.shareResult('x')" title="X (Twitter)">𝕏</button>
+              <button class="social-btn facebook" onclick="SiteComponents.shareResult('facebook')" title="Facebook">f</button>
+            </div>
           </div>
         </div>
       </div>

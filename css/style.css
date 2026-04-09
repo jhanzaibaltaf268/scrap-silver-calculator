@@ -740,6 +740,39 @@ main {
   color: var(--accent-green);
 }
 
+.social-share-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.social-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-glass-strong);
+  border: 1px solid var(--border-medium);
+  border-radius: 50%;
+  color: var(--text-secondary);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.social-btn:hover {
+  transform: scale(1.1);
+  color: var(--text-primary);
+  border-color: var(--border-accent);
+}
+
+.social-btn.whatsapp:hover { background: #25D366; color: #fff; border-color: #25D366; }
+.social-btn.x-twitter:hover { background: #000000; color: #fff; border-color: #333; }
+.social-btn.facebook:hover { background: #1877F2; color: #fff; border-color: #1877F2; }
+
 /* ---- Buttons ---- */
 .btn {
   display: inline-flex;

@@ -402,5 +402,33 @@ const SiteComponents = (() => {
     });
   }
 
-  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, injectFAQSchema, injectCalcSchema, copyCalculation, init };
+  function shareResult(platform) {
+    const resultValue = document.getElementById('hero-result-value')?.textContent || '';
+    const resultDetail = document.getElementById('hero-result-detail')?.textContent || '';
+    const pageTitle = document.title.split('—')[0].trim();
+    const url = window.location.href;
+    
+    if (!resultValue || resultValue === '$0.00') return;
+
+    const message = `My ${pageTitle}: ${resultValue} (${resultDetail})`;
+    const encodedMsg = encodeURIComponent(message);
+    const encodedUrl = encodeURIComponent(url);
+
+    let shareUrl = '';
+    switch (platform) {
+      case 'whatsapp':
+        shareUrl = `https://api.whatsapp.com/send?text=${encodedMsg}%20${encodedUrl}`;
+        break;
+      case 'x':
+        shareUrl = `https://twitter.com/intent/tweet?text=${encodedMsg}&url=${encodedUrl}`;
+        break;
+      case 'facebook':
+        shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`;
+        break;
+    }
+
+    if (shareUrl) window.open(shareUrl, '_blank');
+  }
+
+  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, injectFAQSchema, injectCalcSchema, copyCalculation, shareResult, init };
 })();
