@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Plata de Desecho — Calcule el Valor por Peso y Pureza</title>
+  <meta name="description" content="Calcule el valor de desecho de sus artículos de plata usando precios spot en vivo. Ingrese el peso y la pureza para obtener estimaciones instantáneas.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/es/silver-scrap-calculator/">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .lang-switcher { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 8px 0; background: rgba(5,5,10,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 1100; }
+    body { padding-top: calc(var(--header-height) + 36px) !important; }
+    .site-header { top: 36px !important; }
+    .lang-btn { padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; background: rgba(255,255,255,0.05); }
+    .lang-btn:hover, .lang-btn.active { background: var(--accent-primary); color: #fff; }
+    
+  </style>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebApplication","name":"Calculadora de Plata de Desecho","description":"Calcule el valor de desecho de sus artículos de plata usando precios spot en vivo. Ingrese el peso y la pureza para obtener estimaciones instantáneas.","applicationCategory":"FinanceApplication","inLanguage":"es","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+  </script>
+</head>
+<body>
+  <div class="lang-switcher"><a href="/" class="lang-btn ">≡ƒç¼≡ƒçº EN</a><a href="/es/" class="lang-btn active">≡ƒç¬≡ƒç╕ ES</a><a href="/fr/" class="lang-btn ">≡ƒç½≡ƒç╖ FR</a><a href="/de/" class="lang-btn ">≡ƒç⌐≡ƒç¬ DE</a><a href="/pt/" class="lang-btn ">≡ƒçº≡ƒç╖ PT</a><a href="/hi/" class="lang-btn ">≡ƒç«≡ƒç│ HI</a><a href="/ur/" class="lang-btn ">≡ƒç╡≡ƒç░ UR</a><a href="/ar/" class="lang-btn ">≡ƒç╕≡ƒçª AR</a><a href="/tr/" class="lang-btn ">≡ƒç╣≡ƒç╖ TR</a><a href="/it/" class="lang-btn ">≡ƒç«≡ƒç╣ IT</a><a href="/zh/" class="lang-btn ">≡ƒç¿≡ƒç│ ZH</a><a href="/ru/" class="lang-btn ">≡ƒç╖≡ƒç║ RU</a></div>
+  <div id="site-header"></div>
+  <main>
+    <div class="container">
+      <div id="breadcrumb"></div>
+    </div>
+    <section class="page-hero">
+      <div class="container">
+        <div id="price-ticker"></div>
+        <h1>Calculadora de <span class="highlight">Plata de Desecho</span></h1>
+        <p>Calcule exactamente cuánto vale su plata de desecho basándose en el peso, la pureza y el precio spot en vivo de hoy.</p>
+      </div>
+    </section>
+    <div class="calc-page-layout">
+      <div class="calc-widget" style="max-width: 600px; margin: 0 auto;">
+        <div class="calc-widget-title"><span class="icon">ΓÖ╗∩╕Å</span> Calculadora de Plata de Desecho</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="weight">Peso</label>
+            <input type="number" class="form-input" id="weight" placeholder="15" step="0.01" min="0" value="10">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="unit">Unidad</label>
+            <select class="form-select" id="unit">
+              <option value="g" selected>Gramos (g)</option>
+              <option value="oz">Onzas Troy (oz t)</option>
+              <option value="dwt">Pennyweight (dwt)</option>
+              <option value="kg">Kilogramos (kg)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="purity">Pureza</label>
+          <select class="form-select" id="purity">
+            <option value="0.999">999 (99.9%)</option>
+            <option value="0.958">958 (95.8%)</option>
+            <option value="0.925" selected>925 (92.5%)</option>
+            <option value="0.900">900 (90%)</option>
+            <option value="0.835">835 (83.5%)</option>
+            <option value="0.800">800 (80%)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="discount">Descuento de Comprador (%)</label>
+          <select class="form-select" id="discount">
+            <option value="0">0% — Valor de Fusión Completo</option>
+            <option value="0.05">5%</option>
+            <option value="0.10">10%</option>
+            <option value="0.15" selected>15% — Comprador Típico</option>
+            <option value="0.20">20%</option>
+            <option value="0.25">25%</option>
+          </select>
+        </div>
+        <div class="result-display">
+          <div class="result-label">VALOR DE FUSIÓN</div>
+          <div class="result-value" id="result-melt">$0.00</div>
+          <div class="result-detail" id="result-melt-detail"></div>
+        </div>
+        <div class="result-display" style="margin-top: var(--space-md); border-color: var(--accent-green); background: linear-gradient(135deg, rgba(52,211,153,0.08) 0%, rgba(52,211,153,0.02) 100%);">
+          <div class="result-label">Pago Estimado del Comprador</div>
+          <div class="result-value" id="result-scrap" style="background: linear-gradient(135deg, #34d399, #6ee7b7); -webkit-background-clip: text; background-clip: text;">$0.00</div>
+          <div class="result-detail" id="result-scrap-detail"></div>
+        </div>
+      </div>
+
+      <div class="content-body" style="max-width: 800px; margin: var(--space-2xl) auto;">
+        <h2>Cómo Usar la Calculadora de Plata de Desecho</h2>
+        <p>Nuestra Calculadora le ayuda a determinar el valor justo de su plata de desecho antes de venderla a un distribuidor o refinador. Así es como se hace:</p>
+        <ul>
+          <li><strong>Pese su plata</strong> usando una balanza de cocina o de joyero. La precisión importa — incluso un gramo hace la diferencia.</li>
+          <li><strong>Identifique la pureza</strong> comprobando los sellos (925, 999, 800, etc.) en su artículo.</li>
+          <li><strong>Establezca el descuento</strong> para estimar lo que un comprador realmente pagará. La mayoría paga el 80-95% del valor de fusión.</li>
+        </ul>
+        <h2>¿Qué se Considera Plata de Desecho?</h2>
+        <p>La plata de desecho incluye cualquier artículo vendido principalmente por su contenido de metal en lugar de como producto terminado:</p>
+        <ul>
+          <li>Joyas rotas o dañadas (anillos, cadenas, pulseras)</li>
+          <li>Cubiertos viejos o manchados</li>
+          <li>Monedas de plata sin prima numismática</li>
+          <li>Trabajos dentales de plata o desechos electrónicos</li>
+          <li>Piezas de plata esterlina no deseadas</li>
+        </ul>
+        <h2>Consejos para Obtener el Mejor Precio</h2>
+        <ul>
+          <li>Conozca la pureza de su plata antes de visitar a un comprador</li>
+          <li>Obtenga cotizaciones de múltiples compradores</li>
+          <li>Verifique el precio spot el día que venda</li>
+          <li>Considere vender en línea a refinadores para obtener pagos más altos</li>
+          <li>Separe los artículos por pureza para obtener cotizaciones precisas</li>
+        </ul>
+      </div>
+      
+      <div class="container text-center" style="max-width: 800px; margin: 0 auto; margin-bottom: var(--space-4xl);">
+        <h3 style="margin-bottom: var(--space-lg);">Calculadoras Relacionadas</h3>
+        <div class="category-grid" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
+          <a href="/silver-melt-value-calculator/" class="category-card" style="padding: var(--space-md);">≡ƒöÑ Calculadora de Valor de Fusión</a>
+          <a href="/sterling-silver-calculator/" class="category-card" style="padding: var(--space-md);">Γ£¿ Calculadora de Plata Esterlina</a>
+          <a href="/silver-jewelry-value-calculator/" class="category-card" style="padding: var(--space-md);">≡ƒÆì Calculadora de Joyería</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script>
+    window.MenuTranslations = {"Home":"Inicio","Calculators":"Calculadoras","Silver Scrap Calculator":"Calculadora de Plata de Desecho","Gold & Silver Calculator":"Calculadora de Oro y Plata","Silver Melt Value":"Valor de Fusi├│n de la Plata","Sterling Silver Calculator":"Calculadora de Plata Esterlina","Junk Silver Calculator":"Calculadora de Plata Basura","Silver Coin Value":"Valor de Moneda de Plata","Silver Bar Value":"Valor de Lingote de Plata","Silver Jewelry Value":"Valor de Joyer├¡a de Plata","Silverware Value":"Valor de Cubiertos de Plata","Purity":"Pureza","999 Fine Silver":"Plata Fina 999","958 Britannia Silver":"Plata Britannia 958","925 Sterling Silver":"Plata Esterlina 925","900 Coin Silver":"Plata de Moneda 900","835 Silver":"Plata 835","800 Silver":"Plata 800","Silver Purity Chart":"Tabla de Pureza de la Plata","Pricing":"Precios","Silver Price Per Gram":"Precio de la Plata por Gramo","Silver Price Per Ounce":"Precio de la Plata por Onza","Price in All Currencies":"Precio en Todas las Monedas","1/10oz Silver Value":"Valor de la Plata 1/10oz","1oz Silver Value":"Valor de la Plata 1oz","2oz Silver Value":"Valor de la Plata 2oz","5oz Silver Value":"Valor de la Plata 5oz","10oz Silver Value":"Valor de la Plata 10oz","100oz Silver Value":"Valor de la Plata 100oz","1kg Silver Value":"Valor de la Plata 1kg","Tools":"Herramientas","Silver Profit Calculator":"Calculadora de Ganancias de Plata","Batch Calculator":"Calculadora por Lotes","Sona Chandi Calculator":"Calculadora Sona Chandi","Face Value Calculator":"Calculadora de Valor Nominal","Weight Converter":"Conversor de Peso","Pennyweight (DWT) Calc":"Calculadora Pennyweight (DWT)","Tola Calculator":"Calculadora Tola","Sell or Hold Analysis":"An├ílisis de Vender o Mantener","Silver Identifier":"Identificador de Plata","Guides":"Gu├¡as","How to Use Our Calculators":"C├│mo Usar Nuestras Calculadoras","What Is Silver Scrap?":"┬┐Qu├⌐ es la Plata de Desecho?","What Is Melt Value?":"┬┐Qu├⌐ es el Valor de Fusi├│n?","What Is Junk Silver?":"┬┐Qu├⌐ es la Plata Basura?","What Is a Troy Ounce?":"┬┐Qu├⌐ es una Onza Troy?","What Is Silver Bullion?":"┬┐Qu├⌐ es un Lingote de Plata?","How Silver Prices Work":"C├│mo Funcionan los Precios de la Plata","Silver Hallmarks Guide":"Gu├¡a de Sellos de Plata","What Does 925 Mean?":"┬┐Qu├⌐ Significa 925?","What Is Sterling Silver?":"┬┐Qu├⌐ es la Plata Esterlina?","How to Sell Silver":"C├│mo Vender Plata","Scrap Silver":"Plata de Desecho","Gold & Silver":"Oro y Plata","Silver Profit":"Ganancia de Plata","Melt Value":"Valor de Fusi├│n","Junk Silver":"Plata Basura","Silver Coins":"Monedas de Plata","Silver Dollar":"D├│lar de Plata","Silver Quarter":"Cuarto de D├│lar de Plata","Silver Dime":"Moneda de Diez Centavos de Plata","Jewelry Value":"Valor de Joyer├¡a","925 Sterling":"Esterlina 925","Purity Chart":"Tabla de Pureza","How to Use Calculators":"C├│mo Usar las Calculadoras","Sona Chandi Calc":"Calc. Sona Chandi","Face Value Calc":"Calc. Valor Nominal","Sell or Hold":"Vender o Mantener","About":"Acerca de","Privacy":"Privacidad","Terms":"T├⌐rminos","All rights reserved.":"Todos los derechos reservados.","Prices are for informational purposes only.":"Los precios son solo para fines informativos.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Calculadoras de plata gratuitas usando precios spot en vivo. Calcule el valor de su sucata al instante."};
+  </script>
+  <script src="../js/silver-price.js?v=2.1"></script>
+  <script src="../js/calculator.js?v=2.1"></script>
+  <script src="../js/components.js?v=2.1"></script>
+  <script>
+    SiteComponents.renderPriceTicker('price-ticker');
+    
+    // Attempting to render simple translated breadcrumb
+    const homeMenuText = window.MenuTranslations["Home"] || "Home";
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      {label: homeMenuText, href:'/es/'},
+      {label:'Calculadora de Plata de Desecho'}
+    ]);
+    
+    const w = document.getElementById('weight');
+    const u = document.getElementById('unit');
+    const p = document.getElementById('purity');
+    const d = document.getElementById('discount');
+    function calc() {
+      const weight = parseFloat(w.value) || 0;
+      const grams = SilverCalc.toGrams(weight, u.value);
+      const purity = parseFloat(p.value);
+      const disc = parseFloat(d.value);
+      const spot = SilverPrice.getPrice();
+      const result = SilverCalc.scrapValue(grams, purity, spot, disc);
+      
+      const payoutVal = SilverCalc.formatCurrency(result.scrapValue);
+      const discountVal = SilverCalc.formatCurrency(result.discount);
+      
+      document.getElementById('result-melt').textContent = SilverCalc.formatCurrency(result.value);
+      document.getElementById('result-melt-detail').textContent = result.silverContentGrams + 'g ┬╖ ' + result.silverContentOz + ' oz ┬╖ Spot: $' + spot.toFixed(2) + '/oz';
+      document.getElementById('result-scrap').textContent = payoutVal;
+      document.getElementById('result-scrap-detail').textContent = '-' + (disc*100).toFixed(0) + '% (ΓêÆ' + discountVal + ')';
+    }
+    [w,u,p,d].forEach(el => el.addEventListener('input', calc));
+    [u,p,d].forEach(el => el.addEventListener('change', calc));
+    SilverPrice.onPriceUpdate(() => calc());
+    calc();
+
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
+  </script>
+</body>
+</html>

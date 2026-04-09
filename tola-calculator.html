@@ -174,7 +174,7 @@
     SilverPrice.onPriceUpdate(() => calcTola());
     calcTola();
 
-    / Conversion table
+    // Conversion table
     const tableBody = document.getElementById('tola-table');
     [0.5, 1, 2, 3, 5, 10, 15, 20, 50].forEach(tola => {
       const g = (tola * TOLA_TO_GRAMS).toFixed(2);
@@ -196,7 +196,7 @@
       { q: 'How many tola in a troy ounce?', a: 'There are approximately 2.6667 tola in one troy ounce (1 ozt = 31.1035g ÷ 11.6638g per tola).' }
     ]);
   
-    / Add listener to Calculate button
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);

@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1oz Silver Value — Current Price of 1oz Silver</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
   <meta name="description" content="Current value of 1 ounce of silver. Live spot price and quantity calculator.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/1oz-silver-value/">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&amp;family=Outfit:wght@400..800&amp;display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="site-header"></div>
@@ -21,9 +18,8 @@
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🧱</span> 1oz Silver Value</div>
         <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
-        
-          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
-          <div class="result-display">
+                <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+<div class="result-display">
           <div class="result-label">1oz Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -34,24 +30,7 @@
           <tbody id="qty-table"></tbody>
         </table>
       </div>
-      <div class="content-body">
-        <h2>How Much Is 1 Ounce of Silver Worth?</h2>
-        <p>The <strong>1 ounce silver bar or coin</strong> is the standard unit of investment for silver bullion worldwide. When you see a "silver spot price" on financial news, it refers specifically to the value of one <strong>troy ounce</strong> (31.1035 grams) of .999 fine silver. Because of its affordable price point and high liquidity, 1oz is the most popular denomination for individual investors.</p>
-
-        <div class="callout tip">
-          <div class="callout-title">📏 Troy Ounce vs. Standard Ounce</div>
-          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Precious metals are measured in <strong>troy ounces</strong>, which are approximately 10% heavier than the standard (avoirdupois) ounce used for groceries. One troy ounce equals 31.1 grams, while a standard ounce is only 28.3 grams. Our calculator always uses the correct troy weight.</p>
-        </div>
-
-        <h3>Why the 1oz Weight is Critical for Investors</h3>
-        <p>Buying 1oz silver coins (like the American Silver Eagle or Buffalo Round) allows for easy "stacking" and divisibility. If you need to liquidate a small portion of your holding, you can sell individual 1oz units far more easily than a single large 100oz bar. Additionally, 1oz rounds often carry a slightly higher premium over spot than larger bars, but they are also easier to recognize for local coin dealers.</p>
-
-        <h3>Physical Characteristics of 1oz Silver</h3>
-        <p>A standard 1oz silver round is typically <strong>39mm in diameter</strong> and about 3mm thick. Small 1oz bars are approximately 50mm long and 29mm wide. Most 1oz investment silver is refined to <strong>.999 fine silver</strong> purity, which is the industry standard for investment-grade bullion.</p>
-        
-        <h3>Real-Time Value Tracking</h3>
-        <p>The value of your 1oz silver holdings changes every time the market ticks. Our calculator pulls <strong>live 24-hour market data</strong> from global exchanges to ensure your valuation is as accurate as possible for today's trading conditions.</p>
-      </div>
+      <div class="content-body"><h2>How Much Is 1 Ounce of Silver Worth?</h2><p>One troy ounce (31.1035 grams) of .999 fine silver is worth the current spot price. This is the base unit for silver pricing worldwide.</p><p>1oz silver bars and coins are the most popular investment size due to their affordability and easy divisibility.</p></div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Pages</h3><div class="related-grid">
         <a href="/silver-bar-value-calculator/" class="related-link"><span class="r-icon">🧱</span> Bar Calculator</a>
         <a href="/silver-price-per-ounce/" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
@@ -61,7 +40,7 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="/js/silver-price.js" defer></script><script src="/js/calculator.js" defer></script><script src="/js/components.js" defer></script>
+  <script src="/js/silver-price.js" defer=""></script><script src="/js/calculator.js" defer=""></script><script src="/js/components.js" defer=""></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'1oz Silver Value'}]);
@@ -70,19 +49,12 @@
       const qtys=[1,2,5,10,25,50,100];document.getElementById('qty-table').innerHTML=qtys.map(n=>'<tr><td>'+n+'</td><td>'+(1*n).toFixed(2)+' oz</td><td>$'+(1*n*spot).toFixed(2)+'</td></tr>').join('');}
     q.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
 
-    SiteComponents.injectFAQSchema([
-      {q: 'How many grams are in 1 oz of silver?', a: 'There are exactly 31.1034768 grams in one troy ounce of silver. In the precious metals industry, "ounce" always refers to the troy ounce, not the standard kitchen ounce (28.35g).'},
-      {q: 'Is a 1 oz silver coin worth more than a 1 oz silver bar?', a: 'Government-minted coins (like Silver Eagles) typically carry a higher "premium" over the spot price than generic bars due to their legal tender status and trust. However, their raw silver melt value is the same.'},
-      {q: 'Where can I sell my 1 oz silver rounds?', a: '1 oz silver is highly liquid and can be sold at almost any local coin shop, bullion dealer, or reputable online precious metals exchange. Most will pay slightly below or above the spot price depending on the item.'},
-      {q: 'Does 1 oz of silver tarnish?', a: 'Yes, silver reacts with sulfur in the air to create tarnish (silver sulfide). While this changes the appearance of a 1 oz bar, it does not decrease the raw metal weight or the intrinsic melt value.'}
-    ]);
-  
-    / Add listener to Calculate button
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
   </script>
-</body>
-</html>
+
+</body></html>

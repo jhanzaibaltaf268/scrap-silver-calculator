@@ -11,8 +11,11 @@ function coinPage(coinName, coinWeight, coinPurity, filename, desc, content) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${titleName} Melt Value Calculator — Live Prices</title>
   <meta name="description" content="${desc}">
-  <link rel="canonical" href="https://scrapsilvercalculater.com/${filename.replace('.html', '')}/>
+  <link rel="canonical" href="https://scrapsilvercalculater.com/${filename.replace('.html', '')}/">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="site-header"></div>
@@ -39,6 +42,7 @@ function coinPage(coinName, coinWeight, coinPurity, filename, desc, content) {
           </div>
         </div>
 
+        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
         <div class="result-display">
           <div class="result-label">Total Melt Value</div>
           <div class="result-value" id="result-value">$0.00</div>
@@ -54,7 +58,7 @@ function coinPage(coinName, coinWeight, coinPurity, filename, desc, content) {
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
+  <script src="/js/silver-price.js" defer></script><script src="/js/calculator.js" defer></script><script src="/js/components.js" defer></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'${titleName} Calculator'}]);
@@ -79,6 +83,13 @@ function coinPage(coinName, coinWeight, coinPurity, filename, desc, content) {
     q.addEventListener('input',calc);
     SilverPrice.onPriceUpdate(()=>calc());
     calc();
+
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>`;
@@ -112,8 +123,9 @@ const coins = [
 ];
 
 coins.forEach(c => {
-  fs.writeFileSync(path.join(baseDir, c.file), coinPage(c.name, c.weight, c.purity, c.file, c.desc, c.content));
-  console.log(`Created ${c.file}`);
+  const finalFilename = c.file.endsWith('.html') ? c.file : c.file + '.html';
+  fs.writeFileSync(path.join(baseDir, finalFilename), coinPage(c.name, c.weight, c.purity, finalFilename, c.desc, c.content));
+  console.log(`Created ${finalFilename}`);
 });
 
 // One special Face Value calculator
@@ -125,7 +137,7 @@ const faceValueHTML = `<!DOCTYPE html>
   <title>Face Value Silver Calculator — 90% Junk Silver</title>
   <meta name="description" content="Calculate silver value by entering the total face value of your 90% US silver coins ($1 Face Value = 0.715 oz pure silver).">
   <link rel="canonical" href="https://scrapsilvercalculater.com/face-value-silver-calculator/">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <div id="site-header"></div>
@@ -144,6 +156,7 @@ const faceValueHTML = `<!DOCTYPE html>
           </div>
         </div>
 
+        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
         <div class="result-display">
           <div class="result-label">Total Silver Melt Value</div>
           <div class="result-value" id="result-value">$0.00</div>
@@ -169,7 +182,7 @@ const faceValueHTML = `<!DOCTYPE html>
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
+  <script src="/js/silver-price.js" defer></script><script src="/js/calculator.js" defer></script><script src="/js/components.js" defer></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Face Value Calculator'}]);
@@ -193,9 +206,16 @@ const faceValueHTML = `<!DOCTYPE html>
     f.addEventListener('input',calc);
     SilverPrice.onPriceUpdate(()=>calc());
     calc();
+
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>`;
 
-fs.writeFileSync(path.join(baseDir, 'face-value-silver-calculator'), faceValueHTML);
-console.log('Created face-value-silver-calculator');
+fs.writeFileSync(path.join(baseDir, 'face-value-silver-calculator.html'), faceValueHTML);
+console.log('Created face-value-silver-calculator.html');

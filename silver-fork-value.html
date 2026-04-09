@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Silver Fork Value — How Much Is a Silver Fork Worth?</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
   <meta name="description" content="Calculate silver fork value by weight. Sterling silver forks typically weigh 25-70 grams.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-fork-value/">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,38 +24,14 @@
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
         <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected>925 Sterling</option><option value="0.900" >900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800" >800 European</option></select></div>
-        
-          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
-          <div class="result-display">
+        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+        <div class="result-display">
           <div class="result-label">Silver Fork Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
         </div>
       </div>
-      <div class="content-body">
-        <h2>How Much Is a Silver Fork Worth?</h2>
-        <p>A sterling silver fork is valued primarily for its <strong>precious metal content</strong>. Unlike stainless steel, which is worth very little as scrap, a single silver fork can be worth anywhere from **$20 to $60** depending on its weight and the current silver market spot price. Most collectible and estate silver forks are made from 925 sterling silver.</p>
-
-        <div class="callout info">
-          <div class="callout-title">🍴 Weight Note</div>
-          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Forks are typically heavier than teaspoons but lighter than large serving pieces. A full set of 12 dinner forks can contain over 20 troy ounces of pure silver, representing significant value.</p>
-        </div>
-
-        <h3>Typical Silver Fork Weight Ranges</h3>
-        <p>Silver forks come in various sizes, each with a different average weight:</p>
-        <ul>
-            <li><strong>Cocktail/Oyster Fork</strong>: 15 – 25 grams</li>
-            <li><strong>Salad/Pastry Fork</strong>: 30 – 45 grams</li>
-            <li><strong>Standard Dinner Fork</strong>: 45 – 65 grams</li>
-            <li><strong>Large Cold Meat/Serving Fork</strong>: 70 – 110+ grams</li>
-        </ul>
-
-        <h3>How to Identify Sterling Silver vs. Silver Plate</h3>
-        <p>Before calculating the value, check the back of the fork handle for hallmarks. Look for <strong>"925"</strong>, <strong>"STERLING"</strong>, or the British <strong>"Lion Passant"</strong> symbol. If you find marks like "IS" (International Silver), "EPNS", or "Triple Plate," the item is silver-plated. Silver-plated forks have a very thin layer of silver over brass or nickel and have negligible melt value.</p>
-        
-        <h3>Estimating Your Fork's Value</h3>
-        <p>To get an accurate estimate, weigh your forks on a digital scale in grams. Ensure you are weighing only the solid silver pieces. Our calculator uses <strong>live COMEX silver prices</strong> to provide the most current melt value for your items instantly.</p>
-      </div>
+      <div class="content-body"><h2>How Much Is a Silver Fork Worth?</h2><p>Silver forks are commonly found in vintage and antique flatware sets.</p><h3>Typical Weights</h3><ul><li><strong>Salad fork</strong>: 25-35 grams</li><li><strong>Dinner fork</strong>: 35-50 grams</li><li><strong>Serving fork</strong>: 50-70 grams</li></ul></div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3><div class="related-grid">
   <a href="/silverware-value-calculator/" class="related-link"><span class="r-icon">🍴</span> Silverware Calculator</a>
   <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
@@ -73,14 +48,7 @@
     function calc(){const weight=(parseFloat(w.value)||0)*(parseInt(q.value)||1);const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
     [w,q].forEach(el=>el.addEventListener('input',calc));p.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
 
-    SiteComponents.injectFAQSchema([
-      {q: 'Are old silver forks worth more than their weight?', a: 'Some antique forks from famous silversmiths like Georg Jensen or Tiffany & Co. can be worth significantly more to collectors than their raw silver content. However, most common or damaged silver forks are valued based on their weight and silver purity.'},
-      {q: 'What does "925" mean on a silver fork?', a: 'The "925" stamp indicates that the fork is made of Sterling Silver, which is an alloy of 92.5% pure silver and 7.5% other metals (usually copper) for strength.'},
-      {q: 'Can I sell just one silver fork?', a: 'Yes. Precious metal buyers and refineries will buy silver by the gram or ounce, regardless of whether you have a single piece or a complete set.'},
-      {q: 'Is a silver-plated fork worth anything?', a: 'Silver-plated forks contain very little silver and are generally not purchased by silver refineries. They are typically sold as "white metal" or base metal scrap for a very low price.'}
-    ]);
-  
-    / Add listener to Calculate button
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);

@@ -169,7 +169,7 @@
     SilverPrice.onPriceUpdate(() => calcDWT());
     calcDWT();
 
-    / Conversion table
+    // Conversion table
     const tableBody = document.getElementById('dwt-table');
     [1, 2, 5, 10, 15, 20, 25, 50, 100].forEach(dwt => {
       const g = (dwt * 1.55517).toFixed(2);
@@ -190,7 +190,7 @@
       { q: 'How do I convert DWT to grams?', a: 'Multiply the DWT value by 1.55517 to get grams. For example, 10 DWT = 15.55 grams.' }
     ]);
   
-    / Add listener to Calculate button
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);

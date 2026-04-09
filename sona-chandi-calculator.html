@@ -148,7 +148,7 @@
     const resValue = document.getElementById('result-value');
     const resDetail = document.getElementById('result-detail');
 
-    / Handle metal toggle styling
+    // Handle metal toggle styling
     radios.forEach(r => {
       r.addEventListener('change', (e) => {
         if (e.target.value === 'chandi') {
@@ -186,26 +186,26 @@
       
       const spotUSD = metal === 'chandi' ? SilverPrice.getPrice() : (SilverPrice.getGoldPrice() || 2500);
       
-      / Convert to grams
+      // Convert to grams
       let grams = 0;
       if (unit === 'g') grams = weight;
       else if (unit === 'kg') grams = weight * 1000;
       else if (unit === 'oz') grams = weight * 31.1035;
       else if (unit === 'tola') grams = weight * 11.6638;
 
-      / Pure metal weight
+      // Pure metal weight
       const pureGrams = grams * purity;
       const pureOz = pureGrams / 31.1035;
 
-      / Value in USD
+      // Value in USD
       const valueUSD = pureOz * spotUSD;
 
-      / Final Value in chosen currency
+      // Final Value in chosen currency
       const finalValue = valueUSD * SilverPrice.CURRENCIES[curCode].rate;
       const symbol = SilverPrice.CURRENCIES[curCode].symbol;
 
       if (weight > 0 && tunch > 0) {
-        / Format with commas, 2 decimals
+        // Format with commas, 2 decimals
         resValue.textContent = symbol + finalValue.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
         
         const spotLocal = spotUSD * SilverPrice.CURRENCIES[curCode].rate;
@@ -220,7 +220,7 @@
     [u, c].forEach(el => el.addEventListener('change', calc));
     SilverPrice.onPriceUpdate(() => calc());
     
-    / Attempt to set local currency based on timezone (lazy heuristic)
+    // Attempt to set local currency based on timezone (lazy heuristic)
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     if (tz.includes('Karachi')) c.value = 'PKR';
     else if (tz.includes('Calcutta') || tz.includes('Kolkata')) c.value = 'INR';
@@ -229,7 +229,7 @@
 
     calc();
   
-    / Add listener to Calculate button
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);

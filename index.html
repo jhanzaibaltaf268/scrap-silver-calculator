@@ -487,7 +487,7 @@
   <script src="/js/calculator.js" defer></script>
   <script src="/js/components.js" defer></script>
   <script>
-    / Hero Calculator Logic
+    // Hero Calculator Logic
     const weightInput = document.getElementById('calc-weight');
     const unitSelect = document.getElementById('calc-unit');
     const puritySelect = document.getElementById('calc-purity');
@@ -517,13 +517,13 @@
     unitSelect.addEventListener('change', calculate);
     puritySelect.addEventListener('change', calculate);
 
-    / Update calc when price loads
+    // Update calc when price loads
     SilverPrice.onPriceUpdate(() => calculate());
 
-    / Initial calc
+    // Initial calc
     calculate();
 
-    / FAQ toggle
+    // FAQ toggle
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         btn.closest('.faq-item').classList.toggle('open');
@@ -543,7 +543,7 @@
       { q: 'Can I calculate silver value in currencies other than US dollars?', a: 'Yes. Silver prices are available in USD, EUR, GBP, INR, PKR, AUD, CAD, and more. For South Asian markets, Tola measurements and Tunch (purity) are also supported.' }
     ]);
   
-    / Add listener to Calculate button
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);

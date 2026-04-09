@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>800 Silver Calculator — European Silver Value by Weight</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
   <meta name="description" content="Calculate the value of 800 silver (80% pure). A common European silverware standard.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/800-silver-calculator/">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,9 +27,8 @@
           <div class="callout-title">Purity: 80% (European Silver)</div>
           <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">European Silver contains 80% pure silver. This calculator is pre-set to this purity.</p>
         </div>
-        
-          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
-          <div class="result-display">
+        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+        <div class="result-display">
           <div class="result-label">800 Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -53,8 +51,8 @@
     const w=document.getElementById('weight'),u=document.getElementById('unit');
     function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(grams,0.8,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure silver (80%) · ${r.silverContentOz} oz · Spot: $${spot.toFixed(2)}/oz`;}
     w.addEventListener('input',calc);u.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
-  
-    / Add listener to Calculate button
+
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);

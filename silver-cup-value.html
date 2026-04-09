@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Silver Cup Value — How Much Is a Silver Cup Worth?</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
   <meta name="description" content="Calculate silver cup value. Silver cups and goblets typically weigh 50-300 grams.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-cup-value/">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,38 +24,14 @@
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
         <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected>925 Sterling</option><option value="0.900" >900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800" >800 European</option></select></div>
-        
-          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
-          <div class="result-display">
+        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+        <div class="result-display">
           <div class="result-label">Silver Cup Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
         </div>
       </div>
-      <div class="content-body">
-        <h2>How Much Is a Silver Cup Worth?</h2>
-        <p>Silver cups, including baby cups, goblets, and trophies, are among the heaviest hollowware items found in estate collections. Because of their significant weight, even a single sterling silver cup can have a high melt value, often ranging from **$50 to $250** or more depending on the current silver spot price. Most vintage silver cups are made from 925 sterling silver.</p>
-
-        <div class="callout tip">
-          <div class="callout-title">🏆 Trophy & Baby Cup Tip</div>
-          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Baby cups often have "weighted" bases filled with wax or lead to prevent tipping. When calculating melt value, you must subtract the weight of the non-silver filling. Trophies may also be silver-plated; look for "Sterling" or "925" specifically.</p>
-        </div>
-
-        <h3>Typical Silver Cup & Goblet Weight Reference</h3>
-        <p>Weights can vary based on thickness and decorative elements. Here are common averages:</p>
-        <ul>
-            <li><strong>Small Cordial/Shot Cup</strong>: 30 – 60 grams</li>
-            <li><strong>Standard Child's Baby Cup</strong>: 80 – 150 grams</li>
-            <li><strong>Wine Goblet/Chalice</strong>: 150 – 250 grams</li>
-            <li><strong>Water Picher/Large Cup</strong>: 300 – 600+ grams</li>
-        </ul>
-
-        <h3>How to Identify Your Silver Cup</h3>
-        <p>Check the bottom of the cup or the outer rim for hallmarks. Genuine silver will be marked with <strong>"925"</strong>, <strong>"Sterling"</strong>, or <strong>"800"</strong> (common in Europe). If the cup is marked "Quadruple Plate", "EPC", or "Silver on Copper", it is silver-plated and holds very little raw metal value.</p>
-        
-        <h3>Melt Value vs. Antique Value</h3>
-        <p>A hand-chased silver cup from a famous maker like Gorham, Tiffany, or Kirk Steiff may be worth 2-3 times its silver weight to a collector. If the cup has a unique history or exceptional craftsmanship, consider getting an appraisal before selling it to a scrap dealer. Our calculator provides the <strong>base melt value</strong> as a starting point for your negotiations.</p>
-      </div>
+      <div class="content-body"><h2>Silver Cup Value</h2><p>Silver cups, goblets, and chalices can range from small cordial cups to large trophy-style pieces.</p><h3>Typical Weights</h3><ul><li><strong>Small cordial cup</strong>: 50-80 grams</li><li><strong>Standard cup</strong>: 100-200 grams</li><li><strong>Goblet</strong>: 150-300 grams</li><li><strong>Trophy cup</strong>: 200-500+ grams</li></ul></div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3><div class="related-grid">
   <a href="/silverware-value-calculator/" class="related-link"><span class="r-icon">🍴</span> Silverware Calculator</a>
   <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
@@ -73,14 +48,7 @@
     function calc(){const weight=(parseFloat(w.value)||0)*(parseInt(q.value)||1);const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
     [w,q].forEach(el=>el.addEventListener('input',calc));p.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
 
-    SiteComponents.injectFAQSchema([
-      {q: 'How much is a sterling silver baby cup worth?', a: 'A standard sterling silver baby cup weighs between 80 and 120 grams. At current silver prices, its melt value is typically between $60 and $100. However, if the base is weighted with non-silver material, the value will be lower.'},
-      {q: 'What does "weighted" mean on a silver cup?', a: '"Weighted" or "Reinforced" means the base of the cup contains a heavy material like wax, cement, or lead to provide stability. Only the silver skin has melt value, which usually accounts for only 10-20% of the total weighted object\'s weight.'},
-      {q: 'Can I sell a tarnished silver cup for scrap?', a: 'Yes. Tarnish (silver sulfide) is a surface-level oxidation that does not affect the purity or weight of the silver. A scrap dealer will pay the same price for a black, tarnished cup as they would for a polished one.'},
-      {q: 'Is my old silver trophy worth melting?', a: 'If the trophy is marked "Sterling", it has significant silver value. If it is high-school or amateur sports trophy without hallmarks, it is likely silver-plated or made of pewter and has very little resale value.'}
-    ]);
-  
-    / Add listener to Calculate button
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);

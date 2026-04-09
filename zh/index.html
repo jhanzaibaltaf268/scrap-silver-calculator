@@ -4,8 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>废银计算器 — 实时白银熔炼价值</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
   <meta name="description" content="使用免费废银计算器即时查找您的白银熔炼价值。实时现货价格。">
   <link rel="canonical" href="https://scrapsilvercalculater.com/zh/">
   <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/">
@@ -22,7 +20,7 @@
   <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/">
   <link rel="alternate" hreflang="ru" href="https://scrapsilvercalculater.com/ru/">
 
-  <link rel="stylesheet" href="/css/style.css?v=2.1">
+  <link rel="stylesheet" href="../css/style.css?v=2.1">
   <style>
     .section-compact { padding: var(--space-2xl) 0; }
     .section-compact .section-title { margin-bottom: var(--space-sm); }
@@ -46,7 +44,7 @@
     .content-scroll-block h3 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
     .content-scroll-block p, .content-scroll-block ul { margin-bottom: var(--space-md); }
     .content-scroll-block ul li { padding: var(--space-xs) 0; color: var(--text-secondary); }
-    .content-scroll-block ul li::before { content: '•'; color: var(--accent-primary); margin-right: var(--space-sm); }
+    .content-scroll-block ul li::before { content: 'ΓÇó'; color: var(--accent-primary); margin-right: var(--space-sm); }
     .entity-scroller { display: flex; flex-wrap: nowrap; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0 var(--space-md); scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; -webkit-overflow-scrolling: touch; }
     .entity-scroller::-webkit-scrollbar { height: 5px; }
     .entity-scroller::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
@@ -65,12 +63,9 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <div class="lang-switcher"><a href="/" class="lang-btn ">🇬🇧 EN</a><a href="/es/" class="lang-btn ">🇪🇸 ES</a><a href="/fr/" class="lang-btn ">🇫🇷 FR</a><a href="/de/" class="lang-btn ">🇩🇪 DE</a><a href="/pt/" class="lang-btn ">🇧🇷 PT</a><a href="/hi/" class="lang-btn ">🇮🇳 HI</a><a href="/ur/" class="lang-btn ">🇵🇰 UR</a><a href="/ar/" class="lang-btn ">🇸🇦 AR</a><a href="/tr/" class="lang-btn ">🇹🇷 TR</a><a href="/it/" class="lang-btn ">🇮🇹 IT</a><a href="/zh/" class="lang-btn active">🇨🇳 ZH</a><a href="/ru/" class="lang-btn ">🇷🇺 RU</a></div>
+  <div class="lang-switcher"><a href="/" class="lang-btn ">≡ƒç¼≡ƒçº EN</a><a href="/es/" class="lang-btn ">≡ƒç¬≡ƒç╕ ES</a><a href="/fr/" class="lang-btn ">≡ƒç½≡ƒç╖ FR</a><a href="/de/" class="lang-btn ">≡ƒç⌐≡ƒç¬ DE</a><a href="/pt/" class="lang-btn ">≡ƒçº≡ƒç╖ PT</a><a href="/hi/" class="lang-btn ">≡ƒç«≡ƒç│ HI</a><a href="/ur/" class="lang-btn ">≡ƒç╡≡ƒç░ UR</a><a href="/ar/" class="lang-btn ">≡ƒç╕≡ƒçª AR</a><a href="/tr/" class="lang-btn ">≡ƒç╣≡ƒç╖ TR</a><a href="/it/" class="lang-btn ">≡ƒç«≡ƒç╣ IT</a><a href="/zh/" class="lang-btn active">≡ƒç¿≡ƒç│ ZH</a><a href="/ru/" class="lang-btn ">≡ƒç╖≡ƒç║ RU</a></div>
   <div id="site-header"></div>
 
   <main>
@@ -82,7 +77,7 @@
 
         <!-- Main Calculator Widget -->
         <div class="calc-widget slide-up" id="hero-calc" style="max-width:600px;margin:0 auto;">
-          <div class="calc-widget-title"><span class="icon">⚖️</span> 白银价值计算器</div>
+          <div class="calc-widget-title"><span class="icon">ΓÜû∩╕Å</span> 白银价值计算器</div>
 
           <div class="form-row">
             <div class="form-group">
@@ -107,22 +102,20 @@
           <div class="form-group">
             <label class="form-label" for="calc-purity">纯度</label>
             <select class="form-select" id="calc-purity">
-              <option value="0.999">999 — Fine (99.9%)</option>
-              <option value="0.958">958 — Britannia (95.8%)</option>
-              <option value="0.925" selected>925 — Sterling (92.5%)</option>
-              <option value="0.900">900 — Coin (90.0%)</option>
-              <option value="0.835">835 — (83.5%)</option>
-              <option value="0.800">800 — (80.0%)</option>
-              <option value="0.500">500 — (50.0%)</option>
+              <option value="0.999">999 ΓÇö Fine (99.9%)</option>
+              <option value="0.958">958 ΓÇö Britannia (95.8%)</option>
+              <option value="0.925" selected>925 ΓÇö Sterling (92.5%)</option>
+              <option value="0.900">900 ΓÇö Coin (90.0%)</option>
+              <option value="0.835">835 ΓÇö (83.5%)</option>
+              <option value="0.800">800 ΓÇö (80.0%)</option>
+              <option value="0.500">500 ΓÇö (50.0%)</option>
             </select>
           </div>
 
-          
-          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">计算熔毁价值</button>
           <div class="result-display" id="hero-result">
             <div class="result-label">熔炼价值</div>
             <div class="result-value" id="hero-result-value">$0.00</div>
-            <div class="result-detail" id="hero-result-detail">现货: $--/oz · 纯度: 92.5% · 白银总量: 0.000 oz</div>
+            <div class="result-detail" id="hero-result-detail">现货: $--/oz ┬╖ 纯度: 92.5% ┬╖ 白银总量: 0.000 oz</div>
           </div>
         </div>
       </div>
@@ -130,44 +123,44 @@
 
     <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container text-center">
-        <span class="section-badge">🧰 所有白银计算器</span>
+        <span class="section-badge">≡ƒº░ 所有白银计算器</span>
         <h2 class="section-title">所有白银计算器</h2>
         <p class="section-subtitle">每种白银类型的专业工具。</p>
         <div class="category-grid stagger">
-          <a href="/zh/silver-scrap-calculator/" class="category-card"><div class="category-icon">♻️</div><h3>废银计算器</h3><p>计算废银的精确熔炼价值。</p></a>
-          <a href="/zh/silver-melt-value-calculator/" class="category-card"><div class="category-icon">🔥</div><h3>熔炼价值</h3><p>查找纯银的熔炼价值。</p></a>
-          <a href="/zh/sterling-silver-calculator/" class="category-card"><div class="category-icon">✨</div><h3>纯银计算器</h3><p>计算您的.925纯银价值。</p></a>
-          <a href="/zh/junk-silver-calculator/" class="category-card"><div class="category-icon">🪙</div><h3>旧币计算器</h3><p>旧银币的价值。</p></a>
-          <a href="/zh/silver-coin-value-calculator/" class="category-card"><div class="category-icon">🏛️</div><h3>银币价值</h3><p>计算任何银币的熔炼价值。</p></a>
-          <a href="/zh/gold-and-silver-calculator/" class="category-card"><div class="category-icon">🥇</div><h3>金银计算器</h3><p>计算混合金银废料。</p></a>
-          <a href="/zh/silver-bar-value-calculator/" class="category-card"><div class="category-icon">🧱</div><h3>银条价值</h3><p>查找银条的当前价值。</p></a>
-          <a href="/zh/silver-jewelry-value-calculator/" class="category-card"><div class="category-icon">💍</div><h3>银饰价值</h3><p>计算银饰的熔炼价值。</p></a>
-          <a href="/zh/silverware-value-calculator/" class="category-card"><div class="category-icon">🍴</div><h3>银器价值</h3><p>查找银器的价值。</p></a>
-          <a href="/zh/silver-price-per-gram/" class="category-card"><div class="category-icon">📊</div><h3>每克价格</h3><p>当前白银每克价格。</p></a>
-          <a href="/zh/silver-price-per-ounce/" class="category-card"><div class="category-icon">💲</div><h3>每盎司价格</h3><p>实时每金衡盎司现货价格。</p></a>
+          <a href="/silver-scrap-calculator/" class="category-card"><div class="category-icon">ΓÖ╗∩╕Å</div><h3>废银计算器</h3><p>计算废银的精确熔炼价值。</p></a>
+          <a href="/silver-melt-value-calculator/" class="category-card"><div class="category-icon">≡ƒöÑ</div><h3>熔炼价值</h3><p>查找纯银的熔炼价值。</p></a>
+          <a href="/sterling-silver-calculator/" class="category-card"><div class="category-icon">Γ£¿</div><h3>纯银计算器</h3><p>计算您的.925纯银价值。</p></a>
+          <a href="/junk-silver-calculator/" class="category-card"><div class="category-icon">≡ƒ¬Ö</div><h3>旧币计算器</h3><p>旧银币的价值。</p></a>
+          <a href="/silver-coin-value-calculator/" class="category-card"><div class="category-icon">≡ƒÅ¢∩╕Å</div><h3>银币价值</h3><p>计算任何银币的熔炼价值。</p></a>
+          <a href="/gold-and-silver-calculator/" class="category-card"><div class="category-icon">≡ƒÑç</div><h3>金银计算器</h3><p>计算混合金银废料。</p></a>
+          <a href="/silver-bar-value-calculator/" class="category-card"><div class="category-icon">≡ƒº▒</div><h3>银条价值</h3><p>查找银条的当前价值。</p></a>
+          <a href="/silver-jewelry-value-calculator/" class="category-card"><div class="category-icon">≡ƒÆì</div><h3>银饰价值</h3><p>计算银饰的熔炼价值。</p></a>
+          <a href="/silverware-value-calculator/" class="category-card"><div class="category-icon">≡ƒì┤</div><h3>银器价值</h3><p>查找银器的价值。</p></a>
+          <a href="/silver-price-per-gram/" class="category-card"><div class="category-icon">≡ƒôè</div><h3>每克价格</h3><p>当前白银每克价格。</p></a>
+          <a href="/silver-price-per-ounce/" class="category-card"><div class="category-icon">≡ƒÆ▓</div><h3>每盎司价格</h3><p>实时每金衡盎司现货价格。</p></a>
         </div>
       </div>
     </section>
 
     <section class="section-compact">
       <div class="container text-center">
-        <span class="section-badge">🛠️</span>
+        <span class="section-badge">≡ƒ¢á∩╕Å</span>
         <h2 class="section-title">强大的增值工具</h2>
         <p class="section-subtitle">节省时间，做出更好的决策。</p>
         <div class="category-grid stagger" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
-          <a href="/zh/silver-profit-calculator/" class="category-card"><div class="category-icon">📈</div><h3>利润计算器</h3><p>计算您的投资回报率。</p></a>
-          <a href="/zh/face-value-silver-calculator/" class="category-card"><div class="category-icon">💵</div><h3>面值计算器</h3><p>查找90%银币的金属价值。</p></a>
-          <a href="/zh/silver-batch-calculator/" class="category-card"><div class="category-icon">📋</div><h3>批量计算器</h3><p>添加多个项目查看总价值。</p></a>
-          <a href="/zh/silver-weight-converter/" class="category-card"><div class="category-icon">⚖️</div><h3>重量转换器</h3><p>在6种重量单位间转换。</p></a>
-          <a href="/zh/silver-sell-or-hold/" class="category-card"><div class="category-icon">📈</div><h3>卖出或持有</h3><p>比较当前价值与不同价格。</p></a>
-          <a href="/zh/silver-price-all-currencies/" class="category-card"><div class="category-icon">🌍</div><h3>12种货币价格</h3><p>以美元、欧元、人民币等查看价格。</p></a>
+          <a href="/silver-profit-calculator/" class="category-card"><div class="category-icon">≡ƒôê</div><h3>利润计算器</h3><p>计算您的投资回报率。</p></a>
+          <a href="/face-value-silver-calculator/" class="category-card"><div class="category-icon">≡ƒÆ╡</div><h3>面值计算器</h3><p>查找90%银币的金属价值。</p></a>
+          <a href="/silver-batch-calculator/" class="category-card"><div class="category-icon">≡ƒôï</div><h3>批量计算器</h3><p>添加多个项目查看总价值。</p></a>
+          <a href="/silver-weight-converter/" class="category-card"><div class="category-icon">ΓÜû∩╕Å</div><h3>重量转换器</h3><p>在6种重量单位间转换。</p></a>
+          <a href="/silver-sell-or-hold/" class="category-card"><div class="category-icon">≡ƒôê</div><h3>卖出或持有</h3><p>比较当前价值与不同价格。</p></a>
+          <a href="/silver-price-all-currencies/" class="category-card"><div class="category-icon">≡ƒîì</div><h3>12种货币价格</h3><p>以美元、欧元、人民币等查看价格。</p></a>
         </div>
       </div>
     </section>
 
     <section class="section-compact" style="background: var(--bg-secondary);">
       <div class="container text-center">
-        <span class="section-badge">📋</span>
+        <span class="section-badge">≡ƒôï</span>
         <h2 class="section-title">如何使用 — 3个简单步骤</h2>
         <p class="section-subtitle">几秒内获得精确估值。</p>
         <div class="steps-grid stagger">
@@ -183,7 +176,7 @@
         <div class="content-body">
           <h2>了解白银价值</h2>
           <div class="content-scroll-block">
-            <h3>白银熔炼价值如何计算</h3><p>任何白银物品的价值取决于三个因素：<strong>重量</strong>、<strong>纯度</strong>和<strong>现货价格</strong>。公式：价值 = 重量（金衡盎司）× 纯度 × 现货价格。</p><ul><li><strong>重量</strong> — 以克、金衡盎司或千克为单位</li><li><strong>纯度</strong> — 银含量百分比：999纯银(99.9%)、925纯银(92.5%)、900银币(90%)</li><li><strong>现货价格</strong> — 来自COMEX等全球交易所的实时价格</li></ul><h3>什么是废银？</h3><p>破损的首饰、旧银器、银币 — 任何以其金属含量出售的银制品。</p>
+            <h3>τÖ╜Θô╢τåöτé╝Σ╗╖σÇ╝σªéΣ╜òΦ«íτ«ù</h3><p>Σ╗╗Σ╜òτÖ╜Θô╢τë⌐σôüτÜäΣ╗╖σÇ╝σÅûσå│Σ║ÄΣ╕ëΣ╕¬σ¢áτ┤á∩╝Ü<strong>ΘçìΘçÅ</strong>πÇü<strong>τ║»σ║ª</strong>σÆî<strong>τÄ░Φ┤ºΣ╗╖µá╝</strong>πÇéσà¼σ╝Å∩╝ÜΣ╗╖σÇ╝ = ΘçìΘçÅ∩╝êΘçæΦííτ¢ÄσÅ╕∩╝ë├ù τ║»σ║ª ├ù τÄ░Φ┤ºΣ╗╖µá╝πÇé</p><ul><li><strong>ΘçìΘçÅ</strong> ΓÇö Σ╗ÑσàïπÇüΘçæΦííτ¢ÄσÅ╕µêûσìâσàïΣ╕║σìòΣ╜ì</li><li><strong>τ║»σ║ª</strong> ΓÇö Θô╢σÉ½ΘçÅτÖ╛σêåµ»ö∩╝Ü999τ║»Θô╢(99.9%)πÇü925τ║»Θô╢(92.5%)πÇü900Θô╢σ╕ü(90%)</li><li><strong>τÄ░Φ┤ºΣ╗╖µá╝</strong> ΓÇö µ¥ÑΦç¬COMEXτ¡ëσà¿τÉâΣ║ñµÿôµëÇτÜäσ«₧µù╢Σ╗╖µá╝</li></ul><h3>Σ╗ÇΣ╣êµÿ»σ║ƒΘô╢∩╝ƒ</h3><p>τá┤µìƒτÜäΘªûΘÑ░πÇüµùºΘô╢σÖ¿πÇüΘô╢σ╕ü ΓÇö Σ╗╗Σ╜òΣ╗Ñσà╢Θçæσ▒₧σÉ½ΘçÅσç║σö«τÜäΘô╢σê╢σôüπÇé</p>
           </div>
         </div>
       </div>
@@ -226,16 +219,16 @@
         <div class="faq-scroll-panel">
           <div class="faq-list">
             <div class="faq-item">
-              <button class="faq-question" id="faq-btn-1"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">这个计算器有多准确？</h3> <span class="faq-icon">+</span></button>
-              <div class="faq-answer"><p>我们使用实时现货价格。显示的值是理论上的熔炼价值；买家支付80-97%。</p></div>
+              <button class="faq-question" id="faq-btn-1"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Φ┐ÖΣ╕¬Φ«íτ«ùσÖ¿µ£ëσñÜσçåτí«∩╝ƒ</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>µêæΣ╗¼Σ╜┐τö¿σ«₧µù╢τÄ░Φ┤ºΣ╗╖µá╝πÇéµÿ╛τñ║τÜäσÇ╝µÿ»τÉåΦ«║Σ╕èτÜäτåöτé╝Σ╗╖σÇ╝∩╝¢Σ╣░σ«╢µö»Σ╗ÿ80-97%πÇé</p></div>
             </div>
             <div class="faq-item">
-              <button class="faq-question" id="faq-btn-2"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">我怎么知道银的纯度？</h3> <span class="faq-icon">+</span></button>
-              <div class="faq-answer"><p>寻找印记：925、999、800。珠宝商可以进行测试。</p></div>
+              <button class="faq-question" id="faq-btn-2"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">µêæµÇÄΣ╣êτƒÑΘüôΘô╢τÜäτ║»σ║ª∩╝ƒ</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>σ»╗µë╛σì░Φ«░∩╝Ü925πÇü999πÇü800πÇéτÅáσ«¥σòåσÅ»Σ╗ÑΦ┐¢Φíîµ╡ïΦ»òπÇé</p></div>
             </div>
             <div class="faq-item">
-              <button class="faq-question" id="faq-btn-3"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">为什么价格会变动？</h3> <span class="faq-icon">+</span></button>
-              <div class="faq-answer"><p>白银在全球交易所交易。价格随供需波动。</p></div>
+              <button class="faq-question" id="faq-btn-3"><h3 style="font-size:inherit;font-weight:inherit;display:inline;">Σ╕║Σ╗ÇΣ╣êΣ╗╖µá╝Σ╝ÜσÅÿσè¿∩╝ƒ</h3> <span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>τÖ╜Θô╢σ£¿σà¿τÉâΣ║ñµÿôµëÇΣ║ñµÿôπÇéΣ╗╖µá╝ΘÜÅΣ╛¢Θ£Çµ│óσè¿πÇé</p></div>
             </div>
           </div>
         </div>
@@ -246,11 +239,11 @@
   <div id="site-footer"></div>
 
   <script>
-    window.MenuTranslations = {"Home":"首页","Calculators":"计算器","Purity":"纯度","Pricing":"价格","Tools":"工具","Guides":"指南","Primary Calculators":"主要计算器","Item Calculators":"物品计算器","Popular Coins":"热门银币","Silver Purity":"白银纯度","Silver Scrap Calculator":"废银计算器","About":"关于我们","Privacy":"隐私","Terms":"条款","All rights reserved.":"版权所有。","Prices are for informational purposes only.":"价格仅供参考。","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"使用实时现货价格的免费白银计算器。立即计算您的废银价值。"};
+    window.MenuTranslations = {"Home":"ΘªûΘí╡","Calculators":"Φ«íτ«ùσÖ¿","Purity":"τ║»σ║ª","Pricing":"Σ╗╖µá╝","Tools":"σ╖Ñσà╖","Guides":"µîçσìù","Primary Calculators":"Σ╕╗ΦªüΦ«íτ«ùσÖ¿","Item Calculators":"τë⌐σôüΦ«íτ«ùσÖ¿","Popular Coins":"τâ¡Θù¿Θô╢σ╕ü","Silver Purity":"τÖ╜Θô╢τ║»σ║ª","Silver Scrap Calculator":"σ║ƒΘô╢Φ«íτ«ùσÖ¿","About":"σà│Σ║ÄµêæΣ╗¼","Privacy":"ΘÜÉτºü","Terms":"µ¥íµ¼╛","All rights reserved.":"τëêµ¥âµëÇµ£ëπÇé","Prices are for informational purposes only.":"Σ╗╖µá╝Σ╗àΣ╛¢σÅéΦÇâπÇé","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Σ╜┐τö¿σ«₧µù╢τÄ░Φ┤ºΣ╗╖µá╝τÜäσàìΦ┤╣τÖ╜Θô╢Φ«íτ«ùσÖ¿πÇéτ½ïσì│Φ«íτ«ùµé¿τÜäσ║ƒΘô╢Σ╗╖σÇ╝πÇé"};
   </script>
-  <script src="/js/silver-price.js?v=2.1" defer></script>
-  <script src="/js/calculator.js?v=2.1" defer></script>
-  <script src="/js/components.js?v=2.1" defer></script>
+  <script src="../js/silver-price.js?v=2.1"></script>
+  <script src="../js/calculator.js?v=2.1"></script>
+  <script src="../js/components.js?v=2.1"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
 
@@ -265,11 +258,11 @@
       const unit = unitSelect.value;
       const purity = parseFloat(puritySelect.value);
       const spotPrice = SilverPrice.getPrice();
-      if (weight <= 0) { resultValue.textContent = '$0.00'; resultDetail.textContent = t.spot + ': --'; return; }
+      if (weight <= 0) { resultValue.textContent = '$0.00'; resultDetail.textContent = '现货: --'; return; }
       const weightGrams = SilverCalc.toGrams(weight, unit);
       const result = SilverCalc.meltValue(weightGrams, purity, spotPrice);
       resultValue.textContent = SilverCalc.formatCurrency(result.value);
-      resultDetail.textContent = result.silverContentGrams + 'g · ' + result.silverContentOz + ' troy oz · ' + t.spot + ': $' + spotPrice.toFixed(2) + '/oz';
+      resultDetail.textContent = result.silverContentGrams + 'g · ' + result.silverContentOz + ' troy oz · 现货: $' + spotPrice.toFixed(2) + '/oz';
     }
 
     weightInput.addEventListener('input', calculate);
@@ -281,8 +274,8 @@
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => { btn.closest('.faq-item').classList.toggle('open'); });
     });
-  
-    / Add listener to Calculate button
+
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);

@@ -1,8 +1,8 @@
-﻿const fs = require('fs');
+const fs = require('fs');
 const path = require('path');
-const baseDir = path.resolve(__dirname, '..');
-const { languages } = require('./generate-languages');
-const moreLangs = require('./generate-languages-data');
+const baseDir = path.resolve(__dirname);
+const { languages } = require('./js/generate-languages');
+const moreLangs = require('./js/generate-languages-data');
 
 const allLangs = [...languages, ...moreLangs];
 const allCodes = allLangs.map(l => l.code);
@@ -275,11 +275,11 @@ function generateHomepage(lang) {
       const unit = unitSelect.value;
       const purity = parseFloat(puritySelect.value);
       const spotPrice = SilverPrice.getPrice();
-      if (weight <= 0) { resultValue.textContent = '$0.00'; resultDetail.textContent = t.spot + ': --'; return; }
+      if (weight <= 0) { resultValue.textContent = '$0.00'; resultDetail.textContent = '${t.spot}: --'; return; }
       const weightGrams = SilverCalc.toGrams(weight, unit);
       const result = SilverCalc.meltValue(weightGrams, purity, spotPrice);
       resultValue.textContent = SilverCalc.formatCurrency(result.value);
-      resultDetail.textContent = result.silverContentGrams + 'g ┬╖ ' + result.silverContentOz + ' troy oz ┬╖ ' + t.spot + ': $' + spotPrice.toFixed(2) + '/oz';
+      resultDetail.textContent = result.silverContentGrams + 'g · ' + result.silverContentOz + ' troy oz · ${t.spot}: $' + spotPrice.toFixed(2) + '/oz';
     }
 
     weightInput.addEventListener('input', calculate);
@@ -291,6 +291,13 @@ function generateHomepage(lang) {
     document.querySelectorAll('.faq-question').forEach(btn => {
       btn.addEventListener('click', () => { btn.closest('.faq-item').classList.toggle('open'); });
     });
+
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>`;
@@ -472,6 +479,13 @@ function generateScrapCalculatorPage(lang) {
     [u,p,d].forEach(el => el.addEventListener('change', calc));
     SilverPrice.onPriceUpdate(() => calc());
     calc();
+
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>`;
@@ -817,12 +831,12 @@ function getMenuTranslations(code) {
 allLangs.forEach(lang => {
   const dir = path.join(baseDir, lang.code);
   if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index'), generateHomepage(lang));
+  fs.writeFileSync(path.join(dir, 'index.html'), generateHomepage(lang));
   
   // If the language supports inner pages, generate them
   if (lang.t.innerScrapTitle) {
-    fs.writeFileSync(path.join(dir, 'silver-scrap-calculator'), generateScrapCalculatorPage(lang));
-    console.log(`Created ${lang.code}/silver-scrap-calculator`);
+    fs.writeFileSync(path.join(dir, 'silver-scrap-calculator.html'), generateScrapCalculatorPage(lang));
+    console.log(`Created ${lang.code}/silver-scrap-calculator.html`);
   }
   
   console.log(`Created ${lang.code}/index (${lang.name})`);

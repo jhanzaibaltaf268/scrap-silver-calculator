@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1kg Silver Value — Current Price of 1kg Silver</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
   <meta name="description" content="Current value of 1 kilogram of silver. International standard bar size.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/1kg-silver-value/">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&amp;family=Outfit:wght@400..800&amp;display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="site-header"></div>
@@ -21,9 +18,8 @@
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🧱</span> 1kg Silver Value</div>
         <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
-        
-          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
-          <div class="result-display">
+                <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+<div class="result-display">
           <div class="result-label">1kg Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -34,24 +30,7 @@
           <tbody id="qty-table"></tbody>
         </table>
       </div>
-      <div class="content-body">
-        <h2>How Much Is 1 Kilogram of Silver Worth?</h2>
-        <p>A <strong>1 kilogram silver bar</strong> (1,000 grams) is an international standard unit of investment wealth. Because 1kg equals approximately <strong>32.15 troy ounces</strong>, it serves as the perfect "middle-weight" asset for investors who find 10oz bars too small and 100oz bars too heavy or expensive for a single purchase. Kilo bars are particularly popular in the European and Asian markets but have seen massive growth in North America due to their efficient size.</p>
-
-        <div class="callout info">
-          <div class="callout-title">🌍 Metric vs. Imperial</div>
-          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">While the United States primarily uses troy ounces, much of the world trades silver in <strong>metric kilograms</strong>. One kilo of silver is exactly 1,000 grams. If you are tracking the value in ounces, remember the conversion: 1kg = 32.1507 troy ounces.</p>
-        </div>
-
-        <h3>Why Kilo Bars are a Favorite for "Stackers"</h3>
-        <p>Kilo bars offer a unique combination of <strong>bulk pricing and liquidity</strong>. They typically carry lower premiums than 1oz or 10oz bars, yet they are small enough to be sold easily to any local coin shop. Many high-end refineries like <strong>PAMP Suisse</strong>, <strong>Valcambi</strong>, and <strong>Perth Mint</strong> produce kilo bars with beautiful finishes and protective packaging, making them both an investment and a collector's item.</p>
-
-        <h3>Physical Dimensions of a 1kg Silver Bar</h3>
-        <p>Because silver is extremely dense, a 1kg bar is surprisingly compact. A standard "cast" kilo bar is roughly <strong>115mm long, 50mm wide, and 18mm thick</strong>—about the size of a handheld remote control. "Struck" bars may be thinner and wider. Most kilo bars are guaranteed to be <strong>.999 fine silver</strong>, and many feature a unique serial number and assay certificate.</p>
-        
-        <h3>Live Market Valuation</h3>
-        <p>The value of as silver kilo is highly sensitive to the global spot price. Our <strong>live value calculator</strong> pulls real-time data from international exchanges to provide you with an instant, accurate valuation of your 1kg silver bars based on current trading conditions.</p>
-      </div>
+      <div class="content-body"><h2>How Much Is 1 Kilogram of Silver Worth?</h2><p>One kilogram of silver equals 32.1507 troy ounces (1,000 grams). Kilo bars are the international standard size, especially popular in Europe, Asia, and Australia.</p><p>Kilo bars offer some of the lowest premiums over spot price, making them efficient for larger investments.</p></div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Pages</h3><div class="related-grid">
         <a href="/silver-bar-value-calculator/" class="related-link"><span class="r-icon">🧱</span> Bar Calculator</a>
         <a href="/silver-price-per-ounce/" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
@@ -61,7 +40,7 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="/js/silver-price.js" defer></script><script src="/js/calculator.js" defer></script><script src="/js/components.js" defer></script>
+  <script src="/js/silver-price.js" defer=""></script><script src="/js/calculator.js" defer=""></script><script src="/js/components.js" defer=""></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'1kg Silver Value'}]);
@@ -70,19 +49,12 @@
       const qtys=[1,2,5,10,25,50,100];document.getElementById('qty-table').innerHTML=qtys.map(n=>'<tr><td>'+n+'</td><td>'+(32.1507*n).toFixed(2)+' oz</td><td>$'+(32.1507*n*spot).toFixed(2)+'</td></tr>').join('');}
     q.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
 
-    SiteComponents.injectFAQSchema([
-      {q: 'How many troy ounces are in a 1kg silver bar?', a: 'There are exactly 32.1507 troy ounces in one kilogram of silver. This is the standard conversion used by bullion dealers worldwide.'},
-      {q: 'Is a kilo of silver a good investment?', a: 'Yes. Kilo bars are highly efficient because they offer a lower premium per ounce than smaller bars, but they are still small enough to be easily portable and liquid.'},
-      {q: 'How much does a 1kg silver bar weigh in pounds?', a: 'One kilo of silver weighs approximately 2.2046 standard (avoirdupois) pounds.'},
-      {q: 'What are the most popular 1kg silver bars?', a: 'The most recognized kilo bars are produced by PAMP Suisse, Valcambi, the Perth Mint, Royal Canadian Mint, and Metalor. Any bar from an LBMA-certified refinery is considered a top-tier investment.'}
-    ]);
-  
-    / Add listener to Calculate button
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
   </script>
-</body>
-</html>
+
+</body></html>

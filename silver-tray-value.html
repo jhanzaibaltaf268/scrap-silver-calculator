@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Silver Tray Value — How Much Is a Silver Tray Worth?</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
   <meta name="description" content="Calculate silver tray value. Silver serving trays can weigh 200-2000+ grams.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-tray-value/">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,38 +24,14 @@
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
         <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected>925 Sterling</option><option value="0.900" >900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800" >800 European</option></select></div>
-        
-          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
-          <div class="result-display">
+        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+        <div class="result-display">
           <div class="result-label">Silver Tray Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
         </div>
       </div>
-      <div class="content-body">
-        <h2>How Much Is a Silver Tray Worth?</h2>
-        <p>Silver trays, platters, and salvers are some of the most valuable "scrap" silver items due to their significant surface area and <strong>substantial weight</strong>. A single large sterling silver tray can weigh several pounds, translating to a melt value of **$500 to $1,500+** at today's silver prices. Most high-quality silver trays found in historical collections are made from 925 sterling silver.</p>
-
-        <div class="callout tip">
-          <div class="callout-title">⚠️ Warning: Silver Plate vs. Solid</div>
-          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Many ornate serving trays are <strong>silver-plated</strong> (silver over copper or brass). These look identical to solid silver but have almost no scrap value. Always look for the word "Sterling" or the "925" mark. If you see "Copper Core" or "EP", it is plated.</p>
-        </div>
-
-        <h3>Typical Silver Tray Weight Benchmarks</h3>
-        <p>If you don't have a heavy-duty scale, you can use these industry averages to estimate your tray's silver content:</p>
-        <ul>
-            <li><strong>Small Bread/Butter Tray</strong>: 150 – 300 grams</li>
-            <li><strong>Oval Meat Platter</strong>: 600 – 1,000 grams</li>
-            <li><strong>Large Circular Salver</strong>: 800 – 1,500 grams</li>
-            <li><strong>Full Tea Service Gallery Tray</strong>: 1,500 – 3,000+ grams</li>
-        </ul>
-
-        <h3>Determining the Value of Your Tray</h3>
-        <p>To calculate the melt value, weigh the tray in grams, multiply by 0.925 (for sterling), and then multiply by the live silver market price per gram. Note that some trays have "feet" or handles made of different materials or weighted bases—these should be excluded from the silver weight calculation.</p>
-        
-        <h3>Should You Sell for Scrap or Antique Value?</h3>
-        <p>Trays by legendary makers like Paul Storr, Hester Bateman, or modern luxury brands like Christofle or Buccellati can be worth many times their silver weight. If your tray is in excellent condition and has a clear maker's hallmark, consider an appraisal before melting. Our <strong>live silver calculator</strong> provides the baseline metal value for your planning.</p>
-      </div>
+      <div class="content-body"><h2>How Much Is a Silver Tray Worth?</h2><p>Silver trays are among the heaviest pieces of household silver and can contain significant amounts of pure silver.</p><h3>Typical Weights</h3><ul><li><strong>Small bread tray</strong>: 200-400 grams</li><li><strong>Medium serving tray</strong>: 400-800 grams</li><li><strong>Large serving tray</strong>: 800-1,500 grams</li><li><strong>Tea service tray</strong>: 1,000-2,000+ grams</li></ul><p>Silver trays are some of the most valuable scrap silver items due to their substantial weight. Always verify with hallmarks — many trays are silver-plated, not solid silver.</p></div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3><div class="related-grid">
   <a href="/silverware-value-calculator/" class="related-link"><span class="r-icon">🍴</span> Silverware Calculator</a>
   <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
@@ -73,14 +48,7 @@
     function calc(){const weight=(parseFloat(w.value)||0)*(parseInt(q.value)||1);const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
     [w,q].forEach(el=>el.addEventListener('input',calc));p.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
 
-    SiteComponents.injectFAQSchema([
-      {q: 'How much is a heavy sterling silver tray worth?', a: 'A heavy sterling silver tray (approx. 1000g) is worth roughly $700 - $900 depending on the current silver spot price. You multiply the weight by 0.925 to get the pure silver content.'},
-      {q: 'Is my silver-stamped tray actually plated?', a: 'Some unscrupulous makers used stamps like "Sterling Plate" or "Silver on Copper" to confuse buyers. True solid silver will simply say "925" or "Sterling" without the word "Plate".'},
-      {q: 'Does an engraved tray lose value?', a: 'For scrap/melt purposes, an engraving (like a family name or date) does not decrease the value. However, for antique resale, a personalized engraving can sometimes lower the collector value unless it is of historical significance.'},
-      {q: 'Can I sell a silver tray with a broken handle?', a: 'Yes. Refineries care only about the raw silver content. A broken or dented tray is worth exactly the same as a perfect one when selling for melt value.'}
-    ]);
-  
-    / Add listener to Calculate button
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);

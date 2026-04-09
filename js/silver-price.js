@@ -46,7 +46,7 @@ const SilverPrice = (() => {
     return null;
   }
 
-  function setCache(price) {
+  function setCache(silverPrice, goldPrice) {
     try {
       sessionStorage.setItem(CACHE_KEY, JSON.stringify({
         price: silverPrice,

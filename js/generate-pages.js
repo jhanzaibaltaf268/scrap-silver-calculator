@@ -15,6 +15,9 @@ function purityPage(purityCode, purityPct, purityName, description, content) {
   <meta name="description" content="${description}">
   <link rel="canonical" href="https://scrapsilvercalculater.com/${purityCode.toLowerCase()}-silver-calculator/">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="site-header"></div>
@@ -32,6 +35,7 @@ function purityPage(purityCode, purityPct, purityName, description, content) {
           <div class="callout-title">Purity: ${purityPct}% (${purityName})</div>
           <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">${purityName} contains ${purityPct}% pure silver. This calculator is pre-set to this purity.</p>
         </div>
+        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
         <div class="result-display">
           <div class="result-label">${purityCode} Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
@@ -48,13 +52,20 @@ function purityPage(purityCode, purityPct, purityName, description, content) {
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
+  <script src="/js/silver-price.js" defer></script><script src="/js/calculator.js" defer></script><script src="/js/components.js" defer></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'${purityCode} Silver Calculator'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit');
     function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(grams,${purityPct/100},spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=\`\${r.silverContentGrams}g pure silver (${purityPct}%) · \${r.silverContentOz} oz · Spot: $\${spot.toFixed(2)}/oz\`;}
     w.addEventListener('input',calc);u.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>`;
@@ -77,9 +88,7 @@ const purities = [
 ];
 
 purities.forEach(p => {
-  const filename = `${p.code}-silver-calculator`;
-  // Generate canonical with clean URL
-  const cleanUrl = `https://scrapsilvercalculater.com/${p.code}-silver-calculator/`;
+  const filename = `${p.code}-silver-calculator.html`;
   fs.writeFileSync(path.join(baseDir, filename), purityPage(p.code, p.pct, p.name, p.desc, p.content));
   console.log(`Created ${filename}`);
 });
@@ -93,7 +102,11 @@ function weightPage(sizeLabel, sizeOz, filename, desc, content) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${sizeLabel} Silver Value — Current Price of ${sizeLabel} Silver</title>
   <meta name="description" content="${desc}">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/${filename.replace('.html', '')}/">
   <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="site-header"></div>
@@ -125,7 +138,7 @@ function weightPage(sizeLabel, sizeOz, filename, desc, content) {
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="/js/silver-price.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
+  <script src="/js/silver-price.js" defer></script><script src="/js/calculator.js" defer></script><script src="/js/components.js" defer></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'${sizeLabel} Silver Value'}]);
@@ -133,6 +146,13 @@ function weightPage(sizeLabel, sizeOz, filename, desc, content) {
     function calc(){const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const totalOz=${sizeOz}*qty;const val=totalOz*spot;document.getElementById('result-value').textContent='$'+val.toFixed(2);document.getElementById('result-detail').textContent=qty+'× ${sizeLabel} · '+totalOz.toFixed(2)+' oz total · Spot: $'+spot.toFixed(2)+'/oz';
       const qtys=[1,2,5,10,25,50,100];document.getElementById('qty-table').innerHTML=qtys.map(n=>'<tr><td>'+n+'</td><td>'+(${sizeOz}*n).toFixed(2)+' oz</td><td>$'+(${sizeOz}*n*spot).toFixed(2)+'</td></tr>').join('');}
     q.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>`;
@@ -156,8 +176,9 @@ const weights = [
 ];
 
 weights.forEach(w => {
-  fs.writeFileSync(path.join(baseDir, w.file), weightPage(w.label, w.oz, w.file, w.desc, w.content));
-  console.log(`Created ${w.file}`);
+  const finalFilename = w.file.endsWith('.html') ? w.file : w.file + '.html';
+  fs.writeFileSync(path.join(baseDir, finalFilename), weightPage(w.label, w.oz, finalFilename, w.desc, w.content));
+  console.log(`Created ${finalFilename}`);
 });
 
 // ---- Jewelry/Silverware Page Template ----
@@ -170,7 +191,11 @@ function itemPage(itemName, itemEmoji, defaultWeight, defaultPurity, pageFile, d
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Silver ${titleName} Value — How Much Is a Silver ${titleName} Worth?</title>
   <meta name="description" content="${desc}">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/${pageFile.replace('.html', '')}/">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
 </head>
 <body>
   <div id="site-header"></div>
@@ -185,6 +210,7 @@ function itemPage(itemName, itemEmoji, defaultWeight, defaultPurity, pageFile, d
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
         <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" ${defaultPurity===0.925?'selected':''}>925 Sterling</option><option value="0.900" ${defaultPurity===0.900?'selected':''}>900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800" ${defaultPurity===0.800?'selected':''}>800 European</option></select></div>
+        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
         <div class="result-display">
           <div class="result-label">Silver ${titleName} Value</div>
           <div class="result-value" id="result-value">$0.00</div>
@@ -196,13 +222,20 @@ function itemPage(itemName, itemEmoji, defaultWeight, defaultPurity, pageFile, d
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="js/silver-price.js"></script><script src="js/calculator.js"></script><script src="js/components.js"></script>
+  <script src="/js/silver-price.js" defer></script><script src="/js/calculator.js" defer></script><script src="/js/components.js" defer></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Silver ${titleName} Value'}]);
     const w=document.getElementById('weight'),q=document.getElementById('qty'),p=document.getElementById('purity');
     function calc(){const weight=(parseFloat(w.value)||0)*(parseInt(q.value)||1);const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
     [w,q].forEach(el=>el.addEventListener('input',calc));p.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
   </script>
 </body>
 </html>`;
@@ -231,8 +264,9 @@ const jewelry = [
 ];
 
 jewelry.forEach(j => {
-  fs.writeFileSync(path.join(baseDir, j.file), itemPage(j.name, j.emoji, j.weight, j.purity, j.file, j.desc, j.content, jewelryRelated));
-  console.log(`Created ${j.file}`);
+  const finalFilename = j.file.endsWith('.html') ? j.file : j.file + '.html';
+  fs.writeFileSync(path.join(baseDir, finalFilename), itemPage(j.name, j.emoji, j.weight, j.purity, finalFilename, j.desc, j.content, jewelryRelated));
+  console.log(`Created ${finalFilename}`);
 });
 
 // Silverware pages
@@ -264,8 +298,9 @@ const silverware = [
 ];
 
 silverware.forEach(s => {
-  fs.writeFileSync(path.join(baseDir, s.file), itemPage(s.name, s.emoji, s.weight, s.purity, s.file, s.desc, s.content, silverwareRelated));
-  console.log(`Created ${s.file}`);
+  const finalFilename = s.file.endsWith('.html') ? s.file : s.file + '.html';
+  fs.writeFileSync(path.join(baseDir, finalFilename), itemPage(s.name, s.emoji, s.weight, s.purity, finalFilename, s.desc, s.content, silverwareRelated));
+  console.log(`Created ${finalFilename}`);
 });
 
 console.log('\\nAll pages generated successfully!');

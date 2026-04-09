@@ -163,10 +163,10 @@
       updateAll(val, 'grams');
     });
 
-    / Initial
+    // Initial
     updateAll(31.1035, 'grams');
   
-    / Add listener to Calculate button
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);

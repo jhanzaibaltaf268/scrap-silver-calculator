@@ -63,7 +63,7 @@
     const f=document.getElementById('face-val');
     function calc() {
       const faceVal=parseFloat(f.value)||0;
-      / $1 FV = 0.715 oz of pure silver
+      // $1 FV = 0.715 oz of pure silver
       const totalOz = faceVal * 0.715;
       const spot=SilverPrice.getPrice();
       const meltValue = totalOz * spot;
@@ -85,7 +85,7 @@
 <script>
   window.MenuTranslations = {}; 
 
-    / Add listener to Calculate button
+    // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
