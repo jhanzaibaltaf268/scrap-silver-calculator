@@ -526,6 +526,7 @@ main {
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-full);
   margin-bottom: var(--space-2xl);
+  min-height: 44px; /* Reserved height to prevent CLS */
 }
 
 .price-ticker .dot {
@@ -1498,4 +1499,18 @@ main {
   div#site-header { 
     top: 0 !important; 
   }
+}
+/* ---- Breadcrumbs Reserved Space ---- */
+#breadcrumb {
+  min-height: 24px;
+  margin-bottom: var(--space-md);
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: var(--fs-xs);
+  color: var(--text-muted);
 }
