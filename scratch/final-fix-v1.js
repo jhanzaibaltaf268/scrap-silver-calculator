@@ -1,0 +1,482 @@
+const fs = require('fs');
+const path = require('path');
+
+const ROOT = path.resolve(__dirname, '..');
+
+// ============================================================
+// PART 1: Generate a CLEAN translations.js with safe encoding
+// ============================================================
+
+const TRANSLATIONS = {
+  ar: {
+    Home: "\u0627\u0644\u0631\u0626\u064a\u0633\u064a\u0629",
+    Calculators: "\u0627\u0644\u062d\u0627\u0633\u0628\u0627\u062a",
+    Purity: "\u0627\u0644\u0646\u0642\u0627\u0621",
+    Pricing: "\u0627\u0644\u0623\u0633\u0639\u0627\u0631",
+    Tools: "\u0627\u0644\u0623\u062f\u0648\u0627\u062a",
+    Guides: "\u0627\u0644\u0623\u062f\u0644\u0629",
+    "Gold & Silver Calculator": "\u062d\u0627\u0633\u0628\u0629 \u0627\u0644\u0630\u0647\u0628 \u0648\u0627\u0644\u0641\u0636\u0629",
+    "Sona Chandi Calculator": "\u062d\u0627\u0633\u0628\u0629 \u0627\u0644\u0630\u0647\u0628 \u0648\u0627\u0644\u0641\u0636\u0629",
+    "Face Value Silver Calculator": "\u062d\u0627\u0633\u0628\u0629 \u0627\u0644\u0642\u064a\u0645\u0629 \u0627\u0644\u0627\u0633\u0645\u064a\u0629",
+    "Silver Batch Calculator": "\u062d\u0627\u0633\u0628\u0629 \u062f\u0641\u0639\u064a\u0629 \u0627\u0644\u0641\u0636\u0629",
+    "Silver Weight Converter": "\u0645\u062d\u0648\u0644 \u0648\u0632\u0646 \u0627\u0644\u0641\u0636\u0629",
+    "Sell or Hold": "\u0628\u064a\u0639 \u0623\u0648 \u0627\u062d\u062a\u0641\u0638",
+    "Silver Identifier": "\u0645\u0639\u0631\u0641 \u0627\u0644\u0641\u0636\u0629",
+    how_it_works: "\u0643\u064a\u0641 \u064a\u0639\u0645\u0644 \u2014 3 \u062e\u0637\u0648\u0627\u062a \u0628\u0633\u064a\u0637\u0629",
+    how_it_works_sub: "\u0627\u062d\u0635\u0644 \u0639\u0644\u0649 \u062a\u0642\u064a\u064a\u0645 \u062f\u0642\u064a\u0642 \u0641\u064a \u062b\u0648\u0627\u0646\u064d.",
+    step1_title: "\u0632\u0646 \u0641\u0636\u062a\u0643",
+    step1_text: "\u0627\u0633\u062a\u062e\u062f\u0645 \u0645\u064a\u0632\u0627\u0646\u0627\u064b \u0644\u0648\u0632\u0646 \u0642\u0637\u0639\u0629 \u0627\u0644\u0641\u0636\u0629 \u0627\u0644\u062e\u0627\u0635\u0629 \u0628\u0643 \u0628\u0627\u0644\u062c\u0631\u0627\u0645 \u0623\u0648 \u0623\u0648\u0642\u064a\u0629 \u062a\u0631\u0648\u064a.",
+    step2_title: "\u0627\u062e\u062a\u0631 \u0627\u0644\u0646\u0642\u0627\u0621",
+    step2_text: "\u0627\u062e\u062a\u0631 \u0627\u0644\u0646\u0642\u0627\u0621: .999 \u0623\u0648 .925 \u0627\u0633\u062a\u0631\u0644\u064a\u0646\u064a \u0623\u0648 .900 \u0639\u0645\u0644\u0629 \u0623\u0648 \u0645\u062e\u0635\u0635.",
+    step3_title: "\u0627\u062d\u0635\u0644 \u0639\u0644\u0649 \u0627\u0644\u0642\u064a\u0645\u0629 \u0641\u0648\u0631\u0627\u064b",
+    step3_text: "\u064a\u062a\u0645 \u062d\u0633\u0627\u0628 \u0627\u0644\u0642\u064a\u0645\u0629 \u0641\u0648\u0631\u0627\u064b \u0628\u0646\u0627\u0621\u064b \u0639\u0644\u0649 \u0633\u0639\u0631 \u0627\u0644\u0641\u0636\u0629 \u0627\u0644\u0645\u0628\u0627\u0634\u0631.",
+    understand_title: "\u0641\u0647\u0645 \u0642\u064a\u0645\u0629 \u0627\u0644\u0641\u0636\u0629 \u2014 \u0645\u0646 \u0627\u0644\u062e\u0631\u062f\u0629 \u0625\u0644\u0649 \u0627\u0644\u0633\u0639\u0631 \u0627\u0644\u0641\u0648\u0631\u064a",
+    understand_h3: "\u0643\u064a\u0641 \u064a\u062a\u0645 \u062d\u0633\u0627\u0628 \u0642\u064a\u0645\u0629 \u0627\u0644\u0627\u0646\u0635\u0647\u0627\u0631\u061f",
+    understand_text: "\u062a\u0639\u062a\u0645\u062f \u0642\u064a\u0645\u0629 \u0623\u064a \u0642\u0637\u0639\u0629 \u0641\u0636\u064a\u0629 \u0639\u0644\u0649 \u062b\u0644\u0627\u062b\u0629 \u0639\u0648\u0627\u0645\u0644: \u0627\u0644\u0648\u0632\u0646 \u0648\u0627\u0644\u0646\u0642\u0627\u0621 \u0648\u0627\u0644\u0633\u0639\u0631 \u0627\u0644\u0641\u0648\u0631\u064a \u0627\u0644\u062d\u0627\u0644\u064a. \u0627\u0644\u0645\u0639\u0627\u062f\u0644\u0629 \u0647\u064a: \u0627\u0644\u0642\u064a\u0645\u0629 = \u0627\u0644\u0648\u0632\u0646 \u00d7 \u0627\u0644\u0646\u0642\u0627\u0621 \u00d7 \u0627\u0644\u0633\u0639\u0631 \u0627\u0644\u0641\u0648\u0631\u064a.",
+    faq_title: "\u0627\u0644\u0623\u0633\u0626\u0644\u0629 \u0627\u0644\u0634\u0627\u0626\u0639\u0629 \u062d\u0648\u0644 \u0642\u064a\u0645\u0629 \u0627\u0644\u0641\u0636\u0629",
+    faq1_title: "\u0645\u0627 \u0645\u062f\u0649 \u062f\u0642\u0629 \u0647\u0630\u0647 \u0627\u0644\u062d\u0627\u0633\u0628\u0629\u061f",
+    faq1_text: "\u0646\u062d\u0646 \u0646\u0633\u062a\u062e\u062f\u0645 \u0627\u0644\u0623\u0633\u0639\u0627\u0631 \u0627\u0644\u0641\u0648\u0631\u064a\u0629 \u0627\u0644\u0645\u0628\u0627\u0634\u0631\u0629 \u0645\u0646 \u0627\u0644\u0628\u0648\u0631\u0635\u0627\u062a \u0627\u0644\u0639\u0627\u0644\u0645\u064a\u0629. \u0648\u0645\u0639 \u0630\u0644\u0643\u060c \u0642\u062f \u064a\u062e\u0635\u0645 \u0627\u0644\u0645\u0634\u062a\u0631\u0648\u0646 10-20% \u0643\u0631\u0633\u0648\u0645 \u062a\u0643\u0631\u064a\u0631.",
+    faq2_title: "\u0643\u064a\u0641 \u0623\u0639\u0631\u0641 \u0646\u0642\u0627\u0621 \u0627\u0644\u0641\u0636\u0629\u061f",
+    faq2_text: "\u0627\u0628\u062d\u062b \u0639\u0646 \u0623\u062e\u062a\u0627\u0645 \u0645\u062b\u0644 925 \u0623\u0648 800 \u0623\u0648 STERLING. \u0627\u0644\u0641\u0636\u0629 \u0627\u0644\u062d\u0642\u064a\u0642\u064a\u0629 \u0644\u064a\u0633\u062a \u0645\u063a\u0646\u0627\u0637\u064a\u0633\u064a\u0629.",
+    faq3_title: "\u0623\u064a\u0646 \u064a\u0645\u0643\u0646\u0646\u064a \u0628\u064a\u0639 \u062e\u0631\u062f\u0629 \u0627\u0644\u0641\u0636\u0629\u061f",
+    faq3_text: "\u064a\u0645\u0643\u0646\u0643 \u0628\u064a\u0639\u0647\u0627 \u0644\u0645\u062d\u0644\u0627\u062a \u0627\u0644\u0645\u062c\u0648\u0647\u0631\u0627\u062a \u0627\u0644\u0645\u062d\u0644\u064a\u0629 \u0623\u0648 \u0645\u0635\u0627\u0641\u064a \u0627\u0644\u0645\u0639\u0627\u062f\u0646 \u0627\u0644\u062b\u0645\u064a\u0646\u0629 \u0623\u0648 \u0627\u0644\u0645\u0634\u062a\u0631\u064a\u0646 \u0639\u0628\u0631 \u0627\u0644\u0625\u0646\u062a\u0631\u0646\u062a."
+  },
+  de: {
+    Home: "Startseite",
+    Calculators: "Rechner",
+    Purity: "Reinheit",
+    Pricing: "Preise",
+    Tools: "Werkzeuge",
+    Guides: "Ratgeber",
+    "Gold & Silver Calculator": "Gold & Silber Rechner",
+    "Sona Chandi Calculator": "Sona Chandi Rechner",
+    "Face Value Silver Calculator": "Nennwert-Rechner",
+    "Silver Batch Calculator": "Silber-Chargenrechner",
+    "Silver Weight Converter": "Gewichtsumrechner",
+    "Sell or Hold": "Verkaufen oder Halten",
+    "Silver Identifier": "Silber-Identifikator",
+    how_it_works: "So funktioniert es \u2014 3 einfache Schritte",
+    how_it_works_sub: "Erhalten Sie in Sekunden eine genaue Bewertung.",
+    step1_title: "Silber wiegen",
+    step1_text: "Verwenden Sie eine Waage, um Ihr Silber in Gramm oder Feinunzen zu wiegen.",
+    step2_title: "Reinheit w\u00e4hlen",
+    step2_text: "W\u00e4hlen Sie: .999, .925 Sterling, .900 M\u00fcnzsilber oder individuell.",
+    step3_title: "Sofort den Wert erhalten",
+    step3_text: "Der Wert wird sofort anhand des aktuellen Spotpreises berechnet.",
+    understand_title: "Silberwert verstehen \u2014 Vom Altsilber zum Spotpreis",
+    understand_h3: "Wie wird der Schmelzwert berechnet?",
+    understand_text: "Der Wert h\u00e4ngt von Gewicht, Reinheit und Spotpreis ab. Formel: Wert = Gewicht x Reinheit x Spotpreis.",
+    faq_title: "H\u00e4ufig gestellte Fragen",
+    faq1_title: "Wie genau ist dieser Rechner?",
+    faq1_text: "Wir verwenden Live-Spotpreise. K\u00e4ufer zahlen in der Regel 80-95% des Schmelzwerts.",
+    faq2_title: "Wie erkennt man echtes Silber?",
+    faq2_text: "Suchen Sie nach Punzen wie 925 oder Sterling. Echtes Silber ist nicht magnetisch.",
+    faq3_title: "Wo kann man Altsilber verkaufen?",
+    faq3_text: "Bei \u00f6rtlichen Juwelieren oder Edelmetall-Raffinerien."
+  },
+  es: {
+    Home: "Inicio",
+    Calculators: "Calculadoras",
+    Purity: "Pureza",
+    Pricing: "Precios",
+    Tools: "Herramientas",
+    Guides: "Gu\u00edas",
+    "Gold & Silver Calculator": "Calculadora de Oro y Plata",
+    "Sona Chandi Calculator": "Calculadora Sona Chandi",
+    "Face Value Silver Calculator": "Calculadora de Valor Nominal",
+    "Silver Batch Calculator": "Calculadora de Lotes de Plata",
+    "Silver Weight Converter": "Convertidor de Peso de Plata",
+    "Sell or Hold": "Vender o Mantener",
+    "Silver Identifier": "Identificador de Plata",
+    how_it_works: "C\u00f3mo funciona \u2014 3 sencillos pasos",
+    how_it_works_sub: "Obtenga una valoraci\u00f3n precisa en segundos.",
+    step1_title: "Pese su plata",
+    step1_text: "Use una balanza para pesar su art\u00edculo en gramos u onzas troy.",
+    step2_title: "Seleccione la pureza",
+    step2_text: "Elija entre .999, .925 sterling, .900 moneda o personalizada.",
+    step3_title: "Obtenga el valor instant\u00e1neo",
+    step3_text: "El valor se calcula al instante usando el precio spot en vivo.",
+    understand_title: "Entendiendo el Valor de la Plata \u2014 Del Desecho al Precio Spot",
+    understand_h3: "\u00bfC\u00f3mo se calcula el valor de fusi\u00f3n?",
+    understand_text: "El valor depende del peso, la pureza y el precio spot. La f\u00f3rmula es: Valor = Peso x Pureza x Precio Spot.",
+    faq_title: "Preguntas Frecuentes sobre el Valor de la Plata",
+    faq1_title: "\u00bfQu\u00e9 tan precisa es esta calculadora?",
+    faq1_text: "Usamos precios spot en vivo. Sin embargo, los compradores suelen pagar entre el 80-95% del valor de fusi\u00f3n.",
+    faq2_title: "\u00bfC\u00f3mo se identifica la plata real?",
+    faq2_text: "Busque sellos como 925 o Sterling. La plata real no es magn\u00e9tica.",
+    faq3_title: "\u00bfD\u00f3nde vender plata de desecho?",
+    faq3_text: "En joyer\u00edas locales, casas de empe\u00f1o o refinadores de metales preciosos."
+  },
+  fr: {
+    Home: "Accueil",
+    Calculators: "Calculateurs",
+    Purity: "Puret\u00e9",
+    Pricing: "Prix",
+    Tools: "Outils",
+    Guides: "Guides",
+    "Gold & Silver Calculator": "Calculateur d'Or et d'Argent",
+    "Sona Chandi Calculator": "Calculateur Sona Chandi",
+    "Face Value Silver Calculator": "Valeur Nominale des Pi\u00e8ces",
+    "Silver Batch Calculator": "Calculateur de Lots d'Argent",
+    "Silver Weight Converter": "Convertisseur de Poids",
+    "Sell or Hold": "Vendre ou Garder",
+    "Silver Identifier": "Identificateur d'Argent",
+    how_it_works: "Comment \u00e7a marche \u2014 3 \u00e9tapes simples",
+    how_it_works_sub: "Obtenez une \u00e9valuation pr\u00e9cise en quelques secondes.",
+    step1_title: "Pesez votre argent",
+    step1_text: "Utilisez une balance pour peser votre article en grammes ou en onces troy.",
+    step2_title: "Choisissez la puret\u00e9",
+    step2_text: "Choisissez la puret\u00e9 : .999, .925 sterling, .900 ou personnalis\u00e9.",
+    step3_title: "Obtenez la valeur instantan\u00e9e",
+    step3_text: "La valeur est calcul\u00e9e instantan\u00e9ment \u00e0 l'aide du prix spot en direct.",
+    understand_title: "Comprendre la Valeur de l'Argent \u2014 Du rebut au prix spot",
+    understand_h3: "Comment est calcul\u00e9e la valeur de fusion ?",
+    understand_text: "La valeur d\u00e9pend du poids, de la puret\u00e9 et du prix spot. Formule : Valeur = Poids x Puret\u00e9 x Prix Spot.",
+    faq_title: "Questions fr\u00e9quemment pos\u00e9es",
+    faq1_title: "Quelle est la pr\u00e9cision de ce calculateur ?",
+    faq1_text: "Nous utilisons des prix spot en temps r\u00e9el. Les acheteurs paient g\u00e9n\u00e9ralement 80 \u00e0 95 % de la valeur.",
+    faq2_title: "Comment identifier l'argent r\u00e9el ?",
+    faq2_text: "Cherchez les poin\u00e7ons (925, Sterling). L'argent n'est pas magn\u00e9tique.",
+    faq3_title: "O\u00f9 vendre son argent ?",
+    faq3_text: "Chez les bijoutiers locaux ou les affineurs de m\u00e9taux pr\u00e9cieux."
+  },
+  hi: {
+    Home: "\u0939\u094b\u092e",
+    Calculators: "\u0915\u0948\u0932\u0915\u0941\u0932\u0947\u091f\u0930",
+    Purity: "\u0936\u0941\u0926\u094d\u0927\u0924\u093e",
+    Pricing: "\u092e\u0942\u0932\u094d\u092f \u0928\u093f\u0930\u094d\u0927\u093e\u0930\u0923",
+    Tools: "\u0909\u092a\u0915\u0930\u0923",
+    Guides: "\u0917\u093e\u0907\u0921",
+    "Gold & Silver Calculator": "\u0938\u094b\u0928\u093e-\u091a\u093e\u0902\u0926\u0940 \u0915\u0948\u0932\u0915\u0941\u0932\u0947\u091f\u0930",
+    "Sona Chandi Calculator": "\u0938\u094b\u0928\u093e \u091a\u093e\u0902\u0926\u0940 \u0915\u0948\u0932\u0915\u0941\u0932\u0947\u091f\u0930",
+    "Face Value Silver Calculator": "\u091a\u093e\u0902\u0926\u0940 \u0915\u093e \u0905\u0902\u0915\u093f\u0924 \u092e\u0942\u0932\u094d\u092f",
+    "Silver Batch Calculator": "\u0938\u093f\u0932\u094d\u0935\u0930 \u092c\u0948\u091a \u0915\u0948\u0932\u0915\u0941\u0932\u0947\u091f\u0930",
+    "Silver Weight Converter": "\u0935\u091c\u0928 \u092a\u0930\u093f\u0935\u0930\u094d\u0924\u0915",
+    "Sell or Hold": "\u092c\u0947\u091a\u0947\u0902 \u092f\u093e \u0930\u0916\u0947\u0902",
+    "Silver Identifier": "\u091a\u093e\u0902\u0926\u0940 \u092a\u0939\u091a\u093e\u0928\u0947\u0902",
+    how_it_works: "\u092f\u0939 \u0915\u0948\u0938\u0947 \u0915\u093e\u092e \u0915\u0930\u0924\u093e \u0939\u0948 \u2014 3 \u0938\u0930\u0932 \u091a\u0930\u0923",
+    how_it_works_sub: "\u0938\u0947\u0915\u0902\u0921 \u092e\u0947\u0902 \u0938\u091f\u0940\u0915 \u092e\u0942\u0932\u094d\u092f\u093e\u0902\u0915\u0928 \u092a\u094d\u0930\u093e\u092a\u094d\u0924 \u0915\u0930\u0947\u0902\u0964",
+    step1_title: "\u0905\u092a\u0928\u0940 \u091a\u093e\u0902\u0926\u0940 \u0924\u094c\u0932\u0947\u0902",
+    step1_text: "\u090f\u0915 \u0924\u0930\u093e\u091c\u0942 \u0915\u093e \u0909\u092a\u092f\u094b\u0917 \u0915\u0930\u0915\u0947 \u0905\u092a\u0928\u0940 \u091a\u093e\u0902\u0926\u0940 \u0915\u094b \u0917\u094d\u0930\u093e\u092e \u092f\u093e \u091f\u094d\u0930\u0949\u092f \u0914\u0902\u0938 \u092e\u0947\u0902 \u0924\u094c\u0932\u0947\u0902\u0964",
+    step2_title: "\u0936\u0941\u0926\u094d\u0927\u0924\u093e \u091a\u0941\u0928\u0947\u0902",
+    step2_text: "\u0936\u0941\u0926\u094d\u0927\u0924\u093e \u091a\u0941\u0928\u0947\u0902: .999, .925 \u0938\u094d\u091f\u0930\u094d\u0932\u093f\u0902\u0917, .900 \u092f\u093e \u0915\u0938\u094d\u091f\u092e\u0964",
+    step3_title: "\u0938\u091f\u0940\u0915 \u092e\u0942\u0932\u094d\u092f \u092a\u094d\u0930\u093e\u092a\u094d\u0924 \u0915\u0930\u0947\u0902",
+    step3_text: "\u0932\u093e\u0907\u0935 \u0938\u094d\u092a\u0949\u091f \u092e\u0942\u0932\u094d\u092f \u0915\u093e \u0909\u092a\u092f\u094b\u0917 \u0915\u0930\u0915\u0947 \u092e\u0942\u0932\u094d\u092f \u0915\u0940 \u0917\u0923\u0928\u093e \u0924\u0941\u0930\u0902\u0924 \u0915\u0940 \u091c\u093e\u0924\u0940 \u0939\u0948\u0964",
+    understand_title: "\u091a\u093e\u0902\u0926\u0940 \u0915\u093e \u092e\u0942\u0932\u094d\u092f \u0938\u092e\u091d\u0928\u093e \u2014 \u0938\u094d\u0915\u094d\u0930\u0948\u092a \u0938\u0947 \u0938\u094d\u092a\u0949\u091f \u092e\u0942\u0932\u094d\u092f \u0924\u0915",
+    understand_h3: "\u092a\u093f\u0918\u0932 \u092e\u0942\u0932\u094d\u092f \u0915\u0940 \u0917\u0923\u0928\u093e \u0915\u0948\u0938\u0947 \u0915\u0940 \u091c\u093e\u0924\u0940 \u0939\u0948?",
+    understand_text: "\u091a\u093e\u0902\u0926\u0940 \u0915\u093e \u092e\u0942\u0932\u094d\u092f \u0935\u091c\u0928, \u0936\u0941\u0926\u094d\u0927\u0924\u093e \u0914\u0930 \u0938\u094d\u092a\u0949\u091f \u092e\u0942\u0932\u094d\u092f \u092a\u0930 \u0928\u093f\u0930\u094d\u092d\u0930 \u0915\u0930\u0924\u093e \u0939\u0948\u0964 \u0938\u0942\u0924\u094d\u0930: \u092e\u0942\u0932\u094d\u092f = \u0935\u091c\u0928 x \u0936\u0941\u0926\u094d\u0927\u0924\u093e x \u0938\u094d\u092a\u0949\u091f \u092e\u0942\u0932\u094d\u092f\u0964",
+    faq_title: "\u091a\u093e\u0902\u0926\u0940 \u0915\u0947 \u092e\u0942\u0932\u094d\u092f \u0915\u0947 \u092c\u093e\u0930\u0947 \u092e\u0947\u0902 \u0905\u0915\u094d\u0938\u0930 \u092a\u0942\u091b\u0947 \u091c\u093e\u0928\u0947 \u0935\u093e\u0932\u0947 \u092a\u094d\u0930\u0936\u094d\u0928",
+    faq1_title: "\u092f\u0939 \u0915\u0948\u0932\u0915\u0941\u0932\u0947\u091f\u0930 \u0915\u093f\u0924\u0928\u093e \u0938\u091f\u0940\u0915 \u0939\u0948?",
+    faq1_text: "\u0939\u092e \u0932\u093e\u0907\u0935 \u0938\u094d\u092a\u0949\u091f \u0915\u0940\u092e\u0924\u094b\u0902 \u0915\u093e \u0909\u092a\u092f\u094b\u0917 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964 \u0916\u0930\u0940\u0926\u093e\u0930 \u0906\u092e\u0924\u094c\u0930 \u092a\u0930 \u0930\u093f\u092b\u093e\u0907\u0928\u093f\u0902\u0917 \u0915\u0947 \u0932\u093f\u090f 10-15% \u0936\u0941\u0932\u094d\u0915 \u0915\u093e\u091f\u0924\u0947 \u0939\u0948\u0902\u0964",
+    faq2_title: "\u091a\u093e\u0902\u0926\u0940 \u0915\u0940 \u0936\u0941\u0926\u094d\u0927\u0924\u093e \u0915\u0948\u0938\u0947 \u091c\u093e\u0902\u091a\u0947\u0902?",
+    faq2_text: "925, 800, \u092f\u093e STERLING \u091c\u0948\u0938\u0947 \u0939\u0949\u0932\u092e\u093e\u0930\u094d\u0915 \u0916\u094b\u091c\u0947\u0902\u0964 \u0905\u0938\u0932\u0940 \u091a\u093e\u0902\u0926\u0940 \u091a\u0941\u0902\u092c\u0915\u0940\u092f \u0928\u0939\u0940\u0902 \u0939\u094b\u0924\u0940\u0964",
+    faq3_title: "\u0938\u094d\u0915\u094d\u0930\u0948\u092a \u091a\u093e\u0902\u0926\u0940 \u0915\u0939\u093e\u0902 \u092c\u0947\u091a\u0947\u0902?",
+    faq3_text: "\u0938\u094d\u0925\u093e\u0928\u0940\u092f \u091c\u094c\u0939\u0930\u0940 \u092f\u093e \u092a\u094d\u0930\u0924\u093f\u0937\u094d\u0920\u093f\u0924 \u0911\u0928\u0932\u093e\u0907\u0928 \u091a\u093e\u0902\u0926\u0940 \u0916\u0930\u0940\u0926\u093e\u0930\u094b\u0902 \u0915\u0947 \u092a\u093e\u0938\u0964"
+  },
+  it: {
+    Home: "Home",
+    Calculators: "Calcolatori",
+    Purity: "Purezza",
+    Pricing: "Prezzi",
+    Tools: "Strumenti",
+    Guides: "Guide",
+    "Gold & Silver Calculator": "Calcolatore Oro e Argento",
+    "Sona Chandi Calculator": "Calcolatore Sona Chandi",
+    "Face Value Silver Calculator": "Calcolatore Valore Nominale",
+    "Silver Batch Calculator": "Calcolatore Lotti Argento",
+    "Silver Weight Converter": "Convertitore di Peso",
+    "Sell or Hold": "Vendi o Mantieni",
+    "Silver Identifier": "Identificatore Argento",
+    how_it_works: "Come funziona \u2014 3 semplici passaggi",
+    how_it_works_sub: "Ottieni una valutazione accurata in pochi secondi.",
+    step1_title: "Pesa il tuo argento",
+    step1_text: "Usa una bilancia per pesare il tuo oggetto in grammi o once troy.",
+    step2_title: "Seleziona la purezza",
+    step2_text: "Scegli tra .999, .925 sterling, .900 o personalizzata.",
+    step3_title: "Ottieni il valore istantaneo",
+    step3_text: "Il valore viene calcolato istantaneamente usando il prezzo spot live.",
+    understand_title: "Capire il Valore dell'Argento \u2014 Dal rottame al prezzo spot",
+    understand_h3: "Come viene calcolato il valore di fusione?",
+    understand_text: "Il valore dipende da peso, purezza e prezzo spot. Formula: Valore = Peso x Purezza x Prezzo Spot.",
+    faq_title: "Domande Frequenti",
+    faq1_title: "Quanto \u00e8 accurato questo calcolatore?",
+    faq1_text: "Utilizziamo i prezzi spot in tempo reale. Gli acquirenti pagano solitamente il 80-95% del valore.",
+    faq2_title: "Come riconoscere l'argento vero?",
+    faq2_text: "Cerca i marchi (hallmarks) come 925 o STERLING. L'argento non \u00e8 magnetico.",
+    faq3_title: "Dove vendere argento usato?",
+    faq3_text: "Presso gioiellerie locali o banchi metalli specializzati."
+  },
+  pt: {
+    Home: "In\u00edcio",
+    Calculators: "Calculadoras",
+    Purity: "Pureza",
+    Pricing: "Pre\u00e7os",
+    Tools: "Ferramentas",
+    Guides: "Guias",
+    "Gold & Silver Calculator": "Calculadora de Ouro e Prata",
+    "Sona Chandi Calculator": "Calculadora Sona Chandi",
+    "Face Value Silver Calculator": "Valor Nominal de Moedas",
+    "Silver Batch Calculator": "Calculadora de Lotes de Prata",
+    "Silver Weight Converter": "Conversor de Peso de Prata",
+    "Sell or Hold": "Vender ou Guardar",
+    "Silver Identifier": "Identificador de Prata",
+    how_it_works: "Como funciona \u2014 3 passos simples",
+    how_it_works_sub: "Obtenha uma avalia\u00e7\u00e3o precisa em segundos.",
+    step1_title: "Pese a sua prata",
+    step1_text: "Use uma balan\u00e7a para pesar o seu artigo em gramas ou on\u00e7as troy.",
+    step2_title: "Selecione a pureza",
+    step2_text: "Escolha entre .999, .925 sterling, .900 ou personalizada.",
+    step3_title: "Obtenha o valor instant\u00e2neo",
+    step3_text: "O valor \u00e9 calculado instantaneamente usando o pre\u00e7o spot em tempo real.",
+    understand_title: "Entendendo o Valor da Prata \u2014 Do ferro-velho ao pre\u00e7o spot",
+    understand_h3: "Como \u00e9 calculado o valor de fus\u00e3o?",
+    understand_text: "O valor depende do peso, pureza e pre\u00e7o spot. F\u00f3rmula: Valor = Peso x Pureza x Pre\u00e7o Spot.",
+    faq_title: "Perguntas Frequentes",
+    faq1_title: "Qu\u00e3o precisa \u00e9 esta calculadora?",
+    faq1_text: "Usamos pre\u00e7os spot em direto. Compradores pagam geralmente entre 80-95% do valor.",
+    faq2_title: "Como identificar prata real?",
+    faq2_text: "Procure as marcas (925, Sterling). A prata n\u00e3o \u00e9 magn\u00e9tica.",
+    faq3_title: "Onde vender sucata de prata?",
+    faq3_text: "Em joalharias locais ou refinadores de metais preciosos."
+  },
+  ru: {
+    Home: "\u0413\u043b\u0430\u0432\u043d\u0430\u044f",
+    Calculators: "\u041a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440\u044b",
+    Purity: "\u041f\u0440\u043e\u0431\u0430",
+    Pricing: "\u0426\u0435\u043d\u044b",
+    Tools: "\u0418\u043d\u0441\u0442\u0440\u0443\u043c\u0435\u043d\u0442\u044b",
+    Guides: "\u0420\u0443\u043a\u043e\u0432\u043e\u0434\u0441\u0442\u0432\u0430",
+    "Gold & Silver Calculator": "\u041a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440 \u0437\u043e\u043b\u043e\u0442\u0430 \u0438 \u0441\u0435\u0440\u0435\u0431\u0440\u0430",
+    "Sona Chandi Calculator": "\u041a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440 \u0421\u043e\u043d\u0430-\u0427\u0430\u043d\u0434\u0438",
+    "Face Value Silver Calculator": "\u041d\u043e\u043c\u0438\u043d\u0430\u043b\u044c\u043d\u0430\u044f \u0441\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u0441\u0435\u0440\u0435\u0431\u0440\u0430",
+    "Silver Batch Calculator": "\u041a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440 \u043f\u0430\u0440\u0442\u0438\u0438 \u0441\u0435\u0440\u0435\u0431\u0440\u0430",
+    "Silver Weight Converter": "\u041a\u043e\u043d\u0432\u0435\u0440\u0442\u0435\u0440 \u0432\u0435\u0441\u0430 \u0441\u0435\u0440\u0435\u0431\u0440\u0430",
+    "Sell or Hold": "\u041f\u0440\u043e\u0434\u0430\u0442\u044c \u0438\u043b\u0438 \u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c",
+    "Silver Identifier": "\u041e\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442\u0435\u043b\u044c \u0441\u0435\u0440\u0435\u0431\u0440\u0430",
+    how_it_works: "\u041a\u0430\u043a \u044d\u0442\u043e \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u2014 3 \u043f\u0440\u043e\u0441\u0442\u044b\u0445 \u0448\u0430\u0433\u0430",
+    how_it_works_sub: "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u0435 \u0442\u043e\u0447\u043d\u0443\u044e \u043e\u0446\u0435\u043d\u043a\u0443 \u0437\u0430 \u0441\u0447\u0438\u0442\u0430\u043d\u043d\u044b\u0435 \u0441\u0435\u043a\u0443\u043d\u0434\u044b.",
+    step1_title: "\u0412\u0437\u0432\u0435\u0441\u044c\u0442\u0435 \u0441\u0435\u0440\u0435\u0431\u0440\u043e",
+    step1_text: "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0439\u0442\u0435 \u0432\u0435\u0441\u044b, \u0447\u0442\u043e\u0431\u044b \u0432\u0437\u0432\u0435\u0441\u0438\u0442\u044c \u0438\u0437\u0434\u0435\u043b\u0438\u0435 \u0432 \u0433\u0440\u0430\u043c\u043c\u0430\u0445 \u0438\u043b\u0438 \u0442\u0440\u043e\u0439\u0441\u043a\u0438\u0445 \u0443\u043d\u0446\u0438\u044f\u0445.",
+    step2_title: "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043f\u0440\u043e\u0431\u0443",
+    step2_text: "\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u043f\u0440\u043e\u0431\u0443: .999, .925 (\u0441\u0442\u0435\u0440\u043b\u0438\u043d\u0433), .900 \u0438\u043b\u0438 \u0441\u0432\u043e\u044e.",
+    step3_title: "\u041f\u043e\u043b\u0443\u0447\u0438\u0442\u0435 \u0441\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c",
+    step3_text: "\u0421\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u044b\u0432\u0430\u0435\u0442\u0441\u044f \u043c\u0433\u043d\u043e\u0432\u0435\u043d\u043d\u043e \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0435 \u0442\u0435\u043a\u0443\u0449\u0435\u0439 \u0446\u0435\u043d\u044b \u0441\u0435\u0440\u0435\u0431\u0440\u0430.",
+    understand_title: "\u041f\u043e\u043d\u0438\u043c\u0430\u043d\u0438\u0435 \u0441\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u0438 \u0441\u0435\u0440\u0435\u0431\u0440\u0430 \u2014 \u043e\u0442 \u043b\u043e\u043c\u0430 \u0434\u043e \u0440\u044b\u043d\u043e\u0447\u043d\u043e\u0439 \u0446\u0435\u043d\u044b",
+    understand_h3: "\u041a\u0430\u043a \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u044b\u0432\u0430\u0435\u0442\u0441\u044f \u0441\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u043b\u043e\u043c\u0430?",
+    understand_text: "\u0421\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c \u0437\u0430\u0432\u0438\u0441\u0438\u0442 \u043e\u0442 \u0432\u0435\u0441\u0430, \u0447\u0438\u0441\u0442\u043e\u0442\u044b \u0438 \u0440\u044b\u043d\u043e\u0447\u043d\u043e\u0439 \u0446\u0435\u043d\u044b. \u0424\u043e\u0440\u043c\u0443\u043b\u0430: \u0421\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u044c = \u0412\u0435\u0441 x \u0427\u0438\u0441\u0442\u043e\u0442\u0430 x \u0426\u0435\u043d\u0430.",
+    faq_title: "\u0427\u0430\u0441\u0442\u043e \u0437\u0430\u0434\u0430\u0432\u0430\u0435\u043c\u044b\u0435 \u0432\u043e\u043f\u0440\u043e\u0441\u044b",
+    faq1_title: "\u041d\u0430\u0441\u043a\u043e\u043b\u044c\u043a\u043e \u0442\u043e\u0447\u0435\u043d \u044d\u0442\u043e\u0442 \u043a\u0430\u043b\u044c\u043a\u0443\u043b\u044f\u0442\u043e\u0440?",
+    faq1_text: "\u041c\u044b \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u043c \u0436\u0438\u0432\u044b\u0435 \u043a\u043e\u0442\u0438\u0440\u043e\u0432\u043a\u0438. \u041f\u043e\u043a\u0443\u043f\u0430\u0442\u0435\u043b\u0438 \u043b\u043e\u043c\u0430 \u043e\u0431\u044b\u0447\u043d\u043e \u043f\u043b\u0430\u0442\u044f\u0442 80-95% \u043e\u0442 \u0440\u044b\u043d\u043e\u0447\u043d\u043e\u0439 \u0441\u0442\u043e\u0438\u043c\u043e\u0441\u0442\u0438.",
+    faq2_title: "\u041a\u0430\u043a \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0438\u0442\u044c \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0441\u0435\u0440\u0435\u0431\u0440\u043e?",
+    faq2_text: "\u0418\u0449\u0438\u0442\u0435 \u043a\u043b\u0435\u0439\u043c\u0430 (925, Sterling). \u041d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0441\u0435\u0440\u0435\u0431\u0440\u043e \u043d\u0435 \u043c\u0430\u0433\u043d\u0438\u0442\u0438\u0442\u0441\u044f.",
+    faq3_title: "\u0413\u0434\u0435 \u043f\u0440\u043e\u0434\u0430\u0442\u044c \u043b\u043e\u043c \u0441\u0435\u0440\u0435\u0431\u0440\u0430?",
+    faq3_text: "\u0412 \u043c\u0435\u0441\u0442\u043d\u044b\u0445 \u044e\u0432\u0435\u043b\u0438\u0440\u043d\u044b\u0445 \u043c\u0430\u0433\u0430\u0437\u0438\u043d\u0430\u0445 \u0438\u043b\u0438 \u0441\u043f\u0435\u0446\u0438\u0430\u043b\u0438\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0445 \u043f\u0443\u043d\u043a\u0442\u0430\u0445 \u043f\u0440\u0438\u0435\u043c\u0430."
+  },
+  tr: {
+    Home: "Ana Sayfa",
+    Calculators: "Hesap Makineleri",
+    Purity: "Safl\u0131k",
+    Pricing: "Fiyatland\u0131rma",
+    Tools: "Ara\u00e7lar",
+    Guides: "K\u0131lavuzlar",
+    "Gold & Silver Calculator": "Alt\u0131n ve G\u00fcm\u00fc\u015f Hesaplay\u0131c\u0131",
+    "Sona Chandi Calculator": "Sona Chandi Hesaplay\u0131c\u0131",
+    "Face Value Silver Calculator": "Nominal De\u011fer Hesaplay\u0131c\u0131",
+    "Silver Batch Calculator": "G\u00fcm\u00fc\u015f Parti Hesaplay\u0131c\u0131",
+    "Silver Weight Converter": "A\u011f\u0131rl\u0131k D\u00f6n\u00fc\u015ft\u00fcr\u00fcc\u00fc",
+    "Sell or Hold": "Sat veya Tut",
+    "Silver Identifier": "G\u00fcm\u00fc\u015f Tan\u0131mlay\u0131c\u0131",
+    how_it_works: "Nas\u0131l \u00c7al\u0131\u015f\u0131r \u2014 3 Basit Ad\u0131m",
+    how_it_works_sub: "Saniyeler i\u00e7inde do\u011fru bir de\u011ferleme al\u0131n.",
+    step1_title: "G\u00fcm\u00fc\u015f\u00fcn\u00fcz\u00fc Tart\u0131n",
+    step1_text: "G\u00fcm\u00fc\u015f\u00fcn\u00fcz\u00fc tartmak i\u00e7in gram veya troy ons cinsinden bir terazi kullan\u0131n.",
+    step2_title: "Safl\u0131\u011f\u0131 Se\u00e7in",
+    step2_text: "Safl\u0131\u011f\u0131 se\u00e7in: .999, .925 ayar, .900 veya \u00f6zel.",
+    step3_title: "An\u0131nda De\u011feri Al\u0131n",
+    step3_text: "De\u011fer, canl\u0131 spot g\u00fcm\u00fc\u015f fiyat\u0131 kullan\u0131larak an\u0131nda hesaplan\u0131r.",
+    understand_title: "G\u00fcm\u00fc\u015f De\u011ferini Anlamak \u2014 Hurdadan Spot Fiyata",
+    understand_h3: "Erime de\u011feri nas\u0131l hesaplan\u0131r?",
+    understand_text: "De\u011fer; a\u011f\u0131rl\u0131k, safl\u0131k ve spot fiyata ba\u011fl\u0131d\u0131r. Form\u00fcl: De\u011fer = A\u011f\u0131rl\u0131k x Safl\u0131k x Spot Fiyat.",
+    faq_title: "S\u0131k\u00e7a Sorulan Sorular",
+    faq1_title: "Bu hesaplay\u0131c\u0131 ne kadar do\u011fru?",
+    faq1_text: "Canl\u0131 spot fiyatlar\u0131 kullan\u0131yoruz. Al\u0131c\u0131lar genellikle erime de\u011ferinin %80-95'ini \u00f6der.",
+    faq2_title: "Ger\u00e7ek g\u00fcm\u00fc\u015f nas\u0131l anla\u015f\u0131l\u0131r?",
+    faq2_text: "925 veya Sterling gibi damgalar\u0131 aray\u0131n. Ger\u00e7ek g\u00fcm\u00fc\u015f m\u0131knat\u0131sl\u0131 de\u011fildir.",
+    faq3_title: "Hurda g\u00fcm\u00fc\u015f nerede sat\u0131l\u0131r?",
+    faq3_text: "Yerel kuyumcularda veya de\u011ferli metal rafinerilerinde."
+  },
+  ur: {
+    Home: "\u06c1\u0648\u0645",
+    Calculators: "\u06a9\u06cc\u0644\u06a9\u0648\u0644\u06cc\u0679\u0631",
+    Purity: "\u067e\u0627\u06a9\u06cc\u0632\u06af\u06cc",
+    Pricing: "\u0642\u06cc\u0645\u062a\u06cc\u06ba",
+    Tools: "\u0627\u0648\u0632\u0627\u0631",
+    Guides: "\u0631\u06c1\u0646\u0645\u0627",
+    "Gold & Silver Calculator": "\u0633\u0648\u0646\u0627 \u0627\u0648\u0631 \u0686\u0627\u0646\u062f\u06cc \u06a9\u06cc\u0644\u06a9\u0648\u0644\u06cc\u0679\u0631",
+    "Sona Chandi Calculator": "\u0633\u0648\u0646\u0627 \u0686\u0627\u0646\u062f\u06cc \u06a9\u06cc\u0644\u06a9\u0648\u0644\u06cc\u0679\u0631",
+    "Face Value Silver Calculator": "\u0686\u0627\u0646\u062f\u06cc \u06a9\u06cc \u0641\u06cc\u0633 \u0648\u06cc\u0644\u06cc\u0648",
+    "Silver Batch Calculator": "\u0633\u0644\u0648\u0631 \u0628\u06cc\u0686 \u06a9\u06cc\u0644\u06a9\u0648\u0644\u06cc\u0679\u0631",
+    "Silver Weight Converter": "\u0648\u0632\u0646 \u06a9\u0646\u0648\u0631\u0679\u0631",
+    "Sell or Hold": "\u0628\u06cc\u0686\u06cc\u06ba \u06cc\u0627 \u0631\u06a9\u06be\u06cc\u06ba",
+    "Silver Identifier": "\u0686\u0627\u0646\u062f\u06cc \u06a9\u06cc \u0634\u0646\u0627\u062e\u062a",
+    how_it_works: "\u06cc\u06c1 \u06a9\u06cc\u0633\u0647 \u06a9\u0627\u0645 \u06a9\u0631\u062a\u0627 \u06c1\u06d2 \u2014 3 \u0622\u0633\u0627\u0646 \u0645\u0631\u0627\u062d\u0644",
+    how_it_works_sub: "\u0633\u06cc\u06a9\u0646\u0688\u0648\u06ba \u0645\u06cc\u06ba \u062f\u0631\u0633\u062a \u0642\u06cc\u0645\u062a \u0645\u0639\u0644\u0648\u0645 \u06a9\u0631\u06cc\u06ba\u06d4",
+    step1_title: "\u0627\u067e\u0646\u06cc \u0686\u0627\u0646\u062f\u06cc \u062a\u0648\u0644\u06cc\u06ba",
+    step1_text: "\u0627\u06cc\u06a9 \u062a\u0631\u0627\u0632\u0648 \u0633\u06d2 \u0627\u067e\u0646\u06cc \u0686\u0627\u0646\u062f\u06cc \u06a9\u0648 \u06af\u0631\u0627\u0645 \u06cc\u0627 \u0679\u0631\u0627\u0626\u06d2 \u0627\u0648\u0646\u0633 \u0645\u06cc\u06ba \u062a\u0648\u0644\u06cc\u06ba\u06d4",
+    step2_title: "\u062e\u0627\u0644\u0635\u06cc\u062a \u0645\u0646\u062a\u062e\u0628 \u06a9\u0631\u06cc\u06ba",
+    step2_text: "\u062e\u0627\u0644\u0635\u06cc\u062a \u0686\u0646\u06cc\u06ba: .999\u060c .925 \u0633\u0679\u0631\u0644\u0646\u06af\u060c .900 \u06cc\u0627 \u06a9\u0633\u0679\u0645\u06d4",
+    step3_title: "\u0641\u0648\u0631\u06cc \u0642\u06cc\u0645\u062a \u062d\u0627\u0635\u0644 \u06a9\u0631\u06cc\u06ba",
+    step3_text: "\u0644\u0627\u0626\u06cc\u0648 \u0633\u067e\u0627\u0679 \u0642\u06cc\u0645\u062a \u06a9\u06cc \u0628\u0646\u06cc\u0627\u062f \u067e\u0631 \u0642\u06cc\u0645\u062a \u06a9\u0627 \u062d\u0633\u0627\u0628 \u0641\u0648\u0631\u06cc \u0637\u0648\u0631 \u067e\u0631 \u0644\u06af\u0627\u06cc\u0627 \u062c\u0627\u062a\u0627 \u06c1\u06d2\u06d4",
+    understand_title: "\u0686\u0627\u0646\u062f\u06cc \u06a9\u06cc \u0642\u06cc\u0645\u062a \u0633\u0645\u062c\u06be\u0646\u0627 \u2014 \u0627\u0633\u06a9\u0631\u06cc\u067e \u0633\u06d2 \u0633\u067e\u0627\u0679 \u0642\u06cc\u0645\u062a \u062a\u06a9",
+    understand_h3: "\u067e\u06af\u06be\u0644\u0646\u06d2 \u06a9\u06cc \u0642\u06cc\u0645\u062a \u06a9\u0627 \u062d\u0633\u0627\u0628 \u06a9\u06cc\u0633\u06d2 \u0644\u06af\u0627\u06cc\u0627 \u062c\u0627\u062a\u0627 \u06c1\u06d2\u061f",
+    understand_text: "\u0686\u0627\u0646\u062f\u06cc \u06a9\u06cc \u0642\u06cc\u0645\u062a \u0648\u0632\u0646\u060c \u062e\u0627\u0644\u0635\u06cc\u062a\u060c \u0627\u0648\u0631 \u0633\u067e\u0627\u0679 \u0642\u06cc\u0645\u062a \u067e\u0631 \u0645\u0646\u062d\u0635\u0631 \u06c1\u0648\u062a\u06cc \u06c1\u06d2\u06d4 \u0641\u0627\u0631\u0645\u0648\u0644\u0627: \u0642\u06cc\u0645\u062a = \u0648\u0632\u0646 x \u062e\u0627\u0644\u0635\u06cc\u062a x \u0633\u067e\u0627\u0679 \u0642\u06cc\u0645\u062a\u06d4",
+    faq_title: "\u0627\u06a9\u062b\u0631 \u067e\u0648\u0686\u06be\u06d2 \u06af\u0626\u06d2 \u0633\u0648\u0627\u0644\u0627\u062a",
+    faq1_title: "\u06cc\u06c1 \u06a9\u062a\u0646\u0627 \u062f\u0631\u0633\u062a \u06c1\u06d2\u061f",
+    faq1_text: "\u06c1\u0645 \u0644\u0627\u0626\u06cc\u0648 \u0633\u067e\u0627\u0679 \u0631\u06cc\u0679 \u0627\u0633\u062a\u0639\u0645\u0627\u0644 \u06a9\u0631\u062a\u06d2 \u06c1\u06cc\u06ba\u06d4 \u0639\u0627\u0645 \u0637\u0648\u0631 \u067e\u0631 \u062e\u0631\u06cc\u062f\u0627\u0631 \u0631\u06cc\u0641\u0627\u0626\u0646\u0646\u06af \u06a9\u06d2 \u0644\u06cc\u06d2 10-15 \u0641\u06cc\u0635\u062f \u0641\u06cc\u0633 \u06a9\u0627\u0679\u062a\u06d2 \u06c1\u06cc\u06ba\u06d4",
+    faq2_title: "\u062e\u0627\u0644\u0635\u06cc\u062a \u06a9\u06cc\u0633\u06d2 \u0686\u06cc\u06a9 \u06a9\u0631\u06cc\u06ba\u061f",
+    faq2_text: "\u06c1\u0627\u0644 \u0645\u0627\u0631\u06a9 \u062a\u0644\u0627\u0634 \u06a9\u0631\u06cc\u06ba \u062c\u06cc\u0633\u06d2 925 \u06cc\u0627 800\u06d4 \u0627\u0635\u0644\u06cc \u0686\u0627\u0646\u062f\u06cc \u0645\u0642\u0646\u0627\u0637\u06cc\u0633\u06cc \u0646\u06c1\u06cc\u06ba \u06c1\u0648\u062a\u06cc\u06d4",
+    faq3_title: "\u0686\u0627\u0646\u062f\u06cc \u06a9\u06c1\u0627\u06ba \u0628\u06cc\u0686\u06cc\u06ba\u061f",
+    faq3_text: "\u0645\u0642\u0627\u0645\u06cc \u0633\u0646\u0627\u0631 \u06cc\u0627 \u0622\u0646 \u0644\u0627\u0626\u0646 \u0686\u0627\u0646\u062f\u06cc \u062e\u0631\u06cc\u062f\u0646\u06d2 \u0648\u0627\u0644\u0648\u06ba \u06a9\u06d2 \u067e\u0627\u0633\u06d4"
+  },
+  zh: {
+    Home: "\u9996\u9875",
+    Calculators: "\u8ba1\u7b97\u5668",
+    Purity: "\u7eaf\u5ea6",
+    Pricing: "\u5b9a\u4ef7",
+    Tools: "\u5de5\u5177",
+    Guides: "\u6307\u5357",
+    "Gold & Silver Calculator": "\u91d1\u94f6\u8ba1\u7b97\u5668",
+    "Sona Chandi Calculator": "\u91d1\u94f6\u8ba1\u7b97\u5668",
+    "Face Value Silver Calculator": "\u9762\u503c\u8ba1\u7b97\u5668",
+    "Silver Batch Calculator": "\u6279\u91cf\u8ba1\u7b97\u5668",
+    "Silver Weight Converter": "\u91cd\u91cf\u8f6c\u6362\u5668",
+    "Sell or Hold": "\u51fa\u552e\u6216\u6301\u6709",
+    "Silver Identifier": "\u8bc6\u522b\u767d\u94f6",
+    how_it_works: "\u5982\u4f55\u8fd0\u4f5c \u2014 \u7b80\u5355 3 \u6b65",
+    how_it_works_sub: "\u51e0\u79d2\u949f\u5185\u83b7\u5f97\u51c6\u786e\u4f30\u503c\u3002",
+    step1_title: "\u79f0\u91cd\u767d\u94f6",
+    step1_text: "\u4f7f\u7528\u79e4\u4ee5\u514b\u6216\u91d1\u8861\u76ce\u53f8\u4e3a\u5355\u4f4d\u79f0\u91cf\u60a8\u7684\u767d\u94f6\u3002",
+    step2_title: "\u9009\u62e9\u7eaf\u5ea6",
+    step2_text: "\u9009\u62e9\u7eaf\u5ea6\uff1a.999\u3001.925 \u6807\u51c6\u94f6\u3001.900 \u786c\u5e01\u94f6\u6216\u81ea\u5b9a\u4e49\u3002",
+    step3_title: "\u83b7\u5f97\u5373\u65f6\u4ef7\u503c",
+    step3_text: "\u6839\u636e\u5b9e\u65f6\u73b0\u8d27\u4ef7\u683c\u7acb\u5373\u8ba1\u7b97\u51fa\u4ef7\u503c\u3002",
+    understand_title: "\u4e86\u89e3\u767d\u94f6\u4ef7\u503c \u2014 \u4ece\u5e9f\u6599\u5230\u73b0\u8d27\u4ef7\u683c",
+    understand_h3: "\u7194\u503c\u662f\u5982\u4f55\u8ba1\u7b97\u7684\uff1f",
+    understand_text: "\u4ef7\u503c\u53d6\u51b3\u4e8e\u91cd\u91cf\u3001\u7eaf\u5ea6\u548c\u73b0\u8d27\u4ef7\u683c\u3002\u516c\u5f0f\uff1a\u4ef7\u503c = \u91cd\u91cf x \u7eaf\u5ea6 x \u73b0\u8d27\u4ef7\u683c\u3002",
+    faq_title: "\u5e38\u89c1\u95ee\u9898",
+    faq1_title: "\u8fd9\u4e2a\u8ba1\u7b97\u5668\u51c6\u786e\u5417\uff1f",
+    faq1_text: "\u6211\u4eec\u4f7f\u7528\u5b9e\u65f6\u73b0\u8d27\u4ef7\u683c\u3002\u4e70\u5bb6\u901a\u5e38\u4f1a\u6536\u53d6 10-20% \u7684\u63d0\u70bc\u8d39\u3002",
+    faq2_title: "\u5982\u4f55\u8bc6\u522b\u771f\u94f6\uff1f",
+    faq2_text: "\u5bfb\u627e 925 \u6216 Sterling \u7b49\u5370\u8bb0\u3002\u771f\u94f6\u6ca1\u6709\u78c1\u6027\u3002",
+    faq3_title: "\u54ea\u91cc\u53ef\u4ee5\u5356\u5e9f\u94f6\uff1f",
+    faq3_text: "\u5f53\u5730\u73e0\u5b9d\u5546\u3001\u5f53\u94fa\u6216\u8d35\u91d1\u5c5e\u63d0\u70bc\u5546\u3002"
+  }
+};
+
+// Safe serializer: converts ALL non-ASCII chars to \uXXXX
+function safeStringify(obj, indent) {
+  const json = JSON.stringify(obj, null, indent);
+  return json.replace(/[^\x00-\x7F]/g, c => {
+    const code = c.charCodeAt(0);
+    if (code > 0xFFFF) {
+      // Handle surrogate pairs for characters outside BMP
+      const hi = Math.floor((code - 0x10000) / 0x400) + 0xD800;
+      const lo = ((code - 0x10000) % 0x400) + 0xDC00;
+      return '\\u' + hi.toString(16).padStart(4, '0') + '\\u' + lo.toString(16).padStart(4, '0');
+    }
+    return '\\u' + ('0000' + code.toString(16)).slice(-4);
+  });
+}
+
+const translationsContent = `window.MenuTranslations = ${safeStringify(TRANSLATIONS, 2)};\n`;
+
+fs.writeFileSync(path.join(ROOT, 'js/translations.js'), translationsContent, 'utf8');
+console.log('\u2713 Rebuilt js/translations.js with safe Unicode escapes');
+
+// ============================================================
+// PART 2: Fix ALL HTML files globally
+// ============================================================
+
+const LANG_DIRS = ['ar', 'de', 'es', 'fr', 'hi', 'it', 'pt', 'ru', 'tr', 'ur', 'zh'];
+const DOUBLE_CODES = ['EN', 'ES', 'FR', 'DE', 'PT', 'HI', 'UR', 'AR', 'TR', 'IT', 'ZH', 'RU'];
+
+function fixHTMLFile(filePath) {
+  let content = fs.readFileSync(filePath, 'utf8');
+  let modified = false;
+  const original = content;
+
+  // 1. Remove ALL inline window.MenuTranslations scripts
+  const inlinePattern = /<script>\s*window\.MenuTranslations\s*=\s*\{[^<]*\};\s*<\/script>/gs;
+  if (inlinePattern.test(content)) {
+    content = content.replace(inlinePattern, '');
+    modified = true;
+  }
+
+  // 2. Remove existing <script src="...translations.js..."> tags (we'll re-add a clean one)
+  const srcPattern = /<script\s+src=["'][^"']*translations\.js[^"']*["']\s*>\s*<\/script>\s*/gi;
+  if (srcPattern.test(content)) {
+    content = content.replace(srcPattern, '');
+    modified = true;
+  }
+
+  // 3. Remove existing <meta charset> (we'll re-add it first)
+  const charsetPattern = /<meta\s+charset=["']UTF-8["']\s*\/?>\s*/gi;
+  if (charsetPattern.test(content)) {
+    content = content.replace(charsetPattern, '');
+    modified = true;
+  }
+
+  // 4. Insert charset + translations at the TOP of <head>
+  const headInsert = '\n  <meta charset="UTF-8">\n  <script src="/js/translations.js"></script>\n';
+  content = content.replace(/<head>/i, '<head>' + headInsert);
+
+  // 5. Fix doubled language labels (e.g. ">EN EN<" -> ">EN<")
+  DOUBLE_CODES.forEach(code => {
+    const doubledRe = new RegExp('>' + code + '\\s+' + code + '<', 'g');
+    if (doubledRe.test(content)) {
+      content = content.replace(doubledRe, '>' + code + '<');
+      modified = true;
+    }
+  });
+
+  // 6. Remove duplicate <div id="site-footer"></div>
+  const footerDupeRe = /(<div\s+id=["']site-footer["']\s*>\s*<\/div>\s*\n?\s*){2,}/gi;
+  if (footerDupeRe.test(content)) {
+    content = content.replace(footerDupeRe, '  <div id="site-footer"></div>\n');
+    modified = true;
+  }
+
+  // 7. Clean up excessive blank lines in <head> (max 1 consecutive blank line)
+  content = content.replace(/(\n\s*){4,}/g, '\n\n');
+
+  if (content !== original) {
+    fs.writeFileSync(filePath, content, 'utf8');
+    return true;
+  }
+  return false;
+}
+
+// Process root HTML files
+let fixedCount = 0;
+const rootFiles = fs.readdirSync(ROOT).filter(f => f.endsWith('.html'));
+rootFiles.forEach(file => {
+  if (fixHTMLFile(path.join(ROOT, file))) fixedCount++;
+});
+console.log(`\u2713 Fixed ${fixedCount} root HTML files`);
+
+// Process language directory HTML files
+LANG_DIRS.forEach(lang => {
+  const dirPath = path.join(ROOT, lang);
+  if (!fs.existsSync(dirPath)) return;
+  let langFixed = 0;
+  const files = fs.readdirSync(dirPath).filter(f => f.endsWith('.html'));
+  files.forEach(file => {
+    if (fixHTMLFile(path.join(dirPath, file))) langFixed++;
+  });
+  console.log(`\u2713 Fixed ${langFixed}/${files.length} files in ${lang}/`);
+  fixedCount += langFixed;
+});
+
+console.log(`\n\u2713 DONE: Total ${fixedCount} HTML files fixed.`);
+console.log('All translations now use safe \\uXXXX encoding.');
+console.log('<meta charset="UTF-8"> is now FIRST in <head> on every page.');

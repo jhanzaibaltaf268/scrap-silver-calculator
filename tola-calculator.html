@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script src="/js/translations.js"></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Silver Tola Calculator — Convert Tola to Grams &amp; Silver Value</title>
   <link rel="icon" type="image/png" href="/favicon.png">
@@ -71,60 +73,12 @@
         </div>
       </div>
     </section>
-
-    <!-- Quick reference table -->
-    <section class="section" style="padding:var(--space-2xl) 0;">
-      <div class="container">
-        <h2 style="text-align:center;margin-bottom:var(--space-lg);">Tola Conversion Table</h2>
-        <div style="max-width:700px;margin:0 auto;">
-          <table style="width:100%;border-collapse:collapse;">
-            <thead>
-              <tr style="border-bottom:2px solid var(--border-medium);">
-                <th style="padding:var(--space-md);text-align:left;color:var(--text-muted);font-size:var(--fs-sm);">Tola</th>
-                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Grams</th>
-                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Troy Oz</th>
-                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">925 Value</th>
-              </tr>
-            </thead>
-            <tbody id="tola-table">
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Content -->
-    <section class="content-section">
-      <div class="container">
-        <div class="content-body">
-          <h2>What Is a Tola?</h2>
-          <p>A <strong>tola</strong> is a traditional unit of weight used across South Asia and the Middle East for measuring gold and silver. One tola equals <strong>11.6638 grams</strong> or approximately 0.375 troy ounces. The term comes from the Hindi/Urdu word "तोला" and was historically tied to the weight of a silver rupee coin.</p>
-
-          <h3>Where Is Tola Used?</h3>
-          <p>The tola is commonly used in <strong>India, Pakistan, Bangladesh, Nepal, Sri Lanka,</strong> and parts of the <strong>Middle East</strong> when buying and selling precious metals. When you see silver prices quoted in "per tola" at a local jeweler or market, this calculator helps you convert that price to international standards for comparison.</p>
-
-          <h3>Tola Conversion Formulas</h3>
-          <ul style="list-style:disc;margin-left:var(--space-xl);">
-            <li style="padding:4px 0;color:var(--text-secondary);">1 Tola = 11.6638 grams</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">1 Tola = 0.375 troy ounces (3/8 ozt)</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">1 Tola = 7.5 pennyweight (DWT)</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">1 gram = 0.08573 tola</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">1 troy ounce = 2.6667 tola</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">10 tola = 116.638 grams = 3.75 troy ounces</li>
-          </ul>
-
-          <h3>Silver Price Per Tola Today</h3>
-          <p>The silver price per tola changes based on the global spot price. Since 1 tola = 0.375 troy ounces, multiply the spot price by 0.375 (and then by purity) to get the value per tola. Our calculator does this automatically using live prices.</p>
-
-          <h3>Related Calculators</h3>
-          <p>Use our <a href="/pennyweight-calculator/">pennyweight calculator</a> for DWT conversions, the <a href="/silver-weight-converter/">weight converter</a> for all units, or the <a href="/silver-price-all-currencies/">multi-currency price page</a> to see today's silver price in PKR, INR, and other local currencies.</p>
-        </div>
-      </div>
-    </section>
+    <div id="dynamic-steps"></div>
+    <div id="dynamic-understand"></div>
+    <div id="dynamic-faq"></div>
   </main>
-  <div id="site-footer"></div>
-
-  <script src="/js/silver-price.js"></script>
+    <div id="site-footer"></div>
+<script src="/js/silver-price.js"></script>
   <script src="/js/calculator.js"></script>
   <script src="/js/components.js"></script>
   <script>

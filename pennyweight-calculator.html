@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script src="/js/translations.js"></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pennyweight (DWT) Calculator — Convert DWT to Grams &amp; Silver Value</title>
   <link rel="icon" type="image/png" href="/favicon.png">
@@ -71,56 +73,12 @@
         </div>
       </div>
     </section>
-
-    <!-- Quick reference table -->
-    <section class="section" style="padding:var(--space-2xl) 0;">
-      <div class="container">
-        <h2 style="text-align:center;margin-bottom:var(--space-lg);">Pennyweight Conversion Table</h2>
-        <div style="max-width:700px;margin:0 auto;">
-          <table style="width:100%;border-collapse:collapse;">
-            <thead>
-              <tr style="border-bottom:2px solid var(--border-medium);">
-                <th style="padding:var(--space-md);text-align:left;color:var(--text-muted);font-size:var(--fs-sm);">DWT</th>
-                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Grams</th>
-                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Troy Oz</th>
-                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">925 Value</th>
-              </tr>
-            </thead>
-            <tbody id="dwt-table">
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Content -->
-    <section class="content-section">
-      <div class="container">
-        <div class="content-body">
-          <h2>What Is a Pennyweight?</h2>
-          <p>A <strong>pennyweight (DWT)</strong> is a unit of weight used primarily by jewelers and precious metals dealers. It equals 1/20 of a troy ounce or exactly 1.55517 grams. The abbreviation "DWT" comes from the Latin "denarius weight" — the weight of a silver penny in medieval England.</p>
-
-          <h3>Why Do Jewelers Use Pennyweight?</h3>
-          <p>Many jewelry scales and tradesman scales in the US display weight in pennyweight rather than grams. When a jeweler quotes you a price per DWT for your scrap silver, you need to know how to convert to verify the offer. Our calculator does this conversion instantly and shows you the actual melt value.</p>
-
-          <h3>Pennyweight Conversion Formulas</h3>
-          <ul style="list-style:disc;margin-left:var(--space-xl);">
-            <li style="padding:4px 0;color:var(--text-secondary);">1 DWT = 1.55517 grams</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">1 DWT = 0.05 troy ounces (1/20 ozt)</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">20 DWT = 1 troy ounce</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">1 gram = 0.6430 DWT</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">1 troy ounce = 20 DWT = 31.1035 grams</li>
-          </ul>
-
-          <h3>Related Calculators</h3>
-          <p>Use our <a href="/silver-weight-converter/">weight converter</a> for more unit conversions, or try the <a href="/silver-scrap-calculator/">scrap silver calculator</a> for a full valuation with dealer discount estimates.</p>
-        </div>
-      </div>
-    </section>
+    <div id="dynamic-steps"></div>
+    <div id="dynamic-understand"></div>
+    <div id="dynamic-faq"></div>
   </main>
-  <div id="site-footer"></div>
-
-  <script src="/js/silver-price.js"></script>
+    <div id="site-footer"></div>
+<script src="/js/silver-price.js"></script>
   <script src="/js/calculator.js"></script>
   <script src="/js/components.js"></script>
   <script>

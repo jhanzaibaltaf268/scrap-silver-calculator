@@ -1,5 +1,7 @@
 <!DOCTYPE html><html lang="de"><head>
   <meta charset="UTF-8">
+  <script src="/js/translations.js"></script>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Silber-Tola-Rechner – Rechnen Sie Tola in Gramm und den Silberwert um</title>
   <link rel="icon" type="image/png" href="/favicon.png">
@@ -11,6 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
+
 </head>
 <body>
   <div id="site-header"></div>
@@ -69,60 +72,12 @@
         </div>
       </div>
     </section>
-
-    <!-- Quick reference table -->
-    <section class="section" style="padding:var(--space-2xl) 0;">
-      <div class="container">
-        <h2 style="text-align:center;margin-bottom:var(--space-lg);">Tola-Umrechnungstabelle</h2>
-        <div style="max-width:700px;margin:0 auto;">
-          <table style="width:100%;border-collapse:collapse;">
-            <thead>
-              <tr style="border-bottom:2px solid var(--border-medium);">
-                <th style="padding:var(--space-md);text-align:left;color:var(--text-muted);font-size:var(--fs-sm);">Tola</th>
-                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Gramm</th>
-                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">Troy Oz</th>
-                <th style="padding:var(--space-md);text-align:right;color:var(--text-muted);font-size:var(--fs-sm);">925 Wert</th>
-              </tr>
-            </thead>
-            <tbody id="tola-table">
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <!-- Content -->
-    <section class="content-section">
-      <div class="container">
-        <div class="content-body">
-          <h2>Was ist eine Tola?</h2>
-          <p>A <strong>tola</strong> ist eine traditionelle Gewichtseinheit, die in Südasien und im Nahen Osten zur Messung von Gold und Silber verwendet wird. Eine Tola entspricht <strong>11.6638 grams</strong> oder ungefähr 0,375 Feinunzen. Der Begriff kommt vom Hindi/Urdu-Wort „तोला“ und war historisch mit dem Gewicht einer silbernen Rupienmünze verbunden.</p>
-
-          <h3>Wo wird Tola verwendet?</h3>
-          <p>Die Tola wird häufig in verwendet <strong>India, Pakistan, Bangladesh, Nepal, Sri Lanka,</strong> und Teile davon <strong>Middle East</strong> beim Kauf und Verkauf von Edelmetallen. Wenn Sie Silberpreise in „pro Tola“ bei einem lokalen Juwelier oder auf einem Markt sehen, hilft Ihnen dieser Rechner, diesen Preis zum Vergleich in internationale Standards umzurechnen.</p>
-
-          <h3>Tola-Umrechnungsformeln</h3>
-          <ul style="list-style:disc;margin-left:var(--space-xl);">
-            <li style="padding:4px 0;color:var(--text-secondary);">1 Tola = 11,6638 Gramm</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">1 Tola = 0,375 Feinunzen (3/8 Unzen)</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">1 Tola = 7,5 Pennyweight (DWT)</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">1 Gramm = 0,08573 Tola</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">1 Feinunze = 2,6667 Tola</li>
-            <li style="padding:4px 0;color:var(--text-secondary);">10 Tola = 116,638 Gramm = 3,75 Feinunzen</li>
-          </ul>
-
-          <h3>Silberpreis pro Tola heute</h3>
-          <p>Der Silberpreis pro Tola ändert sich basierend auf dem globalen Spotpreis. Da 1 Tola = 0,375 Feinunzen ist, multiplizieren Sie den Spotpreis mit 0,375 (und dann mit der Reinheit), um den Wert pro Tola zu erhalten. Unser Rechner erledigt dies automatisch anhand von Live-Preisen.</p>
-
-          <h3>Verwandte Rechner</h3>
-          <p>Nutzen Sie unsere <a href="/de/pennyweight-dwt-rechner/">pennyweight calculator</a> für DWT-Konvertierungen die <a href="/de/silber-gewichtsumrechner/">weight converter</a> für alle Einheiten, oder die <a href="/de/silberpreis-alle-waehrungen/">multi-currency price page</a> um den heutigen Silberpreis in PKR, INR und anderen lokalen Währungen zu sehen.</p>
-        </div>
-      </div>
-    </section>
+    <div id="dynamic-steps"></div>
+    <div id="dynamic-understand"></div>
+    <div id="dynamic-faq"></div>
   </main>
-  <div id="site-footer"></div>
-
-  <script src="/js/silver-price.js" defer></script>
+    <div id="site-footer"></div>
+<script src="/js/silver-price.js" defer></script>
   <script src="/js/calculator.js" defer></script>
   <script src="/js/components.js" defer></script>
   <script>
@@ -195,19 +150,8 @@
     ]);
   </script>
 
-
-
 <script>
    
 </script>
-<script>
-  window.MenuTranslations = {"slugs":{"silver-scrap-calculator":"silberschrott-rechner","gold-and-silver-calculator":"gold-und-silber-rechner","silver-melt-value-calculator":"silber-schmelzwert-rechner","sterling-silver-calculator":"sterlingsilber-rechner","junk-silver-calculator":"billon-silber-rechner","silver-coin-value-calculator":"silbermuenzen-wert-rechner","silver-bar-value-calculator":"silberbarren-wert-rechner","silver-jewelry-value-calculator":"silberschmuck-wert-rechner","silverware-value-calculator":"silberbesteck-wert-rechner","999-silver-calculator":"999-feinsilber-rechner","958-silver-calculator":"958-britanniasilber-rechner","925-silver-calculator":"925-sterlingsilber-rechner","900-silver-calculator":"900-muenzsilber-rechner","835-silver-calculator":"835-silber-rechner","800-silver-calculator":"800-silber-rechner","silver-purity-chart":"silber-reinheitstabelle","silver-price-per-gram":"silberpreis-pro-gramm","silver-price-per-ounce":"silberpreis-pro-unze","silver-price-all-currencies":"silberpreis-alle-waehrungen","1-10oz-silver-value":"1-10oz-silberwert","1oz-silver-value":"1oz-silberwert","2oz-silver-value":"2oz-silberwert","5oz-silver-value":"5oz-silberwert","10oz-silver-value":"10oz-silberwert","100oz-silver-value":"100oz-silberwert","1kg-silver-value":"1kg-silberwert","silver-profit-calculator":"silber-gewinn-rechner","silver-batch-calculator":"silber-stapel-rechner","sona-chandi-calculator":"sona-chandi-rechner","face-value-silver-calculator":"nennwert-silber-rechner","silver-weight-converter":"silber-gewichtsumrechner","pennyweight-calculator":"pennyweight-dwt-rechner","tola-calculator":"tola-rechner","silver-sell-or-hold":"silber-verkaufen-oder-halten","identify-silver":"silber-identifizieren","how-to-use-silver-calculators":"wie-man-silberrechner-verwendet","what-is-silver-scrap":"was-ist-silberschrott","what-is-silver-melt-value":"was-ist-silberschmelzwert","what-is-junk-silver":"was-ist-billon-silber","what-is-troy-ounce":"was-ist-eine-feinunze","what-is-silver-bullion":"was-sind-silberbarren","how-silver-prices-work":"wie-silberpreise-funktionieren","silver-hallmarks-guide":"silberstempel-ratgeber","what-does-925-mean":"was-bedeutet-925","what-is-sterling-silver":"was-ist-sterlingsilber","how-to-sell-silver":"wie-man-silber-verkauft","silver-bracelet-value":"silberarmband-wert","silver-chain-value":"silberkette-wert","silver-cup-value":"silberbecher-wert","silver-dime-calculator":"silber-dime-rechner","silver-dollar-calculator":"silber-dollar-rechner","silver-fork-value":"silbergabel-wert","silver-knife-value":"silbermesser-wert","silver-necklace-value":"silberhalskette-wert","silver-plate-value":"silberteller-wert","silver-quarter-calculator":"silber-quarter-rechner","silver-ring-value":"silberring-wert","silver-spoon-value":"silberloeffel-wert","silver-tray-value":"silbertablett-wert","canadian-silver-coin-calculator":"kanadische-silbermuenzen-rechner"},"Home":"Startseite","Calculators":"Rechner","Silver Scrap Calculator":"Silberschrott-Rechner","Gold &amp; Silver Calculator":"Gold- &amp; Silber-Rechner","Silver Melt Value":"Silberschmelzwert","Sterling Silver Calculator":"Sterlingsilber-Rechner","Junk Silver Calculator":"Billon-Silber-Rechner","Silver Coin Value":"Silbermünzen-Wert","Silver Bar Value":"Silberbarren-Wert","Silver Jewelry Value":"Silberschmuck-Wert","Silverware Value":"Silberbesteck-Wert","Purity":"Reinheit","999 Fine Silver":"999 Feinsilber","958 Britannia Silver":"958 Britannia-Silber","925 Sterling Silver":"925 Sterlingsilber","900 Coin Silver":"900 Münzsilber","835 Silver":"835 Silber","800 Silver":"800 Silber","Silver Purity Chart":"Silber-Reinheitstabelle","Pricing":"Preise","Silver Price Per Gram":"Silberpreis pro Gramm","Silver Price Per Ounce":"Silberpreis pro Unze","Price in All Currencies":"Preis in allen Währungen","1/10oz Silver Value":"1/10oz Silberwert","1oz Silver Value":"1oz Silberwert","2oz Silver Value":"2oz Silberwert","5oz Silver Value":"5oz Silberwert","10oz Silver Value":"10oz Silberwert","100oz Silver Value":"100oz Silberwert","1kg Silver Value":"1kg Silberwert","Tools":"Werkzeuge","Silver Profit Calculator":"Silber-Gewinn-Rechner","Batch Calculator":"Stapel-Rechner","Sona Chandi Calculator":"Sona Chandi Rechner","Face Value Calculator":"Nennwert-Rechner","Weight Converter":"Gewichtsumrechner","Pennyweight (DWT) Calc":"Pennyweight (DWT) Rechner","Tola Calculator":"Tola-Rechner","Sell or Hold Analysis":"Verkaufen oder Halten Analyse","Silver Identifier":"Silber-Identifikator","Guides":"Ratgeber","How to Use Our Calculators":"Wie man unsere Rechner nutzt","What Is Silver Scrap?":"Was ist Silberschrott?","What Is Melt Value?":"Was ist Schmelzwert?","What Is Junk Silver?":"Was ist Billonsilber?","What Is a Troy Ounce?":"Was ist eine Feinunze?","What Is Silver Bullion?":"Was sind Silberbarren?","How Silver Prices Work":"Wie Silberpreise funktionieren","Silver Hallmarks Guide":"Silberstempel Ratgeber","What Does 925 Mean?":"Was bedeutet 925?","What Is Sterling Silver?":"Was ist Sterlingsilber?","How to Sell Silver":"Wie man Silber verkauft","Scrap Silver":"Silberschrott","Gold &amp; Silver":"Gold &amp; Silber","Silver Profit":"Silber-Gewinn","Melt Value":"Schmelzwert","Junk Silver":"Billonsilber","Silver Coins":"Silbermünzen","Silver Dollar":"Silberdollar","Silver Quarter":"Silber-Quarter","Silver Dime":"Silber-Dime","Jewelry Value":"Schmuckwert","925 Sterling":"925 Sterling","Purity Chart":"Reinheitstabelle","How to Use Calculators":"Rechner verwenden","Sona Chandi Calc":"Sona Chandi Rechner","Face Value Calc":"Nennwert-Rechner","Sell or Hold":"Verkaufen oder Halten","About":"Über uns","Privacy":"Datenschutz","Terms":"Bedingungen","All rights reserved.":"Alle Rechte vorbehalten.","Prices are for informational purposes only.":"Preise dienen nur zu Informationszwecken.","Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.":"Kostenlose, präzise Silberrechner mit Live-Spotpreisen. Berechnen Sie blitzschnell den Schmelzwert Ihres Silberschrotts, Ihrer Münzen, Ihres Schmucks und Ihrer Barren."};
 
-    // Add listener to Calculate button
-    const cb = document.getElementById('calc-btn');
-    if (cb) {
-      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
-      if (fn) cb.addEventListener('click', fn);
-    }
-  </script>
 </body></html>
