@@ -95,14 +95,14 @@
     el.innerHTML = `
       ${langSwitcherHTML}
       <header class="site-header">
-        <div class="container header-content">
-          <a href="${s('/')}" class="site-logo">
-            <span class="logo-icon">⚖️</span>
-            <span class="logo-text">Scrap Silver<span class="logo-accent">Calculator</span></span>
+        <div class="header-inner">
+          <a href="${s('/')}" class="header-logo">
+            <div class="logo-icon">⚖️</div>
+            <span>Scrap Silver<span style="font-weight:400">Calculator</span></span>
           </a>
-          <nav class="site-nav"><ul class="nav-links"><li>${navHTML}</li></ul></nav>
-          <button class="mobile-toggle" aria-label="Toggle Menu" id="mobile-toggle">
-            <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+          <nav class="main-nav">${navHTML}</nav>
+          <button class="mobile-menu-btn" aria-label="Toggle Menu" id="mobile-toggle">
+            <span></span><span></span><span></span>
           </button>
         </div>
       </header>
@@ -119,7 +119,7 @@
 
     document.getElementById('mobile-toggle')?.addEventListener('click', function() {
       this.classList.toggle('active');
-      document.getElementById('mobile-nav')?.classList.toggle('active');
+      document.getElementById('mobile-nav')?.classList.toggle('open');
     });
   }
 
@@ -127,10 +127,10 @@
     const stepsEl = document.getElementById('dynamic-steps');
     const understandEl = document.getElementById('dynamic-understand');
     const faqEl = document.getElementById('dynamic-faq');
-    const lang = getLangCode();
 
     if (stepsEl) {
       stepsEl.innerHTML = `
+      <section class="section-compact" style="background: var(--bg-secondary);">
         <div class="container text-center">
           <span class="section-badge">📋</span>
           <h2 class="section-title">${t('how_it_works')}</h2>
@@ -140,11 +140,13 @@
             <div class="step-card"><div class="step-number">2</div><h4>${t('step2_title')}</h4><p>${t('step2_text')}</p></div>
             <div class="step-card"><div class="step-number">3</div><h4>${t('step3_title')}</h4><p>${t('step3_text')}</p></div>
           </div>
-        </div>`;
+        </div>
+      </section>`;
     }
 
     if (understandEl) {
       understandEl.innerHTML = `
+      <section class="content-section">
         <div class="container">
           <div class="content-body">
             <h2>${t('understand_title')}</h2>
@@ -153,11 +155,13 @@
               <p>${t('understand_text')}</p>
             </div>
           </div>
-        </div>`;
+        </div>
+      </section>`;
     }
 
     if (faqEl) {
       faqEl.innerHTML = `
+      <section class="section-compact" id="faq">
         <div class="container">
           <h2 class="section-title text-center">${t('faq_title')}</h2>
           <div class="faq-list">
@@ -165,7 +169,8 @@
             <div class="faq-item"><h3>${t('faq2_title')}</h3><p>${t('faq2_text')}</p></div>
             <div class="faq-item"><h3>${t('faq3_title')}</h3><p>${t('faq3_text')}</p></div>
           </div>
-        </div>`;
+        </div>
+      </section>`;
     }
   }
 
@@ -178,8 +183,70 @@
         <ul>${col.links.map(l => `<li><a href="${s(l.href)}">${t(l.label)}</a></li>`).join('')}</ul>
       </div>`).join('');
 
-    el.innerHTML = `<footer class="site-footer"><div class="container footer-grid">${colsHTML}</div></footer>`;
+    el.innerHTML = `<footer class="site-footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="${s('/')}" class="header-logo">
+              <div class="logo-icon">⚖️</div>
+              <span>Scrap Silver<span style="font-weight:400">Calculator</span></span>
+            </a>
+            <p>${t('footer_desc') !== 'footer_desc' ? t('footer_desc') : 'Free, accurate scrap silver melt value calculator using live spot prices.'}</p>
+          </div>
+          ${colsHTML}
+        </div>
+        <div class="footer-bottom">
+          <span>&copy; ${new Date().getFullYear()} Scrap Silver Calculator</span>
+          <span>Live spot prices updated every 60 seconds</span>
+        </div>
+      </div>
+    </footer>`;
   }
+
+  // Expose for FAQ schema injection
+  window.SiteComponents = window.SiteComponents || {};
+  window.SiteComponents.injectFAQSchema = function(faqs) {
+    if (!faqs || !faqs.length) return;
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+  };
+
+  window.SiteComponents.copyCalculation = function(btn) {
+    const resultVal = document.getElementById('hero-result-value');
+    const resultDet = document.getElementById('hero-result-detail');
+    if (!resultVal) return;
+    const text = `Silver Value: ${resultVal.textContent}\n${resultDet ? resultDet.textContent : ''}\nCalculated at scrapsilvercalculater.com`;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.classList.add('copied');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<span class="icon">✓</span> Copied!';
+      setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = orig; }, 2000);
+    });
+  };
+
+  window.SiteComponents.shareResult = function(platform) {
+    const resultVal = document.getElementById('hero-result-value');
+    if (!resultVal) return;
+    const text = encodeURIComponent(`My silver is worth ${resultVal.textContent}! Check yours at scrapsilvercalculater.com`);
+    const url = encodeURIComponent('https://scrapsilvercalculater.com');
+    const urls = {
+      whatsapp: `https://wa.me/?text=${text}`,
+      x: `https://twitter.com/intent/tweet?text=${text}&url=${url}`,
+      facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`
+    };
+    if (urls[platform]) window.open(urls[platform], '_blank', 'width=600,height=400');
+  };
 
   function init() {
     renderHeader();
