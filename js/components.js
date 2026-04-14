@@ -66,6 +66,47 @@ const SiteComponents = (() => {
     }
   ];
 
+  /* ---- Search Index (Main Tools) ---- */
+  const SEARCH_ITEMS = [
+    { label: 'Gold & Silver Calculator', href: '/gold-and-silver-calculator/' },
+    { label: 'Silver Melt Value', href: '/silver-melt-value-calculator/' },
+    { label: 'Sterling Silver Calculator', href: '/sterling-silver-calculator/' },
+    { label: 'Junk Silver Calculator', href: '/junk-silver-calculator/' },
+    { label: 'Silver Coin Value', href: '/silver-coin-value-calculator/' },
+    { label: 'Silver Bar Value', href: '/silver-bar-value-calculator/' },
+    { label: 'Silver Jewelry Value', href: '/silver-jewelry-value-calculator/' },
+    { label: 'Silverware Value', href: '/silverware-value-calculator/' },
+    { label: '999 Fine Silver', href: '/999-silver-calculator/' },
+    { label: '958 Britannia Silver', href: '/958-silver-calculator/' },
+    { label: '925 Sterling Silver', href: '/925-silver-calculator/' },
+    { label: '900 Coin Silver', href: '/900-silver-calculator/' },
+    { label: '835 Silver', href: '/835-silver-calculator/' },
+    { label: '800 Silver', href: '/800-silver-calculator/' },
+    { label: 'Silver Purity Chart', href: '/silver-purity-chart/' },
+    { label: 'Silver Spot Price Today', href: '/silver-spot-price-today/' },
+    { label: 'Silver Price Per Gram', href: '/silver-price-per-gram/' },
+    { label: '925 Sterling Price / Gram', href: '/925-sterling-silver-price-per-gram/' },
+    { label: 'Silver Price Per Ounce', href: '/silver-price-per-ounce/' },
+    { label: 'Price in All Currencies', href: '/silver-price-all-currencies/' },
+    { label: '1/10oz Silver Value', href: '/1-10oz-silver-value/' },
+    { label: '1oz Silver Value', href: '/1oz-silver-value/' },
+    { label: '2oz Silver Value', href: '/2oz-silver-value/' },
+    { label: '5oz Silver Value', href: '/5oz-silver-value/' },
+    { label: '10oz Silver Value', href: '/10oz-silver-value/' },
+    { label: '100oz Silver Value', href: '/100oz-silver-value/' },
+    { label: '1kg Silver Value', href: '/1kg-silver-value/' },
+    { label: 'Silver Profit Calculator', href: '/silver-profit-calculator/' },
+    { label: 'Batch Calculator', href: '/silver-batch-calculator/' },
+    { label: 'Sona Chandi Calculator', href: '/sona-chandi-calculator/' },
+    { label: 'Face Value Calculator', href: '/face-value-silver-calculator/' },
+    { label: 'Weight Converter', href: '/silver-weight-converter/' },
+    { label: 'Pennyweight (DWT) Calc', href: '/pennyweight-calculator/' },
+    { label: 'Tola Calculator', href: '/tola-calculator/' },
+    { label: 'Sell or Hold Analysis', href: '/silver-sell-or-hold/' },
+    { label: 'Silver Identifier', href: '/identify-silver/' },
+    { label: 'How to Use Our Calculators', href: '/how-to-use-silver-calculators/' },
+  ];
+
   const FOOTER_COLS = [
     {
       title: 'Calculators',
@@ -103,6 +144,15 @@ const SiteComponents = (() => {
         { label: 'Weight Converter', href: '/silver-weight-converter/' },
         { label: 'Sell or Hold', href: '/silver-sell-or-hold/' },
         { label: 'Silver Identifier', href: '/identify-silver/' },
+      ]
+    },
+    {
+      title: 'Support',
+      links: [
+        { label: 'Privacy Policy', href: '/privacy-policy/' },
+        { label: 'Terms of Service', href: '/terms-of-service/' },
+        { label: 'Disclaimer', href: '/disclaimer/' },
+        { label: 'Contact Us', href: '/contact/' },
       ]
     }
   ];
@@ -216,13 +266,37 @@ const SiteComponents = (() => {
           <a href="/" class="header-logo">
             <span>Scrap Silver Calculator</span>
           </a>
-          <nav class="main-nav" id="desktop-nav">${navHTML}</nav>
+          
+          <nav class="main-nav" id="desktop-nav">
+             ${navHTML}
+             <div class="search-container">
+                <div class="search-input-wrapper">
+                  <span class="search-icon-btn">🔍</span>
+                  <input type="text" class="header-search-input" placeholder="${t('Search tools...')}" id="header-search">
+                </div>
+                <div class="search-results-dropdown" id="search-results"></div>
+             </div>
+          </nav>
+
           <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
             <span></span><span></span><span></span>
           </button>
         </div>
-        <div class="mobile-nav" id="mobile-nav">${mobileNavHTML}</div>
+        <div class="mobile-nav" id="mobile-nav">
+           <div class="search-container" style="padding: 0 var(--space-md);">
+              <div class="search-input-wrapper">
+                <span class="search-icon-btn">🔍</span>
+                <input type="text" class="header-search-input" placeholder="${t('Search tools...')}" id="mobile-search">
+              </div>
+              <div class="search-results-dropdown" id="mobile-search-results"></div>
+           </div>
+           ${mobileNavHTML}
+        </div>
       </header>`;
+
+    // Init Search
+    initSearch('header-search', 'search-results');
+    initSearch('mobile-search', 'mobile-search-results');
 
     // Mobile menu toggle
     const btn = document.getElementById('mobile-menu-btn');
@@ -304,18 +378,28 @@ const SiteComponents = (() => {
   function renderPriceTicker(containerId) {
     const el = document.getElementById(containerId || 'price-ticker');
     if (!el) return;
-    const price = typeof SilverPrice !== 'undefined' ? SilverPrice.getPrice() : 32.50;
+    const price = typeof SilverPrice !== 'undefined' ? SilverPrice.getPrice() : 0;
     const isCustom = typeof SilverPrice !== 'undefined' && SilverPrice.isCustom();
-    el.innerHTML = `
-      <div class="price-ticker">
-        <span class="dot ${isCustom ? 'custom' : ''}"></span>
-        <span class="label">${isCustom ? 'Custom Price' : 'Live Silver Spot'}</span>
-        <span class="price" id="spot-price-display">$${price.toFixed(2)}/oz</span>
-      </div>`;
+    
+    if (price === 0) {
+      el.innerHTML = `<div class="price-ticker skeleton loading"></div>`;
+    } else {
+      el.innerHTML = `
+        <div class="price-ticker">
+          <span class="dot ${isCustom ? 'custom' : ''}"></span>
+          <span class="label">${isCustom ? t('Custom Price') : t('Live Silver Spot')}</span>
+          <span class="price" id="spot-price-display">$${price.toFixed(2)}/oz</span>
+        </div>`;
+    }
 
     // Update when price changes
     if (typeof SilverPrice !== 'undefined') {
       SilverPrice.onPriceUpdate((newPrice) => {
+        // If it was in loading state, re-render completely to remove skeleton
+        if (el.querySelector('.loading')) {
+          renderPriceTicker(containerId);
+          return;
+        }
         const display = document.getElementById('spot-price-display');
         if (display) display.textContent = `$${newPrice.toFixed(2)}/oz`;
       });
@@ -327,9 +411,71 @@ const SiteComponents = (() => {
     if (!el) return;
     const items = crumbs.map((c, i) => {
       if (i === crumbs.length - 1) return `<span>${c.label}</span>`;
-      return `<a href="${c.href}">${c.label}</a><span class="sep">›</span>`;
+      return `<a href="${s(c.href)}">${c.label}</a><span class="sep">›</span>`;
     }).join(' ');
     el.innerHTML = `<nav class="breadcrumb" aria-label="Breadcrumb">${items}</nav>`;
+    injectBreadcrumbSchema(crumbs);
+  }
+
+  function injectBreadcrumbSchema(crumbs) {
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": crumbs.map((c, i) => ({
+        "@type": "ListItem",
+        "position": i + 1,
+        "name": c.label,
+        "item": c.href ? `https://scrapsilvercalculater.com${s(c.href)}` : undefined
+      }))
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = 'breadcrumb-schema';
+    // Remove old schema if exists
+    document.getElementById('breadcrumb-schema')?.remove();
+    script.textContent = JSON.stringify(schema);
+    document.head.appendChild(script);
+  }
+
+  function initSearch(inputId, resultsId) {
+    const input = document.getElementById(inputId);
+    const results = document.getElementById(resultsId);
+    if (!input || !results) return;
+
+    input.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase().trim();
+      if (query.length < 2) {
+        results.classList.remove('active');
+        return;
+      }
+
+      const matches = SEARCH_ITEMS.filter(item => 
+        item.label.toLowerCase().includes(query)
+      ).slice(0, 8);
+
+      if (matches.length > 0) {
+        results.innerHTML = matches.map(m => `
+          <a href="${s(m.href)}" class="search-result-item">
+            <span class="res-icon">📊</span>
+            <div class="res-info">
+              <div style="font-weight:600; font-size:14px; color:var(--text-primary);">${t(m.label)}</div>
+              <div style="font-size:12px; color:var(--text-muted);">${s(m.href)}</div>
+            </div>
+          </a>
+        `).join('');
+        results.classList.add('active');
+      } else {
+        results.innerHTML = `<div class="search-result-item" style="justify-content:center; color:var(--text-muted);">${t('No results found')}</div>`;
+        results.classList.add('active');
+      }
+    });
+
+    // Close on click outside
+    document.addEventListener('click', (e) => {
+      if (!input.contains(e.target) && !results.contains(e.target)) {
+        results.classList.remove('active');
+      }
+    });
   }
 
   // Schema.org FAQ markup helper
