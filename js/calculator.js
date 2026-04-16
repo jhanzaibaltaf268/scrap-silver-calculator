@@ -137,6 +137,7 @@ const SilverCalc = (() => {
    * Convert weight to grams based on unit
    */
   function toGrams(weight, unit) {
+    if (window.clarity) window.clarity("set", "unit", unit);
     switch (unit) {
       case 'g': return weight;
       case 'oz':
@@ -156,6 +157,7 @@ const SilverCalc = (() => {
    * @returns {object} { value, silverContent, weightOz }
    */
   function meltValue(weightGrams, purity, spotPricePerOz) {
+    if (window.clarity) window.clarity("set", "purity", purity.toString());
     const silverGrams = weightGrams * purity;
     const silverOz = silverGrams / GRAMS_PER_TROY_OZ;
     const value = silverOz * spotPricePerOz;
@@ -230,6 +232,7 @@ const SilverCalc = (() => {
    * Format currency value
    */
   function formatCurrency(value, currency = 'USD') {
+    if (window.clarity) window.clarity("set", "currency", currency);
     return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency

@@ -587,3 +587,32 @@ const SiteComponents = (() => {
 
   return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, injectFAQSchema, injectCalcSchema, copyCalculation, shareResult, init };
 })();
+
+/* --- Clarity Custom Tags --- */
+(function() {
+  if (typeof window === 'undefined') return;
+  
+  function tag() {
+    if (!window.clarity) return;
+    const path = window.location.pathname;
+    
+    // Detect Language
+    const langMatch = path.match(/^\/([a-z]{2})\//);
+    const lang = langMatch ? langMatch[1] : 'en';
+    window.clarity('set', 'page_lang', lang);
+    
+    // Detect Category
+    let cat = 'Article';
+    if (path.includes('calculator')) cat = 'Calculator';
+    else if (path === '/' || path === '/index.html') cat = 'Home';
+    window.clarity('set', 'page_category', cat);
+    
+    // Friendly Name for Breadcrumb equivalent
+    const name = path.replace(/\.html$/, '').replace(/\//g, ' ').trim() || 'Home';
+    window.clarity('set', 'friendly_name', name);
+  }
+
+  // Run on load and after a short delay to ensure clarity is ready
+  tag();
+  setTimeout(tag, 2000);
+})();
