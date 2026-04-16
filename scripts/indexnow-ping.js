@@ -41,10 +41,12 @@ const urlList = htmlFiles.map(file => {
         return `https://${HOST}/${relativePath.substring(0, relativePath.length - 10)}/`;
     }
     
-    // Remove .html extension for clean URLs (assuming project uses them)
-    // The project file list shows .html files, but URLs in canonical tags were clean.
-    // However, for IndexNow to work correctly it must match the canonical URL.
-    return `https://${HOST}/${relativePath.replace(/\.html$/, '')}`;
+    // Remove .html extension and ensure trailing slash for clean URLs
+    let cleanPath = relativePath.replace(/\.html$/, '');
+    if (!cleanPath.endsWith('/')) {
+        cleanPath += '/';
+    }
+    return `https://${HOST}/${cleanPath}`;
 });
 
 console.log(`Found ${urlList.length} URLs to ping.`);
