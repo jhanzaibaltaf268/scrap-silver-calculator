@@ -3,11 +3,13 @@
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
     <!-- Microsoft Clarity -->
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
+    window.addEventListener('load', function() {
+        (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wby5gobage");
+    });
 </script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,12 +25,12 @@
 
 
   <meta charset="UTF-8">
-  <script src="/js/translations.js"></script>
+  <script src="../js/translations.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How to Use Our Silver Calculators — Complete Guide for New Users</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../favicon.png">
   <meta name="description" content="Step-by-step guide on how to use SilverCalc's free calculators. Learn which calculator to use, how to weigh and identify your silver, and get the most accurate results.">
   <link rel="canonical" href="https://scrapsilvercalculater.com/how-to-use-silver-calculators/">
   <link rel="stylesheet" href="../css/style.css">
@@ -49,7 +51,9 @@
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&amp;family=Outfit:wght@400..800&amp;display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap"></noscript>
 
 
   <!-- Open Graph / Facebook -->
@@ -84,7 +88,8 @@
   <div id="site-header"></div>
   <main>
     <div class="container"><div id="breadcrumb"></div></div>
-    <section class="page-hero"><div class="container"><h1>How to Use Our <span class="highlight">Silver Calculators</span></h1><p>A complete beginner's guide to every tool on SilverCalc — learn which calculator to use and how to get the most accurate results.</p></div></section>
+    <section class="page-hero"><div class="container">
+        <div id="price-ticker"></div><h1>How to Use Our <span class="highlight">Silver Calculators</span></h1><p>A complete beginner's guide to every tool on SilverCalc — learn which calculator to use and how to get the most accurate results.</p></div></section>
     <div class="calc-page-layout" style="max-width:900px;">
       <div class="content-body" style="max-width:100%;">
 
@@ -218,8 +223,9 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="/js/silver-price.js" defer=""></script><script src="/js/calculator.js" defer=""></script><script src="/js/components.js" defer=""></script>
+  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
   <script>
+    SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Home',href:'/'},{label:'Guides'},{label:'How to Use Our Calculators'}]);
     SiteComponents.injectFAQSchema([
       {q:'How do I calculate my silver value?',a:'Identify your silver purity (look for hallmarks like 925), weigh the item in grams, then use our scrap calculator to get the melt value based on live spot prices.'},

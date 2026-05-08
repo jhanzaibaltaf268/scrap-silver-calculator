@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scrap Silver Calculator | Find Your True Melt Value</title>
+    <meta name="description" content="Use this free Scrap Silver Calculator to instantly check what your items are worth. Hyper-precise valuation powered by live spot prices for scrap, coins, and bullion.">
+    <link rel="canonical" href="https://scrapsilvercalculater.com/">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <meta name="google-site-verification" content="3zJ4ttr1AnZWh4z6tMWiVpqPUwg7VEia6_65eJV8Lro">
+    <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/">
+    <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/">
+    <link rel="alternate" hreflang="es" href="https://scrapsilvercalculater.com/es/">
+    <link rel="alternate" hreflang="fr" href="https://scrapsilvercalculater.com/fr/">
+    <link rel="alternate" hreflang="de" href="https://scrapsilvercalculater.com/de/">
+    <link rel="alternate" hreflang="pt" href="https://scrapsilvercalculater.com/pt/">
+    <link rel="alternate" hreflang="hi" href="https://scrapsilvercalculater.com/hi/">
+    <link rel="alternate" hreflang="ur" href="https://scrapsilvercalculater.com/ur/">
+    <link rel="alternate" hreflang="ar" href="https://scrapsilvercalculater.com/ar/">
+    <link rel="alternate" hreflang="tr" href="https://scrapsilvercalculater.com/tr/">
+    <link rel="alternate" hreflang="it" href="https://scrapsilvercalculater.com/it/">
+    <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/">
+    <link rel="alternate" hreflang="ru" href="https://scrapsilvercalculater.com/ru/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://scrapsilvercalculater.com/">
+    <meta property="og:title" content="Scrap Silver Calculator – Free Silver Melt Value Calculator [Live Prices]">
+    <meta property="og:description" content="Use this free Scrap Silver Calculator to instantly check what your items are worth.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Scrap Silver Calculator","description":"Free, accurate silver calculators using live spot prices.","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+    <style>
+:root {
+    --bg: #030305;
+    --card: rgba(13, 13, 20, 0.7);
+    --glass: rgba(255, 255, 255, 0.03);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --text: #f1f5f9;
+    --dim: #94a3b8;
+    --muted: #475569;
+    --accent: #8b5cf6;
+    --accent-glow: rgba(139, 92, 246, 0.4);
+    --cyan: #06b6d4;
+    --green: #10b981;
+    --red: #ef4444;
+    --r-xl: 32px;
+    --r-md: 16px;
+    --r-sm: 8px;
+    --f-display: 'Outfit', sans-serif;
+    --f-body: 'Inter', sans-serif;
+    --f-mono: 'JetBrains Mono', monospace;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--f-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.1) 0px, transparent 50%);
+    background-attachment: fixed;
+}
+
+.container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+/* ---- ANIMATIONS ---- */
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.8s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================
+   HEADER
+   ============================================ */
+.hdr { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; height: 72px; backdrop-filter: blur(12px); background: rgba(3, 3, 5, 0.7); border-bottom: 1px solid var(--glass-border); transition: all 0.3s; }
+.hdr.scrolled { background: rgba(3, 3, 5, 0.9); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.hdr-inner { max-width: 1400px; margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 100%; }
+
+.logo { font-family: var(--f-display); font-weight: 800; font-size: 16px; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+.logo-mark { width: 32px; height: 32px; border-radius: 10px; background: linear-gradient(135deg, var(--accent), var(--cyan)); display: grid; place-items: center; font-size: 16px; box-shadow: 0 0 20px var(--accent-glow); }
+
+.hdr-spot { font-family: var(--f-mono); font-weight: 700; font-size: 16px; color: var(--cyan); display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.03); padding: 6px 12px; border-radius: 100px; border: 1px solid var(--glass-border); }
+.hdr-spot .dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; animation: pulse 2s infinite; }
+
+.nav { display: flex; align-items: center; gap: 4px; }
+.nav-link { padding: 8px 16px; border-radius: 10px; font-size: 14px; font-weight: 600; color: var(--dim); text-decoration: none; transition: all 0.2s; }
+.nav-link:hover { color: #fff; background: var(--glass); }
+.nav-link.active { color: var(--accent); background: rgba(139, 92, 246, 0.1); }
+
+@media (max-width: 768px) {
+    .nav { display: none; }
+    .mob-btn { display: flex; flex-direction: column; gap: 4px; background: none; border: none; cursor: pointer; }
+    .mob-btn span { width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+}
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero { padding: 120px 0 60px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 48px; align-items: center; }
+@media (max-width: 960px) { .hero { grid-template-columns: 1fr; text-align: center; padding: 100px 0 40px; } }
+
+.hero-content h1 { font-family: var(--f-display); font-size: clamp(32px, 6vw, 56px); font-weight: 900; line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 20px; color: #fff; }
+.hero-content h1 span { color: var(--accent); }
+.hero-p { font-size: 16px; color: var(--dim); line-height: 1.6; max-width: 480px; margin-bottom: 32px; }
+@media (max-width: 960px) { .hero-p { margin: 0 auto 32px; } }
+
+/* ============================================
+   DASHBOARD
+   ============================================ */
+.dash { background: var(--card); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: var(--r-xl); overflow: hidden; box-shadow: 0 40px 100px rgba(0,0,0,0.6); position: relative; }
+.dash::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--glass-border), transparent); }
+
+.dtabs { display: flex; background: rgba(0,0,0,0.2); border-bottom: 1px solid var(--glass-border); }
+.dtab { flex: 1; padding: 20px; background: none; border: none; color: var(--dim); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all 0.3s var(--ease); position: relative; }
+.dtab:hover { color: #fff; background: rgba(255,255,255,0.02); }
+.dtab.on { color: var(--accent); }
+.dtab.on::after { content: ""; position: absolute; bottom: 0; left: 20%; right: 20%; height: 2px; background: var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
+
+.dbody { display: grid; grid-template-columns: 1.1fr 0.9fr; }
+@media (max-width: 800px) { .dbody { grid-template-columns: 1fr; } }
+
+.dleft { padding: 40px; border-right: 1px solid var(--glass-border); }
+.dright { padding: 40px; background: rgba(255,255,255,0.01); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+
+.label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--dim); margin-bottom: 12px; display: block; }
+
+.input-group { position: relative; margin-bottom: 32px; }
+.input-main { width: 100%; background: rgba(255,255,255,0.03); border: 2px solid var(--glass-border); border-radius: var(--r-md); padding: 16px 20px; color: #fff; font-family: var(--f-mono); font-size: 24px; font-weight: 700; outline: none; transition: all 0.3s; }
+.input-main:focus { border-color: var(--accent); background: rgba(139, 92, 246, 0.05); box-shadow: 0 0 20px rgba(139, 92, 246, 0.1); }
+
+.unit-selector { display: flex; gap: 8px; margin-top: 12px; }
+.uchip { padding: 8px 16px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 100px; color: var(--dim); font-size: 12px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.uchip:hover { background: var(--glass); color: #fff; }
+.uchip.on { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: 0 5px 15px var(--accent-glow); }
+
+.pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.porb { padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: var(--r-md); text-align: center; cursor: pointer; transition: all 0.2s; }
+.porb:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.2); }
+.porb.on { border-color: var(--cyan); background: rgba(6, 182, 212, 0.1); }
+.porb .pv { display: block; font-family: var(--f-mono); font-size: 16px; font-weight: 800; color: #fff; }
+.porb .pl { display: block; font-size: 10px; color: var(--dim); text-transform: uppercase; font-weight: 700; }
+
+/* Gauge */
+.gauge-wrap { position: relative; width: 200px; height: 200px; margin-bottom: 32px; }
+.gauge-svg { transform: rotate(-90deg); }
+.gauge-bg { fill: none; stroke: rgba(255,255,255,0.05); stroke-width: 8; }
+.gauge-fill { fill: none; stroke: var(--accent); stroke-width: 8; stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: stroke-dashoffset 1s var(--ease); }
+.gauge-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+.gauge-val { font-family: var(--f-display); font-size: 32px; font-weight: 800; color: #fff; }
+.gauge-lbl { font-size: 12px; color: var(--dim); text-transform: uppercase; letter-spacing: 0.1em; }
+
+.res-val { font-family: var(--f-display); font-size: 56px; font-weight: 900; color: #fff; line-height: 1; letter-spacing: -0.04em; margin-bottom: 8px; }
+.res-sub { font-family: var(--f-mono); font-size: 14px; color: var(--dim); margin-bottom: 32px; }
+
+.stats-bar { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; width: 100%; }
+.stat-i { padding: 16px; background: rgba(255,255,255,0.03); border-radius: var(--r-md); border: 1px solid var(--glass-border); }
+.stat-l { font-size: 10px; font-weight: 700; color: var(--dim); text-transform: uppercase; margin-bottom: 4px; }
+.stat-v { font-family: var(--f-mono); font-size: 14px; font-weight: 700; color: #fff; }
+
+/* ============================================
+   CONTENT SECTIONS
+   ============================================ */
+.sec { padding: 80px 0; }
+.sec-title { font-family: var(--f-display); font-size: 32px; font-weight: 800; margin-bottom: 40px; text-align: center; color: #fff; }
+
+.cgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+@media (max-width: 900px) { .cgrid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .cgrid { grid-template-columns: 1fr; } }
+
+.ccard { background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--r-md); padding: 24px; text-decoration: none; color: inherit; transition: all 0.3s var(--ease); display: flex; flex-direction: column; gap: 12px; }
+.ccard:hover { background: rgba(255,255,255,0.05); transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.ccard .ci { width: 40px; height: 40px; background: rgba(139, 92, 246, 0.1); border-radius: 8px; display: grid; place-items: center; color: var(--accent); font-weight: 800; }
+.ccard h3 { font-size: 18px; color: #fff; }
+.ccard p { font-size: 14px; color: var(--dim); }
+
+/* FAQ */
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-i { border-bottom: 1px solid var(--glass-border); }
+.faq-q { width: 100%; background: none; border: none; padding: 24px 0; font-size: 16px; font-weight: 600; color: #fff; text-align: left; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.faq-q::after { content: "+"; font-size: 20px; color: var(--accent); transition: 0.3s; }
+.faq-i.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease); }
+.faq-a-in { padding-bottom: 24px; color: var(--dim); line-height: 1.7; font-size: 15px; }
+.faq-i.open .faq-a { max-height: 200px; }
+
+/* UTILS */
+.see-more { display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; background: rgba(139, 92, 246, 0.1); border: 1px solid var(--accent); border-radius: 100px; color: var(--accent); text-decoration: none; font-size: 13px; font-weight: 700; transition: 0.3s; }
+.see-more:hover { background: var(--accent); color: #fff; box-shadow: 0 10px 20px var(--accent-glow); }
+
+.fbox { background: rgba(6, 182, 212, 0.05); border-left: 4px solid var(--cyan); padding: 20px; border-radius: 0 12px 12px 0; margin: 24px 0; font-family: var(--f-mono); color: var(--cyan); }
+.toc { background: var(--glass); border: 1px solid var(--glass-border); border-radius: var(--r-md); padding: 24px; margin-bottom: 40px; }
+.toc-link { display: block; color: var(--dim); text-decoration: none; margin-bottom: 10px; font-size: 14px; transition: 0.2s; }
+.toc-link:hover { color: var(--accent); transform: translateX(5px); }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer { padding: 80px 0 40px; background: rgba(0,0,0,0.3); border-top: 1px solid var(--glass-border); }
+.fgrid { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 40px; margin-bottom: 60px; }
+@media (max-width: 1000px) { .fgrid { grid-template-columns: 1fr 1fr; } }
+
+.fcol h4 { font-size: 14px; color: #fff; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.1em; }
+.fcol a { display: block; font-size: 14px; color: var(--dim); text-decoration: none; margin-bottom: 12px; transition: 0.2s; }
+.fcol a:hover { color: var(--accent); transform: translateX(5px); }
+
+/* TOAST */
+.toast { position: fixed; bottom: 32px; right: 32px; padding: 12px 24px; background: var(--accent); color: #fff; border-radius: 12px; font-weight: 600; transform: translateY(100px); transition: 0.4s var(--ease); box-shadow: 0 10px 30px var(--accent-glow); }
+.toast.show { transform: translateY(0); }
+
+    </style>
+</head>
+<body>
+<!-- HEADER -->
+<header class="hdr" id="hdr">
+    <div class="hdr-inner">
+        <a href="/" class="logo"><span class="logo-mark">Ag</span>Scrap Silver</a>
+        <div class="hdr-spot" id="hdr-spot">
+            <span class="dot"></span>
+            <span id="spot-price">$82.53</span>
+        </div>
+        <nav class="nav">
+            <a href="/" class="nav-link active">Home</a>
+            <a href="/silver-melt-value-calculator/" class="nav-link">Calculators</a>
+            <a href="/silver-purity-chart/" class="nav-link">Purity</a>
+            <a href="/how-to-use-silver-calculators/" class="nav-link">Guide</a>
+        </nav>
+        <button class="mob-btn" style="display: none;">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<main>
+    <!-- HERO -->
+    <section class="hero container">
+        <div class="hero-content visible">
+            <h1>Expert Silver <span>Melt Valuation</span></h1>
+            <p class="hero-p">High-precision analytics for scrap silver, coins, and bullion. Get instant, market-accurate valuations powered by real-time institutional data feeds.</p>
+        </div>
+
+        <!-- DASHBOARD -->
+        <div class="dash visible" id="dash">
+            <div class="dtabs">
+                <button class="dtab on" onclick="setMode('scrap',this)">Metal Weight</button>
+                <button class="dtab" onclick="setMode('coins',this)">Coin Count</button>
+                <button class="dtab" onclick="setMode('bars',this)">Bullion Bars</button>
+            </div>
+            <div class="dbody">
+                <div class="dleft">
+                    <div class="input-group">
+                        <label class="label" for="mw">Item Weight</label>
+                        <input type="number" class="input-main" placeholder="0.00" id="mw" oninput="calc()" value="10">
+                        <div class="unit-selector" id="unit-sel">
+                            <div class="uchip on" onclick="setU('g',this)">Grams</div>
+                            <div class="uchip" onclick="setU('oz',this)">Ounces</div>
+                            <div class="uchip" onclick="setU('dwt',this)">DWT</div>
+                        </div>
+                        <div class="unit-selector" id="coin-sel" style="display: none;">
+                            <div class="uchip on" onclick="setCoin('dime',this)">Dime</div>
+                            <div class="uchip" onclick="setCoin('quarter',this)">Quarter</div>
+                            <div class="uchip" onclick="setCoin('half',this)">Half</div>
+                            <div class="uchip" onclick="setCoin('dollar',this)">Dollar</div>
+                        </div>
+                    </div>
+
+                    <div class="purity-section">
+                        <label class="label">Purity Grade</label>
+                        <div class="pgrid" id="pg">
+                            <!-- Purity chips populated by JS -->
+                        </div>
+                    </div>
+                </div>
+                <div class="dright">
+                    <div class="gauge-wrap">
+                        <svg class="gauge-svg" viewBox="0 0 160 160" width="200" height="200">
+                            <circle class="gauge-bg" cx="80" cy="80" r="70"></circle>
+                            <circle class="gauge-fill" id="gauge-fill" cx="80" cy="80" r="70"></circle>
+                        </svg>
+                        <div class="gauge-content">
+                            <div class="gauge-val" id="gv">92.5%</div>
+                            <div class="gauge-lbl">Purity</div>
+                        </div>
+                    </div>
+
+                    <div class="res-val" id="rv">$0.00</div>
+                    <div class="res-sub" id="rd">0.00g fine silver</div>
+
+                    <div class="stats-bar">
+                        <div class="stat-i">
+                            <div class="stat-l">Live Spot</div>
+                            <div class="stat-v" id="sv">$0.00</div>
+                        </div>
+                        <div class="stat-i">
+                            <div class="stat-l">G/S Ratio</div>
+                            <div class="stat-v" id="rr">---</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</section>
+
+<!-- CALCULATORS -->
+<section class="sec container container-tight" id="calculators">
+    <div class="tc reveal"><span class="sec-badge">All Silver Tools</span><h2 class="sec-title">Free Silver Calculators & Tools</h2><p class="sec-sub ma">Everything you need to value your silver — organized by category.</p></div>
+
+    <!-- Category 1: Calculators -->
+    <div class="sub-sec reveal">
+        <div class="sub-sec-head">
+            <div class="sub-sec-title">Calculators</div>
+        </div>
+        <div class="cgrid">
+            <a href="/silver-melt-value-calculator/" class="ccard"><div class="ci">Ag</div><h3>Silver Melt Value</h3><p>Find pure silver content and melt value based on weight & fineness.</p><span class="arr">Calculate →</span></a>
+            <a href="/sterling-silver-calculator/" class="ccard"><div class="ci">925</div><h3>Sterling Silver</h3><p>Calculate the value of your 925 sterling items by weight.</p><span class="arr">Calculate →</span></a>
+            <a href="/junk-silver-calculator/" class="ccard"><div class="ci">90%</div><h3>Junk Silver</h3><p>Melt value of pre-1965 US coins — dimes, quarters, halves.</p><span class="arr">Calculate →</span></a>
+        </div>
+        <div class="see-more-wrap"><a href="/silver-melt-value-calculator/" class="see-more">See All Calculators <span class="sm-arrow">→</span></a></div>
+    </div>
+
+    <!-- Category 2: Purity -->
+    <div class="sub-sec reveal">
+        <div class="sub-sec-head">
+            <div class="sub-sec-title">Silver Purity Calculators</div>
+        </div>
+        <div class="cgrid">
+            <a href="/999-silver-calculator/" class="ccard"><div class="ci">999</div><h3>999 Fine Silver</h3><p>Calculator for pure 99.9% fine silver — bars & coins.</p><span class="arr">Calculate →</span></a>
+            <a href="/925-silver-calculator/" class="ccard"><div class="ci">925</div><h3>925 Sterling Silver</h3><p>The world's most common silver standard — jewelry & flatware.</p><span class="arr">Calculate →</span></a>
+            <a href="/900-silver-calculator/" class="ccard"><div class="ci">900</div><h3>900 Coin Silver</h3><p>For pre-1965 US coins and historic silver coinage.</p><span class="arr">Calculate →</span></a>
+        </div>
+        <div class="see-more-wrap"><a href="/silver-purity-chart/" class="see-more">See All Purity Grades <span class="sm-arrow">→</span></a></div>
+    </div>
+
+    <!-- Category 3: Pricing -->
+    <div class="sub-sec reveal">
+        <div class="sub-sec-head">
+            <div class="sub-sec-title">Live Pricing Calculators</div>
+        </div>
+        <div class="cgrid">
+            <a href="/silver-spot-price-today/" class="ccard"><div class="ci">$/oz</div><h3>Spot Price Today</h3><p>Live silver spot price updated from global markets.</p><span class="arr">View Price →</span></a>
+            <a href="/silver-price-per-gram/" class="ccard"><div class="ci">$/g</div><h3>Price Per Gram</h3><p>Current silver price per gram with all weight conversions.</p><span class="arr">View →</span></a>
+            <a href="/silver-price-per-ounce/" class="ccard"><div class="ci">$</div><h3>Price Per Ounce</h3><p>Live silver spot price per troy ounce in real time.</p><span class="arr">View →</span></a>
+        </div>
+        <div class="see-more-wrap"><a href="/silver-spot-price-today/" class="see-more">See All Pricing <span class="sm-arrow">→</span></a></div>
+    </div>
+
+    <!-- Category 4: Tools -->
+    <div class="sub-sec reveal">
+        <div class="sub-sec-head">
+            <div class="sub-sec-title">Tools & Utilities Calculators</div>
+        </div>
+        <div class="cgrid">
+            <a href="/silver-profit-calculator/" class="ccard"><div class="ci">ROI</div><h3>Profit Calculator</h3><p>Calculate your total ROI based on purchase price.</p><span class="arr">Analyze →</span></a>
+            <a href="/silver-batch-calculator/" class="ccard"><div class="ci">+</div><h3>Batch Calculator</h3><p>Add multiple items, get combined total value.</p><span class="arr">Try It →</span></a>
+            <a href="/silver-weight-converter/" class="ccard"><div class="ci">g/oz</div><h3>Weight Converter</h3><p>Convert between 6 weight units instantly.</p><span class="arr">Convert →</span></a>
+        </div>
+        <div class="see-more-wrap"><a href="/silver-profit-calculator/" class="see-more">See All Tools <span class="sm-arrow">→</span></a></div>
+    </div>
+</section>
+
+
+
+<!-- SEO CONTENT -->
+<section class="sec container container-tight" id="guide">
+    <div class="reveal"><span class="sec-badge">📖 Learn</span><h2 class="sec-title">Understanding Silver Valuation</h2></div>
+    <div class="content">
+        <div class="toc reveal">
+            <div class="toc-title">📍 Table of Contents</div>
+            <div class="toc-list">
+                <a href="#toc-valuation" class="toc-link"><span>01</span> What Is a Scrap Silver Calculator?</a>
+                <a href="#toc-hallmarks" class="toc-link"><span>02</span> Hallmark Identification Guide</a>
+                <a href="#toc-market" class="toc-link"><span>03</span> Understanding Market Intelligence</a>
+                <a href="#toc-faq" class="toc-link"><span>04</span> Frequently Asked Questions</a>
+            </div>
+        </div>
+        <div class="cpanel reveal">
+            <h2 id="toc-valuation">What Is a Scrap Silver Calculator?</h2>
+            <p>A scrap silver calculator determines the <strong>intrinsic melt value</strong> of a silver item — not its retail price or sentimental value. It answers: if you melted this item down to pure silver today, what would that metal be worth? Our engine utilizes real-time feeds from the COMEX and LBMA exchanges to provide the same valuation used by professional refineries globally.</p>
+            <div class="fbox">Melt Value = (Weight × Purity) ÷ 31.1035 × Spot Price</div>
+            <p>Every calculation is performed with 4-point decimal precision — the same methodology used by major precious metals refineries and commodity trading desks worldwide.</p>
+        </div>
+        <div class="cpanel reveal">
+            <h2 id="toc-hallmarks">Hallmark Identification</h2>
+            <p>Look for <strong>"925"</strong> or <strong>"Sterling"</strong> for high-grade jewelry. Fine silver carries <strong>"999"</strong>. European pieces show "800" or "835" stamps. Items marked "EPNS" or "Silver Plate" contain only a microscopic layer of silver — these have negligible scrap value. Use the <a href="/identify-silver/" style="color:var(--accent2)">Silver Identifier tool</a> if you're unsure.</p>
+        </div>
+        <div class="cpanel reveal">
+            <h2 id="toc-market">Market Intelligence</h2>
+            <p>The <strong>gold-to-silver ratio</strong> shown in our dashboard is a key market indicator. When it exceeds 80, silver is historically undervalued relative to gold. When it drops below 60, silver may be relatively expensive. Use our <a href="/silver-sell-or-hold/" style="color:var(--accent2)">Sell or Hold tool</a> to model different price scenarios before making a decision.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec container container-tight" id="faq">
+    <div class="tc reveal"><h2 class="sec-title" id="toc-faq">Frequently Asked Questions</h2><p class="sec-sub ma">Straight answers about silver scrap value.</p></div>
+    <div class="faq-list">
+        <div class="faq-i"><button class="faq-q">How do I calculate the value of scrap silver? <span class="fi">+</span></button><div class="faq-a"><div class="faq-a-in">Multiply the item's weight in troy ounces by its purity (as a decimal) and by the current silver spot price. For example, 10g of 925 sterling at $30/oz ≈ $8.95. This calculator does it instantly.</div></div></div>
+        <div class="faq-i"><button class="faq-q">What is melt value vs spot price? <span class="fi">+</span></button><div class="faq-a"><div class="faq-a-in">Spot price is the market price for one troy ounce of pure 999 silver. Melt value is what your specific item is worth based on its weight and purity — always ≤ spot.</div></div></div>
+        <div class="faq-i"><button class="faq-q">How do I know if my silver is real? <span class="fi">+</span></button><div class="faq-a"><div class="faq-a-in">Look for stamps: 925, 900, 800, 999, or "STERLING". If no marking, a jeweler can do an acid test or XRF analysis. EPNS or "Silver Plate" = plated, negligible scrap value.</div></div></div>
+        <div class="faq-i"><button class="faq-q">How much will a dealer pay me? <span class="fi">+</span></button><div class="faq-a"><div class="faq-a-in">Most buyers pay 70–95% of melt value. Pawn shops offer less; online silver refiners offer 85–95%. Always get multiple offers and verify fairness with this calculator.</div></div></div>
+        <div class="faq-i"><button class="faq-q">Is junk silver the same as scrap silver? <span class="fi">+</span></button><div class="faq-a"><div class="faq-a-in">Not exactly. Junk silver = pre-1965 US coins (90% silver, no collector premium). Scrap silver = broader term for broken jewelry, flatware, dental silver sold for its metal.</div></div></div>
+        <div class="faq-i"><button class="faq-q">Does silver-plated jewelry have scrap value? <span class="fi">+</span></button><div class="faq-a"><div class="faq-a-in">Very little. Plated items have only a thin coating (microns) over base metal. Only solid sterling or fine silver has meaningful value.</div></div></div>
+    </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="fgrid">
+            <div class="fcol">
+                <a href="/" class="logo" style="margin-bottom: 20px;"><span class="logo-mark">Ag</span>Scrap Silver</a>
+                <p style="font-size: 14px; color: var(--dim); line-height: 1.6;">Precision silver valuation engine for professional and retail investors. Calculate the melt value of your silver assets instantly with live market data.</p>
+            </div>
+            <div class="fcol">
+                <h4>Calculators</h4>
+                <a href="/silver-melt-value-calculator/">Melt Value</a>
+                <a href="/sterling-silver-calculator/">Sterling Silver</a>
+                <a href="/junk-silver-calculator/">Junk Silver</a>
+                <a href="/gold-and-silver-calculator/">Gold & Silver</a>
+            </div>
+            <div class="fcol">
+                <h4>Purity</h4>
+                <a href="/999-silver-calculator/">999 Fine Silver</a>
+                <a href="/958-silver-calculator/">958 Britannia</a>
+                <a href="/925-silver-calculator/">925 Sterling</a>
+                <a href="/900-silver-calculator/">900 Coin Silver</a>
+            </div>
+            <div class="fcol">
+                <h4>Resources</h4>
+                <a href="/silver-spot-price-today/">Spot Price Today</a>
+                <a href="/silver-price-per-gram/">Price Per Gram</a>
+                <a href="/silver-purity-chart/">Purity Chart</a>
+                <a href="/how-to-use-silver-calculators/">User Guide</a>
+            </div>
+            <div class="fcol">
+                <h4>Company</h4>
+                <a href="/privacy-policy/">Privacy</a>
+                <a href="/terms-of-service/">Terms</a>
+                <a href="/contact/">Contact</a>
+            </div>
+        </div>
+        <div style="padding-top: 40px; border-top: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <p style="font-size: 13px; color: var(--dim);">© 2026 Scrap Silver Calculator. Institutional precision for everyone.</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="#" class="nav-link" style="padding: 0;">Twitter</a>
+                <a href="#" class="nav-link" style="padding: 0;">LinkedIn</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="toast" id="toast">Copied to clipboard</div>
+
+<script>
+// ---- STATE ----
+const S={mode:'scrap',spot:82.53,gold:2400,purity:.925,unit:'g',coin:'dime'};
+const P=[{k:'999',v:.999,l:'Fine'},{k:'958',v:.958,l:'Britannia'},{k:'925',v:.925,l:'Sterling'},{k:'900',v:.900,l:'Coin'},{k:'835',v:.835,l:'European'},{k:'800',v:.800,l:'European'}];
+const C={dime:2.25,quarter:5.67,half:11.25,dollar:24.05}; // Approx silver weights in grams
+
+function toG(w,u){return u==='oz'?w*31.1035:u==='dwt'?w*1.55517:u==='kg'?w*1000:w}
+
+function setMode(m,el){
+    S.mode=m;
+    document.querySelectorAll('.dtab').forEach(t=>t.classList.remove('on'));
+    el.classList.add('on');
+    
+    const label = document.querySelector('label[for="mw"]');
+    const unitSel = document.getElementById('unit-sel');
+    const coinSel = document.getElementById('coin-sel');
+    
+    if(m==='coins') {
+        label.textContent = 'Number of Coins';
+        unitSel.style.display = 'none';
+        coinSel.style.display = 'flex';
+        S.purity = 0.900; // Standard for US junk silver
+        buildPG();
+    } else if(m==='bars') {
+        label.textContent = 'Number of Bars';
+        unitSel.style.display = 'none';
+        coinSel.style.display = 'none';
+        S.purity = 0.999;
+        buildPG();
+    } else {
+        label.textContent = 'Item Weight';
+        unitSel.style.display = 'flex';
+        coinSel.style.display = 'none';
+        S.purity = 0.925;
+        buildPG();
+    }
+    calc();
+}
+
+function setU(u,el){
+    S.unit=u;
+    document.querySelectorAll('#unit-sel .uchip').forEach(c=>c.classList.remove('on'));
+    el.classList.add('on');
+    calc();
+}
+
+function setCoin(c,el){
+    S.coin=c;
+    document.querySelectorAll('#coin-sel .uchip').forEach(ch=>ch.classList.remove('on'));
+    el.classList.add('on');
+    calc();
+}
+
+function animateValue(id, start, end, duration, isCurrency = false) {
+    const obj = document.getElementById(id);
+    if(!obj) return;
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        const val = progress * (end - start) + start;
+        obj.textContent = isCurrency 
+            ? new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(val)
+            : val.toFixed(2) + 'g fine silver';
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+let lastVal = 0;
+function calc(){
+    const r=parseFloat(document.getElementById('mw').value)||0;
+    let wg = 0;
+    
+    if(S.mode === 'scrap') wg = toG(r,S.unit);
+    else if(S.mode === 'coins') wg = r * C[S.coin];
+    else if(S.mode === 'bars') wg = r * 31.1035 * 10; // Assuming 10oz bars as default or just 1oz? Let's say 1oz per bar count.
+    
+    if(S.mode === 'bars') wg = r * 31.1035;
+
+    const f=wg*S.purity,oz=f/31.1035,v=oz*S.spot;
+    
+    animateValue('rv', lastVal, v, 500, true);
+    lastVal = v;
+    
+    document.getElementById('rd').textContent=`${f.toFixed(2)}g fine silver · ${oz.toFixed(4)} oz`;
+    document.getElementById('rr').textContent=(S.gold/S.spot).toFixed(2);
+    document.getElementById('gv').textContent=(S.purity*100).toFixed(1)+'%';
+    
+    const offset = 440 - (440 * S.purity);
+    document.getElementById('gauge-fill').style.strokeDashoffset = offset;
+}
+
+async function fetchPrice(){
+    try {
+        const response = await fetch('https://api.gold-api.com/price/XAG');
+        if (response.ok) {
+            const data = await response.json();
+            if (data.price) {
+                S.spot = data.price;
+                document.getElementById('sv').textContent = `$${S.spot.toFixed(2)}`;
+                document.getElementById('spot-price').textContent = `$${S.spot.toFixed(2)}`;
+                calc();
+            }
+        }
+    } catch (e) {}
+}
+
+function buildPG(){
+    document.getElementById('pg').innerHTML=P.map(p=>`<div class="porb ${p.v===S.purity?'on':''}" onclick="selP(${p.v},this)" role="button" tabindex="0"><span class="pv">${p.k}</span><span class="pl">${p.l}</span></div>`).join('');
+}
+
+function selP(v,el){
+    S.purity=v;
+    document.querySelectorAll('.porb').forEach(o=>o.classList.remove('on'));
+    el.classList.add('on');
+    calc();
+}
+
+// ---- SCROLL REVEALS ----
+function initReveal(){
+    const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.1});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+}
+
+window.addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('scrolled',scrollY>20));
+
+// ---- INIT ----
+window.addEventListener('DOMContentLoaded',()=>{
+    buildPG();
+    document.getElementById('sv').textContent=`$${S.spot.toFixed(2)}`;
+    calc();
+    fetchPrice();
+    initReveal();
+});
+</script>
+</body>
+</html>

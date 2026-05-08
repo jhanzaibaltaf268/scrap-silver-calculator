@@ -1,0 +1,317 @@
+/* ============================================
+   MODERN V2 PROTOTYPE — DESIGN SYSTEM
+   Premium Fintech / Glassmorphism Aesthetic
+   ============================================ */
+
+:root {
+    /* Colors */
+    --p-bg: #030305;
+    --p-accent: #c0c0c0;
+    --p-accent-bright: #ffffff;
+    --p-accent-blue: #3b82f6;
+    --p-accent-blue-glow: rgba(59, 130, 246, 0.4);
+    
+    --p-silver-gradient: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+    --p-mesh-gradient: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0, transparent 50%),
+                       radial-gradient(at 50% 0%, rgba(192, 192, 192, 0.1) 0, transparent 50%),
+                       radial-gradient(at 100% 0%, rgba(59, 130, 246, 0.15) 0, transparent 50%);
+
+    --p-glass: rgba(255, 255, 255, 0.03);
+    --p-glass-border: rgba(255, 255, 255, 0.08);
+    --p-glass-hover: rgba(255, 255, 255, 0.06);
+
+    /* Typography */
+    --p-font: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body.v2-proto {
+    background: var(--p-bg);
+    color: #f8fafc;
+    font-family: var(--p-font);
+    overflow-x: hidden;
+    margin: 0;
+    min-height: 100vh;
+}
+
+.v2-scene {
+    position: relative;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--p-mesh-gradient);
+}
+
+/* Background Atmosphere */
+.v2-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Header Section */
+.v2-header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 10;
+}
+
+.v2-badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--p-glass-border);
+    border-radius: 99px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--p-accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+}
+
+.v2-header h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0;
+    background: linear-gradient(to bottom, #fff 40%, #94a3b8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.04em;
+}
+
+/* Calculator Container */
+.v2-calc-container {
+    width: 100%;
+    max-width: 640px;
+    background: var(--p-glass);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--p-glass-border);
+    border-radius: 40px;
+    padding: 48px;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 40px 100px -20px rgba(0,0,0,0.5);
+}
+
+/* Result Display */
+.v2-result-hero {
+    text-align: center;
+    margin-bottom: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--p-glass-border);
+}
+
+.v2-result-label {
+    font-size: 14px;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+}
+
+.v2-result-value {
+    font-size: 72px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.04em;
+    margin-bottom: 12px;
+}
+
+.v2-result-meta {
+    font-size: 14px;
+    color: #64748b;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+.v2-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Form Controls */
+.v2-control-group {
+    margin-bottom: 32px;
+}
+
+.v2-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.v2-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #cbd5e1;
+}
+
+.v2-value-display {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--p-accent-blue);
+}
+
+/* Range Slider Custom Styling */
+.v2-range {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    outline: none;
+    margin: 20px 0;
+}
+
+.v2-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border: 6px solid var(--p-accent-blue);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 20px var(--p-accent-blue-glow);
+    transition: transform 0.2s ease;
+}
+
+.v2-range::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+/* Chips / Selection Grid */
+.v2-chip-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.v2-chip {
+    padding: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--p-glass-border);
+    border-radius: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.v2-chip-label {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2px;
+}
+
+.v2-chip-sub {
+    font-size: 11px;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.v2-chip:hover {
+    background: var(--p-glass-hover);
+    border-color: rgba(255,255,255,0.2);
+}
+
+.v2-chip.active {
+    background: var(--p-accent-blue-glow);
+    border-color: var(--p-accent-blue);
+}
+
+.v2-chip.active .v2-chip-label {
+    color: #fff;
+}
+
+.v2-chip.active .v2-chip-sub {
+    color: var(--p-accent-blue);
+}
+
+/* Unit Toggle */
+.v2-toggle-group {
+    display: flex;
+    background: rgba(255,255,255,0.03);
+    border-radius: 12px;
+    padding: 4px;
+    border: 1px solid var(--p-glass-border);
+}
+
+.v2-toggle-btn {
+    flex: 1;
+    padding: 8px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #94a3b8;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.v2-toggle-btn.active {
+    background: #fff;
+    color: #000;
+}
+
+/* Live Price Footer */
+.v2-price-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 40px;
+    padding: 16px 24px;
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 20px;
+    border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.v2-pulse {
+    width: 8px;
+    height: 8px;
+    background: #10b981;
+    border-radius: 50%;
+    animation: v2-pulse 2s infinite;
+}
+
+@keyframes v2-pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+.v2-price-text {
+    font-size: 14px;
+    color: #94a3b8;
+}
+
+.v2-price-text b {
+    color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .v2-calc-container {
+        padding: 24px;
+    }
+    .v2-result-value {
+        font-size: 48px;
+    }
+    .v2-chip-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -3,11 +3,13 @@
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
     <!-- Microsoft Clarity -->
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
+    window.addEventListener('load', function() {
+        (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wby5gobage");
+    });
 </script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,7 +25,7 @@
 
 
   <meta charset="UTF-8">
-  <script src="/js/translations.js"></script>
+  <script src="../js/translations.js"></script>
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calcolatore Argento Rottame — Valore di Fusione in Tempo Reale</title>
@@ -43,37 +45,8 @@
   <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/">
   <link rel="alternate" hreflang="ru" href="https://scrapsilvercalculater.com/ru/">
 
-  <link rel="stylesheet" href="../css/style.css?v=2.1">
-  <style>
-    .section-compact { padding: var(--space-2xl) 0; }
-    .section-compact .section-title { margin-bottom: var(--space-sm); }
-    .section-compact .section-subtitle { margin: 0 auto var(--space-lg); }
-    .hero-compact { padding: var(--space-2xl) 0 var(--space-xl); }
-    .hero-compact h1 { margin-bottom: var(--space-sm); }
-    .hero-compact .hero-subtitle { margin: 0 auto var(--space-lg); }
-    .lang-switcher { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 8px 0; background: rgba(5,5,10,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 1100; }
-    body { padding-top: calc(var(--header-height) + 36px) !important; }
-    .site-header { top: 36px !important; }
-    .lang-btn { padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; background: rgba(255,255,255,0.05); }
-    .lang-btn:hover, .lang-btn.active { background: var(--accent-primary); color: #fff; }
-    .faq-scroll-panel { max-height: 480px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-sm); }
-    .faq-scroll-panel::-webkit-scrollbar { width: 6px; }
-    .faq-scroll-panel::-webkit-scrollbar-track { background: transparent; }
-    .faq-scroll-panel::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-    .content-scroll-block { max-height: 500px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-md); margin: var(--space-lg) 0; }
-    .content-scroll-block::-webkit-scrollbar { width: 6px; }
-    .content-scroll-block::-webkit-scrollbar-track { background: transparent; }
-    .content-scroll-block::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-    .content-scroll-block h3 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
-    .content-scroll-block p, .content-scroll-block ul { margin-bottom: var(--space-md); }
-    .content-scroll-block ul li { padding: var(--space-xs) 0; color: var(--text-secondary); }
-    .content-scroll-block ul li::before { content: '•'; color: var(--accent-primary); margin-right: var(--space-sm); }
-    .entity-scroller { display: flex; flex-wrap: nowrap; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0 var(--space-md); scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; -webkit-overflow-scrolling: touch; }
-    .entity-scroller::-webkit-scrollbar { height: 5px; }
-    .entity-scroller::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
-    .entity-pill { flex-shrink: 0; padding: 6px var(--space-md); background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(192,192,192,0.02)); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: var(--fs-xs); color: var(--text-muted); white-space: nowrap; }
-    
-  </style>
+  <link rel="stylesheet" href="../css/style.css?v=3.0">
+  
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -102,7 +75,7 @@
   
   
   
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://scrapsilvercalculater.com/">
@@ -185,9 +158,9 @@
     <div id="dynamic-faq"></div>
   </main>
     <div id="site-footer"></div>
-<script src="../js/silver-price.js?v=2.1"></script>
-  <script src="../js/calculator.js?v=2.1"></script>
-  <script src="../js/components.js?v=2.1"></script>
+<script src="../js/silver-price.js?v=3.0"></script>
+  <script src="../js/calculator.js?v=3.0"></script>
+  <script src="../js/components.js?v=3.0"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
 

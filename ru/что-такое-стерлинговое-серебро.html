@@ -3,11 +3,13 @@
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
     <!-- Microsoft Clarity -->
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
+    window.addEventListener('load', function() {
+        (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wby5gobage");
+    });
 </script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,17 +25,19 @@
 
 
   <meta charset="UTF-8">
-  <script src="/js/translations.js"></script>
+  <script src="../js/translations.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>What Is Sterling Silver? — Complete Guide to 925 Silver</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../favicon.png">
   <meta name="description" content="Learn everything about sterling silver: what it is, how to identify it, its value, and how it compares to other silver alloys.">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&amp;family=Outfit:wght@400..800&amp;display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap"></noscript>
 
 
   <!-- Open Graph / Facebook -->
@@ -70,6 +74,7 @@
     <div class="container"><div id="breadcrumb"></div></div>
     <section class="page-hero">
       <div class="container">
+        <div id="price-ticker"></div>
         <h1>What Is <span class="highlight">Sterling Silver</span>?</h1>
         <p>Everything you need to know about the world's most popular silver alloy.</p>
       </div>
@@ -134,8 +139,9 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="/js/silver-price.js" defer=""></script><script src="/js/calculator.js" defer=""></script><script src="/js/components.js" defer=""></script>
+  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
   <script>
+    SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Главная',href:'/'},{label:'What Is Sterling Silver?'}]);
     function update(){const spot=SilverPrice.getPrice();const ppg=spot/31.1035;
     const types=[{t:'Fine Silver',p:99.9,u:'Bullion, coins'},{t:'Britannia Silver',p:95.8,u:'British silverware'},{t:'Sterling Silver',p:92.5,u:'Jewelry, flatware'},{t:'Coin Silver',p:90.0,u:'US coins (pre-1965)'},{t:'835 Silver',p:83.5,u:'European antiques'},{t:'800 Silver',p:80.0,u:'European silverware'}];

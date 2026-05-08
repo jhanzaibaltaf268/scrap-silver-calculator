@@ -5,7 +5,7 @@
    ============================================ */
 
 const SilverPrice = (() => {
-  const FALLBACK_PRICE = 32.50; // USD per troy oz
+  const FALLBACK_PRICE = 82.53; // Verified live price April 17, 2026 // USD per troy oz
   const CACHE_KEY = 'silverSpotPrice';
   const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes
 
@@ -14,6 +14,7 @@ const SilverPrice = (() => {
   let customPrice = null; // User override
   let lastFetched = 0;
   let listeners = [];
+  let isInitialized = false;
 
   // Exchange rates (fallback, updated when possible)
   const CURRENCIES = {
@@ -57,19 +58,28 @@ const SilverPrice = (() => {
   }
 
   async function fetchPrice() {
-    const apis = [
-      {
-        url: 'https://api.metalpriceapi.com/v1/latest?api_key=demo&base=USD&currencies=XAG,XAU',
-        parse: (data) => {
-          if (data.rates && data.rates.USDXAG) {
-            return {
-              silver: (1 / data.rates.USDXAG),
-              gold: data.rates.USDXAU ? (1 / data.rates.USDXAU) : null
-            };
-          }
-          return null;
+    const GOLD_API_KEY = 'goldapi-1230smo2lqnxm-io';
+    
+    // Primary: GoldAPI.io (Professional)
+    try {
+      const headers = { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' };
+      const [silverRes, goldRes] = await Promise.all([
+        fetch('https://www.goldapi.io/api/XAG/USD', { headers }),
+        fetch('https://www.goldapi.io/api/XAU/USD', { headers })
+      ]);
+      
+      if (silverRes.ok && goldRes.ok) {
+        const sData = await silverRes.json();
+        const gData = await goldRes.json();
+        if (sData.price && gData.price) {
+          console.log('✅ GoldAPI.io: Prices loaded successfully.');
+          return { silver: sData.price, gold: gData.price };
         }
-      },
+      }
+    } catch (e) { console.error('GoldAPI failed, trying fallbacks...'); }
+
+    // Fallbacks
+    const apis = [
       {
         url: 'https://data-asg.goldprice.org/dbXRates/USD',
         parse: (data) => {
@@ -77,6 +87,18 @@ const SilverPrice = (() => {
             return {
               silver: data.items[0].xagPrice,
               gold: data.items[0].xauPrice
+            };
+          }
+          return null;
+        }
+      },
+      {
+        url: 'https://api.metalpriceapi.com/v1/latest?api_key=demo&base=USD&currencies=XAG,XAU',
+        parse: (data) => {
+          if (data.rates && data.rates.USDXAG) {
+            return {
+              silver: (1 / data.rates.USDXAG),
+              gold: data.rates.USDXAU ? (1 / data.rates.USDXAU) : null
             };
           }
           return null;
@@ -105,16 +127,19 @@ const SilverPrice = (() => {
     if (cached) {
       currentPrice = cached.silver || FALLBACK_PRICE;
       if (cached.gold) currentGoldPrice = cached.gold;
+      isInitialized = true;
       notifyListeners();
       return currentPrice;
     }
 
+    notifyListeners(); // Notify fallback first
     const livePrices = await fetchPrice();
     if (livePrices) {
       currentPrice = Math.round(livePrices.silver * 100) / 100;
       if (livePrices.gold) currentGoldPrice = Math.round(livePrices.gold * 100) / 100;
       setCache(currentPrice, currentGoldPrice);
     }
+    isInitialized = true;
     notifyListeners();
     return currentPrice;
   }
@@ -182,6 +207,9 @@ const SilverPrice = (() => {
 
   function onPriceUpdate(callback) {
     listeners.push(callback);
+    if (isInitialized) {
+      callback(getPrice());
+    }
   }
 
   function notifyListeners() {

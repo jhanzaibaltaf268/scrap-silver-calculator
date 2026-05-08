@@ -3,11 +3,13 @@
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
     <!-- Microsoft Clarity -->
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
+    window.addEventListener('load', function() {
+        (function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wby5gobage");
+    });
 </script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -23,18 +25,20 @@
 
 
   <meta charset="UTF-8">
-  <script src="/js/translations.js"></script>
+  <script src="../js/translations.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculadora del valor de fusión del dólar de plata — Precios en vivo</title>
-  <link rel="icon" type="image/png" href="/favicon.png">
-  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../favicon.png">
   <meta name="description" content="Calcule el valor de fusión de los dólares de plata Morgan y Peace basándose en el precio al contado de la plata en vivo.">
   <link rel="canonical" href="https://scrapsilvercalculater.com/silver-dollar-calculator/">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&amp;family=Outfit:wght@400..800&amp;display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap"></noscript>
 
 
   <!-- Open Graph / Facebook -->
@@ -69,7 +73,8 @@
   <div id="site-header"></div>
   <main>
     <div class="container"><div id="breadcrumb"></div></div>
-    <section class="page-hero"><div class="container"><h1>dólar de plata <span class="highlight">Calculator</span></h1><p>Calcule el valor de fusión de plata viva de los dólares de plata al instante.</p></div></section>
+    <section class="page-hero"><div class="container">
+        <div id="price-ticker"></div><h1>dólar de plata <span class="highlight">Calculator</span></h1><p>Calcule el valor de fusión de plata viva de los dólares de plata al instante.</p></div></section>
     <div class="calc-page-layout">
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🪙</span> Silver Dollar Calculator</div>
@@ -107,9 +112,10 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="/js/silver-price.js" defer=""></script><script src="/js/calculator.js" defer=""></script><script src="/js/components.js" defer=""></script>
+  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
   <script>
     
+    SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Inicio',href:'/'},{label:'Silver Dollar Calculator'}]);
     
     const q=document.getElementById('qty');
