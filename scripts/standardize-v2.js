@@ -1,75 +1,45 @@
 const fs = require('fs');
 const path = require('path');
 
-const rootDir = 'c:/Users/SA COMPUTERS/Documents/GitHub/scrap-silver-calculator';
-const langFolders = ['ar', 'de', 'es', 'fr', 'hi', 'it', 'pt', 'ru', 'tr', 'ur', 'zh'];
-const masterSlugs = JSON.parse(fs.readFileSync('master-slugs.json', 'utf8'));
+const slugs = JSON.parse(fs.readFileSync('master-slugs.json', 'utf8'));
 
-// Reverse mapping for finding English base from localized slug
-const reverseMap = {};
-Object.keys(masterSlugs).forEach(lang => {
-    reverseMap[lang] = {};
-    Object.entries(masterSlugs[lang]).forEach(([eng, loc]) => {
-        reverseMap[lang][loc] = eng;
-    });
-});
+const langs = ['ar', 'de', 'es', 'fr', 'hi', 'it', 'pt', 'ru', 'tr', 'ur', 'zh'];
 
-function standardizeFile(filePath, lang) {
-    let content = fs.readFileSync(filePath, 'utf8');
-    const fileName = path.basename(filePath, '.html');
+langs.forEach(lang => {
+    const dir = path.join(__dirname, '..', lang);
+    if (!fs.existsSync(dir)) return;
+
+    const files = fs.readdirSync(dir).filter(f => f.endsWith('.html'));
     
-    // 1. Root-relative paths for assets
-    content = content.replace(/(href|src)="(\.\.\/)*css\//g, '$1="/css/');
-    content = content.replace(/(href|src)="(\.\.\/)*js\//g, '$1="/js/');
-    content = content.replace(/(href|src)="(\.\.\/)*images\//g, '$1="/images/');
-    content = content.replace(/(href|src)="(\.\.\/)*favicon\//g, '$1="/favicon/');
-    content = content.replace(/url\((\.\.\/)*images\//g, 'url(/images/');
-
-    // 2. Inject MenuTranslations
-    const slugObj = JSON.stringify(masterSlugs[lang] || {});
-    const injection = `\n    <script>window.MenuTranslations = ${slugObj};</script>`;
-    
-    // Check if already injected
-    if (!content.includes('window.MenuTranslations')) {
-        if (content.includes('</head>')) {
-            content = content.replace('</head>', injection + '\n</head>');
-        }
-    } else {
-        // Update existing one
-        content = content.replace(/<script>window\.MenuTranslations = \{.*?\};<\/script>/, injection);
+    const langSlugs = {};
+    for (const [en, trans] of Object.entries(slugs)) {
+        if (trans[lang]) langSlugs[en] = trans[lang];
     }
 
-    // 3. Fix Language Switcher Links (Dynamic Fix)
-    // The components.js handles this if window.MenuTranslations is present.
-    // But we should ensure components.js is loaded AFTER the injection.
-    
-    // 4. Fix Hardcoded Internal Links within the same language
-    // Find all links like href="/fr/something" or href="something.html"
-    // and ensure they use the correct slug from masterSlugs
-    
-    // 5. Canonical and alternate tags (SEO)
-    // We'll leave them for now unless they are obviously broken.
+    const injection = `<script>window.MenuTranslations = ${JSON.stringify(langSlugs)};</script>`;
 
-    fs.writeFileSync(filePath, content);
-    console.log(`Processed: ${filePath}`);
-}
-
-// Main execution
-langFolders.forEach(lang => {
-    const dir = path.join(rootDir, lang);
-    if (!fs.existsSync(dir)) return;
-    
-    const files = fs.readdirSync(dir).filter(f => f.endsWith('.html'));
     files.forEach(file => {
-        standardizeFile(path.join(dir, file), lang);
-    });
-});
+        const filePath = path.join(dir, file);
+        let content = fs.readFileSync(filePath, 'utf8');
 
-// Also process root files (English)
-const rootFiles = fs.readdirSync(rootDir).filter(f => f.endsWith('.html'));
-rootFiles.forEach(file => {
-    // English doesn't need MenuTranslations injected for slugs usually, 
-    // but SiteComponents expects it for the switcher to find OTHER languages.
-    // Actually, English (root) should have a translation map too so it can find the FR/ES equivalents.
-    // Let's inject a "null" or "identity" map for English if needed, but components.js handles English as base.
+        // 1. Inject MenuTranslations
+        if (!content.includes('window.MenuTranslations')) {
+            content = content.replace('<head>', '<head>\n' + injection);
+        } else {
+            content = content.replace(/<script>window\.MenuTranslations = .*?<\/script>/, injection);
+        }
+
+        // 2. Standardize Asset Paths to RELATIVE (Depth-aware)
+        // Since these are in subdirectories, they need ../
+        content = content.replace(/href="\/css\//g, 'href="../css/');
+        content = content.replace(/src="\/js\//g, 'src="../js/');
+        content = content.replace(/href="\/favicon\.png"/g, 'href="../favicon.png"');
+        content = content.replace(/href="\/apple-touch-icon\.png"/g, 'href="../apple-touch-icon.png"');
+        
+        // Handle images in content if any
+        content = content.replace(/src="\/images\//g, 'src="../images/');
+
+        fs.writeFileSync(filePath, content);
+        console.log(`Standardized: ${lang}/${file}`);
+    });
 });

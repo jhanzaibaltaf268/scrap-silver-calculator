@@ -8,12 +8,12 @@ files.forEach(filePath => {
     const fullPath = path.join(rootDir, filePath);
     let content = fs.readFileSync(fullPath, 'utf8');
     
-    // Convert to root-relative
-    content = content.replace(/(href|src)="(\.\.\/)*css\//g, '$1="/css/');
-    content = content.replace(/(href|src)="(\.\.\/)*js\//g, '$1="/js/');
-    content = content.replace(/(href|src)="(\.\.\/)*images\//g, '$1="/images/');
-    content = content.replace(/(href|src)="(\.\.\/)*favicon\//g, '$1="/favicon/');
-    content = content.replace(/url\((\.\.\/)*images\//g, 'url(/images/');
+    // Standardize Asset Paths to RELATIVE for root files
+    content = content.replace(/href="\/css\//g, 'href="css/');
+    content = content.replace(/src="\/js\//g, 'src="js/');
+    content = content.replace(/href="\/favicon\.png"/g, 'href="favicon.png"');
+    content = content.replace(/href="\/apple-touch-icon\.png"/g, 'href="apple-touch-icon.png"');
+    content = content.replace(/src="\/images\//g, 'src="images/');
 
     fs.writeFileSync(fullPath, content);
     console.log(`Processed root: ${filePath}`);
