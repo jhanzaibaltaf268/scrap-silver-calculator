@@ -101,18 +101,17 @@ const SiteComponents = (() => {
     return window.location.protocol === 'file:';
   }  function getRelativePrefix() {
     const path = window.location.pathname;
-    const langMatch = path.match(/\/(ar|de|es|fr|hi|it|pt|ru|tr|ur|zh)\//);
+    const langMatch = path.match(/\/(ar|de|es|fr|hi|it|pt|ru|tr|ur|zh)([/?#]|$)/);
     return langMatch ? '../' : './';
   }
 
   function getBasePath() {
-    const prefix = getRelativePrefix();
-    return prefix;
+    return getRelativePrefix();
   }
 
   function getLangCode() {
     const path = window.location.pathname;
-    const langMatch = path.match(/\/(ar|de|es|fr|hi|it|pt|ru|tr|ur|zh)\//);
+    const langMatch = path.match(/\/(ar|de|es|fr|hi|it|pt|ru|tr|ur|zh)([/?#]|$)/);
     return langMatch ? langMatch[1] : 'en';
   }
 
@@ -149,12 +148,14 @@ const SiteComponents = (() => {
     if (currentLang === 'en') {
       finalPath = prefix + target;
     } else {
-      // If we are in /fr/ (prefix is ../), then current lang links are ./localizedTarget
+      // If we are in /es (prefix is ../), then current lang links are ./localizedTarget
+      // We use ./ to stay within the current language context
       finalPath = './' + localizedTarget;
     }
 
     if (isLocal()) return finalPath.replace(/\/$/, '') + '.html';
-    return finalPath.replace(/\/$/, '') + '/';
+    // For Vercel with cleanUrls and trailingSlash: false, we don't want trailing slashes
+    return finalPath.replace(/\/$/, '');
   }
 
   function getCurrentPage() {
