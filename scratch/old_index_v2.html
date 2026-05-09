@@ -1,0 +1,562 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scrap Silver Calculator ΓÇô Free Silver Melt Value Calculator [Live Prices]</title>
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+<meta name="google-site-verification" content="3zJ4ttr1AnZWh4z6tMWiVpqPUwg7VEia6_65eJV8Lro" />
+<meta name="description" content="Use this free Scrap Silver Calculator to instantly check what your items are worth. As a highly accurate tool..." />
+  <link rel="canonical" href="https://scrapsilvercalculater.com/">
+  <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/">
+  <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/">
+  <link rel="alternate" hreflang="es" href="https://scrapsilvercalculater.com/es/">
+  <link rel="alternate" hreflang="fr" href="https://scrapsilvercalculater.com/fr/">
+  <link rel="alternate" hreflang="de" href="https://scrapsilvercalculater.com/de/">
+  <link rel="alternate" hreflang="pt" href="https://scrapsilvercalculater.com/pt/">
+  <link rel="alternate" hreflang="hi" href="https://scrapsilvercalculater.com/hi/">
+  <link rel="alternate" hreflang="ur" href="https://scrapsilvercalculater.com/ur/">
+  <link rel="alternate" hreflang="ar" href="https://scrapsilvercalculater.com/ar/">
+  <link rel="alternate" hreflang="tr" href="https://scrapsilvercalculater.com/tr/">
+  <link rel="alternate" hreflang="it" href="https://scrapsilvercalculater.com/it/">
+  <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/">
+  <link rel="alternate" hreflang="ru" href="https://scrapsilvercalculater.com/ru/">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Scrap Silver Calculator",
+    "description": "Use this free Scrap Silver Calculator to instantly check what your items are worth. As a highly accurate silver scrap calculator, it provides a reliable melt value estimate for your old jewelry, coins, bars, and broken pieces based on weight, purity, and the latest live market prices.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <style>
+    /* Homepage-specific compact spacing */
+    .section-compact { padding: var(--space-2xl) 0; }
+    .section-compact .section-title { margin-bottom: var(--space-sm); }
+    .section-compact .section-subtitle { margin: 0 auto var(--space-lg); }
+    .hero-compact { padding: var(--space-2xl) 0 var(--space-xl); }
+    .hero-compact h1 { margin-bottom: var(--space-sm); }
+    .hero-compact .hero-subtitle { margin: 0 auto var(--space-lg); }
+    .trust-bar-compact { padding: var(--space-lg) 0; }
+
+    /* Scrollable FAQ panel */
+    .faq-scroll-panel { max-height: 480px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-sm); }
+    .faq-scroll-panel::-webkit-scrollbar { width: 6px; }
+    .faq-scroll-panel::-webkit-scrollbar-track { background: transparent; }
+    .faq-scroll-panel::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+
+    /* Scrollable content block */
+    .content-scroll-block { max-height: 500px; overflow-y: auto; scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; padding-right: var(--space-md); margin: var(--space-lg) 0; }
+    .content-scroll-block::-webkit-scrollbar { width: 6px; }
+    .content-scroll-block::-webkit-scrollbar-track { background: transparent; }
+    .content-scroll-block::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .content-scroll-block h3 { margin-top: var(--space-xl); margin-bottom: var(--space-sm); }
+    .content-scroll-block p, .content-scroll-block ul, .content-scroll-block ol { margin-bottom: var(--space-md); }
+    .content-scroll-block ul li, .content-scroll-block ol li { padding: var(--space-xs) 0; color: var(--text-secondary); }
+    .content-scroll-block ul li::before { content: 'ΓÇó'; color: var(--accent-primary); margin-right: var(--space-sm); }
+
+    /* Entity pills */
+    .entity-scroller { display: flex; flex-wrap: nowrap; gap: var(--space-sm); overflow-x: auto; padding: var(--space-sm) 0 var(--space-md); scrollbar-width: thin; scrollbar-color: var(--silver-600) transparent; -webkit-overflow-scrolling: touch; }
+    .entity-scroller::-webkit-scrollbar { height: 5px; }
+    .entity-scroller::-webkit-scrollbar-thumb { background: var(--silver-600); border-radius: 3px; }
+    .entity-pill { flex-shrink: 0; padding: 6px var(--space-md); background: linear-gradient(135deg, rgba(192,192,192,0.08), rgba(192,192,192,0.02)); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); font-size: var(--fs-xs); color: var(--text-muted); white-space: nowrap; }
+    .lang-switcher { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; padding: 8px 0; background: rgba(5,5,10,0.95); border-bottom: 1px solid rgba(255,255,255,0.08); position: fixed; top: 0; left: 0; right: 0; z-index: 1100; }
+    body { padding-top: calc(var(--header-height) + 36px) !important; }
+    .site-header { top: 36px !important; }
+    .lang-btn { padding: 4px 10px; border-radius: 4px; font-size: 0.75rem; color: var(--text-secondary); text-decoration: none; transition: all 0.2s; background: rgba(255,255,255,0.05); }
+    .lang-btn:hover, .lang-btn.active { background: var(--accent-primary); color: #fff; }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="lang-switcher">
+    <a href="/" class="lang-btn active">EN</a>
+    <a href="/es/" class="lang-btn">ES</a>
+    <a href="/fr/" class="lang-btn">FR</a>
+    <a href="/de/" class="lang-btn">DE</a>
+    <a href="/pt/" class="lang-btn">PT</a>
+    <a href="/hi/" class="lang-btn">HI</a>
+    <a href="/ur/" class="lang-btn">UR</a>
+    <a href="/ar/" class="lang-btn">AR</a>
+    <a href="/tr/" class="lang-btn">TR</a>
+    <a href="/it/" class="lang-btn">IT</a>
+    <a href="/zh/" class="lang-btn">ZH</a>
+    <a href="/ru/" class="lang-btn">RU</a>
+  </div>
+
+  <div id="site-header"></div>
+
+  <main>
+    <!-- Hero Section ΓÇö compact -->
+    <section class="hero hero-compact">
+      <div class="container hero-content">
+        <h1><span class="highlight">Scrap Silver Calculator</span></h1>
+
+        <!-- Main Calculator Widget -->
+        <div class="calc-widget slide-up" id="hero-calc">
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="calc-weight">Weight</label>
+              <div class="input-group">
+                <input type="number" class="form-input" id="calc-weight" placeholder="Enter weight" step="0.01" min="0" value="10">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="calc-unit">Unit</label>
+              <select class="form-select" id="calc-unit">
+                <option value="g" selected>Grams (g)</option>
+                <option value="oz">Troy Ounces (oz)</option>
+                <option value="dwt">Pennyweight (dwt)</option>
+                <option value="kg">Kilograms (kg)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="calc-purity">Silver Purity</label>
+            <select class="form-select" id="calc-purity">
+              <option value="0.999">999 ΓÇö Fine Silver (99.9%)</option>
+              <option value="0.958">958 ΓÇö Britannia Silver (95.8%)</option>
+              <option value="0.925" selected>925 ΓÇö Sterling Silver (92.5%)</option>
+              <option value="0.900">900 ΓÇö Coin Silver (90.0%)</option>
+              <option value="0.835">835 ΓÇö European Silver (83.5%)</option>
+              <option value="0.800">800 ΓÇö European Silver (80.0%)</option>
+            </select>
+          </div>
+
+          
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+          <div class="result-display" id="hero-result">
+            <div class="result-label">Estimated Melt Value</div>
+            <div class="result-value" id="hero-result-value">$0.00</div>
+            <div class="result-detail" id="hero-result-detail">Enter weight to calculate</div>
+            <button class="share-btn" onclick="SiteComponents.copyCalculation(this)">
+              <span class="icon">≡ƒôï</span> Share Result
+            </button>
+            <div class="social-share-wrap">
+              <button class="social-btn whatsapp" onclick="SiteComponents.shareResult('whatsapp')" title="WhatsApp">≡ƒÆ¼</button>
+              <button class="social-btn x-twitter" onclick="SiteComponents.shareResult('x')" title="X (Twitter)">≡¥òÅ</button>
+              <button class="social-btn facebook" onclick="SiteComponents.shareResult('facebook')" title="Facebook">f</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Bar ΓÇö compact -->
+    <section class="trust-bar-compact">
+      <div class="container">
+        <div class="trust-bar">
+          <div class="trust-item"><span class="icon">≡ƒöä</span> Live Spot Prices</div>
+          <div class="trust-item"><span class="icon">≡ƒöÆ</span> 100% Private</div>
+          <div class="trust-item"><span class="icon">ΓÜí</span> Instant Results</div>
+          <div class="trust-item"><span class="icon">≡ƒô▒</span> Works on Any Device</div>
+          <div class="trust-item"><span class="icon">≡ƒÆ░</span> Always Free</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- All Silver Calculators -->
+    <section class="section-compact" id="calculators">
+      <div class="container text-center">
+        <span class="section-badge">≡ƒº« Our Calculators</span>
+        <h2 class="section-title">Free Silver Melt Value &amp; Purity Calculators</h2>
+        <p class="section-subtitle">Every silver calculator you need ΓÇö for scrap, coins, jewelry, bars, and more.</p>
+
+        <div class="category-grid stagger">
+
+          <a href="/silver-melt-value-calculator/" class="category-card" id="card-melt">
+            <div class="category-icon">≡ƒöÑ</div>
+            <h3>Silver Melt Value Calculator</h3>
+            <p>Find the pure silver content and melt value of any silver item based on weight and fineness.</p>
+            <span class="card-arrow">Calculate ΓåÆ</span>
+          </a>
+
+          <a href="/sterling-silver-calculator/" class="category-card" id="card-sterling">
+            <div class="category-icon">Γ£¿</div>
+            <h3>Sterling Silver Calculator</h3>
+            <p>Instantly calculate the value of your 925 sterling silver items by weight.</p>
+            <span class="card-arrow">Calculate ΓåÆ</span>
+          </a>
+
+          <a href="/junk-silver-calculator/" class="category-card" id="card-junk">
+            <div class="category-icon">≡ƒ¬Ö</div>
+            <h3>Junk Silver Calculator</h3>
+            <p>Find the melt value of pre-1965 US silver coins ΓÇö dimes, quarters, halves, and dollars.</p>
+            <span class="card-arrow">Calculate ΓåÆ</span>
+          </a>
+
+          <a href="/silver-coin-value-calculator/" class="category-card" id="card-coins">
+            <div class="category-icon">≡ƒÅ¢∩╕Å</div>
+            <h3>Silver Coin Value Calculator</h3>
+            <p>Calculate any silver coin's melt value by entering its weight, purity, and quantity.</p>
+            <span class="card-arrow">Calculate ΓåÆ</span>
+          </a>
+
+          <a href="/gold-and-silver-calculator/" class="category-card" id="card-gold-silver">
+            <div class="category-icon">≡ƒÑç</div>
+            <h3>Gold and Silver Calculator</h3>
+            <p>Calculate gold and silver scrap mixed together and view the live ratio.</p>
+            <span class="card-arrow">Calculate ΓåÆ</span>
+          </a>
+
+          <a href="/silver-bar-value-calculator/" class="category-card" id="card-bars">
+            <div class="category-icon">≡ƒº▒</div>
+            <h3>Silver Bar Value Calculator</h3>
+            <p>Find the current value of silver bars in 1oz, 5oz, 10oz, 100oz, and 1kg sizes.</p>
+            <span class="card-arrow">Calculate ΓåÆ</span>
+          </a>
+
+          <a href="/silver-jewelry-value-calculator/" class="category-card" id="card-jewelry">
+            <div class="category-icon">≡ƒÆì</div>
+            <h3>Silver Jewelry Value Calculator</h3>
+            <p>Calculate the melt value of silver rings, chains, necklaces, and bracelets.</p>
+            <span class="card-arrow">Calculate ΓåÆ</span>
+          </a>
+
+          <a href="/silverware-value-calculator/" class="category-card" id="card-silverware">
+            <div class="category-icon">≡ƒì┤</div>
+            <h3>Silverware Value Calculator</h3>
+            <p>Find the silver value of spoons, forks, trays, knives, cups, and plates.</p>
+            <span class="card-arrow">Calculate ΓåÆ</span>
+          </a>
+
+          <a href="/silver-price-per-gram/" class="category-card" id="card-price-gram">
+            <div class="category-icon">≡ƒôè</div>
+            <h3>Silver Price Per Gram Calculator</h3>
+            <p>Current silver price per gram with converter for all common weight units.</p>
+            <span class="card-arrow">View Price ΓåÆ</span>
+          </a>
+
+          <a href="/silver-price-per-ounce/" class="category-card" id="card-price-oz">
+            <div class="category-icon">≡ƒÆ▓</div>
+            <h3>Silver Price Per Ounce Calculator</h3>
+            <p>Live silver spot price per troy ounce updated in real time from global markets.</p>
+            <span class="card-arrow">View Price ΓåÆ</span>
+          </a>
+
+          <a href="/sona-chandi-calculator/" class="category-card" id="card-sona-chandi">
+            <div class="category-icon">Γ£¿</div>
+            <h3>Sona Chandi Calculator</h3>
+            <p>Calculate Sona (Gold) and Chandi (Silver) values in Tola and Grams using Tunch.</p>
+            <span class="card-arrow">Calculate ΓåÆ</span>
+          </a>
+
+          <a href="/pennyweight-calculator/" class="category-card" id="card-dwt">
+            <div class="category-icon">ΓÜû∩╕Å</div>
+            <h3>Pennyweight Calculator</h3>
+            <p>Calculate silver items weighed in pennyweight (dwt), a traditional jeweler's standard.</p>
+            <span class="card-arrow">Calculate ΓåÆ</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools Section ΓÇö user-focused language -->
+    <section class="section-compact" id="tools">
+      <div class="container text-center">
+        <span class="section-badge">≡ƒ¢á∩╕Å Powerful Tools</span>
+        <h2 class="section-title">How These Silver Tools Help You Get More Value</h2>
+        <p class="section-subtitle">Save time, compare prices, and make better selling decisions with these free silver tools.</p>
+
+        <div class="category-grid stagger" style="grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));">
+          <a href="/silver-profit-calculator/" class="category-card" id="card-profit">
+            <div class="category-icon">≡ƒôê</div>
+            <h3>Silver Profit Calculator</h3>
+            <p>Investors: Calculate your total Return on Investment (ROI) based on your average purchase price.</p>
+            <span class="card-arrow">Calculate ROI ΓåÆ</span>
+          </a>
+          <a href="/face-value-silver-calculator/" class="category-card" id="card-face-val">
+            <div class="category-icon">≡ƒÆ╡</div>
+            <h3>Face Value Calculator</h3>
+            <p>Find the melt value of your 90% silver coins simply by entering their face value (e.g., $10 FV).</p>
+            <span class="card-arrow">Calculate ΓåÆ</span>
+          </a>
+          <a href="/silver-batch-calculator/" class="category-card" id="card-batch">
+            <div class="category-icon">≡ƒôï</div>
+            <h3>Batch Silver Calculator</h3>
+            <p>Got multiple silver items? Add them all and see the combined total value ΓÇö then print or copy your list for the dealer.</p>
+            <span class="card-arrow">Try It ΓåÆ</span>
+          </a>
+          <a href="/silver-weight-converter/" class="category-card" id="card-converter">
+            <div class="category-icon">ΓÜû∩╕Å</div>
+            <h3>Silver Weight Converter</h3>
+            <p>Not sure if your scale shows troy oz or regular oz? Convert between 6 weight units so you never overpay or undersell.</p>
+            <span class="card-arrow">Convert ΓåÆ</span>
+          </a>
+          <a href="/silver-sell-or-hold/" class="category-card" id="card-hold">
+            <div class="category-icon">≡ƒôê</div>
+            <h3>Sell or Hold Calculator</h3>
+            <p>Wondering if now is the right time to sell? Compare what your silver is worth now vs. at higher or lower spot prices.</p>
+            <span class="card-arrow">Analyze ΓåÆ</span>
+          </a>
+          <a href="/silver-price-all-currencies/" class="category-card" id="card-currencies">
+            <div class="category-icon">≡ƒîì</div>
+            <h3>Silver Price in 12 Currencies</h3>
+            <p>See live silver prices in USD, EUR, GBP, INR, PKR, AUD, CAD and more ΓÇö so you know exactly what your silver is worth globally.</p>
+            <span class="card-arrow">View Prices ΓåÆ</span>
+          </a>
+          <a href="/tola-calculator/" class="category-card" id="card-tola">
+            <div class="category-icon">ΓÜû∩╕Å</div>
+            <h3>Tola Calculator</h3>
+            <p>Convert and calculate scrap silver using Tola and Masha measurements common in South Asian markets.</p>
+            <span class="card-arrow">Calculate ΓåÆ</span>
+          </a>
+          <a href="/identify-silver/" class="category-card" id="card-ident">
+            <div class="category-icon">≡ƒöÄ</div>
+            <h3>Silver Identifier Tool</h3>
+            <p>Not sure if it's real silver? Learn how to identify hallmarks, magnetic tests, and acid tests at home.</p>
+            <span class="card-arrow">Read Guide ΓåÆ</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How It Works ΓÇö compact -->
+    <section class="section-compact" style="background: var(--bg-secondary);">
+      <div class="container text-center">
+        <span class="section-badge">≡ƒôï Simple Process</span>
+        <h2 class="section-title">How It Works ΓÇö 3 Simple Steps</h2>
+        <p class="section-subtitle">Get an accurate silver valuation in seconds.</p>
+
+        <div class="steps-grid stagger">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h4>Weigh Your Silver</h4>
+            <p>Use a kitchen scale to weigh your silver item in grams, troy ounces, or any unit.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h4>Select Silver Purity</h4>
+            <p>Choose the purity ΓÇö 925 for sterling, 999 for fine silver, 900 for coin silver, or others.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h4>Get Instant Melt Value</h4>
+            <p>See the melt value based on live silver spot prices ΓÇö updated in real time from global markets.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Semantic SEO Content -->
+    <section class="section-compact" id="guide">
+      <div class="container">
+        <div class="content-body" style="max-width: 800px; margin: 0 auto; text-align: left; line-height: 1.8;">
+
+          <h2>What Is a Scrap Silver Calculator ΓÇö and When Should You Use One?</h2>
+          <p>At its core, a scrap silver calculator determines the <strong>intrinsic melt value</strong> of a silver item ΓÇö not its retail price, not its sentimental value, and not any collector's premium. It answers one specific question: if you melted this item down to pure silver today, what would that metal be worth? To do that, it uses three pieces of information: the item's weight, its silver fineness (purity), and the current <strong>spot price</strong> of silver as traded on the global commodities market.</p>
+          <p>You should use it any time you're about to sell scrap silver ΓÇö whether that's a broken bracelet, a set of old flatware, a coin collection, or a bag of sterling offcuts. Knowing the melt value beforehand is the single most effective way to avoid being underpaid by a dealer or refinery. You can check the <a href="/silver-price-per-ounce/">live silver price per troy ounce</a> or the <a href="/silver-price-per-gram/">silver price per gram</a> at any time to see how the market is moving before you commit to a sale.</p>
+
+          <h2>How Silver Melt Value Is Actually Calculated</h2>
+          <p>The formula is simple but the units matter enormously. Silver is always priced internationally in <strong>troy ounces</strong> ΓÇö not the standard avoirdupois ounces you'd use on a kitchen scale. A troy ounce is 31.1035 grams, compared to 28.35 grams in a standard ounce. This distinction alone is one of the most common reasons people miscalculate their silver's worth.</p>
+          <p style="background: var(--bg-secondary); border-left: 3px solid var(--accent-primary); padding: var(--space-md) var(--space-lg); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-family: monospace; font-size: var(--fs-sm);">Melt Value = Weight (in troy oz) &times; Purity (decimal) &times; Spot Price (per troy oz)</p>
+          <p>For example: a 50-gram sterling silver chain (purity 0.925) with silver at $30/oz gives you (50 &divide; 31.1035) &times; 0.925 &times; 30 = <strong>approximately $44.75</strong>. Our <a href="/silver-melt-value-calculator/">silver melt value calculator</a> does all of this automatically. If your item is measured in a different unit, our <a href="/silver-weight-converter/">silver weight converter</a> handles the conversion between grams, troy ounces, pennyweights, tolas, and kilograms so you always input the right number.</p>
+
+          <h2>Understanding Silver Purity Marks and Hallmarks</h2>
+          <p>Every piece of silver carries a story in its stamp marks, known as <strong>hallmarks</strong>. These tiny engravings tell you the silver's fineness ΓÇö the proportion of pure silver in the alloy. Learning to read them is essential for accurate valuation.</p>
+          <p>The most common purities you'll encounter are:</p>
+          <ul>
+            <li><strong>999 (Fine Silver)</strong> ΓÇö 99.9% pure silver. Typically found in bullion bars and coins like the American Silver Eagle. Use our <a href="/999-silver-calculator/">999 silver calculator</a> for these items.</li>
+            <li><strong>958 (Britannia Silver)</strong> ΓÇö 95.8% pure, used in some British silverware. Our <a href="/958-silver-calculator/">958 silver calculator</a> handles this fineness precisely.</li>
+            <li><strong>925 (Sterling Silver)</strong> ΓÇö The most recognised standard worldwide. 92.5% silver, 7.5% copper alloy. Most jewelry and flatware sold today is sterling. The dedicated <a href="/sterling-silver-calculator/">sterling silver calculator</a> or <a href="/925-silver-calculator/">925 silver calculator</a> are both useful here.</li>
+            <li><strong>900 (Coin Silver)</strong> ΓÇö Used in older US coins minted before 1965. Our <a href="/900-silver-calculator/">900 silver calculator</a> is built for these items.</li>
+            <li><strong>835 &amp; 800 (European Silver)</strong> ΓÇö Common in Continental European hollowware and cutlery. Use the <a href="/835-silver-calculator/">835 silver calculator</a> or <a href="/800-silver-calculator/">800 silver calculator</a> respectively.</li>
+          </ul>
+          <p>If you see a stamp that says "STERLING," "925," or "925/1000," you're almost certainly looking at sterling silver. If there's no marking at all, a jeweler or pawn shop can run an acid test or XRF analysis to confirm. Our <a href="/925-sterling-silver-price-per-gram/">925 sterling silver price per gram</a> page gives you a live baseline reference for the most common purity.</p>
+
+          <h2>Valuing Silver Jewelry, Flatware, and Hollow Items</h2>
+          <p>The intrinsic value of silver jewelry comes entirely from its silver content ΓÇö not the design, the craftsmanship, or the brand name. A heavy plain silver bangle is worth far more as scrap than a lightweight designer ring. Weight is the dominant factor, so always weigh items before assuming their value.</p>
+          <p>For specific jewelry types, use the purpose-built tools: the <a href="/silver-ring-value/">silver ring calculator</a>, <a href="/silver-chain-value/">silver chain calculator</a>, <a href="/silver-necklace-value/">silver necklace calculator</a>, and <a href="/silver-bracelet-value/">silver bracelet calculator</a> all let you enter exact weights and get instant scrap values. For any wearable piece broadly, the <a href="/silver-jewelry-value-calculator/">silver jewelry value calculator</a> is the best starting point.</p>
+          <p>Silverware and flatware ΓÇö spoons, forks, knives, trays, cups, and plates ΓÇö are priced the same way. A full set of sterling flatware can represent significant silver weight. Start with the <a href="/silverware-value-calculator/">silverware value calculator</a>, or go straight to the individual pages for <a href="/silver-spoon-value/">silver spoons</a>, <a href="/silver-fork-value/">silver forks</a>, <a href="/silver-knife-value/">silver knives</a>, <a href="/silver-tray-value/">silver trays</a>, <a href="/silver-cup-value/">silver cups</a>, and <a href="/silver-plate-value/">silver plates</a>.</p>
+          <p>One important caveat: <em>silver-plated</em> items have only a microscopic coating of silver over a base metal. They have essentially zero melt value as silver scrap and should not be entered here.</p>
+
+          <h2>Silver Coins ΓÇö Melt Value versus Numismatic Value</h2>
+          <p>This is one of the most misunderstood areas in the silver market. A coin's melt value ΓÇö the value of its silver content alone ΓÇö is always the floor. But many coins carry an additional <strong>numismatic premium</strong> because of their rarity, age, condition, or collector demand. Selling a pristine 1881 Morgan Dollar for scrap silver price would be a costly mistake.</p>
+          <p>For common circulated coins in large quantities ΓÇö the kind typically called <strong>junk silver</strong> ΓÇö melt value is essentially all you'll get. Pre-1965 US dimes, quarters, half-dollars, and dollar coins are 90% silver. Our <a href="/junk-silver-calculator/">junk silver calculator</a> is tailored specifically for these, and the <a href="/face-value-silver-calculator/">face value silver calculator</a> lets you simply enter the total face value of your coin bag (e.g., $10 FV) to get an instant estimate.</p>
+          <p>For individual coins, use the <a href="/silver-coin-value-calculator/">silver coin value calculator</a>, the <a href="/silver-dollar-calculator/">silver dollar calculator</a>, the <a href="/silver-quarter-calculator/">silver quarter calculator</a>, the <a href="/silver-dime-calculator/">silver dime calculator</a>, or the <a href="/canadian-silver-coin-calculator/">Canadian silver coin calculator</a>.</p>
+          <p>For silver bars, the <a href="/silver-bar-value-calculator/">silver bar value calculator</a> supports common sizes from 1oz to 100oz and 1kg. Dedicated pages exist for <a href="/1oz-silver-value/">1oz</a>, <a href="/2oz-silver-value/">2oz</a>, <a href="/5oz-silver-value/">5oz</a>, <a href="/10oz-silver-value/">10oz</a>, <a href="/100oz-silver-value/">100oz</a>, and <a href="/1kg-silver-value/">1kg</a> bars. If you have a large mixed collection, the <a href="/silver-batch-calculator/">silver batch calculator</a> lets you add unlimited line items and get a combined total you can print or copy to a dealer.</p>
+
+          <h2>Weighing Silver Correctly: Troy Ounces, Grams, Pennyweight, and Tola</h2>
+          <p>The precious metals trade uses a variety of weight units that don't always match your kitchen scale. Getting this wrong is one of the easiest ways to miscalculate. A troy ounce is 31.1035 g; a standard ounce is only 28.35 g. The <strong>pennyweight (dwt)</strong> ΓÇö common in the US jewelry trade ΓÇö equals 1.555 g, and our <a href="/pennyweight-calculator/">pennyweight calculator</a> converts between dwt and spot price automatically. In South Asian markets, the <strong>tola</strong> (11.664 g) is the standard unit; the <a href="/tola-calculator/">tola silver calculator</a> is purpose-built for this.</p>
+          <p>If you ever need to switch between any of these units, the <a href="/silver-weight-converter/">silver weight converter</a> handles all six units in both directions with a single entry. It also displays the equivalent spot price for each unit so you can instantly cross-check your scale reading.</p>
+
+          <h2>Gold and Silver Together ΓÇö and Knowing When to Sell</h2>
+          <p>Many estate sales and dealer lots include both gold and silver items. The <a href="/gold-and-silver-calculator/">gold and silver calculator</a> handles both metals simultaneously and also displays the live <strong>gold-to-silver ratio</strong> ΓÇö a key metric investors watch to time their buy and sell decisions. For South Asian markets where gold is measured as <em>Sona</em> and silver as <em>Chandi</em>, the <a href="/sona-chandi-calculator/">Sona Chandi calculator</a> supports Tola and Gram units with Tunch (purity) built in.</p>
+          <p>If you're holding silver as an investment, you can run the numbers through the <a href="/silver-profit-calculator/">silver profit calculator</a> to see your ROI based on your original purchase price. Not sure whether to sell now or wait? The <a href="/silver-sell-or-hold/">sell or hold calculator</a> models different future price scenarios so you can make an informed decision. Silver prices are also available in 12 major currencies ΓÇö including USD, EUR, GBP, INR, PKR, AUD, and CAD ΓÇö via our <a href="/silver-price-all-currencies/">silver price in all currencies</a> page.</p>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Silver &amp; Precious Metals Entities -->
+    <section class="section-compact" style="background: var(--bg-secondary);">
+      <div class="container">
+        <h3 class="text-center" style="font-size:var(--fs-lg);margin-bottom:var(--space-md);">Silver &amp; Precious Metals Topics</h3>
+        <div class="entity-scroller">
+          <span class="entity-pill">Silver (Ag)</span>
+          <span class="entity-pill">Troy Ounce</span>
+          <span class="entity-pill">Spot Price</span>
+          <span class="entity-pill">COMEX Exchange</span>
+          <span class="entity-pill">LBMA</span>
+          <span class="entity-pill">Sterling Silver 925</span>
+          <span class="entity-pill">Fine Silver 999</span>
+          <span class="entity-pill">Coin Silver 900</span>
+          <span class="entity-pill">Melt Value</span>
+          <span class="entity-pill">Scrap Metal</span>
+          <span class="entity-pill">Precious Metals</span>
+          <span class="entity-pill">Bullion</span>
+          <span class="entity-pill">Hallmark</span>
+          <span class="entity-pill">Assay</span>
+          <span class="entity-pill">Pennyweight (DWT)</span>
+          <span class="entity-pill">Silver Refining</span>
+          <span class="entity-pill">Numismatic Value</span>
+          <span class="entity-pill">Junk Silver Coins</span>
+          <span class="entity-pill">Silver Alloy</span>
+          <span class="entity-pill">Tola</span>
+          <span class="entity-pill">Silver Purity Testing</span>
+          <span class="entity-pill">XRF Analysis</span>
+          <span class="entity-pill">Acid Test</span>
+          <span class="entity-pill">Morgan Dollar</span>
+          <span class="entity-pill">American Silver Eagle</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ΓÇö People Also Ask targeted -->
+    <section class="section-compact" id="faq" style="background: var(--bg-secondary);">
+      <div class="container">
+        <div class="text-center">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">Straight answers to the questions people ask most about silver scrap value.</p>
+        </div>
+
+        <div class="faq-list" style="max-width: 800px; margin: 0 auto; text-align: left;">
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-1"><span style="font-size:inherit;font-weight:inherit;display:inline;" style="font-size:inherit;font-weight:inherit;display:inline;">How do I calculate the value of scrap silver?</span> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>Multiply the item's weight in troy ounces by its purity (as a decimal) and then by the current silver spot price. For example, 10 grams of 925 sterling at $30/oz = (10 &divide; 31.1035) &times; 0.925 &times; 30 = approximately $8.95. This <a href="/silver-melt-value-calculator/">silver melt value calculator</a> does the math instantly once you enter weight, purity, and unit.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-2"><span style="font-size:inherit;font-weight:inherit;display:inline;" style="font-size:inherit;font-weight:inherit;display:inline;">What is the difference between melt value and spot price?</span> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>The <strong>spot price</strong> is the current market price for one troy ounce of pure (999) silver on the global commodities exchange. The <strong>melt value</strong> is what your specific item is worth based on its weight and purity ΓÇö it's always equal to or less than spot price, because most real-world silver items contain copper or other alloys. Check today's <a href="/silver-spot-price-today/">live silver spot price</a> to stay updated.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-3"><span style="font-size:inherit;font-weight:inherit;display:inline;" style="font-size:inherit;font-weight:inherit;display:inline;">How do I know if my silver is real and what purity it is?</span> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>Look for a stamp or hallmark on the item ΓÇö common ones include 925, 900, 800, 999, or the word STERLING. Items from the UK often have a lion passant hallmark. If there's no marking, a reputable jeweler or pawn shop can do an acid test or XRF analysis. A silver-plated item will usually say "EPNS," "Silver Plate," or "Sheffield Plate" ΓÇö these have negligible scrap value.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-4"><span style="font-size:inherit;font-weight:inherit;display:inline;" style="font-size:inherit;font-weight:inherit;display:inline;">How much will a scrap dealer actually pay me?</span> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>Most scrap silver buyers pay between 70% and 95% of the calculated melt value. The percentage depends on the buyer type (local pawn shop vs. online refinery), the purity confidence, and the volume you're selling. Local pawn shops tend to offer less; specialist online silver refiners often offer 85ΓÇô95% of melt. Always get multiple offers and use this calculator to verify you're getting a fair deal before you commit.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-5"><span style="font-size:inherit;font-weight:inherit;display:inline;" style="font-size:inherit;font-weight:inherit;display:inline;">Is junk silver the same as scrap silver?</span> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>Not exactly. <em>Junk silver</em> specifically refers to pre-1965 US coins (dimes, quarters, halves, dollars) that are 90% silver and have no collectible premium ΓÇö they're valued purely for their metal content. <em>Scrap silver</em> is a broader term covering broken jewelry, flatware, dental silver, and any silver item sold for its metal. Use the <a href="/junk-silver-calculator/">junk silver calculator</a> for coins and this scrap silver calculator for everything else.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-6"><span style="font-size:inherit;font-weight:inherit;display:inline;" style="font-size:inherit;font-weight:inherit;display:inline;">Can I use this calculator for silver coins?</span> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>Yes ΓÇö enter the coin's weight and select its purity (90% for pre-1965 US coins, 99.9% for Silver Eagles). However, for more precision with specific coin types, use the <a href="/silver-coin-value-calculator/">silver coin value calculator</a> or the dedicated <a href="/silver-dollar-calculator/">silver dollar</a>, <a href="/silver-quarter-calculator/">silver quarter</a>, and <a href="/silver-dime-calculator/">silver dime</a> calculators, which use official coin weights automatically.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-7"><span style="font-size:inherit;font-weight:inherit;display:inline;" style="font-size:inherit;font-weight:inherit;display:inline;">What is the best weight unit to use ΓÇö grams or troy ounces?</span> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>Use whatever your scale shows ΓÇö this calculator converts for you. Grams are the easiest unit for most home scales. Troy ounces are the industry standard and useful when comparing to the spot price directly. The critical mistake to avoid: confusing <em>standard</em> ounces (28.35 g) with <em>troy</em> ounces (31.10 g). This is a very common and costly error. Use our <a href="/silver-weight-converter/">silver weight converter</a> if you need to switch units.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-8"><span style="font-size:inherit;font-weight:inherit;display:inline;" style="font-size:inherit;font-weight:inherit;display:inline;">Does silver-plated jewelry have any scrap value?</span> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>Very little. Silver-plated items have only a thin layer of silver (usually just a few microns) bonded over a base metal like copper or nickel. The actual silver content by weight is a tiny fraction of the total ΓÇö far too small to recover economically from scrap. Look for stamps like EPNS, EP, or "Silver Plate" to identify plated items. Only solid sterling or fine silver has meaningful scrap value.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-9"><span style="font-size:inherit;font-weight:inherit;display:inline;" style="font-size:inherit;font-weight:inherit;display:inline;">How does the gold-to-silver ratio affect my decision to sell?</span> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>The <strong>gold-to-silver ratio</strong> tells you how many ounces of silver it takes to buy one ounce of gold. Historically it averages around 60ΓÇô80; when it rises above 80, silver is considered relatively cheap compared to gold, and many investors buy silver. When it falls below 60, silver is relatively expensive and may be a good time to sell. Check the live ratio alongside your melt value with our <a href="/gold-and-silver-calculator/">gold and silver calculator</a>.</p></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" id="faq-btn-10"><span style="font-size:inherit;font-weight:inherit;display:inline;" style="font-size:inherit;font-weight:inherit;display:inline;">Can I calculate silver value in currencies other than US dollars?</span> <span class="faq-icon">+</span></button>
+            <div class="faq-answer"><p>Yes. Our <a href="/silver-price-all-currencies/">silver price in all currencies</a> page shows live silver prices in USD, EUR, GBP, INR, PKR, AUD, CAD, and more. For South Asian markets, the <a href="/sona-chandi-calculator/">Sona Chandi calculator</a> supports Tola measurements and Tunch (purity) in a format familiar to local markets.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
+  <script src="/js/silver-price.js"></script>
+  <script src="/js/calculator.js"></script>
+  <script src="/js/components.js"></script>
+  <script>
+    // Hero Calculator Logic
+    const weightInput = document.getElementById('calc-weight');
+    const unitSelect = document.getElementById('calc-unit');
+    const puritySelect = document.getElementById('calc-purity');
+    const resultValue = document.getElementById('hero-result-value');
+    const resultDetail = document.getElementById('hero-result-detail');
+
+    function calculate() {
+      const weight = parseFloat(weightInput.value) || 0;
+      const unit = unitSelect.value;
+      const purity = parseFloat(puritySelect.value);
+      const spotPrice = SilverPrice.getPrice();
+
+      if (weight <= 0) {
+        resultValue.textContent = '$0.00';
+        resultDetail.textContent = 'Enter weight to calculate';
+        return;
+      }
+
+      const weightGrams = SilverCalc.toGrams(weight, unit);
+      const result = SilverCalc.meltValue(weightGrams, purity, spotPrice);
+
+      resultValue.textContent = SilverCalc.formatCurrency(result.value);
+      resultDetail.textContent = `${result.silverContentGrams}g pure silver ┬╖ ${result.silverContentOz} troy oz ┬╖ Spot: $${spotPrice.toFixed(2)}/oz`;
+    }
+
+    weightInput.addEventListener('input', calculate);
+    unitSelect.addEventListener('change', calculate);
+    puritySelect.addEventListener('change', calculate);
+
+    // Update calc when price loads
+    SilverPrice.onPriceUpdate(() => calculate());
+
+    // Initial calc
+    calculate();
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.closest('.faq-item').classList.toggle('open');
+      });
+    });
+
+    SiteComponents.injectFAQSchema([
+      { q: 'How do I calculate the value of scrap silver?', a: 'Multiply the item\'s weight in troy ounces by its purity (as a decimal) and then by the current silver spot price. For example, 10 grams of 925 sterling at $30/oz equals approximately $8.95. A silver melt value calculator does this math instantly.' },
+      { q: 'What is the difference between melt value and spot price?', a: 'The spot price is the current market price for one troy ounce of pure 999 silver. The melt value is what your specific item is worth based on its weight and purity ΓÇö it is always equal to or less than spot price, because most silver items contain alloys.' },
+      { q: 'How do I know if my silver is real and what purity it is?', a: 'Look for a hallmark stamp on the item ΓÇö common ones include 925, 900, 800, 999, or the word STERLING. If there is no marking, a jeweler or pawn shop can run an acid test or XRF analysis to confirm.' },
+      { q: 'How much will a scrap dealer actually pay me?', a: 'Most scrap silver buyers pay between 70% and 95% of the calculated melt value. Local pawn shops tend to offer less; specialist online silver refiners often offer 85-95% of melt. Always get multiple offers and use a calculator to verify fairness.' },
+      { q: 'Is junk silver the same as scrap silver?', a: 'Not exactly. Junk silver refers specifically to pre-1965 US coins (dimes, quarters, halves, dollars) that are 90% silver with no collectible premium. Scrap silver is a broader term covering broken jewelry, flatware, dental silver, and any silver sold for its metal.' },
+      { q: 'Can I use this calculator for silver coins?', a: 'Yes ΓÇö enter the coin\'s weight and select its purity (90% for pre-1965 US coins, 99.9% for Silver Eagles). For more precision, use dedicated coin calculators for silver dollars, quarters, or dimes which use official coin weights automatically.' },
+      { q: 'What is the best weight unit to use ΓÇö grams or troy ounces?', a: 'Use whatever your scale shows ΓÇö the calculator converts for you. Grams are easiest for home scales. Avoid confusing standard ounces (28.35 g) with troy ounces (31.10 g), which is a very common and costly error.' },
+      { q: 'Does silver-plated jewelry have any scrap value?', a: 'Very little. Silver-plated items have only a thin coating of silver over base metal. The actual silver content is too small to recover economically. Look for stamps like EPNS or Silver Plate to identify plated items ΓÇö only solid sterling or fine silver has meaningful scrap value.' },
+      { q: 'How does the gold-to-silver ratio affect my decision to sell?', a: 'The gold-to-silver ratio tells you how many ounces of silver it takes to buy one ounce of gold. When the ratio rises above 80, silver is relatively cheap and investors buy; when it falls below 60, silver is relatively expensive and may be a good time to sell.' },
+      { q: 'Can I calculate silver value in currencies other than US dollars?', a: 'Yes. Silver prices are available in USD, EUR, GBP, INR, PKR, AUD, CAD, and more. For South Asian markets, Tola measurements and Tunch (purity) are also supported.' }
+    ]);
+  
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
+  </script>
+</body>
+</html>
