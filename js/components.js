@@ -140,8 +140,11 @@ const SiteComponents = (() => {
 
     // Resolve localized slug if in a language
     let localizedTarget = target;
-    if (currentLang !== 'en' && window.MenuTranslations && window.MenuTranslations.slugs && window.MenuTranslations.slugs[target]) {
-        localizedTarget = window.MenuTranslations.slugs[target][currentLang] || target;
+    if (currentLang !== 'en' && window.MenuTranslations && window.MenuTranslations.slugs) {
+        const mapping = window.MenuTranslations.slugs[target];
+        if (mapping && mapping[currentLang]) {
+            localizedTarget = mapping[currentLang];
+        }
     }
 
     let finalPath = '';
@@ -247,8 +250,11 @@ const SiteComponents = (() => {
             targetPath = (pageSlug === 'index') ? 'index' : pageSlug;
         } else {
             let slug = pageSlug;
-            if (window.MenuTranslations && window.MenuTranslations.slugs && window.MenuTranslations.slugs[pageSlug]) {
-                slug = window.MenuTranslations.slugs[pageSlug][targetLang] || pageSlug;
+            if (window.MenuTranslations && window.MenuTranslations.slugs) {
+                const mapping = window.MenuTranslations.slugs[pageSlug];
+                if (mapping && mapping[targetLang]) {
+                    slug = mapping[targetLang];
+                }
             }
             targetPath = `${targetLang}/${slug}`;
         }
@@ -543,20 +549,11 @@ const SiteComponents = (() => {
     renderLocalizedSections();
   }
 
+  // Auto-init
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        if ('requestIdleCallback' in window) {
-            window.requestIdleCallback(init);
-        } else {
-            setTimeout(init, 0);
-        }
-    });
+    document.addEventListener('DOMContentLoaded', init);
   } else {
-    if ('requestIdleCallback' in window) {
-        window.requestIdleCallback(init);
-    } else {
-        setTimeout(init, 0);
-    }
+    init();
   }
 
   return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, injectFAQSchema, init };
