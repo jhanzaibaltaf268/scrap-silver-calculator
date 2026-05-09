@@ -86,22 +86,44 @@
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="weight">Weight Per Coin (g)</label>
-            <input type="number" class="form-input" id="weight" value="2.5" step="0.01" readonly="" style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
+            <input type="number" class="form-input" id="weight" value="2.5" step="0.01" readonly style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
           </div>
           <div class="form-group">
             <label class="form-label" for="purity">Purity</label>
-            <input type="text" class="form-input" id="purity" value="90.0%" readonly="" style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
+            <input type="text" class="form-input" id="purity" value="90.0%" readonly style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
           </div>
         </div>
 
-        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
         <div class="result-display">
           <div class="result-label">Total Melt Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
         </div>
       </div>
-      <div class="content-body"><h2>How Much is a Silver Dime Worth?</h2><p>Pre-1965 US Dimes (Roosevelt and Mercury series) contain 90% silver. Each coin weighs 2.50 grams and yields <strong>0.0723 troy ounces</strong> of pure silver.</p><h3>The Most Common "Junk Silver"</h3><p>Silver dimes are highly favored by "stackers" and survivalists because their fractional silver content makes them excellent for small bartering scenarios. Remember: 10 silver dimes equals exactly the same amount of silver as 4 silver quarters.</p></div>
+      <div class="content-body">
+        <h2>How Much is a Silver Dime Worth?</h2>
+        <p>A "Silver Dime" typically refers to the 90% silver coins minted by the United States before 1965. These include the <strong>Roosevelt Dime</strong> (1946–1964) and the iconic <strong>Mercury Dime</strong> (1916–1945). Because of their small size and fixed silver content, dimes are the most common entry point for investors starting a "junk silver" collection.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">💰 Small Unit Advantage</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Silver dimes are often considered the most practical form of silver for bartering or small transactions. While a 100oz bar is worth thousands, a single silver dime represents a much smaller, more spendable unit of wealth. 14 dimes contain approximately one troy ounce of pure silver.</p>
+        </div>
+
+        <h3>Technical Specifications of a Silver Dime</h3>
+        <p>Whether you have a Mercury or a Roosevelt dime, the physical silver specs are identical:</p>
+        <ul>
+            <li><strong>Total Weight</strong>: 2.50 grams</li>
+            <li><strong>Composition</strong>: 90% Silver, 10% Copper</li>
+            <li><strong>Pure Silver Weight</strong>: 2.25 grams (0.07234 troy ounces)</li>
+        </ul>
+        <p>If you have a large bag of silver dimes, you can estimate the total weight easily: $1.00 face value (10 dimes) always contains approximately 0.723 troy ounces of silver bullion.</p>
+
+        <h3>Identifying Silver Dimes (Pre-1965)</h3>
+        <p>Checking the date is the easiest way to identify a silver dime: any dime dated **1964 or earlier** is 90% silver. However, you can also check the edge of the coin. A silver dime will have a solid white/silver edge, whereas a modern clad dime (1965–present) will show a distinct copper-colored stripe. This "edge test" is the industry standard for quickly sorting bulk coins.</p>
+        
+        <h3>Melt Value vs. Collectible Value</h3>
+        <p>While most Roosevelt dimes are valued strictly for their silver melt price, some **Mercury Dimes** (especially the 1916-D or 1921 dates) carry a significant numismatic premium. Always check your coins for rare dates before selling them as scrap. Our calculator helps you find the "floor" value based on the live market spot price.</p>
+      </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Coin Tools</h3><div class="related-grid">
         <a href="/junk-silver-calculator/" class="related-link"><span class="r-icon">🪙</span> Junk Silver Calc</a>
         <a href="/face-value-silver-calculator/" class="related-link"><span class="r-icon">💵</span> Face Value Calc</a>
@@ -142,6 +164,17 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
+  
+    
+  
+    
+  
+    SiteComponents.injectFAQSchema([
+{q: 'What years of dimes are silver?', a: 'United States dimes minted in 1964 and earlier are 90% silver. Dimes dated 1965 to the present are copper-nickel clad and contain no silver.'},
+      {q: 'How much silver is in a 1964 dime?', a: 'A 1964 Roosevelt dime contains 2.25 grams of pure silver, which is 0.07234 troy ounces. The total weight of the coin is 2.5 grams.'},
+      {q: 'Is a Mercury dime worth more than a Roosevelt dime?', a: 'In terms of silver content, they are identical. However, Mercury dimes are older and more popular with collectors, so they often carry a slightly higher "numismatic" premium than standard Roosevelt junk silver dimes.'},
+      {q: 'What is "Junk Silver" junk?', a: 'The term "junk silver" simply refers to silver coins that have no significant collectible value and are sold strictly for the value of their precious metal content. Silver dimes are one of the most popular forms of junk silver.'}
+    ]);
   </script>
 
 </body></html>

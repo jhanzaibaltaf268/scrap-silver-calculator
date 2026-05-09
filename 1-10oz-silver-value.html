@@ -78,8 +78,7 @@
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🧱</span> 1/10oz Silver Value</div>
         <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
-                <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
-<div class="result-display">
+        <div class="result-display">
           <div class="result-label">1/10oz Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -90,7 +89,24 @@
           <tbody id="qty-table"></tbody>
         </table>
       </div>
-      <div class="content-body"><h2>How Much Is 1/10 Ounce of Silver Worth?</h2><p>Fractional silver, such as 1/10th troy ounce rounds, are popular for bartering and small investments. While they carry higher premiums, calculating their raw melt value is important before buying or selling.</p></div>
+      <div class="content-body">
+        <h2>How Much Is 1/10 Ounce of Silver Worth?</h2>
+        <p>A <strong>1/10 ounce silver round</strong> (3.11 grams) is the most common form of "fractional" silver bullion. While the raw metal value is exactly 10% of the current spot price, these tiny coins often trade at a significant <strong>premium over spot</strong> because of the high relative cost of minting such small items. They are highly sought after by "preppers" and survivalist investors as a portable form of currency for small daily transactions.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">🎒 The "Barter" Asset</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Fractional silver is often called "survival silver." In a scenario where 100oz bars are too valuable for a loaf of bread, 1/10oz rounds provide a perfect unit of exchange. However, be aware that you will pay 20-50% over the melt value when buying these from a dealer.</p>
+        </div>
+
+        <h3>Why Investors Buy Fractional 1/10oz Silver</h3>
+        <p>The primary appeal of 1/10oz silver is <strong>divisibility</strong>. Unlike a 1oz coin or a 10oz bar, which cannot be easily "broken" into smaller pieces, fractional rounds allow you to liquidate small amounts of your wealth as needed. Many private mints produce 1/10oz "Walking Liberty" or "Buffalo" designs that mimic standard American coinage, making them immediately recognizable by look and weight.</p>
+
+        <h3>Physical Characteristics of 1/10oz Silver</h3>
+        <p>A 1/10oz silver round is very small—typically about <strong>16mm to 19mm in diameter</strong> (roughly the size of a US dime or penny). Despite their small size, they are struck from <strong>.999 fine silver</strong>. Because they are so small and light, they are often sold in tubes of 50 or "sheets" of 20 to prevent loss.</p>
+        
+        <h3>Real-Time Value Tracking</h3>
+        <p>While the premium is high, the base value is still tied to the global silver market. Our <strong>fractional silver calculator</strong> uses live spot prices to show you the fundamental melt value of your 1/10oz rounds, helping you decide if the dealer's markup is fair or if you should stick to larger units.</p>
+      </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Pages</h3><div class="related-grid">
         <a href="/silver-bar-value-calculator/" class="related-link"><span class="r-icon">🧱</span> Bar Calculator</a>
         <a href="/silver-price-per-ounce/" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
@@ -115,6 +131,17 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
+  
+    
+  
+    
+  
+    SiteComponents.injectFAQSchema([
+{q: 'How many grams are in 1/10 oz of silver?', a: 'There are exactly 3.11035 grams in one-tenth of a troy ounce of silver.'},
+      {q: 'Why is 1/10 oz silver so expensive?', a: 'Fractional silver carries high premiums because the cost to manufacture, ship, and handle a tiny 1/10oz round is nearly the same as a 1oz round. You are paying for the labor and machine time relative to the small amount of metal.'},
+      {q: 'Is 1/10 oz silver a good investment?', a: 'It is a good "utility" asset for bartering, but a poor "wealth accumulation" asset because you Lose too much value to premiums. Most investors prefer 1oz or 10oz units for better price-per-ounce efficiency.'},
+      {q: 'Are 1/10 oz silver rounds real silver?', a: 'Most reputable private mints (like Golden State Mint or SilverTowne) strike 1/10oz rounds in .999 fine silver. Always check for the purity stamp on the face of the round.'}
+    ]);
   </script>
 
 </body></html>

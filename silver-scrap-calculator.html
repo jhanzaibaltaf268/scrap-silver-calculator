@@ -219,6 +219,12 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
+  
+    SiteComponents.injectFAQSchema([
+      {q: 'What is the best way to weigh scrap silver?', a: 'Use a digital scale that measures in grams with at least one decimal place (0.1g). If you have a large amount, a kitchen scale is fine, but for jewelry, a high-precision jeweler\'s scale is recommended.'},
+      {q: 'How much does a dealer typically deduct?', a: 'A fair dealer typically pays between 80% and 90% of the melt value for scrap silver. If an offer is below 70%, you should consider getting a second opinion from another buyer or a refiner.'},
+      {q: 'Does tarnished silver have less value?', a: 'No. Tarnish is just surface oxidation. It does not affect the purity or weight of the silver. A scrap dealer will pay the same for black, tarnished silver as they would for polished silver.'}
+    ]);
   </script>
 
 

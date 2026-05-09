@@ -81,15 +81,38 @@
           <div class="form-group"><label class="form-label" for="weight">Weight (grams)</label><input type="number" class="form-input" id="weight" value="40" step="0.1" min="0"></div>
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
-        <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected="">925 Sterling</option><option value="0.900">900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800">800 European</option></select></div>
-        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+        <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected>925 Sterling</option><option value="0.900" >900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800" >800 European</option></select></div>
         <div class="result-display">
           <div class="result-label">Silver Spoon Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
         </div>
       </div>
-      <div class="content-body"><h2>How Much Is a Silver Spoon Worth?</h2><p>Silver spoons vary greatly in size and weight, from small teaspoons to large serving spoons.</p><h3>Typical Weights</h3><ul><li><strong>Teaspoon</strong>: 20-30 grams</li><li><strong>Dessert spoon</strong>: 30-40 grams</li><li><strong>Tablespoon</strong>: 40-60 grams</li><li><strong>Serving spoon</strong>: 60-80 grams</li></ul><p>Look for hallmarks: "925", "STERLING", or "800" to determine purity. Some silver-plated spoons are NOT solid silver and have minimal melt value.</p></div>
+      <div class="content-body">
+        <h2>How Much Is a Silver Spoon Worth?</h2>
+        <p>The value of a silver spoon is determined by its <strong>weight</strong>, its <strong>purity</strong> (fineness), and the current <strong>market spot price</strong> of silver. Unlike modern stainless steel flatware, silver spoons are valued by their weight in troy ounces or grams of pure silver content. Most antique and vintage silver spoons are made of 925 sterling silver.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">🥄 Identification Tip</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Turn the spoon over and look at the back of the handle. If you see "925", "Sterling", or a "Lion Passant" hallmark, it is solid silver. If you see "A1", "EPNS", or "Plate", it is silver-plated and holds very little scrap value.</p>
+        </div>
+
+        <h3>Typical Silver Spoon Weight Averages</h3>
+        <p>If you don't have a scale, you can use these common weight ranges to estimate the value of your silverware:</p>
+        <ul>
+            <li><strong>Salt/Mustard Spoon</strong>: 5 – 15 grams</li>
+            <li><strong>Teaspoon</strong>: 20 – 35 grams</li>
+            <li><strong>Dessert Spoon</strong>: 35 – 50 grams</li>
+            <li><strong>Tablespoon (Soup)</strong>: 50 – 75 grams</li>
+            <li><strong>Large Serving/Stuffing Spoon</strong>: 80 – 120+ grams</li>
+        </ul>
+
+        <h3>Collecting vs. Scraping Silver Spoons</h3>
+        <p>While most damaged or common silver spoons are sold as "scrap" to be melted down, some have significant <strong>numismatic or antique value</strong>. Early American silversmiths (like Paul Revere) or famous English makers can command prices hundreds of dollars above the melt value. Always research the maker's mark before selling.</p>
+        
+        <h3>How to Calculate the Melt Value</h3>
+        <p>To calculate the value yourself, weigh the spoon in grams, multiply by its purity (0.925 for sterling), divide by 31.1035 to get troy ounces, and multiply by the current spot price. Or, simply use our <strong>live calculator</strong> above for an instant estimate based on real-time market data.</p>
+      </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3><div class="related-grid">
   <a href="/silverware-value-calculator/" class="related-link"><span class="r-icon">🍴</span> Silverware Calculator</a>
   <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
@@ -112,6 +135,17 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
+  
+    
+  
+    
+  
+    SiteComponents.injectFAQSchema([
+{q: 'How can I tell if my spoon is real silver or plated?', a: 'Check the back of the handle for a hallmark. Solid silver will be marked "925", "Sterling", or have a lion symbol. Plated spoons often have "EPNS" (Electro-Plated Nickel Silver) or "A1" marks. Real silver is also non-magnetic.'},
+      {q: 'How much silver is in a sterling silver spoon?', a: 'A sterling silver spoon consists of 92.5% pure silver and 7.5% copper for durability. Our calculator accounts for this by multiplying the total weight by 0.925.'},
+      {q: 'Does the condition of the spoon affect its scrap value?', a: 'No. If you are selling for melt value, a bent, dented, or heavily tarnished spoon is worth exactly the same as a polished one, as only the raw silver weight matters to the refinery.'},
+      {q: 'Are silver-plated spoons worth anything?', a: 'Silver-plated spoons contain only a microscopic layer of silver over base metal (usually copper or nickel). They generally have no scrap value and are typically sold for a few cents as base metal scrap.'}
+    ]);
   </script>
 
 </body></html>

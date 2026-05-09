@@ -294,6 +294,12 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
+  
+    SiteComponents.injectFAQSchema([
+      {q: 'How many grams are in 1 Tola?', a: 'The official standard Tola is 11.6638 grams. In many local markets, it is rounded to 11.66g or 11.7g. Our calculator uses the precise 11.6638g standard for accuracy.'},
+      {q: 'What is 22K gold in Tunch percentage?', a: '22 Karat gold is 91.66% pure gold. In the Tunch system, this is simply referred to as 91.6 or 92 Tunch.'},
+      {q: 'Why does the Sona Chandi rate change daily?', a: 'The rate is based on the international COMEX and LBMA spot prices, which fluctuate every second during market hours. Local rates also change based on the currency exchange rate of the PKR or INR against the USD.'}
+    ]);
   </script>
 
 

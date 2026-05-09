@@ -78,8 +78,7 @@
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🧱</span> 5oz Silver Value</div>
         <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
-                <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
-<div class="result-display">
+        <div class="result-display">
           <div class="result-label">5oz Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -90,7 +89,24 @@
           <tbody id="qty-table"></tbody>
         </table>
       </div>
-      <div class="content-body"><h2>How Much Is 5 Ounces of Silver Worth?</h2><p>5 troy ounces (155.517 grams) of .999 fine silver is a popular size for silver bars. It offers lower premiums than 1oz sizes while remaining highly liquid.</p></div>
+      <div class="content-body">
+        <h2>How Much Is 5 Ounces of Silver Worth?</h2>
+        <p>A <strong>5 ounce silver bar or coin</strong> (155.517 grams) is valued at five times the current per-ounce spot price. For many investors, 5oz is considered the "sweet spot" of silver bullion—it offers a significantly lower premium than 1oz coins but is much easier to store and liquidate than the heavier 100oz or 1,000oz industrial bars.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">🧱 Premium Advantages</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">When buying silver, you pay "spot + premium." 5oz bars typically have a much lower premium percentage than 1oz bars because the manufacturing cost is spread over more ounces. This makes your "break-even" point lower when the silver price rises.</p>
+        </div>
+
+        <h3>The Growing Popularity of 5oz Silver Bulllion</h3>
+        <p>Many famous mints, including the <strong>Sunshine Mint</strong> and <strong>SilverTowne</strong>, produce 5oz bars as a standard inventory item. In recent years, 5oz silver coins have also become popular, such as the 5oz "America the Beautiful" (ATB) series from the US Mint. These coins are 3 inches in diameter, making them stunning display pieces while still maintaining their status as legal tender silver bullion.</p>
+
+        <h3>Physical Size of a 5oz Silver Bar</h3>
+        <p>A standard 5oz silver bar is approximately <strong>60mm long, 35mm wide, and 7mm thick</strong>. It fits comfortably in the palm of your hand and satisfies the "heft" factor that many physical silver collectors enjoy. Most 5oz bars are refined to <strong>.999 fine purity</strong>, guaranteed by the mint mark stamped on the face of the bar.</p>
+        
+        <h3>Live Value Calculation</h3>
+        <p>Because the silver market operates nearly 24 hours a day, the value of a 5oz bar can change significantly between the time you check in the morning and evening. Our <strong>live value calculator</strong> pulls the latest market data to provide you with a precise valuation for your 5oz silver assets instantly.</p>
+      </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Pages</h3><div class="related-grid">
         <a href="/silver-bar-value-calculator/" class="related-link"><span class="r-icon">🧱</span> Bar Calculator</a>
         <a href="/silver-price-per-ounce/" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
@@ -115,6 +131,17 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
+  
+    
+  
+    
+  
+    SiteComponents.injectFAQSchema([
+{q: 'How many grams are in 5 ounces of silver?', a: 'A 5oz silver bar contains exactly 155.517 grams of .999 fine silver. This is calculated using the troy ounce standard of 31.1035g per ounce.'},
+      {q: 'Is a 5oz silver bar a good investment?', a: 'Yes, 5oz bars are excellent for silver "stacking" because they often have a lower premium-over-spot price than 1oz rounds, while still being small enough to sell easily if you need cash.'},
+      {q: 'What are the most popular 5oz silver bars?', a: 'Popular 5oz bars include those from Sunshine Minting, SilverTowne, Golden State Mint, and the Scottsdales Silver "Stacker" series. Collectors also highly value the 5oz US Mint America the Beautiful coins.'},
+      {q: 'Does a 5oz silver bar have a serial number?', a: 'Some premium 5oz bars (like those from Johnson Matthey or Engelhard) feature unique serial numbers, but many modern generic 5oz bars do not. A serial number does not typically add to the raw silver melt value.'}
+    ]);
   </script>
 
 </body></html>

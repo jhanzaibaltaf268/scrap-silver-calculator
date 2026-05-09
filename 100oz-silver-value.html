@@ -78,8 +78,7 @@
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🧱</span> 100oz Silver Value</div>
         <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
-                <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
-<div class="result-display">
+        <div class="result-display">
           <div class="result-label">100oz Silver Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
@@ -90,7 +89,24 @@
           <tbody id="qty-table"></tbody>
         </table>
       </div>
-      <div class="content-body"><h2>How Much Is 100 Ounces of Silver Worth?</h2><p>100 troy ounces (3.11 kilograms) is the standard large-size silver bar for serious investors. 100oz bars typically carry the lowest premium over spot price of any retail silver product.</p></div>
+      <div class="content-body">
+        <h2>How Much Is 100 Ounces of Silver Worth?</h2>
+        <p>A <strong>100 ounce silver bar</strong> (3.11 kilograms) represents a serious commitment to precious metals investing. Because of its large size, the 100oz bar typically carries the <strong>lowest premium over spot price</strong> of any silver product available to the general public. It is the preferred choice for investors looking to accumulate large amounts of physical silver at the best possible price per ounce.</p>
+
+        <div class="callout tip">
+          <div class="callout-title">💰 The Efficiency Factor</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">A single 100oz bar takes up significantly less space and requires less paperwork than one hundred individual 1oz coins. For investors storing silver in professional vaults or high-security home safes, the 100oz bar offers maximum value density.</p>
+        </div>
+
+        <h3>Why Institutional Investors Choose 100oz Bars</h3>
+        <p>The 100oz bar is "institutional grade." While the massive 1,000oz COMEX bars are used for industrial purposes and exchange settling, the 100oz bar is the largest standard size for retail delivery. Well-known refineries like <strong>Johnson Matthey</strong>, <strong>Engelhard</strong>, and the <strong>Royal Canadian Mint</strong> produce 100oz bars that are recognized globally, ensuring that you can liquidate your asset quickly in any major financial center.</p>
+
+        <h3>Physical Characteristics of a 100oz Silver Bar</h3>
+        <p>A 100oz silver bar is a substantial object, weighing approximately <strong>6.8 pounds</strong>. Its dimensions are roughly <strong>185mm long, 80mm wide, and 20mm thick</strong> (similar to a small brick). These bars are almost exclusively refined to <strong>.999 fine silver</strong>. Most modern 100oz bars are "struck" or "cast" and feature a unique serial number stamped directly into the metal for security and tracking.</p>
+        
+        <h3>Tracking Your Massive Silver Asset</h3>
+        <p>Since a 100oz bar is a high-value asset, even a small $1.00 move in the silver spot price results in a $100.00 change in your bar's value. Our <strong>live value calculator</strong> provides real-time updates and includes a quantity table so you can track the total value of your entire silver "stack" at a glance.</p>
+      </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Pages</h3><div class="related-grid">
         <a href="/silver-bar-value-calculator/" class="related-link"><span class="r-icon">🧱</span> Bar Calculator</a>
         <a href="/silver-price-per-ounce/" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
@@ -115,6 +131,17 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
+  
+    
+  
+    
+  
+    SiteComponents.injectFAQSchema([
+{q: 'How much does a 100 oz silver bar weigh in pounds?', a: 'A 100 troy ounce silver bar weighs approximately 6.85 standard (avoirdupois) pounds. It is a heavy, dense object roughly the size of a small brick.'},
+      {q: 'Is it hard to sell a 100 oz silver bar?', a: 'No. 100oz bars are a standard investment grade. Any reputable bullion dealer or local coin shop will buy them. However, because of their high value, some dealers may pay via check or bank wire rather than cash.'},
+      {q: 'Which 100oz silver bar has the best resale value?', a: 'Bars from the Royal Canadian Mint or PAMP Suisse often command higher resale premiums because of their government backing or prestigious brand name. Vintage bars like Engelhard or Johnson Matthey are also highly sought after by collectors.'},
+      {q: 'Do I need to assay a 100 oz silver bar before selling?', a: 'If you buy from a reputable mint and the bar has clear hallmarks and a serial number, a formal assay is usually not required. Most dealers have modern "Sigma" or XRF testing equipment that can verify the purity instantly without damaging the bar.'}
+    ]);
   </script>
 
 </body></html>

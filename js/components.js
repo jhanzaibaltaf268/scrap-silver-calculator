@@ -365,6 +365,48 @@ const SiteComponents = (() => {
     navigator.clipboard.writeText(txt).then(() => toast(t('Copied to clipboard')));
   }
 
+  function injectFAQSchema(faqs) {
+    if (!faqs || !faqs.length) return;
+    
+    // 1. Inject JSON-LD
+    const schema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(f => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": f.a
+        }
+      }))
+    };
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.text = JSON.stringify(schema);
+    document.head.appendChild(script);
+
+    // 2. Render visible FAQ if content-body exists
+    const body = document.querySelector('.content-body');
+    if (body) {
+      const faqSec = document.createElement('div');
+      faqSec.className = 'faq-section';
+      faqSec.style.marginTop = 'var(--space-xl)';
+      faqSec.innerHTML = `<h3 style="margin-bottom:var(--space-lg);">${t('Frequently Asked Questions')}</h3>` + 
+        faqs.map(f => `
+          <div class="faq-item" style="margin-bottom:var(--space-md); border-bottom:1px solid var(--border-subtle); padding-bottom:var(--space-md);">
+            <div class="faq-q" style="font-weight:700; color:var(--text-primary); margin-bottom:var(--space-xs); display:flex; gap:8px;">
+              <span style="color:var(--accent);">Q:</span> ${f.q}
+            </div>
+            <div class="faq-a" style="color:var(--text-secondary); font-size:var(--fs-sm); line-height:1.6;">
+              ${f.a}
+            </div>
+          </div>
+        `).join('');
+      body.appendChild(faqSec);
+    }
+  }
+
   function init() {
     renderHeader();
     renderFooter();
@@ -386,5 +428,5 @@ const SiteComponents = (() => {
     }
   }
 
-  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, init };
+  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, injectFAQSchema, init };
 })();

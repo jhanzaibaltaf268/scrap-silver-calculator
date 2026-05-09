@@ -281,6 +281,12 @@
     });
 
     SilverPrice.onPriceUpdate(() => calcAll());
+  
+    SiteComponents.injectFAQSchema([
+      {q: 'How do I value a mixed silver collection?', a: 'The best way is to sort your items by purity (e.g., all sterling together, all 800 silver together). Weigh each group and enter them as separate lines in our batch calculator to get an accurate total melt value.'},
+      {q: 'Can I save my silver inventory list?', a: 'Yes. Use the "Save to Browser" button to store your current calculation in your local browser storage. It will be available the next time you visit the site on the same device.'},
+      {q: 'Is the printed receipt accepted by dealers?', a: 'While not a legal document, a printed valuation shows the dealer that you are an informed seller. It provides a professional baseline for negotiation based on real-time market spot prices.'}
+    ]);
   </script>
 
 

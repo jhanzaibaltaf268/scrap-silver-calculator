@@ -81,15 +81,37 @@
           <div class="form-group"><label class="form-label" for="weight">Weight (grams)</label><input type="number" class="form-input" id="weight" value="250" step="0.1" min="0"></div>
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
-        <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected="">925 Sterling</option><option value="0.900">900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800">800 European</option></select></div>
-        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+        <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected>925 Sterling</option><option value="0.900" >900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800" >800 European</option></select></div>
         <div class="result-display">
           <div class="result-label">Silver Plate Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
         </div>
       </div>
-      <div class="content-body"><h2>Silver Plate Value</h2><p><strong>Important distinction:</strong> A "silver plate" (solid silver serving plate) is very different from "silver-plated" items coated with thin silver.</p><h3>How to Tell the Difference</h3><ul><li><strong>Solid silver</strong>: Stamped "925", "STERLING", or "800" — valuable</li><li><strong>Silver-plated</strong>: Stamped "EP", "EPNS", "Silver Plate" — minimal silver value</li></ul><h3>Typical Solid Silver Plate Weights</h3><ul><li><strong>Bread plate</strong>: 100-200 grams</li><li><strong>Dinner plate</strong>: 200-400 grams</li><li><strong>Charger plate</strong>: 300-500 grams</li></ul></div>
+      <div class="content-body">
+        <h2>How Much Is a Silver Plate Worth?</h2>
+        <p>In the world of precious metals, "Silver Plate" can be a confusing term. It can refer to a <strong>solid silver serving plate</strong> (highly valuable) or a <strong>silver-plated item</strong> (minimal value). On this page, we provide a calculator for the melt value of <em>solid silver plates</em> made of sterling or other fine silver alloys.</p>
+
+        <div class="callout caution">
+          <div class="callout-title">🚨 The Most Important Check</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">99% of "silver plates" found in thrift stores or garages are <strong>silver-plated</strong>. Before using the calculator, look for the "Sterling" or "925" mark. If you see "EPNS", "Silver on Copper", or "Community", your item has no scrap silver value.</p>
+        </div>
+
+        <h3>Typical Solid Silver Plate Weight Averages</h3>
+        <p>If you have confirmed your plate is solid sterling silver, you can estimate its value using these common weights:</p>
+        <ul>
+            <li><strong>Small Bread/Butter Plate (6")</strong>: 120 – 200 grams</li>
+            <li><strong>Standard Salad Plate (8")</strong>: 250 – 350 grams</li>
+            <li><strong>Full Dinner Plate (10-12")</strong>: 400 – 600 grams</li>
+            <li><strong>Large Service Charger</strong>: 600 – 900+ grams</li>
+        </ul>
+
+        <h3>How Purity Affects Plate Value</h3>
+        <p>While 925 Sterling is the most common standard for American and British plates, many European antique plates are made of <strong>800 fine silver</strong> (80% pure). Items from the UK might also bear the "Britannia" mark (958 silver). Our calculator allows you to select the precise purity to ensure your melt value estimate is perfectly accurate.</p>
+        
+        <h3>Why Some Plates Shouldn't Be Melted</h3>
+        <p>Hand-hammered silver plates or those with ornate repoussé work from famous 19th-century silversmiths can be worth <strong>significantly more than their melt value</strong> to collectors. Before selling an heirloom plate for scrap, check for maker's marks like the Tiffany & Co. "M" or Gorham hallmarks. Our tool provides the raw metal floor price for your items.</p>
+      </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3><div class="related-grid">
   <a href="/silverware-value-calculator/" class="related-link"><span class="r-icon">🍴</span> Silverware Calculator</a>
   <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
@@ -112,6 +134,17 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
+  
+    
+  
+    
+  
+    SiteComponents.injectFAQSchema([
+{q: 'Is my silver plate solid or plated?', a: 'Check the bottom for a hallmark. Solid silver will be stamped "925" or "Sterling". Silver-plated items often say "Silver Plate", "EPNS", or "Copper Core". Plated items are also often heavier and may show base metal (yellow/red) where scratched.'},
+      {q: 'How much is a sterling silver plate worth?', a: 'A sterling plate is worth its weight in grams multiplied by 0.925 and the current silver spot price. A standard dinner plate weighing 500g is typically worth $350 - $450 depending on the market.'},
+      {q: 'Can I sell silver-plated plates for scrap?', a: 'Most silver refineries do not buy silver-plated items because the cost of refining the tiny amount of silver exceeds the value of the silver itself. These are typically sold as "white metal" scrap for a few cents.'},
+      {q: 'Do hallmarks like "A1" or "IS" mean solid silver?', a: 'No. "A1" indicates the highest quality of silver plating, and "IS" stands for International Silver (a brand that mostly made plated ware). These are not solid silver marks.'}
+    ]);
   </script>
 
 </body></html>

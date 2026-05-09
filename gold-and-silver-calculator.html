@@ -300,6 +300,13 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
+  
+    SiteComponents.injectFAQSchema([
+      {q: 'How is the gold-to-silver ratio calculated?', a: 'The ratio is calculated by dividing the current spot price of one ounce of gold by the current spot price of one ounce of silver. For example, if gold is $2400 and silver is $30, the ratio is 80:1.'},
+      {q: 'Is it better to invest in gold or silver?', a: 'Both have benefits. Gold is more compact and less volatile, while silver often has higher percentage gains during bull markets. Many investors use the gold-silver ratio to decide which metal to buy at a given time.'},
+      {q: 'What are the most common gold and silver purities?', a: 'For gold, 14K (58.5%) and 18K (75%) are common in jewelry, while 24K (99.9%) is for bullion. For silver, 925 Sterling is the jewelry standard, while 999 Fine is the bullion standard.'},
+      {q: 'Do I get paid the full melt value?', a: 'Usually not. Dealers take a commission (spread) of 5-15% to cover their refining, overhead, and profit. Always check the live melt value here before selling to ensure a fair offer.'}
+    ]);
   </script>
 
 

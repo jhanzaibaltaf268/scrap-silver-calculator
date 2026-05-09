@@ -86,22 +86,50 @@
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="weight">Weight Per Coin (g)</label>
-            <input type="number" class="form-input" id="weight" value="23.33" step="0.01" readonly="" style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
+            <input type="number" class="form-input" id="weight" value="23.33" step="0.01" readonly style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
           </div>
           <div class="form-group">
             <label class="form-label" for="purity">Purity</label>
-            <input type="text" class="form-input" id="purity" value="80.0%" readonly="" style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
+            <input type="text" class="form-input" id="purity" value="80.0%" readonly style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
           </div>
         </div>
 
-        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
         <div class="result-display">
           <div class="result-label">Total Melt Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
         </div>
       </div>
-      <div class="content-body"><h2>Canadian Silver Coin Value</h2><p>Unlike US junk silver which is uniformly 90%, pre-1968 Canadian silver coins are typically <strong>80% silver</strong>. (Note: 1967 and 1968 coins can be either 80% or 50% silver, requiring a magnet test to be sure).</p><p>This calculator defaults to the standard Canadian 80% silver purity. A pre-1968 Canadian silver dollar contains 0.600 troy ounces of pure silver.</p></div>
+      <div class="content-body">
+        <h2>How Much is a Canadian Silver Coin Worth?</h2>
+        <p>Calculating the value of Canadian silver coins is slightly more complex than US coins because the Royal Canadian Mint changed silver purities several times. While most "junk" Canadian silver found today is **80% pure**, coins from different eras can range from 92.5% (sterling) down to 50% or even zero silver content for modern issues.</p>
+
+        <div class="callout warning">
+          <div class="callout-title">🧲 The 1968 Magnet Test</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">In 1968, Canada switched from silver to pure nickel. Some 1968 quarters and dimes are 50% silver, while others are 100% nickel. <strong>If a 1968 coin sticks to a magnet, it contains NO silver.</strong> If it does not stick, it is 50% silver.</p>
+        </div>
+
+        <h3>Canadian Silver Purity by Year</h3>
+        <p>To accurately value your collection, you must first identify the era of your coins:</p>
+        <ul>
+            <li><strong>1919 and earlier</strong>: 92.5% Silver (Sterling)</li>
+            <li><strong>1920 to 1966</strong>: 80% Silver</li>
+            <li><strong>1967</strong>: Some are 80%, some are 50% (avg. usually calculated at 65% for bulk)</li>
+            <li><strong>1968</strong>: 50% Silver (if non-magnetic)</li>
+        </ul>
+
+        <h3>Common Canadian Silver Coin Weights</h3>
+        <p>The standard 80% silver coins have the following weights and pure silver content:</p>
+        <ul>
+            <li><strong>Silver Dollar</strong>: 23.33g (0.600 troy oz pure silver)</li>
+            <li><strong>50 Cent Piece</strong>: 11.66g (0.300 troy oz pure silver)</li>
+            <li><strong>Quarter (25 cents)</strong>: 5.83g (0.150 troy oz pure silver)</li>
+            <li><strong>Dime (10 cents)</strong>: 2.33g (0.060 troy oz pure silver)</li>
+        </ul>
+        
+        <h3>Melt Value vs. Collectible Value</h3>
+        <p>Many Canadian silver coins, especially the "Silver Dollar" series with various commemorative designs (like the 1939 Royal Visit or 1949 Newfoundland entry), carry premiums above their melt value. Our calculator provides the <strong>current silver floor price</strong> based on the international spot market, ensuring you know the minimum value of your Canadian silver assets.</p>
+      </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Coin Tools</h3><div class="related-grid">
         <a href="/junk-silver-calculator/" class="related-link"><span class="r-icon">🪙</span> Junk Silver Calc</a>
         <a href="/face-value-silver-calculator/" class="related-link"><span class="r-icon">💵</span> Face Value Calc</a>
@@ -142,6 +170,17 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
+  
+    
+  
+    
+  
+    SiteComponents.injectFAQSchema([
+{q: 'What years of Canadian coins are silver?', a: 'Canadian dimes, quarters, half-dollars, and dollars were made of silver from 1858 until 1968. The purity was 92.5% until 1919, then 80% until 1966. In 1967 and 1968, both 80% and 50% silver versions were produced.'},
+      {q: 'How can I tell if my 1968 Canadian quarter is silver?', a: 'Use a magnet. If the coin is attracted to the magnet, it is made of nickel and has no silver value. If it is NOT magnetic, it is 50% silver.'},
+      {q: 'How much silver is in an 80% Canadian silver dollar?', a: 'An 80% Canadian silver dollar weighs 23.33 grams and contains exactly 18.66 grams (0.600 troy ounces) of pure silver.'},
+      {q: 'Are any Canadian nickels made of silver?', a: 'From 1858 to 1921, the Canadian 5-cent piece was a small silver coin (known as a "fishscale"). These are 92.5% silver until 1919 and 80% silver in 1920-1921. Modern nickels from 1922 onwards contain no silver.'}
+    ]);
   </script>
 
 </body></html>

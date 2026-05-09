@@ -81,15 +81,38 @@
           <div class="form-group"><label class="form-label" for="weight">Weight (grams)</label><input type="number" class="form-input" id="weight" value="6" step="0.1" min="0"></div>
           <div class="form-group"><label class="form-label" for="qty">Quantity</label><input type="number" class="form-input" id="qty" value="1" min="1" step="1"></div>
         </div>
-        <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected="">925 Sterling</option><option value="0.900">900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800">800 European</option></select></div>
-        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
+        <div class="form-group"><label class="form-label" for="purity">Purity</label><select class="form-select" id="purity"><option value="0.999">999 Fine</option><option value="0.958">958 Britannia</option><option value="0.925" selected>925 Sterling</option><option value="0.900" >900 Coin Silver</option><option value="0.835">835 European</option><option value="0.800" >800 European</option></select></div>
         <div class="result-display">
           <div class="result-label">Silver Ring Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
         </div>
       </div>
-      <div class="content-body"><h2>How Much Is a Silver Ring Worth?</h2><p>A typical silver ring weighs between 3 and 12 grams, depending on the style and size. Most silver rings are made from 925 sterling silver.</p><h3>Typical Silver Ring Weights</h3><ul><li><strong>Thin band</strong>: 3-5 grams</li><li><strong>Standard band</strong>: 5-8 grams</li><li><strong>Wide/chunky ring</strong>: 8-12 grams</li><li><strong>Statement ring</strong>: 10-20 grams</li></ul><p>The melt value of a silver ring depends on weight, purity, and the current silver spot price. Designer or antique silver rings may be worth more than their melt value.</p></div>
+      <div class="content-body">
+        <h2>How Much Is a Silver Ring Worth?</h2>
+        <p>A typical silver ring weighs between <strong>3 and 12 grams</strong>, depending on its size, width, and style. Most modern silver rings are crafted from <strong>925 sterling silver</strong>, which contains 92.5% pure silver. To determine the melt value, you multiply its weight in grams by its purity and the current live silver spot price.</p>
+
+        <div class="callout info">
+          <div class="callout-title">💡 Did You Know?</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Designer rings by brands like Tiffany & Co. or antique rings from the Victorian era often carry a "premium" value far exceeding their raw melt value. Always check for maker's marks before selling for scrap.</p>
+        </div>
+
+        <h3>Typical Silver Ring Weight Reference</h3>
+        <p>If you don't have a jewelry scale, you can use these industry averages to estimate your ring's weight:</p>
+        <ul>
+            <li><strong>Thin Stackable Band</strong>: 1.5 – 3 grams</li>
+            <li><strong>Standard Engagement/Wedding Band</strong>: 3 – 5 grams</li>
+            <li><strong>Wide "Chunky" Fashion Ring</strong>: 6 – 10 grams</li>
+            <li><strong>Large Men's Signet Ring</strong>: 12 – 18 grams</li>
+            <li><strong>Heavy Southwest/Native American Ring</strong>: 15 – 25+ grams</li>
+        </ul>
+
+        <h3>How to Identify a Real Silver Ring</h3>
+        <p>Before using our calculator, look for the <strong>hallmark</strong>. In the United States and Europe, the most common stamp is <strong>"925"</strong> or the word <strong>"STERLING"</strong>. This is usually located on the inside surface of the band. If you see "EP", "EPNS", or "Silver Plate," the ring has very little silver content and is not worth calculating as scrap.</p>
+        
+        <h3>Why Silver Ring Prices Fluctuate</h3>
+        <p>The value of your ring moves in sync with the global silver market (COMEX). Because silver spot prices change every minute during trading hours, the melt value of your ring today might be different from tomorrow. Our calculator updates using <strong>live market data</strong> to give you the most accurate estimate possible.</p>
+      </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3><div class="related-grid">
   <a href="/silver-jewelry-value-calculator/" class="related-link"><span class="r-icon">💍</span> Jewelry Calculator</a>
   <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
@@ -112,6 +135,17 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
+  
+    
+  
+    
+  
+    SiteComponents.injectFAQSchema([
+{q: 'How much is a 925 silver ring worth?', a: 'A 925 silver ring is worth its weight in grams multiplied by 0.925 and the current silver spot price. For a typical 5-gram sterling ring, the value is usually between $3 and $6 depending on the market.'},
+      {q: 'Where do I find the silver stamp on a ring?', a: 'The silver hallmark—usually "925" or "Sterling"—is almost always located on the inner circumference of the ring band. You may need a magnifying glass or jeweler\'s loupe to see it clearly.'},
+      {q: 'Does my ring have more than scrap value?', a: 'Yes, if your ring has a precious gemstone (like a diamond), is from a famous designer, or is a certified antique, it may be worth significantly more than its raw silver melt value.'},
+      {q: 'Can I sell a broken silver ring for scrap?', a: 'Absolutely. A scrap dealer or refinery values the ring based solely on its metal content, so broken bands or missing stones do not decrease the silver melt value.'}
+    ]);
   </script>
 
 </body></html>

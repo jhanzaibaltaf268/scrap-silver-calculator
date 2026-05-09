@@ -86,22 +86,44 @@
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="weight">Weight Per Coin (g)</label>
-            <input type="number" class="form-input" id="weight" value="6.25" step="0.01" readonly="" style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
+            <input type="number" class="form-input" id="weight" value="6.25" step="0.01" readonly style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
           </div>
           <div class="form-group">
             <label class="form-label" for="purity">Purity</label>
-            <input type="text" class="form-input" id="purity" value="90.0%" readonly="" style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
+            <input type="text" class="form-input" id="purity" value="90.0%" readonly style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
           </div>
         </div>
 
-        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
         <div class="result-display">
           <div class="result-label">Total Melt Value</div>
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
         </div>
       </div>
-      <div class="content-body"><h2>How Much is a Silver Quarter Worth?</h2><p>Any US Washington Quarter minted in 1964 or earlier is made of 90% silver. Each quarter weighs 6.25 grams and contains <strong>0.1808 troy ounces</strong> of pure silver content.</p><h3>How to Identify a Silver Quarter</h3><p>Look at the edge of the quarter. If you see a solid silver stripe, it is 90% silver. If you see a copper-colored stripe, it is a modern clad quarter (1965-present) with no silver content.</p></div>
+      <div class="content-body">
+        <h2>How Much is a Silver Quarter Worth?</h2>
+        <p>A "Silver Quarter" typically refers to the 90% silver Washington quarters minted by the United States between <strong>1932 and 1964</strong>. Before the Coinage Act of 1965, US quarters were a primary vehicle for physical silver in daily commerce. Today, these coins are highly valued by investors for their high silver content and ease of recognition.</p>
+
+        <div class="callout info">
+          <div class="callout-title">📅 The 1964 Cutoff</div>
+          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">Quarters dated <strong>1964 and earlier</strong> are 90% silver. Quarters dated <strong>1965 and later</strong> are "clad" (copper-nickel) and contain <strong>zero silver</strong>. The only exceptions are special silver proof sets issued for collectors in later years.</p>
+        </div>
+
+        <h3>Technical Specifications of a Silver Quarter</h3>
+        <p>Silver quarters are standardized in weight and purity, making them easy to value in bulk:</p>
+        <ul>
+            <li><strong>Total Weight</strong>: 6.25 grams</li>
+            <li><strong>Composition</strong>: 90% Silver, 10% Copper</li>
+            <li><strong>Pure Silver Weight</strong>: 5.625 grams (0.18084 troy ounces)</li>
+        </ul>
+        <p>Because of this fixed silver content, a $1.00 face-value of silver quarters (4 coins) contains approximately 0.723 troy ounces of pure silver.</p>
+
+        <h3>How to Identify a Silver Quarter Instantly</h3>
+        <p>The fastest way to identify a silver quarter without looking at the date is the <strong>Edge Test</strong>. Hold the coin so you can see the reeded edge. A silver quarter will show a solid, bright silver stripe. A modern clad quarter will show a distinct orange/brown copper stripe in the middle. Additionally, silver quarters have a higher-pitched "ring" when dropped on a hard surface compared to the dull "thud" of a copper-nickel coin.</p>
+        
+        <h3>Melt Value vs. Face Value</h3>
+        <p>While the face value is only $0.25, the <strong>melt value</strong> of a silver quarter is usually 10 to 20 times higher, depending on the live spot price of silver. Our calculator uses real-time market data to give you the most accurate valuation for your coins today.</p>
+      </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Coin Tools</h3><div class="related-grid">
         <a href="/junk-silver-calculator/" class="related-link"><span class="r-icon">🪙</span> Junk Silver Calc</a>
         <a href="/face-value-silver-calculator/" class="related-link"><span class="r-icon">💵</span> Face Value Calc</a>
@@ -142,6 +164,17 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
+  
+    
+  
+    
+  
+    SiteComponents.injectFAQSchema([
+{q: 'What years of quarters are silver?', a: 'United States quarters minted from 1932 to 1964 are 90% silver. Quarters dated 1965 or later are copper-nickel clad and contain no silver.'},
+      {q: 'How much silver is in a 1964 quarter?', a: 'A 1964 quarter contains exactly 5.625 grams (0.1808 troy ounces) of pure silver. It weighs 6.25 grams in total.'},
+      {q: 'Is a 1965 quarter worth anything?', a: 'Standard 1965 quarters are made of copper and nickel and are only worth their face value ($0.25). They were the first year the US Mint switched away from 90% silver for circulating quarters.'},
+      {q: 'What is a "silver proof" quarter?', a: 'Starting in 1992, the US Mint began issuing special silver proof sets for collectors. These quarters look like modern coins but are 90% silver (or 99.9% silver after 2019). They can be identified by their "S" mint mark and solid silver edges.'}
+    ]);
   </script>
 
 </body></html>
