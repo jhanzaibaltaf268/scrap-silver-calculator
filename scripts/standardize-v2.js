@@ -16,7 +16,7 @@ langs.forEach(lang => {
         if (trans[lang]) langSlugs[en] = trans[lang];
     }
 
-    const translationInjection = `<script>window.MenuTranslations = { slugs: ${JSON.stringify(langSlugs)} };</script>`;
+    const translationInjection = `<script>window.MenuTranslations = window.MenuTranslations || {}; window.MenuTranslations.slugs = ${JSON.stringify(langSlugs)};</script>`;
 
     files.forEach(file => {
         const filePath = path.join(dir, file);
