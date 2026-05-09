@@ -141,7 +141,7 @@ const SiteComponents = (() => {
     // Resolve localized slug if in a language
     let localizedTarget = target;
     if (currentLang !== 'en' && window.MenuTranslations && window.MenuTranslations.slugs && window.MenuTranslations.slugs[target]) {
-        localizedTarget = window.MenuTranslations.slugs[target];
+        localizedTarget = window.MenuTranslations.slugs[target][currentLang] || target;
     }
 
     let finalPath = '';
@@ -230,8 +230,8 @@ const SiteComponents = (() => {
     
     let englishBaseSlug = pageSlug;
     if (currentLang !== 'en' && window.MenuTranslations && window.MenuTranslations.slugs) {
-        for (const [en, loc] of Object.entries(window.MenuTranslations.slugs)) {
-            if (loc === pageSlug) {
+        for (const [en, locs] of Object.entries(window.MenuTranslations.slugs)) {
+            if (locs[currentLang] === pageSlug) {
                 englishBaseSlug = en;
                 break;
             }
@@ -248,7 +248,7 @@ const SiteComponents = (() => {
         } else {
             let slug = pageSlug;
             if (window.MenuTranslations && window.MenuTranslations.slugs && window.MenuTranslations.slugs[pageSlug]) {
-                slug = window.MenuTranslations.slugs[pageSlug];
+                slug = window.MenuTranslations.slugs[pageSlug][targetLang] || pageSlug;
             }
             targetPath = `${targetLang}/${slug}`;
         }

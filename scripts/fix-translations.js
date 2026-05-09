@@ -37,7 +37,7 @@ const MASTER_TRANSLATIONS = {
     "How can I tell if my silver is real?": "How can I tell if my silver is real?",
     "Look for hallmarks (925, STERLING, 900). You can also perform a magnet test (silver is not magnetic) or a \"ping\" test. For absolute certainty, an acid test or XRF analysis is required.": "Look for hallmarks (925, STERLING, 900). You can also perform a magnet test (silver is not magnetic) or a \"ping\" test. For absolute certainty, an acid test or XRF analysis is required.",
     "What is a troy ounce?": "What is a troy ounce?",
-    "A troy ounce (31.1035 grams) is the standard unit of measurement for precious metals. It is approximately 10% heavier than a standard \"avoirdupois\" ounce (28.35 grams).": "A troy ounce (31.1035 grams) is the standard unit of measurement for precious metals. It is approximately 10% heavier than a standard \"avoirdupois\" ounce (28.35 grams)."
+    "A troy ounce (31.1035 grams) is the standard unit of measurement for precious metals. It is approximately 10% heavier than a standard \"avoirdupois\" ounce (28.35 grams)."
   },
   "es": {
     "Home": "Inicio",
@@ -63,11 +63,11 @@ const MASTER_TRANSLATIONS = {
     "How do I calculate the value of scrap silver?": "¿Cómo calculo el valor de la plata de desecho?",
     "Multiply the item's weight in troy ounces by its purity (decimal) and the current spot price. Our calculator handles the unit conversions and market updates automatically.": "Multiplique el peso del artículo en onzas troy por su pureza (decimal) y el precio spot actual. Nuestra calculadora gestiona las conversiones de unidades y las actualizaciones del mercado automáticamente.",
     "What is melt value vs spot price?": "¿Qué es el valor de fusión frente al precio spot?",
-    "Spot price is the market price for pure 999 silver. Melt value is what your specific item is worth based on its purity. For example, 925 sterling is worth 92.5% of the spot price per ounce.": "El precio spot es el precio de mercado para la plata pura 999. El valor de fusión es lo que vale su artículo específico basado en su pureza. Por ejemplo, la plata de ley 925 vale el 92,5% del precio spot por onza.",
+    "Spot price is the market price for pure 999 silver. Melt value is what your specific item is worth based on its purity. For example, la plata de ley 925 vale el 92,5% del precio spot por onza.": "El precio spot es el precio de mercado para la plata pura 999. El valor de fusión es lo que vale su artículo específico basado en su pureza. Por ejemplo, la plata de ley 925 vale el 92,5% del precio spot por onza.",
     "How much will a dealer pay me for scrap silver?": "¿Cuánto me pagará un comerciante por la plata de desecho?",
     "Most professional buyers pay 70–95% of melt value. Online silver refiners often offer the highest payouts, while local pawn shops may offer less due to higher overhead.": "La mayoría de los compradores profesionales pagan entre el 70% y el 95% del valor de fusión. Los refinadores de plata en línea suelen ofrecer los pagos más altos, mientras que las casas de empeño locales pueden ofrecer menos debido a los mayores costos operativos.",
     "How can I tell if my silver is real?": "¿Cómo puedo saber si mi plata es real?",
-    "Look for hallmarks (925, STERLING, 900). También puede realizar una prueba de imán (la plata no es magnética) o una prueba de \"ping\". Para una certeza absoluta, se requiere una prueba de ácido o un análisis XRF.",
+    "Look for hallmarks (925, STERLING, 900). You can also perform a magnet test (silver is not magnetic) or a \"ping\" test. For absolute certainty, se requiere una prueba de ácido o un análisis XRF.",
     "What is a troy ounce?": "¿Qué es una onza troy?",
     "A troy ounce (31.1035 grams) is the standard unit of measurement for precious metals. It is aproximadamente un 10% más pesada que una onza estándar \"avoirdupois\" (28.35 grams)."
   },
@@ -76,4 +76,4 @@ const MASTER_TRANSLATIONS = {
 
 const finalContent = `window.MenuTranslations = ${JSON.stringify(MASTER_TRANSLATIONS, null, 2)};`;
 fs.writeFileSync(filePath, finalContent);
-console.log('translations.js updated with Masterpiece content and slugs.');
+console.log('translations.js updated with ALL Masterpiece content and FULL slug mapping.');
