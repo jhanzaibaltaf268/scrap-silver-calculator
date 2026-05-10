@@ -260,7 +260,7 @@
       const sPurity = parseFloat(sp.value);
       
       const sSpot = SilverPrice.getPrice();
-      const gSpot = SilverPrice.getGoldPrice() || 2500.00; / Fallback if not loaded
+      const gSpot = SilverPrice.getGoldPrice() || 2500.00; // Fallback if not loaded
       
       let gRes = SilverCalc.meltValue(gGrams, gPurity, gSpot);
       let sRes = SilverCalc.meltValue(sGrams, sPurity, sSpot);
