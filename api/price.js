@@ -26,8 +26,11 @@ module.exports = async function handler(req, res) {
       const [sData, gData] = await Promise.all([sRes.json(), gRes.json()]);
       if (sData.price > 0 && gData.price > 0) {
         return res.status(200).json({
-          silver: Math.round(sData.price * 100) / 100,
-          gold:   Math.round(gData.price * 100) / 100,
+          silver:        Math.round(sData.price * 100) / 100,
+          gold:          Math.round(gData.price * 100) / 100,
+          change:        sData.ch        != null ? Math.round(sData.ch  * 100) / 100 : null,
+          changePercent: sData.chp       != null ? Math.round(sData.chp * 100) / 100 : null,
+          prevClose:     sData.prev_close_price != null ? Math.round(sData.prev_close_price * 100) / 100 : null,
           source: 'goldapi.io',
           ts: Date.now()
         });

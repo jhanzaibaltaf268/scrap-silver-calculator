@@ -11,10 +11,10 @@
   </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scrap Silver Calculator | Precise Melt Value Dashboard</title>
-  <meta name="description" content="Professional Scrap Silver Calculator. Get instant melt values for 925 sterling, 999 fine, and junk silver coins with live market spot prices and fintech precision.">
+  <title>Scrap Silver Calculator | Live Silver Price Today &amp; Melt Value</title>
+  <meta name="description" content="Free scrap silver calculator with today's live silver spot price. Get instant melt values for 925 sterling, 999 fine, 900 coin silver and all purities. Updated every hour.">
   <link rel="canonical" href="https://scrapsilvercalculater.com/">
-        <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/index/">
+  <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/index/">
   <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/index/">
   <link rel="alternate" hreflang="ar" href="https://scrapsilvercalculater.com/ar/index/">
   <link rel="alternate" hreflang="de" href="https://scrapsilvercalculater.com/de/index/">
@@ -28,11 +28,9 @@
   <link rel="alternate" hreflang="ur" href="https://scrapsilvercalculater.com/ur/index/">
   <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/index/">
   <script src="js/translations.js"></script>
-  
-  <!-- Critical CSS -->
+
   <link rel="stylesheet" href="css/style.css">
-  
-  <!-- Fonts -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -40,18 +38,136 @@
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-  <!-- Schema.org -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "Scrap Silver Calculator",
-    "description": "Professional-grade silver scrap calculator for real-time melt value estimation.",
+    "description": "Free scrap silver calculator with live silver spot prices. Calculate melt value for sterling, fine, and coin silver.",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "Any",
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
+
+  <style>
+    /* ---- Live Price Strip ---- */
+    .price-strip {
+      background: linear-gradient(135deg, var(--accent) 0%, #7c3aed 100%);
+      padding: 14px 0;
+      text-align: center;
+    }
+    .price-strip-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      font-size: var(--fs-sm);
+      color: #fff;
+    }
+    .ps-label { opacity: 0.85; font-weight: 600; text-transform: uppercase; letter-spacing: .05em; }
+    .ps-price { font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; font-weight: 700; }
+    .ps-change { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: .95rem; padding: 3px 10px; border-radius: 20px; }
+    .ps-change.up   { background: rgba(34,197,94,.2); color: #4ade80; }
+    .ps-change.down { background: rgba(239,68,68,.2);  color: #f87171; }
+    .ps-change.flat { background: rgba(255,255,255,.1); }
+    .ps-updated { opacity: .75; font-size: var(--fs-xs); }
+    .ps-divider { opacity: .4; }
+
+    /* ---- Purity Price Boxes ---- */
+    .purity-boxes { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-top: var(--space-xl); }
+    .purity-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg) var(--space-md);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s, border-color .2s;
+    }
+    .purity-box:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .purity-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
+    .purity-box.gold-accent::before { background: #FBBF24; }
+    .purity-box.coin-accent::before { background: #a78bfa; }
+    .pb-label  { font-size: var(--fs-xs); color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
+    .pb-purity { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--text-primary); line-height: 1; }
+    .pb-name   { font-size: var(--fs-sm); color: var(--text-secondary); margin: 4px 0 16px; }
+    .pb-price-row { display: flex; justify-content: space-around; border-top: 1px solid var(--border-subtle); padding-top: 14px; }
+    .pb-unit   { font-size: var(--fs-xs); color: var(--text-muted); margin-bottom: 3px; }
+    .pb-val    { font-family: 'JetBrains Mono', monospace; font-size: 1.05rem; font-weight: 700; color: var(--text-primary); }
+
+    /* ---- Prices Table Section ---- */
+    .prices-table-section { padding: var(--space-xl) 0; }
+    .prices-table-wrap { overflow-x: auto; border-radius: var(--radius-lg); border: 1px solid var(--border-subtle); margin-top: var(--space-lg); }
+    .prices-table { width: 100%; border-collapse: collapse; font-size: var(--fs-sm); }
+    .prices-table th {
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      font-weight: 600;
+      font-size: var(--fs-xs);
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      padding: 13px 18px;
+      text-align: right;
+      white-space: nowrap;
+    }
+    .prices-table th:first-child { text-align: left; }
+    .prices-table td {
+      padding: 13px 18px;
+      border-top: 1px solid var(--border-subtle);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .85rem;
+      text-align: right;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+    .prices-table td:first-child { text-align: left; font-family: inherit; font-size: var(--fs-sm); }
+    .prices-table tr:hover td { background: var(--bg-secondary); }
+    .prices-table .purity-tag { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--accent); font-size: .8rem; }
+    .prices-table .purity-name { color: var(--text-muted); font-size: .78rem; display: block; }
+    .pt-updated { text-align: right; font-size: var(--fs-xs); color: var(--text-muted); margin-top: var(--space-sm); }
+
+    /* ---- Educational Sections ---- */
+    .edu-section { border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-xl); margin-bottom: var(--space-xl); }
+    .edu-section:last-child { border-bottom: none; margin-bottom: 0; }
+    .edu-section h2 { font-size: var(--fs-xl); color: var(--text-primary); margin-bottom: var(--space-md); }
+    .edu-section h3 { font-size: var(--fs-base); font-weight: 700; color: var(--text-primary); margin: var(--space-lg) 0 var(--space-sm); }
+    .edu-section p  { color: var(--text-secondary); line-height: 1.75; margin-bottom: var(--space-md); }
+    .edu-section ul, .edu-section ol { color: var(--text-secondary); line-height: 1.75; padding-left: var(--space-lg); margin-bottom: var(--space-md); }
+    .edu-section li { margin-bottom: var(--space-xs); }
+    .edu-section strong { color: var(--text-primary); }
+
+    .hallmark-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-sm); margin: var(--space-md) 0; }
+    .hallmark-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-md); }
+    .hallmark-code { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1.1rem; color: var(--accent); }
+    .hallmark-desc { font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px; }
+
+    .test-steps { counter-reset: step; list-style: none; padding: 0; }
+    .test-steps li { counter-increment: step; padding: 12px 16px 12px 56px; position: relative; background: var(--bg-secondary); border-radius: var(--radius-md); margin-bottom: var(--space-sm); color: var(--text-secondary); }
+    .test-steps li::before { content: counter(step); position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 28px; height: 28px; background: var(--accent); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: var(--fs-xs); }
+
+    .sell-compare { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-md); margin: var(--space-md) 0; }
+    .sell-col { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-md); }
+    .sell-col h4 { font-size: var(--fs-sm); font-weight: 700; color: var(--text-primary); margin-bottom: var(--space-sm); }
+    .sell-col ul { font-size: var(--fs-sm); color: var(--text-secondary); padding-left: var(--space-md); margin: 0; }
+    .sell-col li { margin-bottom: 6px; }
+    .sell-col .pro { color: #4ade80; }
+    .sell-col .con { color: #f87171; }
+
+    @media (max-width: 640px) {
+      .purity-boxes { grid-template-columns: 1fr; }
+      .sell-compare { grid-template-columns: 1fr; }
+      .ps-divider { display: none; }
+      .price-strip-inner { gap: 10px; font-size: var(--fs-xs); }
+      .ps-price { font-size: 1.1rem; }
+      .hallmark-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 400px) {
+      .hallmark-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
   <div class="ambient"><i></i><i></i><i></i></div>
@@ -59,61 +175,80 @@
   <header id="site-header"></header>
 
   <main>
-    <section class="hero-compact">
-        <div class="container">
-            <div class="reveal">
-                <h1 class="hero-title">Scrap Silver <span class="accent-text">Calculator</span></h1>
-                <!-- Simplified: No subtitle above calculator as per user request -->
-            </div>
 
-            <!-- FINTECH DASHBOARD -->
-            <div class="dash reveal reveal-d1">
-                <div class="dtabs">
-                    <button class="dtab on" onclick="setMode('scrap',this)">SCRAP</button>
-                    <button class="dtab" onclick="setMode('coins',this)">COINS</button>
-                    <button class="dtab" onclick="setMode('bars',this)">BULLION</button>
-                </div>
-                <div class="dbody">
-                    <div class="d-ctrl">
-                        <div class="ctrl-group">
-                            <span class="fl">Weight</span>
-                            <input type="number" id="mw" class="w-input" value="100" oninput="calc()">
-                            <div class="unit-row">
-                                <span class="uchip on" onclick="setU('g',this)">GRAMS</span>
-                                <span class="uchip" onclick="setU('oz',this)">TROY OZ</span>
-                                <span class="uchip" onclick="setU('dwt',this)">DWT</span>
-                                <span class="uchip" onclick="setU('kg',this)">KG</span>
-                            </div>
-                        </div>
-                        <div class="ctrl-group">
-                            <span class="fl">Silver Purity</span>
-                            <div class="pgrid" id="pg"></div>
-                        </div>
-                    </div>
-                    <div class="d-res">
-                        <span class="fl">Estimated Melt Value</span>
-                        <div class="res-val" id="rv">$0.00</div>
-                        <div class="res-det" id="rd">...</div>
-                        <div class="acts">
-                            <button class="abtn" onclick="SiteComponents.copyText(document.getElementById('rv').innerText)">📋 COPY</button>
-                            <button class="abtn" onclick="window.print()">🖨️ PRINT</button>
-                            <button class="abtn" onclick="SiteComponents.share()">🔗 SHARE</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="dfoot">
-                    <div style="display:flex;align-items:center;gap:12px;">
-                        <span>SPOT: <span id="sv">$0.00</span></span>
-                        <span>RATIO: <span id="rr">...</span></span>
-                    </div>
-                    <div style="display:flex;align-items:center;gap:8px;">
-                        <div class="ldot"></div>
-                        <span>FINTECH PRECISION 5.0</span>
-                    </div>
-                </div>
-            </div>
+    <!-- ============================
+         HERO CALCULATOR DASHBOARD
+         ============================ -->
+    <section class="hero-compact">
+      <div class="container">
+        <div class="reveal">
+          <h1 class="hero-title">Scrap Silver <span class="accent-text">Calculator</span></h1>
         </div>
+
+        <div class="dash reveal reveal-d1">
+          <div class="dtabs">
+            <button class="dtab on" onclick="setMode('scrap',this)">SCRAP</button>
+            <button class="dtab" onclick="setMode('coins',this)">COINS</button>
+            <button class="dtab" onclick="setMode('bars',this)">BULLION</button>
+          </div>
+          <div class="dbody">
+            <div class="d-ctrl">
+              <div class="ctrl-group">
+                <span class="fl">Weight</span>
+                <input type="number" id="mw" class="w-input" value="100" oninput="calc()">
+                <div class="unit-row">
+                  <span class="uchip on" onclick="setU('g',this)">GRAMS</span>
+                  <span class="uchip" onclick="setU('oz',this)">TROY OZ</span>
+                  <span class="uchip" onclick="setU('dwt',this)">DWT</span>
+                  <span class="uchip" onclick="setU('kg',this)">KG</span>
+                </div>
+              </div>
+              <div class="ctrl-group">
+                <span class="fl">Silver Purity</span>
+                <div class="pgrid" id="pg"></div>
+              </div>
+            </div>
+            <div class="d-res">
+              <span class="fl">Estimated Melt Value</span>
+              <div class="res-val" id="rv">$0.00</div>
+              <div class="res-det" id="rd">...</div>
+              <div class="acts">
+                <button class="abtn" onclick="SiteComponents.copyText(document.getElementById('rv').innerText)">📋 COPY</button>
+                <button class="abtn" onclick="window.print()">🖨️ PRINT</button>
+                <button class="abtn" onclick="SiteComponents.share()">🔗 SHARE</button>
+              </div>
+            </div>
+          </div>
+          <div class="dfoot">
+            <div style="display:flex;align-items:center;gap:12px;">
+              <span>SPOT: <span id="sv">$0.00</span></span>
+              <span>RATIO: <span id="rr">...</span></span>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+              <div class="ldot"></div>
+              <span>LIVE MARKET DATA</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <!-- ============================
+         LIVE PRICE STRIP
+         ============================ -->
+    <div class="price-strip">
+      <div class="container">
+        <div class="price-strip-inner">
+          <span class="ps-label">Silver Spot:</span>
+          <span class="ps-price" id="strip-price">$—</span>
+          <span class="ps-change flat" id="strip-change">—</span>
+          <span class="ps-divider">|</span>
+          <span class="ps-updated" id="strip-updated">Loading...</span>
+          <span class="ps-divider">|</span>
+          <span class="ps-updated">Refreshes hourly</span>
+        </div>
+      </div>
+    </div>
 
     <!-- Trust Bar -->
     <section class="trust-bar-compact">
@@ -128,11 +263,84 @@
       </div>
     </section>
 
+    <!-- ============================
+         PURITY PRICE BOXES
+         ============================ -->
+    <section class="sec container">
+      <div class="reveal text-center">
+        <span class="sec-badge">💰 Today's Silver Prices by Purity</span>
+        <h2 class="sec-title">Live Silver Price Per Ounce &amp; Per Gram</h2>
+        <p class="sec-sub">Spot prices are for 999 fine silver. All other values are calculated from live market data.</p>
+      </div>
+
+      <div class="purity-boxes reveal reveal-d1">
+        <div class="purity-box">
+          <div class="pb-label">Fine Silver</div>
+          <div class="pb-purity">999</div>
+          <div class="pb-name">99.9% Pure Silver</div>
+          <div class="pb-price-row">
+            <div><div class="pb-unit">Per Troy Oz</div><div class="pb-val" id="pb-999-oz">$—</div></div>
+            <div><div class="pb-unit">Per Gram</div><div class="pb-val" id="pb-999-g">$—</div></div>
+            <div><div class="pb-unit">Per DWT</div><div class="pb-val" id="pb-999-dwt">$—</div></div>
+          </div>
+        </div>
+        <div class="purity-box gold-accent">
+          <div class="pb-label">Sterling Silver</div>
+          <div class="pb-purity">925</div>
+          <div class="pb-name">92.5% Silver Alloy</div>
+          <div class="pb-price-row">
+            <div><div class="pb-unit">Per Troy Oz</div><div class="pb-val" id="pb-925-oz">$—</div></div>
+            <div><div class="pb-unit">Per Gram</div><div class="pb-val" id="pb-925-g">$—</div></div>
+            <div><div class="pb-unit">Per DWT</div><div class="pb-val" id="pb-925-dwt">$—</div></div>
+          </div>
+        </div>
+        <div class="purity-box coin-accent">
+          <div class="pb-label">Coin Silver</div>
+          <div class="pb-purity">900</div>
+          <div class="pb-name">90% Silver (Pre-1965 US)</div>
+          <div class="pb-price-row">
+            <div><div class="pb-unit">Per Troy Oz</div><div class="pb-val" id="pb-900-oz">$—</div></div>
+            <div><div class="pb-unit">Per Gram</div><div class="pb-val" id="pb-900-g">$—</div></div>
+            <div><div class="pb-unit">Per DWT</div><div class="pb-val" id="pb-900-dwt">$—</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         TODAY'S SCRAP SILVER PRICES TABLE
+         ============================ -->
+    <section class="sec container">
+      <div class="reveal text-center">
+        <span class="sec-badge">📊 Full Price Table</span>
+        <h2 class="sec-title">Today's Scrap Silver Prices — All Purities</h2>
+        <p class="sec-sub">All values calculated from live silver spot price. Prices shown are <strong>melt values</strong> — what your silver is worth as metal.</p>
+      </div>
+
+      <div class="prices-table-wrap reveal reveal-d1">
+        <table class="prices-table" aria-label="Today's scrap silver prices by purity">
+          <thead>
+            <tr>
+              <th>Purity</th>
+              <th>Per Troy Oz</th>
+              <th>Per Gram</th>
+              <th>Per Pennyweight</th>
+              <th>Per Kilogram</th>
+            </tr>
+          </thead>
+          <tbody id="prices-tbody">
+            <tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text-muted);">Loading live prices...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="pt-updated" id="table-updated"></p>
+    </section>
+
     <!-- All Silver Calculators -->
     <section class="sec container" id="calculators">
       <div class="reveal text-center">
         <span class="sec-badge">🧮 Our Calculators</span>
-        <h2 class="sec-title">Free Silver Melt Value & Purity Calculators</h2>
+        <h2 class="sec-title">Free Silver Melt Value &amp; Purity Calculators</h2>
         <p class="sec-sub">Every silver calculator you need — for scrap, coins, jewelry, bars, and more.</p>
       </div>
 
@@ -163,8 +371,8 @@
         </a>
         <a href="gold-and-silver-calculator.html" class="ccard">
           <div class="ci">🥇</div>
-          <h3>Gold & Silver</h3>
-          <p>Calculate gold and silver scrap mixed together and view the live ratio.</p>
+          <h3>Gold &amp; Silver</h3>
+          <p>Calculate gold and silver scrap mixed together and view the live gold-to-silver ratio.</p>
           <div class="arr">Calculate →</div>
         </a>
         <a href="silver-bar-value-calculator.html" class="ccard">
@@ -192,7 +400,7 @@
     <section class="sec container" id="tools">
       <div class="reveal text-center">
         <span class="sec-badge">🛠️ Powerful Tools</span>
-        <h2 class="sec-title">How These Silver Tools Help You</h2>
+        <h2 class="sec-title">More Free Silver Tools</h2>
         <p class="sec-sub">Save time, compare prices, and make better selling decisions.</p>
       </div>
 
@@ -228,54 +436,228 @@
     <section class="sec container" style="background: var(--bg-secondary); border-radius: var(--radius-lg);">
       <div class="reveal text-center">
         <span class="sec-badge">📝 Simple Process</span>
-        <h2 class="sec-title">How It Works — 3 Simple Steps</h2>
+        <h2 class="sec-title">How to Calculate Scrap Silver Value — 3 Steps</h2>
       </div>
 
       <div class="cgrid reveal reveal-d1" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
         <div class="ccard" style="text-align: center;">
           <div class="ci" style="background: var(--accent); color: #fff; width: 40px; height: 40px; border-radius: 50%; margin: 0 auto var(--space-md); line-height: 40px;">1</div>
           <h4>Weigh Your Silver</h4>
-          <p>Use a scale to weigh your silver in grams, troy ounces, or any unit.</p>
+          <p>Use a digital scale to weigh your silver in grams, troy ounces, or any unit. Kitchen scales work for larger items; a jeweler's scale is best for accuracy.</p>
         </div>
         <div class="ccard" style="text-align: center;">
           <div class="ci" style="background: var(--accent); color: #fff; width: 40px; height: 40px; border-radius: 50%; margin: 0 auto var(--space-md); line-height: 40px;">2</div>
-          <h4>Select Purity</h4>
-          <p>Choose the purity — 925 for sterling, 900 for coin silver, or 999 for fine silver.</p>
+          <h4>Identify the Purity</h4>
+          <p>Look for a hallmark stamp — "925" for sterling, "999" for fine silver, "900" for coin silver. No stamp? Use our <a href="silver-purity-chart.html">purity chart</a> to identify it.</p>
         </div>
         <div class="ccard" style="text-align: center;">
           <div class="ci" style="background: var(--accent); color: #fff; width: 40px; height: 40px; border-radius: 50%; margin: 0 auto var(--space-md); line-height: 40px;">3</div>
-          <h4>Get Instant Value</h4>
-          <p>See the melt value based on live silver spot prices updated in real time.</p>
+          <h4>Get Instant Melt Value</h4>
+          <p>Enter the weight and select the purity above. The calculator instantly shows the melt value based on today's live silver spot price.</p>
         </div>
       </div>
     </section>
 
-    <!-- Deep SEO Content -->
+    <!-- ============================
+         6 EDUCATIONAL SECTIONS (beating competitor)
+         ============================ -->
     <section class="sec container container-tight" id="guide">
       <div class="reveal">
-        <span class="sec-badge">📖 Learn</span>
-        <h2 class="sec-title">What Is a Scrap Silver Calculator?</h2>
+        <span class="sec-badge">📖 Expert Guide</span>
+        <h2 class="sec-title" style="font-size:var(--fs-3xl)">The Complete Guide to Scrap Silver Valuation</h2>
       </div>
-      
+
       <div class="content-body reveal reveal-d1">
-        <p>A scrap silver calculator determines the <strong>intrinsic melt value</strong> of a silver item — not its retail price or sentimental value. It answers: if you melted this item down to pure silver today, what would that metal be worth? Our engine utilizes real-time market data to provide the same valuation used by professional refineries.</p>
-        
-        <div class="formula-box">Melt Value = (Weight × Purity) ÷ 31.1035 × Spot Price</div>
-        
-        <p>Every calculation is performed with 4-point decimal precision — the same methodology used by major precious metals refineries and commodity trading desks worldwide.</p>
 
-        <h3>Understanding Silver Purity marks</h3>
-        <p>Look for <strong>"925"</strong> (Sterling), <strong>"999"</strong> (Fine Silver), or <strong>"900"</strong> (Coin Silver). These tell you the percentage of silver in the alloy. Items marked "EPNS" or "Silver Plate" contain only a microscopic layer of silver — these have negligible scrap value.</p>
+        <!-- SECTION 1: How to Calculate -->
+        <div class="edu-section">
+          <h2>1. How to Calculate the Value of Scrap Silver</h2>
+          <p>A scrap silver calculator determines the <strong>intrinsic melt value</strong> of a silver item — not its retail, numismatic, or sentimental value. It answers one question: if you melted this item down to pure silver today, what would that metal be worth on the open market?</p>
 
-        <h3>When to Sell Your Silver</h3>
-        <p>The <strong>gold-to-silver ratio</strong> shown in our dashboard is a key indicator. When it exceeds 80, silver is historically undervalued. When it drops below 60, silver may be relatively expensive. Most reputable buyers pay between 70% and 95% of the values shown here.</p>
+          <div class="formula-box">Melt Value = (Weight in Troy Oz × Purity %) × Spot Price Per Troy Oz</div>
+
+          <p>For example, a 100-gram sterling silver necklace (92.5% purity) at a silver spot price of $30.00/oz:</p>
+          <ul>
+            <li>Convert grams to troy oz: 100 ÷ 31.1035 = <strong>3.215 troy oz</strong></li>
+            <li>Multiply by purity: 3.215 × 0.925 = <strong>2.974 oz pure silver</strong></li>
+            <li>Multiply by spot price: 2.974 × $30.00 = <strong>$89.21 melt value</strong></li>
+          </ul>
+          <p>Our calculator handles all of these conversions automatically with 4-decimal precision — the same methodology used by professional refineries and precious metals dealers worldwide.</p>
+
+          <h3>What Affects Your Scrap Silver's Value?</h3>
+          <ul>
+            <li><strong>Silver spot price:</strong> The global market price for 999 fine silver at that moment. It fluctuates throughout the trading day.</li>
+            <li><strong>Purity / fineness:</strong> Higher purity = more silver per gram = higher value. 999 is worth more per gram than 925, which is worth more than 900.</li>
+            <li><strong>Weight:</strong> Measured in troy ounces (31.1035 g each), not standard ounces. Using the wrong measurement is a very common and costly mistake.</li>
+            <li><strong>Dealer spread:</strong> Dealers pay 70–95% of melt value. Refiners typically pay the most; pawn shops the least.</li>
+          </ul>
+        </div>
+
+        <!-- SECTION 2: Sterling vs Fine vs Coin -->
+        <div class="edu-section">
+          <h2>2. Sterling Silver vs Fine Silver vs Coin Silver — What's the Difference?</h2>
+          <p>Not all silver is the same. The three most common types you'll encounter when scrapping are <strong>fine silver (999)</strong>, <strong>sterling silver (925)</strong>, and <strong>coin silver (900)</strong>. Here's how they compare:</p>
+
+          <h3>999 Fine Silver</h3>
+          <p>The purest commercially available silver — 99.9% silver with trace impurities. Found in modern bullion coins (American Silver Eagles, Canadian Maple Leafs), bars, and investment-grade rounds. Commands the highest melt value per ounce and is the benchmark for all other purities.</p>
+
+          <h3>925 Sterling Silver</h3>
+          <p>The most common silver alloy — 92.5% silver alloyed with 7.5% copper (occasionally other metals) to increase hardness and durability. Sterling is used for jewelry, flatware, holloware, and many decorative objects. Look for "925", "STERLING", or "STG" stamps.</p>
+
+          <h3>900 Coin Silver</h3>
+          <p>A 90% silver / 10% copper alloy used in US coinage from the mid-1800s through 1964. Pre-1964 dimes, quarters, half dollars, and dollars are 90% silver. Also called "junk silver" — a misleading name, since these coins are popular with investors for their predictable silver content.</p>
+
+          <h3>Other Purities You May Encounter</h3>
+          <ul>
+            <li><strong>958 Britannia:</strong> 95.8% silver. Required for Britannia Silver standard in the UK.</li>
+            <li><strong>835:</strong> 83.5% silver. Common in European jewelry and flatware (especially German and Scandinavian).</li>
+            <li><strong>800:</strong> 80% silver. Used extensively in continental European silverware through the early 20th century.</li>
+            <li><strong>720:</strong> 72% silver. Found in older Swiss and Austrian pieces.</li>
+          </ul>
+          <p>Items marked <strong>EPNS</strong> (Electroplated Nickel Silver), <strong>"Silver Plate"</strong>, or <strong>"Sheffield Plate"</strong> contain only a thin coating of silver over base metal. These have negligible scrap value — typically less than a few dollars regardless of weight.</p>
+        </div>
+
+        <!-- SECTION 3: Hallmarks -->
+        <div class="edu-section">
+          <h2>3. Common Silver Hallmarks and What They Mean</h2>
+          <p>Hallmarks are quality control stamps applied by manufacturers, assay offices, and regulatory bodies to certify the metal content of silver items. Knowing how to read them is essential for accurate valuation.</p>
+
+          <h3>United States Hallmarks</h3>
+          <div class="hallmark-grid">
+            <div class="hallmark-card"><div class="hallmark-code">925</div><div class="hallmark-desc">Sterling Silver (92.5%)</div></div>
+            <div class="hallmark-card"><div class="hallmark-code">STERLING</div><div class="hallmark-desc">Sterling Silver — US standard</div></div>
+            <div class="hallmark-card"><div class="hallmark-code">999</div><div class="hallmark-desc">Fine Silver (99.9%)</div></div>
+            <div class="hallmark-card"><div class="hallmark-code">COIN</div><div class="hallmark-desc">Coin Silver (90%)</div></div>
+          </div>
+
+          <h3>United Kingdom Hallmarks</h3>
+          <p>UK silver must be assayed by an official Assay Office (London, Birmingham, Edinburgh, or Sheffield). British hallmarks are among the most detailed in the world and include the maker's mark, standard mark, Assay Office mark, and date letter.</p>
+          <div class="hallmark-grid">
+            <div class="hallmark-card"><div class="hallmark-code">Lion Passant</div><div class="hallmark-desc">British Sterling 925 — standard guarantee</div></div>
+            <div class="hallmark-card"><div class="hallmark-code">958</div><div class="hallmark-desc">Britannia Standard (95.8%)</div></div>
+            <div class="hallmark-card"><div class="hallmark-code">800</div><div class="hallmark-desc">Lower standard, older British pieces</div></div>
+          </div>
+
+          <h3>European &amp; International Hallmarks</h3>
+          <div class="hallmark-grid">
+            <div class="hallmark-card"><div class="hallmark-code">800</div><div class="hallmark-desc">Germany, Italy, France — 80% silver alloy</div></div>
+            <div class="hallmark-card"><div class="hallmark-code">835</div><div class="hallmark-desc">Netherlands, Germany, Scandinavia — 83.5%</div></div>
+            <div class="hallmark-card"><div class="hallmark-code">84 Zolotnik</div><div class="hallmark-desc">Russian Imperial (87.5% silver)</div></div>
+            <div class="hallmark-card"><div class="hallmark-code">875</div><div class="hallmark-desc">Eastern Europe, former Soviet states</div></div>
+            <div class="hallmark-card"><div class="hallmark-code">950</div><div class="hallmark-desc">French Minerva / premier titre (95%)</div></div>
+            <div class="hallmark-card"><div class="hallmark-code">FS / IS</div><div class="hallmark-desc">Fine Silver / Italian Silver — check the number</div></div>
+          </div>
+
+          <h3>How to Find and Read a Hallmark</h3>
+          <p>On jewelry, look inside rings, on the clasp of necklaces or bracelets, and at the back of pendants. On flatware, check the back near the handle. Use a loupe (10x magnifier) — many hallmarks are tiny. If you can't find a stamp, the item may be silver-plated or from a period/country that didn't require marking.</p>
+        </div>
+
+        <!-- SECTION 4: Troy Ounces -->
+        <div class="edu-section">
+          <h2>4. Troy Ounces vs Regular Ounces — Why It Matters for Silver</h2>
+          <p>One of the most common (and expensive) mistakes when calculating silver value is confusing <strong>troy ounces</strong> with <strong>standard (avoirdupois) ounces</strong>. These are two different units of measurement, and using the wrong one will give you incorrect results every time.</p>
+
+          <h3>The Key Difference</h3>
+          <ul>
+            <li><strong>1 Troy Ounce (ozt)</strong> = <strong>31.1035 grams</strong> — used for all precious metals (silver, gold, platinum)</li>
+            <li><strong>1 Standard Ounce (oz)</strong> = <strong>28.3495 grams</strong> — used for everyday goods (food, groceries, shipping)</li>
+          </ul>
+          <p>A troy ounce is approximately <strong>10% heavier</strong> than a regular ounce. If silver is priced at $30.00 per troy ounce and you accidentally calculate using standard ounces, you'll underestimate the value by about 9.7% — a meaningful error on any significant quantity.</p>
+
+          <h3>Other Units Used for Silver</h3>
+          <ul>
+            <li><strong>Pennyweight (dwt):</strong> 1 troy oz = 20 pennyweights. Commonly used by jewelers. 1 dwt = 1.5552 grams.</li>
+            <li><strong>Gram (g):</strong> The most precise and universally understood unit. Best for weighing jewelry and small items.</li>
+            <li><strong>Kilogram (kg):</strong> Used for large quantities of scrap silver. 1 kg = 32.1507 troy ounces.</li>
+            <li><strong>Tola:</strong> Traditional South Asian unit. 1 tola = 11.6638 grams = 0.375 troy oz. Still used in India, Pakistan, and parts of the Middle East.</li>
+          </ul>
+          <p>Our calculator accepts all major weight units and converts automatically — just select the unit your scale uses.</p>
+        </div>
+
+        <!-- SECTION 5: How to Test Silver -->
+        <div class="edu-section">
+          <h2>5. How to Test If Your Silver Is Real</h2>
+          <p>Before calculating a scrap value, you need to confirm that your item is actually silver and not silver-plated, nickel silver, or a base-metal lookalike. Here are five methods from easiest to most accurate:</p>
+
+          <ol class="test-steps">
+            <li><strong>Look for a Hallmark:</strong> The fastest method. Genuine silver pieces are required to be hallmarked in most countries. Find "925", "STERLING", "999", or "800" to confirm silver content instantly.</li>
+            <li><strong>The Magnet Test:</strong> Silver is not magnetic. Hold a strong neodymium magnet near the item. If it's attracted, the item is not solid silver (though this doesn't rule out plating). If it has no reaction, it passes — but this isn't conclusive alone.</li>
+            <li><strong>The Ice Test:</strong> Silver has the highest thermal conductivity of any element. Place an ice cube on the silver item — it should melt noticeably faster than on a glass surface or other metal. Not definitive but a fun quick check.</li>
+            <li><strong>The Bleach Test:</strong> Apply one drop of household bleach to a hidden spot. Genuine silver will immediately tarnish and darken. Rinse it off quickly. Non-silver items or plated items won't react the same way. Use with caution — bleach can damage finishes.</li>
+            <li><strong>Acid Testing (Most Reliable DIY):</strong> Silver testing acid kits (available at jeweler supply stores for $10–20) apply nitric acid to a scratch on a test stone. The color of the reaction indicates the purity level. 925 sterling produces a cream/off-white reaction; fine silver produces a brighter color. Follow the kit instructions carefully and use gloves.</li>
+            <li><strong>XRF Analysis (Gold Standard):</strong> X-Ray Fluorescence (XRF) guns used by professional refiners and dealers give an instant, precise, non-destructive readout of exact metal composition. Many dealers offer free testing. This is the only way to be 100% certain of purity without melting the item.</li>
+          </ol>
+
+          <p><strong>Bottom line:</strong> For anything with a clear hallmark from a known maker or government mint, you can trust it. For unmarked, foreign, or suspicious items — acid test or visit a local refiner before assuming value.</p>
+        </div>
+
+        <!-- SECTION 6: Tips for Selling -->
+        <div class="edu-section">
+          <h2>6. Tips for Selling Scrap Silver — Online vs Local Buyers</h2>
+          <p>You've calculated your silver's melt value. Now the question is: who will pay the most? The answer depends on your quantity, location, and how quickly you need the money. Here's a full breakdown of every option.</p>
+
+          <div class="sell-compare">
+            <div class="sell-col">
+              <h4>Online Silver Refiners</h4>
+              <ul>
+                <li class="pro">✅ Typically pay 90–98% of melt value</li>
+                <li class="pro">✅ Accept all purities and quantities</li>
+                <li class="pro">✅ Free shipping kits usually provided</li>
+                <li class="con">❌ Takes 1–3 weeks to receive payment</li>
+                <li class="con">❌ Must ship your silver (some risk)</li>
+                <li class="con">❌ Minimum quantities often required</li>
+              </ul>
+            </div>
+            <div class="sell-col">
+              <h4>Local Coin Dealers</h4>
+              <ul>
+                <li class="pro">✅ Immediate cash payment</li>
+                <li class="pro">✅ No shipping required</li>
+                <li class="pro">✅ Can negotiate in person</li>
+                <li class="con">❌ Typically pay 70–85% of melt value</li>
+                <li class="con">❌ May not accept all types of silver</li>
+                <li class="con">❌ Hours/location may be inconvenient</li>
+              </ul>
+            </div>
+            <div class="sell-col">
+              <h4>Pawn Shops</h4>
+              <ul>
+                <li class="pro">✅ Fast, same-day cash</li>
+                <li class="pro">✅ No minimum quantity</li>
+                <li class="con">❌ Usually only offer 50–70% of melt value</li>
+                <li class="con">❌ May use incorrect scales or methods</li>
+                <li class="con">❌ Not ideal for large quantities</li>
+              </ul>
+            </div>
+            <div class="sell-col">
+              <h4>eBay / Peer-to-Peer</h4>
+              <ul>
+                <li class="pro">✅ Can fetch above melt value for collectibles</li>
+                <li class="pro">✅ Sterling flatware sets sell well</li>
+                <li class="con">❌ Fees eat 10–15% of the sale price</li>
+                <li class="con">❌ Time-consuming to list and ship</li>
+                <li class="con">❌ Risk of disputes / scam buyers</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3>Before You Sell: 5 Key Tips</h3>
+          <ol>
+            <li><strong>Get multiple quotes.</strong> Always visit or request quotes from at least 3 buyers. Prices vary widely — we've seen the same silver quoted at 65% and 92% of melt value at different dealers.</li>
+            <li><strong>Know your melt value first.</strong> Use our calculator before you walk in the door. Buyers who know you understand the value will often offer more.</li>
+            <li><strong>Separate your silver by purity.</strong> Don't mix 999 fine with 925 sterling — dealers may pay you at the lower rate for the entire lot if everything is mixed together.</li>
+            <li><strong>Weigh it yourself.</strong> Bring your own scale or verify the dealer's scale with a reference weight. Scale manipulation is unfortunately not unheard of.</li>
+            <li><strong>Watch the timing.</strong> The gold-to-silver ratio shown in our calculator is a useful indicator. When the ratio exceeds 80, silver is historically undervalued — it may be worth waiting. When it's below 60, silver is relatively expensive — a potentially good time to sell.</li>
+          </ol>
+        </div>
+
       </div>
     </section>
 
     <!-- Topic Scroller -->
     <section class="sec container">
       <div class="reveal">
-        <h3 class="text-center" style="font-size:var(--fs-lg);margin-bottom:var(--space-md);">Silver & Precious Metals Topics</h3>
+        <h3 class="text-center" style="font-size:var(--fs-lg);margin-bottom:var(--space-md);">Silver &amp; Precious Metals Topics</h3>
         <div class="entity-scroller" style="display: flex; gap: var(--space-sm); overflow-x: auto; padding-bottom: var(--space-md);">
           <span class="entity-pill" style="flex-shrink: 0; padding: 6px 16px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: var(--fs-xs);">Silver (Ag)</span>
           <span class="entity-pill" style="flex-shrink: 0; padding: 6px 16px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: var(--fs-xs);">Troy Ounce</span>
@@ -284,56 +666,71 @@
           <span class="entity-pill" style="flex-shrink: 0; padding: 6px 16px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: var(--fs-xs);">Melt Value</span>
           <span class="entity-pill" style="flex-shrink: 0; padding: 6px 16px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: var(--fs-xs);">Bullion</span>
           <span class="entity-pill" style="flex-shrink: 0; padding: 6px 16px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: var(--fs-xs);">Hallmarks</span>
+          <span class="entity-pill" style="flex-shrink: 0; padding: 6px 16px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: var(--fs-xs);">Pennyweight (DWT)</span>
+          <span class="entity-pill" style="flex-shrink: 0; padding: 6px 16px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: var(--fs-xs);">Coin Silver 900</span>
+          <span class="entity-pill" style="flex-shrink: 0; padding: 6px 16px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: var(--fs-xs);">Fine Silver 999</span>
+          <span class="entity-pill" style="flex-shrink: 0; padding: 6px 16px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: var(--fs-xs);">Acid Test</span>
+          <span class="entity-pill" style="flex-shrink: 0; padding: 6px 16px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: var(--fs-xs);">Gold-Silver Ratio</span>
+          <span class="entity-pill" style="flex-shrink: 0; padding: 6px 16px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: var(--fs-xs);">Junk Silver</span>
+          <span class="entity-pill" style="flex-shrink: 0; padding: 6px 16px; background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: 20px; font-size: var(--fs-xs);">Scrap Dealer</span>
         </div>
       </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ (10 items — more than competitor's 6) -->
     <section class="sec container container-tight" id="faq" style="background: var(--bg-secondary); border-radius: var(--radius-lg);">
       <div class="reveal text-center">
         <h2 class="sec-title">Frequently Asked Questions</h2>
-        <p class="sec-sub ma">Everything you need to know about silver valuation.</p>
+        <p class="sec-sub ma">Everything you need to know about scrap silver valuation.</p>
       </div>
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-question">How do I calculate the value of scrap silver? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Multiply the item's weight in troy ounces by its purity (decimal) and the current spot price. Our calculator handles the unit conversions and market updates automatically.</p></div>
+          <div class="faq-answer"><p>Multiply the item's weight in troy ounces by its purity (as a decimal) and the current spot price. Formula: <strong>(Weight in troy oz × Purity) × Spot Price</strong>. Our calculator handles all unit conversions and live market data automatically — just enter weight and select purity.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">What is melt value vs spot price? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Spot price is the market price for pure 999 silver. Melt value is what your specific item is worth based on its purity. For example, 925 sterling is worth 92.5% of the spot price per ounce.</p></div>
+          <div class="faq-answer"><p>Spot price is the market price for 100% pure (999) silver on global commodity markets. Melt value is what your specific item is worth based on its actual purity. A 925 sterling item is worth 92.5% of the spot price per ounce. A 900 coin silver item is worth 90% of spot. Melt value = spot × purity.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">How much will a dealer pay me for scrap silver? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Most professional buyers pay 70–95% of melt value. Online silver refiners often offer the highest payouts, while local pawn shops may offer less due to higher overhead.</p></div>
+          <div class="faq-answer"><p>Most buyers pay <strong>70–95% of melt value</strong>. Online silver refiners typically offer the highest payouts (90–98%). Local coin dealers generally pay 75–88%. Pawn shops usually offer the lowest (50–70%). Always get at least 3 quotes before selling.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">How can I tell if my silver is real? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Look for hallmarks (925, STERLING, 900). You can also perform a magnet test (silver is not magnetic) or a "ping" test. For absolute certainty, an acid test or XRF analysis is required.</p></div>
+          <div class="faq-answer"><p>Start by looking for hallmarks: "925", "STERLING", "999", or "800". Silver is not magnetic (try a strong magnet). For certainty, use a silver acid test kit ($10–20 at jeweler supply stores) or visit a local refiner for free XRF testing. Silver-plated items are marked "EPNS" or "Silver Plate" and have very little scrap value.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">What is a troy ounce? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>A troy ounce (31.1035 grams) is the standard unit of measurement for precious metals. It is approximately 10% heavier than a standard "avoirdupois" ounce (28.35 grams).</p></div>
+          <button class="faq-question">What is a troy ounce and why does it matter? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>A troy ounce (31.1035 grams) is the standard measurement unit for precious metals globally. It's about 10% heavier than a standard "avoirdupois" ounce (28.35 grams). All silver spot prices are quoted per troy ounce. If you calculate using regular ounces instead, you'll undervalue your silver by nearly 10% — a significant error on larger quantities.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">Is junk silver the same as scrap silver? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Not exactly. Junk silver = pre-1965 US coins (90% silver, no collector premium). Scrap silver = broader term for broken jewelry, flatware, dental silver sold for its metal.</p></div>
+          <div class="faq-answer"><p>Not exactly. <strong>Junk silver</strong> specifically means pre-1965 US circulated coins (dimes, quarters, halves, dollars) that are 90% silver with no collector premium — they trade purely for their metal content. <strong>Scrap silver</strong> is a broader term covering broken jewelry, flatware, dental silver, and any silver item sold for its metal content rather than its form.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">What is the best weight unit to use — grams or troy ounces? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Use whatever your scale shows — the calculator converts for you. Grams are easiest for home scales. Avoid confusing standard ounces (28.35 g) with troy ounces (31.10 g), which is a very common and costly mistake.</p></div>
+          <div class="faq-answer"><p>Use whatever your scale displays — our calculator converts all units automatically. Grams are easiest for household digital scales. Troy ounces are the industry standard. <strong>Never enter a weight in standard ounces</strong> when the calculator expects troy ounces — the 10% difference adds up quickly. When in doubt, use grams, as it's unambiguous.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">Does silver-plated jewelry have any scrap value? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Very little. Silver-plated items have only a thin coating of silver over base metal. Look for stamps like EPNS or Silver Plate to identify plated items — only solid sterling or fine silver has meaningful scrap value.</p></div>
+          <div class="faq-answer"><p>Very little to none. Silver-plated items have only a thin molecular coating of silver over a base metal (usually copper, nickel, or brass). Look for stamps like "EPNS", "EP", "Silver Plate", "Sheffield Plate", or "Silver on Copper" to identify plated items. Only solid sterling (925) or fine silver (999) has meaningful scrap value.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">How does the gold-to-silver ratio affect my decision to sell? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>The gold-to-silver ratio tells you how many ounces of silver it takes to buy one ounce of gold. When the ratio rises above 80, silver is relatively cheap; when it falls below 60, silver is relatively expensive.</p></div>
+          <button class="faq-question">How does the gold-to-silver ratio affect when I should sell? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>The gold-to-silver ratio tells you how many ounces of silver it takes to buy one ounce of gold. When the ratio rises <strong>above 80</strong>, silver is historically undervalued relative to gold — many investors hold silver and wait. When it falls <strong>below 60</strong>, silver is relatively expensive and may be a good time to sell. The ratio is shown live in our dashboard above.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">Can I calculate silver value in other currencies? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Yes. Our silver price in all currencies page shows live silver prices in USD, EUR, GBP, INR, PKR, AUD, CAD, and more.</p></div>
+          <div class="faq-answer"><p>Yes. Our <a href="silver-price-all-currencies.html">silver price in all currencies</a> page shows live silver prices in USD, EUR, GBP, INR, PKR, AUD, CAD, AED, SAR, JPY, CHF, and more. All currency conversions use live exchange rates. The main calculator also supports multi-currency output.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">How often is the silver spot price updated on this site? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Our server fetches the live silver spot price from multiple market data sources every hour. The price is then served via Vercel's global CDN so every visitor sees the same up-to-date price without additional API calls. The last update time is shown in the price strip at the top of this page.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">What is the difference between 999, 925, 900, 835, and 800 silver? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>These numbers represent the silver content in parts per thousand: <strong>999</strong> = 99.9% pure (fine silver), <strong>925</strong> = 92.5% (sterling), <strong>900</strong> = 90% (US coin silver), <strong>835</strong> = 83.5% (European standard, common in German/Scandinavian flatware), <strong>800</strong> = 80% (continental European). Higher numbers mean more silver per gram and therefore a higher melt value.</p></div>
         </div>
       </div>
     </section>
@@ -347,82 +744,166 @@
   <script src="js/calculator.js"></script>
   <script src="js/components.js"></script>
   <script>
-    // DASHBOARD LOGIC
+    // PURITY DEFINITIONS (for table + boxes)
+    const PURITIES = [
+      { code: '999', name: 'Fine Silver',            purity: 0.999 },
+      { code: '958', name: 'Britannia Silver',        purity: 0.958 },
+      { code: '925', name: 'Sterling Silver',         purity: 0.925 },
+      { code: '900', name: 'Coin Silver (90%)',       purity: 0.900 },
+      { code: '835', name: 'European Silver (835)',   purity: 0.835 },
+      { code: '800', name: 'European Silver (800)',   purity: 0.800 },
+    ];
+
+    // DASHBOARD STATE
     const S = { mode: 'scrap', unit: 'g', purity: 0.925, spot: 0, gold: 0 };
     const P = [
-        {k:'999',v:0.999,l:'Fine'},
-        {k:'958',v:0.958,l:'Britannia'},
-        {k:'925',v:0.925,l:'Sterling'},
-        {k:'900',v:0.900,l:'Coin'},
-        {k:'835',v:0.835,l:'European'},
-        {k:'800',v:0.800,l:'European'}
+      {k:'999',v:0.999,l:'Fine'},
+      {k:'958',v:0.958,l:'Britannia'},
+      {k:'925',v:0.925,l:'Sterling'},
+      {k:'900',v:0.900,l:'Coin'},
+      {k:'835',v:0.835,l:'European'},
+      {k:'800',v:0.800,l:'European'}
     ];
 
     function initDash() {
-        const pg = document.getElementById('pg');
-        pg.innerHTML = P.map(p => `
-            <div class="porb ${p.v===S.purity?'on':''}" onclick="setP(${p.v},this)">
-                <span class="pv">${p.k}</span>
-                <span class="pl">${p.l}</span>
-            </div>
-        `).join('');
-        SiteComponents.renderHeader('site-header');
-        SiteComponents.renderFooter('site-footer');
+      const pg = document.getElementById('pg');
+      pg.innerHTML = P.map(p => `
+        <div class="porb ${p.v===S.purity?'on':''}" onclick="setP(${p.v},this)">
+          <span class="pv">${p.k}</span>
+          <span class="pl">${p.l}</span>
+        </div>
+      `).join('');
+      SiteComponents.renderHeader('site-header');
+      SiteComponents.renderFooter('site-footer');
     }
 
     function setMode(m, el) {
-        S.mode = m;
-        document.querySelectorAll('.dtab').forEach(t => t.classList.remove('on'));
-        el.classList.add('on');
-        if(m==='coins') { S.purity = 0.900; initDash(); }
-        if(m==='bars') { S.purity = 0.999; initDash(); }
-        calc();
+      S.mode = m;
+      document.querySelectorAll('.dtab').forEach(t => t.classList.remove('on'));
+      el.classList.add('on');
+      if(m==='coins') { S.purity = 0.900; initDash(); }
+      if(m==='bars')  { S.purity = 0.999; initDash(); }
+      calc();
     }
 
     function setU(u, el) {
-        S.unit = u;
-        document.querySelectorAll('.uchip').forEach(c => c.classList.remove('on'));
-        el.classList.add('on');
-        calc();
+      S.unit = u;
+      document.querySelectorAll('.uchip').forEach(c => c.classList.remove('on'));
+      el.classList.add('on');
+      calc();
     }
 
     function setP(v, el) {
-        S.purity = v;
-        document.querySelectorAll('.porb').forEach(o => o.classList.remove('on'));
-        el.classList.add('on');
-        calc();
+      S.purity = v;
+      document.querySelectorAll('.porb').forEach(o => o.classList.remove('on'));
+      el.classList.add('on');
+      calc();
     }
 
     function calc() {
-        const val = parseFloat(document.getElementById('mw').value) || 0;
-        const spot = SilverPrice.getPrice();
-        const gold = SilverPrice.getGoldPrice() || 2400;
-        
-        const grams = SilverCalc.toGrams(val, S.unit);
-        const res = SilverCalc.meltValue(grams, S.purity, spot);
-        
-        document.getElementById('rv').textContent = SilverCalc.formatCurrency(res.value);
-        document.getElementById('rd').textContent = `${res.silverContentGrams}g pure · ${res.silverContentOz} oz · ${(S.purity*100).toFixed(1)}%`;
-        document.getElementById('sv').textContent = `$${spot.toFixed(2)}`;
-        document.getElementById('rr').textContent = (gold / spot).toFixed(2);
+      const val  = parseFloat(document.getElementById('mw').value) || 0;
+      const spot = SilverPrice.getPrice();
+      const gold = SilverPrice.getGoldPrice() || 2400;
+
+      const grams = SilverCalc.toGrams(val, S.unit);
+      const res   = SilverCalc.meltValue(grams, S.purity, spot);
+
+      document.getElementById('rv').textContent = SilverCalc.formatCurrency(res.value);
+      document.getElementById('rd').textContent = `${res.silverContentGrams}g pure · ${res.silverContentOz} oz · ${(S.purity*100).toFixed(1)}%`;
+      document.getElementById('sv').textContent = `$${spot.toFixed(2)}`;
+      document.getElementById('rr').textContent = (gold / spot).toFixed(2);
     }
 
-    // FAQ Logic
+    // LIVE PRICE STRIP
+    function updateStrip() {
+      const spot    = SilverPrice.getPrice();
+      const change  = SilverPrice.getChange();
+      const changePct = SilverPrice.getChangePercent();
+
+      document.getElementById('strip-price').textContent = `$${spot.toFixed(2)}`;
+
+      const stripChange = document.getElementById('strip-change');
+      if (change !== null && changePct !== null) {
+        const dir = change >= 0 ? 'up' : 'down';
+        const arrow = change >= 0 ? '▲' : '▼';
+        stripChange.textContent = `${arrow} $${Math.abs(change).toFixed(2)} (${Math.abs(changePct).toFixed(2)}%)`;
+        stripChange.className = `ps-change ${dir}`;
+      } else {
+        stripChange.textContent = 'Live';
+        stripChange.className = 'ps-change flat';
+      }
+
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+      const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+      document.getElementById('strip-updated').textContent = `Updated: ${dateStr} ${timeStr} (EST)`;
+    }
+
+    // PURITY BOXES
+    function updatePurityBoxes() {
+      const spot = SilverPrice.getPrice();
+      function fmt(v) { return '$' + v.toFixed(2); }
+
+      ['999','925','900'].forEach(code => {
+        const p = PURITIES.find(x => x.code === code).purity;
+        const perOz  = spot * p;
+        const perGram = perOz / 31.1035;
+        const perDwt  = perOz / 20;
+        document.getElementById(`pb-${code}-oz`).textContent  = fmt(perOz);
+        document.getElementById(`pb-${code}-g`).textContent   = fmt(perGram);
+        document.getElementById(`pb-${code}-dwt`).textContent = fmt(perDwt);
+      });
+    }
+
+    // PRICES TABLE
+    function updatePricesTable() {
+      const spot = SilverPrice.getPrice();
+      const tbody = document.getElementById('prices-tbody');
+      tbody.innerHTML = PURITIES.map(p => {
+        const perOz  = spot * p.purity;
+        const perGram = perOz / 31.1035;
+        const perDwt  = perOz / 20;
+        const perKg   = perGram * 1000;
+        return `<tr>
+          <td>
+            <span class="purity-tag">${p.code}</span>
+            <span class="purity-name">${p.name}</span>
+          </td>
+          <td>$${perOz.toFixed(2)}</td>
+          <td>$${perGram.toFixed(4)}</td>
+          <td>$${perDwt.toFixed(4)}</td>
+          <td>$${perKg.toFixed(2)}</td>
+        </tr>`;
+      }).join('');
+
+      const now = new Date();
+      document.getElementById('table-updated').textContent =
+        `Prices calculated from live spot: $${spot.toFixed(2)}/ozt · Last updated ${now.toLocaleTimeString()}`;
+    }
+
+    // FAQ accordion
     document.addEventListener('click', e => {
-        if(e.target.closest('.faq-question')) {
-            e.target.closest('.faq-item').classList.toggle('open');
-        }
+      if(e.target.closest('.faq-question')) {
+        e.target.closest('.faq-item').classList.toggle('open');
+      }
     });
 
-    // Reveal
+    // Scroll reveal
     const obs = new IntersectionObserver(ents => {
-        ents.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+      ents.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
     }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
     initDash();
-    SilverPrice.onPriceUpdate(() => calc());
+
+    SilverPrice.onPriceUpdate(() => {
+      calc();
+      updateStrip();
+      updatePurityBoxes();
+      updatePricesTable();
+    });
     calc();
+    updateStrip();
   </script>
 </body>
 </html>

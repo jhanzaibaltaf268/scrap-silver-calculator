@@ -16,6 +16,9 @@ const SilverPrice = (() => {
 
   let currentPrice  = FALLBACK_PRICE;
   let currentGoldPrice = FALLBACK_GOLD;
+  let currentChange = null;
+  let currentChangePercent = null;
+  let currentPrevClose = null;
   let customPrice   = null;
   let listeners     = [];
   let isInitialized = false;
@@ -49,9 +52,9 @@ const SilverPrice = (() => {
     return null;
   }
 
-  function setCache(silver, gold) {
+  function setCache(silver, gold, change, changePercent, prevClose) {
     try {
-      sessionStorage.setItem(CACHE_KEY, JSON.stringify({ silver, gold, ts: Date.now() }));
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify({ silver, gold, change, changePercent, prevClose, ts: Date.now() }));
     } catch (_) {}
   }
 
@@ -84,7 +87,7 @@ const SilverPrice = (() => {
       const data = await tryFetch('/api/price');
       if (data?.silver > 0) {
         console.log(`✅ Price via proxy: $${data.silver} (source: ${data.source})`);
-        return { silver: data.silver, gold: data.gold };
+        return { silver: data.silver, gold: data.gold, change: data.change, changePercent: data.changePercent, prevClose: data.prevClose };
       }
       console.warn('Proxy returned no price, trying direct APIs...', data);
     }
@@ -136,7 +139,10 @@ const SilverPrice = (() => {
     const cached = getCache();
     if (cached?.silver > 0) {
       currentPrice = cached.silver;
-      if (cached.gold) currentGoldPrice = cached.gold;
+      if (cached.gold)          currentGoldPrice        = cached.gold;
+      if (cached.change        != null) currentChange        = cached.change;
+      if (cached.changePercent != null) currentChangePercent = cached.changePercent;
+      if (cached.prevClose     != null) currentPrevClose     = cached.prevClose;
       isInitialized = true;
       notifyListeners();
       return currentPrice;
@@ -148,8 +154,11 @@ const SilverPrice = (() => {
     const prices = await fetchPrice();
     if (prices?.silver > 0) {
       currentPrice = Math.round(prices.silver * 100) / 100;
-      if (prices.gold) currentGoldPrice = Math.round(prices.gold * 100) / 100;
-      setCache(currentPrice, currentGoldPrice);
+      if (prices.gold)          currentGoldPrice        = Math.round(prices.gold * 100) / 100;
+      if (prices.change        != null) currentChange        = Math.round(prices.change * 100) / 100;
+      if (prices.changePercent != null) currentChangePercent = Math.round(prices.changePercent * 100) / 100;
+      if (prices.prevClose     != null) currentPrevClose     = Math.round(prices.prevClose * 100) / 100;
+      setCache(currentPrice, currentGoldPrice, currentChange, currentChangePercent, currentPrevClose);
     }
 
     isInitialized = true;
@@ -183,6 +192,9 @@ const SilverPrice = (() => {
   function getPricePerGram()       { return getPrice() / 31.1035; }
   function getPricePerKg()         { return getPrice() * (1000 / 31.1035); }
   function getPricePerDwt()        { return getPrice() / 20; }
+  function getChange()             { return currentChange; }
+  function getChangePercent()      { return currentChangePercent; }
+  function getPrevClose()          { return currentPrevClose; }
 
   function onPriceUpdate(callback) {
     listeners.push(callback);
@@ -199,6 +211,7 @@ const SilverPrice = (() => {
     setCustomPrice, clearCustomPrice, isCustom,
     setCurrency, getCurrency, getCurrencySymbol,
     getPricePerGram, getPricePerKg, getPricePerDwt,
+    getChange, getChangePercent, getPrevClose,
     onPriceUpdate, CURRENCIES, FALLBACK_PRICE
   };
 })();
