@@ -51,7 +51,7 @@ const SiteComponents = (() => {
     nav_melt_value:   { en:'Silver Melt Value', es:'Valor de Fusión', fr:'Valeur de Fonte', de:'Schmelzwert', it:'Valore di Fusione', pt:'Valor de Fusão', ru:'Стоимость плавки', ar:'قيمة الصهر', hi:'गलाने का मूल्य', ur:'پگھلنے کی قیمت', tr:'Erime Değeri', zh:'熔化价值' },
     nav_sterling:     { en:'Sterling Silver', es:'Plata de Ley', fr:'Argent Sterling', de:'Sterlingsilber', it:'Argento Sterling', pt:'Prata Sterling', ru:'Серебро пробы', ar:'فضة إسترليني', hi:'स्टर्लिंग चाँदी', ur:'سٹرلنگ سلور', tr:'Gümüş', zh:'纯银' },
     nav_junk:         { en:'Junk Silver', es:'Plata Basura', fr:'Argent de Circulation', de:'Billon Silber', it:'Argento Spazzatura', pt:'Prata Lixo', ru:'Монетное серебро', ar:'الفضة غير المرغوب', hi:'जंक सिल्वर', ur:'ردی چاندی', tr:'Hurda Gümüş', zh:'垃圾银' },
-    nav_coins:        { en:'Silver Coins', es:'Monedas de Plata', fr:'Pièces en Argent', de:'Silbermünzen', it:'Monete d'argento', pt:'Moedas de Prata', ru:'Серебряные монеты', ar:'العملات الفضية', hi:'चाँदी के सिक्के', ur:'چاندی کے سکے', tr:'Gümüş Paralar', zh:'银币' },
+    nav_coins:        { en:'Silver Coins', es:'Monedas de Plata', fr:'Pi\u00e8ces en Argent', de:'Silberm\u00fcnzen', it:'Monete d\u2019argento', pt:'Moedas de Prata', ru:'\u0421\u0435\u0440\u0435\u0431\u0440\u044f\u043d\u044b\u0435 \u043c\u043e\u043d\u0435\u0442\u044b', ar:'\u0627\u0644\u0639\u0645\u0644\u0627\u062a \u0627\u0644\u0641\u0636\u064a\u0629', hi:'\u091a\u093e\u0901\u0926\u0940 \u0915\u0947 \u0938\u093f\u0915\u094d\u0915\u0947', ur:'\u0686\u0627\u0646\u062f\u06cc \u06a9\u06d2 \u0633\u06a9\u06d2', tr:'G\u00fcm\u00fc\u015f Paralar', zh:'\u94f6\u5e01' },
     nav_bar:          { en:'Silver Bar Value', es:'Valor de Lingote', fr:'Valeur des Lingots', de:'Silberbarren', it:'Valore Lingotto', pt:'Valor da Barra', ru:'Стоимость слитка', ar:'قيمة السبائك', hi:'बार वैल्यू', ur:'بار ویلیو', tr:'Külçe Değeri', zh:'银条价值' },
     nav_jewelry:      { en:'Jewelry Value', es:'Valor de Joyería', fr:'Valeur Bijoux', de:'Schmuckwert', it:'Valore Gioielli', pt:'Valor das Joias', ru:'Стоимость украшений', ar:'قيمة المجوهرات', hi:'आभूषण मूल्य', ur:'زیورات کی قیمت', tr:'Mücevher Değeri', zh:'珠宝价值' },
     nav_silverware:   { en:'Silverware Value', es:'Valor de Cubertería', fr:'Valeur Argenterie', de:'Besteckwert', it:'Valore Argenteria', pt:'Valor Prataria', ru:'Стоимость серебра', ar:'قيمة أدوات المائدة', hi:'चाँदी के बर्तन', ur:'سلور ویئر', tr:'Gümüş Eşya', zh:'银器价值' },
@@ -201,18 +201,25 @@ const SiteComponents = (() => {
     const cur = getCurrentPage();
     const bp = getBasePath();
 
+    // Must be defined first — used in navHTML and mobileNavHTML
+    const currentLang = getLangCode();
+    const tnav = (key) => {
+      if (NAV_LABELS[key]) return NAV_LABELS[key][currentLang] || NAV_LABELS[key]['en'] || key;
+      return t(key);
+    };
+
     const navHTML = NAV_ITEMS.map(item => {
-      const label = t(item.label);
+      const label = tnav(item.label);
       if (item.dropdown) {
         const links = item.dropdown.map(d => {
           const h = s(d.href);
           const isAct = d.href.includes(cur) || (cur === 'index' && (d.href === '/' || d.href === 'index.html'));
-          return `<a href="${h}" ${isAct?'class="active"':''}>${t(d.label)}</a>`;
+          return `<a href="${h}" ${isAct?'class="active"':''}>${tnav(d.label)}</a>`;
         }).join('');
         const isActive = item.dropdown.some(d => d.href.includes(cur));
         return `
           <div class="nav-dropdown">
-            <a class="nav-link nav-dropdown-trigger ${isActive?'active':''}">${label}</a>
+            <button class="nav-link nav-dropdown-trigger ${isActive?'active':''}" type="button">${label} <span style="font-size:9px;opacity:0.5;">▾</span></button>
             <div class="nav-dropdown-menu">${links}</div>
           </div>`;
       }
@@ -238,6 +245,7 @@ const SiteComponents = (() => {
       }
     });
 
+
     // Language Logic
     const languages = [
       { code: 'en', label: '🇺🇸 EN' },
@@ -254,7 +262,6 @@ const SiteComponents = (() => {
       { code: 'ru', label: '🇷🇺 RU' }
     ];
 
-    const currentLang = getLangCode();
     const pathParts = window.location.pathname.split('/').filter(p => p);
     const pageSlug = pathParts[currentLang === 'en' ? 0 : 1] || '';
     
