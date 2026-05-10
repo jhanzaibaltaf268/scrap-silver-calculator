@@ -85,14 +85,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/pt/como-usar-calculadoras-de-prata/">
   <meta property="og:title" content="Como usar nossas calculadoras Silver – Guia completo para novos usuários">
   <meta property="og:description" content="Guia passo a passo sobre como usar as calculadoras gratuitas do SilverCalc. Aprenda qual calculadora usar, como pesar e identificar sua prata e obtenha resultados mais precisos.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/pt/como-usar-calculadoras-de-prata/">
   <meta name="twitter:title" content="Como usar nossas calculadoras Silver – Guia completo para novos usuários">
   <meta name="twitter:description" content="Guia passo a passo sobre como usar as calculadoras gratuitas do SilverCalc. Aprenda qual calculadora usar, como pesar e identificar sua prata e obtenha resultados mais precisos.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -238,10 +238,10 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Página inicial',href:'/'},{label:'Guides'},{label:'How to Use Our Calculators'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Página inicial',href:'/'},{label:'Guides'},{label:'How to Use Our Calculators'}]);
     SiteComponents.injectFAQSchema([
       {q:'How do I calculate my silver value?',a:'Identify your silver purity (look for hallmarks like 925), weigh the item in grams, then use our scrap calculator to get the melt value based on live spot prices.'},
       {q:'Which calculator should I use?',a:'Use the Scrap Calculator for general valuation, Junk Silver Calculator for pre-1965 coins, Sterling Calculator for 925 jewelry, Bar Calculator for bullion, and the Batch Calculator for multiple items.'},

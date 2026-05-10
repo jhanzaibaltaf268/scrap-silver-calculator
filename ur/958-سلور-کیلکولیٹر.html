@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ur"><head>
+<!DOCTYPE html><html lang="ur" dir="rtl"><head>
   <!-- Google tag (gtag.js) -->
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
     <!-- Microsoft Clarity -->
@@ -56,14 +56,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/ur/958-سلور-کیلکولیٹر/">
   <meta property="og:title" content="958 سلور کیلکولیٹر - وزن کے لحاظ سے برٹانیہ سلور ویلیو">
   <meta property="og:description" content="958 برٹانیہ چاندی (95.8% خالص) کی قیمت کا حساب لگائیں۔ برطانوی چاندی میں استعمال ہونے والا ایک اعلی خالص چاندی کا مرکب۔">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/ur/958-سلور-کیلکولیٹر/">
   <meta name="twitter:title" content="958 سلور کیلکولیٹر - وزن کے لحاظ سے برٹانیہ سلور ویلیو">
   <meta name="twitter:description" content="958 برٹانیہ چاندی (95.8% خالص) کی قیمت کا حساب لگائیں۔ برطانوی چاندی میں استعمال ہونے والا ایک اعلی خالص چاندی کا مرکب۔">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -119,11 +119,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'گھر',href:'/'},{label:'958 Silver Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'گھر',href:'/'},{label:'958 Silver Calculator'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit');
     function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(grams,0.958,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure silver (95.8%) · ${r.silverContentOz} oz · Spot: $${spot.toFixed(2)}/oz`;}
     w.addEventListener('input',calc);u.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ur"><head>
+<!DOCTYPE html><html lang="ur" dir="rtl"><head>
   <!-- Google tag (gtag.js) -->
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
     <!-- Microsoft Clarity -->
@@ -70,14 +70,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/ur/چاندی-کی-قیمت-فی-گرام/">
   <meta property="og:title" content="چاندی کی قیمت فی گرام آج — لائیو قیمت اور کنورٹر">
   <meta property="og:description" content="لائیو اپ ڈیٹس کے ساتھ فی گرام چاندی کی موجودہ قیمت۔ گرام، اونس، کلوگرام، اور پینی ویٹ کے درمیان فوری طور پر تبدیل کریں۔">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/ur/چاندی-کی-قیمت-فی-گرام/">
   <meta name="twitter:title" content="چاندی کی قیمت فی گرام آج — لائیو قیمت اور کنورٹر">
   <meta name="twitter:description" content="لائیو اپ ڈیٹس کے ساتھ فی گرام چاندی کی موجودہ قیمت۔ گرام، اونس، کلوگرام، اور پینی ویٹ کے درمیان فوری طور پر تبدیل کریں۔">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -149,13 +149,13 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script>
-  <script src="../js/calculator.js" defer=""></script>
-  <script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'گھر',href:'/'},{label:'Silver Price Per Gram'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'گھر',href:'/'},{label:'Silver Price Per Gram'}]);
     function update(){
       const spot=SilverPrice.getPrice();
       const perGram=spot/31.1035;

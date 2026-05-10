@@ -69,14 +69,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/hi/सलवर-डइम-कलकलटर/">
   <meta property="og:title" content="सिल्वर डाइम मेल्ट वैल्यू कैलकुलेटर — लाइव कीमतें">
   <meta property="og:description" content="1965 से पहले के रूजवेल्ट और मर्करी सिल्वर डाइम्स के लाइव मेल्ट मूल्य की गणना करें।">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/hi/सलवर-डइम-कलकलटर/">
   <meta name="twitter:title" content="सिल्वर डाइम मेल्ट वैल्यू कैलकुलेटर — लाइव कीमतें">
   <meta name="twitter:description" content="1965 से पहले के रूजवेल्ट और मर्करी सिल्वर डाइम्स के लाइव मेल्ट मूल्य की गणना करें।">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -126,11 +126,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'घर',href:'/'},{label:'Silver Dime Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'घर',href:'/'},{label:'Silver Dime Calculator'}]);
     
     const q=document.getElementById('qty');
     function calc() {

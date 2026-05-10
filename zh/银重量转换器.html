@@ -65,14 +65,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/zh/银重量转换器/">
   <meta property="og:title" content="白银重量转换器 — 克、金衡盎司、便士、公斤、托拉">
   <meta property="og:description" content="立即在克、金衡盎司、便士 (dwt)、千克和托拉之间转换白银重量。免费白银重量换算计算器。">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/zh/银重量转换器/">
   <meta name="twitter:title" content="白银重量转换器 — 克、金衡盎司、便士、公斤、托拉">
   <meta name="twitter:description" content="立即在克、金衡盎司、便士 (dwt)、千克和托拉之间转换白银重量。免费白银重量换算计算器。">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -171,11 +171,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || '首页',href:'/'},{label:'Silver Weight Converter'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || '首页',href:'/'},{label:'Silver Weight Converter'}]);
 
     const TROY_OZ_G = 31.1035;
     const DWT_G = 1.55517;

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ar"><head>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
   <!-- Google tag (gtag.js) -->
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
     <!-- Microsoft Clarity -->
@@ -69,14 +69,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/ar/حاسبة-الدايم-الفضي/">
   <meta property="og:title" content="حاسبة قيمة ذوبان الدايم الفضي — الأسعار المباشرة">
   <meta property="og:description" content="احسب قيمة الذوبان المباشر لدايمات روزفلت وميركوري الفضية قبل عام 1965.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/ar/حاسبة-الدايم-الفضي/">
   <meta name="twitter:title" content="حاسبة قيمة ذوبان الدايم الفضي — الأسعار المباشرة">
   <meta name="twitter:description" content="احسب قيمة الذوبان المباشر لدايمات روزفلت وميركوري الفضية قبل عام 1965.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -126,11 +126,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'الصفحة الرئيسية',href:'/'},{label:'Silver Dime Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'الصفحة الرئيسية',href:'/'},{label:'Silver Dime Calculator'}]);
     
     const q=document.getElementById('qty');
     function calc() {

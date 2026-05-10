@@ -540,5 +540,5 @@ const SiteComponents = (() => {
     init();
   }
 
-  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, injectFAQSchema, init };
+  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, injectFAQSchema, init, getLangCode };
 })();

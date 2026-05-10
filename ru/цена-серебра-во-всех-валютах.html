@@ -70,14 +70,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/ru/цена-серебра-во-всех-валютах/">
   <meta property="og:title" content="Silver Price in Different Currencies — USD, EUR, GBP, INR, AUD &amp; More">
   <meta property="og:description" content="Current silver price in 12 world currencies including USD, EUR, GBP, CAD, AUD, INR, PKR, AED, SAR, CHF, JPY, CNY. Updated live.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/ru/цена-серебра-во-всех-валютах/">
   <meta name="twitter:title" content="Silver Price in Different Currencies — USD, EUR, GBP, INR, AUD &amp; More">
   <meta name="twitter:description" content="Current silver price in 12 world currencies including USD, EUR, GBP, CAD, AUD, INR, PKR, AED, SAR, CHF, JPY, CNY. Updated live.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -130,11 +130,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Главная',href:'/'},{label:'Silver Price in Currencies'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Главная',href:'/'},{label:'Silver Price in Currencies'}]);
 
     const flags = { USD:'', EUR:'', GBP:'EN', CAD:'', AUD:'', INR:'HI', PKR:'UR', AED:'', SAR:'AR', CHF:'', JPY:'', CNY:'ZH' };
 

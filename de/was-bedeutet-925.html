@@ -56,14 +56,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/de/was-bedeutet-925/">
   <meta property="og:title" content="Was bedeutet 925 auf Silber? – Vollständiger Leitfaden">
   <meta property="og:description" content="Erfahren Sie, was der 925-Stempel auf Silberschmuck und -gegenständen bedeutet. Erfahren Sie mehr über den Reinheitsgrad von Sterlingsilber, wie Sie ihn identifizieren und was Ihr 925er Silber wert ist.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/de/was-bedeutet-925/">
   <meta name="twitter:title" content="Was bedeutet 925 auf Silber? – Vollständiger Leitfaden">
   <meta name="twitter:description" content="Erfahren Sie, was der 925-Stempel auf Silberschmuck und -gegenständen bedeutet. Erfahren Sie mehr über den Reinheitsgrad von Sterlingsilber, wie Sie ihn identifizieren und was Ihr 925er Silber wert ist.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -166,10 +166,10 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Startseite',href:'/'},{label:'What Does 925 Mean?'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Startseite',href:'/'},{label:'What Does 925 Mean?'}]);
     const w=document.getElementById('weight');
     function calc(){const weight=parseFloat(w.value)||0;const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,0.925,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
     w.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();

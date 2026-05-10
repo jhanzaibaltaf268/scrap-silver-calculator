@@ -56,14 +56,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/ru/таблица-чистоты-серебра/">
   <meta property="og:title" content="Silver Purity Chart — Complete Guide to Silver Fineness Marks">
   <meta property="og:description" content="Complete silver purity chart showing all hallmarks, percentages, and values. Compare 999, 958, 925, 900, 835, 800 and more silver purities.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/ru/таблица-чистоты-серебра/">
   <meta name="twitter:title" content="Silver Purity Chart — Complete Guide to Silver Fineness Marks">
   <meta name="twitter:description" content="Complete silver purity chart showing all hallmarks, percentages, and values. Compare 999, 958, 925, 900, 835, 800 and more silver purities.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -151,11 +151,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Главная',href:'/'},{label:'Silver Purity Chart'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Главная',href:'/'},{label:'Silver Purity Chart'}]);
     function update(){const spot=SilverPrice.getPrice();const ppg=spot/31.1035;
     const purities=[
       {mark:'999',name:'Fine Silver',pct:99.9,link:'/999-silver-calculator/'},

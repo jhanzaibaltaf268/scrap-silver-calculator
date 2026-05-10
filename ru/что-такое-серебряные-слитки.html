@@ -70,14 +70,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/ru/что-такое-серебряные-слитки/">
   <meta property="og:title" content="What Is Silver Bullion? — Bars, Coins &amp; Rounds Explained">
   <meta property="og:description" content="Learn what silver bullion is, the differences between bars, coins, and rounds, how bullion is valued, and where to buy or sell it. Free silver bar value calculator included.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/ru/что-такое-серебряные-слитки/">
   <meta name="twitter:title" content="What Is Silver Bullion? — Bars, Coins &amp; Rounds Explained">
   <meta name="twitter:description" content="Learn what silver bullion is, the differences between bars, coins, and rounds, how bullion is valued, and where to buy or sell it. Free silver bar value calculator included.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -183,11 +183,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Главная',href:'/'},{label:'Guides'},{label:'What Is Silver Bullion'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Главная',href:'/'},{label:'Guides'},{label:'What Is Silver Bullion'}]);
     const sz=document.getElementById('size'),qt=document.getElementById('qty');
     function calc(){
       const size=parseFloat(sz.value), qty=parseInt(qt.value)||1, spot=SilverPrice.getPrice();

@@ -69,14 +69,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/fr/calculateur-piece-de-dix-cents-en-argent/">
   <meta property="og:title" content="Calculateur de la valeur de fusion de la dime d'argent — Prix en direct">
   <meta property="og:description" content="Calculez la valeur de fusion vivante des Roosevelt et Mercury Silver Dimes d'avant 1965.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/fr/calculateur-piece-de-dix-cents-en-argent/">
   <meta name="twitter:title" content="Calculateur de la valeur de fusion de la dime d'argent — Prix en direct">
   <meta name="twitter:description" content="Calculez la valeur de fusion vivante des Roosevelt et Mercury Silver Dimes d'avant 1965.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -126,11 +126,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Accueil',href:'/'},{label:'Silver Dime Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Accueil',href:'/'},{label:'Silver Dime Calculator'}]);
     
     const q=document.getElementById('qty');
     function calc() {

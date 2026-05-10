@@ -56,14 +56,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/tr/gümüş-para-değeri-hesaplama/">
   <meta property="og:title" content="Gümüş Para Değeri Hesaplayıcı - Herhangi Bir Gümüş Paranın Değerini Hesaplayın">
   <meta property="og:description" content="Ağırlığı, saflığı ve miktarı girerek herhangi bir gümüş madalyonun erime değerini hesaplayın. Dünya çapındaki tüm gümüş paralar için çalışır.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/tr/gümüş-para-değeri-hesaplama/">
   <meta name="twitter:title" content="Gümüş Para Değeri Hesaplayıcı - Herhangi Bir Gümüş Paranın Değerini Hesaplayın">
   <meta name="twitter:description" content="Ağırlığı, saflığı ve miktarı girerek herhangi bir gümüş madalyonun erime değerini hesaplayın. Dünya çapındaki tüm gümüş paralar için çalışır.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -119,11 +119,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Ana sayfa',href:'/'},{label:'Silver Coin Value Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Ana sayfa',href:'/'},{label:'Silver Coin Value Calculator'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),q=document.getElementById('qty');
     function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const purity=parseFloat(p.value);const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(grams*qty,purity,spot);const each=SilverCalc.meltValue(grams,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${qty} coin(s) · ${r.silverContentOz} oz total silver · ${SilverCalc.formatCurrency(each.value)} each · Spot: $${spot.toFixed(2)}/oz`;}
     [w,q].forEach(el=>el.addEventListener('input',calc));[u,p].forEach(el=>el.addEventListener('change',calc));SilverPrice.onPriceUpdate(()=>calc());calc();

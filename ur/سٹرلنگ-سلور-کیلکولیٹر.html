@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ur"><head>
+<!DOCTYPE html><html lang="ur" dir="rtl"><head>
   <!-- Google tag (gtag.js) -->
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
     <!-- Microsoft Clarity -->
@@ -70,14 +70,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/ur/سٹرلنگ-سلور-کیلکولیٹر/">
   <meta property="og:title" content="سٹرلنگ سلور کیلکولیٹر - وزن کے لحاظ سے 925 چاندی کی قیمت">
   <meta property="og:description" content="اپنے سٹرلنگ سلور (925) اشیاء کی قیمت وزن کے حساب سے لگائیں۔ درست، ریئل ٹائم پگھلنے والی قدر کے تخمینے کے لیے لائیو اسپاٹ قیمتوں کا استعمال کرتا ہے۔">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/ur/سٹرلنگ-سلور-کیلکولیٹر/">
   <meta name="twitter:title" content="سٹرلنگ سلور کیلکولیٹر - وزن کے لحاظ سے 925 چاندی کی قیمت">
   <meta name="twitter:description" content="اپنے سٹرلنگ سلور (925) اشیاء کی قیمت وزن کے حساب سے لگائیں۔ درست، ریئل ٹائم پگھلنے والی قدر کے تخمینے کے لیے لائیو اسپاٹ قیمتوں کا استعمال کرتا ہے۔">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -150,13 +150,13 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script>
-  <script src="../js/calculator.js" defer=""></script>
-  <script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'گھر',href:'/'},{label:'Sterling Silver Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'گھر',href:'/'},{label:'Sterling Silver Calculator'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit');
     function calc(){
       const weight=parseFloat(w.value)||0;

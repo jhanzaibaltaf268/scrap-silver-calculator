@@ -70,14 +70,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/tr/gram-başına-gümüş-fiyatı/">
   <meta property="og:title" content="Gümüşün Gram Başına Bugünkü Fiyatı — Canlı Fiyat ve Dönüştürücü">
   <meta property="og:description" content="Canlı güncellemelerle gram başına güncel gümüş fiyatı. Gram, ons, kilogram ve kuruş ağırlığı arasında anında dönüşüm yapın.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/tr/gram-başına-gümüş-fiyatı/">
   <meta name="twitter:title" content="Gümüşün Gram Başına Bugünkü Fiyatı — Canlı Fiyat ve Dönüştürücü">
   <meta name="twitter:description" content="Canlı güncellemelerle gram başına güncel gümüş fiyatı. Gram, ons, kilogram ve kuruş ağırlığı arasında anında dönüşüm yapın.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -149,13 +149,13 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script>
-  <script src="../js/calculator.js" defer=""></script>
-  <script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Ana sayfa',href:'/'},{label:'Silver Price Per Gram'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Ana sayfa',href:'/'},{label:'Silver Price Per Gram'}]);
     function update(){
       const spot=SilverPrice.getPrice();
       const perGram=spot/31.1035;

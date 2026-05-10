@@ -56,14 +56,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/pt/o-que-é-prata-esterlina/">
   <meta property="og:title" content="O que é prata esterlina? – Guia completo para prata 925">
   <meta property="og:description" content="Aprenda tudo sobre prata esterlina: o que é, como identificá-la, seu valor e como se compara a outras ligas de prata.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/pt/o-que-é-prata-esterlina/">
   <meta name="twitter:title" content="O que é prata esterlina? – Guia completo para prata 925">
   <meta name="twitter:description" content="Aprenda tudo sobre prata esterlina: o que é, como identificá-la, seu valor e como se compara a outras ligas de prata.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -155,10 +155,10 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Página inicial',href:'/'},{label:'What Is Sterling Silver?'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Página inicial',href:'/'},{label:'What Is Sterling Silver?'}]);
     function update(){const spot=SilverPrice.getPrice();const ppg=spot/31.1035;
     const types=[{t:'Fine Silver',p:99.9,u:'Bullion, coins'},{t:'Britannia Silver',p:95.8,u:'British silverware'},{t:'Sterling Silver',p:92.5,u:'Jewelry, flatware'},{t:'Coin Silver',p:90.0,u:'US coins (pre-1965)'},{t:'835 Silver',p:83.5,u:'European antiques'},{t:'800 Silver',p:80.0,u:'European silverware'}];
     document.getElementById('compare-table').innerHTML=types.map(t=>`<tr><td>${t.t}</td><td>${t.p}%</td><td>${t.u}</td><td>$${(ppg*t.p/100).toFixed(4)}</td></tr>`).join('');}

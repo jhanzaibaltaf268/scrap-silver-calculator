@@ -74,14 +74,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/ru/серебро-продавать-или-держать/">
   <meta property="og:title" content="Silver Sell or Hold Calculator — Should I Sell My Silver Now?">
   <meta property="og:description" content="Should you sell silver now or hold? Compare current melt value against hypothetical future prices. Make informed selling decisions using scenario analysis.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/ru/серебро-продавать-или-держать/">
   <meta name="twitter:title" content="Silver Sell or Hold Calculator — Should I Sell My Silver Now?">
   <meta name="twitter:description" content="Should you sell silver now or hold? Compare current melt value against hypothetical future prices. Make informed selling decisions using scenario analysis.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -178,11 +178,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Главная',href:'/'},{label:'Sell or Hold Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Главная',href:'/'},{label:'Sell or Hold Calculator'}]);
 
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),d=document.getElementById('discount'),cs=document.getElementById('custom-spot'),sl=document.getElementById('custom-spot-slider'),bp=document.getElementById('buy-price');
 

@@ -70,14 +70,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/es/calculadora-de-valor-de-fusion-de-la-plata/">
   <meta property="og:title" content="Calculadora del valor de fusión de la plata: encuentre el valor de fusión de su plata">
   <meta property="og:description" content="Calcule el valor de fusión de cualquier artículo de plata. Ingrese el peso y la pureza para encontrar el contenido de plata pura y su valor al precio spot de hoy.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/es/calculadora-de-valor-de-fusion-de-la-plata/">
   <meta name="twitter:title" content="Calculadora del valor de fusión de la plata: encuentre el valor de fusión de su plata">
   <meta name="twitter:description" content="Calcule el valor de fusión de cualquier artículo de plata. Ingrese el peso y la pureza para encontrar el contenido de plata pura y su valor al precio spot de hoy.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -164,13 +164,13 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script>
-  <script src="../js/calculator.js" defer=""></script>
-  <script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Inicio',href:'/'},{label:'Silver Melt Value Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Inicio',href:'/'},{label:'Silver Melt Value Calculator'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),cp=document.getElementById('custom-purity'),cpg=document.getElementById('custom-purity-group');
     p.addEventListener('change',()=>{cpg.style.display=p.value==='custom'?'block':'none'; calc();});
     function calc(){

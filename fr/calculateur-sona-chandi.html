@@ -73,14 +73,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/fr/calculateur-sona-chandi/">
   <meta property="og:title" content="Calculatrice Sona Chandi — Calculatrice de taux en direct pour l'or et l'argent">
   <meta property="og:description" content="Calculez les taux Sona (Or) et Chandi (Argent) en temps réel. Calculateur Sona Chandi en ligne gratuit utilisant les prix du marché en direct par Tola, Gramme et Kilo.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/fr/calculateur-sona-chandi/">
   <meta name="twitter:title" content="Calculatrice Sona Chandi — Calculatrice de taux en direct pour l'or et l'argent">
   <meta name="twitter:description" content="Calculez les taux Sona (Or) et Chandi (Argent) en temps réel. Calculateur Sona Chandi en ligne gratuit utilisant les prix du marché en direct par Tola, Gramme et Kilo.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -196,14 +196,14 @@
   </main>
   <div id="site-footer"></div>
 
-  <script src="../js/silver-price.js" defer=""></script>
-  <script src="../js/calculator.js" defer=""></script>
-  <script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb', [
-      {label: window.MenuTranslations['Home'] || 'Accueil', href:'/'},
+      {label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Accueil', href:'/'},
       {label:'Sona Chandi Calculator'}
     ]);
 

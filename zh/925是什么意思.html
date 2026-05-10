@@ -56,14 +56,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/zh/925是什么意思/">
   <meta property="og:title" content="银上的925是什么意思？ — 完整指南">
   <meta property="og:description" content="了解 925 印记在银首饰和物品上的含义。了解 925 银的纯度、如何识别以及您的 925 银的价值。">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/zh/925是什么意思/">
   <meta name="twitter:title" content="银上的925是什么意思？ — 完整指南">
   <meta name="twitter:description" content="了解 925 印记在银首饰和物品上的含义。了解 925 银的纯度、如何识别以及您的 925 银的价值。">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -162,10 +162,10 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || '首页',href:'/'},{label:'What Does 925 Mean?'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || '首页',href:'/'},{label:'What Does 925 Mean?'}]);
     const w=document.getElementById('weight');
     function calc(){const weight=parseFloat(w.value)||0;const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,0.925,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
     w.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();

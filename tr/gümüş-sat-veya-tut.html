@@ -74,14 +74,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/tr/gümüş-sat-veya-tut/">
   <meta property="og:title" content="Gümüş Satış veya Tutma Hesaplayıcısı — Gümüşümü Şimdi Satmalı mıyım?">
   <meta property="og:description" content="Gümüşü şimdi mi satmalısınız yoksa bekletmeli misiniz? Mevcut erime değerini varsayımsal gelecek fiyatlarla karşılaştırın. Senaryo analizini kullanarak bilinçli satış kararları alın.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/tr/gümüş-sat-veya-tut/">
   <meta name="twitter:title" content="Gümüş Satış veya Tutma Hesaplayıcısı — Gümüşümü Şimdi Satmalı mıyım?">
   <meta name="twitter:description" content="Gümüşü şimdi mi satmalısınız yoksa bekletmeli misiniz? Mevcut erime değerini varsayımsal gelecek fiyatlarla karşılaştırın. Senaryo analizini kullanarak bilinçli satış kararları alın.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -178,11 +178,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Ana sayfa',href:'/'},{label:'Sell or Hold Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Ana sayfa',href:'/'},{label:'Sell or Hold Calculator'}]);
 
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),d=document.getElementById('discount'),cs=document.getElementById('custom-spot'),sl=document.getElementById('custom-spot-slider'),bp=document.getElementById('buy-price');
 

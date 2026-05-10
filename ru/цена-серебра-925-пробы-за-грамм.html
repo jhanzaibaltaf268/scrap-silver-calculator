@@ -68,14 +68,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/ru/цена-серебра-925-пробы-за-грамм/">
   <meta property="og:title" content="Цена за грамм стерлингового серебра 925 пробы сегодня — стоимость плавления в реальном времени">
   <meta property="og:description" content="Рассчитайте текущую цену серебра 925 пробы за грамм. Мгновенно найдите точную стоимость плавления ваших ювелирных изделий из серебра 925 пробы и лома.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/ru/цена-серебра-925-пробы-за-грамм/">
   <meta name="twitter:title" content="Цена за грамм стерлингового серебра 925 пробы сегодня — стоимость плавления в реальном времени">
   <meta name="twitter:description" content="Рассчитайте текущую цену серебра 925 пробы за грамм. Мгновенно найдите точную стоимость плавления ваших ювелирных изделий из серебра 925 пробы и лома.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -149,13 +149,13 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script>
-  <script src="../js/calculator.js" defer=""></script>
-  <script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Главная',href:'/'},{label:'925 Sterling Price Per Gram'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Главная',href:'/'},{label:'925 Sterling Price Per Gram'}]);
     
     const wInput = document.getElementById('weight');
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ar"><head>
+<!DOCTYPE html><html lang="ar" dir="rtl"><head>
   <!-- Google tag (gtag.js) -->
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
     <!-- Microsoft Clarity -->
@@ -70,14 +70,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/ar/كيف-تعمل-أسعار-الفضة/">
   <meta property="og:title" content="كيف تعمل أسعار الفضة — ما الذي يحدد سعر الفضة؟">
   <meta property="og:description" content="فهم كيفية تحديد الأسعار الفورية للفضة، وما هي العوامل التي تؤثر على أسعار الفضة، وساعات التداول، وكيفية استخدام الأسعار الفورية عند شراء أو بيع الفضة.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/ar/كيف-تعمل-أسعار-الفضة/">
   <meta name="twitter:title" content="كيف تعمل أسعار الفضة — ما الذي يحدد سعر الفضة؟">
   <meta name="twitter:description" content="فهم كيفية تحديد الأسعار الفورية للفضة، وما هي العوامل التي تؤثر على أسعار الفضة، وساعات التداول، وكيفية استخدام الأسعار الفورية عند شراء أو بيع الفضة.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -194,11 +194,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'الصفحة الرئيسية',href:'/'},{label:'Guides'},{label:'How Silver Prices Work'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'الصفحة الرئيسية',href:'/'},{label:'Guides'},{label:'How Silver Prices Work'}]);
     function renderPrices(){
       const spot=SilverPrice.getPrice(), ppg=SilverPrice.getPricePerGram(), ppk=SilverPrice.getPricePerKg(), ppd=SilverPrice.getPricePerDwt();
       document.getElementById('price-grid').innerHTML=`

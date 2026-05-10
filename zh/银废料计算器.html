@@ -73,14 +73,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/zh/银废料计算器/">
   <meta property="og:title" content="白银计算器 - 按重量和纯度计算废银价值">
   <meta property="og:description" content="使用实时现货价格计算白银物品的残值。输入重量和纯度即可获得即时熔融值估算值。">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/zh/银废料计算器/">
   <meta name="twitter:title" content="白银计算器 - 按重量和纯度计算废银价值">
   <meta name="twitter:description" content="使用实时现货价格计算白银物品的残值。输入重量和纯度即可获得即时熔融值估算值。">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -196,14 +196,14 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script>
-  <script src="../js/calculator.js" defer=""></script>
-  <script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb', [
-      {label: window.MenuTranslations['Home'] || '首页', href:'/'},
+      {label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || '首页', href:'/'},
       {label:'Silver Scrap Calculator'}
     ]);
     const w = document.getElementById('weight');

@@ -78,14 +78,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/pt/identificar-prata/">
   <meta property="og:title" content="Como identificar prata – teste se sua prata é real (5 métodos)">
   <meta property="og:description" content="Aprenda 5 métodos comprovados para testar se sua prata é real ou falsa. Guia Hallmark, teste magnético, teste de gelo, teste de anel e teste de ácido explicados passo a passo.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/pt/identificar-prata/">
   <meta name="twitter:title" content="Como identificar prata – teste se sua prata é real (5 métodos)">
   <meta name="twitter:description" content="Aprenda 5 métodos comprovados para testar se sua prata é real ou falsa. Guia Hallmark, teste magnético, teste de gelo, teste de anel e teste de ácido explicados passo a passo.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -230,10 +230,10 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Página inicial',href:'/'},{label:'Identify Silver'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Página inicial',href:'/'},{label:'Identify Silver'}]);
     SiteComponents.injectFAQSchema([
       { q: 'How can I tell if silver is real?', a: 'Check for hallmarks (925, STERLING, 800), use a magnet test (silver is not magnetic), try the ice test (ice melts fast on real silver), or take it to a jeweler for acid/XRF testing.' },
       { q: 'What does 925 stamped on silver mean?', a: '925 means the item is made of sterling silver containing 92.5% pure silver and 7.5% other metals, usually copper.' },

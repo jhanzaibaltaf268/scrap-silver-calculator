@@ -70,14 +70,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/ru/что-такое-мусорное-серебро/">
   <meta property="og:title" content="What Is Junk Silver? — Complete Guide to Pre-1965 Silver Coins">
   <meta property="og:description" content="Learn what junk silver is, which coins qualify, how to calculate junk silver value, and where to buy or sell. Includes face value multiplier and melt value calculator.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/ru/что-такое-мусорное-серебро/">
   <meta name="twitter:title" content="What Is Junk Silver? — Complete Guide to Pre-1965 Silver Coins">
   <meta name="twitter:description" content="Learn what junk silver is, which coins qualify, how to calculate junk silver value, and where to buy or sell. Includes face value multiplier and melt value calculator.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -193,11 +193,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Главная',href:'/'},{label:'Guides'},{label:'What Is Junk Silver'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Главная',href:'/'},{label:'Guides'},{label:'What Is Junk Silver'}]);
     const fv=document.getElementById('face-value'),ct=document.getElementById('coin-type');
     function calc(){
       const face=parseFloat(fv.value)||0, ozPerDollar=parseFloat(ct.value), spot=SilverPrice.getPrice();

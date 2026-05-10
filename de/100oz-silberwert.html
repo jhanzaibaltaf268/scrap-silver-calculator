@@ -56,14 +56,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/de/100oz-silberwert/">
   <meta property="og:title" content="Wert von 100 Unzen Silber – Aktueller Preis von 100 Unzen Silber">
   <meta property="og:description" content="Aktueller Wert von 100 Unzen Silberbarren. Live-Spotpreis- und Mengenrechner für 100-Unzen-Barren.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/de/100oz-silberwert/">
   <meta name="twitter:title" content="Wert von 100 Unzen Silber – Aktueller Preis von 100 Unzen Silber">
   <meta name="twitter:description" content="Aktueller Wert von 100 Unzen Silberbarren. Live-Spotpreis- und Mengenrechner für 100-Unzen-Barren.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -114,11 +114,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Startseite',href:'/'},{label:'100oz Silver Value'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Startseite',href:'/'},{label:'100oz Silver Value'}]);
     const q=document.getElementById('qty');
     function calc(){const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const totalOz=100*qty;const val=totalOz*spot;document.getElementById('result-value').textContent='$'+val.toFixed(2);document.getElementById('result-detail').textContent=qty+'× 100oz · '+totalOz.toFixed(2)+' oz total · Spot: $'+spot.toFixed(2)+'/oz';
       const qtys=[1,2,5,10,25,50,100];document.getElementById('qty-table').innerHTML=qtys.map(n=>'<tr><td>'+n+'</td><td>'+(100*n).toFixed(2)+' oz</td><td>$'+(100*n*spot).toFixed(2)+'</td></tr>').join('');}

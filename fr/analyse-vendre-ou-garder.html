@@ -74,14 +74,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/fr/analyse-vendre-ou-garder/">
   <meta property="og:title" content="Calculateur de vente ou de conservation d’argent : dois-je vendre mon argent maintenant&nbsp;?">
   <meta property="og:description" content="Devriez-vous vendre de l’argent maintenant ou le conserver ? Comparez la valeur de fusion actuelle avec les prix futurs hypothétiques. Prenez des décisions de vente éclairées à l’aide de l’analyse de scénarios.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/fr/analyse-vendre-ou-garder/">
   <meta name="twitter:title" content="Calculateur de vente ou de conservation d’argent : dois-je vendre mon argent maintenant&nbsp;?">
   <meta name="twitter:description" content="Devriez-vous vendre de l’argent maintenant ou le conserver ? Comparez la valeur de fusion actuelle avec les prix futurs hypothétiques. Prenez des décisions de vente éclairées à l’aide de l’analyse de scénarios.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -178,11 +178,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Accueil',href:'/'},{label:'Sell or Hold Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Accueil',href:'/'},{label:'Sell or Hold Calculator'}]);
 
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),d=document.getElementById('discount'),cs=document.getElementById('custom-spot'),sl=document.getElementById('custom-spot-slider'),bp=document.getElementById('buy-price');
 

@@ -73,14 +73,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/hi/चद-सकरप-कलकलटर/">
   <meta property="og:title" content="सिल्वर स्क्रैप कैलकुलेटर - वजन और शुद्धता के आधार पर स्क्रैप सिल्वर मूल्य की गणना करें">
   <meta property="og:description" content="लाइव स्पॉट कीमतों का उपयोग करके अपनी चांदी की वस्तुओं के स्क्रैप मूल्य की गणना करें। तत्काल पिघले हुए मूल्य का अनुमान प्राप्त करने के लिए वजन और शुद्धता दर्ज करें।">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/hi/चद-सकरप-कलकलटर/">
   <meta name="twitter:title" content="सिल्वर स्क्रैप कैलकुलेटर - वजन और शुद्धता के आधार पर स्क्रैप सिल्वर मूल्य की गणना करें">
   <meta name="twitter:description" content="लाइव स्पॉट कीमतों का उपयोग करके अपनी चांदी की वस्तुओं के स्क्रैप मूल्य की गणना करें। तत्काल पिघले हुए मूल्य का अनुमान प्राप्त करने के लिए वजन और शुद्धता दर्ज करें।">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -196,14 +196,14 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script>
-  <script src="../js/calculator.js" defer=""></script>
-  <script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb', [
-      {label: window.MenuTranslations['Home'] || 'घर', href:'/'},
+      {label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'घर', href:'/'},
       {label:'Silver Scrap Calculator'}
     ]);
     const w = document.getElementById('weight');

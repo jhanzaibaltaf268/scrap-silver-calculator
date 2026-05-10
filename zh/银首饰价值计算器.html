@@ -56,14 +56,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/zh/银首饰价值计算器/">
   <meta property="og:title" content="银首饰价值计算器 — 戒指、链条、项链和手链">
   <meta property="og:description" content="计算银首饰（包括戒指、项链、项链和手镯）的熔化值。输入重量和纯度以进行即时估价。">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/zh/银首饰价值计算器/">
   <meta name="twitter:title" content="银首饰价值计算器 — 戒指、链条、项链和手链">
   <meta name="twitter:description" content="计算银首饰（包括戒指、项链、项链和手镯）的熔化值。输入重量和纯度以进行即时估价。">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -131,11 +131,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || '首页',href:'/'},{label:'Silver Jewelry Value Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || '首页',href:'/'},{label:'Silver Jewelry Value Calculator'}]);
     const t=document.getElementById('type'),w=document.getElementById('weight'),q=document.getElementById('qty'),p=document.getElementById('purity');
     t.addEventListener('change',()=>{const dw=t.options[t.selectedIndex].dataset.w;if(dw!=='0')w.value=dw;calc();});
     function calc(){const weight=(parseFloat(w.value)||0)*(parseInt(q.value)||1);const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}

@@ -70,14 +70,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/de/nennwert-silber-rechner/">
   <meta property="og:title" content="Nennwert-Silberrechner – 90 % Junk-Silber">
   <meta property="og:description" content="Berechnen Sie den Silberwert, indem Sie den Gesamtnennwert Ihrer 90 % US-Silbermünzen eingeben (1 $ Nennwert = 0,715 Unzen reines Silber).">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/de/nennwert-silber-rechner/">
   <meta name="twitter:title" content="Nennwert-Silberrechner – 90 % Junk-Silber">
   <meta name="twitter:description" content="Berechnen Sie den Silberwert, indem Sie den Gesamtnennwert Ihrer 90 % US-Silbermünzen eingeben (1 $ Nennwert = 0,715 Unzen reines Silber).">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -129,11 +129,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Startseite',href:'/'},{label:'Face Value Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Startseite',href:'/'},{label:'Face Value Calculator'}]);
     
     const f=document.getElementById('face-val');
     function calc() {

@@ -202,8 +202,32 @@ window.MenuTranslations = {
     "ur": "کینیڈین-چاندی-کے-سکے-کیلکولیٹر",
     "zh": "加拿大银币计算器"
   },
-  "contact": {},
-  "disclaimer": {},
+  "contact": {
+    "ar": "تواصل-معنا",
+    "de": "kontakt",
+    "es": "contacto",
+    "fr": "contact",
+    "hi": "संपर्क-करें",
+    "it": "contattaci",
+    "pt": "contato",
+    "ru": "контакты",
+    "tr": "iletişim",
+    "ur": "رابطہ کریں",
+    "zh": "联系我们"
+  },
+  "disclaimer": {
+    "ar": "إخلاء-المسؤولية",
+    "de": "haftungsausschluss",
+    "es": "aviso-legal",
+    "fr": "clause-de-non-responsabilité",
+    "hi": "अस्वीकरण",
+    "it": "disclaimer",
+    "pt": "aviso-legal",
+    "ru": "отказ-от-ответственности",
+    "tr": "feragatname",
+    "ur": "دستبرداری",
+    "zh": "免责声明"
+  },
   "face-value-silver-calculator": {
     "ar": "حاسبة-القيمة-الاسمية-للفضة",
     "de": "nennwert-silber-rechner",
@@ -291,7 +315,19 @@ window.MenuTranslations = {
     "ur": "پینی-ویٹ-کیلکولیٹر",
     "zh": "便士计算器"
   },
-  "privacy-policy": {},
+  "privacy-policy": {
+    "ar": "سياسة-الخصوصية",
+    "de": "datenschutz",
+    "es": "política-de-privacidad",
+    "fr": "politique-de-confidentialité",
+    "hi": "गोपनीयता-नीति",
+    "it": "politica-sulla-privacy",
+    "pt": "política-de-privacidade",
+    "ru": "политика-конфиденциальности",
+    "tr": "gizlilik-politikası",
+    "ur": "رازداری-کی-پالیسی",
+    "zh": "隐私政策"
+  },
   "silver-bar-value-calculator": {
     "ru": "калькулятор-стоимости-серебряных-слитков",
     "es": "valor-de-lingote-de-plata",
@@ -602,7 +638,19 @@ window.MenuTranslations = {
     "ur": "سٹرلنگ-چاندی-کیا-ہے",
     "zh": "纯银计算器"
   },
-  "terms-of-service": {},
+  "terms-of-service": {
+    "ar": "شروط-الخدمة",
+    "de": "bedingungen",
+    "es": "términos-de-servicio",
+    "fr": "conditions-d-utilisation",
+    "hi": "सेवा-की-शर्तें",
+    "it": "termini-di-servizio",
+    "pt": "termos-de-serviço",
+    "ru": "условия-использования",
+    "tr": "hizmet-şartları",
+    "ur": "خدمت-کی-شرائط",
+    "zh": "服务条款"
+  },
   "tola-calculator": {
     "ar": "آلة-حاسبة-تولة",
     "de": "tola-rechner",

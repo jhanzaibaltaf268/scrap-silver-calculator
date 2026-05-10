@@ -70,14 +70,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/es/que-es-el-valor-de-fusion/">
   <meta property="og:title" content="¿Qué es el valor de plata fundida? — Cómo calcular el valor de fusión de la plata">
   <meta property="og:description" content="Aprenda qué significa el valor de fusión de la plata, cómo se calcula, por qué es importante a la hora de vender y la diferencia entre el valor de fusión y el valor de mercado. Calculadora gratuita incluida.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/es/que-es-el-valor-de-fusion/">
   <meta name="twitter:title" content="¿Qué es el valor de plata fundida? — Cómo calcular el valor de fusión de la plata">
   <meta name="twitter:description" content="Aprenda qué significa el valor de fusión de la plata, cómo se calcula, por qué es importante a la hora de vender y la diferencia entre el valor de fusión y el valor de mercado. Calculadora gratuita incluida.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -191,11 +191,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Inicio',href:'/'},{label:'Guides'},{label:'What Is Silver Melt Value'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Inicio',href:'/'},{label:'Guides'},{label:'What Is Silver Melt Value'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity');
     function calc(){
       const grams=SilverCalc.toGrams(parseFloat(w.value)||0,u.value), purity=parseFloat(p.value), spot=SilverPrice.getPrice();

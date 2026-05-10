@@ -73,14 +73,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/it/calcolatore-di-rottami-dargento/">
   <meta property="og:title" content="Calcolatore dei rottami d'argento: calcola il valore dei rottami d'argento in base a peso e purezza">
   <meta property="og:description" content="Calcola il valore di scarto dei tuoi oggetti d'argento utilizzando i prezzi spot in tempo reale. Inserisci peso e purezza per ottenere stime immediate del valore di fusione.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/it/calcolatore-di-rottami-dargento/">
   <meta name="twitter:title" content="Calcolatore dei rottami d'argento: calcola il valore dei rottami d'argento in base a peso e purezza">
   <meta name="twitter:description" content="Calcola il valore di scarto dei tuoi oggetti d'argento utilizzando i prezzi spot in tempo reale. Inserisci peso e purezza per ottenere stime immediate del valore di fusione.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -196,14 +196,14 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script>
-  <script src="../js/calculator.js" defer=""></script>
-  <script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb', [
-      {label: window.MenuTranslations['Home'] || 'Casa', href:'/'},
+      {label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Casa', href:'/'},
       {label:'Silver Scrap Calculator'}
     ]);
     const w = document.getElementById('weight');

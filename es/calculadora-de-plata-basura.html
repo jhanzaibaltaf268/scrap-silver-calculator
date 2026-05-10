@@ -70,14 +70,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/es/calculadora-de-plata-basura/">
   <meta property="og:title" content="Calculadora de plata basura: valor de fusión de monedas estadounidenses anteriores a 1965">
   <meta property="og:description" content="Calcule el valor de fusión de las monedas de plata estadounidenses anteriores a 1965. Encuentre el valor en plata de monedas de diez centavos, veinticinco centavos, medios dólares, dólares Morgan y más.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/es/calculadora-de-plata-basura/">
   <meta name="twitter:title" content="Calculadora de plata basura: valor de fusión de monedas estadounidenses anteriores a 1965">
   <meta name="twitter:description" content="Calcule el valor de fusión de las monedas de plata estadounidenses anteriores a 1965. Encuentre el valor en plata de monedas de diez centavos, veinticinco centavos, medios dólares, dólares Morgan y más.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -148,13 +148,13 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script>
-  <script src="../js/calculator.js" defer=""></script>
-  <script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script>
+  <script src="../js/calculator.js"></script>
+  <script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Inicio',href:'/'},{label:'Junk Silver Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Inicio',href:'/'},{label:'Junk Silver Calculator'}]);
     let selectedCoin='us-quarter-pre1965';
     const grid=document.getElementById('coin-grid');
     const coins=SilverCalc.JUNK_COINS;

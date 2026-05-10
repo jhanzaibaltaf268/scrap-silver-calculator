@@ -70,14 +70,14 @@
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/es/calculadora-de-valor-nominal/">
   <meta property="og:title" content="Calculadora de plata de valor nominal: 90% de plata basura">
   <meta property="og:description" content="Calcule el valor de la plata ingresando el valor nominal total de sus monedas de plata estadounidense al 90% ($1 valor nominal = 0,715 oz de plata pura).">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/es/calculadora-de-valor-nominal/">
   <meta name="twitter:title" content="Calculadora de plata de valor nominal: 90% de plata basura">
   <meta name="twitter:description" content="Calcule el valor de la plata ingresando el valor nominal total de sus monedas de plata estadounidense al 90% ($1 valor nominal = 0,715 oz de plata pura).">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
@@ -129,11 +129,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="../js/silver-price.js" defer=""></script><script src="../js/calculator.js" defer=""></script><script src="../js/components.js" defer=""></script>
+  <script src="../js/silver-price.js"></script><script src="../js/calculator.js"></script><script src="../js/components.js"></script>
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: window.MenuTranslations['Home'] || 'Inicio',href:'/'},{label:'Face Value Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Inicio',href:'/'},{label:'Face Value Calculator'}]);
     
     const f=document.getElementById('face-val');
     function calc() {
