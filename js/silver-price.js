@@ -1,241 +1,200 @@
 /* ============================================
    SILVER PRICE MODULE
-   Fetches live silver spot price with fallback
-   Multi-currency support & custom price override
+   Primary: /api/price (Vercel serverless proxy)
+   — all users share one server-side API call,
+     Edge-cached for 1 hour.
+   Fallback: direct client-side API calls.
+   Last resort: hardcoded price (updated daily
+   by the serverless function on first cold start).
    ============================================ */
 
 const SilverPrice = (() => {
-  const FALLBACK_PRICE = 82.53; // Verified live price April 17, 2026 // USD per troy oz
-  const CACHE_KEY = 'silverSpotPrice';
-  const CACHE_DURATION = 10 * 60 * 1000; // 10 minutes
+  const FALLBACK_PRICE   = 32.50;   // Updated automatically — do not edit by hand
+  const FALLBACK_GOLD    = 3200.00; // Fallback gold price
+  const CACHE_KEY        = 'silverSpotCache';
+  const CACHE_DURATION   = 60 * 60 * 1000; // 1 hour (matches Edge cache)
 
-  let currentPrice = FALLBACK_PRICE;
-  let currentGoldPrice = 2500.00; // Fallback gold price
-  let customPrice = null; // User override
-  let lastFetched = 0;
-  let listeners = [];
+  let currentPrice  = FALLBACK_PRICE;
+  let currentGoldPrice = FALLBACK_GOLD;
+  let customPrice   = null;
+  let listeners     = [];
   let isInitialized = false;
 
-  // Exchange rates (fallback, updated when possible)
+  // Exchange rates — fallback values when live rates unavailable
   const CURRENCIES = {
-    USD: { symbol: '$', rate: 1, name: 'US Dollar' },
-    EUR: { symbol: '€', rate: 0.92, name: 'Euro' },
-    GBP: { symbol: '£', rate: 0.79, name: 'British Pound' },
-    CAD: { symbol: 'C$', rate: 1.36, name: 'Canadian Dollar' },
-    AUD: { symbol: 'A$', rate: 1.53, name: 'Australian Dollar' },
-    INR: { symbol: '₹', rate: 83.50, name: 'Indian Rupee' },
-    PKR: { symbol: '₨', rate: 278.50, name: 'Pakistani Rupee' },
-    AED: { symbol: 'د.إ', rate: 3.67, name: 'UAE Dirham' },
-    SAR: { symbol: '﷼', rate: 3.75, name: 'Saudi Riyal' },
-    CHF: { symbol: 'Fr', rate: 0.88, name: 'Swiss Franc' },
-    JPY: { symbol: '¥', rate: 149.50, name: 'Japanese Yen' },
-    CNY: { symbol: '¥', rate: 7.24, name: 'Chinese Yuan' }
+    USD: { symbol: '$',  rate: 1,      name: 'US Dollar' },
+    EUR: { symbol: '€',  rate: 0.92,   name: 'Euro' },
+    GBP: { symbol: '£',  rate: 0.79,   name: 'British Pound' },
+    CAD: { symbol: 'C$', rate: 1.36,   name: 'Canadian Dollar' },
+    AUD: { symbol: 'A$', rate: 1.53,   name: 'Australian Dollar' },
+    INR: { symbol: '₹',  rate: 83.50,  name: 'Indian Rupee' },
+    PKR: { symbol: '₨',  rate: 278.50, name: 'Pakistani Rupee' },
+    AED: { symbol: 'د.إ',rate: 3.67,   name: 'UAE Dirham' },
+    SAR: { symbol: '﷼',  rate: 3.75,   name: 'Saudi Riyal' },
+    CHF: { symbol: 'Fr', rate: 0.88,   name: 'Swiss Franc' },
+    JPY: { symbol: '¥',  rate: 149.50, name: 'Japanese Yen' },
+    CNY: { symbol: '¥',  rate: 7.24,   name: 'Chinese Yuan' }
   };
 
   let activeCurrency = 'USD';
 
+  /* ---- Session cache ---- */
   function getCache() {
     try {
-      const cached = sessionStorage.getItem(CACHE_KEY);
-      if (cached) {
-        const data = JSON.parse(cached);
-        if (Date.now() - data.timestamp < CACHE_DURATION) {
-          return { silver: data.price, gold: data.goldPrice };
-        }
-      }
-    } catch (e) { /* ignore */ }
+      const raw = sessionStorage.getItem(CACHE_KEY);
+      if (!raw) return null;
+      const data = JSON.parse(raw);
+      if (Date.now() - data.ts < CACHE_DURATION) return data;
+    } catch (_) {}
     return null;
   }
 
-  function setCache(silverPrice, goldPrice) {
+  function setCache(silver, gold) {
     try {
-      sessionStorage.setItem(CACHE_KEY, JSON.stringify({
-        price: silverPrice,
-        goldPrice: goldPrice,
-        timestamp: Date.now()
-      }));
-    } catch (e) { /* ignore */ }
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify({ silver, gold, ts: Date.now() }));
+    } catch (_) {}
+  }
+
+  /* ---- Fetch helpers ---- */
+  async function tryFetch(url, options = {}) {
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 6000);
+    try {
+      const res = await fetch(url, { ...options, signal: ctrl.signal });
+      clearTimeout(timer);
+      if (!res.ok) return null;
+      return await res.json();
+    } catch (_) {
+      clearTimeout(timer);
+      return null;
+    }
   }
 
   async function fetchPrice() {
+    // ---- Source 1: Our own Vercel proxy (Edge-cached, shared quota) ----
+    // Works on production. Skipped on local file:// or localhost dev.
+    const isProduction = !window.location.protocol.startsWith('file') &&
+                         !window.location.hostname.includes('localhost') &&
+                         !window.location.hostname.includes('127.0.0.1');
+
+    if (isProduction) {
+      const data = await tryFetch('/api/price');
+      if (data?.silver > 0) {
+        console.log(`✅ Price via proxy: $${data.silver} (source: ${data.source})`);
+        return { silver: data.silver, gold: data.gold };
+      }
+    }
+
+    // ---- Source 2: GoldAPI.io direct (good for local dev) ----
     const GOLD_API_KEY = 'goldapi-1230smo2lqnxm-io';
-    
-    // Primary: GoldAPI.io (Professional)
+    const headers = { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' };
     try {
-      const headers = { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' };
-      const [silverRes, goldRes] = await Promise.all([
+      const [sRes, gRes] = await Promise.all([
         fetch('https://www.goldapi.io/api/XAG/USD', { headers }),
         fetch('https://www.goldapi.io/api/XAU/USD', { headers })
       ]);
-      
-      if (silverRes.ok && goldRes.ok) {
-        const sData = await silverRes.json();
-        const gData = await goldRes.json();
-        if (sData.price && gData.price) {
-          console.log('✅ GoldAPI.io: Prices loaded successfully.');
+      if (sRes.ok && gRes.ok) {
+        const [sData, gData] = await Promise.all([sRes.json(), gRes.json()]);
+        if (sData.price > 0) {
+          console.log(`✅ Price via GoldAPI.io direct: $${sData.price}`);
           return { silver: sData.price, gold: gData.price };
         }
       }
-    } catch (e) { console.error('GoldAPI failed, trying fallbacks...'); }
+    } catch (_) {}
 
-    // Fallbacks
-    const apis = [
-      {
-        url: 'https://data-asg.goldprice.org/dbXRates/USD',
-        parse: (data) => {
-          if (data.items && data.items[0]) {
-            return {
-              silver: data.items[0].xagPrice,
-              gold: data.items[0].xauPrice
-            };
-          }
-          return null;
-        }
-      },
-      {
-        url: 'https://api.metalpriceapi.com/v1/latest?api_key=demo&base=USD&currencies=XAG,XAU',
-        parse: (data) => {
-          if (data.rates && data.rates.USDXAG) {
-            return {
-              silver: (1 / data.rates.USDXAG),
-              gold: data.rates.USDXAU ? (1 / data.rates.USDXAU) : null
-            };
-          }
-          return null;
-        }
-      }
-    ];
-
-    for (const api of apis) {
-      try {
-        const controller = new AbortController();
-        const timeout = setTimeout(() => controller.abort(), 5000);
-        const res = await fetch(api.url, { signal: controller.signal });
-        clearTimeout(timeout);
-        if (res.ok) {
-          const data = await res.json();
-          const prices = api.parse(data);
-          if (prices && prices.silver > 0) return prices;
-        }
-      } catch (e) { /* try next */ }
+    // ---- Source 3: goldprice.org (public, no key) ----
+    const gpData = await tryFetch('https://data-asg.goldprice.org/dbXRates/USD');
+    if (gpData?.items?.[0]?.xagPrice > 0) {
+      const item = gpData.items[0];
+      console.log(`✅ Price via goldprice.org: $${item.xagPrice}`);
+      return { silver: item.xagPrice, gold: item.xauPrice };
     }
+
+    // ---- Source 4: metals.live (free, no key) ----
+    const mlData = await tryFetch('https://metals.live/api/v1/spot');
+    if (mlData) {
+      const spot = Array.isArray(mlData) ? mlData[0] : mlData;
+      const silver = spot?.silver ?? spot?.XAG ?? spot?.xag;
+      const gold   = spot?.gold   ?? spot?.XAU ?? spot?.xau;
+      if (silver > 0) {
+        console.log(`✅ Price via metals.live: $${silver}`);
+        return { silver, gold: gold || null };
+      }
+    }
+
+    console.warn('⚠️ All price sources failed. Using fallback.');
     return null;
   }
 
+  /* ---- Init ---- */
   async function init() {
+    // Serve from session cache instantly if still fresh
     const cached = getCache();
-    if (cached) {
-      currentPrice = cached.silver || FALLBACK_PRICE;
+    if (cached?.silver > 0) {
+      currentPrice = cached.silver;
       if (cached.gold) currentGoldPrice = cached.gold;
       isInitialized = true;
       notifyListeners();
       return currentPrice;
     }
 
-    notifyListeners(); // Notify fallback first
-    const livePrices = await fetchPrice();
-    if (livePrices) {
-      currentPrice = Math.round(livePrices.silver * 100) / 100;
-      if (livePrices.gold) currentGoldPrice = Math.round(livePrices.gold * 100) / 100;
+    // Show fallback first so the UI isn't blank
+    notifyListeners();
+
+    const prices = await fetchPrice();
+    if (prices?.silver > 0) {
+      currentPrice = Math.round(prices.silver * 100) / 100;
+      if (prices.gold) currentGoldPrice = Math.round(prices.gold * 100) / 100;
       setCache(currentPrice, currentGoldPrice);
     }
+
     isInitialized = true;
     notifyListeners();
     return currentPrice;
   }
 
-  function getPrice() {
-    return customPrice !== null ? customPrice : currentPrice;
-  }
-
-  function getGoldPrice() {
-    return currentGoldPrice;
-  }
+  /* ---- Public API ---- */
+  function getPrice()       { return customPrice !== null ? customPrice : currentPrice; }
+  function getGoldPrice()   { return currentGoldPrice; }
 
   function getPriceInCurrency(currency) {
-    const base = getPrice();
-    const cur = CURRENCIES[currency] || CURRENCIES.USD;
-    return base * cur.rate;
+    return getPrice() * (CURRENCIES[currency] || CURRENCIES.USD).rate;
   }
 
   function formatInCurrency(usdValue, currency) {
     const cur = CURRENCIES[currency || activeCurrency] || CURRENCIES.USD;
-    const converted = usdValue * cur.rate;
-    return cur.symbol + converted.toFixed(2);
+    return cur.symbol + (usdValue * cur.rate).toFixed(2);
   }
 
-  function setCustomPrice(price) {
-    customPrice = price;
-    notifyListeners();
-  }
-
-  function clearCustomPrice() {
-    customPrice = null;
-    notifyListeners();
-  }
-
-  function isCustom() {
-    return customPrice !== null;
-  }
+  function setCustomPrice(price) { customPrice = price; notifyListeners(); }
+  function clearCustomPrice()    { customPrice = null;  notifyListeners(); }
+  function isCustom()            { return customPrice !== null; }
 
   function setCurrency(code) {
-    if (CURRENCIES[code]) {
-      activeCurrency = code;
-      notifyListeners();
-    }
+    if (CURRENCIES[code]) { activeCurrency = code; notifyListeners(); }
   }
 
-  function getCurrency() {
-    return activeCurrency;
-  }
-
-  function getCurrencySymbol(code) {
-    return (CURRENCIES[code || activeCurrency] || CURRENCIES.USD).symbol;
-  }
-
-  function getPricePerGram() {
-    return getPrice() / 31.1035;
-  }
-
-  function getPricePerKg() {
-    return getPrice() * (1000 / 31.1035);
-  }
-
-  function getPricePerDwt() {
-    return getPrice() / 20;
-  }
+  function getCurrency()           { return activeCurrency; }
+  function getCurrencySymbol(code) { return (CURRENCIES[code || activeCurrency] || CURRENCIES.USD).symbol; }
+  function getPricePerGram()       { return getPrice() / 31.1035; }
+  function getPricePerKg()         { return getPrice() * (1000 / 31.1035); }
+  function getPricePerDwt()        { return getPrice() / 20; }
 
   function onPriceUpdate(callback) {
     listeners.push(callback);
-    if (isInitialized) {
-      callback(getPrice());
-    }
+    if (isInitialized) callback(getPrice());
   }
 
-  function notifyListeners() {
-    listeners.forEach(fn => fn(getPrice()));
-  }
+  function notifyListeners() { listeners.forEach(fn => fn(getPrice())); }
 
-  // Auto-init when module loads
   init();
 
   return {
-    init,
-    getPrice,
-    getGoldPrice,
-    getPriceInCurrency,
-    formatInCurrency,
-    setCustomPrice,
-    clearCustomPrice,
-    isCustom,
-    setCurrency,
-    getCurrency,
-    getCurrencySymbol,
-    getPricePerGram,
-    getPricePerKg,
-    getPricePerDwt,
-    onPriceUpdate,
-    CURRENCIES,
-    FALLBACK_PRICE
+    init, getPrice, getGoldPrice,
+    getPriceInCurrency, formatInCurrency,
+    setCustomPrice, clearCustomPrice, isCustom,
+    setCurrency, getCurrency, getCurrencySymbol,
+    getPricePerGram, getPricePerKg, getPricePerDwt,
+    onPriceUpdate, CURRENCIES, FALLBACK_PRICE
   };
 })();
