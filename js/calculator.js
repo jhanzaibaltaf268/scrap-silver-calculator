@@ -141,6 +141,7 @@ const SilverCalc = (() => {
     switch (unit) {
       case 'g': return weight;
       case 'oz':
+      case 'ozt':
       case 'troy-oz': return weight * GRAMS_PER_TROY_OZ;
       case 'dwt': return weight * GRAMS_PER_DWT;
       case 'kg': return weight * GRAMS_PER_KG;

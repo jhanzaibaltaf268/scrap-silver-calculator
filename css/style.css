@@ -62,7 +62,7 @@
     --radius-lg: var(--r-lg);
 
     /* Color aliases (pages use different naming conventions) */
-    --bg-secondary: rgba(15, 15, 22, 0.6);
+    --bg-secondary: rgba(255, 255, 255, 0.04);
     --bg-glass: rgba(255, 255, 255, 0.04);
     --bg-glass-strong: rgba(255, 255, 255, 0.08);
     --text-primary: var(--text);
