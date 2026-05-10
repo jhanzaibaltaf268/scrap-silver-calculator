@@ -49,14 +49,20 @@
     /* Spacing aliases */
     --space-sm: 0.5rem;
     --space-xl: 2.5rem;
+    --space-2xl: 4rem;
 
     /* Font sizes */
     --fs-xs: 0.8rem;
     --fs-sm: 0.9rem;
     --fs-md: 1rem;
     --fs-lg: 1.125rem;
+    --fs-xl: 1.375rem;
     --fs-2xl: 1.75rem;
+    --fs-3xl: 2rem;
     --fs-4xl: 2.25rem;
+
+    /* Extra-small spacing */
+    --space-xs: 0.25rem;
 
     /* Radius aliases */
     --radius-sm: var(--r-sm);
@@ -74,6 +80,8 @@
     --border-medium: rgba(255, 255, 255, 0.18);
     --accent-primary: var(--accent);
     --accent-green: #34d399;
+    --accent-gold: #FBBF24;
+    --bg-surface: rgba(22, 22, 36, 0.9);
     --gradient-silver: linear-gradient(135deg, #d1d5db, #9ca3af);
     --font-display: var(--f-display);
 }
@@ -93,6 +101,8 @@ body {
 
 .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1; }
 .container-tight { max-width: var(--dash-w); margin: 0 auto; }
+/* Prevent double-padding when .container is nested inside another .container */
+.container .container { padding-left: 0; padding-right: 0; }
 
 /* ---- Ambient Background ---- */
 .ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; contain: strict; }
@@ -286,13 +296,16 @@ td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--te
 tr:hover td { background: rgba(255,255,255,0.04); }
 
 /* ---- SEO Content & FAQ ---- */
-.content-body { max-width: 850px; margin: 40px auto; line-height: 1.85; color: var(--dim); text-align: left; }
-.content-body h2 { font-family: var(--f-display); font-size: 26px; color: #fff; margin: 48px 0 20px; font-weight: 700; border-bottom: 1px solid var(--border2); padding-bottom: 12px; }
-.content-body h3 { font-family: var(--f-display); font-size: 20px; color: #fff; margin: 32px 0 16px; font-weight: 700; }
-.content-body p { margin-bottom: 24px; font-size: 16px; }
-.content-body strong { color: #fff; }
-.content-body ul, .content-body ol { margin-bottom: 24px; padding-left: 20px; }
-.content-body li { margin-bottom: 10px; font-size: 15.5px; }
+.content-body,
+.article-body { max-width: 850px; margin: 40px auto; line-height: 1.85; color: var(--dim); text-align: left; }
+.content-body h2, .article-body h2 { font-family: var(--f-display); font-size: 26px; color: #fff; margin: 48px 0 20px; font-weight: 700; border-bottom: 1px solid var(--border2); padding-bottom: 12px; }
+.content-body h3, .article-body h3 { font-family: var(--f-display); font-size: 20px; color: #fff; margin: 32px 0 16px; font-weight: 700; }
+.content-body p, .article-body p { margin-bottom: 24px; font-size: 16px; }
+.content-body strong, .article-body strong { color: #fff; }
+.content-body ul, .content-body ol, .article-body ul, .article-body ol { margin-bottom: 24px; padding-left: 20px; }
+.content-body li, .article-body li { margin-bottom: 10px; font-size: 15.5px; }
+.content-body a, .article-body a { color: var(--accent2); text-decoration: none; }
+.content-body a:hover, .article-body a:hover { text-decoration: underline; }
 
 .faq-list { max-width: 800px; margin: 40px auto; }
 .faq-item { border-bottom: 1px solid var(--border2); }
@@ -436,8 +449,26 @@ tr:hover td { background: rgba(255,255,255,0.04); }
 .form-input:focus, .form-select:focus { border-color: var(--accent); background: rgba(20, 20, 32, 1); box-shadow: 0 0 0 3px rgba(124,58,237,0.15); }
 .form-select option { background: #0f0f1a; color: #f1f5f9; padding: 8px; }
 html[dir="rtl"] .form-select { background-position: left 14px center; padding-right: 16px; padding-left: 40px; }
+.btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 12px 20px; border-radius: 10px; font-weight: 700; cursor: pointer;
+    transition: all .2s; font-family: var(--f-body); font-size: var(--fs-sm);
+    text-decoration: none; white-space: nowrap;
+    border: 1px solid var(--border2); background: rgba(255,255,255,0.04); color: var(--dim);
+}
+.btn:hover { background: rgba(255,255,255,0.08); color: #fff; }
 .btn-primary { background: var(--accent); color: #fff; border: none; padding: 14px 24px; border-radius: 10px; font-weight: 700; cursor: pointer; transition: all .2s; width: 100%; }
-.btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+.btn.btn-primary { background: var(--accent); border-color: transparent; color: #fff; width: auto; }
+.btn.btn-full, .btn-full { width: 100%; }
+.btn-primary:hover { background: #6d28d9; transform: translateY(-2px); box-shadow: 0 4px 20px var(--accent-glow); }
+.btn-secondary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    padding: 12px 20px; border-radius: 10px; font-weight: 700; cursor: pointer;
+    transition: all .2s; font-family: var(--f-body); font-size: var(--fs-sm);
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border2); color: var(--dim);
+    white-space: nowrap;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.08); color: #fff; }
 .result-display { background: rgba(124, 58, 237, 0.07); border: 1px solid rgba(124,58,237,0.4); border-radius: 12px; padding: 24px; text-align: center; margin-top: 16px; }
 .result-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 8px; }
 .result-value { font-size: 36px; font-weight: 800; color: #fff; font-family: var(--f-display); margin-bottom: 6px; }
@@ -508,6 +539,7 @@ html[dir="rtl"] .form-select { background-position: left 14px center; padding-ri
     gap: 16px;
     margin-bottom: 16px;
 }
+@media(max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
 
 .callout {
     padding: 16px;
@@ -720,4 +752,213 @@ html[dir="rtl"] .pgrid {
 
 html[dir="rtl"] .faq-item {
     text-align: right;
+}
+
+/* ============================================
+   MOBILE OPTIMIZATION — COMPREHENSIVE
+   All breakpoints: 768px, 600px, 480px, 380px
+   ============================================ */
+
+/* ---- 768px: Tablet/large phone ---- */
+@media(max-width: 768px) {
+    /* Section spacing */
+    .sec { padding: 40px 0; }
+
+    /* Hero on calculator pages */
+    .hero { padding: 80px 0 20px; margin-bottom: 20px; }
+    .hero p { font-size: 15px; max-width: 100%; }
+    .hero h1 { font-size: clamp(24px, 6vw, 40px); }
+
+    /* Hero-compact (homepage) */
+    .hero-compact { padding: 80px 0 24px; }
+
+    /* Content body */
+    .content-body, .article-body { margin: 24px auto; }
+    .content-body h2, .article-body h2 { font-size: 22px; margin: 32px 0 14px; }
+    .content-body h3, .article-body h3 { font-size: 18px; }
+    .content-body p, .article-body p { font-size: 15px; margin-bottom: 18px; }
+
+    /* Tables need scroll on mobile */
+    .content-body table, .article-body table,
+    .purity-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; white-space: nowrap; }
+
+    /* Calc page layout gap */
+    .calc-page-layout { gap: 24px; padding-bottom: 40px; }
+
+    /* Formula box */
+    .formula-box { font-size: 12px; padding: 14px 16px; }
+}
+
+/* ---- 600px: Standard mobile ---- */
+@media(max-width: 600px) {
+    /* Section spacing */
+    .sec { padding: 28px 0; }
+
+    /* Hero on calculator sub-pages */
+    .hero { padding: 72px 0 16px; margin-bottom: 16px; }
+    .hero-compact { padding: 72px 0 16px; }
+
+    /* Dashboard inner panels */
+    .d-ctrl { padding: 20px 16px; gap: 18px; }
+    .d-res { padding: 20px 16px; }
+
+    /* Section title + sub */
+    .sec-sub { max-width: 100%; }
+
+    /* Trust bar tighter gap */
+    .trust-bar { gap: 10px 16px; }
+    .trust-item { font-size: 11px; }
+
+    /* Content body tables — restore display for correct styling inside scroll wrapper */
+    .content-body table { font-size: 13px; }
+    th { padding: 10px 10px; }
+    td { padding: 10px 10px; }
+
+    /* Purity table */
+    .purity-table th, .purity-table td { padding: 8px 10px; font-size: 12px; }
+
+    /* Related grid: at least 1 column on tiny screens */
+    .related-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+
+    /* FAQ answer text */
+    .faq-answer p { font-size: 14px; }
+    .faq-question { font-size: 14px; }
+
+    /* Callout */
+    .callout { padding: 12px; }
+
+    /* Breadcrumb */
+    .breadcrumb { font-size: 11px; flex-wrap: wrap; }
+
+    /* Calc widget */
+    .calc-widget { padding: 18px; }
+}
+
+/* ---- 480px: Small phone ---- */
+@media(max-width: 480px) {
+    /* Dashboard footer — prevent overflow */
+    .dfoot {
+        flex-wrap: wrap;
+        gap: 6px;
+        padding: 10px 14px;
+        font-size: 9px;
+    }
+    .dfoot > div { gap: 8px; }
+
+    /* Result value smaller on very small screens */
+    .res-val { font-size: 38px; }
+    .w-input { font-size: 32px; }
+
+    /* Hero title */
+    .hero-title { font-size: clamp(26px, 8vw, 40px); }
+    .hero h1 { font-size: clamp(22px, 7vw, 36px); }
+
+    /* Hero pill */
+    .hero-pill { font-size: 10px; padding: 5px 12px; }
+
+    /* Grand total (batch calculator) */
+    .grand-total { padding: 20px 14px; }
+
+    /* Footer social bar */
+    .footer-social { flex-direction: column; gap: 10px; }
+    .footer-social-label { font-size: 10px; }
+
+    /* Footer bottom */
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .footer-bottom > div { display: flex; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom a { font-size: 11px; }
+
+    /* Sec title */
+    .sec-title { font-size: clamp(20px, 5vw, 28px); }
+
+    /* cgrid: stack on very small screens */
+    .cgrid { grid-template-columns: 1fr; }
+
+    /* ccard */
+    .ccard { padding: 18px; }
+
+    /* Batch actions: wrap neatly */
+    .batch-actions { gap: 8px; }
+    .batch-actions .btn,
+    .batch-actions button { flex: 1 1 calc(50% - 4px); font-size: var(--fs-xs); padding: 10px 8px; }
+
+    /* Unit chip row */
+    .unit-row { flex-wrap: wrap; gap: 4px; }
+    .uchip { padding: 5px 9px; font-size: 9.5px; }
+
+    /* Section with bg + radius */
+    .sec[style*="background"] { border-radius: var(--r-md); }
+}
+
+/* ---- 380px: Very small phone (SE, Galaxy A series) ---- */
+@media(max-width: 380px) {
+    /* Dashboard footer stacks vertically */
+    .dfoot { flex-direction: column; align-items: flex-start; gap: 4px; }
+
+    /* Purity grid: 2 columns instead of 3 */
+    .pgrid { grid-template-columns: repeat(2, 1fr); }
+
+    /* Result and input font */
+    .res-val { font-size: 32px; }
+    .w-input { font-size: 28px; }
+
+    /* Related grid: single column */
+    .related-grid { grid-template-columns: 1fr; }
+
+    /* Header container padding */
+    .header-container, .header-inner { padding: 0 12px; }
+
+    /* Batch actions: single column */
+    .batch-actions .btn,
+    .batch-actions button { flex: 1 1 100%; }
+
+    /* Content body */
+    .content-body, .article-body { font-size: 14px; }
+    .content-body h2, .article-body h2 { font-size: 18px; }
+    .content-body h3, .article-body h3 { font-size: 16px; }
+
+    /* Grand total detail: stack */
+    .grand-total .total-detail { flex-direction: column; gap: 4px; }
+    .grand-total .total-value { font-size: var(--fs-2xl); }
+}
+
+/* ---- Entity scroller: hide scrollbar, smooth scroll ---- */
+.entity-scroller {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+.entity-scroller::-webkit-scrollbar { display: none; }
+
+/* ---- Gold/Silver combined widget: stack on very small screens ---- */
+@media(max-width: 480px) {
+    .calc-widget > div[style*="justify-content:space-between"],
+    .calc-widget > div[style*="justify-content: space-between"] {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .calc-widget > div[style*="justify-content:space-between"] > div[style*="text-align:right"],
+    .calc-widget > div[style*="justify-content: space-between"] > div[style*="text-align:right"] {
+        text-align: left;
+    }
+}
+
+/* ---- Ensure main content is never hidden under fixed header ---- */
+main { padding-top: 0; }
+.hero, .hero-compact { position: relative; }
+
+/* ---- Safe touch targets: all interactive elements >= 44px ---- */
+@media(max-width: 768px) {
+    .uchip { min-height: 36px; display: inline-flex; align-items: center; justify-content: center; }
+    .porb { min-height: 52px; }
+    .dtab { min-height: 44px; }
+    .abtn { min-height: 40px; }
+    .faq-question { min-height: 44px; }
+    .nav-link { min-height: 44px; line-height: 44px; padding: 0 12px; }
+    .btn, .btn-primary, .btn-secondary { min-height: 44px; }
 }
