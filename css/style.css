@@ -314,6 +314,19 @@ tr:hover td { background: rgba(255,255,255,0.04); }
 .footer-col a { display: block; color: var(--muted); text-decoration: none; padding: 4px 0; font-size: 13.5px; transition: color .2s; }
 .footer-col a:hover { color: #fff; }
 
+.footer-social { border-top: 1px solid var(--border); padding: 24px 0; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 0; }
+.footer-social-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); white-space: nowrap; }
+.footer-social-icons { display: flex; gap: 10px; flex-wrap: wrap; }
+.fsoc-btn { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; color: #fff; text-decoration: none; transition: transform .2s, opacity .2s; }
+.fsoc-btn:hover { transform: translateY(-3px); opacity: .85; }
+.fsoc-btn svg { width: 18px; height: 18px; }
+.fsoc-wa  { background: #25d366; }
+.fsoc-fb  { background: #1877f2; }
+.fsoc-x   { background: #000; border: 1px solid rgba(255,255,255,0.15); }
+.fsoc-li  { background: #0a66c2; }
+.fsoc-rd  { background: #ff4500; }
+.fsoc-pi  { background: #e60023; }
+
 .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--muted); flex-wrap: wrap; gap: 12px; }
 
 /* ---- Mobile Styles ---- */
