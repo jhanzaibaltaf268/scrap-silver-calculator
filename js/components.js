@@ -201,8 +201,9 @@ const SiteComponents = (() => {
 
   function getCurrentPage() {
     const path = window.location.pathname;
-    const part = path.split('/').pop().replace(/\.html$/, '');
-    return part || 'index';
+    const raw = path.split('/').filter(p => p).pop() || '';
+    let part; try { part = decodeURIComponent(raw); } catch(e) { part = raw; }
+    return part.replace(/\.html$/, '') || 'index';
   }
 
   /* ---- Component Rendering ---- */
@@ -228,25 +229,31 @@ const SiteComponents = (() => {
     ];
 
     const pathParts = window.location.pathname.split('/').filter(p => p);
-    let pageSlug = (pathParts[currentLang === 'en' ? 0 : 1] || '').replace(/\.html$/, '');
+    let rawSlug = (pathParts[currentLang === 'en' ? 0 : 1] || '').replace(/\.html$/, '');
+    let pageSlug; try { pageSlug = decodeURIComponent(rawSlug); } catch(e) { pageSlug = rawSlug; }
     if (!pageSlug || pageSlug === 'index') pageSlug = 'index';
-    
+
     let englishBaseSlug = pageSlug;
     if (currentLang !== 'en' && window.MenuTranslations && window.MenuTranslations.slugs) {
         for (const [en, locs] of Object.entries(window.MenuTranslations.slugs)) {
-            if (locs[currentLang] === pageSlug) {
+            const locSlug = locs[currentLang];
+            if (locSlug && (locSlug === pageSlug || locSlug.toLowerCase() === pageSlug.toLowerCase())) {
                 englishBaseSlug = en;
                 break;
             }
         }
     }
 
-     const generateLangHref = (targetLang) => {
+    const generateLangHref = (targetLang) => {
+        // For English, always use the English base slug
         let slug = englishBaseSlug;
         if (targetLang !== 'en' && window.MenuTranslations && window.MenuTranslations.slugs) {
             const mapping = window.MenuTranslations.slugs[englishBaseSlug];
             if (mapping && mapping[targetLang]) {
                 slug = mapping[targetLang];
+            } else {
+                // Fallback: use English slug (not current localized slug) to avoid cross-language 404s
+                slug = englishBaseSlug;
             }
         }
 
