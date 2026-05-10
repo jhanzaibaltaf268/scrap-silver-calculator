@@ -162,7 +162,8 @@ const SiteComponents = (() => {
     // Normalize target
     let target = href.replace(/^\/|\/$/g, '').replace(/\.html$/, '');
     if (target === '' || target === 'index') {
-      return isLocal() ? prefix + 'index.html' : prefix;
+      if (currentLang === 'en') return isLocal() ? prefix + 'index.html' : prefix;
+      return isLocal() ? './index.html' : './';
     }
 
     // Resolve localized slug if in a language
@@ -263,7 +264,7 @@ const SiteComponents = (() => {
     ];
 
     const pathParts = window.location.pathname.split('/').filter(p => p);
-    const pageSlug = pathParts[currentLang === 'en' ? 0 : 1] || '';
+    const pageSlug = (pathParts[currentLang === 'en' ? 0 : 1] || '').replace(/\.html$/, '');
     
     let englishBaseSlug = pageSlug;
     if (currentLang !== 'en' && window.MenuTranslations && window.MenuTranslations.slugs) {
