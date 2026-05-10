@@ -26,6 +26,45 @@ window.MenuTranslations = {
     "ur": "index",
     "zh": "index"
   },
+  "audit-report": {
+    "ar": "audit-report",
+    "de": "audit-report",
+    "es": "audit-report",
+    "fr": "audit-report",
+    "hi": "audit-report",
+    "it": "audit-report",
+    "pt": "audit-report",
+    "ru": "audit-report",
+    "tr": "audit-report",
+    "ur": "audit-report",
+    "zh": "audit-report"
+  },
+  "modern-dashboard-calculator": {
+    "ar": "modern-dashboard-calculator",
+    "de": "modern-dashboard-calculator",
+    "es": "modern-dashboard-calculator",
+    "fr": "modern-dashboard-calculator",
+    "hi": "modern-dashboard-calculator",
+    "it": "modern-dashboard-calculator",
+    "pt": "modern-dashboard-calculator",
+    "ru": "modern-dashboard-calculator",
+    "tr": "modern-dashboard-calculator",
+    "ur": "modern-dashboard-calculator",
+    "zh": "modern-dashboard-calculator"
+  },
+  "scrapsilver-masterpiece": {
+    "ar": "scrapsilver-masterpiece",
+    "de": "scrapsilver-masterpiece",
+    "es": "scrapsilver-masterpiece",
+    "fr": "scrapsilver-masterpiece",
+    "hi": "scrapsilver-masterpiece",
+    "it": "scrapsilver-masterpiece",
+    "pt": "scrapsilver-masterpiece",
+    "ru": "scrapsilver-masterpiece",
+    "tr": "scrapsilver-masterpiece",
+    "ur": "scrapsilver-masterpiece",
+    "zh": "scrapsilver-masterpiece"
+  },
   "1-10oz-silver-value": {
     "fr": "valeur-de-l-argent-1-10oz",
     "ru": "1-10oz-silver-value",
