@@ -82,19 +82,19 @@ body {
 
 .nav-dropdown { position: relative; }
 .nav-dropdown-trigger { cursor: pointer; }
-.nav-dropdown-trigger::after { content: "▾"; font-size: 9px; margin-left: 4px; opacity: .4; }
+.nav-dropdown-trigger::after { content: ""; }
 .nav-dropdown-menu { 
-    position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(8px); 
+    position: absolute; top: calc(100% + 8px); left: 50%; transform: translateX(-50%); 
     min-width: 220px; background: rgba(10, 10, 18, 0.98); border: 1px solid var(--border2); border-radius: var(--r-md); 
-    padding: 8px; opacity: 0; visibility: hidden; transition: opacity .2s var(--ease), transform .2s var(--ease); pointer-events: none; 
+    padding: 8px; display: none;
     box-shadow: 0 20px 60px rgba(0,0,0,0.7); backdrop-filter: blur(10px); 
     z-index: 999;
 }
-/* Click-based — primary trigger */
-.nav-dropdown-menu.open { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); pointer-events: auto; }
-/* Hover fallback for desktop (removed so click is the only trigger — prevents accidental closing) */
+.nav-dropdown-menu.open { display: block; }
+.nav-dropdown-menu.lang-menu.open { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
 .nav-dropdown-menu a { display: block; padding: 10px 14px; border-radius: 6px; font-size: 13px; color: var(--dim); text-decoration: none; transition: all .12s; font-weight: 500; white-space: nowrap; }
 .nav-dropdown-menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.nav-dropdown-menu a.active { color: var(--accent2); background: rgba(124,58,237,0.1); }
 
 /* ---- Search Box ---- */
 .search-container { position: relative; margin-left: 12px; display: flex; align-items: center; }

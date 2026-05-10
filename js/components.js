@@ -322,8 +322,8 @@ const SiteComponents = (() => {
                 <div class="search-results-dropdown" id="search-results"></div>
              </div>
              <div class="nav-dropdown" style="margin-left:8px;">
-                <button class="nav-link" style="padding:4px 8px;border:1px solid var(--border);border-radius:6px;background:rgba(255,255,255,0.03);display:flex;align-items:center;gap:4px;">🌐 ${currentLang.toUpperCase()}</button>
-                <div class="nav-dropdown-menu" style="min-width:180px;grid-template-columns:1fr 1fr;display:grid;gap:4px;padding:8px;">
+                <button class="nav-link nav-dropdown-trigger" type="button" style="padding:4px 10px;border:1px solid var(--border);border-radius:6px;background:rgba(255,255,255,0.04);display:flex;align-items:center;gap:5px;font-size:12px;">🌐 ${currentLang.toUpperCase()} <span style="font-size:9px;opacity:0.5;">▾</span></button>
+                <div class="nav-dropdown-menu lang-menu" style="min-width:190px;grid-template-columns:1fr 1fr;gap:4px;padding:8px;">
                     ${desktopLangLinks}
                 </div>
              </div>
