@@ -9,7 +9,7 @@
    ============================================ */
 
 const SilverPrice = (() => {
-  const FALLBACK_PRICE   = 32.50;   // Updated automatically — do not edit by hand
+  const FALLBACK_PRICE   = 80.50;   // ~May 2026 market price (USD/troy oz)
   const FALLBACK_GOLD    = 3200.00; // Fallback gold price
   const CACHE_KEY        = 'silverSpotCache';
   const CACHE_DURATION   = 60 * 60 * 1000; // 1 hour (matches Edge cache)
@@ -72,17 +72,21 @@ const SilverPrice = (() => {
 
   async function fetchPrice() {
     // ---- Source 1: Our own Vercel proxy (Edge-cached, shared quota) ----
-    // Works on production. Skipped on local file:// or localhost dev.
-    const isProduction = !window.location.protocol.startsWith('file') &&
-                         !window.location.hostname.includes('localhost') &&
-                         !window.location.hostname.includes('127.0.0.1');
+    // Use proxy on any real server (production or Vercel preview).
+    // Skip only on local file:// or localhost dev.
+    const isProduction = window.location.protocol === 'https:' ||
+                         (window.location.protocol === 'http:' &&
+                          !window.location.hostname.includes('localhost') &&
+                          !window.location.hostname.includes('127.0.0.1'));
 
     if (isProduction) {
+      console.log('Fetching price from /api/price proxy...');
       const data = await tryFetch('/api/price');
       if (data?.silver > 0) {
         console.log(`✅ Price via proxy: $${data.silver} (source: ${data.source})`);
         return { silver: data.silver, gold: data.gold };
       }
+      console.warn('Proxy returned no price, trying direct APIs...', data);
     }
 
     // ---- Source 2: GoldAPI.io direct (good for local dev) ----
