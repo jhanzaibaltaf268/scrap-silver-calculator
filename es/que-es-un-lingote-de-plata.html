@@ -203,6 +203,14 @@
       {q:'What is a premium on silver bullion?',a:'The premium is the amount paid above the spot price. Premiums cover production, distribution, and dealer profit. Bars have the lowest premiums ($0.50-4/oz), while coins carry higher premiums.'},
       {q:'Is silver bullion a good investment?',a:'Silver bullion is popular as a hedge against inflation and currency devaluation. It is highly liquid, easy to store, and has industrial demand that supports its value.'}
     ]);
+  
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
+
   </script>
 
 </body></html>

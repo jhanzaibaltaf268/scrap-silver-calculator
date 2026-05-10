@@ -373,7 +373,12 @@ window.MenuTranslations = {
     "fr": "valeur-des-lingots-d-argent",
     "it": "calcolatore-del-valore-del-lingotto-dargento",
     "ur": "سلور-بار-ویلیو-کیلکولیٹر",
-    "zh": "银条价值计算器"
+    "zh": "银条价值计算器",
+    "tr": "gümüş-çubuk-değeri-hesaplama",
+    "de": "silberbarren-wertrechner",
+    "pt": "calculadora-do-valor-da-barra-de-prata",
+    "ar": "حاسبة-قيمة-شريط-الفضة",
+    "hi": "चांदी-की-छड़-मूल्य-कैलकुलेटर"
   },
   "silver-batch-calculator": {
     "ru": "silver-batch-calculator",
@@ -471,7 +476,12 @@ window.MenuTranslations = {
     "fr": "valeur-des-bijoux-en-argent",
     "ur": "چاندی-کے-زیورات-کی-قیمت-کا-کیلکولیٹر",
     "zh": "银首饰价值计算器",
-    "ar": "حاسبة-قيمة-المجوهرات-الفضية"
+    "ar": "حاسبة-قيمة-المجوهرات-الفضية",
+    "tr": "gümüş-mücevher-değeri-hesaplama",
+    "it": "calcolatore-del-valore-dei-gioielli-in-argento",
+    "de": "silber-schmuck-wert-rechner",
+    "pt": "calculadora-do-valor-da-jóia-de-prata",
+    "hi": "चांदी-के-गहने-की-कीमत-कैलकुलेटर"
   },
   "silver-knife-value": {
     "ru": "стоимость-серебряного-ножа",

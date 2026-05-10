@@ -134,6 +134,14 @@
       const bars=[{l:'1 oz',s:1,w:'31.1g'},{l:'5 oz',s:5,w:'155.5g'},{l:'10 oz',s:10,w:'311.0g'},{l:'50 oz',s:50,w:'1,555g'},{l:'100 oz',s:100,w:'3,110g'},{l:'1 kg',s:32.1507,w:'1,000g'}];
       document.getElementById('bar-table').innerHTML=bars.map(b=>`<tr><td>${b.l}</td><td>${b.w}</td><td>$${(b.s*spot).toFixed(2)}</td></tr>`).join('');}
     [s].forEach(el=>el.addEventListener('change',calc));q.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+  
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
+
   </script>
 
 </body></html>

@@ -18,6 +18,8 @@
     --muted: #64748b;
     --border: rgba(255, 255, 255, 0.06);
     --border2: rgba(255, 255, 255, 0.1);
+    --border-accent: var(--accent);
+    --space-md: 1rem;
     
     /* Spacing & Radius */
     --r-sm: 10px;
@@ -496,10 +498,13 @@ html[dir="rtl"] .breadcrumb .sep {
 }
 
 html[dir="rtl"] input,
-html[dir="rtl"] textarea,
-html[dir="rtl"] select {
+html[dir="rtl"] textarea {
     text-align: right;
     direction: rtl;
+}
+
+html[dir="rtl"] select {
+    text-align: right;
 }
 
 html[dir="rtl"] .unit-row {

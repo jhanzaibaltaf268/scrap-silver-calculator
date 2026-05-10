@@ -112,6 +112,14 @@
     function calc(){const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const totalOz=10*qty;const val=totalOz*spot;document.getElementById('result-value').textContent='$'+val.toFixed(2);document.getElementById('result-detail').textContent=qty+'× 10oz · '+totalOz.toFixed(2)+' oz total · Spot: $'+spot.toFixed(2)+'/oz';
       const qtys=[1,2,5,10,25,50,100];document.getElementById('qty-table').innerHTML=qtys.map(n=>'<tr><td>'+n+'</td><td>'+(10*n).toFixed(2)+' oz</td><td>$'+(10*n*spot).toFixed(2)+'</td></tr>').join('');}
     q.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+  
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
+
   </script>
 
 

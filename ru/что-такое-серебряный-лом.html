@@ -204,6 +204,14 @@
       {q:'What is the difference between silver scrap and collectible silver?',a:'Scrap silver is valued by weight and purity alone, while collectible silver can be worth more due to rarity, design, age, or condition.'},
       {q:'Can I sell silver plated items as scrap?',a:'Silver plated items contain very little actual silver and are typically worth only $1-5 in silver content. Only solid silver items (marked 925, 800, 999, STERLING) have significant scrap value.'}
     ]);
+  
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
+
   </script>
 
 </body></html>

@@ -187,6 +187,14 @@
       {q:'How many grams are in a troy ounce?',a:'One troy ounce equals exactly 31.1035 grams.'},
       {q:'What is the difference between a troy ounce and a regular ounce?',a:'A troy ounce weighs 31.1035 grams while a regular avoirdupois ounce weighs 28.3495 grams. The troy ounce is about 10% heavier.'}
     ]);
+  
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
+
   </script>
 
 </body></html>

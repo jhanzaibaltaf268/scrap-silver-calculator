@@ -213,6 +213,14 @@
       {q:'How much silver is in $1 face value of junk silver?',a:'One dollar face value of 90% silver coins contains approximately 0.715 troy ounces of pure silver.'},
       {q:'Is junk silver a good investment?',a:'Junk silver is popular because of low premiums over spot price, divisibility, wide recognition, and no assay requirements. It is often recommended as an entry point for precious metals investing.'}
     ]);
+  
+    // Add listener to Calculate button
+    const cb = document.getElementById('calc-btn');
+    if (cb) {
+      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      if (fn) cb.addEventListener('click', fn);
+    }
+
   </script>
 
 </body></html>

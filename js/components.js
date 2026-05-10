@@ -352,8 +352,8 @@ const SiteComponents = (() => {
     if (mobBtn && mobNav) {
         mobBtn.addEventListener('click', () => {
             mobBtn.classList.toggle('active');
-            mobNav.classList.toggle('active');
-            document.body.style.overflow = mobNav.classList.contains('active') ? 'hidden' : '';
+            mobNav.classList.toggle('open');
+            document.body.style.overflow = mobNav.classList.contains('open') ? 'hidden' : '';
         });
     }
 
