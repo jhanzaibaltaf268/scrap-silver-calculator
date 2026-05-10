@@ -9,42 +9,69 @@ const SiteComponents = (() => {
     { label: 'Home', href: '/' },
     {
       label: 'Calculators', dropdown: [
-        { label: 'Gold & Silver', href: '/gold-and-silver-calculator/' },
-        { label: 'Silver Melt Value', href: '/silver-melt-value-calculator/' },
-        { label: 'Sterling Silver', href: '/sterling-silver-calculator/' },
-        { label: 'Junk Silver', href: '/junk-silver-calculator/' },
-        { label: 'Silver Coins', href: '/silver-coin-value-calculator/' },
-        { label: 'Silver Bar Value', href: '/silver-bar-value-calculator/' },
-        { label: 'Jewelry Value', href: '/silver-jewelry-value-calculator/' },
-        { label: 'Silverware Value', href: '/silverware-value-calculator/' },
+        { label: 'nav_gold_silver', href: '/gold-and-silver-calculator/' },
+        { label: 'nav_melt_value', href: '/silver-melt-value-calculator/' },
+        { label: 'nav_sterling', href: '/sterling-silver-calculator/' },
+        { label: 'nav_junk', href: '/junk-silver-calculator/' },
+        { label: 'nav_coins', href: '/silver-coin-value-calculator/' },
+        { label: 'nav_bar', href: '/silver-bar-value-calculator/' },
+        { label: 'nav_jewelry', href: '/silver-jewelry-value-calculator/' },
+        { label: 'nav_silverware', href: '/silverware-value-calculator/' },
       ]
     },
     {
       label: 'Purity', dropdown: [
-        { label: '999 Fine Silver', href: '/999-silver-calculator/' },
-        { label: '958 Britannia', href: '/958-silver-calculator/' },
-        { label: '925 Sterling', href: '/925-silver-calculator/' },
-        { label: '900 Coin Silver', href: '/900-silver-calculator/' },
-        { label: '835 Silver', href: '/835-silver-calculator/' },
-        { label: '800 Silver', href: '/800-silver-calculator/' },
-        { label: 'Purity Chart', href: '/silver-purity-chart/' },
+        { label: 'nav_999', href: '/999-silver-calculator/' },
+        { label: 'nav_958', href: '/958-silver-calculator/' },
+        { label: 'nav_925', href: '/925-silver-calculator/' },
+        { label: 'nav_900', href: '/900-silver-calculator/' },
+        { label: 'nav_835', href: '/835-silver-calculator/' },
+        { label: 'nav_800', href: '/800-silver-calculator/' },
+        { label: 'nav_purity_chart', href: '/silver-purity-chart/' },
       ]
     },
     {
       label: 'Tools', dropdown: [
-        { label: 'Profit Calculator', href: '/silver-profit-calculator/' },
-        { label: 'Batch Calculator', href: '/silver-batch-calculator/' },
-        { label: 'Sona Chandi', href: '/sona-chandi-calculator/' },
-        { label: 'Face Value Calc', href: '/face-value-silver-calculator/' },
-        { label: 'Weight Converter', href: '/silver-weight-converter/' },
-        { label: 'Pennyweight (DWT)', href: '/pennyweight-calculator/' },
-        { label: 'Tola Calculator', href: '/tola-calculator/' },
-        { label: 'Sell or Hold', href: '/silver-sell-or-hold/' },
-        { label: 'Silver Identifier', href: '/identify-silver/' },
+        { label: 'nav_profit', href: '/silver-profit-calculator/' },
+        { label: 'nav_batch', href: '/silver-batch-calculator/' },
+        { label: 'nav_sona_chandi', href: '/sona-chandi-calculator/' },
+        { label: 'nav_face_value', href: '/face-value-silver-calculator/' },
+        { label: 'nav_weight', href: '/silver-weight-converter/' },
+        { label: 'nav_pennyweight', href: '/pennyweight-calculator/' },
+        { label: 'nav_tola', href: '/tola-calculator/' },
+        { label: 'nav_sell_hold', href: '/silver-sell-or-hold/' },
+        { label: 'nav_identifier', href: '/identify-silver/' },
       ]
     },
     { label: 'Guide', href: '/how-to-use-silver-calculators/' }
   ];
+
+  const NAV_LABELS = {
+    nav_gold_silver:  { en:'Gold & Silver', es:'Oro y Plata', fr:'Or & Argent', de:'Gold & Silber', it:'Oro e Argento', pt:'Ouro e Prata', ru:'Золото и Серебро', ar:'الذهب والفضة', hi:'सोना और चाँदी', ur:'سونا اور چاندی', tr:'Altın ve Gümüş', zh:'黄金和白银' },
+    nav_melt_value:   { en:'Silver Melt Value', es:'Valor de Fusión', fr:'Valeur de Fonte', de:'Schmelzwert', it:'Valore di Fusione', pt:'Valor de Fusão', ru:'Стоимость плавки', ar:'قيمة الصهر', hi:'गलाने का मूल्य', ur:'پگھلنے کی قیمت', tr:'Erime Değeri', zh:'熔化价值' },
+    nav_sterling:     { en:'Sterling Silver', es:'Plata de Ley', fr:'Argent Sterling', de:'Sterlingsilber', it:'Argento Sterling', pt:'Prata Sterling', ru:'Серебро пробы', ar:'فضة إسترليني', hi:'स्टर्लिंग चाँदी', ur:'سٹرلنگ سلور', tr:'Gümüş', zh:'纯银' },
+    nav_junk:         { en:'Junk Silver', es:'Plata Basura', fr:'Argent de Circulation', de:'Billon Silber', it:'Argento Spazzatura', pt:'Prata Lixo', ru:'Монетное серебро', ar:'الفضة غير المرغوب', hi:'जंक सिल्वर', ur:'ردی چاندی', tr:'Hurda Gümüş', zh:'垃圾银' },
+    nav_coins:        { en:'Silver Coins', es:'Monedas de Plata', fr:'Pièces en Argent', de:'Silbermünzen', it:'Monete d'argento', pt:'Moedas de Prata', ru:'Серебряные монеты', ar:'العملات الفضية', hi:'चाँदी के सिक्के', ur:'چاندی کے سکے', tr:'Gümüş Paralar', zh:'银币' },
+    nav_bar:          { en:'Silver Bar Value', es:'Valor de Lingote', fr:'Valeur des Lingots', de:'Silberbarren', it:'Valore Lingotto', pt:'Valor da Barra', ru:'Стоимость слитка', ar:'قيمة السبائك', hi:'बार वैल्यू', ur:'بار ویلیو', tr:'Külçe Değeri', zh:'银条价值' },
+    nav_jewelry:      { en:'Jewelry Value', es:'Valor de Joyería', fr:'Valeur Bijoux', de:'Schmuckwert', it:'Valore Gioielli', pt:'Valor das Joias', ru:'Стоимость украшений', ar:'قيمة المجوهرات', hi:'आभूषण मूल्य', ur:'زیورات کی قیمت', tr:'Mücevher Değeri', zh:'珠宝价值' },
+    nav_silverware:   { en:'Silverware Value', es:'Valor de Cubertería', fr:'Valeur Argenterie', de:'Besteckwert', it:'Valore Argenteria', pt:'Valor Prataria', ru:'Стоимость серебра', ar:'قيمة أدوات المائدة', hi:'चाँदी के बर्तन', ur:'سلور ویئر', tr:'Gümüş Eşya', zh:'银器价值' },
+    nav_999:          { en:'999 Fine Silver', es:'Plata Fina 999', fr:'Argent Fin 999', de:'999 Feinsilber', it:'Argento Fino 999', pt:'Prata Fina 999', ru:'999 проба', ar:'فضة خالصة 999', hi:'999 शुद्ध चाँदी', ur:'999 خالص چاندی', tr:'999 Saf Gümüş', zh:'999纯银' },
+    nav_958:          { en:'958 Britannia', es:'Britannia 958', fr:'Britannia 958', de:'958 Britannia', it:'Britannia 958', pt:'Britannia 958', ru:'958 Britannia', ar:'بريتانيا 958', hi:'958 Britannia', ur:'958 برٹانیہ', tr:'958 Britannia', zh:'958布里塔尼亚' },
+    nav_925:          { en:'925 Sterling', es:'925 Sterling', fr:'925 Sterling', de:'925 Sterling', it:'925 Sterling', pt:'925 Sterling', ru:'925 проба', ar:'925 إسترليني', hi:'925 स्टर्लिंग', ur:'925 سٹرلنگ', tr:'925 Gümüş', zh:'925纯银' },
+    nav_900:          { en:'900 Coin Silver', es:'Plata de Moneda 900', fr:'Argent de Pièce 900', de:'900 Münzsilber', it:'Argento Moneta 900', pt:'Prata Moeda 900', ru:'900 монетное', ar:'فضة العملة 900', hi:'900 सिक्का चाँदी', ur:'900 سکہ چاندی', tr:'900 Sikke Gümüşü', zh:'900银币' },
+    nav_835:          { en:'835 Silver', es:'Plata 835', fr:'Argent 835', de:'835 Silber', it:'Argento 835', pt:'Prata 835', ru:'835 серебро', ar:'فضة 835', hi:'835 चाँदी', ur:'835 چاندی', tr:'835 Gümüş', zh:'835银' },
+    nav_800:          { en:'800 Silver', es:'Plata 800', fr:'Argent 800', de:'800 Silber', it:'Argento 800', pt:'Prata 800', ru:'800 серебро', ar:'فضة 800', hi:'800 चाँदी', ur:'800 چاندی', tr:'800 Gümüş', zh:'800银' },
+    nav_purity_chart: { en:'Purity Chart', es:'Tabla de Pureza', fr:'Tableau de Pureté', de:'Reinheitstabelle', it:'Tabella Purezza', pt:'Tabela de Pureza', ru:'Таблица пробы', ar:'جدول النقاء', hi:'शुद्धता चार्ट', ur:'پیوریٹی چارٹ', tr:'Saflık Tablosu', zh:'纯度表' },
+    nav_profit:       { en:'Profit Calculator', es:'Calculadora de Ganancias', fr:'Calculateur de Profit', de:'Gewinnrechner', it:'Calcolatore Profitto', pt:'Calculadora de Lucro', ru:'Калькулятор прибыли', ar:'حاسبة الأرباح', hi:'लाभ कैलकुलेटर', ur:'منافع کیلکولیٹر', tr:'Kâr Hesaplama', zh:'利润计算器' },
+    nav_batch:        { en:'Batch Calculator', es:'Calculadora por Lotes', fr:'Calculateur par Lots', de:'Stapelrechner', it:'Calcolatore Batch', pt:'Calculadora de Lote', ru:'Пакетный калькулятор', ar:'حاسبة الدفعات', hi:'बैच कैलकुलेटर', ur:'بیچ کیلکولیٹر', tr:'Toplu Hesaplama', zh:'批量计算器' },
+    nav_sona_chandi:  { en:'Sona Chandi', es:'Sona Chandi', fr:'Sona Chandi', de:'Sona Chandi', it:'Sona Chandi', pt:'Sona Chandi', ru:'Сона Чанди', ar:'سونا تشاندي', hi:'सोना चाँदी', ur:'سونا چاندی', tr:'Sona Chandi', zh:'索纳钱迪' },
+    nav_face_value:   { en:'Face Value Calc', es:'Valor Nominal', fr:'Valeur Nominale', de:'Nennwert', it:'Valore Nominale', pt:'Valor Nominal', ru:'Номинальная стоимость', ar:'القيمة الاسمية', hi:'अंकित मूल्य', ur:'فیس ویلیو', tr:'Nominal Değer', zh:'面值计算' },
+    nav_weight:       { en:'Weight Converter', es:'Convertidor de Peso', fr:'Convertisseur de Poids', de:'Gewichtsumrechner', it:'Convertitore Peso', pt:'Conversor de Peso', ru:'Конвертер веса', ar:'محول الوزن', hi:'वजन परिवर्तक', ur:'وزن کنورٹر', tr:'Ağırlık Dönüştürücü', zh:'重量转换器' },
+    nav_pennyweight:  { en:'Pennyweight (DWT)', es:'Pennyweight DWT', fr:'Pennyweight DWT', de:'Pennyweight DWT', it:'Pennyweight DWT', pt:'Pennyweight DWT', ru:'Пеннивейт', ar:'بنس تروي', hi:'पेनीवेट', ur:'پینی ویٹ', tr:'Pennyweight', zh:'便士重量' },
+    nav_tola:         { en:'Tola Calculator', es:'Calculadora Tola', fr:'Calculateur Tola', de:'Tola Rechner', it:'Calcolatore Tola', pt:'Calculadora Tola', ru:'Калькулятор Тола', ar:'حاسبة التولة', hi:'तोला कैलकुलेटर', ur:'تولہ کیلکولیٹر', tr:'Tola Hesaplayıcı', zh:'托拉计算器' },
+    nav_sell_hold:    { en:'Sell or Hold', es:'Vender o Mantener', fr:'Vendre ou Garder', de:'Verkaufen oder Halten', it:'Vendere o Tenere', pt:'Vender ou Manter', ru:'Продать или держать', ar:'بيع أو احتفظ', hi:'बेचें या रखें', ur:'بیچیں یا رکھیں', tr:'Sat veya Tut', zh:'卖出或持有' },
+    nav_identifier:   { en:'Silver Identifier', es:'Identificador de Plata', fr:'Identificateur Argent', de:'Silber-Identifikator', it:'Identificatore Argento', pt:'Identificador Prata', ru:'Определитель серебра', ar:'معرف الفضة', hi:'सिल्वर पहचानकर्ता', ur:'سلور آئیڈینٹیفائر', tr:'Gümüş Tanımlayıcı', zh:'银识别器' },
+  };
 
   const FOOTER_COLS = [
     {
@@ -194,15 +221,15 @@ const SiteComponents = (() => {
       return `<a href="${h}" class="nav-link ${isAct?'active':''}">${label}</a>`;
     }).join('');
 
-    let mobileNavHTML = `<a href="${bp}">${t('Home')}</a>`;
+    let mobileNavHTML = `<a href="${bp}">${tnav('Home')}</a>`;
     NAV_ITEMS.filter(i => i.label !== 'Home').forEach(item => {
-      const label = t(item.label);
+      const label = tnav(item.label);
       if (item.dropdown) {
         mobileNavHTML += `<div class="mobile-nav-group-title">${label}</div>`;
         item.dropdown.forEach(d => {
           const h = s(d.href);
           const isAct = d.href.includes(cur);
-          mobileNavHTML += `<a href="${h}" ${isAct?'class="active"':''}>${t(d.label)}</a>`;
+          mobileNavHTML += `<a href="${h}" ${isAct?'class="active"':''}>${tnav(d.label)}</a>`;
         });
       } else {
         const h = s(item.href);
@@ -332,6 +359,22 @@ const SiteComponents = (() => {
             document.body.style.overflow = mNav.classList.contains('open') ? 'hidden' : '';
         });
     }
+
+    // CLICK-based dropdowns — not hover. Closes on outside click.
+    el.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const menu = trigger.nextElementSibling;
+            const isOpen = menu.classList.contains('open');
+            // Close all open dropdowns first
+            el.querySelectorAll('.nav-dropdown-menu.open').forEach(m => m.classList.remove('open'));
+            if (!isOpen) menu.classList.add('open');
+        });
+    });
+
+    document.addEventListener('click', () => {
+        el.querySelectorAll('.nav-dropdown-menu.open').forEach(m => m.classList.remove('open'));
+    });
 
     window.addEventListener('scroll', () => {
         document.getElementById('main-header')?.classList.toggle('scrolled', window.scrollY > 20);
