@@ -256,6 +256,17 @@ body {
     margin-bottom: 20px; text-transform: uppercase; letter-spacing: 0.05em; 
 }
 
+.hero-title { font-family: var(--f-display); font-size: clamp(32px, 6vw, 56px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 24px; line-height: 1.1; }
+.accent-text { background: linear-gradient(135deg, var(--accent2), #a78bfa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+/* ---- Trust Bar ---- */
+.trust-bar-compact { padding: 16px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02); }
+.trust-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px 32px; }
+.trust-item { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; color: var(--dim); }
+
+/* ---- Formula Box ---- */
+.formula-box { background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.2); border-radius: var(--r-md); padding: 16px 24px; font-family: var(--f-mono); font-size: 14px; color: var(--accent2); text-align: center; margin: 24px 0; }
+
 .cgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
 .ccard { background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg); padding: 24px; text-decoration: none; color: inherit; transition: all .3s var(--ease); display: flex; flex-direction: column; position: relative; overflow: hidden; }
 .ccard:hover { transform: translateY(-4px); border-color: var(--border2); box-shadow: 0 20px 40px -12px rgba(0,0,0,0.5); background: var(--surface-hi); }
