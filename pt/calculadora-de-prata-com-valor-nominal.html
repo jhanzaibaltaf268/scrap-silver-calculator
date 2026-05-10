@@ -2,14 +2,11 @@
   <!-- Google tag (gtag.js) -->
   <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
     <!-- Microsoft Clarity -->
-<script type="text/javascript">
-    window.addEventListener('load', function() {
-        (function(c,l,a,r,i,t,y){
+<script type="text/javascript" async>(function(c,l,a,r,i,t,y){
         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "wby5gobage");
-    });
 </script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,12 +16,7 @@
   </script>
 <meta name="google-site-verification" content="3zJ4ttr1AnZWh4z6tMWiVpqPUwg7VEia6_65eJV8Lro">
 
-  <!-- Google tag (gtag.js) -->
-  
-  
-
-
-  <meta charset="UTF-8">
+    <meta charset="UTF-8">
   <script src="../js/translations.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,7 +41,7 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap" fetchpriority="low">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&display=swap"></noscript>
 
@@ -158,7 +150,9 @@
     // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
     if (cb) {
-      const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
+      const fn = typeof calculate === 'function' ? calculate :
+                 (typeof calc === 'function' ? calc :
+                 (typeof update === 'function' ? update : null));
       if (fn) cb.addEventListener('click', fn);
     }
 

@@ -268,7 +268,7 @@ const SiteComponents = (() => {
     };
 
     const langMenuHTML = languages.map(l => {
-        return `<a href="${generateLangHref(l.code)}" class="${currentLang===l.code?'active':''}">${l.label}</a>`;
+        return `<a href="${generateLangHref(l.code)}" class="${currentLang===l.code?'active':''}" title="${l.label}">${l.label}</a>`;
     }).join('');
 
     const navItemsHTML = NAV_ITEMS.map(item => {
@@ -300,8 +300,10 @@ const SiteComponents = (() => {
           </nav>
 
           <div class="header-actions">
-            <div class="nav-dropdown">
-                <div class="nav-link nav-dropdown-trigger" style="font-weight:700;color:var(--accent2);">${currentLang.toUpperCase()}</div>
+            <div class="nav-dropdown lang-switcher-wrap">
+                <div class="nav-link nav-dropdown-trigger lang-trigger" title="Switch language">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span style="font-weight:700;color:var(--accent2);font-size:11px;vertical-align:middle;">${currentLang.toUpperCase()}</span>
+                </div>
                 <div class="nav-dropdown-menu lang-menu">
                     ${langMenuHTML}
                 </div>

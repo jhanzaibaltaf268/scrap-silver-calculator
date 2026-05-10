@@ -3,6 +3,10 @@
    High-Performance Fintech Interface
    ============================================ */
 
+/* Font performance */
+@font-face { font-family: 'Inter'; font-display: swap; }
+@font-face { font-family: 'Outfit'; font-display: swap; }
+
 :root {
     /* Core Fintech Palette (Purple/Dark) */
     --bg: #06060b;
@@ -56,7 +60,7 @@ body {
 .container-tight { max-width: var(--dash-w); margin: 0 auto; }
 
 /* ---- Ambient Background ---- */
-.ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.ambient { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; contain: strict; }
 .ambient i { position: absolute; border-radius: 50%; filter: blur(60px); opacity: .07; will-change: transform; }
 .ambient i:nth-child(1) { width: 500px; height: 500px; background: #7c3aed; top: -15%; left: -10%; animation: drift 25s ease-in-out infinite alternate; }
 .ambient i:nth-child(2) { width: 400px; height: 400px; background: #06b6d4; bottom: 10%; right: -8%; animation: drift 30s ease-in-out infinite alternate; animation-delay: -8s; }
@@ -511,6 +515,25 @@ html[dir="rtl"] .form-select { background-position: left 14px center; padding-ri
 .btn-full { width: 100%; }
 .info { border-left: 4px solid var(--accent); }
 
+/* ---- Language Switcher Globe ---- */
+.lang-trigger {
+    display: flex !important;
+    align-items: center;
+    gap: 4px;
+    background: rgba(124,58,237,0.08);
+    border: 1px solid rgba(124,58,237,0.2);
+    border-radius: 8px;
+    padding: 5px 10px !important;
+    color: var(--accent2) !important;
+    transition: background .2s, border-color .2s;
+}
+.lang-trigger:hover {
+    background: rgba(124,58,237,0.16) !important;
+    border-color: rgba(124,58,237,0.4);
+    color: #fff !important;
+}
+.lang-trigger svg { flex-shrink: 0; color: var(--accent2); }
+
 /* ============================================
    RTL SUPPORT (Arabic, Urdu)
    ============================================ */
@@ -547,8 +570,8 @@ html[dir="rtl"] .nav-dropdown-menu {
 }
 
 html[dir="rtl"] .lang-menu {
-    right: auto;
-    left: 0;
+    left: auto;
+    right: 0;
     transform: none;
 }
 
