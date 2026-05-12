@@ -20,7 +20,7 @@ module.exports = async function handler(req, res) {
   // ---- 1. goldprice.org (public endpoint, no key, highly reliable) ----
   try {
     const r = await fetch('https://data-asg.goldprice.org/dbXRates/USD', { signal: AbortSignal.timeout(6000) });
-    if (r.ok) {
+    if (r.ok && r.headers.get('content-type')?.includes('application/json')) {
       const data = await r.json();
       const item = data?.items?.[0];
       if (item?.xagPrice > 0) {
@@ -39,7 +39,7 @@ module.exports = async function handler(req, res) {
   // ---- 2. metals.live (free, no key required) ----
   try {
     const r = await fetch('https://metals.live/api/v1/spot', { signal: AbortSignal.timeout(6000) });
-    if (r.ok) {
+    if (r.ok && r.headers.get('content-type')?.includes('application/json')) {
       const data = await r.json();
       const spot = Array.isArray(data) ? data[0] : data;
       const silver = spot?.silver ?? spot?.XAG ?? spot?.xag ?? spot?.price?.silver;
