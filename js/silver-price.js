@@ -74,62 +74,90 @@ const SilverPrice = (() => {
   }
 
   async function fetchPrice() {
-    // ---- Source 1: Our own Vercel proxy (Edge-cached, shared quota) ----
-    // Use proxy on any real server (production or Vercel preview).
-    // Skip only on local file:// or localhost dev.
+    // ---- Source 1: Server proxy (Edge-cached, best for distributing API load) ----
     const isProduction = window.location.protocol === 'https:' ||
                          (window.location.protocol === 'http:' &&
                           !window.location.hostname.includes('localhost') &&
                           !window.location.hostname.includes('127.0.0.1'));
 
     if (isProduction) {
-      console.log('Fetching price from /api/price proxy...');
       const data = await tryFetch('/api/price');
       if (data?.silver > 0) {
-        console.log(`✅ Price via proxy: $${data.silver} (source: ${data.source})`);
+        console.log(`✅ Price via /api/price: $${data.silver} (source: ${data.source})`);
         return { silver: data.silver, gold: data.gold, change: data.change, changePercent: data.changePercent, prevClose: data.prevClose };
       }
-      console.warn('Proxy returned no price, trying direct APIs...', data);
     }
 
-    // ---- Source 2: GoldAPI.io direct (good for local dev) ----
-    const GOLD_API_KEY = 'goldapi-1230smo2lqnxm-io';
-    const headers = { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' };
+    // ---- Source 2: GoldAPI.io direct — may work from browser context ----
     try {
+      const GOLD_API_KEY = 'goldapi-1230smo2lqnxm-io';
       const [sRes, gRes] = await Promise.all([
-        fetch('https://www.goldapi.io/api/XAG/USD', { headers }),
-        fetch('https://www.goldapi.io/api/XAU/USD', { headers })
+        fetch('https://www.goldapi.io/api/XAG/USD', {
+          headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' },
+          mode: 'cors'
+        }),
+        fetch('https://www.goldapi.io/api/XAU/USD', {
+          headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' },
+          mode: 'cors'
+        })
       ]);
       if (sRes.ok && gRes.ok) {
         const [sData, gData] = await Promise.all([sRes.json(), gRes.json()]);
         if (sData.price > 0) {
-          console.log(`✅ Price via GoldAPI.io direct: $${sData.price}`);
+          console.log(`✅ GoldAPI.io: $${sData.price}`);
           return { silver: sData.price, gold: gData.price };
         }
       }
-    } catch (_) {}
-
-    // ---- Source 3: goldprice.org (public, no key) ----
-    const gpData = await tryFetch('https://data-asg.goldprice.org/dbXRates/USD');
-    if (gpData?.items?.[0]?.xagPrice > 0) {
-      const item = gpData.items[0];
-      console.log(`✅ Price via goldprice.org: $${item.xagPrice}`);
-      return { silver: item.xagPrice, gold: item.xauPrice };
+    } catch (e) {
+      console.debug('[GoldAPI] ', e.message);
     }
 
-    // ---- Source 4: metals.live (free, no key) ----
-    const mlData = await tryFetch('https://metals.live/api/v1/spot');
-    if (mlData) {
-      const spot = Array.isArray(mlData) ? mlData[0] : mlData;
-      const silver = spot?.silver ?? spot?.XAG ?? spot?.xag;
-      const gold   = spot?.gold   ?? spot?.XAU ?? spot?.xau;
-      if (silver > 0) {
-        console.log(`✅ Price via metals.live: $${silver}`);
-        return { silver, gold: gold || null };
+    // ---- Source 3: goldprice.org — may work from browser context ----
+    try {
+      const gpData = await tryFetch('https://data-asg.goldprice.org/dbXRates/USD', { mode: 'cors' });
+      if (gpData?.items?.[0]?.xagPrice > 0) {
+        const item = gpData.items[0];
+        console.log(`✅ goldprice.org: $${item.xagPrice}`);
+        return { silver: item.xagPrice, gold: item.xauPrice };
+      }
+    } catch (e) {
+      console.debug('[goldprice] ', e.message);
+    }
+
+    // ---- Source 4: metals.live — alternate endpoints ----
+    for (const endpoint of [
+      'https://metals.live/api/v1/spot',
+      'https://api.metals.live/v1/spot'
+    ]) {
+      try {
+        const mlData = await tryFetch(endpoint, { mode: 'cors' });
+        if (mlData && typeof mlData === 'object') {
+          const spot = Array.isArray(mlData) ? mlData[0] : mlData;
+          const silver = spot?.silver ?? spot?.XAG ?? spot?.xag;
+          const gold = spot?.gold ?? spot?.XAU ?? spot?.xau;
+          if (silver && silver > 0) {
+            console.log(`✅ metals.live: $${silver}`);
+            return { silver, gold: gold || null };
+          }
+        }
+      } catch (e) {
+        console.debug('[metals.live] ', e.message);
       }
     }
 
-    console.warn('⚠️ All price sources failed. Using fallback.');
+    // ---- Source 5: ExchangeRate API (confirmed working from Vercel, proxy only) ----
+    // This is just a sanity check to ensure connectivity is working
+    // We can't get precious metals prices from forex API, but we can verify it's reachable
+    try {
+      const testData = await tryFetch('https://api.exchangerate-api.com/v4/latest/USD');
+      if (testData?.rates) {
+        console.log('📡 Connectivity confirmed via exchangerate-api');
+      }
+    } catch (e) {
+      console.debug('[connectivity-test] ', e.message);
+    }
+
+    console.warn('⚠️ All precious metals sources failed. Using fallback.');
     return null;
   }
 
