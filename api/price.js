@@ -17,9 +17,15 @@ module.exports = async function handler(req, res) {
   const FALLBACK_SILVER = 31.25;  // Last-known good price (May 2026)
   const FALLBACK_GOLD = 2450.00;
 
+  // Browser-like User-Agent to bypass API blocking
+  const BROWSER_UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36';
+
   // ---- 1. goldprice.org (public endpoint, no key, highly reliable) ----
   try {
-    const r = await fetch('https://data-asg.goldprice.org/dbXRates/USD', { signal: AbortSignal.timeout(6000) });
+    const r = await fetch('https://data-asg.goldprice.org/dbXRates/USD', {
+      headers: { 'User-Agent': BROWSER_UA },
+      signal: AbortSignal.timeout(6000)
+    });
     if (r.ok && r.headers.get('content-type')?.includes('application/json')) {
       const data = await r.json();
       const item = data?.items?.[0];
@@ -38,7 +44,10 @@ module.exports = async function handler(req, res) {
 
   // ---- 2. metals.live (free, no key required) ----
   try {
-    const r = await fetch('https://metals.live/api/v1/spot', { signal: AbortSignal.timeout(6000) });
+    const r = await fetch('https://metals.live/api/v1/spot', {
+      headers: { 'User-Agent': BROWSER_UA },
+      signal: AbortSignal.timeout(6000)
+    });
     if (r.ok && r.headers.get('content-type')?.includes('application/json')) {
       const data = await r.json();
       const spot = Array.isArray(data) ? data[0] : data;
@@ -59,7 +68,7 @@ module.exports = async function handler(req, res) {
 
   // ---- 3. GoldAPI.io (auth key, use as fallback if others fail) ----
   try {
-    const headers = { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' };
+    const headers = { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json', 'User-Agent': BROWSER_UA };
     const [sRes, gRes] = await Promise.all([
       fetch('https://www.goldapi.io/api/XAG/USD', { headers, signal: AbortSignal.timeout(6000) }),
       fetch('https://www.goldapi.io/api/XAU/USD', { headers, signal: AbortSignal.timeout(6000) })
