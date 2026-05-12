@@ -38,39 +38,38 @@ module.exports = async function handler(req, res) {
 
     const html = await res_data.text();
 
-    // Parse for price pattern: "Silver fell to 83.68 USD/t.oz"
-    // or "Silver rose to X USD/t.oz" or similar patterns
-    const priceMatch = html.match(/Silver\s+(?:fell|rose|dropped|traded|closed)\s+(?:to|at)\s+([\d.]+)\s+USD\/t\.oz/i);
-
-    if (priceMatch && priceMatch[1]) {
-      const silverPrice = parseFloat(priceMatch[1]);
-      if (silverPrice > 0 && silverPrice < 500) {  // Sanity check
+    // Try parsing from embedded JSON data: "last":83.889500000000
+    const jsonMatch = html.match(/"last"\s*:\s*([\d.]+)/);
+    if (jsonMatch && jsonMatch[1]) {
+      const silverPrice = parseFloat(jsonMatch[1]);
+      if (silverPrice > 1 && silverPrice < 500) {  // Sanity check: between $1 and $500
         console.log(`✅ Trading Economics: Silver = $${silverPrice}`);
         return res.status(200).json({
           silver: Math.round(silverPrice * 100) / 100,
           gold:   FALLBACK_GOLD,
-          source: 'tradingeconomics.com',
+          source: 'tradingeconomics',
           ts: Date.now()
         });
       }
     }
 
-    // Alternative: Try to parse from the JSON-LD data
-    const jsonMatch = html.match(/"last":([\d.]+)/);
-    if (jsonMatch && jsonMatch[1]) {
-      const silverPrice = parseFloat(jsonMatch[1]);
-      if (silverPrice > 0 && silverPrice < 500) {
-        console.log(`✅ Trading Economics (JSON): Silver = $${silverPrice}`);
+    // Fallback: Try to find price in description text
+    // "Silver fell to 83.68 USD/t.oz on May 12, 2026"
+    const textMatch = html.match(/Silver\s+(?:fell|rose|dropped|traded|closed)\s+(?:to|at)\s+([\d.]+)\s+USD/i);
+    if (textMatch && textMatch[1]) {
+      const silverPrice = parseFloat(textMatch[1]);
+      if (silverPrice > 1 && silverPrice < 500) {
+        console.log(`✅ Trading Economics (text): Silver = $${silverPrice}`);
         return res.status(200).json({
           silver: Math.round(silverPrice * 100) / 100,
           gold:   FALLBACK_GOLD,
-          source: 'tradingeconomics.com',
+          source: 'tradingeconomics',
           ts: Date.now()
         });
       }
     }
 
-    console.warn('⚠️ Could not parse price from Trading Economics');
+    console.warn('⚠️ Could not parse price from Trading Economics HTML');
   } catch (err) {
     console.error(`[Trading Economics] Error: ${err.message}`);
   }
