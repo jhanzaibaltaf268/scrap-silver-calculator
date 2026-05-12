@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YMX334ZW6Q');
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silver Price Today – Live Spot Price &amp; Market Data</title>
+  <meta name="description" content="Live silver spot price today with real-time market data. Check silver price per gram, per ounce, and per pennyweight. Updated hourly from global markets.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/silver-price-today/">
+  <link rel="stylesheet" href="css/style.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+  <!-- Schema: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://scrapsilvercalculater.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Silver Price Today", "item": "https://scrapsilvercalculater.com/silver-price-today/" }
+    ]
+  }
+  </script>
+
+  <!-- Schema: NewsArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "headline": "Silver Price Today – Live Spot Price & Market Data",
+    "description": "Real-time silver spot price today with market analysis, historical comparison, and price per gram/ounce.",
+    "url": "https://scrapsilvercalculater.com/silver-price-today/",
+    "datePublished": "2026-05-12T00:00:00Z",
+    "dateModified": "2026-05-12T12:00:00Z"
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is the silver spot price today?", "acceptedAnswer": { "@type": "Answer", "text": "The silver spot price today is updated in real-time above. It reflects the global market price for 999 fine silver per troy ounce, sourced from Trading Economics and updated hourly." } },
+      { "@type": "Question", "name": "How do I calculate silver price per gram?", "acceptedAnswer": { "@type": "Answer", "text": "Divide the spot price per troy ounce by 31.1035 (the number of grams in a troy ounce). For example: $83 per ounce ÷ 31.1035 = $2.67 per gram." } },
+      { "@type": "Question", "name": "What affects silver prices?", "acceptedAnswer": { "@type": "Answer", "text": "Silver prices are driven by industrial demand (electronics, solar), investment demand, economic growth, geopolitical events, currency strength (especially the dollar), and inflation expectations." } },
+      { "@type": "Question", "name": "Is silver price the same everywhere?", "acceptedAnswer": { "@type": "Answer", "text": "The spot price is universal across global markets. However, dealers add premiums (markup) when selling, and pay less than spot when buying scrap silver (typically 70–95% of spot price)." } },
+      { "@type": "Question", "name": "How often does silver price update?", "acceptedAnswer": { "@type": "Answer", "text": "Our silver price data updates every hour from Trading Economics and global commodity markets. Real-time spot prices from exchanges update continuously during trading hours." } },
+      { "@type": "Question", "name": "What is the difference between silver spot price and dealer price?", "acceptedAnswer": { "@type": "Answer", "text": "Spot price is the wholesale market price for bulk silver. Dealer prices include markup for retail sales or pay less when buying scrap (to cover refining, shipping, and profit)." } }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary: #7c5cff;
+      --primary-dark: #5a3fa0;
+      --primary-light: #a78cff;
+      --bg-dark: #0f1117;
+      --bg-darker: #0a0d14;
+      --bg-card: #161b22;
+      --text-primary: #e6edf3;
+      --text-secondary: #8b949e;
+      --text-tertiary: #6e7681;
+      --border-color: #30363d;
+      --success: #3fb950;
+      --warning: #ff9e64;
+      --danger: #ff6b7a;
+      --chart-up: #3fb950;
+      --chart-down: #ff6b7a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+      color: var(--text-primary);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(10, 13, 20, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      font-family: 'Outfit', sans-serif;
+    }
+
+    nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      margin-left: 2rem;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0;
+      background: linear-gradient(180deg, rgba(124, 92, 255, 0.1) 0%, transparent 100%);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    /* Price Display */
+    .price-display {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin: 4rem 0;
+    }
+
+    .price-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.2s;
+    }
+
+    .price-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 0 20px rgba(124, 92, 255, 0.1);
+    }
+
+    .price-card-label {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-card-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 1rem;
+    }
+
+    .price-card-change {
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .price-card-change.up {
+      color: var(--success);
+    }
+
+    .price-card-change.down {
+      color: var(--danger);
+    }
+
+    /* Purity Cards */
+    .purity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    .purity-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .purity-name {
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .purity-value {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+
+    .purity-percent {
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    /* Section */
+    section {
+      padding: 3rem 0;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    section h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      font-family: 'Outfit', sans-serif;
+      margin-bottom: 1.5rem;
+      color: var(--text-primary);
+    }
+
+    section h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--text-primary);
+    }
+
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th {
+      background: rgba(124, 92, 255, 0.1);
+      color: var(--text-primary);
+      padding: 1rem;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    tr:hover {
+      background: rgba(124, 92, 255, 0.05);
+    }
+
+    /* Text Blocks */
+    .info-block {
+      background: var(--bg-card);
+      border-left: 4px solid var(--primary);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 4px;
+    }
+
+    .info-block p {
+      margin-bottom: 0.5rem;
+    }
+
+    .info-block strong {
+      color: var(--primary);
+    }
+
+    /* List */
+    ul, ol {
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+      color: var(--text-secondary);
+    }
+
+    /* Button */
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 1rem;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(124, 92, 255, 0.3);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, rgba(124, 92, 255, 0.1), rgba(124, 92, 255, 0.05));
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+
+    .cta-section h3 {
+      margin-bottom: 1rem;
+    }
+
+    /* Footer */
+    footer {
+      background: rgba(10, 13, 20, 0.95);
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 0;
+      margin-top: 4rem;
+      color: var(--text-secondary);
+    }
+
+    footer .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    footer h4 {
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+    }
+
+    footer a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: block;
+      margin-bottom: 0.5rem;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: var(--primary);
+    }
+
+    footer .bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-tertiary);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .container {
+        padding: 0 1rem;
+      }
+
+      section {
+        padding: 2rem 0;
+      }
+
+      .price-display {
+        grid-template-columns: 1fr;
+      }
+
+      header .container nav {
+        display: none;
+      }
+
+      table {
+        font-size: 0.9rem;
+      }
+
+      td, th {
+        padding: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="logo">💰 Scrap Silver</div>
+      <nav>
+        <a href="/">Calculator</a>
+        <a href="/silver-price-today/">Silver Price Today</a>
+        <a href="/925-silver-value/">925 Silver</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Silver Price Today</h1>
+      <p>Live spot prices updated hourly from global commodity markets. Track silver value by weight, purity, and real-time market trends.</p>
+    </div>
+  </section>
+
+  <!-- Live Price Display -->
+  <section>
+    <div class="container">
+      <h2>Today's Silver Spot Price</h2>
+      <div class="price-display">
+        <div class="price-card">
+          <div class="price-card-label">Per Troy Ounce (999 Fine Silver)</div>
+          <div class="price-card-value" id="spotPrice">$83.68</div>
+          <div class="price-card-change">
+            <span>Last 24 hours:</span> <span class="down">-2.80%</span>
+          </div>
+          <div class="price-card-change" style="color: var(--text-tertiary); font-size: 0.8rem;">
+            Updated: <span id="priceTime">May 12, 2026 11:40 AM</span>
+          </div>
+        </div>
+
+        <div class="price-card">
+          <div class="price-card-label">Per Gram (999 Fine Silver)</div>
+          <div class="price-card-value" id="pricePerGram">$2.69</div>
+          <div class="price-card-change">
+            <span>Based on current spot</span>
+          </div>
+        </div>
+
+        <div class="price-card">
+          <div class="price-card-label">Per Pennyweight (999 Fine Silver)</div>
+          <div class="price-card-value" id="pricePerPwt">$5.20</div>
+          <div class="price-card-change">
+            <span>Based on current spot</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-block">
+        <p><strong>📈 What's driving today's price?</strong></p>
+        <p>Silver prices reflect global supply/demand, industrial usage (electronics, solar panels), investment demand, and economic conditions. Today's price reflects real-time market conditions across COMEX, London Bullion Market, and OTC trading.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Silver by Purity -->
+  <section>
+    <div class="container">
+      <h2>Silver Price by Purity</h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">The silver spot price (above) is for 999 fine silver. Real silver items have lower purity. Use these calculations to find your item's actual silver value.</p>
+
+      <div class="purity-grid">
+        <div class="purity-item">
+          <div class="purity-name">.999 Fine Silver</div>
+          <div class="purity-value" id="price999">$83.68</div>
+          <div class="purity-percent">99.9% pure</div>
+        </div>
+
+        <div class="purity-item">
+          <div class="purity-name">.925 Sterling Silver</div>
+          <div class="purity-value" id="price925">$77.41</div>
+          <div class="purity-percent">92.5% pure</div>
+        </div>
+
+        <div class="purity-item">
+          <div class="purity-name">.900 Coin Silver</div>
+          <div class="purity-value" id="price900">$75.31</div>
+          <div class="purity-percent">90% pure</div>
+        </div>
+
+        <div class="purity-item">
+          <div class="purity-name">.800 European Silver</div>
+          <div class="purity-value" id="price800">$66.94</div>
+          <div class="purity-percent">80% pure</div>
+        </div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Silver Type</th>
+            <th>Purity</th>
+            <th>Value per Ounce</th>
+            <th>Value per Gram</th>
+            <th>Common Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fine Silver</td>
+            <td>99.9%</td>
+            <td id="t999oz">$83.68</td>
+            <td id="t999g">$2.69</td>
+            <td>Bullion, investment coins</td>
+          </tr>
+          <tr>
+            <td>Sterling Silver</td>
+            <td>92.5%</td>
+            <td id="t925oz">$77.41</td>
+            <td id="t925g">$2.49</td>
+            <td>Jewelry, flatware, rings, necklaces</td>
+          </tr>
+          <tr>
+            <td>Coin Silver</td>
+            <td>90%</td>
+            <td id="t900oz">$75.31</td>
+            <td id="t900g">$2.42</td>
+            <td>US dimes, quarters, half-dollars (pre-1964)</td>
+          </tr>
+          <tr>
+            <td>European Silver</td>
+            <td>80%</td>
+            <td id="t800oz">$66.94</td>
+            <td id="t800g">$2.15</td>
+            <td>Old European coins, flatware</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- What Affects Silver Prices -->
+  <section>
+    <div class="container">
+      <h2>What Affects Silver Prices?</h2>
+
+      <h3>1. Industrial Demand</h3>
+      <p>Silver is used in electronics (largest industrial use), solar panels, medical devices, and photography. Demand from these industries directly impacts price.</p>
+
+      <h3>2. Investment Demand</h3>
+      <p>Investors buy silver as a safe-haven asset during economic uncertainty, inflation concerns, or market volatility. This creates upward price pressure.</p>
+
+      <h3>3. Supply Constraints</h3>
+      <p>Silver is a byproduct of copper and zinc mining. Limited mining output or supply chain disruptions can reduce availability and raise prices.</p>
+
+      <h3>4. US Dollar Strength</h3>
+      <p>Silver is priced in USD. A stronger dollar makes silver more expensive for foreign buyers, potentially reducing demand and lowering prices.</p>
+
+      <h3>5. Economic Growth</h3>
+      <p>Strong economic growth increases industrial demand. Economic slowdowns can reduce both industrial and investment demand.</p>
+
+      <h3>6. Geopolitical Events</h3>
+      <p>War, trade tensions, or political instability often increase demand for precious metals as safe-haven assets.</p>
+
+      <h3>7. Inflation Expectations</h3>
+      <p>Rising inflation concerns make precious metals attractive stores of value, increasing demand and price.</p>
+
+      <div class="info-block">
+        <p><strong>💡 Pro Tip:</strong> Silver prices are most volatile during economic uncertainty. Check prices regularly when selling scrap silver—prices can swing $2–5 per ounce in a single week.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Historical Context -->
+  <section>
+    <div class="container">
+      <h2>Silver Price Trends & Historical Context</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Price Range</th>
+            <th>Market Context</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Last 24 Hours</td>
+            <td>$81.00 – $84.50</td>
+            <td>Volatile; geopolitical events impact</td>
+          </tr>
+          <tr>
+            <td>Last Month</td>
+            <td>$75.00 – $86.00</td>
+            <td>Steady demand; +10.79% monthly gain</td>
+          </tr>
+          <tr>
+            <td>Last 12 Months</td>
+            <td>$33.50 – $121.64</td>
+            <td>Strong uptrend; +153.99% year-over-year</td>
+          </tr>
+          <tr>
+            <td>All-Time High</td>
+            <td>$121.64</td>
+            <td>January 2026 (inflation hedge demand)</td>
+          </tr>
+          <tr>
+            <td>5-Year Average</td>
+            <td>~$18.50–$28.00</td>
+            <td>Prior to 2025 bull run</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="info-block">
+        <p><strong>📊 Why the recent spike?</strong> Silver prices surged 153% over the past year due to inflation concerns, strong industrial demand, and investment flows into precious metals. This is significantly higher than historical averages.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Where to Check Prices -->
+  <section>
+    <div class="container">
+      <h2>Where to Check Silver Prices</h2>
+
+      <h3>Official Market Data Sources</h3>
+      <ul>
+        <li><strong>COMEX (Commodity Exchange):</strong> US futures exchange with official daily silver prices</li>
+        <li><strong>London Bullion Market (LBMA):</strong> Global benchmark for precious metals spot prices</li>
+        <li><strong>Trading Economics:</strong> Real-time spot prices aggregated from global markets</li>
+        <li><strong>Kitco:</strong> Live price charts and market analysis</li>
+        <li><strong>APMEX & JM Bullion:</strong> Dealer spot prices (typically include markup)</li>
+      </ul>
+
+      <h3>Important Notes</h3>
+      <ul>
+        <li><strong>Spot price:</strong> The wholesale market price for bulk silver (what we show above)</li>
+        <li><strong>Dealer price:</strong> Retail prices from bullion dealers (includes markup, typically 15–25% above spot)</li>
+        <li><strong>Scrap price:</strong> What dealers pay for scrap silver (typically 70–95% of spot price)</li>
+      </ul>
+
+      <div class="cta-section">
+        <h3>Ready to Calculate Your Scrap Silver Value?</h3>
+        <p>Use our free calculator to instantly determine what your silver items are worth based on today's live price.</p>
+        <a href="/" class="btn">Go to Silver Calculator</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Silver Price FAQs -->
+  <section>
+    <div class="container">
+      <h2>Frequently Asked Questions About Silver Prices</h2>
+
+      <h3>How do I calculate silver value from spot price?</h3>
+      <p>Multiply the item's weight in troy ounces by its purity (as a decimal), then multiply by the spot price. Formula: <strong>Value = Weight × Purity × Spot Price</strong>. For example: 10 oz of .925 silver × .925 × $83.68 = $772.21</p>
+
+      <h3>Why is my local dealer's price different from the spot price?</h3>
+      <p>Dealers add markup when selling (typically 15–25% above spot) and pay less when buying scrap (typically 70–95% of spot). This margin covers their refining, shipping, insurance, and profit.</p>
+
+      <h3>What time of day is silver price lowest?</h3>
+      <p>Silver prices fluctuate 24/7 as trading moves between time zones. Typically, prices are lowest during Asian trading hours (evening US time) and highest during US/UK trading hours (morning-afternoon US time). However, price swings are unpredictable and driven by news, supply, and demand.</p>
+
+      <h3>Should I sell my silver today or wait?</h3>
+      <p>This depends on your financial goals and market outlook. Silver prices are volatile—they can swing $2–5 per ounce in days. Dealers buy and sell daily, so you won't "miss" the price. Focus on getting quotes from multiple buyers rather than timing the market.</p>
+
+      <h3>Do silver prices move with gold prices?</h3>
+      <p>Silver and gold are both precious metals and respond to similar macroeconomic forces (inflation, economic growth, geopolitical risk). However, silver also has significant industrial demand, so it can move independently based on manufacturing outlook.</p>
+
+      <h3>Is the spot price the same worldwide?</h3>
+      <p>Yes, the spot price is set globally by commodity markets and is the same worldwide at any given moment. However, local dealers add their own markups based on shipping costs, currency, demand, and competition.</p>
+
+      <h3>How accurate is the price shown on your site?</h3>
+      <p>Our price is updated every hour from Trading Economics, which aggregates data from global commodity markets (COMEX, London Bullion Market, OTC). It is accurate within 15–60 minutes. For real-time intra-day prices, check COMEX futures or dealer sites directly.</p>
+
+      <h3>What is "junk silver"?</h3>
+      <p>Junk silver refers to older US coins (pre-1964 dimes, quarters, half-dollars, and dollars) that contain 90% silver. They are called "junk" because they are worth more for their silver content than their face value, not because they are low quality.</p>
+    </section>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div>
+        <h4>Calculators</h4>
+        <a href="/">Silver Calculator</a>
+        <a href="/925-silver-value/">925 Silver Value</a>
+        <a href="/silver-price-per-gram/">Price Per Gram</a>
+        <a href="/silver-price-today/">Silver Price Today</a>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <a href="/silver-hallmarks/">Silver Hallmarks</a>
+        <a href="/how-to-test-silver/">How to Test Silver</a>
+        <a href="/sell-scrap-silver/">Sell Scrap Silver</a>
+        <a href="/coin-silver-value/">Coin Silver Value</a>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <a href="/sterling-silver-worth/">Sterling Silver Worth</a>
+        <a href="/silver-prices/">Silver Prices</a>
+        <a href="/about/">About Us</a>
+        <a href="/contact/">Contact</a>
+      </div>
+    </div>
+    <div class="bottom">
+      <p>&copy; 2026 Scrap Silver Calculator. All rights reserved. | <a href="/privacy/" style="color: var(--primary);">Privacy Policy</a> | <a href="/terms/" style="color: var(--primary);">Terms of Service</a></p>
+      <p style="margin-top: 1rem; font-size: 0.85rem;">Prices updated hourly from Trading Economics. Not investment advice. Always verify prices with local dealers before selling.</p>
+    </div>
+  </footer>
+
+  <script src="js/silver-price.js"></script>
+  <script>
+    // Update price displays
+    function updatePriceDisplay() {
+      const spotPrice = SilverPrice.getPrice();
+      const pricePerGram = SilverPrice.getPricePerGram();
+      const pricePerPwt = SilverPrice.getPricePerDwt();
+
+      // Main display
+      document.getElementById('spotPrice').textContent = '$' + spotPrice.toFixed(2);
+      document.getElementById('pricePerGram').textContent = '$' + pricePerGram.toFixed(2);
+      document.getElementById('pricePerPwt').textContent = '$' + pricePerPwt.toFixed(2);
+
+      // By purity
+      document.getElementById('price999').textContent = '$' + spotPrice.toFixed(2);
+      document.getElementById('price925').textContent = '$' + (spotPrice * 0.925).toFixed(2);
+      document.getElementById('price900').textContent = '$' + (spotPrice * 0.900).toFixed(2);
+      document.getElementById('price800').textContent = '$' + (spotPrice * 0.800).toFixed(2);
+
+      // Table values
+      document.getElementById('t999oz').textContent = '$' + spotPrice.toFixed(2);
+      document.getElementById('t999g').textContent = '$' + pricePerGram.toFixed(2);
+      document.getElementById('t925oz').textContent = '$' + (spotPrice * 0.925).toFixed(2);
+      document.getElementById('t925g').textContent = '$' + (pricePerGram * 0.925).toFixed(2);
+      document.getElementById('t900oz').textContent = '$' + (spotPrice * 0.900).toFixed(2);
+      document.getElementById('t900g').textContent = '$' + (pricePerGram * 0.900).toFixed(2);
+      document.getElementById('t800oz').textContent = '$' + (spotPrice * 0.800).toFixed(2);
+      document.getElementById('t800g').textContent = '$' + (pricePerGram * 0.800).toFixed(2);
+
+      // Update time
+      const now = new Date();
+      document.getElementById('priceTime').textContent = now.toLocaleString();
+    }
+
+    // Update on load and every hour
+    SilverPrice.onPriceUpdate(updatePriceDisplay);
+    setInterval(updatePriceDisplay, 3600000);
+  </script>
+</body>
+</html>
