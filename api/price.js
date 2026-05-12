@@ -32,7 +32,9 @@ module.exports = async function handler(req, res) {
         });
       }
     }
-  } catch (_) { /* fall through */ }
+  } catch (err) {
+    console.error('[goldprice.org] Error:', err.message);
+  }
 
   // ---- 2. metals.live (free, no key required) ----
   try {
@@ -51,7 +53,9 @@ module.exports = async function handler(req, res) {
         });
       }
     }
-  } catch (_) { /* fall through */ }
+  } catch (err) {
+    console.error('[metals.live] Error:', err.message);
+  }
 
   // ---- 3. GoldAPI.io (auth key, use as fallback if others fail) ----
   try {
@@ -74,7 +78,9 @@ module.exports = async function handler(req, res) {
         });
       }
     }
-  } catch (_) { /* fall through */ }
+  } catch (err) {
+    console.error('[goldapi.io] Error:', err.message);
+  }
 
   // ---- 4. All live sources failed — return fallback ----
   return res.status(200).json({
