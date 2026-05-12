@@ -12,10 +12,10 @@ module.exports = async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  // Cache: 6 hours fresh, 6 hours stale-while-revalidate (prices change daily)
-  res.setHeader('Cache-Control', 'public, s-maxage=21600, stale-while-revalidate=21600');
+  // Cache: 30 minutes fresh, 30 minutes stale-while-revalidate (prices update frequently)
+  res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=1800');
 
-  const FALLBACK_SILVER = 83.68;  // May 12, 2026 last known price from Trading Economics
+  const FALLBACK_SILVER = 86.291;  // May 12, 2026 current price from Trading Economics
   const FALLBACK_GOLD = 2440.00;
   const HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
