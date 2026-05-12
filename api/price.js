@@ -14,8 +14,46 @@ module.exports = async function handler(req, res) {
   res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=3600');
 
   const GOLD_API_KEY = 'goldapi-1230smo2lqnxm-io';
+  const FALLBACK_SILVER = 31.25;  // Last-known good price (May 2026)
+  const FALLBACK_GOLD = 2450.00;
 
-  // ---- 1. GoldAPI.io (primary — has auth key, most accurate) ----
+  // ---- 1. goldprice.org (public endpoint, no key, highly reliable) ----
+  try {
+    const r = await fetch('https://data-asg.goldprice.org/dbXRates/USD', { signal: AbortSignal.timeout(6000) });
+    if (r.ok) {
+      const data = await r.json();
+      const item = data?.items?.[0];
+      if (item?.xagPrice > 0) {
+        return res.status(200).json({
+          silver: Math.round(item.xagPrice * 100) / 100,
+          gold:   item.xauPrice ? Math.round(item.xauPrice * 100) / 100 : FALLBACK_GOLD,
+          source: 'goldprice.org',
+          ts: Date.now()
+        });
+      }
+    }
+  } catch (_) { /* fall through */ }
+
+  // ---- 2. metals.live (free, no key required) ----
+  try {
+    const r = await fetch('https://metals.live/api/v1/spot', { signal: AbortSignal.timeout(6000) });
+    if (r.ok) {
+      const data = await r.json();
+      const spot = Array.isArray(data) ? data[0] : data;
+      const silver = spot?.silver ?? spot?.XAG ?? spot?.xag ?? spot?.price?.silver;
+      const gold   = spot?.gold   ?? spot?.XAU ?? spot?.xau ?? spot?.price?.gold;
+      if (silver > 0) {
+        return res.status(200).json({
+          silver: Math.round(silver * 100) / 100,
+          gold:   gold ? Math.round(gold * 100) / 100 : FALLBACK_GOLD,
+          source: 'metals.live',
+          ts: Date.now()
+        });
+      }
+    }
+  } catch (_) { /* fall through */ }
+
+  // ---- 3. GoldAPI.io (auth key, use as fallback if others fail) ----
   try {
     const headers = { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' };
     const [sRes, gRes] = await Promise.all([
@@ -38,42 +76,12 @@ module.exports = async function handler(req, res) {
     }
   } catch (_) { /* fall through */ }
 
-  // ---- 2. metals.live (free, no key required) ----
-  try {
-    const r = await fetch('https://metals.live/api/v1/spot', { signal: AbortSignal.timeout(6000) });
-    if (r.ok) {
-      const data = await r.json();
-      const spot = Array.isArray(data) ? data[0] : data;
-      const silver = spot?.silver ?? spot?.XAG ?? spot?.xag;
-      const gold   = spot?.gold   ?? spot?.XAU ?? spot?.xau;
-      if (silver > 0) {
-        return res.status(200).json({
-          silver: Math.round(silver * 100) / 100,
-          gold:   gold ? Math.round(gold * 100) / 100 : null,
-          source: 'metals.live',
-          ts: Date.now()
-        });
-      }
-    }
-  } catch (_) { /* fall through */ }
-
-  // ---- 3. goldprice.org (public endpoint, no key) ----
-  try {
-    const r = await fetch('https://data-asg.goldprice.org/dbXRates/USD', { signal: AbortSignal.timeout(6000) });
-    if (r.ok) {
-      const data = await r.json();
-      const item = data?.items?.[0];
-      if (item?.xagPrice > 0) {
-        return res.status(200).json({
-          silver: Math.round(item.xagPrice * 100) / 100,
-          gold:   item.xauPrice ? Math.round(item.xauPrice * 100) / 100 : null,
-          source: 'goldprice.org',
-          ts: Date.now()
-        });
-      }
-    }
-  } catch (_) { /* fall through */ }
-
-  // ---- 4. All sources failed ----
-  return res.status(503).json({ error: 'All price sources unavailable. Please try again shortly.' });
+  // ---- 4. All live sources failed — return fallback ----
+  return res.status(200).json({
+    silver: FALLBACK_SILVER,
+    gold: FALLBACK_GOLD,
+    source: 'fallback',
+    ts: Date.now(),
+    note: 'Live sources unavailable, returning cached fallback. This is temporary.'
+  });
 };
