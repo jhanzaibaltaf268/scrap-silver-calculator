@@ -67,13 +67,18 @@ module.exports = async function handler(req, res) {
     console.error('[goldapi] Error:', err.message);
   }
 
-  // ---- 2. Metals.live — cloud-friendly endpoint ----
+  // ---- 2. Metals.live — try multiple format versions ----
   try {
-    const mlData = await safeFetch('https://metals.live/api/v1/spot', { headers: HEADERS });
-    if (Array.isArray(mlData) && mlData[0]) {
-      const spot = mlData[0];
-      const silver = spot.silver || spot.XAG;
-      const gold = spot.gold || spot.XAU;
+    // Try main endpoint
+    let mlData = await safeFetch('https://metals.live/api/v1/spot', { headers: HEADERS, timeout: 5000 });
+    if (!mlData) {
+      // Try alternative endpoint
+      mlData = await safeFetch('https://metals.live/api/v1/latest', { headers: HEADERS, timeout: 5000 });
+    }
+    if (mlData) {
+      const spot = Array.isArray(mlData) ? mlData[0] : mlData;
+      const silver = spot?.silver || spot?.XAG || spot?.xag;
+      const gold = spot?.gold || spot?.XAU || spot?.xau;
       if (silver && silver > 0) {
         console.log(`✅ Metals.live: XAG=$${silver}`);
         return res.status(200).json({
@@ -88,10 +93,28 @@ module.exports = async function handler(req, res) {
     console.error('[metals.live] Error:', err.message);
   }
 
-  // ---- 3. Finnhub Mock/Alternative — if available ----
+  // ---- 3. Try alternate metals.live domain ----
   try {
-    // Attempt a generic commodity endpoint if available
-    // (This may 404 but we try as a fallback)
+    const mlAltData = await safeFetch('https://api.metals.live/v1/spot', { headers: HEADERS, timeout: 4000 });
+    if (mlAltData && typeof mlAltData === 'object') {
+      const silver = mlAltData.silver || mlAltData.XAG || mlAltData.XAGUSD;
+      const gold = mlAltData.gold || mlAltData.XAU || mlAltData.XAUUSD;
+      if (silver && silver > 0) {
+        console.log(`✅ Metals.live (alt): XAG=$${silver}`);
+        return res.status(200).json({
+          silver: Math.round(silver * 100) / 100,
+          gold:   gold ? Math.round(gold * 100) / 100 : FALLBACK_GOLD,
+          source: 'metals.live-alt',
+          ts: Date.now()
+        });
+      }
+    }
+  } catch (err) {
+    // Silently fall through
+  }
+
+  // ---- 4. Finnhub — cloud-friendly financial data ----
+  try {
     const fhData = await safeFetch('https://finnhub.io/api/v1/quote?symbol=XAG_X&token=demo', { headers: HEADERS, timeout: 4000 });
     if (fhData && fhData.c && fhData.c > 0) {
       console.log(`✅ Finnhub: XAG=$${fhData.c}`);
@@ -103,10 +126,10 @@ module.exports = async function handler(req, res) {
       });
     }
   } catch (err) {
-    // Expected to fail with demo token
+    // Demo token may not work, silently fall through
   }
 
-  // ---- 4. goldprice.org — if still accessible ----
+  // ---- 5. goldprice.org — if still accessible ----
   try {
     const gpData = await safeFetch('https://data-asg.goldprice.org/dbXRates/USD', {
       headers: { ...HEADERS, 'Referer': 'https://www.goldprice.org/' },
@@ -126,13 +149,14 @@ module.exports = async function handler(req, res) {
     console.error('[goldprice] Error:', err.message);
   }
 
-  // ---- 5. Fallback — always return 200 with realistic prices ----
+  // ---- 6. Fallback — always return 200 with realistic prices ----
   console.warn('⚠️ All live sources failed, serving cached fallback');
   return res.status(200).json({
     silver: FALLBACK_SILVER,
     gold:   FALLBACK_GOLD,
     source: 'fallback',
     cached: true,
+    updated: new Date().toISOString(),
     ts: Date.now()
   });
 };
