@@ -1,0 +1,234 @@
+{
+  "faq_questions": {
+    "en": [
+      "How much is scrap silver worth?",
+      "How do I calculate the value of scrap silver?",
+      "What is the difference between melt value and spot price?",
+      "How much will a dealer pay for scrap silver?",
+      "What is a troy ounce?",
+      "How can I tell if my silver is real?",
+      "Is silver-plated jewelry worth anything?",
+      "How often does the silver price update?"
+    ],
+    "es": [
+      "¿Cuánto vale la plata de desecho?",
+      "¿Cómo calculo el valor de la plata de desecho?",
+      "¿Cuál es la diferencia entre valor de fusión y precio spot?",
+      "¿Cuánto pagará un distribuidor por plata de desecho?",
+      "¿Qué es una onza troy?",
+      "¿Cómo sé si mi plata es real?",
+      "¿Vale algo la joyería chapada en plata?",
+      "¿Con qué frecuencia se actualiza el precio de la plata?"
+    ],
+    "de": [
+      "Wie viel ist Silberschrott wert?",
+      "Wie berechne ich den Wert von Silberschrott?",
+      "Was ist der Unterschied zwischen Schmelzwert und Spotpreis?",
+      "Wie viel zahlt mir ein Händler für Silberschrott?",
+      "Was ist eine Unze Troy?",
+      "Wie erkenne ich, ob mein Silber echt ist?",
+      "Hat versilberte Schmuck einen Wert?",
+      "Wie oft wird der Silberpreis aktualisiert?"
+    ],
+    "fr": [
+      "Combien vaut l'argent de rebut?",
+      "Comment calcule-t-on la valeur de l'argent de rebut?",
+      "Quelle est la différence entre la valeur de fusion et le prix spot?",
+      "Combien un revendeur paiera-t-il pour l'argent de rebut?",
+      "Qu'est-ce qu'une once troy?",
+      "Comment savoir si mon argent est réel?",
+      "La bijouterie plaquée argent a-t-elle une valeur?",
+      "À quelle fréquence le prix de l'argent est-il mis à jour?"
+    ],
+    "it": [
+      "Quanto vale l'argento di scarto?",
+      "Come calcolo il valore dell'argento di scarto?",
+      "Qual è la differenza tra valore di fusione e prezzo spot?",
+      "Quanto pagherà un rivenditore per l'argento di scarto?",
+      "Che cos'è un'oncia troy?",
+      "Come faccio a sapere se il mio argento è autentico?",
+      "Ha qualche valore la bigiotteria placcata in argento?",
+      "Con quale frequenza viene aggiornato il prezzo dell'argento?"
+    ],
+    "pt": [
+      "Quanto vale a prata de sucata?",
+      "Como calculo o valor da prata de sucata?",
+      "Qual é a diferença entre valor de fusão e preço spot?",
+      "Quanto um revendedor pagará por prata de sucata?",
+      "O que é uma onça troy?",
+      "Como posso saber se minha prata é real?",
+      "A joia banhada em prata vale algo?",
+      "Com que frequência o preço da prata é atualizado?"
+    ],
+    "ru": [
+      "Сколько стоит серебряный лом?",
+      "Как рассчитать стоимость серебряного лома?",
+      "В чем разница между стоимостью плавления и спотовой ценой?",
+      "Сколько дилер заплатит за серебряный лом?",
+      "Что такое тройская унция?",
+      "Как узнать, настоящее ли мое серебро?",
+      "Имеет ли ценность позолоченная серебром бижутерия?",
+      "Как часто обновляется цена на серебро?"
+    ],
+    "tr": [
+      "Gümüş hurda ne kadar değerli?",
+      "Gümüş hurda değerini nasıl hesaplarım?",
+      "Eritme değeri ile spot fiyat arasındaki fark nedir?",
+      "Bir satıcı gümüş hurda için ne kadar öder?",
+      "Troy ons nedir?",
+      "Gümüşümün gerçek olup olmadığını nasıl anlarım?",
+      "Gümüş kaplama takı herhangi bir değeri var mı?",
+      "Gümüş fiyatı ne sıklıkta güncellenir?"
+    ],
+    "hi": [
+      "चांदी की खुरचन कितने की है?",
+      "मैं चांदी की खुरचन के मूल्य की गणना कैसे करूं?",
+      "पिघलने वाली कीमत और स्पॉट कीमत में क्या अंतर है?",
+      "एक डीलर चांदी की खुरचन के लिए कितना भुगतान करेगा?",
+      "ट्रॉय औंस क्या है?",
+      "मैं कैसे बता सकता हूं कि मेरी चांदी असली है?",
+      "चांदी की प्लेटेड ज्वेलरी का कोई मूल्य है?",
+      "चांदी की कीमत कितनी बार अपडेट होती है?"
+    ],
+    "ar": [
+      "كم تساوي الفضة الخردة؟",
+      "كيف أحسب قيمة الفضة الخردة؟",
+      "ما الفرق بين قيمة الذوبان والسعر الفوري؟",
+      "كم سيدفع الموزع مقابل الفضة الخردة؟",
+      "ما هي أونصة تروي؟",
+      "كيف أعرف إذا كانت فضتي حقيقية؟",
+      "هل للمجوهرات المطلية بالفضة أي قيمة؟",
+      "كم مرة يتم تحديث سعر الفضة؟"
+    ],
+    "ur": [
+      "چاندی کی خردہ کتنی قیمتی ہے؟",
+      "میں چاندی کی خردہ کی قیمت کا حساب کیسے لگاتا ہوں؟",
+      "پگھلنے والی قیمت اور اسپاٹ قیمت میں کیا فرق ہے؟",
+      "ایک ڈیلر چاندی کی خردہ کے لیے کتنا ادا کرے گا؟",
+      "ٹروے آونس کیا ہے؟",
+      "میں کیسے بتا سکتا ہوں کہ میری چاندی حقیقی ہے؟",
+      "چاندی سے مढکے ہوئے زیورات کی کوئی قیمت ہے؟",
+      "چاندی کی قیمت کتنی بار اپ ڈیٹ ہوتی ہے؟"
+    ],
+    "zh": [
+      "废银值多少钱？",
+      "我如何计算废银的价值？",
+      "熔融值和现货价格有什么区别？",
+      "经销商会为废银支付多少？",
+      "什么是金衡盎司？",
+      "我如何知道我的白银是否真实？",
+      "镀银珠宝有价值吗？",
+      "白银价格多久更新一次？"
+    ]
+  },
+  "calc_labels": {
+    "en": {
+      "weight": "Weight",
+      "purity": "Silver Purity",
+      "melt_label": "Estimated Melt Value",
+      "grams": "GRAMS",
+      "troy_oz": "TROY OZ",
+      "dwt": "DWT",
+      "kg": "KG"
+    },
+    "es": {
+      "weight": "Peso",
+      "purity": "Pureza de Plata",
+      "melt_label": "Valor de Fusión Estimado",
+      "grams": "GRAMOS",
+      "troy_oz": "ONZA TROY",
+      "dwt": "DWT",
+      "kg": "KG"
+    },
+    "de": {
+      "weight": "Gewicht",
+      "purity": "Silberreinheit",
+      "melt_label": "Geschätzter Schmelzwert",
+      "grams": "GRAMM",
+      "troy_oz": "TROY UNZE",
+      "dwt": "DWT",
+      "kg": "KG"
+    },
+    "fr": {
+      "weight": "Poids",
+      "purity": "Pureté de l'argent",
+      "melt_label": "Valeur de fusion estimée",
+      "grams": "GRAMMES",
+      "troy_oz": "ONCE TROY",
+      "dwt": "DWT",
+      "kg": "KG"
+    },
+    "it": {
+      "weight": "Peso",
+      "purity": "Purezza dell'argento",
+      "melt_label": "Valore di Fusione Stimato",
+      "grams": "GRAMMI",
+      "troy_oz": "ONCIA TROY",
+      "dwt": "DWT",
+      "kg": "KG"
+    },
+    "pt": {
+      "weight": "Peso",
+      "purity": "Pureza da Prata",
+      "melt_label": "Valor de Fusão Estimado",
+      "grams": "GRAMAS",
+      "troy_oz": "ONÇA TROY",
+      "dwt": "DWT",
+      "kg": "KG"
+    },
+    "ru": {
+      "weight": "Вес",
+      "purity": "Чистота серебра",
+      "melt_label": "Предполагаемая стоимость плавления",
+      "grams": "ГРАММЫ",
+      "troy_oz": "ТРОЙСКАЯ УНЦИЯ",
+      "dwt": "DWT",
+      "kg": "КГ"
+    },
+    "tr": {
+      "weight": "Ağırlık",
+      "purity": "Gümüş Saflığı",
+      "melt_label": "Tahmini Eritme Değeri",
+      "grams": "GRAM",
+      "troy_oz": "TROY ONSU",
+      "dwt": "DWT",
+      "kg": "KG"
+    },
+    "hi": {
+      "weight": "वजन",
+      "purity": "चांदी की शुद्धता",
+      "melt_label": "अनुमानित पिघलना मूल्य",
+      "grams": "ग्राम",
+      "troy_oz": "ट्रॉय औंस",
+      "dwt": "DWT",
+      "kg": "किलोग्राम"
+    },
+    "ar": {
+      "weight": "الوزن",
+      "purity": "نقاوة الفضة",
+      "melt_label": "قيمة الذوبان المقدرة",
+      "grams": "جرام",
+      "troy_oz": "أونصة تروي",
+      "dwt": "DWT",
+      "kg": "كيلوغرام"
+    },
+    "ur": {
+      "weight": "وزن",
+      "purity": "چاندی کی خالصیت",
+      "melt_label": "اندازے شدہ میل ویلیو",
+      "grams": "گرام",
+      "troy_oz": "ٹروے آونس",
+      "dwt": "DWT",
+      "kg": "کلوگرام"
+    },
+    "zh": {
+      "weight": "重量",
+      "purity": "白银纯度",
+      "melt_label": "估计熔融值",
+      "grams": "克",
+      "troy_oz": "金衡盎司",
+      "dwt": "DWT",
+      "kg": "千克"
+    }
+  }
+}
