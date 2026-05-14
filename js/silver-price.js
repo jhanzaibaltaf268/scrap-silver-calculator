@@ -9,7 +9,7 @@
    ============================================ */
 
 const SilverPrice = (() => {
-  const FALLBACK_PRICE   = 80.50;   // ~May 2026 market price (USD/troy oz)
+  const FALLBACK_PRICE   = 87.42;   // ~May 2026 market price (USD/troy oz)
   const FALLBACK_GOLD    = 3200.00; // Fallback gold price
   const CACHE_KEY        = 'silverSpotCache';
   const CACHE_DURATION   = 60 * 60 * 1000; // 1 hour (matches Edge cache)
