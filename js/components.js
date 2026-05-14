@@ -7,6 +7,7 @@ const SiteComponents = (() => {
   /* ---- Navigation Structure ---- */
   const NAV_ITEMS = [
     { label: 'nav_home', href: '/' },
+    { label: 'nav_silver_price', href: '/silver-price-today/' },
     {
       label: 'nav_calculators', dropdown: [
         { label: 'nav_gold_silver', href: '/gold-and-silver-calculator/' },
@@ -48,6 +49,7 @@ const SiteComponents = (() => {
 
   const NAV_LABELS = {
     nav_home:         { en:'Home', es:'Inicio', fr:'Accueil', de:'Startseite', it:'Home', pt:'Início', ru:'Главная', ar:'الرئيسية', hi:'होम', ur:'ہوم', tr:'Anasayfa', zh:'首页' },
+    nav_silver_price: { en:'Silver Price', es:'Precio Plata', fr:'Prix Argent', de:'Silberpreis', it:'Prezzo Argento', pt:'Preço Prata', ru:'Цена Серебра', ar:'سعر الفضة', hi:'चाँदी भाव', ur:'چاندی قیمت', tr:'Gümüş Fiyatı', zh:'银价' },
     nav_calculators:  { en:'Calculators', es:'Calculadoras', fr:'Calculateurs', de:'Rechner', it:'Calcolatrici', pt:'Calculadoras', ru:'Калькуляторы', ar:'الحاسبات', hi:'कैलकुलेटर', ur:'کیلکولیٹر', tr:'Hesaplayıcılar', zh:'计算器' },
     nav_purity:       { en:'Purity', es:'Pureza', fr:'Pureté', de:'Reinheit', it:'Purezza', pt:'Pureza', ru:'Проба', ar:'النقاء', hi:'शुद्धता', ur:'پاکیزگی', tr:'Saflık', zh:'纯度' },
     nav_tools:        { en:'Tools', es:'Herramientas', fr:'Outils', de:'Werkzeuge', it:'Strumenti', pt:'Ferramentas', ru:'Инструменты', ar:'الأدوات', hi:'उपकरण', ur:'اوزار', tr:'Araçlar', zh:'工具' },
@@ -119,6 +121,7 @@ const SiteComponents = (() => {
     {
       title: 'Company',
       links: [
+        { label: 'nav_silver_price', href: '/silver-price-today/' },
         { label: 'nav_guide', href: '/how-to-use-silver-calculators/' },
         { label: 'Privacy Policy', href: '/privacy-policy/' },
         { label: 'Terms of Service', href: '/terms-of-service/' },
