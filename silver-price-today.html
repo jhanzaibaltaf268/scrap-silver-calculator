@@ -18,7 +18,6 @@
   <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/silver-price-today/">
 
   <link rel="stylesheet" href="/css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.1.7/dist/lightweight-charts.standalone.production.min.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -333,6 +332,127 @@
     .cta-btn { display: inline-block; background: #fff; color: var(--accent); padding: 14px 32px; border-radius: 28px; font-weight: 700; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2); }
     .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3); }
 
+    /* TradingView Chart Wrapper */
+    .tv-chart-wrapper {
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(124, 58, 237, 0.08) 100%);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      margin: var(--space-lg) 0;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    .tv-chart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px 16px;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.2);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .tv-chart-title-area { display: flex; flex-direction: column; gap: 3px; }
+    .tv-chart-title-area .ct-label { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+    .tv-chart-title-area .ct-value { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 800; color: var(--accent); }
+    .tv-widget-container { position: relative; }
+    .tv-widget-container .tradingview-widget-container { height: 450px; }
+
+    /* Page-specific Quick Answer overrides */
+    .content-card {
+      background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(124, 58, 237, 0.06) 100%);
+      border: 1px solid rgba(124, 58, 237, 0.2);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      margin: var(--space-lg) 0;
+      position: relative;
+    }
+    .content-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent) 0%, #a78bfa 100%);
+      border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    }
+    .content-card h3 {
+      color: var(--text-primary);
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 0 0 var(--space-md);
+    }
+    .content-card p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: var(--space-md);
+    }
+    .content-card p:last-child { margin-bottom: 0; }
+    .content-card strong { color: var(--text-primary); font-weight: 800; }
+
+    /* FAQ Styles */
+    .faq-list { margin-top: var(--space-lg); display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--bg-secondary);
+      border: 1px solid rgba(124, 58, 237, 0.15);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: border-color .2s;
+    }
+    .faq-item.open { border-color: rgba(124, 58, 237, 0.5); }
+    .faq-item.open .faq-question { color: var(--accent); }
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 24px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--text-primary);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-align: left;
+      gap: 16px;
+      font-family: 'Inter', sans-serif;
+      transition: color .2s;
+    }
+    .faq-question:hover { color: var(--accent); }
+    .faq-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      background: rgba(124, 58, 237, 0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent);
+      transition: transform .25s, background .2s;
+    }
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--accent);
+      color: #fff;
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .3s ease;
+    }
+    .faq-item.open .faq-answer { max-height: 400px; }
+    .faq-answer p {
+      padding: 0 24px 20px;
+      color: var(--text-secondary);
+      font-size: 1.02rem;
+      line-height: 1.85;
+      margin: 0;
+      border-top: 1px solid rgba(124, 58, 237, 0.1);
+      padding-top: 16px;
+    }
+
     /* Responsive */
     @media (max-width: 1024px) {
       .purity-prices { grid-template-columns: repeat(2, 1fr); }
@@ -343,9 +463,11 @@
       .purity-prices { grid-template-columns: 1fr; }
       .bp-units-grid { grid-template-columns: 1fr; gap: var(--space-sm); }
       .bp-price { font-size: 2.5rem; }
-      #price-chart { height: 300px; }
       .payout-table { font-size: var(--fs-sm); }
       .payout-table th, .payout-table td { padding: 10px; }
+      .tv-widget-container .tradingview-widget-container { height: 380px; }
+      .faq-question { font-size: .95rem; padding: 16px 18px; }
+      .faq-answer p { padding: 12px 18px 16px; }
     }
   </style>
 </head>
@@ -419,22 +541,42 @@
         <p class="sec-sub">Track silver's price action over multiple time periods. Switch between 7-day, 30-day, and 1-year views to identify trends and patterns.</p>
       </div>
 
-      <div class="chart-wrapper reveal reveal-d1">
-        <div class="chart-header">
-          <div class="chart-title-area">
-            <div class="ct-label">Silver Spot Price (USD / Troy Oz)</div>
+      <div class="tv-chart-wrapper reveal reveal-d1">
+        <div class="tv-chart-header">
+          <div class="tv-chart-title-area">
+            <div class="ct-label">Silver Spot Price — XAG/USD (Live)</div>
             <div class="ct-value" id="chart-current-price">$—</div>
           </div>
-          <div class="chart-title-area" style="text-align:right;">
-            <div class="ct-label">Selected Period Change</div>
-            <div class="ct-value" id="chart-period-change" style="font-size:1.2rem;">—</div>
+          <div class="tv-chart-title-area" style="text-align:right;">
+            <div class="ct-label">Source</div>
+            <div style="font-size:.9rem; color: var(--text-muted); font-weight:600;">TradingView · OANDA</div>
           </div>
         </div>
-        <div id="price-chart"></div>
-        <div class="chart-controls">
-          <button class="chart-btn active" data-range="7d">7 Days</button>
-          <button class="chart-btn" data-range="30d">30 Days</button>
-          <button class="chart-btn" data-range="1y">1 Year</button>
+        <div class="tv-widget-container">
+          <!-- TradingView Advanced Chart Widget -->
+          <div class="tradingview-widget-container" style="height:450px;">
+            <div class="tradingview-widget-container__widget" style="height:100%;"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+            {
+              "autosize": true,
+              "symbol": "OANDA:XAGUSD",
+              "interval": "60",
+              "timezone": "Etc/UTC",
+              "theme": "dark",
+              "style": "1",
+              "locale": "en",
+              "backgroundColor": "rgba(11, 11, 22, 0)",
+              "gridColor": "rgba(124, 58, 237, 0.1)",
+              "withdateranges": true,
+              "range": "7D",
+              "hide_side_toolbar": false,
+              "allow_symbol_change": false,
+              "save_image": false,
+              "calendar": false,
+              "support_host": "https://www.tradingview.com"
+            }
+            </script>
+          </div>
         </div>
       </div>
 
@@ -645,14 +787,10 @@
         </div>
       </div>
 
-      <div class="reveal reveal-d2" style="margin-top: var(--space-lg);">
-        <div class="quick-answer">
-          <h3>How to Use Market Information</h3>
-          <div class="rich-content">
-            <p>Understanding why silver price changed helps you make better selling decisions. If price is up on strong industrial demand news, consider selling soon before sentiment shifts. If price is down on dollar strength or rising rates, you might wait for a bounce. However, remember that trying to time the market perfectly is difficult — even professionals struggle with it. The best time to sell is usually when you need the money, with the caveat that selling near recent highs is generally smarter than selling near recent lows.</p>
-            <p>Use the 7-day and 30-day charts at the top of this page to identify trends. An uptrend (higher highs, higher lows) suggests strength. A downtrend (lower highs, lower lows) suggests weakness. Consolidation patterns (sideways movement within a range) often precede bigger moves. When silver breaks above recent resistance, momentum buyers often chase the move higher. When it breaks below support, panic selling accelerates the decline.</p>
-          </div>
-        </div>
+      <div class="content-card reveal reveal-d2">
+        <h3>How to Use Market Information When Selling</h3>
+        <p>Understanding why silver price changed helps you make better selling decisions. If prices are rising on strong industrial demand or dollar weakness, selling soon may be smart before sentiment reverses. If prices dipped on temporary rate fears or profit-taking, waiting for a bounce may be worthwhile.</p>
+        <p>Use the 7-day and 30-day chart views above to identify trends. An uptrend (higher highs, higher lows) suggests strength — likely a good time to sell near highs. A downtrend (lower highs, lower lows) suggests waiting may pay off. Sideways consolidation often precedes a breakout move in either direction. Selling near 52-week highs historically maximizes your payout. Even a $3/oz improvement across 10 ounces adds $30 to your proceeds.</p>
       </div>
     </section>
 
@@ -797,19 +935,14 @@
         </div>
       </div>
 
-      <div class="reveal reveal-d2" style="margin-top: var(--space-lg);">
-        <div class="quick-answer">
-          <h3>Understanding Melt Value vs. Dealer Payout</h3>
-          <div class="rich-content">
-            <p>The prices shown above represent the <strong>melt value</strong> — what your silver is worth based purely on its precious metal content. This is the starting point for any dealer negotiation. However, <strong>dealers don't pay 100% of melt value</strong>. Here's why:</p>
-            <p><strong>Refining cost (1–3%):</strong> Processing scrap into pure silver requires expensive equipment and expertise. Even small items must be assayed (tested for purity), melted down, and refined.</p>
-            <p><strong>Business overhead (2–5%):</strong> Rent, utilities, insurance, staff wages, security systems, and regulatory compliance add up. Dealers pass these costs to you as discounts.</p>
-            <p><strong>Market risk (2–5%):</strong> Dealers hold inventory that could drop in value. They need margin to protect against this risk.</p>
-            <p><strong>Profit margin (3–15%):</strong> Dealers must earn profit to stay in business. Online refiners with low overhead take 5–8% margins. Pawn shops with high overhead and risk might take 30–40%.</p>
-            <p><strong>Form & purity issues (0–10%):</strong> Mixed alloys, contaminated items, or items with unknown purity require additional assay time and may be discounted further.</p>
-            <p>For example, if the melt value shown is $100, you might receive: $98 from an online refiner (98% payout), $75–85 from a coin shop (75–85%), or as low as $50 from a pawn shop (50%). That's why shopping around matters so much!</p>
-          </div>
-        </div>
+      <div class="content-card reveal reveal-d2">
+        <h3>Understanding Melt Value vs. Dealer Payout</h3>
+        <p>The prices above are the <strong>melt value</strong> — what your silver is worth based purely on its precious metal content. This is the starting point for any dealer negotiation. However, dealers never pay 100% of melt value.</p>
+        <p><strong>Refining cost (1–3%):</strong> Processing scrap requires assaying (purity testing), melting, and refining — all at the dealer's cost.</p>
+        <p><strong>Business overhead (2–5%):</strong> Rent, utilities, insurance, staff wages, and regulatory compliance are passed to sellers as discounts.</p>
+        <p><strong>Market risk (2–5%):</strong> Dealers hold inventory that could drop in value between purchase and resale. This risk requires margin.</p>
+        <p><strong>Profit margin (3–15%):</strong> Online refiners take 5–8%; pawn shops with high overhead may take 30–40%.</p>
+        <p>Example: if your item's melt value is $100, an online refiner pays $98 (98%), a coin shop pays $75–85 (75–85%), a pawn shop may pay only $50 (50%). <strong>Shopping around can earn you 30–40% more per ounce.</strong></p>
       </div>
     </section>
 
@@ -883,114 +1016,6 @@
   <script>
     function fmt2(v) { return '$' + v.toFixed(2); }
     function fmt4(v) { return '$' + v.toFixed(4); }
-
-    // Price Chart Setup
-    let chart, areaSeries, chartCurrentRange = '7d', chartInitialized = false;
-
-    function generateChartData(range, currentPrice) {
-      const now = Math.floor(Date.now() / 1000);
-      const data = [];
-      let points, interval, volatility;
-
-      if (range === '7d')      { points = 7 * 24;  interval = 3600;      volatility = 0.4; }
-      else if (range === '30d'){ points = 30;      interval = 86400;     volatility = 0.8; }
-      else                     { points = 365;     interval = 86400;     volatility = 1.2; }
-
-      // Walk backward from current price using random walk
-      let price = currentPrice;
-      const reversedPrices = [price];
-      for (let i = 1; i <= points; i++) {
-        const variation = (Math.random() - 0.5) * volatility;
-        price = price - variation;
-        reversedPrices.push(Math.max(price, currentPrice * 0.7));
-      }
-      // Build data in chronological order
-      for (let i = points; i >= 0; i--) {
-        data.push({
-          time: now - (i * interval),
-          value: parseFloat(reversedPrices[i].toFixed(4))
-        });
-      }
-      return data;
-    }
-
-    function renderChart(range) {
-      if (!chart || !areaSeries) return;
-      let currentPrice = 35;
-      try { if (typeof SilverPrice !== 'undefined' && SilverPrice.getPrice) currentPrice = SilverPrice.getPrice() || 35; } catch (e) {}
-      const data = generateChartData(range, currentPrice);
-      areaSeries.setData(data);
-      chart.timeScale().fitContent();
-
-      // Update period change
-      const first = data[0].value, last = data[data.length - 1].value;
-      const chg = last - first;
-      const chgPct = (chg / first) * 100;
-      const el = document.getElementById('chart-period-change');
-      if (el) {
-        const arrow = chg >= 0 ? '▲' : '▼';
-        const color = chg >= 0 ? '#10b981' : '#f87171';
-        el.innerHTML = `<span style="color:${color}">${arrow} $${Math.abs(chg).toFixed(2)} (${Math.abs(chgPct).toFixed(2)}%)</span>`;
-      }
-    }
-
-    function initChart() {
-      if (chartInitialized) return;
-      const chartContainer = document.getElementById('price-chart');
-      if (!chartContainer) { console.warn('Chart container missing'); return; }
-      if (!window.LightweightCharts) { console.warn('LightweightCharts not loaded yet'); return; }
-
-      try {
-        chart = window.LightweightCharts.createChart(chartContainer, {
-          layout: { background: { color: 'transparent' }, textColor: 'rgba(255,255,255,.85)', fontFamily: 'Inter, sans-serif' },
-          width: chartContainer.clientWidth || 800,
-          height: 420,
-          grid: {
-            vertLines: { color: 'rgba(124, 58, 237, 0.15)' },
-            horzLines: { color: 'rgba(124, 58, 237, 0.15)' }
-          },
-          timeScale: { timeVisible: true, secondsVisible: false, borderColor: 'rgba(124, 58, 237, 0.35)' },
-          rightPriceScale: { borderColor: 'rgba(124, 58, 237, 0.35)' },
-          crosshair: { mode: 1 }
-        });
-
-        areaSeries = chart.addAreaSeries({
-          lineColor: '#a78bfa',
-          topColor: 'rgba(167, 139, 250, 0.55)',
-          bottomColor: 'rgba(124, 58, 237, 0.02)',
-          lineWidth: 3,
-          priceLineVisible: true,
-          priceLineColor: '#a78bfa',
-          priceLineWidth: 1,
-          priceLineStyle: 2,
-          lastValueVisible: true
-        });
-
-        renderChart(chartCurrentRange);
-        chartInitialized = true;
-      } catch (err) {
-        console.error('Chart init failed:', err);
-        chartContainer.innerHTML = '<div style="padding:80px 20px;text-align:center;color:rgba(255,255,255,.6);font-size:.95rem;">Live chart temporarily unavailable. Real-time price shown above.</div>';
-        return;
-      }
-
-      // Chart range controls
-      document.querySelectorAll('.chart-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          document.querySelectorAll('.chart-btn').forEach(b => b.classList.remove('active'));
-          btn.classList.add('active');
-          chartCurrentRange = btn.dataset.range;
-          renderChart(chartCurrentRange);
-        });
-      });
-
-      // Responsive resize
-      window.addEventListener('resize', () => {
-        if (chart && chartContainer) {
-          chart.applyOptions({ width: chartContainer.clientWidth });
-        }
-      });
-    }
 
     function updateAll() {
       const spot = SilverPrice.getPrice();
@@ -1088,19 +1113,20 @@
       document.getElementById('ex-quarter').textContent = fmt2(6.25 / 31.1035 * 0.90 * spot);
       document.getElementById('ex-bar').textContent = fmt2(10 * 0.999 * spot);
 
-      // Chart current price display
+      // Chart header price display
       const ccp = document.getElementById('chart-current-price');
       if (ccp) ccp.textContent = fmt2(spot);
-
-      // Initialize chart now that we have price data
-      if (!chartInitialized) {
-        initChart();
-      }
     }
 
     // FAQ accordion
     document.addEventListener('click', e => {
-      if(e.target.closest('.faq-question')) e.target.closest('.faq-item').classList.toggle('open');
+      const q = e.target.closest('.faq-question');
+      if (q) {
+        const item = q.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      }
     });
 
     // Scroll reveal
@@ -1117,21 +1143,6 @@
     SilverPrice.onPriceUpdate(() => { updateAll(); });
     updateAll();
 
-    // Initialize chart immediately - don't wait for SilverPrice; default price is used internally
-    function tryInitChart(attempt) {
-      attempt = attempt || 0;
-      if (chartInitialized) return;
-      if (window.LightweightCharts && document.getElementById('price-chart')) {
-        initChart();
-      } else if (attempt < 30) {
-        setTimeout(() => tryInitChart(attempt + 1), 200);
-      }
-    }
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => tryInitChart(0));
-    } else {
-      tryInitChart(0);
-    }
   </script>
 </body>
 </html>
