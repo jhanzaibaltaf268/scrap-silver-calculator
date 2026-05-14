@@ -122,9 +122,9 @@
     .tv-chart-title-area .ct-value.loading::before { content: ''; display: inline-block; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse-dot 1.2s infinite; }
     .tv-source-badge { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 6px; }
     .tv-source-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 0 3px rgba(16,185,129,.2); }
-    .tv-widget-container { position: relative; }
-    .tv-widget-container .tradingview-widget-container { height: 650px; width: 100%; }
-    .tv-widget-container .tradingview-widget-container__widget { height: 100%; width: 100%; }
+    .tv-widget-container { position: relative; height: 650px; }
+    .tv-widget-container .tradingview-widget-container { height: 100%; width: 100%; }
+    .tv-widget-container .tradingview-widget-container__widget { height: calc(100% - 32px); width: 100%; }
     @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
 
     /* ─── INSIGHT CARD (below chart) ─── */
@@ -344,7 +344,7 @@
       .bp-price { font-size: 2.5rem; }
       .payout-table { font-size: var(--fs-sm); }
       .payout-table th, .payout-table td { padding: 10px; }
-      .tv-widget-container .tradingview-widget-container { height: 420px; }
+      .tv-widget-container { height: 420px; }
       .faq-question { font-size: .95rem; padding: 16px 18px; }
       .faq-answer p { padding: 12px 18px 16px; }
     }
@@ -433,8 +433,8 @@
         </div>
         <div class="tv-widget-container">
           <!-- TradingView Advanced Chart Widget -->
-          <div class="tradingview-widget-container" style="height:650px;width:100%;">
-            <div class="tradingview-widget-container__widget" style="height:100%;width:100%;"></div>
+          <div class="tradingview-widget-container" style="height:100%;width:100%;">
+            <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%;"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
             {
               "autosize": true,
