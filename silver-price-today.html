@@ -121,18 +121,67 @@
     .pp-link { display: inline-block; margin-top: 16px; font-size: var(--fs-xs); color: var(--accent); font-weight: 700; text-decoration: none; }
     .pp-link:hover { text-decoration: underline; }
 
-    /* Dealer Payout Table */
-    .dealer-payout { background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(74, 222, 128, 0.05)); border: 1px solid var(--accent); border-radius: var(--radius-lg); padding: var(--space-xl); margin: var(--space-lg) 0; }
-    .dealer-payout h2 { color: var(--text-primary); margin-bottom: var(--space-md); font-size: 1.6rem; }
-    .dealer-payout > p { color: var(--text-secondary); margin-bottom: var(--space-md); line-height: 1.7; }
-    .payout-table { width: 100%; border-collapse: collapse; margin: var(--space-lg) 0; }
-    .payout-table thead { background: rgba(124, 58, 237, 0.1); }
-    .payout-table th { padding: 14px; text-align: left; font-weight: 700; color: var(--text-primary); border-bottom: 2px solid var(--accent); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: .05em; }
-    .payout-table td { padding: 14px; color: var(--text-secondary); border-bottom: 1px solid var(--border-subtle); }
-    .payout-table tbody tr:hover { background: rgba(124, 58, 237, 0.05); }
-    .payout-range { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #4ade80; font-size: var(--fs-base); }
-    .payout-estimate { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-weight: 600; }
-    .payout-note { font-size: var(--fs-sm); color: var(--text-secondary); font-weight: 500; }
+    /* Dealer Payout Section */
+    .dealer-payout { margin: var(--space-lg) 0; }
+    .dealer-payout h2 { color: var(--text-primary); margin-bottom: var(--space-md); font-size: 2rem; font-weight: 800; }
+    .dealer-payout > p { color: var(--text-secondary); margin-bottom: var(--space-md); line-height: 1.8; font-size: 1.05rem; }
+    .dealer-payout h3 { color: var(--text-primary); font-size: 1.4rem; font-weight: 700; margin: var(--space-lg) 0 var(--space-md); }
+
+    /* Payout Table - Professional Design */
+    .payout-table { width: 100%; border-collapse: collapse; margin: var(--space-lg) 0; background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(124, 58, 237, 0.05) 100%); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.2); }
+    .payout-table thead { background: linear-gradient(135deg, var(--accent) 0%, #8b5cf6 100%); }
+    .payout-table th {
+      padding: 18px 20px;
+      text-align: left;
+      font-weight: 800;
+      color: #fff;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: .07em;
+      border: none;
+    }
+    .payout-table td {
+      padding: 18px 20px;
+      color: var(--text-secondary);
+      border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+      font-size: 1rem;
+    }
+    .payout-table tbody tr { transition: all .2s ease; }
+    .payout-table tbody tr:last-child td { border-bottom: none; }
+    .payout-table tbody tr:hover { background: rgba(124, 58, 237, 0.08); }
+    .payout-table td:first-child { font-weight: 700; color: var(--text-primary); }
+    .payout-range {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 800;
+      color: #10b981;
+      font-size: 1.1rem;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .payout-estimate {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .payout-note {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-top: 8px;
+    }
+
+    /* Info Box Styling */
+    .info-box {
+      background: linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(168, 85, 247, 0.08));
+      border-left: 4px solid var(--accent);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin: var(--space-lg) 0;
+      border-right: 1px solid rgba(124, 58, 237, 0.2);
+    }
+    .info-box p { color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem; margin: 0; }
+    .info-box strong { color: var(--text-primary); font-weight: 700; }
 
     /* Market Drivers Cards */
     .drivers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-md); margin-top: var(--space-md); }
@@ -157,12 +206,33 @@
     .sec-sub { font-size: var(--fs-base); color: var(--text-secondary); margin: var(--space-md) 0; line-height: 1.7; }
 
     /* Rich text sections */
-    .rich-content { color: var(--text-secondary); line-height: 1.8; font-size: var(--fs-base); }
+    .rich-content { color: var(--text-secondary); line-height: 1.9; font-size: 1.05rem; }
     .rich-content p { margin-bottom: var(--space-md); }
-    .rich-content strong { color: var(--text-primary); font-weight: 700; }
-    .rich-content h3 { color: var(--text-primary); font-size: 1.3rem; font-weight: 700; margin: var(--space-md) 0 var(--space-sm); }
-    .rich-content ul { margin: var(--space-md) 0; padding-left: 24px; }
-    .rich-content li { margin-bottom: 10px; }
+    .rich-content strong { color: var(--text-primary); font-weight: 800; }
+    .rich-content h3 {
+      color: var(--text-primary);
+      font-size: 1.35rem;
+      font-weight: 800;
+      margin: var(--space-lg) 0 var(--space-md);
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(124, 58, 237, 0.2);
+    }
+    .rich-content ul {
+      margin: var(--space-md) 0;
+      padding-left: 28px;
+    }
+    .rich-content li {
+      margin-bottom: 14px;
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      line-height: 1.8;
+    }
+    .rich-content li strong {
+      color: var(--text-primary);
+      font-weight: 800;
+      display: block;
+      margin-bottom: 4px;
+    }
 
     /* CTA Box */
     .cta-box { background: linear-gradient(135deg, var(--accent) 0%, #7c3aed 100%); border-radius: var(--radius-lg); padding: var(--space-xl); text-align: center; margin: var(--space-lg) 0; color: #fff; }
@@ -312,23 +382,39 @@
       <div class="quick-answer reveal">
         <h2>What is the Silver Price Today?</h2>
         <div class="rich-content">
-          <p>Today's silver spot price is <strong id="qa-spot">$—</strong> per troy ounce, representing the global wholesale reference rate on international commodity exchanges. This price is sourced directly from live market data feeds and updated hourly to ensure you always have the most current valuation. The spot price is the standardized benchmark used by dealers, refiners, investors, and central banks worldwide for all silver transactions.</p>
+          <p>Today's silver spot price is <strong id="qa-spot">$—</strong> per troy ounce — the global wholesale reference rate on major commodity exchanges. This price is sourced from live market feeds and updated hourly. It's the standardized benchmark used worldwide by dealers, refiners, investors, and central banks for all silver transactions.</p>
 
-          <h3>How Spot Price Works</h3>
-          <p>The spot price is the price at which silver can be bought or sold immediately for delivery, with no premium or discount applied. It's determined by global supply and demand on exchanges like COMEX (New York) and the London Bullion Market (LBM). Every transaction worldwide — from central bank purchases to jeweler sales — references this same global spot price as the baseline. The actual prices you pay or receive depend on the spot price plus or minus dealer markups, premiums, and discounts.</p>
+          <h3>Understanding Spot Price</h3>
+          <p>Spot price is the rate at which silver trades immediately (for "spot" delivery) with no premiums applied. It's set by global supply and demand on exchanges like COMEX (New York) and the London Bullion Market. Every silver transaction worldwide references this same baseline price. What you actually pay or receive depends on the spot price plus dealer markups (if buying) or discounts (if selling).</p>
 
-          <h3>Why Your Actual Price Differs From Spot</h3>
-          <p>While spot price is the wholesale reference, what you actually pay or receive depends on several factors: whether you're buying or selling (dealers buy at a discount, sell at a premium), the purity and form (coins, bars, scrap jewelry), market conditions, and the dealer's business model. Online refiners buying 999 fine silver will typically pay 90–98% of spot for bulk quantities, while local coin shops buying mixed sterling jewelry might pay only 60–75% of spot. Always compare multiple dealer quotes before transacting.</p>
+          <h3>Why You Don't Get Spot Price When Selling</h3>
+          <p>When selling scrap silver, jewelry, or coins, dealers pay <strong>less than spot</strong> to cover refining costs, overhead, and profit. Online refiners might pay 90–98% of spot for bulk material, while pawn shops pay as little as 50–70%. The difference comes down to volume, purity documentation, and dealer overhead. This is why comparing multiple dealers matters so much.</p>
 
-          <h3>Silver Purity and Today's Prices by Grade</h3>
-          <p>Different silver grades command different values based on their purity (measured in parts per thousand). Pure 999 fine silver is worth 100% of spot, but sterling (925), coin silver (900), and European (800) are worth proportionally less. Here are today's live prices for each common purity:</p>
+          <h3>Today's Prices by Silver Purity</h3>
+          <p>Different silver grades have different values based on purity (measured in parts per thousand). Pure 999 fine silver equals 100% of spot price. Sterling (925) is worth 92.5% of spot, coin silver (900) is worth 90%, and European (800) is worth 80%. Here are today's prices for each grade per gram:</p>
         </div>
 
         <div class="qa-stats">
-          <div class="qa-stat"><div class="label">999 Fine / gram</div><div class="val" id="qa-999g">$—</div></div>
-          <div class="qa-stat"><div class="label">925 Sterling / gram</div><div class="val" id="qa-925g">$—</div></div>
-          <div class="qa-stat"><div class="label">900 Coin / gram</div><div class="val" id="qa-900g">$—</div></div>
-          <div class="qa-stat"><div class="label">800 European / gram</div><div class="val" id="qa-800g">$—</div></div>
+          <div class="qa-stat">
+            <div class="label">999 Fine Silver</div>
+            <div class="val" id="qa-999g">$—</div>
+            <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;">per gram</div>
+          </div>
+          <div class="qa-stat">
+            <div class="label">925 Sterling Silver</div>
+            <div class="val" id="qa-925g">$—</div>
+            <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;">per gram (92.5% pure)</div>
+          </div>
+          <div class="qa-stat">
+            <div class="label">900 Coin Silver</div>
+            <div class="val" id="qa-900g">$—</div>
+            <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;">per gram (90% pure)</div>
+          </div>
+          <div class="qa-stat">
+            <div class="label">800 European Silver</div>
+            <div class="val" id="qa-800g">$—</div>
+            <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;">per gram (80% pure)</div>
+          </div>
         </div>
       </div>
     </section>
@@ -337,42 +423,46 @@
     <section class="sec container">
       <div class="reveal text-center">
         <span class="sec-badge">💰 By Purity</span>
-        <h2 class="sec-title">Silver Prices Today by Purity Type</h2>
-        <p class="sec-sub">Live per-ounce and per-gram pricing for every common silver purity grade.</p>
+        <h2 class="sec-title">Live Silver Prices by Purity Grade Today</h2>
+        <p class="sec-sub">Current market rates for each common silver purity. Used to calculate scrap value, jewelry worth, and dealer payout offers.</p>
       </div>
 
       <div class="purity-prices reveal reveal-d1">
         <div class="pp-card">
           <div class="pp-code">999</div>
           <div class="pp-name">Fine Silver</div>
-          <div class="pp-pct">99.9% pure</div>
+          <div class="pp-pct">99.9% Pure</div>
           <div class="pp-price-oz" id="purity-999-oz">$—</div>
           <div class="pp-price-g" id="purity-999-g">$— / gram</div>
-          <a class="pp-link" href="999-silver-calculator.html">999 calculator →</a>
+          <p style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 8px; margin-bottom: 0;">Highest purity • Investment bars & bullion</p>
+          <a class="pp-link" href="999-silver-calculator.html">Use 999 Calculator →</a>
         </div>
         <div class="pp-card gold-accent">
           <div class="pp-code">925</div>
           <div class="pp-name">Sterling Silver</div>
-          <div class="pp-pct">92.5% silver</div>
+          <div class="pp-pct">92.5% Pure</div>
           <div class="pp-price-oz" id="purity-925-oz">$—</div>
           <div class="pp-price-g" id="purity-925-g">$— / gram</div>
-          <a class="pp-link" href="925-silver-calculator.html">925 calculator →</a>
+          <p style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 8px; margin-bottom: 0;">Most jewelry & flatware</p>
+          <a class="pp-link" href="925-silver-calculator.html">Use 925 Calculator →</a>
         </div>
         <div class="pp-card coin-accent">
           <div class="pp-code">900</div>
           <div class="pp-name">Coin Silver</div>
-          <div class="pp-pct">90% silver</div>
+          <div class="pp-pct">90% Pure</div>
           <div class="pp-price-oz" id="purity-900-oz">$—</div>
           <div class="pp-price-g" id="purity-900-g">$— / gram</div>
-          <a class="pp-link" href="900-silver-calculator.html">900 calculator →</a>
+          <p style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 8px; margin-bottom: 0;">US coins pre-1965</p>
+          <a class="pp-link" href="900-silver-calculator.html">Use 900 Calculator →</a>
         </div>
         <div class="pp-card euro-accent">
           <div class="pp-code">800</div>
           <div class="pp-name">European Silver</div>
-          <div class="pp-pct">80% silver</div>
+          <div class="pp-pct">80% Pure</div>
           <div class="pp-price-oz" id="purity-800-oz">$—</div>
           <div class="pp-price-g" id="purity-800-g">$— / gram</div>
-          <a class="pp-link" href="800-silver-calculator.html">800 calculator →</a>
+          <p style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 8px; margin-bottom: 0;">Vintage European items</p>
+          <a class="pp-link" href="800-silver-calculator.html">Use 800 Calculator →</a>
         </div>
       </div>
     </section>
@@ -452,12 +542,12 @@
       </div>
 
       <div class="dealer-payout reveal reveal-d1">
-        <h2 style="margin-top:0;">Spot Price ≠ What Dealers Pay for Your Silver</h2>
-        <p>The silver spot price displayed at the top of this page is the <strong>global wholesale market reference price</strong> — it's not what any dealer will pay you for your silver. When you sell scrap silver, jewelry, bullion coins, or bars to dealers, you receive a <strong>percentage of the melt value</strong> rather than 100% of spot. This percentage varies dramatically based on the dealer type, your silver's purity, form, quantity, and current market conditions.</p>
+        <h2>What You'll Actually Get Paid for Silver</h2>
+        <p>The silver spot price shown above is the <strong>global wholesale market reference</strong> — but it's NOT what dealers pay you. When you sell scrap silver, jewelry, coins, or bars, you receive only a <strong>percentage of the melt value</strong>, typically between 50–98% depending on dealer type.</p>
 
-        <p>Dealers discount from spot because they must cover these costs: precious metals refining and assay fees ($5–$20 per lot), shipping and insurance, overnight storage security, insurance premiums (typically 0.1–0.5% of inventory value annually), staff wages, rent, utilities, regulatory compliance, and finally profit margin. A responsible dealer's margin is typically 5–15% for bulk material and up to 40% for small quantities.</p>
+        <p>Dealers apply discounts because they incur real costs: precious metals refining ($5–20 per lot), shipping and insurance, secure storage, regulatory compliance, staff wages, rent, utilities, and profit margins. A responsible dealer takes 5–15% from bulk material and up to 40% from small quantities.</p>
 
-        <h3 style="margin-top: var(--space-lg); margin-bottom: var(--space-md);">Dealer Payout Comparison Table (Based on Today's Spot Price of <strong id="dp-spot2">$—</strong>/oz)</h3>
+        <h3>Dealer Payout Comparison (Based on Today's Spot Price of <strong id="dp-spot2">$—</strong>/oz)</h3>
 
         <table class="payout-table">
           <thead>
@@ -508,26 +598,33 @@
           </tbody>
         </table>
 
-        <h3 style="margin-top: var(--space-lg); margin-bottom: var(--space-md);">How to Get the Best Dealer Payout</h3>
-        <div class="rich-content" style="margin-bottom: var(--space-md);">
-          <p><strong>1. Get Multiple Quotes:</strong> Always call or visit at least 3 dealers in your area. Payout rates can vary by 10–20% even on the same day. Get quotes in writing and ask if they're fixed or subject to reassay results.</p>
+        <h3>How to Get the Best Dealer Payout</h3>
+        <div class="rich-content" style="margin-bottom: var(--space-lg);">
+          <p><strong>1. Shop Around & Get Multiple Quotes</strong></p>
+          <p>Call or visit at least 3 dealers in your area. Payout rates vary by 10–20% even on the same day. Get quotes in writing and ask whether rates are final or subject to reassay results. A small time investment can easily earn you an extra $50–$200.</p>
 
-          <p><strong>2. Combine Your Silver:</strong> Dealers pay better percentage rates for larger quantities. If you have 5 ounces total spread across multiple items, combining everything will typically yield 5–10% better payouts per ounce.</p>
+          <p><strong>2. Combine Your Silver for Better Rates</strong></p>
+          <p>If you have scrap spread across multiple items (5 grams total), combining everything often yields 5–10% better percentage payouts per ounce. Larger quantities cost dealers less per unit to process.</p>
 
-          <p><strong>3. Know Your Silver's Purity:</strong> Bring documentation showing purity levels (999, 925, 900, 800). Undocumented scrap gets assayed, which takes time and may reduce your payout by requiring assay fees.</p>
+          <p><strong>3. Document Purity Levels</strong></p>
+          <p>Bring proof of purity marks (999, 925, 900, 800). Undocumented scrap requires lab assay, which adds processing costs and may reduce your payout. Clean, marked items command premium rates.</p>
 
-          <p><strong>4. Sell at the Right Time:</strong> Monitor the 52-week chart above to identify when silver is near recent highs. Selling when silver is in an uptrend maximizes your proceeds. Even a $2 difference in spot price means significantly more money in your pocket.</p>
+          <p><strong>4. Time Your Sale Near Price Peaks</strong></p>
+          <p>Monitor the price chart above. Selling when silver is near 52-week highs maximizes proceeds. Even a $2/oz difference across 10 ounces means $20 more in your pocket.</p>
 
-          <p><strong>5. Choose the Right Dealer Type for Your Situation:</strong></p>
+          <p><strong>5. Choose the Right Dealer for Your Items</strong></p>
           <ul>
-            <li><strong>For best rates on large quantities:</strong> Use online refiners (they pay 90–98% but require shipping and 1–3 weeks).</li>
-            <li><strong>For fast cash on bullion/coins:</strong> Visit local coin and bullion shops (75–90% of spot, same-day payment).</li>
-            <li><strong>For broken jewelry and mixed scrap:</strong> Check local jewelry stores and scrap dealers (60–85%, usually 1–2 weeks).</li>
-            <li><strong>For emergency cash only:</strong> Avoid pawn shops unless you have no other option (they pay the least: 50–70%).</li>
+            <li><strong>Online Refiners (90–98%):</strong> Best rates but requires shipping + 1–3 weeks. Ideal for bulk quantities or pure bullion. Lowest fees overall.</li>
+            <li><strong>Coin & Bullion Shops (75–90%):</strong> Fast, local, same-day cash. Perfect for coins, bars, certified products. Good balance of price and speed.</li>
+            <li><strong>Jewelry Stores (60–85%):</strong> Good for broken sterling jewelry and mixed items. Convenient if you need fast local service.</li>
+            <li><strong>Scrap Metal Dealers (70–85%):</strong> Handle large mixed lots. Industrial rates apply. Usually 1–2 weeks for payment.</li>
+            <li><strong>Pawn Shops (50–70%):</strong> Lowest rates. Only use for emergency cash when time is critical and other options unavailable.</li>
           </ul>
         </div>
 
-        <p style="background: rgba(124, 58, 237, 0.1); padding: var(--space-md); border-radius: var(--radius-md); border-left: 3px solid var(--accent); margin: var(--space-lg) 0;"><strong>💡 Pro Tip:</strong> The dealer payout percentages above assume clean, documented silver in good condition. Damaged items, mixed lots with unknown purity, or very small quantities (under 1 ounce) may receive additional discounts. When in doubt, ask dealers upfront about any additional fees or discounts that might apply to your specific items.</p>
+        <div class="info-box">
+          <p><strong>💡 Pro Tip:</strong> The percentages above assume clean, documented silver in good condition. Damaged items, unknown purity, or tiny quantities (under 1 oz) receive additional discounts. Always ask dealers upfront about extra fees or discounts specific to your items.</p>
+        </div>
       </div>
     </section>
 
