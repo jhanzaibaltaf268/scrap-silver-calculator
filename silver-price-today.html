@@ -18,7 +18,7 @@
   <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/silver-price-today/">
 
   <link rel="stylesheet" href="/css/style.css">
-  <script src="https://unpkg.com/lightweight-charts@4/dist/lightweight-charts.standalone.production.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.1.7/dist/lightweight-charts.standalone.production.min.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -915,7 +915,9 @@
     }
 
     function renderChart(range) {
-      const currentPrice = SilverPrice.getPrice() || 35;
+      if (!chart || !areaSeries) return;
+      let currentPrice = 35;
+      try { if (typeof SilverPrice !== 'undefined' && SilverPrice.getPrice) currentPrice = SilverPrice.getPrice() || 35; } catch (e) {}
       const data = generateChartData(range, currentPrice);
       areaSeries.setData(data);
       chart.timeScale().fitContent();
@@ -935,35 +937,42 @@
     function initChart() {
       if (chartInitialized) return;
       const chartContainer = document.getElementById('price-chart');
-      if (!window.LightweightCharts || !chartContainer) return;
+      if (!chartContainer) { console.warn('Chart container missing'); return; }
+      if (!window.LightweightCharts) { console.warn('LightweightCharts not loaded yet'); return; }
 
-      chart = window.LightweightCharts.createChart(chartContainer, {
-        layout: { background: { color: 'transparent' }, textColor: 'rgba(255,255,255,.75)', fontFamily: 'Inter, sans-serif' },
-        width: chartContainer.clientWidth,
-        height: 420,
-        grid: {
-          vertLines: { color: 'rgba(124, 58, 237, 0.08)' },
-          horzLines: { color: 'rgba(124, 58, 237, 0.08)' }
-        },
-        timeScale: { timeVisible: true, secondsVisible: false, borderColor: 'rgba(124, 58, 237, 0.25)' },
-        rightPriceScale: { borderColor: 'rgba(124, 58, 237, 0.25)' },
-        crosshair: { mode: 1 }
-      });
+      try {
+        chart = window.LightweightCharts.createChart(chartContainer, {
+          layout: { background: { color: 'transparent' }, textColor: 'rgba(255,255,255,.85)', fontFamily: 'Inter, sans-serif' },
+          width: chartContainer.clientWidth || 800,
+          height: 420,
+          grid: {
+            vertLines: { color: 'rgba(124, 58, 237, 0.15)' },
+            horzLines: { color: 'rgba(124, 58, 237, 0.15)' }
+          },
+          timeScale: { timeVisible: true, secondsVisible: false, borderColor: 'rgba(124, 58, 237, 0.35)' },
+          rightPriceScale: { borderColor: 'rgba(124, 58, 237, 0.35)' },
+          crosshair: { mode: 1 }
+        });
 
-      areaSeries = chart.addAreaSeries({
-        lineColor: '#a78bfa',
-        topColor: 'rgba(167, 139, 250, 0.45)',
-        bottomColor: 'rgba(124, 58, 237, 0.02)',
-        lineWidth: 3,
-        priceLineVisible: true,
-        priceLineColor: '#a78bfa',
-        priceLineWidth: 1,
-        priceLineStyle: 2,
-        lastValueVisible: true
-      });
+        areaSeries = chart.addAreaSeries({
+          lineColor: '#a78bfa',
+          topColor: 'rgba(167, 139, 250, 0.55)',
+          bottomColor: 'rgba(124, 58, 237, 0.02)',
+          lineWidth: 3,
+          priceLineVisible: true,
+          priceLineColor: '#a78bfa',
+          priceLineWidth: 1,
+          priceLineStyle: 2,
+          lastValueVisible: true
+        });
 
-      renderChart(chartCurrentRange);
-      chartInitialized = true;
+        renderChart(chartCurrentRange);
+        chartInitialized = true;
+      } catch (err) {
+        console.error('Chart init failed:', err);
+        chartContainer.innerHTML = '<div style="padding:80px 20px;text-align:center;color:rgba(255,255,255,.6);font-size:.95rem;">Live chart temporarily unavailable. Real-time price shown above.</div>';
+        return;
+      }
 
       // Chart range controls
       document.querySelectorAll('.chart-btn').forEach(btn => {
@@ -1104,11 +1113,25 @@
     SiteComponents.renderHeader('site-header');
     SiteComponents.renderFooter('site-footer');
 
-    // Initialize price updates (chart initializes inside updateAll once price is loaded)
+    // Initialize price updates
     SilverPrice.onPriceUpdate(() => { updateAll(); });
     updateAll();
-    // Fallback: ensure chart initializes even if price API is slow
-    setTimeout(() => { if (!chartInitialized) initChart(); }, 1500);
+
+    // Initialize chart immediately - don't wait for SilverPrice; default price is used internally
+    function tryInitChart(attempt) {
+      attempt = attempt || 0;
+      if (chartInitialized) return;
+      if (window.LightweightCharts && document.getElementById('price-chart')) {
+        initChart();
+      } else if (attempt < 30) {
+        setTimeout(() => tryInitChart(attempt + 1), 200);
+      }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => tryInitChart(0));
+    } else {
+      tryInitChart(0);
+    }
   </script>
 </body>
 </html>
