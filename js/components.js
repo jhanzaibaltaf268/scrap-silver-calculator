@@ -7,7 +7,13 @@ const SiteComponents = (() => {
   /* ---- Navigation Structure ---- */
   const NAV_ITEMS = [
     { label: 'nav_home', href: '/' },
-    { label: 'nav_silver_price', href: '/silver-price-today/' },
+    {
+      label: 'nav_silver_price', dropdown: [
+        { label: 'nav_price_today',   href: '/silver-price-today/' },
+        { label: 'nav_price_per_oz',  href: '/silver-price-per-ounce/' },
+        { label: 'nav_current_price', href: '/current-silver-price/' },
+      ]
+    },
     {
       label: 'nav_calculators', dropdown: [
         { label: 'nav_gold_silver', href: '/gold-and-silver-calculator/' },
@@ -49,7 +55,10 @@ const SiteComponents = (() => {
 
   const NAV_LABELS = {
     nav_home:         { en:'Home', es:'Inicio', fr:'Accueil', de:'Startseite', it:'Home', pt:'Início', ru:'Главная', ar:'الرئيسية', hi:'होम', ur:'ہوم', tr:'Anasayfa', zh:'首页' },
-    nav_silver_price: { en:'Silver Price', es:'Precio Plata', fr:'Prix Argent', de:'Silberpreis', it:'Prezzo Argento', pt:'Preço Prata', ru:'Цена Серебра', ar:'سعر الفضة', hi:'चाँदी भाव', ur:'چاندی قیمت', tr:'Gümüş Fiyatı', zh:'银价' },
+    nav_silver_price:  { en:'Silver Prices', es:'Precios Plata', fr:'Prix Argent', de:'Silberpreise', it:'Prezzi Argento', pt:'Preços Prata', ru:'Цены Серебра', ar:'أسعار الفضة', hi:'चाँदी भाव', ur:'چاندی قیمت', tr:'Gümüş Fiyatları', zh:'银价' },
+    nav_price_today:   { en:'Silver Price Today', es:'Precio Hoy', fr:'Prix Aujourd\'hui', de:'Silberpreis Heute', it:'Prezzo Oggi', pt:'Preço Hoje', ru:'Цена Сегодня', ar:'سعر الفضة اليوم', hi:'आज का भाव', ur:'آج کی قیمت', tr:'Bugünkü Fiyat', zh:'今日银价' },
+    nav_price_per_oz:  { en:'Price Per Ounce', es:'Precio Por Onza', fr:'Prix Par Once', de:'Preis Pro Unze', it:'Prezzo All\'Oncia', pt:'Preço Por Onça', ru:'Цена За Унцию', ar:'السعر للأوقية', hi:'प्रति औंस भाव', ur:'فی اونس قیمت', tr:'Ons Başına Fiyat', zh:'每盎司价格' },
+    nav_current_price: { en:'Current Silver Price', es:'Precio Actual', fr:'Prix Actuel', de:'Aktueller Preis', it:'Prezzo Attuale', pt:'Preço Atual', ru:'Текущая Цена', ar:'السعر الحالي', hi:'मौजूदा भाव', ur:'موجودہ قیمت', tr:'Güncel Fiyat', zh:'当前银价' },
     nav_calculators:  { en:'Calculators', es:'Calculadoras', fr:'Calculateurs', de:'Rechner', it:'Calcolatrici', pt:'Calculadoras', ru:'Калькуляторы', ar:'الحاسبات', hi:'कैलकुलेटर', ur:'کیلکولیٹر', tr:'Hesaplayıcılar', zh:'计算器' },
     nav_purity:       { en:'Purity', es:'Pureza', fr:'Pureté', de:'Reinheit', it:'Purezza', pt:'Pureza', ru:'Проба', ar:'النقاء', hi:'शुद्धता', ur:'پاکیزگی', tr:'Saflık', zh:'纯度' },
     nav_tools:        { en:'Tools', es:'Herramientas', fr:'Outils', de:'Werkzeuge', it:'Strumenti', pt:'Ferramentas', ru:'Инструменты', ar:'الأدوات', hi:'उपकरण', ur:'اوزار', tr:'Araçlar', zh:'工具' },
@@ -121,7 +130,9 @@ const SiteComponents = (() => {
     {
       title: 'Company',
       links: [
-        { label: 'nav_silver_price', href: '/silver-price-today/' },
+        { label: 'nav_price_today',   href: '/silver-price-today/' },
+        { label: 'nav_price_per_oz',  href: '/silver-price-per-ounce/' },
+        { label: 'nav_current_price', href: '/current-silver-price/' },
         { label: 'nav_guide', href: '/how-to-use-silver-calculators/' },
         { label: 'Privacy Policy', href: '/privacy-policy/' },
         { label: 'Terms of Service', href: '/terms-of-service/' },
