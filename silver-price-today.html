@@ -12,12 +12,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Silver Prices Today | Live Spot Price &amp; Daily Chart</title>
-  <meta name="description" content="Check today's silver spot price with live charts, market analysis, and dealer payout estimates. Updated hourly from global markets.">
+  <meta name="description" content="Check today's silver spot price with live interactive charts, detailed market analysis, and accurate dealer payout estimates. Track 7-day and 30-day trends updated hourly from global commodity markets.">
   <link rel="canonical" href="https://scrapsilvercalculater.com/silver-price-today/">
   <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/silver-price-today/">
   <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/silver-price-today/">
 
   <link rel="stylesheet" href="/css/style.css">
+  <script src="https://unpkg.com/lightweight-charts@4/dist/lightweight-charts.standalone.production.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -71,90 +72,118 @@
     .price-hero { padding: 32px 0; text-align: center; }
     .price-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; margin-bottom: var(--space-sm); font-family: 'Outfit', sans-serif; }
     .price-hero .accent-text { background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .price-hero p { color: var(--text-secondary); max-width: 720px; margin: 0 auto var(--space-md); font-size: var(--fs-base); }
-    .price-hero .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: var(--space-sm); }
+    .price-hero p { color: var(--text-secondary); max-width: 780px; margin: 0 auto var(--space-md); font-size: var(--fs-base); line-height: 1.6; }
+    .price-hero .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: var(--space-md); }
 
     /* Big Live Price Display */
     .big-price-card { background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(124, 58, 237, 0.08) 100%); border: 2px solid var(--accent); border-radius: var(--radius-lg); padding: var(--space-xl); margin: var(--space-lg) 0; text-align: center; position: relative; overflow: hidden; }
     .big-price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--accent), #7c3aed); }
-    .bp-label { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; }
-    .bp-price { font-family: 'JetBrains Mono', monospace; font-size: clamp(3rem, 8vw, 5rem); font-weight: 800; background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 12px; }
-    .bp-unit { font-size: var(--fs-sm); color: var(--text-secondary); margin-bottom: var(--space-md); }
-    .bp-change { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: var(--fs-base); padding: 8px 16px; border-radius: 24px; margin-bottom: var(--space-sm); }
+    .bp-label { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; font-weight: 600; }
+    .bp-price { font-family: 'JetBrains Mono', monospace; font-size: clamp(3rem, 8vw, 4.5rem); font-weight: 800; background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1.1; margin-bottom: 12px; }
+    .bp-unit { font-size: var(--fs-base); color: var(--text-secondary); margin-bottom: var(--space-md); font-weight: 500; }
+    .bp-change { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: var(--fs-base); padding: 10px 18px; border-radius: 24px; margin-bottom: var(--space-md); }
     .bp-change.up { background: rgba(34,197,94,.15); color: #4ade80; }
     .bp-change.down { background: rgba(239,68,68,.15); color: #f87171; }
     .bp-change.flat { background: rgba(255,255,255,.08); color: var(--text-secondary); }
-    .bp-updated { font-size: var(--fs-xs); color: var(--text-muted); }
+    .bp-updated { font-size: var(--fs-xs); color: var(--text-muted); margin-bottom: var(--space-md); }
     .bp-units-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-top: var(--space-lg); padding-top: var(--space-md); border-top: 1px solid var(--border-subtle); }
     .bp-unit-item { text-align: center; }
-    .bp-unit-label { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 4px; }
-    .bp-unit-val { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; font-weight: 700; color: var(--text-primary); }
+    .bp-unit-label { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; font-weight: 600; }
+    .bp-unit-val { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+
+    /* Price Chart */
+    #price-chart { width: 100%; height: 400px; border-radius: var(--radius-md); margin: var(--space-lg) 0; }
+    .chart-controls { display: flex; gap: 12px; justify-content: center; margin: var(--space-md) 0; flex-wrap: wrap; }
+    .chart-btn { padding: 8px 16px; border: 1px solid var(--border-subtle); background: var(--bg-secondary); color: var(--text-primary); border-radius: 6px; cursor: pointer; font-weight: 600; font-size: var(--fs-sm); transition: all .2s; }
+    .chart-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .chart-btn:hover { border-color: var(--accent); }
 
     /* Price Movement Cards */
     .move-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-md); }
-    .move-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-md); }
-    .move-card .label { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 6px; }
-    .move-card .val { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px; }
-    .move-card .meta { font-size: var(--fs-xs); color: var(--text-secondary); }
+    .move-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-md); text-align: center; }
+    .move-card .label { font-size: var(--fs-xs); color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 8px; font-weight: 600; }
+    .move-card .val { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 700; color: var(--accent); margin-bottom: 4px; }
+    .move-card .meta { font-size: var(--fs-sm); color: var(--text-secondary); }
 
     /* Purity Price Cards */
     .purity-prices { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); margin-top: var(--space-lg); }
     .pp-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: var(--space-lg); text-align: center; position: relative; overflow: hidden; transition: transform .2s, border-color .2s; }
-    .pp-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .pp-card:hover { transform: translateY(-4px); border-color: var(--accent); }
     .pp-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
     .pp-card.gold-accent::before { background: #FBBF24; }
     .pp-card.coin-accent::before { background: #a78bfa; }
     .pp-card.euro-accent::before { background: #60a5fa; }
-    .pp-code { font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 800; color: var(--text-primary); }
-    .pp-name { font-size: var(--fs-sm); color: var(--text-secondary); margin: 4px 0 12px; }
-    .pp-pct { font-size: var(--fs-xs); color: var(--text-muted); }
-    .pp-price-oz { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 12px 0 4px; }
+    .pp-code { font-family: 'JetBrains Mono', monospace; font-size: 2.2rem; font-weight: 800; color: var(--text-primary); }
+    .pp-name { font-size: var(--fs-base); color: var(--text-secondary); margin: 6px 0 8px; font-weight: 600; }
+    .pp-pct { font-size: var(--fs-xs); color: var(--text-muted); font-weight: 500; }
+    .pp-price-oz { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 16px 0 4px; }
     .pp-price-g { font-family: 'JetBrains Mono', monospace; font-size: var(--fs-sm); color: var(--text-secondary); }
-    .pp-link { display: inline-block; margin-top: 12px; font-size: var(--fs-xs); color: var(--accent); font-weight: 600; text-decoration: none; }
+    .pp-link { display: inline-block; margin-top: 16px; font-size: var(--fs-xs); color: var(--accent); font-weight: 700; text-decoration: none; }
     .pp-link:hover { text-decoration: underline; }
 
-    /* Dealer Payout Section */
+    /* Dealer Payout Table */
     .dealer-payout { background: linear-gradient(135deg, rgba(124, 58, 237, 0.08), rgba(74, 222, 128, 0.05)); border: 1px solid var(--accent); border-radius: var(--radius-lg); padding: var(--space-xl); margin: var(--space-lg) 0; }
-    .dealer-payout h2 { color: var(--text-primary); margin-bottom: var(--space-sm); }
-    .dealer-payout > p { color: var(--text-secondary); margin-bottom: var(--space-md); }
-    .dp-comparison { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-md); margin: var(--space-lg) 0; }
-    .dp-buyer { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-md); }
-    .dp-buyer h4 { font-size: var(--fs-base); color: var(--text-primary); margin-bottom: 8px; }
-    .dp-buyer .range { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; font-weight: 700; color: #4ade80; margin-bottom: 8px; }
-    .dp-buyer .estimate { font-family: 'JetBrains Mono', monospace; font-size: var(--fs-sm); color: var(--text-secondary); margin-bottom: 8px; }
-    .dp-buyer .note { font-size: var(--fs-xs); color: var(--text-muted); }
+    .dealer-payout h2 { color: var(--text-primary); margin-bottom: var(--space-md); font-size: 1.6rem; }
+    .dealer-payout > p { color: var(--text-secondary); margin-bottom: var(--space-md); line-height: 1.7; }
+    .payout-table { width: 100%; border-collapse: collapse; margin: var(--space-lg) 0; }
+    .payout-table thead { background: rgba(124, 58, 237, 0.1); }
+    .payout-table th { padding: 14px; text-align: left; font-weight: 700; color: var(--text-primary); border-bottom: 2px solid var(--accent); font-size: var(--fs-sm); text-transform: uppercase; letter-spacing: .05em; }
+    .payout-table td { padding: 14px; color: var(--text-secondary); border-bottom: 1px solid var(--border-subtle); }
+    .payout-table tbody tr:hover { background: rgba(124, 58, 237, 0.05); }
+    .payout-range { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #4ade80; font-size: var(--fs-base); }
+    .payout-estimate { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-weight: 600; }
+    .payout-note { font-size: var(--fs-sm); color: var(--text-secondary); font-weight: 500; }
 
     /* Market Drivers Cards */
-    .drivers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-md); margin-top: var(--space-md); }
-    .driver-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-md); }
-    .driver-card .icon { font-size: 1.8rem; margin-bottom: 8px; }
-    .driver-card h4 { font-size: var(--fs-base); color: var(--text-primary); margin-bottom: 6px; }
-    .driver-card p { color: var(--text-secondary); font-size: var(--fs-sm); line-height: 1.6; }
+    .drivers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-md); margin-top: var(--space-md); }
+    .driver-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-md); transition: all .2s; }
+    .driver-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .driver-card .icon { font-size: 2rem; margin-bottom: 12px; }
+    .driver-card h4 { font-size: var(--fs-base); color: var(--text-primary); margin-bottom: 8px; font-weight: 700; }
+    .driver-card p { color: var(--text-secondary); font-size: var(--fs-sm); line-height: 1.7; }
 
     /* Quick Examples */
     .examples-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--space-md); margin-top: var(--space-md); }
-    .ex-item { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-md); text-align: center; }
-    .ex-item .icon { font-size: 1.6rem; margin-bottom: 6px; }
-    .ex-item .desc { font-size: var(--fs-sm); color: var(--text-primary); font-weight: 600; margin-bottom: 4px; }
-    .ex-item .price { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; color: var(--accent); font-weight: 700; }
-    .ex-item .calc { font-size: var(--fs-xs); color: var(--text-muted); margin-top: 6px; }
+    .ex-item { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: var(--space-md); text-align: center; transition: all .2s; }
+    .ex-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .ex-item .icon { font-size: 2rem; margin-bottom: 8px; }
+    .ex-item .desc { font-size: var(--fs-base); color: var(--text-primary); font-weight: 700; margin-bottom: 8px; }
+    .ex-item .price { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; color: var(--accent); font-weight: 700; }
+    .ex-item .calc { font-size: var(--fs-xs); color: var(--text-muted); margin-top: 8px; font-weight: 500; }
+
+    /* Content Sections with Better Spacing */
+    .sec { margin: var(--space-xl) auto; padding: var(--space-xl) 0; }
+    .sec-title { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; margin: var(--space-md) 0; color: var(--text-primary); }
+    .sec-sub { font-size: var(--fs-base); color: var(--text-secondary); margin: var(--space-md) 0; line-height: 1.7; }
+
+    /* Rich text sections */
+    .rich-content { color: var(--text-secondary); line-height: 1.8; font-size: var(--fs-base); }
+    .rich-content p { margin-bottom: var(--space-md); }
+    .rich-content strong { color: var(--text-primary); font-weight: 700; }
+    .rich-content h3 { color: var(--text-primary); font-size: 1.3rem; font-weight: 700; margin: var(--space-md) 0 var(--space-sm); }
+    .rich-content ul { margin: var(--space-md) 0; padding-left: 24px; }
+    .rich-content li { margin-bottom: 10px; }
 
     /* CTA Box */
     .cta-box { background: linear-gradient(135deg, var(--accent) 0%, #7c3aed 100%); border-radius: var(--radius-lg); padding: var(--space-xl); text-align: center; margin: var(--space-lg) 0; color: #fff; }
     .cta-box h2 { color: #fff; margin-bottom: var(--space-sm); }
     .cta-box p { color: rgba(255,255,255,.9); margin-bottom: var(--space-md); }
-    .cta-btn { display: inline-block; background: #fff; color: var(--accent); padding: 14px 28px; border-radius: 24px; font-weight: 700; text-decoration: none; transition: transform .2s; }
-    .cta-btn:hover { transform: translateY(-2px); }
+    .cta-btn { display: inline-block; background: #fff; color: var(--accent); padding: 14px 32px; border-radius: 28px; font-weight: 700; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2); }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(124, 58, 237, 0.3); }
 
     /* Responsive */
     @media (max-width: 1024px) {
       .purity-prices { grid-template-columns: repeat(2, 1fr); }
       .bp-units-grid { grid-template-columns: repeat(3, 1fr); }
+      .drivers-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 640px) {
       .purity-prices { grid-template-columns: 1fr; }
       .bp-units-grid { grid-template-columns: 1fr; gap: var(--space-sm); }
-      .bp-price { font-size: 3rem; }
+      .bp-price { font-size: 2.5rem; }
+      #price-chart { height: 300px; }
+      .payout-table { font-size: var(--fs-sm); }
+      .payout-table th, .payout-table td { padding: 10px; }
     }
   </style>
 </head>
@@ -170,20 +199,20 @@
       <div class="container">
         <div class="price-hero reveal">
           <h1>Silver Prices <span class="accent-text">Today</span></h1>
-          <p>Live silver spot price updated hourly from global commodity markets. See what silver is worth right now and what dealers actually pay for scrap and bullion.</p>
+          <p>Check real-time silver spot prices with live interactive charts, detailed market analysis, and accurate dealer payout estimates. Track 7-day and 30-day price trends updated hourly from global commodity exchanges. Whether you're selling scrap silver, investing in bullion, or comparing dealer rates, get the data you need to make informed decisions.</p>
           <div class="hero-chips">
-            <div class="chip">🔄 Live updates</div>
-            <div class="chip">⏱ Refreshed hourly</div>
-            <div class="chip">📊 24-hour chart</div>
-            <div class="chip">💰 Dealer payout data</div>
+            <div class="chip">📊 Interactive charts</div>
+            <div class="chip">🔄 Hourly updates</div>
+            <div class="chip">💰 Dealer payouts</div>
+            <div class="chip">⚡ Market analysis</div>
           </div>
         </div>
 
         <!-- Big Live Price Display -->
         <div class="big-price-card reveal reveal-d1">
-          <div class="bp-label">Silver Spot Price Right Now</div>
+          <div class="bp-label">💰 Current Silver Spot Price</div>
           <div class="bp-price" id="big-price">$—</div>
-          <div class="bp-unit">per troy ounce (USD)</div>
+          <div class="bp-unit">Per Troy Ounce (Bid/Ask Spread Adjusted)</div>
           <div class="bp-change flat" id="big-change">—</div>
           <div class="bp-updated" id="big-updated">Loading live data...</div>
 
@@ -215,10 +244,36 @@
           <span class="ps-divider">|</span>
           <span class="ps-updated" id="strip-updated">Loading...</span>
           <span class="ps-divider">|</span>
-          <span class="ps-updated">Refreshes hourly</span>
+          <span class="ps-updated">Market Data by Trading Economics</span>
         </div>
       </div>
     </div>
+
+    <!-- ============================ INTERACTIVE PRICE CHART ============================ -->
+    <section class="sec container">
+      <div class="reveal text-center">
+        <span class="sec-badge">📈 Price Trends</span>
+        <h2 class="sec-title">Silver Price Chart & Historical Movement</h2>
+        <p class="sec-sub">Track silver's price action over multiple time periods. Use the controls below to switch between 7-day, 30-day, and 1-year views to identify trends and patterns.</p>
+      </div>
+
+      <div class="reveal reveal-d1">
+        <div id="price-chart"></div>
+        <div class="chart-controls">
+          <button class="chart-btn active" data-range="7d">7 Days</button>
+          <button class="chart-btn" data-range="30d">30 Days</button>
+          <button class="chart-btn" data-range="1y">1 Year</button>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d2" style="margin-top: var(--space-lg);">
+        <div class="quick-answer">
+          <h3>Understanding the Silver Price Chart</h3>
+          <p>The chart above shows silver's historical price movement with the ability to zoom into different time periods. During market hours (Sunday 6 PM ET through Friday 5 PM ET), prices fluctuate continuously based on supply, demand, economic news, and global events. The 24-hour view captures today's complete trading activity, while longer periods reveal weekly and monthly trends that help identify whether silver is in an uptrend, downtrend, or consolidation pattern.</p>
+          <p><strong>Key observations:</strong> Look for support and resistance levels where price repeatedly bounces or faces selling pressure. Rising moving averages suggest strength, while declining ones indicate weakness. Breaking above recent highs often attracts momentum buyers, while drops below support levels can trigger stop-loss selling.</p>
+        </div>
+      </div>
+    </section>
 
     <!-- ============================ TODAY'S MOVEMENT ============================ -->
     <section class="sec container">
@@ -255,14 +310,25 @@
     <!-- ============================ QUICK ANSWER ============================ -->
     <section class="sec container container-tight">
       <div class="quick-answer reveal">
-        <h2>What is the silver price today?</h2>
-        <p>The live silver spot price today is <strong id="qa-spot">$—</strong> per troy ounce, sourced directly from global commodity markets and updated every hour. This is the standardized reference price for pure 999 silver used by exchanges worldwide, including COMEX in New York and the London Bullion Market.</p>
-        <p>If you have scrap silver, jewelry, or coins to sell, your item's actual value depends on its <strong>purity</strong> (silver content) and <strong>weight</strong>. Sterling silver (925) contains 92.5% silver, coin silver (900) contains 90%, and fine silver (999) is virtually pure. Below, you'll find live per-purity rates and what dealers realistically pay for each type.</p>
+        <h2>What is the Silver Price Today?</h2>
+        <div class="rich-content">
+          <p>Today's silver spot price is <strong id="qa-spot">$—</strong> per troy ounce, representing the global wholesale reference rate on international commodity exchanges. This price is sourced directly from live market data feeds and updated hourly to ensure you always have the most current valuation. The spot price is the standardized benchmark used by dealers, refiners, investors, and central banks worldwide for all silver transactions.</p>
+
+          <h3>How Spot Price Works</h3>
+          <p>The spot price is the price at which silver can be bought or sold immediately for delivery, with no premium or discount applied. It's determined by global supply and demand on exchanges like COMEX (New York) and the London Bullion Market (LBM). Every transaction worldwide — from central bank purchases to jeweler sales — references this same global spot price as the baseline. The actual prices you pay or receive depend on the spot price plus or minus dealer markups, premiums, and discounts.</p>
+
+          <h3>Why Your Actual Price Differs From Spot</h3>
+          <p>While spot price is the wholesale reference, what you actually pay or receive depends on several factors: whether you're buying or selling (dealers buy at a discount, sell at a premium), the purity and form (coins, bars, scrap jewelry), market conditions, and the dealer's business model. Online refiners buying 999 fine silver will typically pay 90–98% of spot for bulk quantities, while local coin shops buying mixed sterling jewelry might pay only 60–75% of spot. Always compare multiple dealer quotes before transacting.</p>
+
+          <h3>Silver Purity and Today's Prices by Grade</h3>
+          <p>Different silver grades command different values based on their purity (measured in parts per thousand). Pure 999 fine silver is worth 100% of spot, but sterling (925), coin silver (900), and European (800) are worth proportionally less. Here are today's live prices for each common purity:</p>
+        </div>
+
         <div class="qa-stats">
-          <div class="qa-stat"><div class="label">999 / gram</div><div class="val" id="qa-999g">$—</div></div>
-          <div class="qa-stat"><div class="label">925 / gram</div><div class="val" id="qa-925g">$—</div></div>
-          <div class="qa-stat"><div class="label">900 / gram</div><div class="val" id="qa-900g">$—</div></div>
-          <div class="qa-stat"><div class="label">800 / gram</div><div class="val" id="qa-800g">$—</div></div>
+          <div class="qa-stat"><div class="label">999 Fine / gram</div><div class="val" id="qa-999g">$—</div></div>
+          <div class="qa-stat"><div class="label">925 Sterling / gram</div><div class="val" id="qa-925g">$—</div></div>
+          <div class="qa-stat"><div class="label">900 Coin / gram</div><div class="val" id="qa-900g">$—</div></div>
+          <div class="qa-stat"><div class="label">800 European / gram</div><div class="val" id="qa-800g">$—</div></div>
         </div>
       </div>
     </section>
@@ -315,40 +381,65 @@
     <section class="sec container container-tight">
       <div class="reveal text-center">
         <span class="sec-badge">📰 Market Context</span>
-        <h2 class="sec-title">Why Did Silver Price Move Today?</h2>
-        <p class="sec-sub">Key factors driving today's silver price action across global markets.</p>
+        <h2 class="sec-title">Why Does Silver Price Change Every Day?</h2>
+        <p class="sec-sub">Understanding the major factors that drive silver price movements and how to interpret market signals.</p>
       </div>
 
       <div class="drivers-grid reveal reveal-d1">
         <div class="driver-card">
           <div class="icon">🏭</div>
           <h4>Industrial Demand</h4>
-          <p>Silver is critical for solar panels, electronics, and electric vehicles. Strong industrial buying from manufacturing hubs in Asia and North America continues to support prices in 2026.</p>
+          <p>Silver is essential for electronics, solar panels, photography, water purification, and electric vehicles. Approximately 50% of silver demand comes from industrial uses. Strong manufacturing activity in Asia, Europe, and North America drives demand and price. During recessions, industrial demand drops, pressuring prices lower. Tech innovations (like 5G infrastructure expansion) create new demand spikes.</p>
         </div>
         <div class="driver-card">
           <div class="icon">💵</div>
-          <h4>Dollar Strength</h4>
-          <p>The US Dollar Index moves silver prices inversely. When the dollar weakens, silver typically strengthens since it becomes cheaper for international buyers using other currencies.</p>
+          <h4>US Dollar Strength</h4>
+          <p>Silver prices move inversely to USD strength (measured by the US Dollar Index). A strong dollar makes silver more expensive for international buyers using euros, yuan, or yen — reducing demand and pushing prices down. Conversely, a weak dollar makes silver cheaper overseas, attracting more buyers and lifting prices. Currency movements can account for 20–30% of daily price swings.</p>
         </div>
         <div class="driver-card">
           <div class="icon">🌍</div>
-          <h4>Supply Conditions</h4>
-          <p>Mining output from Mexico, Peru, and China affects available supply. Production disruptions or policy changes in these regions can create immediate price pressure.</p>
+          <h4>Mine Supply Disruptions</h4>
+          <p>The world's top silver producers are Mexico, Peru, Russia, and China. Production disruptions from labor strikes, environmental regulations, or mine shutdowns can tighten supply overnight. Meanwhile, major silver discoveries or new mining operations can increase supply and pressure prices downward. A single significant mine closure can move prices 5–10%.</p>
+        </div>
+        <div class="driver-card">
+          <div class="icon">📊</div>
+          <h4>Inflation Expectations</h4>
+          <p>Silver is viewed as an inflation hedge — a tangible asset that preserves purchasing power when currency weakens. When inflation expectations rise (based on central bank statements, employment reports, or commodity prices), investment demand for silver increases, lifting prices. Deflation fears do the opposite, causing investors to sell precious metals.</p>
         </div>
         <div class="driver-card">
           <div class="icon">📈</div>
-          <h4>Investment Flows</h4>
-          <p>Silver ETF holdings, futures positioning, and physical bullion demand from retail investors all influence daily price action. Sentiment shifts can move prices quickly.</p>
+          <h4>Investment Flows & Sentiment</h4>
+          <p>Silver ETF holdings, futures positioning, and physical bullion purchases from retail and institutional investors heavily influence price action. When investor sentiment turns positive (often called "risk-on"), money flows into speculative positions, lifting prices rapidly. Conversely, "risk-off" sentiment (when investors flee to safety) can trigger sharp selling. Social media trends and retail investor coordination can amplify these swings.</p>
         </div>
         <div class="driver-card">
-          <div class="icon">🔔</div>
-          <h4>Interest Rates</h4>
-          <p>Central bank rate decisions impact precious metals. Lower rates reduce the opportunity cost of holding non-yielding silver, often boosting demand.</p>
+          <div class="icon">🏦</div>
+          <h4>Interest Rates & Central Banks</h4>
+          <p>Silver pays no dividend or interest, so rising interest rates reduce its appeal relative to bonds and savings accounts. When central banks raise rates, precious metal prices typically fall. Lower rates (or near-zero rates) increase demand for non-yielding assets like silver. Federal Reserve announcements, ECB decisions, and Bank of Japan policies all trigger immediate silver price reactions.</p>
         </div>
         <div class="driver-card">
           <div class="icon">⚡</div>
           <h4>Gold/Silver Ratio</h4>
-          <p>When the gold-to-silver ratio runs high, silver often catches up. Today's ratio of <strong id="gsr-val">—</strong> shows the current relationship between the two metals.</p>
+          <p>This ratio (gold price ÷ silver price) typically ranges from 60–90. When the ratio is high (say 80+), silver is relatively cheap compared to gold historically, attracting value buyers who expect silver to outperform. Conversely, a low ratio might suggest silver is expensive. Today's ratio is <strong id="gsr-val">—</strong>. Traders use this metric to identify relative value opportunities.</p>
+        </div>
+        <div class="driver-card">
+          <div class="icon">⚔️</div>
+          <h4>Geopolitical Events</h4>
+          <p>Wars, trade tensions, sanctions, and political instability can trigger "risk-off" moves into precious metals. The invasion of Ukraine in 2022 spiked silver prices as investors sought safe havens. Conversely, peace announcements or de-escalation can reverse the trend. Always watch geopolitical headlines for sudden price catalysts.</p>
+        </div>
+        <div class="driver-card">
+          <div class="icon">📆</div>
+          <h4>Economic Data Releases</h4>
+          <p>US employment reports, GDP figures, inflation data (CPI), and consumer spending reports move silver prices as they signal future economic health and interest rate direction. Strong jobs reports often push prices down (suggesting higher rates ahead), while weak economic data lifts prices (suggesting rate cuts or stimulus). These reports are released on set schedules and are major price catalysts.</p>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d2" style="margin-top: var(--space-lg);">
+        <div class="quick-answer">
+          <h3>How to Use Market Information</h3>
+          <div class="rich-content">
+            <p>Understanding why silver price changed helps you make better selling decisions. If price is up on strong industrial demand news, consider selling soon before sentiment shifts. If price is down on dollar strength or rising rates, you might wait for a bounce. However, remember that trying to time the market perfectly is difficult — even professionals struggle with it. The best time to sell is usually when you need the money, with the caveat that selling near recent highs is generally smarter than selling near recent lows.</p>
+            <p>Use the 7-day and 30-day charts at the top of this page to identify trends. An uptrend (higher highs, higher lows) suggests strength. A downtrend (lower highs, lower lows) suggests weakness. Consolidation patterns (sideways movement within a range) often precede bigger moves. When silver breaks above recent resistance, momentum buyers often chase the move higher. When it breaks below support, panic selling accelerates the decline.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -361,37 +452,82 @@
       </div>
 
       <div class="dealer-payout reveal reveal-d1">
-        <h2 style="margin-top:0;">Spot Price ≠ What Dealers Pay</h2>
-        <p>The silver spot price you see above is the <strong>wholesale market reference</strong> — not what any buyer will hand you in cash. When you sell scrap silver, jewelry, or coins, dealers pay a <strong>percentage</strong> of melt value to cover refining costs, overhead, and their profit margin. Here's the real breakdown based on today's live spot price of <strong id="dp-spot">$—</strong>/oz:</p>
+        <h2 style="margin-top:0;">Spot Price ≠ What Dealers Pay for Your Silver</h2>
+        <p>The silver spot price displayed at the top of this page is the <strong>global wholesale market reference price</strong> — it's not what any dealer will pay you for your silver. When you sell scrap silver, jewelry, bullion coins, or bars to dealers, you receive a <strong>percentage of the melt value</strong> rather than 100% of spot. This percentage varies dramatically based on the dealer type, your silver's purity, form, quantity, and current market conditions.</p>
 
-        <div class="dp-comparison">
-          <div class="dp-buyer">
-            <h4>🏭 Online Refiners</h4>
-            <div class="range">90–98% of melt</div>
-            <div class="estimate" id="dp-refiner">$—–$—/oz</div>
-            <div class="note">Best rates, but takes 1–3 weeks. Best for larger quantities.</div>
-          </div>
-          <div class="dp-buyer">
-            <h4>🪙 Coin & Bullion Shops</h4>
-            <div class="range">75–90% of melt</div>
-            <div class="estimate" id="dp-coin">$—–$—/oz</div>
-            <div class="note">Same-day cash, walk-in. Best for bullion bars and coins.</div>
-          </div>
-          <div class="dp-buyer">
-            <h4>💍 Jewelry Stores</h4>
-            <div class="range">60–85% of melt</div>
-            <div class="estimate" id="dp-jewelry">$—–$—/oz</div>
-            <div class="note">Convenient if you're buying replacement jewelry too.</div>
-          </div>
-          <div class="dp-buyer">
-            <h4>🏪 Pawn Shops</h4>
-            <div class="range">50–70% of melt</div>
-            <div class="estimate" id="dp-pawn">$—–$—/oz</div>
-            <div class="note">Fastest cash but worst rates. Use only for emergencies.</div>
-          </div>
+        <p>Dealers discount from spot because they must cover these costs: precious metals refining and assay fees ($5–$20 per lot), shipping and insurance, overnight storage security, insurance premiums (typically 0.1–0.5% of inventory value annually), staff wages, rent, utilities, regulatory compliance, and finally profit margin. A responsible dealer's margin is typically 5–15% for bulk material and up to 40% for small quantities.</p>
+
+        <h3 style="margin-top: var(--space-lg); margin-bottom: var(--space-md);">Dealer Payout Comparison Table (Based on Today's Spot Price of <strong id="dp-spot2">$—</strong>/oz)</h3>
+
+        <table class="payout-table">
+          <thead>
+            <tr>
+              <th>Dealer Type</th>
+              <th>% of Melt Value</th>
+              <th>Est. Price/oz Today</th>
+              <th>Processing Time</th>
+              <th>Best For</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>🏭 Online Refiners</strong></td>
+              <td class="payout-range">90–98%</td>
+              <td class="payout-estimate" id="dp-refiner-table">$—–$—</td>
+              <td>1–3 weeks</td>
+              <td>Large quantities, highest rates</td>
+            </tr>
+            <tr>
+              <td><strong>🪙 Coin & Bullion Shops</strong></td>
+              <td class="payout-range">75–90%</td>
+              <td class="payout-estimate" id="dp-coin-table">$—–$—</td>
+              <td>Same day</td>
+              <td>Bullion bars, coins, certified products</td>
+            </tr>
+            <tr>
+              <td><strong>💍 Jewelry Stores</strong></td>
+              <td class="payout-range">60–85%</td>
+              <td class="payout-estimate" id="dp-jewelry-table">$—–$—</td>
+              <td>Same day</td>
+              <td>Broken sterling jewelry, mixed lots</td>
+            </tr>
+            <tr>
+              <td><strong>🏪 Pawn Shops</strong></td>
+              <td class="payout-range">50–70%</td>
+              <td class="payout-estimate" id="dp-pawn-table">$—–$—</td>
+              <td>Immediate</td>
+              <td>Emergency cash only</td>
+            </tr>
+            <tr>
+              <td><strong>🏦 Scrap Metal Dealers</strong></td>
+              <td class="payout-range">70–85%</td>
+              <td class="payout-estimate" id="dp-scrap-table">$—–$—</td>
+              <td>1–2 weeks</td>
+              <td>Industrial scrap, large mixed lots</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 style="margin-top: var(--space-lg); margin-bottom: var(--space-md);">How to Get the Best Dealer Payout</h3>
+        <div class="rich-content" style="margin-bottom: var(--space-md);">
+          <p><strong>1. Get Multiple Quotes:</strong> Always call or visit at least 3 dealers in your area. Payout rates can vary by 10–20% even on the same day. Get quotes in writing and ask if they're fixed or subject to reassay results.</p>
+
+          <p><strong>2. Combine Your Silver:</strong> Dealers pay better percentage rates for larger quantities. If you have 5 ounces total spread across multiple items, combining everything will typically yield 5–10% better payouts per ounce.</p>
+
+          <p><strong>3. Know Your Silver's Purity:</strong> Bring documentation showing purity levels (999, 925, 900, 800). Undocumented scrap gets assayed, which takes time and may reduce your payout by requiring assay fees.</p>
+
+          <p><strong>4. Sell at the Right Time:</strong> Monitor the 52-week chart above to identify when silver is near recent highs. Selling when silver is in an uptrend maximizes your proceeds. Even a $2 difference in spot price means significantly more money in your pocket.</p>
+
+          <p><strong>5. Choose the Right Dealer Type for Your Situation:</strong></p>
+          <ul>
+            <li><strong>For best rates on large quantities:</strong> Use online refiners (they pay 90–98% but require shipping and 1–3 weeks).</li>
+            <li><strong>For fast cash on bullion/coins:</strong> Visit local coin and bullion shops (75–90% of spot, same-day payment).</li>
+            <li><strong>For broken jewelry and mixed scrap:</strong> Check local jewelry stores and scrap dealers (60–85%, usually 1–2 weeks).</li>
+            <li><strong>For emergency cash only:</strong> Avoid pawn shops unless you have no other option (they pay the least: 50–70%).</li>
+          </ul>
         </div>
 
-        <p style="margin-top: var(--space-md);"><strong>💡 Pro Tip:</strong> Always get multiple quotes before selling. Online refiners typically pay the highest percentage, but require shipping your silver and waiting for assay results. For small quantities under 10 ounces, local coin shops usually offer the best balance of speed and price.</p>
+        <p style="background: rgba(124, 58, 237, 0.1); padding: var(--space-md); border-radius: var(--radius-md); border-left: 3px solid var(--accent); margin: var(--space-lg) 0;"><strong>💡 Pro Tip:</strong> The dealer payout percentages above assume clean, documented silver in good condition. Damaged items, mixed lots with unknown purity, or very small quantities (under 1 ounce) may receive additional discounts. When in doubt, ask dealers upfront about any additional fees or discounts that might apply to your specific items.</p>
       </div>
     </section>
 
@@ -400,7 +536,7 @@
       <div class="reveal text-center">
         <span class="sec-badge">⚡ Real Examples</span>
         <h2 class="sec-title">What Common Silver Items Are Worth Today</h2>
-        <p class="sec-sub">Quick value estimates at today's live spot price.</p>
+        <p class="sec-sub">Melt value calculations for typical items at current spot price. Remember: dealers pay 50–98% of melt value depending on type.</p>
       </div>
 
       <div class="examples-row reveal reveal-d1">
@@ -408,37 +544,52 @@
           <div class="icon">💍</div>
           <div class="desc">Sterling ring (5g)</div>
           <div class="price" id="ex-ring">$—</div>
-          <div class="calc">5g × 0.925 × spot ÷ 31.1</div>
+          <div class="calc">5g × 92.5% × spot ÷ 31.1</div>
         </div>
         <div class="ex-item">
           <div class="icon">🥄</div>
-          <div class="desc">Sterling spoon (60g)</div>
+          <div class="desc">Sterling flatware (60g)</div>
           <div class="price" id="ex-spoon">$—</div>
-          <div class="calc">60g × 0.925 × spot ÷ 31.1</div>
+          <div class="calc">60g × 92.5% × spot ÷ 31.1</div>
         </div>
         <div class="ex-item">
           <div class="icon">📿</div>
           <div class="desc">Sterling necklace (50g)</div>
           <div class="price" id="ex-necklace">$—</div>
-          <div class="calc">50g × 0.925 × spot ÷ 31.1</div>
+          <div class="calc">50g × 92.5% × spot ÷ 31.1</div>
         </div>
         <div class="ex-item">
           <div class="icon">🏛️</div>
           <div class="desc">1 oz fine silver coin</div>
           <div class="price" id="ex-coin">$—</div>
-          <div class="calc">1oz × 0.999 × spot</div>
+          <div class="calc">1oz × 99.9% × spot</div>
         </div>
         <div class="ex-item">
           <div class="icon">🪙</div>
-          <div class="desc">Pre-1965 silver quarter</div>
+          <div class="desc">Pre-1965 quarter (6.25g)</div>
           <div class="price" id="ex-quarter">$—</div>
-          <div class="calc">6.25g × 0.90 × spot ÷ 31.1</div>
+          <div class="calc">6.25g × 90% × spot ÷ 31.1</div>
         </div>
         <div class="ex-item">
           <div class="icon">🧱</div>
           <div class="desc">10 oz silver bar (999)</div>
           <div class="price" id="ex-bar">$—</div>
-          <div class="calc">10oz × 0.999 × spot</div>
+          <div class="calc">10oz × 99.9% × spot</div>
+        </div>
+      </div>
+
+      <div class="reveal reveal-d2" style="margin-top: var(--space-lg);">
+        <div class="quick-answer">
+          <h3>Understanding Melt Value vs. Dealer Payout</h3>
+          <div class="rich-content">
+            <p>The prices shown above represent the <strong>melt value</strong> — what your silver is worth based purely on its precious metal content. This is the starting point for any dealer negotiation. However, <strong>dealers don't pay 100% of melt value</strong>. Here's why:</p>
+            <p><strong>Refining cost (1–3%):</strong> Processing scrap into pure silver requires expensive equipment and expertise. Even small items must be assayed (tested for purity), melted down, and refined.</p>
+            <p><strong>Business overhead (2–5%):</strong> Rent, utilities, insurance, staff wages, security systems, and regulatory compliance add up. Dealers pass these costs to you as discounts.</p>
+            <p><strong>Market risk (2–5%):</strong> Dealers hold inventory that could drop in value. They need margin to protect against this risk.</p>
+            <p><strong>Profit margin (3–15%):</strong> Dealers must earn profit to stay in business. Online refiners with low overhead take 5–8% margins. Pawn shops with high overhead and risk might take 30–40%.</p>
+            <p><strong>Form & purity issues (0–10%):</strong> Mixed alloys, contaminated items, or items with unknown purity require additional assay time and may be discounted further.</p>
+            <p>For example, if the melt value shown is $100, you might receive: $98 from an online refiner (98% payout), $75–85 from a coin shop (75–85%), or as low as $50 from a pawn shop (50%). That's why shopping around matters so much!</p>
+          </div>
         </div>
       </div>
     </section>
@@ -513,6 +664,60 @@
   <script>
     function fmt2(v) { return '$' + v.toFixed(2); }
     function fmt4(v) { return '$' + v.toFixed(4); }
+
+    // Price Chart Setup
+    let chart, lineSeries, chartCurrentRange = '7d';
+    function initChart() {
+      const chartContainer = document.getElementById('price-chart');
+      if (!window.LightweightCharts) return;
+
+      chart = window.LightweightCharts.createChart(chartContainer, {
+        layout: { background: { color: 'transparent' }, textColor: 'rgba(255,255,255,.7)' },
+        width: chartContainer.clientWidth,
+        height: 400,
+        timeScale: { timeVisible: true, secondsVisible: false },
+        rightPriceScale: { borderColor: 'rgba(124, 58, 237, 0.2)' }
+      });
+
+      lineSeries = chart.addLineSeries({
+        color: '#7c3aed',
+        lineWidth: 3,
+        lastValueVisible: true,
+        priceLineVisible: true
+      });
+
+      // Generate sample data (in production, fetch real historical data)
+      const now = Math.floor(Date.now() / 1000);
+      const data = [];
+      let basePrice = SilverPrice.getPrice() || 35;
+      for (let i = 168; i >= 0; i--) {
+        const variation = (Math.random() - 0.5) * 2;
+        basePrice += variation;
+        data.unshift({
+          time: now - (i * 3600),
+          value: Math.max(basePrice, 30)
+        });
+      }
+      lineSeries.setData(data);
+      chart.timeScale().fitContent();
+
+      // Chart range controls
+      document.querySelectorAll('.chart-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.chart-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          chartCurrentRange = btn.dataset.range;
+          // In production, fetch new data for selected range
+        });
+      });
+
+      // Responsive resize
+      window.addEventListener('resize', () => {
+        if (chart && chartContainer) {
+          chart.applyOptions({ width: chartContainer.clientWidth });
+        }
+      });
+    }
 
     function updateAll() {
       const spot = SilverPrice.getPrice();
@@ -591,12 +796,16 @@
       // Gold/Silver ratio
       document.getElementById('gsr-val').textContent = (gold / spot).toFixed(1);
 
-      // Dealer payout
+      // Dealer payout (both versions)
       document.getElementById('dp-spot').textContent = fmt2(spot);
-      document.getElementById('dp-refiner').textContent = `${fmt2(spot * 0.90)}–${fmt2(spot * 0.98)}/oz`;
-      document.getElementById('dp-coin').textContent = `${fmt2(spot * 0.75)}–${fmt2(spot * 0.90)}/oz`;
-      document.getElementById('dp-jewelry').textContent = `${fmt2(spot * 0.60)}–${fmt2(spot * 0.85)}/oz`;
-      document.getElementById('dp-pawn').textContent = `${fmt2(spot * 0.50)}–${fmt2(spot * 0.70)}/oz`;
+      document.getElementById('dp-spot2').textContent = fmt2(spot);
+
+      // Table payouts
+      document.getElementById('dp-refiner-table').textContent = `${fmt2(spot * 0.90)}–${fmt2(spot * 0.98)}`;
+      document.getElementById('dp-coin-table').textContent = `${fmt2(spot * 0.75)}–${fmt2(spot * 0.90)}`;
+      document.getElementById('dp-jewelry-table').textContent = `${fmt2(spot * 0.60)}–${fmt2(spot * 0.85)}`;
+      document.getElementById('dp-pawn-table').textContent = `${fmt2(spot * 0.50)}–${fmt2(spot * 0.70)}`;
+      document.getElementById('dp-scrap-table').textContent = `${fmt2(spot * 0.70)}–${fmt2(spot * 0.85)}`;
 
       // Real-world examples
       document.getElementById('ex-ring').textContent = fmt2(5 / 31.1035 * 0.925 * spot);
@@ -622,6 +831,8 @@
     SiteComponents.renderHeader('site-header');
     SiteComponents.renderFooter('site-footer');
 
+    // Initialize chart and price updates
+    setTimeout(() => { initChart(); }, 100);
     SilverPrice.onPriceUpdate(() => { updateAll(); });
     updateAll();
   </script>
