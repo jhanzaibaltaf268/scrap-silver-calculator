@@ -27,11 +27,12 @@
   <link rel="alternate" hreflang="tr" href="https://scrapsilvercalculater.com/tr/">
   <link rel="alternate" hreflang="ur" href="https://scrapsilvercalculater.com/ur/">
   <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/">
-  <script src="/js/translations.js"></script>
+  <link rel="preload" href="/css/style.css" as="style">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap"></noscript>
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -124,12 +125,19 @@
       background: #10b981;
       border-radius: 50%;
       flex-shrink: 0;
-      box-shadow: 0 0 0 3px rgba(16,185,129,.2);
+      position: relative;
+    }
+    .live-dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: rgba(16,185,129,.3);
       animation: livePulse 2s ease-in-out infinite;
     }
     @keyframes livePulse {
-      0%, 100% { box-shadow: 0 0 0 3px rgba(16,185,129,.2); }
-      50%       { box-shadow: 0 0 0 6px rgba(16,185,129,.0); }
+      0%, 100% { transform: scale(0.6); opacity: 1; }
+      50%       { transform: scale(1.8); opacity: 0; }
     }
 
     .hero-h1 {
@@ -894,37 +902,37 @@
           <!-- Right: calculator -->
           <div class="hv2-right reveal reveal-d1" id="calculator">
             <div class="dash">
-              <div class="dtabs">
-                <button class="dtab on" onclick="setMode('scrap',this)">SCRAP</button>
-                <button class="dtab" onclick="setMode('coins',this)">COINS</button>
-                <button class="dtab" onclick="setMode('bars',this)">BULLION</button>
+              <div class="dtabs" role="tablist" aria-label="Calculator mode">
+                <button class="dtab on" onclick="setMode('scrap',this)" role="tab" aria-selected="true" aria-label="Scrap silver calculator">SCRAP</button>
+                <button class="dtab" onclick="setMode('coins',this)" role="tab" aria-selected="false" aria-label="Coin silver calculator">COINS</button>
+                <button class="dtab" onclick="setMode('bars',this)" role="tab" aria-selected="false" aria-label="Bullion bars calculator">BULLION</button>
               </div>
               <div class="dbody">
                 <div class="d-ctrl">
                   <div class="ctrl-group">
-                    <span class="fl">Weight</span>
-                    <input type="number" id="mw" class="w-input" value="100" oninput="calc()">
-                    <div class="unit-row">
-                      <span class="uchip on" onclick="setU('g',this)">GRAMS</span>
-                      <span class="uchip" onclick="setU('oz',this)">TROY OZ</span>
-                      <span class="uchip" onclick="setU('dwt',this)">DWT</span>
-                      <span class="uchip" onclick="setU('kg',this)">KG</span>
+                    <label class="fl" for="mw">Weight</label>
+                    <input type="number" id="mw" class="w-input" value="100" oninput="calc()" aria-label="Silver weight">
+                    <div class="unit-row" role="group" aria-label="Weight unit">
+                      <span class="uchip on" onclick="setU('g',this)" role="button" tabindex="0" aria-pressed="true">GRAMS</span>
+                      <span class="uchip" onclick="setU('oz',this)" role="button" tabindex="0" aria-pressed="false">TROY OZ</span>
+                      <span class="uchip" onclick="setU('dwt',this)" role="button" tabindex="0" aria-pressed="false">DWT</span>
+                      <span class="uchip" onclick="setU('kg',this)" role="button" tabindex="0" aria-pressed="false">KG</span>
                     </div>
                   </div>
                   <div class="ctrl-group">
-                    <span class="fl">Silver Purity</span>
-                    <div class="pgrid" id="pg"></div>
+                    <span class="fl" id="purity-label">Silver Purity</span>
+                    <div class="pgrid" id="pg" role="group" aria-labelledby="purity-label"></div>
                   </div>
                 </div>
                 <div class="d-res">
                   <span class="fl">Estimated Melt Value</span>
-                  <div class="res-val" id="rv">$0.00</div>
+                  <div class="res-val" id="rv" aria-live="polite" aria-label="Estimated melt value">$0.00</div>
                   <div class="res-det" id="rd">...</div>
                   <div class="res-dealer" id="rdealer">Dealer typically pays <strong>—</strong></div>
                   <div class="acts">
-                    <button class="abtn" onclick="SiteComponents.copyText(document.getElementById('rv').innerText)">📋 COPY</button>
-                    <button class="abtn" onclick="window.print()">🖨️ PRINT</button>
-                    <button class="abtn" onclick="SiteComponents.share()">🔗 SHARE</button>
+                    <button class="abtn" onclick="SiteComponents.copyText(document.getElementById('rv').innerText)" aria-label="Copy melt value">📋 COPY</button>
+                    <button class="abtn" onclick="window.print()" aria-label="Print result">🖨️ PRINT</button>
+                    <button class="abtn" onclick="SiteComponents.share()" aria-label="Share result">🔗 SHARE</button>
                   </div>
                 </div>
               </div>
@@ -1209,7 +1217,7 @@
         </div>
 
         <div class="edu-panel on" id="edu-a">
-          <h2>What Is Scrap Silver — and Why Does It Have Value?</h2>
+          <h3>What Is Scrap Silver — and Why Does It Have Value?</h3>
           <p>Scrap silver is any solid silver object valued for its precious metal content rather than its craftsmanship or collectibility — broken jewelry, mismatched flatware, worn coins, industrial components, even dental silver. If it contains measurable silver, it has real calculable value tied directly to the global spot price.</p>
           <p>Silver's value is intrinsic: a bent ring holds the same silver value as a bullion bar of equal weight and purity. Refiners purchase scrap, melt and purify it, then return it to market as investment-grade bullion or industrial feedstock.</p>
           <p><strong>What qualifies?</strong> Broken jewelry (rings, necklaces, bracelets), sterling flatware (spoons, trays, tea sets), pre-1965 US coins, bullion bars and rounds, antique frames. The critical distinction is <strong>solid silver vs. silver-plated</strong>. Items marked <em>EPNS, Silver Plate</em>, or <em>Sheffield Plate</em> have only a microscopic coating — negligible scrap value.</p>
@@ -1217,7 +1225,7 @@
         </div>
 
         <div class="edu-panel" id="edu-b">
-          <h2>Understanding Silver Purity: What 999, 925, 900 and 800 Mean</h2>
+          <h3>Understanding Silver Purity: What 999, 925, 900 and 800 Mean</h3>
           <p>Purity is measured in <strong>parts per thousand</strong>. A 999-stamped item is 99.9% pure silver. A 925-stamped piece contains 925 parts silver per 1,000 — the remaining 75 parts are copper for durability. Purity directly multiplies your melt value.</p>
           <ul>
             <li><strong>999 Fine Silver</strong> — 99.9% pure. Bullion bars, modern investment coins. Highest melt value. Stamped .999 or 999.</li>
@@ -1229,7 +1237,7 @@
         </div>
 
         <div class="edu-panel" id="edu-c">
-          <h2>How to Test If Silver Is Real</h2>
+          <h3>How to Test If Silver Is Real</h3>
           <p>Not sure if your item is genuine solid silver? Use these three tests before calculating value.</p>
           <div class="test-mini">
             <div class="test-item">
@@ -1327,35 +1335,35 @@
 
       <div class="faq-list faq-v2 reveal reveal-d1">
         <div class="faq-item">
-          <button class="faq-question">How much is scrap silver worth? <span class="faq-icon">+</span></button>
+          <button class="faq-question" aria-expanded="false">How much is scrap silver worth? <span class="faq-icon">+</span></button>
           <div class="faq-answer"><p>Scrap silver is worth its silver content times the live spot price. Sterling (925) = 92.5% of spot, coin silver (900) = 90%, fine silver (999) = 99.9%. Use the calculator above for an exact result.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">How do I calculate the value of scrap silver? <span class="faq-icon">+</span></button>
+          <button class="faq-question" aria-expanded="false">How do I calculate the value of scrap silver? <span class="faq-icon">+</span></button>
           <div class="faq-answer"><p>Multiply weight in troy ounces by purity (decimal) and the spot price. Formula: <strong>Value = Weight × Purity × Spot Price</strong>. The calculator above handles all unit conversions automatically.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">What is the difference between melt value and spot price? <span class="faq-icon">+</span></button>
+          <button class="faq-question" aria-expanded="false">What is the difference between melt value and spot price? <span class="faq-icon">+</span></button>
           <div class="faq-answer"><p>Spot price is the global market price for pure 999 fine silver per troy ounce. Melt value is what your specific item is worth based on its actual silver content: spot price × purity decimal.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">How much will a dealer pay for scrap silver? <span class="faq-icon">+</span></button>
+          <button class="faq-question" aria-expanded="false">How much will a dealer pay for scrap silver? <span class="faq-icon">+</span></button>
           <div class="faq-answer"><p>Most dealers pay 70–95% of melt value. Online refiners offer the most (90–98%), pawn shops the least (50–70%). See our <a href="/how-to-sell-silver/">full selling guide</a> to maximize your payout.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">What is a troy ounce? <span class="faq-icon">+</span></button>
+          <button class="faq-question" aria-expanded="false">What is a troy ounce? <span class="faq-icon">+</span></button>
           <div class="faq-answer"><p>A troy ounce is 31.1035 grams — the standard unit for precious metals globally. It is about 10% heavier than a regular avoirdupois ounce (28.35 g).</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">How can I tell if my silver is real? <span class="faq-icon">+</span></button>
+          <button class="faq-question" aria-expanded="false">How can I tell if my silver is real? <span class="faq-icon">+</span></button>
           <div class="faq-answer"><p>Check for hallmarks (925, 999, STERLING, 800). Silver is not magnetic. For certainty, use a silver acid test kit ($10–20). See the <a href="/identify-silver/">full testing guide →</a></p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">Is silver-plated jewelry worth anything as scrap? <span class="faq-icon">+</span></button>
+          <button class="faq-question" aria-expanded="false">Is silver-plated jewelry worth anything as scrap? <span class="faq-icon">+</span></button>
           <div class="faq-answer"><p>Very little. Silver-plated items (EPNS, Silver Plate, Sheffield Plate) have only a microscopic silver coating and negligible scrap value. Only solid silver items are worth calculating.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-question">How often does the silver price update? <span class="faq-icon">+</span></button>
+          <button class="faq-question" aria-expanded="false">How often does the silver price update? <span class="faq-icon">+</span></button>
           <div class="faq-answer"><p>Our spot price refreshes every hour from multiple market sources (GoldAPI.io, metals.live, goldprice.org), served via global CDN for instant page loads.</p></div>
         </div>
       </div>
@@ -1394,9 +1402,10 @@
   <button type="button" class="sticky-cta" id="stickyCta" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth',block:'start'})">📊 Calculate Silver Value</button>
 
   <!-- Scripts -->
-  <script src="/js/silver-price.js"></script>
-  <script src="/js/calculator.js"></script>
-  <script src="/js/components.js"></script>
+  <script src="/js/translations.js" defer></script>
+  <script src="/js/silver-price.js" defer></script>
+  <script src="/js/calculator.js" defer></script>
+  <script src="/js/components.js" defer></script>
   <script>
     const PURITIES = [
       { code: '999', name: 'Fine Silver',         purity: 0.999, use: 'Bullion, coins' },
