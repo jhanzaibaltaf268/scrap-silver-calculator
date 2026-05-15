@@ -26,11 +26,12 @@
   <link rel="alternate" hreflang="tr" href="https://scrapsilvercalculater.com/tr/">
   <link rel="alternate" hreflang="ur" href="https://scrapsilvercalculater.com/ur/">
   <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/">
-  <script src="/js/translations.js"></script>
+  <link rel="preload" href="/css/style.css" as="style">
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap"></noscript>
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
@@ -123,12 +124,19 @@
       background: #10b981;
       border-radius: 50%;
       flex-shrink: 0;
-      box-shadow: 0 0 0 3px rgba(16,185,129,.2);
+      position: relative;
+    }
+    .live-dot::after {
+      content: '';
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: rgba(16,185,129,.3);
       animation: livePulse 2s ease-in-out infinite;
     }
     @keyframes livePulse {
-      0%, 100% { box-shadow: 0 0 0 3px rgba(16,185,129,.2); }
-      50%       { box-shadow: 0 0 0 6px rgba(16,185,129,.0); }
+      0%, 100% { transform: scale(0.6); opacity: 1; }
+      50%       { transform: scale(1.8); opacity: 0; }
     }
 
     .hero-h1 {
@@ -1391,9 +1399,10 @@
   <button type="button" class="sticky-cta" id="stickyCta" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth',block:'start'})">📊 Calcular Valor de Plata</button>
 
   <!-- Scripts -->
-  <script src="/js/silver-price.js"></script>
-  <script src="/js/calculator.js"></script>
-  <script src="/js/components.js"></script>
+  <script src="/js/translations.js" defer></script>
+  <script src="/js/silver-price.js" defer></script>
+  <script src="/js/calculator.js" defer></script>
+  <script src="/js/components.js" defer></script>
   <script>
     const PURITIES = [
       { code: '999', name: 'Fine Silver',         purity: 0.999, use: 'Bullion, coins' },

@@ -27,13 +27,12 @@
   <link rel="alternate" hreflang="tr" href="https://scrapsilvercalculater.com/tr/index/">
   <link rel="alternate" hreflang="ur" href="https://scrapsilvercalculater.com/ur/index/">
   <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/index/">
-  <script src="js/translations.js"></script>
-
+  <link rel="preload" href="css/style.css" as="style">
   <link rel="stylesheet" href="css/style.css">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap"></noscript>
 
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -717,9 +716,10 @@
   <button type="button" class="sticky-cta" id="stickyCta" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth',block:'start'})">📊 चांदी की कीमत गणना करें</button>
 
   <!-- Scripts -->
-  <script src="js/silver-price.js"></script>
-  <script src="js/calculator.js"></script>
-  <script src="js/components.js"></script>
+  <script src="js/translations.js" defer></script>
+  <script src="js/silver-price.js" defer></script>
+  <script src="js/calculator.js" defer></script>
+  <script src="js/components.js" defer></script>
   <script>
     // PURITY DEFINITIONS
     const PURITIES = [
