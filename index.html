@@ -928,16 +928,6 @@
                   </div>
                 </div>
               </div>
-              <div class="dfoot">
-                <div style="display:flex;align-items:center;gap:12px;">
-                  <span>SPOT: <span id="sv">$0.00</span></span>
-                  <span>RATIO: <span id="rr">...</span></span>
-                </div>
-                <div style="display:flex;align-items:center;gap:8px;">
-                  <div class="ldot"></div>
-                  <span>LIVE MARKET DATA</span>
-                </div>
-              </div>
             </div>
           </div>
 
@@ -1471,9 +1461,6 @@
       const high = res.value * 0.95;
       document.getElementById('rdealer').innerHTML =
         `Dealer typically pays <strong>${SilverCalc.formatCurrency(low)}–${SilverCalc.formatCurrency(high)}</strong> (70–95% of melt)`;
-
-      document.getElementById('sv').textContent = `$${spot.toFixed(2)}`;
-      document.getElementById('rr').textContent = (gold / spot).toFixed(2);
     }
 
     function loadExample(weight, unit, purity) {
