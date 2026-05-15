@@ -245,11 +245,11 @@
     <section class="hero-compact">
       <div class="container">
         <div class="reveal text-center">
-          <h1 class="hero-title">Scrap Silver <span class="accent-text">Calculator</span></h1>
-          <p class="hero-sub">Get the live melt value of any scrap silver item in seconds — sterling (925), fine (999), coin (900), and 800 silver. Live spot prices, every purity, every unit.</p>
+          <h1 class="hero-title">स्क्रैप चांदी <span class="accent-text">कैलकुलेटर</span></h1>
+          <p class="hero-sub">किसी भी स्क्रैप चांदी की वस्तु का लाइव पिघलाव मूल्य सेकंडों में प्राप्त करें — स्टर्लिंग (925), शुद्ध (999), सिक्का (900), और 800 चांदी। लाइव स्पॉट कीमतें, हर शुद्धता, हर इकाई।</p>
           <div class="hero-chips">
-            <div class="chip">🔄 Live silver prices</div>
-            <div class="chip">⏱ Updates hourly</div>
+            <div class="chip">🔄 लाइव चांदी की कीमतें</div>
+            <div class="chip">⏱ हर घंटे अपडेट</div>
             <div class="chip">⚖ 999 · 925 · 900 · 800</div>
             <div class="chip">📏 g · oz · dwt · kg</div>
           </div>
@@ -257,9 +257,9 @@
 
         <div class="dash reveal reveal-d1" id="calculator">
           <div class="dtabs">
-            <button class="dtab on" onclick="setMode('scrap',this)">SCRAP</button>
-            <button class="dtab" onclick="setMode('coins',this)">COINS</button>
-            <button class="dtab" onclick="setMode('bars',this)">BULLION</button>
+            <button class="dtab on" onclick="setMode('scrap',this)">स्क्रैप</button>
+            <button class="dtab" onclick="setMode('coins',this)">सिक्के</button>
+            <button class="dtab" onclick="setMode('bars',this)">बुलियन</button>
           </div>
           <div class="dbody">
             <div class="d-ctrl">
@@ -279,25 +279,25 @@
               </div>
             </div>
             <div class="d-res">
-              <span class="fl">अनुमानित पिघलना मूल्य</span>
+              <span class="fl">अनुमानित पिघलाव मूल्य</span>
               <div class="res-val" id="rv">$0.00</div>
               <div class="res-det" id="rd">...</div>
-              <div class="res-dealer" id="rdealer">Dealer typically pays <strong>—</strong></div>
+              <div class="res-dealer" id="rdealer">डीलर आमतौर पर भुगतान करता है <strong>—</strong></div>
               <div class="acts">
-                <button class="abtn" onclick="SiteComponents.copyText(document.getElementById('rv').innerText)">📋 COPY</button>
-                <button class="abtn" onclick="window.print()">🖨️ PRINT</button>
-                <button class="abtn" onclick="SiteComponents.share()">🔗 SHARE</button>
+                <button class="abtn" onclick="SiteComponents.copyText(document.getElementById('rv').innerText)">📋 कॉपी करें</button>
+                <button class="abtn" onclick="window.print()">🖨️ प्रिंट करें</button>
+                <button class="abtn" onclick="SiteComponents.share()">🔗 शेयर करें</button>
               </div>
             </div>
           </div>
           <div class="dfoot">
             <div style="display:flex;align-items:center;gap:12px;">
-              <span>SPOT: <span id="sv">$0.00</span></span>
-              <span>RATIO: <span id="rr">...</span></span>
+              <span>स्पॉट: <span id="sv">$0.00</span></span>
+              <span>अनुपात: <span id="rr">...</span></span>
             </div>
             <div style="display:flex;align-items:center;gap:8px;">
               <div class="ldot"></div>
-              <span>LIVE MARKET DATA</span>
+              <span>लाइव बाजार डेटा</span>
             </div>
           </div>
         </div>
@@ -308,13 +308,13 @@
     <div class="price-strip">
       <div class="container">
         <div class="price-strip-inner">
-          <span class="ps-label">Silver Spot:</span>
+          <span class="ps-label">चांदी स्पॉट:</span>
           <span class="ps-price" id="strip-price">$—</span>
           <span class="ps-change flat" id="strip-change">—</span>
           <span class="ps-divider">|</span>
-          <span class="ps-updated" id="strip-updated">Loading...</span>
+          <span class="ps-updated" id="strip-updated">लोड हो रहा है...</span>
           <span class="ps-divider">|</span>
-          <span class="ps-updated">Refreshes hourly</span>
+          <span class="ps-updated">हर घंटे ताज़ा होता है</span>
         </div>
       </div>
     </div>
@@ -332,11 +332,11 @@
     <section class="trust-bar-compact">
       <div class="container">
         <div class="trust-bar">
-          <div class="trust-item"><span class="icon">🔄</span> Live Spot Prices</div>
-          <div class="trust-item"><span class="icon">🔒</span> 100% Private</div>
-          <div class="trust-item"><span class="icon">⚡</span> Instant Results</div>
-          <div class="trust-item"><span class="icon">📱</span> Works on Any Device</div>
-          <div class="trust-item"><span class="icon">💰</span> Always Free</div>
+          <div class="trust-item"><span class="icon">🔄</span> लाइव स्पॉट कीमतें</div>
+          <div class="trust-item"><span class="icon">🔒</span> 100% गोपनीय</div>
+          <div class="trust-item"><span class="icon">⚡</span> तत्काल परिणाम</div>
+          <div class="trust-item"><span class="icon">📱</span> सभी डिवाइस</div>
+          <div class="trust-item"><span class="icon">💰</span> हमेशा मुफ्त</div>
         </div>
       </div>
     </section>
@@ -344,55 +344,55 @@
     <!-- ============================ §5  PURITY CARDS (4) ============================ -->
     <section class="sec container">
       <div class="reveal text-center">
-        <span class="sec-badge">💰 Live by Purity</span>
+        <span class="sec-badge">💰 शुद्धता के अनुसार लाइव</span>
         <h2 class="sec-title">शुद्धता के अनुसार चांदी की कीमत — लाइव प्रति ग्राम और प्रति औंस</h2>
-        <p class="sec-sub">All values calculated from today's live silver spot price.</p>
+        <p class="sec-sub">सभी मूल्य आज के लाइव चांदी स्पॉट मूल्य से गणना किए गए हैं।</p>
       </div>
 
       <div class="purity-boxes reveal reveal-d1">
         <div class="purity-box">
-          <div class="pb-label">Fine Silver</div>
+          <div class="pb-label">शुद्ध चांदी</div>
           <div class="pb-purity">999</div>
-          <div class="pb-name">99.9% Pure</div>
+          <div class="pb-name">99.9% शुद्ध</div>
           <div class="pb-prices">
-            <div><div class="pb-unit">Per Gram</div><div class="pb-val" id="pb-999-g">$—</div></div>
-            <div><div class="pb-unit">Per Troy Oz</div><div class="pb-val" id="pb-999-oz">$—</div></div>
+            <div><div class="pb-unit">प्रति ग्राम</div><div class="pb-val" id="pb-999-g">$—</div></div>
+            <div><div class="pb-unit">प्रति ट्रॉय औंस</div><div class="pb-val" id="pb-999-oz">$—</div></div>
           </div>
-          <div class="pb-use">Bullion bars, coins</div>
-          <a class="pb-link" href="999-silver-calculator.html">999 silver calculator →</a>
+          <div class="pb-use">बुलियन बार, सिक्के</div>
+          <a class="pb-link" href="999-silver-calculator.html">999 चांदी कैलकुलेटर →</a>
         </div>
         <div class="purity-box gold-accent">
-          <div class="pb-label">Sterling Silver</div>
+          <div class="pb-label">स्टर्लिंग चांदी</div>
           <div class="pb-purity">925</div>
-          <div class="pb-name">92.5% Silver</div>
+          <div class="pb-name">92.5% चांदी</div>
           <div class="pb-prices">
-            <div><div class="pb-unit">Per Gram</div><div class="pb-val" id="pb-925-g">$—</div></div>
-            <div><div class="pb-unit">Per Troy Oz</div><div class="pb-val" id="pb-925-oz">$—</div></div>
+            <div><div class="pb-unit">प्रति ग्राम</div><div class="pb-val" id="pb-925-g">$—</div></div>
+            <div><div class="pb-unit">प्रति ट्रॉय औंस</div><div class="pb-val" id="pb-925-oz">$—</div></div>
           </div>
-          <div class="pb-use">Jewelry, flatware</div>
-          <a class="pb-link" href="925-silver-calculator.html">925 silver calculator →</a>
+          <div class="pb-use">गहने, बर्तन</div>
+          <a class="pb-link" href="925-silver-calculator.html">925 चांदी कैलकुलेटर →</a>
         </div>
         <div class="purity-box coin-accent">
-          <div class="pb-label">Coin Silver</div>
+          <div class="pb-label">सिक्का चांदी</div>
           <div class="pb-purity">900</div>
-          <div class="pb-name">90% Silver</div>
+          <div class="pb-name">90% चांदी</div>
           <div class="pb-prices">
-            <div><div class="pb-unit">Per Gram</div><div class="pb-val" id="pb-900-g">$—</div></div>
-            <div><div class="pb-unit">Per Troy Oz</div><div class="pb-val" id="pb-900-oz">$—</div></div>
+            <div><div class="pb-unit">प्रति ग्राम</div><div class="pb-val" id="pb-900-g">$—</div></div>
+            <div><div class="pb-unit">प्रति ट्रॉय औंस</div><div class="pb-val" id="pb-900-oz">$—</div></div>
           </div>
-          <div class="pb-use">Pre-1965 US coins</div>
-          <a class="pb-link" href="900-silver-calculator.html">900 silver calculator →</a>
+          <div class="pb-use">1965 से पहले के अमेरिकी सिक्के</div>
+          <a class="pb-link" href="900-silver-calculator.html">900 चांदी कैलकुलेटर →</a>
         </div>
         <div class="purity-box euro-accent">
-          <div class="pb-label">European Silver</div>
+          <div class="pb-label">यूरोपीय चांदी</div>
           <div class="pb-purity">800</div>
-          <div class="pb-name">80% Silver</div>
+          <div class="pb-name">80% चांदी</div>
           <div class="pb-prices">
-            <div><div class="pb-unit">Per Gram</div><div class="pb-val" id="pb-800-g">$—</div></div>
-            <div><div class="pb-unit">Per Troy Oz</div><div class="pb-val" id="pb-800-oz">$—</div></div>
+            <div><div class="pb-unit">प्रति ग्राम</div><div class="pb-val" id="pb-800-g">$—</div></div>
+            <div><div class="pb-unit">प्रति ट्रॉय औंस</div><div class="pb-val" id="pb-800-oz">$—</div></div>
           </div>
-          <div class="pb-use">European silverware</div>
-          <a class="pb-link" href="800-silver-calculator.html">800 silver calculator →</a>
+          <div class="pb-use">यूरोपीय चांदी के बर्तन</div>
+          <a class="pb-link" href="800-silver-calculator.html">800 चांदी कैलकुलेटर →</a>
         </div>
       </div>
     </section>
@@ -401,13 +401,13 @@
     <section class="sec container container-tight">
       <div class="reveal" style="background:linear-gradient(135deg,var(--bg-secondary) 0%,rgba(124,58,237,.07) 100%);border:1px solid rgba(124,58,237,.25);border-radius:var(--radius-lg);padding:var(--space-xl) var(--space-lg);text-align:center;position:relative;overflow:hidden;">
         <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),#a78bfa);"></div>
-        <span class="sec-badge">📈 Live Silver Prices</span>
-        <h2 class="sec-title" style="margin-top:12px;">Need the Full Silver Price Breakdown?</h2>
-        <p style="color:var(--text-secondary);max-width:560px;margin:0 auto var(--space-lg);line-height:1.75;font-size:var(--fs-base);">See live silver spot price, interactive 7-day chart, per-gram &amp; per-ounce rates for all purity grades, and real-time dealer payout estimates — all on one page.</p>
+        <span class="sec-badge">📈 लाइव चांदी की कीमतें</span>
+        <h2 class="sec-title" style="margin-top:12px;">पूर्ण चांदी मूल्य विवरण चाहिए?</h2>
+        <p style="color:var(--text-secondary);max-width:560px;margin:0 auto var(--space-lg);line-height:1.75;font-size:var(--fs-base);">लाइव चांदी स्पॉट मूल्य, इंटरैक्टिव 7-दिन चार्ट, सभी शुद्धता ग्रेड के लिए प्रति-ग्राम और प्रति-औंस दरें, और रियल-टाइम डीलर भुगतान अनुमान — सभी एक पृष्ठ पर।</p>
         <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;">
-          <a href="/silver-price-today/" style="display:inline-block;background:var(--accent);color:#fff;padding:14px 28px;border-radius:100px;font-weight:700;text-decoration:none;font-size:var(--fs-sm);">📊 Silver Prices Today →</a>
-          <a href="/silver-price-per-gram/" style="display:inline-block;background:var(--bg-secondary);color:var(--accent);padding:14px 28px;border-radius:100px;font-weight:700;text-decoration:none;font-size:var(--fs-sm);border:1px solid rgba(124,58,237,.3);">Per Gram Rates →</a>
-          <a href="/silver-price-per-ounce/" style="display:inline-block;background:var(--bg-secondary);color:var(--accent);padding:14px 28px;border-radius:100px;font-weight:700;text-decoration:none;font-size:var(--fs-sm);border:1px solid rgba(124,58,237,.3);">Per Ounce Rates →</a>
+          <a href="/silver-price-today/" style="display:inline-block;background:var(--accent);color:#fff;padding:14px 28px;border-radius:100px;font-weight:700;text-decoration:none;font-size:var(--fs-sm);">📊 आज चांदी की कीमतें →</a>
+          <a href="/silver-price-per-gram/" style="display:inline-block;background:var(--bg-secondary);color:var(--accent);padding:14px 28px;border-radius:100px;font-weight:700;text-decoration:none;font-size:var(--fs-sm);border:1px solid rgba(124,58,237,.3);">प्रति ग्राम दरें →</a>
+          <a href="/silver-price-per-ounce/" style="display:inline-block;background:var(--bg-secondary);color:var(--accent);padding:14px 28px;border-radius:100px;font-weight:700;text-decoration:none;font-size:var(--fs-sm);border:1px solid rgba(124,58,237,.3);">प्रति औंस दरें →</a>
         </div>
       </div>
     </section>
@@ -424,22 +424,22 @@
         <div class="intent-card">
           <h3>925 चांदी कितनी कीमती है?</h3>
           <p>925 स्टर्लिंग चांदी आज की लाइव चांदी स्पॉट मूल्य के आधार पर लगभग <span class="live-num" id="int-925-g">$—</span> प्रति ग्राम, या <span class="live-num" id="int-925-oz">$—</span> प्रति ट्रॉय औंस है।</p>
-          <a class="intent-link" href="925-silver-calculator.html">Full 925 silver calculator →</a>
+          <a class="intent-link" href="925-silver-calculator.html">पूर्ण 925 चांदी कैलकुलेटर →</a>
         </div>
         <div class="intent-card">
           <h3>स्टर्लिंग चांदी पिघलाव मूल्य</h3>
           <p>स्टर्लिंग चांदी पिघलाव मूल्य = वजन × 0.925 × स्पॉट मूल्य। एक विशिष्ट स्टर्लिंग अंगूठी (~5g) पिघलाव मूल्य में लगभग <span class="live-num" id="int-ster-ring">$—</span> है।</p>
-          <a class="intent-link" href="sterling-silver-calculator.html">Sterling silver calculator →</a>
+          <a class="intent-link" href="sterling-silver-calculator.html">स्टर्लिंग चांदी कैलकुलेटर →</a>
         </div>
         <div class="intent-card">
           <h3>सिक्का चांदी मूल्य (1965 से पहले)</h3>
           <p>1965 से पहले के अमेरिकी सिक्के 90% चांदी हैं। वे आज के स्पॉट पर चांदी सामग्री के प्रति ट्रॉय औंस <span class="live-num" id="int-900-oz">$—</span> के लायक हैं।</p>
-          <a class="intent-link" href="900-silver-calculator.html">Coin silver calculator →</a>
+          <a class="intent-link" href="900-silver-calculator.html">सिक्का चांदी कैलकुलेटर →</a>
         </div>
         <div class="intent-card">
           <h3>आज प्रति ग्राम चांदी की कीमत</h3>
           <p>शुद्ध चांदी (999) <span class="live-num" id="int-999-g">$—</span>/ग्राम पर है। स्टर्लिंग चांदी (925) <span class="live-num" id="int-925-g2">$—</span>/ग्राम पर है। हर घंटे अपडेट।</p>
-          <a class="intent-link" href="silver-price-per-gram.html">Silver price per gram →</a>
+          <a class="intent-link" href="silver-price-per-gram.html">प्रति ग्राम चांदी की कीमत →</a>
         </div>
       </div>
     </section>
@@ -447,35 +447,35 @@
     <!-- ============================ §8  QUICK EXAMPLE CARDS (PRE-FILL) ============================ -->
     <section class="sec container">
       <div class="reveal text-center">
-        <span class="sec-badge">⚡ Quick Examples</span>
+        <span class="sec-badge">⚡ त्वरित उदाहरण</span>
         <h2 class="sec-title">एक वास्तविक उदाहरण आजमाएं</h2>
-        <p class="sec-sub">Click any example to load it into the calculator above.</p>
+        <p class="sec-sub">कोई भी उदाहरण क्लिक करें और इसे ऊपर कैलकुलेटर में लोड करें।</p>
       </div>
 
       <div class="example-grid reveal reveal-d1">
         <button class="example-card" type="button" onclick="loadExample(10,'g',0.925)">
           <div class="ex-icon">💍</div>
-          <div class="ex-label">10g of 925 silver</div>
+          <div class="ex-label">925 चांदी का 10g</div>
           <div class="ex-val" id="ex-1">$—</div>
-          <div class="ex-cta">Try in calculator →</div>
+          <div class="ex-cta">कैलकुलेटर में आज़माएं →</div>
         </button>
         <button class="example-card" type="button" onclick="loadExample(50,'g',0.925)">
           <div class="ex-icon">📿</div>
-          <div class="ex-label">50g sterling necklace</div>
+          <div class="ex-label">50g स्टर्लिंग हार</div>
           <div class="ex-val" id="ex-2">$—</div>
-          <div class="ex-cta">Try in calculator →</div>
+          <div class="ex-cta">कैलकुलेटर में आज़माएं →</div>
         </button>
         <button class="example-card" type="button" onclick="loadExample(1,'oz',0.999)">
           <div class="ex-icon">🏛️</div>
-          <div class="ex-label">1 troy oz fine silver</div>
+          <div class="ex-label">1 ट्रॉय औंस शुद्ध चांदी</div>
           <div class="ex-val" id="ex-3">$—</div>
-          <div class="ex-cta">Try in calculator →</div>
+          <div class="ex-cta">कैलकुलेटर में आज़माएं →</div>
         </button>
         <button class="example-card" type="button" onclick="loadExample(60,'g',0.925)">
           <div class="ex-icon">🥄</div>
-          <div class="ex-label">Sterling spoon (60g)</div>
+          <div class="ex-label">स्टर्लिंग चम्मच (60g)</div>
           <div class="ex-val" id="ex-4">$—</div>
-          <div class="ex-cta">Try in calculator →</div>
+          <div class="ex-cta">कैलकुलेटर में आज़माएं →</div>
         </button>
       </div>
     </section>
@@ -483,59 +483,59 @@
     <!-- ============================ §9  FREE CALCULATORS GRID ============================ -->
     <section class="sec container" id="calculators">
       <div class="reveal text-center">
-        <span class="sec-badge">🧮 Free Tools</span>
+        <span class="sec-badge">🧮 निःशुल्क उपकरण</span>
         <h2 class="sec-title">अधिक चांदी कैलकुलेटर</h2>
-        <p class="sec-sub">Specialized calculators for every silver scenario.</p>
+        <p class="sec-sub">हर चांदी परिदृश्य के लिए विशेष कैलकुलेटर।</p>
       </div>
 
       <div class="cgrid reveal reveal-d1">
         <a href="silver-melt-value-calculator.html" class="ccard">
           <div class="ci">🔥</div>
-          <h3>Silver Melt Value</h3>
-          <p>Find the melt value of any silver item by weight and purity.</p>
-          <div class="arr">Calculate →</div>
+          <h3>चांदी पिघलाव मूल्य</h3>
+          <p>वजन और शुद्धता के आधार पर किसी भी चांदी की वस्तु का पिघलाव मूल्य जानें।</p>
+          <div class="arr">कैलकुलेट करें →</div>
         </a>
         <a href="sterling-silver-calculator.html" class="ccard">
           <div class="ci">✨</div>
-          <h3>Sterling Silver</h3>
-          <p>Calculate the value of 925 sterling silver items.</p>
-          <div class="arr">Calculate →</div>
+          <h3>स्टर्लिंग चांदी</h3>
+          <p>925 स्टर्लिंग चांदी की वस्तुओं का मूल्य गणना करें।</p>
+          <div class="arr">कैलकुलेट करें →</div>
         </a>
         <a href="junk-silver-calculator.html" class="ccard">
           <div class="ci">🪙</div>
-          <h3>Junk Silver</h3>
-          <p>Melt value of pre-1965 US silver coins.</p>
-          <div class="arr">Calculate →</div>
+          <h3>जंक चांदी</h3>
+          <p>1965 से पहले के अमेरिकी चांदी के सिक्कों का पिघलाव मूल्य।</p>
+          <div class="arr">कैलकुलेट करें →</div>
         </a>
         <a href="silver-bar-value-calculator.html" class="ccard">
           <div class="ci">🧱</div>
-          <h3>Silver Bar Value</h3>
-          <p>Find current value of 1oz, 10oz, 100oz, and 1kg bars.</p>
-          <div class="arr">Calculate →</div>
+          <h3>चांदी बार मूल्य</h3>
+          <p>1oz, 10oz, 100oz, और 1kg बार का वर्तमान मूल्य जानें।</p>
+          <div class="arr">कैलकुलेट करें →</div>
         </a>
         <a href="silver-jewelry-value-calculator.html" class="ccard">
           <div class="ci">💍</div>
-          <h3>Silver Jewelry</h3>
-          <p>Melt value for rings, chains, necklaces, bracelets.</p>
-          <div class="arr">Calculate →</div>
+          <h3>चांदी गहने</h3>
+          <p>अंगूठियां, चेन, हार, कंगन का पिघलाव मूल्य।</p>
+          <div class="arr">कैलकुलेट करें →</div>
         </a>
         <a href="silverware-value-calculator.html" class="ccard">
           <div class="ci">🍴</div>
-          <h3>Silverware Value</h3>
-          <p>Silver value of spoons, forks, trays, cups, plates.</p>
-          <div class="arr">Calculate →</div>
+          <h3>चांदी के बर्तन मूल्य</h3>
+          <p>चम्मच, कांटे, ट्रे, कप, प्लेटों का चांदी मूल्य।</p>
+          <div class="arr">कैलकुलेट करें →</div>
         </a>
         <a href="silver-batch-calculator.html" class="ccard">
           <div class="ci">📋</div>
-          <h3>Batch Calculator</h3>
-          <p>Add multiple items, see the combined total.</p>
-          <div class="arr">Try It →</div>
+          <h3>बैच कैलकुलेटर</h3>
+          <p>कई वस्तुएं जोड़ें, संयुक्त कुल देखें।</p>
+          <div class="arr">आज़माएं →</div>
         </a>
         <a href="silver-weight-converter.html" class="ccard">
           <div class="ci">⚖️</div>
-          <h3>Weight Converter</h3>
-          <p>Grams, troy ounces, pennyweights, kilograms.</p>
-          <div class="arr">Convert →</div>
+          <h3>वजन परिवर्तक</h3>
+          <p>ग्राम, ट्रॉय औंस, पेनीवेट, किलोग्राम।</p>
+          <div class="arr">परिवर्तित करें →</div>
         </a>
       </div>
     </section>
@@ -543,100 +543,100 @@
     <!-- ============================ §10  HOW TO CALCULATE ============================ -->
     <section class="sec container container-tight">
       <div class="reveal">
-        <span class="sec-badge">📝 Simple Process</span>
+        <span class="sec-badge">📝 सरल प्रक्रिया</span>
         <h2 class="sec-title">चांदी अपशिष्ट मूल्य की गणना कैसे करें</h2>
       </div>
 
       <div class="reveal reveal-d1">
-        <div class="formula-box">Scrap Silver Value = Weight × Purity × Spot Price</div>
+        <div class="formula-box">स्क्रैप चांदी मूल्य = वजन × शुद्धता × स्पॉट मूल्य</div>
 
         <ol class="how-steps">
           <li><strong>चांदी तोलें।</strong> ग्राम, ट्रॉय औंस, या पेनीवेट में डिजिटल तराजू का उपयोग करें। ट्रॉय औंस (31.10 ग्राम) को नियमित औंस (28.35 ग्राम) के साथ भ्रमित न करें।</li>
-          <li><strong>Identify the purity.</strong> Look for a hallmark: 925 (sterling), 999 (fine), 900 (coin silver), 800 (European). No stamp? Use our purity tests.</li>
-          <li><strong>Apply the live spot price.</strong> The calculator auto-fetches today's silver spot price every hour from global commodity markets.</li>
+          <li><strong>शुद्धता पहचानें।</strong> हॉलमार्क खोजें: 925 (स्टर्लिंग), 999 (शुद्ध), 900 (सिक्का चांदी), 800 (यूरोपीय)। कोई स्टाम्प नहीं? हमारे शुद्धता परीक्षण उपयोग करें।</li>
+          <li><strong>लाइव स्पॉट मूल्य लागू करें।</strong> कैलकुलेटर वैश्विक कमोडिटी बाजारों से हर घंटे आज का चांदी स्पॉट मूल्य स्वचालित रूप से लेता है।</li>
           <li><strong>पिघलाव मूल्य और डीलर अनुमान प्राप्त करें।</strong> पिघलाव मूल्य के साथ यथार्थवादी डीलर भुगतान (आमतौर पर पिघलाव का 70–95%) देखें।</li>
         </ol>
 
-        <p style="color:var(--text-secondary);font-size:var(--fs-sm);">Example: 100g of sterling silver at $30/oz spot = 100g ÷ 31.1035 × 0.925 × $30 = <strong style="color:var(--accent)">$89.21</strong> melt value.</p>
-        <p style="text-align:right;margin-top:var(--space-sm);"><a href="what-is-silver-melt-value.html" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:var(--fs-sm);">Full melt value guide →</a></p>
+        <p style="color:var(--text-secondary);font-size:var(--fs-sm);">उदाहरण: $30/oz स्पॉट पर 100g स्टर्लिंग चांदी = 100g ÷ 31.1035 × 0.925 × $30 = <strong style="color:var(--accent)">$89.21</strong> पिघलाव मूल्य।</p>
+        <p style="text-align:right;margin-top:var(--space-sm);"><a href="what-is-silver-melt-value.html" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:var(--fs-sm);">पूर्ण विवरण →</a></p>
       </div>
     </section>
 
     <!-- ============================ §11  COMPACT PURITY CHART ============================ -->
     <section class="sec container container-tight">
       <div class="reveal">
-        <span class="sec-badge">📐 Quick Reference</span>
+        <span class="sec-badge">📐 त्वरित संदर्भ</span>
         <h2 class="sec-title sec-title-sm">चांदी शुद्धता चार्ट</h2>
       </div>
 
       <div class="compact-chart reveal reveal-d1">
-        <div class="chart-row"><span class="code">999</span><span class="meaning">99.9% pure — fine silver</span></div>
-        <div class="chart-row"><span class="code">925</span><span class="meaning">92.5% — sterling</span></div>
-        <div class="chart-row"><span class="code">900</span><span class="meaning">90% — coin silver</span></div>
-        <div class="chart-row"><span class="code">800</span><span class="meaning">80% — European</span></div>
+        <div class="chart-row"><span class="code">999</span><span class="meaning">शुद्ध चांदी · 99.9%</span></div>
+        <div class="chart-row"><span class="code">925</span><span class="meaning">स्टर्लिंग · 92.5%</span></div>
+        <div class="chart-row"><span class="code">900</span><span class="meaning">सिक्का चांदी · 90%</span></div>
+        <div class="chart-row"><span class="code">800</span><span class="meaning">यूरोपीय · 80%</span></div>
       </div>
-      <p style="text-align:right;margin-top:var(--space-sm);"><a href="silver-purity-chart.html" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:var(--fs-sm);">Full silver purity chart →</a></p>
+      <p style="text-align:right;margin-top:var(--space-sm);"><a href="silver-purity-chart.html" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:var(--fs-sm);">पूर्ण चांदी शुद्धता चार्ट →</a></p>
     </section>
 
     <!-- ============================ §12  DEALER PAYOUT TABLE ============================ -->
     <section class="sec container container-tight">
       <div class="reveal">
-        <span class="sec-badge">💵 Real Resale Value</span>
-        <h2 class="sec-title">डीलर्स चांदी अपशिष्ट के लिए वास्तव में क्या भुगतान करते हैं</h2>
-        <p class="sec-sub">Melt value is the ceiling. Here's what you'll realistically be offered.</p>
+        <span class="sec-badge">💵 वास्तविक पुनर्विक्रय मूल्य</span>
+        <h2 class="sec-title">डीलर वास्तव में स्क्रैप चांदी के लिए क्या भुगतान करते हैं</h2>
+        <p class="sec-sub">पिघलाव मूल्य अधिकतम सीमा है। यहां आपको यथार्थवादी रूप से क्या प्रस्तावित किया जाएगा।</p>
       </div>
 
       <div class="payout-table-wrap reveal reveal-d1">
         <table class="payout-table">
           <thead>
             <tr>
-              <th>Buyer Type</th>
-              <th>Typical Payout</th>
-              <th>Best For</th>
+              <th>खरीदार का प्रकार</th>
+              <th>सामान्य भुगतान</th>
+              <th>सर्वश्रेष्ठ के लिए</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Online Refiners</td><td class="pct">90–98%</td><td>Largest payout, takes 1–3 weeks</td></tr>
-            <tr><td>Coin Shops</td><td class="pct">75–90%</td><td>Same-day cash, good for bullion</td></tr>
-            <tr><td>Jewelry Stores</td><td class="pct">60–85%</td><td>Convenient if buying replacement</td></tr>
-            <tr><td>Pawn Shops</td><td class="pct">50–70%</td><td>Fast cash, smaller quantities</td></tr>
+            <tr><td>ऑनलाइन रिफाइनर</td><td class="pct">90–98%</td><td>सबसे बड़ा भुगतान, डाक द्वारा, 1-3 सप्ताह</td></tr>
+            <tr><td>सिक्का और बुलियन शॉप</td><td class="pct">75–90%</td><td>उसी दिन नकद, बार, प्रमाणित सिक्के</td></tr>
+            <tr><td>जेवेलरी स्टोर</td><td class="pct">60–85%</td><td>उसी दिन, स्थानीय, टूटे स्टर्लिंग टुकड़े</td></tr>
+            <tr><td>गिरवी की दुकानें</td><td class="pct">50–70%</td><td>तत्काल नकद, केवल आपातकाल में</td></tr>
           </tbody>
         </table>
       </div>
-      <p style="text-align:right;margin-top:var(--space-sm);"><a href="how-to-sell-silver.html" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:var(--fs-sm);">Full guide: where to sell silver →</a></p>
+      <p style="text-align:right;margin-top:var(--space-sm);"><a href="how-to-sell-silver.html" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:var(--fs-sm);">पूर्ण गाइड: चांदी कहां बेचें →</a></p>
     </section>
 
     <!-- ============================ §13  HOW TO TEST SILVER ============================ -->
     <section class="sec container container-tight">
       <div class="reveal">
-        <span class="sec-badge">🔬 Verify First</span>
+        <span class="sec-badge">🔬 पहले सत्यापित करें</span>
         <h2 class="sec-title sec-title-sm">यह कैसे परीक्षण करें कि चांदी असली है</h2>
       </div>
 
       <ul class="reveal reveal-d1" style="color:var(--text-secondary);font-size:var(--fs-sm);line-height:1.75;padding-left:var(--space-lg);">
-        <li><strong style="color:var(--text-primary)">Check for a hallmark.</strong> Genuine silver is stamped 925, 999, STERLING, or 800. No stamp usually means plated or fake.</li>
-        <li><strong style="color:var(--text-primary)">Try a magnet.</strong> Silver is not magnetic. If a strong magnet sticks, it isn't solid silver.</li>
-        <li><strong style="color:var(--text-primary)">Use an acid test kit.</strong> $10–20 at jeweler supply stores — gives a definitive purity reading.</li>
+        <li><strong style="color:var(--text-primary)">हॉलमार्क जांचें।</strong> असली चांदी पर 925, 999, STERLING, या 800 की मुहर होती है। कोई स्टाम्प नहीं आमतौर पर मतलब प्लेटेड या नकली।</li>
+        <li><strong style="color:var(--text-primary)">मैग्नेट आज़माएं।</strong> चांदी चुंबकीय नहीं है। यदि एक मजबूत चुंबक चिपकता है, तो यह ठोस चांदी नहीं है।</li>
+        <li><strong style="color:var(--text-primary)">एसिड टेस्ट किट उपयोग करें।</strong> जूलर सप्लाई स्टोर पर $10–20 — निश्चित शुद्धता रीडिंग देता है।</li>
       </ul>
-      <p style="text-align:right;margin-top:var(--space-sm);"><a href="identify-silver.html" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:var(--fs-sm);">Full silver testing guide →</a></p>
+      <p style="text-align:right;margin-top:var(--space-sm);"><a href="identify-silver.html" style="color:var(--accent);font-weight:600;text-decoration:none;font-size:var(--fs-sm);">पूर्ण चांदी परीक्षण गाइड →</a></p>
     </section>
 
     <!-- ============================ §14  EXPLORE MORE TOOLS (HUB) ============================ -->
     <section class="sec container">
       <div class="reveal text-center">
-        <span class="sec-badge">🔗 Topical Hub</span>
-        <h2 class="sec-title">Explore More Silver Tools &amp; Guides</h2>
+        <span class="sec-badge">🔗 विषयगत हब</span>
+        <h2 class="sec-title">अधिक चांदी उपकरण और गाइड खोजें</h2>
       </div>
 
       <div class="cgrid reveal reveal-d1">
-        <a href="925-silver-calculator.html" class="ccard"><div class="ci">📐</div><h3>925 Silver Value</h3><p>Detailed sterling silver calculator with live prices.</p><div class="arr">View →</div></a>
-        <a href="sterling-silver-calculator.html" class="ccard"><div class="ci">✨</div><h3>Sterling Silver Worth</h3><p>Per-gram and per-ounce sterling melt values.</p><div class="arr">View →</div></a>
-        <a href="silver-price-per-gram.html" class="ccard"><div class="ci">📊</div><h3>Silver Price Per Gram</h3><p>Live silver per-gram rates with full conversion.</p><div class="arr">View →</div></a>
-        <a href="900-silver-calculator.html" class="ccard"><div class="ci">🪙</div><h3>Coin Silver Value</h3><p>Pre-1965 US coin silver calculator.</p><div class="arr">View →</div></a>
-        <a href="silver-hallmarks-guide.html" class="ccard"><div class="ci">🔍</div><h3>Silver Hallmarks</h3><p>Decode every stamp — US, UK, Europe, Russia.</p><div class="arr">View →</div></a>
-        <a href="silver-spot-price-today.html" class="ccard"><div class="ci">📈</div><h3>Silver Price Today</h3><p>Live silver spot price with market analysis.</p><div class="arr">View →</div></a>
-        <a href="identify-silver.html" class="ccard"><div class="ci">🧪</div><h3>How to Test Silver</h3><p>5 proven methods to test if silver is real.</p><div class="arr">View →</div></a>
-        <a href="how-to-sell-silver.html" class="ccard"><div class="ci">💵</div><h3>Sell Scrap Silver</h3><p>Where to sell for the highest payout.</p><div class="arr">View →</div></a>
+        <a href="925-silver-calculator.html" class="ccard"><div class="ci">📐</div><h3>925 चांदी मूल्य</h3><p>लाइव कीमतों के साथ विस्तृत स्टर्लिंग चांदी कैलकुलेटर।</p><div class="arr">देखें →</div></a>
+        <a href="sterling-silver-calculator.html" class="ccard"><div class="ci">✨</div><h3>स्टर्लिंग चांदी मूल्य</h3><p>प्रति-ग्राम और प्रति-औंस स्टर्लिंग पिघलाव मूल्य।</p><div class="arr">देखें →</div></a>
+        <a href="silver-price-per-gram.html" class="ccard"><div class="ci">📊</div><h3>प्रति ग्राम चांदी की कीमत</h3><p>पूर्ण रूपांतरण के साथ लाइव प्रति-ग्राम चांदी की दरें।</p><div class="arr">देखें →</div></a>
+        <a href="900-silver-calculator.html" class="ccard"><div class="ci">🪙</div><h3>सिक्का चांदी मूल्य</h3><p>1965 से पहले के अमेरिकी सिक्का चांदी कैलकुलेटर।</p><div class="arr">देखें →</div></a>
+        <a href="silver-hallmarks-guide.html" class="ccard"><div class="ci">🔍</div><h3>चांदी हॉलमार्क</h3><p>हर स्टाम्प डीकोड करें — US, UK, यूरोप, रूस।</p><div class="arr">देखें →</div></a>
+        <a href="silver-spot-price-today.html" class="ccard"><div class="ci">📈</div><h3>आज चांदी की कीमतें</h3><p>बाजार विश्लेषण के साथ लाइव चांदी स्पॉट मूल्य।</p><div class="arr">देखें →</div></a>
+        <a href="identify-silver.html" class="ccard"><div class="ci">🧪</div><h3>चांदी की जांच कैसे करें</h3><p>चांदी असली है या नहीं जांचने के 5 सिद्ध तरीके।</p><div class="arr">देखें →</div></a>
+        <a href="how-to-sell-silver.html" class="ccard"><div class="ci">💵</div><h3>स्क्रैप चांदी बेचें</h3><p>सर्वोच्च भुगतान के लिए कहां बेचें।</p><div class="arr">देखें →</div></a>
       </div>
     </section>
 
@@ -644,40 +644,40 @@
     <section class="sec container container-tight" id="faq" style="background: var(--bg-secondary); border-radius: var(--radius-lg);">
       <div class="reveal text-center">
         <h2 class="sec-title">अक्सर पूछे जाने वाले प्रश्न</h2>
-        <p class="sec-sub ma">Direct answers about scrap silver valuation.</p>
+        <p class="sec-sub ma">स्क्रैप चांदी मूल्यांकन के बारे में सीधे उत्तर।</p>
       </div>
       <div class="faq-list">
         <div class="faq-item">
           <button class="faq-question">चांदी की खुरचन कितने की है? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Scrap silver is worth its silver content times the live spot price. Sterling silver (925) is worth 92.5% of spot, coin silver (900) is worth 90%, and fine silver (999) is worth 99.9%. Use the calculator above for an exact value for your item.</p></div>
+          <div class="faq-answer"><p>स्क्रैप चांदी उसकी चांदी सामग्री और लाइव स्पॉट मूल्य के गुणनफल के बराबर है। स्टर्लिंग चांदी (925) स्पॉट का 92.5% है, सिक्का चांदी (900) 90% है, और शुद्ध चांदी (999) 99.9% है। अपनी वस्तु का सटीक मूल्य जानने के लिए ऊपर कैलकुलेटर का उपयोग करें।</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">मैं चांदी की खुरचन के मूल्य की गणना कैसे करूं? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Multiply weight in troy ounces by purity (decimal) and the spot price. Formula: <strong>Value = Weight × Purity × Spot Price</strong>. The calculator handles all unit conversions automatically.</p></div>
+          <div class="faq-answer"><p>ट्रॉय औंस में वजन को शुद्धता (दशमलव) और स्पॉट मूल्य से गुणा करें। सूत्र: <strong>मूल्य = वजन × शुद्धता × स्पॉट मूल्य</strong>। कैलकुलेटर सभी इकाई रूपांतरण स्वचालित रूप से करता है।</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">पिघलने वाली कीमत और स्पॉट कीमत में क्या अंतर है? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Spot price is the global market price for pure 999 fine silver per troy ounce. Melt value is what your specific item is worth (spot price × purity).</p></div>
+          <div class="faq-answer"><p>स्पॉट मूल्य प्रति ट्रॉय औंस शुद्ध 999 फाइन चांदी का वैश्विक बाजार मूल्य है। पिघलाव मूल्य वह है जो आपकी विशेष वस्तु के लायक है (स्पॉट मूल्य × शुद्धता)।</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">एक डीलर चांदी की खुरचन के लिए कितना भुगतान करेगा? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Most dealers pay 70–95% of melt value. Online refiners offer the most (90–98%), pawn shops the least (50–70%). See our <a href="how-to-sell-silver.html">selling guide</a>.</p></div>
+          <div class="faq-answer"><p>अधिकांश डीलर पिघलाव मूल्य का 70–95% भुगतान करते हैं। ऑनलाइन रिफाइनर सबसे अधिक (90–98%), गिरवी की दुकानें सबसे कम (50–70%) देती हैं। हमारी <a href="how-to-sell-silver.html">बिक्री गाइड</a> देखें।</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">ट्रॉय औंस क्या है? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>A troy ounce is 31.1035 grams — the standard unit for precious metals globally. It is about 10% heavier than a regular avoirdupois ounce (28.35 g).</p></div>
+          <div class="faq-answer"><p>एक ट्रॉय औंस 31.1035 ग्राम है — विश्व स्तर पर कीमती धातुओं के लिए मानक इकाई। यह एक नियमित avoirdupois औंस (28.35 g) से लगभग 10% भारी है।</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">मैं कैसे बता सकता हूं कि मेरी चांदी असली है? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Check for hallmarks (925, 999, STERLING). Silver is not magnetic. For certainty, use a silver acid test kit. <a href="identify-silver.html">Full testing guide →</a></p></div>
+          <div class="faq-answer"><p>हॉलमार्क (925, 999, STERLING) जांचें। चांदी चुंबकीय नहीं है। निश्चितता के लिए, चांदी एसिड टेस्ट किट उपयोग करें। <a href="identify-silver.html">पूर्ण परीक्षण गाइड →</a></p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">चांदी की प्लेटेड ज्वेलरी का कोई मूल्य है? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Very little. Silver-plated items (EPNS, Silver Plate, Sheffield Plate) have only a thin coating and negligible scrap value.</p></div>
+          <div class="faq-answer"><p>बहुत कम। चांदी-प्लेटेड वस्तुओं (EPNS, Silver Plate, Sheffield Plate) में केवल एक पतली परत होती है और नगण्य स्क्रैप मूल्य होता है।</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">चांदी की कीमत कितनी बार अपडेट होती है? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Our spot price refreshes hourly from multiple market sources (GoldAPI.io, metals.live, goldprice.org) and is served via global CDN for instant page loads.</p></div>
+          <div class="faq-answer"><p>हमारा स्पॉट मूल्य कई बाजार स्रोतों (GoldAPI.io, metals.live, goldprice.org) से हर घंटे ताज़ा होता है और तत्काल पृष्ठ लोड के लिए वैश्विक CDN के माध्यम से परोसा जाता है।</p></div>
         </div>
       </div>
     </section>
@@ -685,26 +685,26 @@
     <!-- ============================ §16  METHODOLOGY / E-E-A-T ============================ -->
     <section class="sec container container-tight">
       <div class="reveal text-center">
-        <span class="sec-badge">⚙️ Trust &amp; Methodology</span>
-        <h2 class="sec-title sec-title-sm">How We Calculate &amp; Where Prices Come From</h2>
+        <span class="sec-badge">⚙️ विश्वास और कार्यप्रणाली</span>
+        <h2 class="sec-title sec-title-sm">हम कैसे गणना करते हैं और कीमतें कहां से आती हैं</h2>
       </div>
 
       <div class="method-grid reveal reveal-d1">
         <div class="method-card">
-          <h4>📡 Price Sources</h4>
-          <p>Live silver spot from GoldAPI.io (primary), metals.live, and goldprice.org as failover. Multiple sources prevent stale or broken prices.</p>
+          <h4>📡 मूल्य स्रोत</h4>
+          <p>GoldAPI.io (प्राथमिक), metals.live, और goldprice.org से लाइव चांदी स्पॉट। कई स्रोत पुराने या टूटे हुए मूल्यों को रोकते हैं।</p>
         </div>
         <div class="method-card">
-          <h4>⏱ Update Frequency</h4>
-          <p>Prices refresh every 60 minutes via Vercel Edge CDN. All visitors share one cached fetch, so the page loads instantly with current data.</p>
+          <h4>⏱ अपडेट आवृत्ति</h4>
+          <p>Vercel Edge CDN के माध्यम से कीमतें हर 60 मिनट में ताज़ा होती हैं। सभी आगंतुक एक कैश्ड फेच साझा करते हैं, इसलिए पृष्ठ वर्तमान डेटा के साथ तुरंत लोड होता है।</p>
         </div>
         <div class="method-card">
-          <h4>🧮 Formula</h4>
-          <p>Melt Value = Weight (troy oz) × Purity (decimal) × Spot Price. Conversion: 1 troy oz = 31.1035 g; 1 dwt = 1.5552 g.</p>
+          <h4>🧮 सूत्र</h4>
+          <p>पिघलाव मूल्य = वजन (ट्रॉय oz) × शुद्धता (दशमलव) × स्पॉट मूल्य। रूपांतरण: 1 ट्रॉय oz = 31.1035 g; 1 dwt = 1.5552 g।</p>
         </div>
         <div class="method-card">
-          <h4>⚠️ Disclaimer</h4>
-          <p>Values shown are informational melt estimates, not financial advice or guaranteed offers. Actual dealer payouts vary by buyer, location, and quantity.</p>
+          <h4>⚠️ अस्वीकरण</h4>
+          <p>दिखाए गए मूल्य सूचनात्मक पिघलाव अनुमान हैं, वित्तीय सलाह या गारंटीकृत प्रस्ताव नहीं। वास्तविक डीलर भुगतान खरीदार, स्थान और मात्रा के अनुसार भिन्न होते हैं।</p>
         </div>
       </div>
     </section>
@@ -714,7 +714,7 @@
   <footer id="site-footer"></footer>
 
   <!-- Sticky Mobile CTA -->
-  <button type="button" class="sticky-cta" id="stickyCta" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth',block:'start'})">📊 Calculate Silver Value</button>
+  <button type="button" class="sticky-cta" id="stickyCta" onclick="document.getElementById('calculator').scrollIntoView({behavior:'smooth',block:'start'})">📊 चांदी की कीमत गणना करें</button>
 
   <!-- Scripts -->
   <script src="js/silver-price.js"></script>
@@ -786,7 +786,7 @@
       const low  = res.value * 0.70;
       const high = res.value * 0.95;
       document.getElementById('rdealer').innerHTML =
-        `Dealer typically pays <strong>${SilverCalc.formatCurrency(low)}–${SilverCalc.formatCurrency(high)}</strong> (70–95% of melt)`;
+        `डीलर आमतौर पर <strong>${SilverCalc.formatCurrency(low)}–${SilverCalc.formatCurrency(high)}</strong> भुगतान करता है (पिघलाव का 70–95%)`;
 
       document.getElementById('sv').textContent = `$${spot.toFixed(2)}`;
       document.getElementById('rr').textContent = (gold / spot).toFixed(2);
@@ -818,12 +818,12 @@
         stripChange.textContent = `${arrow} $${Math.abs(change).toFixed(2)} (${Math.abs(changePct).toFixed(2)}%)`;
         stripChange.className = `ps-change ${dir}`;
       } else {
-        stripChange.textContent = 'Live'; stripChange.className = 'ps-change flat';
+        stripChange.textContent = 'लाइव'; stripChange.className = 'ps-change flat';
       }
       const now = new Date();
       const timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
       const dateStr = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-      document.getElementById('strip-updated').textContent = `Updated: ${dateStr} ${timeStr}`;
+      document.getElementById('strip-updated').textContent = `अपडेट किया: ${dateStr} ${timeStr}`;
     }
 
     // QUICK ANSWER + PURITY BOXES + INTENT MODULES + EXAMPLES
