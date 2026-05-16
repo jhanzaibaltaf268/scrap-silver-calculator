@@ -107,7 +107,7 @@
     .pc-tab:hover:not(.active){color:var(--text)}
 
     /* — RIGHT: intel stack — */
-    .intel-stack{display:flex;flex-direction:column;gap:14px}
+    .intel-stack{display:flex;flex-direction:column;gap:14px;padding-top:80px}
 
     /* Status bar — 3 horizontal items in one compact card */
     .intel-status{background:rgba(255,255,255,.028);border:1px solid var(--border-subtle);border-radius:var(--r-md);padding:20px 22px;border-top:2px solid rgba(16,185,129,.35)}
@@ -154,6 +154,7 @@
     }
     @media(max-width:960px){
       .hero-grid{grid-template-columns:1fr;gap:36px}
+      .intel-stack{padding-top:0}
       .pc-price{font-size:clamp(2.8rem,10vw,4rem)}
       .quick-strip{grid-template-columns:1fr 1fr}
       .pm-stats{flex-wrap:wrap;gap:20px}
