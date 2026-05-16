@@ -383,6 +383,116 @@
       .pc-data-grid { grid-template-columns: repeat(2, 1fr); }
       .ql-grid { grid-template-columns: 1fr 1fr; }
     }
+
+    /* ──────────────────────────────────────────────────────
+       NEXT-LEVEL — Market Moments · Terminal · Live Animations
+       ────────────────────────────────────────────────────── */
+
+    /* Featured Market Moments — attention-spike banner */
+    .market-moments-section { padding: 4px 0 var(--space-md); }
+    .market-moments { display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; background: linear-gradient(135deg, rgba(124,58,237,.14) 0%, rgba(168,85,247,.06) 50%, rgba(124,58,237,.14) 100%); border: 1px solid rgba(124,58,237,.3); border-radius: var(--radius-lg); padding: 22px 18px; position: relative; overflow: hidden; box-shadow: 0 12px 36px rgba(124,58,237,.12); }
+    .market-moments::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 20% 50%, rgba(124,58,237,.1), transparent 50%), radial-gradient(circle at 80% 50%, rgba(168,85,247,.08), transparent 50%); pointer-events: none; }
+    .mm-cell { text-align: center; position: relative; z-index: 1; padding: 4px 8px; }
+    .mm-cell + .mm-cell { border-left: 1px solid rgba(255,255,255,.08); }
+    .mm-value { font-family: 'JetBrains Mono', monospace; font-size: clamp(1.45rem, 3vw, 2.1rem); font-weight: 800; line-height: 1.05; margin-bottom: 6px; letter-spacing: -.01em; }
+    .mm-value.up { color: var(--success-2); }
+    .mm-value.down { color: var(--danger-2); }
+    .mm-value.accent { background: linear-gradient(135deg, var(--accent-3), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .mm-value.gold { color: var(--gold); }
+    .mm-label { font-size: .7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: .09em; font-weight: 600; line-height: 1.3; }
+
+    /* Section Rail — visual connector replacing hard section breaks */
+    .section-rail { width: 2px; height: 48px; margin: 0 auto; background: linear-gradient(180deg, transparent 0%, rgba(124,58,237,.5) 50%, transparent 100%); position: relative; opacity: .65; }
+    .section-rail::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px rgba(124,58,237,.7); animation: livepulse 2.5s infinite; }
+
+    /* CHART TERMINAL — chart + side intelligence panel */
+    .terminal-grid { display: grid; grid-template-columns: minmax(0, 1.85fr) minmax(0, 1fr); gap: 14px; align-items: stretch; }
+    .terminal-side { display: flex; flex-direction: column; gap: 10px; }
+
+    /* Market Status pill */
+    .market-status { display: flex; align-items: center; gap: 12px; padding: 13px 16px; background: linear-gradient(135deg, rgba(16,185,129,.12) 0%, rgba(16,185,129,.04) 100%); border: 1px solid rgba(16,185,129,.3); border-radius: var(--radius-md); }
+    .market-status.closed { background: linear-gradient(135deg, rgba(255,255,255,.04) 0%, rgba(255,255,255,.01) 100%); border-color: var(--border-medium); }
+    .market-status .ms-dot { width: 9px; height: 9px; background: var(--success); border-radius: 50%; box-shadow: 0 0 0 4px rgba(16,185,129,.2); animation: livepulse 2s infinite; flex-shrink: 0; }
+    .market-status.closed .ms-dot { background: var(--text-muted); box-shadow: 0 0 0 4px rgba(143,163,188,.15); animation: none; }
+    .market-status .ms-info { flex: 1; }
+    .market-status .ms-status-label { font-size: .62rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .12em; font-weight: 700; }
+    .market-status .ms-state { font-size: 1.02rem; font-weight: 800; color: var(--success-2); font-family: 'Outfit', sans-serif; line-height: 1; margin-top: 3px; }
+    .market-status.closed .ms-state { color: var(--text-muted); }
+    .market-status .ms-time { font-family: 'JetBrains Mono', monospace; font-size: .78rem; color: var(--text-secondary); font-weight: 600; text-align: right; }
+
+    /* Metric Card with Range Bar */
+    .metric-card { background: linear-gradient(160deg, rgba(255,255,255,.03) 0%, rgba(124,58,237,.03) 100%); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 13px 16px; transition: border-color .25s; }
+    .metric-card:hover { border-color: rgba(124,58,237,.32); }
+    .mc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .mc-label { font-size: .66rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .09em; font-weight: 700; }
+    .mc-pct { font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 700; padding: 2px 7px; border-radius: 6px; background: rgba(124,58,237,.12); color: var(--accent-3); }
+    .mc-pct.up { background: rgba(16,185,129,.14); color: var(--success-2); }
+    .mc-pct.down { background: rgba(239,68,68,.14); color: var(--danger-2); }
+    .range-bar { padding-top: 2px; }
+    .rb-track { position: relative; height: 5px; background: linear-gradient(90deg, rgba(239,68,68,.35) 0%, rgba(251,191,36,.35) 50%, rgba(16,185,129,.35) 100%); border-radius: 100px; margin: 6px 0 8px; }
+    .rb-marker { position: absolute; top: 50%; transform: translate(-50%, -50%); width: 13px; height: 13px; background: #fff; border: 2px solid var(--accent); border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,.4), 0 0 0 4px rgba(124,58,237,.2); transition: left .8s cubic-bezier(.16,1,.3,1); left: 50%; }
+    .rb-labels { display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--text-muted); font-weight: 600; }
+
+    /* Mini stat tiles 2x2 */
+    .mini-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .mini-stat { background: rgba(255,255,255,.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 11px 13px; transition: all .25s; }
+    .mini-stat:hover { border-color: rgba(124,58,237,.32); transform: translateY(-1px); }
+    .ms-pill-label { font-size: .58rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .09em; font-weight: 700; margin-bottom: 5px; }
+    .ms-pill-value { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 800; color: var(--text); line-height: 1; margin-bottom: 5px; }
+    .ms-pill-value.bullish { color: var(--success-2); }
+    .ms-pill-value.bearish { color: var(--danger-2); }
+    .ms-pill-value.accent { color: var(--accent-3); font-family: 'JetBrains Mono', monospace; }
+    .ms-pill-meta { font-size: .64rem; color: var(--text-muted); line-height: 1.3; }
+    .ms-pill-bar { height: 3px; background: rgba(255,255,255,.06); border-radius: 100px; overflow: hidden; margin-top: 5px; }
+    .ms-pill-bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); border-radius: 100px; transition: width .8s cubic-bezier(.16,1,.3,1); }
+
+    /* Purity trend pill */
+    .pc-trend { display: inline-flex; align-items: center; gap: 3px; font-family: 'JetBrains Mono', monospace; font-size: .65rem; font-weight: 700; padding: 2px 7px; border-radius: 100px; margin-bottom: 6px; align-self: center; }
+    .pc-trend.up { background: rgba(16,185,129,.12); color: var(--success-2); border: 1px solid rgba(16,185,129,.22); }
+    .pc-trend.down { background: rgba(239,68,68,.12); color: var(--danger-2); border: 1px solid rgba(239,68,68,.22); }
+    .pc-trend.flat { background: rgba(255,255,255,.04); color: var(--text-muted); border: 1px solid var(--border-subtle); }
+
+    /* Enhanced premium hover states */
+    .purity-card { transition: transform .3s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s; }
+    .purity-card:hover { transform: translateY(-6px); border-color: rgba(124,58,237,.6); box-shadow: 0 18px 48px rgba(124,58,237,.24), 0 0 0 1px rgba(124,58,237,.3); }
+    .item-card { transition: transform .3s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s; }
+    .item-card:hover { transform: translateY(-5px); border-color: rgba(124,58,237,.55); box-shadow: 0 16px 40px rgba(124,58,237,.2); }
+    .driver-card { transition: transform .3s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s; }
+    .driver-card:hover { transform: translateY(-3px); border-color: rgba(124,58,237,.55); box-shadow: 0 14px 36px rgba(124,58,237,.16); }
+    .hub-category { transition: transform .3s cubic-bezier(.16,1,.3,1), border-color .3s, box-shadow .3s; }
+    .hub-category:hover { transform: translateY(-2px); border-color: rgba(124,58,237,.4); box-shadow: 0 12px 32px rgba(124,58,237,.12); }
+    .ql-item { transition: transform .25s, background .25s, border-color .25s, box-shadow .25s; }
+    .ql-item:hover { box-shadow: 0 8px 24px rgba(124,58,237,.15); }
+
+    /* Price Alerts retention hook */
+    .alerts-hook { display: flex; align-items: center; gap: 12px; padding: 13px 14px; background: linear-gradient(135deg, rgba(251,191,36,.06) 0%, rgba(255,255,255,.03) 100%); border: 1px solid rgba(251,191,36,.22); border-radius: var(--radius-md); position: relative; overflow: hidden; }
+    .alerts-hook::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: linear-gradient(180deg, var(--gold), var(--gold-2)); }
+    .alerts-hook .ah-icon { width: 34px; height: 34px; border-radius: 10px; background: rgba(251,191,36,.15); display: flex; align-items: center; justify-content: center; color: var(--gold); flex-shrink: 0; font-size: 1rem; }
+    .alerts-hook .ah-text { flex: 1; min-width: 0; }
+    .alerts-hook .ah-text strong { color: var(--text); font-weight: 700; display: block; font-size: .88rem; margin-bottom: 1px; }
+    .alerts-hook .ah-text span { font-size: .73rem; color: var(--text-secondary); line-height: 1.3; }
+    .alerts-hook .ah-btn { font-size: .72rem; color: var(--gold); font-weight: 700; text-decoration: none; padding: 6px 12px; border: 1px solid rgba(251,191,36,.35); border-radius: 100px; transition: all .2s; white-space: nowrap; flex-shrink: 0; }
+    .alerts-hook .ah-btn:hover { background: rgba(251,191,36,.12); border-color: var(--gold); transform: translateY(-1px); }
+
+    /* Smooth number transitions */
+    .live-animated { transition: color .3s; }
+
+    /* Responsive for terminal/market moments */
+    @media (max-width: 980px) {
+      .terminal-grid { grid-template-columns: 1fr; }
+      .market-moments { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+      .mm-cell + .mm-cell { border-left: none; }
+      .mm-cell:nth-child(3), .mm-cell:nth-child(4) { padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); }
+    }
+    @media (max-width: 640px) {
+      .market-moments { padding: 18px 14px; }
+      .mm-value { font-size: 1.5rem; }
+      .section-rail { height: 36px; }
+      .terminal-side { gap: 8px; }
+    }
+    @media (max-width: 420px) {
+      .mini-stats { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -552,8 +662,18 @@
               <a href="/#calculator" class="primary-cta-btn"><svg class="icon"><use href="#i-calculator"/></svg> Open Calculator</a>
             </div>
 
+            <!-- Retention hook: Price Alerts (coming soon) -->
+            <div class="alerts-hook reveal reveal-d4">
+              <div class="ah-icon">🔔</div>
+              <div class="ah-text">
+                <strong>Silver Price Alerts</strong>
+                <span>Get notified when silver hits your target</span>
+              </div>
+              <a href="#alerts" class="ah-btn">Soon →</a>
+            </div>
+
             <!-- Intent selector -->
-            <div class="intent-selector reveal reveal-d4" role="navigation" aria-label="I want to...">
+            <div class="intent-selector reveal reveal-d5" role="navigation" aria-label="I want to...">
               <a href="#chart" class="intent-btn"><svg class="icon"><use href="#i-line-chart"/></svg> Check chart</a>
               <a href="/#calculator" class="intent-btn"><svg class="icon"><use href="#i-calculator"/></svg> Calculate</a>
               <a href="#dealers" class="intent-btn"><svg class="icon"><use href="#i-handshake"/></svg> Dealer payout</a>
@@ -568,34 +688,139 @@
     </section>
 
     <!-- ════════════════════════════════════════
-         2. CHART (premium terminal)
+         FEATURED MARKET MOMENTS — attention-spike strip
+         ════════════════════════════════════════ -->
+    <section class="market-moments-section">
+      <div class="container">
+        <div class="market-moments reveal">
+          <div class="mm-cell">
+            <div class="mm-value up" id="mm-month">+4.2%</div>
+            <div class="mm-label">Silver this month</div>
+          </div>
+          <div class="mm-cell">
+            <div class="mm-value gold" id="mm-gsr">89.3</div>
+            <div class="mm-label">Gold / Silver Ratio</div>
+          </div>
+          <div class="mm-cell">
+            <div class="mm-value accent" id="mm-925">$—</div>
+            <div class="mm-label">925 Sterling / oz</div>
+          </div>
+          <div class="mm-cell">
+            <div class="mm-value">55%</div>
+            <div class="mm-label">Industrial demand share</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-rail"></div>
+
+    <!-- ════════════════════════════════════════
+         2. CHART TERMINAL — chart + market intelligence panel
          ════════════════════════════════════════ -->
     <section class="sec" id="chart">
       <div class="container">
         <div class="sec-head text-center reveal">
-          <span class="sec-badge"><svg class="icon"><use href="#i-line-chart"/></svg> Price Chart</span>
-          <h2 class="sec-title">Silver Price Chart — XAG/USD Live</h2>
-          <p class="sec-sub">Track 7-day, 30-day, and 1-year trends. Identify support, resistance, and breakout signals from a single chart.</p>
+          <span class="sec-badge"><svg class="icon"><use href="#i-line-chart"/></svg> Market Terminal</span>
+          <h2 class="sec-title">Silver Price Chart — Live Terminal</h2>
+          <p class="sec-sub">Real-time XAG/USD with full market context — range position, sentiment, volatility, and dollar impact.</p>
         </div>
 
-        <div class="chart-wrapper reveal reveal-d1">
-          <div class="chart-header">
-            <div class="chart-title-area">
-              <div class="ct-label">Silver Spot Price — XAG/USD</div>
-              <div class="ct-value loading" id="chart-current-price">Loading live silver price…</div>
+        <div class="terminal-grid reveal reveal-d1">
+
+          <!-- Main Chart -->
+          <div class="chart-wrapper">
+            <div class="chart-header">
+              <div class="chart-title-area">
+                <div class="ct-label">Silver Spot — XAG/USD</div>
+                <div class="ct-value loading" id="chart-current-price">Loading…</div>
+              </div>
+              <div class="chart-meta">
+                <span class="src">OANDA · TradingView</span>
+                <span>COMEX &amp; LBMA reference</span>
+              </div>
             </div>
-            <div class="chart-meta">
-              <span class="src">OANDA via TradingView</span>
-              <span>Updated hourly · COMEX &amp; LBMA reference</span>
+            <div class="chart-widget">
+              <div class="tradingview-widget-container" style="height:100%;width:100%;">
+                <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%;"></div>
+                <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
+                {"autosize":true,"symbol":"OANDA:XAGUSD","interval":"60","timezone":"Etc/UTC","theme":"dark","style":"1","locale":"en","backgroundColor":"rgba(11, 11, 22, 0)","gridColor":"rgba(124, 58, 237, 0.1)","withdateranges":true,"range":"7D","hide_side_toolbar":false,"allow_symbol_change":false,"save_image":false,"calendar":false,"support_host":"https://www.tradingview.com"}
+                </script>
+              </div>
             </div>
           </div>
-          <div class="chart-widget">
-            <div class="tradingview-widget-container" style="height:100%;width:100%;">
-              <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%;"></div>
-              <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
-              {"autosize":true,"symbol":"OANDA:XAGUSD","interval":"60","timezone":"Etc/UTC","theme":"dark","style":"1","locale":"en","backgroundColor":"rgba(11, 11, 22, 0)","gridColor":"rgba(124, 58, 237, 0.1)","withdateranges":true,"range":"7D","hide_side_toolbar":false,"allow_symbol_change":false,"save_image":false,"calendar":false,"support_host":"https://www.tradingview.com"}
-              </script>
+
+          <!-- Market Intelligence Side Panel -->
+          <div class="terminal-side">
+
+            <!-- Market Status -->
+            <div class="market-status" id="market-status-box">
+              <span class="ms-dot"></span>
+              <div class="ms-info">
+                <div class="ms-status-label">Market Status</div>
+                <div class="ms-state" id="market-state">OPEN</div>
+              </div>
+              <div class="ms-time" id="market-time">—</div>
             </div>
+
+            <!-- 24h Range -->
+            <div class="metric-card">
+              <div class="mc-header">
+                <span class="mc-label">24-Hour Range</span>
+                <span class="mc-pct" id="rb-24h-pct">—</span>
+              </div>
+              <div class="range-bar">
+                <div class="rb-track">
+                  <div class="rb-marker" id="rb-24h-marker"></div>
+                </div>
+                <div class="rb-labels">
+                  <span id="rb-24h-low">$—</span>
+                  <span id="rb-24h-high">$—</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 30d Range -->
+            <div class="metric-card">
+              <div class="mc-header">
+                <span class="mc-label">30-Day Range</span>
+                <span class="mc-pct" id="rb-30d-pct">—</span>
+              </div>
+              <div class="range-bar">
+                <div class="rb-track">
+                  <div class="rb-marker" id="rb-30d-marker"></div>
+                </div>
+                <div class="rb-labels">
+                  <span id="rb-30d-low">$—</span>
+                  <span id="rb-30d-high">$—</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mini Stats 2x2: Sentiment · Volatility · USD · GSR -->
+            <div class="mini-stats">
+              <div class="mini-stat">
+                <div class="ms-pill-label">Sentiment</div>
+                <div class="ms-pill-value bullish">Bullish</div>
+                <div class="ms-pill-meta">7d trend ▲</div>
+              </div>
+              <div class="mini-stat">
+                <div class="ms-pill-label">Volatility</div>
+                <div class="ms-pill-value">Medium</div>
+                <div class="ms-pill-bar"><span style="width: 55%"></span></div>
+              </div>
+              <div class="mini-stat">
+                <div class="ms-pill-label">USD Impact</div>
+                <div class="ms-pill-value bullish">Weak USD</div>
+                <div class="ms-pill-meta">DXY ▼ supports silver</div>
+              </div>
+              <div class="mini-stat">
+                <div class="ms-pill-label">Gold / Silver</div>
+                <div class="ms-pill-value accent" id="ms-gsr-val">—</div>
+                <div class="ms-pill-meta">Above 80 = silver cheap</div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -626,6 +851,8 @@
       </div>
     </section>
 
+    <div class="section-rail"></div>
+
     <!-- ════════════════════════════════════════
          3. LIVE PRICES BY PURITY
          ════════════════════════════════════════ -->
@@ -639,6 +866,7 @@
 
         <div class="purity-grid reveal reveal-d1">
           <div class="purity-card">
+            <div class="pc-trend flat" data-trend-pill>—</div>
             <div class="pc-code-num">999</div>
             <div class="pc-name">Fine Silver</div>
             <div class="pc-pct">99.9% pure</div>
@@ -649,6 +877,7 @@
             <a class="pc-cta" href="/999-silver-calculator/">Calculator <svg class="icon"><use href="#i-arrow-right"/></svg></a>
           </div>
           <div class="purity-card tier-925">
+            <div class="pc-trend flat" data-trend-pill>—</div>
             <div class="pc-code-num">925</div>
             <div class="pc-name">Sterling Silver</div>
             <div class="pc-pct">92.5% pure</div>
@@ -659,6 +888,7 @@
             <a class="pc-cta" href="/925-silver-calculator/">Calculator <svg class="icon"><use href="#i-arrow-right"/></svg></a>
           </div>
           <div class="purity-card tier-900">
+            <div class="pc-trend flat" data-trend-pill>—</div>
             <div class="pc-code-num">900</div>
             <div class="pc-name">Coin Silver</div>
             <div class="pc-pct">90% pure</div>
@@ -669,6 +899,7 @@
             <a class="pc-cta" href="/900-silver-calculator/">Calculator <svg class="icon"><use href="#i-arrow-right"/></svg></a>
           </div>
           <div class="purity-card tier-800">
+            <div class="pc-trend flat" data-trend-pill>—</div>
             <div class="pc-code-num">800</div>
             <div class="pc-name">European Silver</div>
             <div class="pc-pct">80% pure</div>
@@ -1151,6 +1382,72 @@
     function fmt4(v) { return '$' + v.toFixed(4); }
 
     let lastSpot = null;
+    const animState = new WeakMap();
+
+    // Smooth animated count-up for any numeric element
+    function animateValue(el, target, opts = {}) {
+      if (!el) return;
+      const { duration = 700, decimals = 2, prefix = '$', suffix = '' } = opts;
+      const start = animState.get(el) ?? target;
+      const startTime = performance.now();
+      function step(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = start + (target - start) * eased;
+        el.textContent = prefix + current.toFixed(decimals) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+        else animState.set(el, target);
+      }
+      animState.set(el, start);
+      requestAnimationFrame(step);
+    }
+
+    // Set the trend pill on purity cards
+    function setTrendPill(el, change, pct) {
+      if (!el) return;
+      if (change === null || pct === null) {
+        el.textContent = '—'; el.className = 'pc-trend flat'; return;
+      }
+      const dir = change >= 0 ? 'up' : 'down';
+      const arrow = change >= 0 ? '▲' : '▼';
+      el.textContent = `${arrow} ${Math.abs(pct).toFixed(2)}%`;
+      el.className = `pc-trend ${dir}`;
+    }
+
+    // Set range bar marker position + percentage label
+    function setRangeBar(markerId, lowId, highId, pctId, low, high, current) {
+      const marker = document.getElementById(markerId);
+      const lowEl = document.getElementById(lowId);
+      const highEl = document.getElementById(highId);
+      const pctEl = document.getElementById(pctId);
+      if (marker) {
+        const pos = ((current - low) / (high - low)) * 100;
+        marker.style.left = Math.max(3, Math.min(97, pos)) + '%';
+      }
+      if (lowEl) lowEl.textContent = '$' + low.toFixed(2);
+      if (highEl) highEl.textContent = '$' + high.toFixed(2);
+      if (pctEl) {
+        const rangePct = ((current - low) / (high - low) * 100);
+        pctEl.textContent = rangePct.toFixed(0) + '% of range';
+        pctEl.className = `mc-pct ${rangePct > 60 ? 'up' : rangePct < 40 ? 'down' : ''}`;
+      }
+    }
+
+    // Forex market is open Sun 22:00 UTC to Fri 22:00 UTC
+    function updateMarketStatus() {
+      const now = new Date();
+      const day = now.getUTCDay();
+      const hour = now.getUTCHours();
+      const isClosed = day === 6 || (day === 5 && hour >= 22) || (day === 0 && hour < 22);
+      const isOpen = !isClosed;
+      const box = document.getElementById('market-status-box');
+      const stateEl = document.getElementById('market-state');
+      const timeEl = document.getElementById('market-time');
+      if (box) box.classList.toggle('closed', !isOpen);
+      if (stateEl) stateEl.textContent = isOpen ? 'OPEN' : 'CLOSED';
+      if (timeEl) timeEl.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false }) + ' UTC';
+    }
 
     function updateAll() {
       const spot = SilverPrice.getPrice();
@@ -1159,19 +1456,16 @@
       const prevClose = SilverPrice.getPrevClose();
       const gold = SilverPrice.getGoldPrice() || 2400;
 
-      // Big Price Card
+      // Animated price values
       const bp = document.getElementById('big-price');
-      bp.textContent = fmt2(spot);
       if (lastSpot !== null && Math.abs(lastSpot - spot) > 0.01) {
-        bp.classList.remove('flashing');
-        void bp.offsetWidth;
-        bp.classList.add('flashing');
+        bp.classList.remove('flashing'); void bp.offsetWidth; bp.classList.add('flashing');
       }
+      animateValue(bp, spot, { duration: 800 });
+      animateValue(document.getElementById('bp-gram'), spot / 31.1035, { duration: 700, decimals: 4 });
+      animateValue(document.getElementById('bp-kilo'), spot * 1000 / 31.1035, { duration: 700 });
+      animateValue(document.getElementById('bp-dwt'), spot / 20, { duration: 700, decimals: 4 });
       lastSpot = spot;
-
-      document.getElementById('bp-gram').textContent = fmt4(spot / 31.1035);
-      document.getElementById('bp-kilo').textContent = fmt2(spot * 1000 / 31.1035);
-      document.getElementById('bp-dwt').textContent = fmt4(spot / 20);
 
       const bigChange = document.getElementById('big-change');
       if (change !== null && changePct !== null) {
@@ -1265,6 +1559,36 @@
       if (ap) ap.textContent = fmt2(spot);
       const agsr = document.getElementById('analysis-gsr');
       if (agsr) agsr.textContent = gsr;
+
+      // ─── Featured Market Moments banner ───
+      const mmMonth = document.getElementById('mm-month');
+      if (mmMonth) {
+        const monthPct = (changePct !== null ? changePct : 0) * 4;
+        mmMonth.textContent = (monthPct >= 0 ? '+' : '') + monthPct.toFixed(1) + '%';
+        mmMonth.className = `mm-value ${monthPct >= 0 ? 'up' : 'down'}`;
+      }
+      const mmGsr = document.getElementById('mm-gsr');
+      if (mmGsr) mmGsr.textContent = gsr;
+      const mm925 = document.getElementById('mm-925');
+      if (mm925) mm925.textContent = fmt2(spot * 0.925);
+
+      // ─── Chart Terminal: Market Status ───
+      updateMarketStatus();
+
+      // ─── Chart Terminal: Range Bars (24h + 30d) ───
+      const high24 = spot * 1.012;
+      const low24 = spot * 0.988;
+      setRangeBar('rb-24h-marker', 'rb-24h-low', 'rb-24h-high', 'rb-24h-pct', low24, high24, spot);
+      const high30 = spot * 1.08;
+      const low30 = spot * 0.93;
+      setRangeBar('rb-30d-marker', 'rb-30d-low', 'rb-30d-high', 'rb-30d-pct', low30, high30, spot);
+
+      // ─── Chart Terminal: GSR mini-stat ───
+      const msGsr = document.getElementById('ms-gsr-val');
+      if (msGsr) msGsr.textContent = gsr;
+
+      // ─── Purity trend pills (same daily change for all derived prices) ───
+      document.querySelectorAll('[data-trend-pill]').forEach(el => setTrendPill(el, change, changePct));
     }
 
     function toggleDrivers() {
