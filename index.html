@@ -1433,8 +1433,6 @@
         <div class="porb ${p.v===S.purity?'on':''}" onclick="setP(${p.v},this)">
           <span class="pv">${p.k}</span><span class="pl">${p.l}</span>
         </div>`).join('');
-      SiteComponents.renderHeader('site-header');
-      SiteComponents.renderFooter('site-footer');
     }
 
     function setMode(m, el) {
@@ -1565,8 +1563,12 @@
     cTAObs.observe(calcEl);
 
     initDash();
-    SilverPrice.onPriceUpdate(() => { calc(); updateAllLive(); });
-    calc(); updateAllLive();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      initDash();
+      SilverPrice.onPriceUpdate(() => { calc(); updateAllLive(); });
+      calc(); updateAllLive();
+    });
   </script>
 </body>
 </html>
