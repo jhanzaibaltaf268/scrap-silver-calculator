@@ -587,11 +587,79 @@ const SiteComponents = (() => {
     document.head.appendChild(s);
   }
 
+  function updateSpotPriceDisplay() {
+    if (typeof SilverPrice === 'undefined') return;
+
+    SilverPrice.onPriceUpdate(price => {
+      // Update main hero spot price
+      const heroSpot = document.getElementById('hero-spot');
+      if (heroSpot) heroSpot.textContent = '$' + price.toFixed(2);
+
+      // Update price change indicator
+      const heroChange = document.getElementById('hero-change');
+      if (heroChange) {
+        const change = SilverPrice.getChange();
+        const changePercent = SilverPrice.getChangePercent();
+        if (change !== null && changePercent !== null) {
+          const changeStr = change >= 0 ? '+' : '';
+          const arrow = change >= 0 ? '↑' : '↓';
+          const className = change >= 0 ? 'up' : 'down';
+          heroChange.textContent = `${arrow} ${changeStr}${change.toFixed(2)} (${changeStr}${changePercent.toFixed(2)}%)`;
+          heroChange.className = className;
+        }
+      }
+
+      // Update FAQ spot price
+      const qaSpot = document.getElementById('qa-spot');
+      if (qaSpot) qaSpot.textContent = '$' + price.toFixed(2);
+
+      // Update purity-specific prices
+      const pricePerGram = SilverPrice.getPricePerGram();
+      const pricePerOz = price;
+
+      // Map purity codes to their fractions
+      const purities = {
+        '999': 0.999,
+        '958': 0.958,
+        '925': 0.925,
+        '900': 0.900,
+        '835': 0.835,
+        '800': 0.800
+      };
+
+      // Update .live-num elements with IDs like int-925-g, int-925-oz, etc.
+      for (const [code, factor] of Object.entries(purities)) {
+        const gramEl = document.getElementById(`int-${code}-g`);
+        if (gramEl) gramEl.textContent = '$' + (pricePerGram * factor).toFixed(2);
+
+        const ozEl = document.getElementById(`int-${code}-oz`);
+        if (ozEl) ozEl.textContent = '$' + (pricePerOz * factor).toFixed(2);
+      }
+
+      // Update ticker elements
+      const priceTickerEl = document.getElementById('price-ticker');
+      if (priceTickerEl) {
+        priceTickerEl.innerHTML = `<div class="hero-pill" style="margin-bottom:12px;"><span class="ldot"></span>${t('LIVE SPOT')}: $${price.toFixed(2)}</div>`;
+        priceTickerEl.classList.add('visible');
+      }
+
+      // Update ticker items for different purities (tick-999, tick-925, etc.)
+      for (const code of ['999', '925', '900', '800']) {
+        const tickEl = document.getElementById(`tick-${code}`);
+        if (tickEl) {
+          const purityPrice = (pricePerOz * (purities[code] || 1)).toFixed(2);
+          tickEl.textContent = `$${purityPrice}/oz`;
+        }
+      }
+    });
+  }
+
   function init() {
     renderHeader();
     renderFooter();
     renderLocalizedSections();
     injectPageSchema();
+    updateSpotPriceDisplay();
   }
 
   if (document.readyState === 'loading') {
@@ -600,5 +668,5 @@ const SiteComponents = (() => {
     init();
   }
 
-  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, injectFAQSchema, injectPageSchema, init, getLangCode };
+  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, injectFAQSchema, injectPageSchema, init, getLangCode, updateSpotPriceDisplay };
 })();
