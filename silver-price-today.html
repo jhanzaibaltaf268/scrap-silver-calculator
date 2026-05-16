@@ -83,7 +83,7 @@
   }
   </script>
 
-  <!-- Schema: SpecialAnnouncement for live price -->
+  <!-- Schema: Dataset -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -142,286 +142,226 @@
   </script>
 
   <style>
-    /* ─── GLOBAL TYPOGRAPHY HIERARCHY ─── */
-    .price-hero { padding: 48px 0 24px; text-align: center; }
+    /* ─── HERO ─── */
+    .price-hero { padding: 40px 0 16px; text-align: center; }
     .price-hero h1 { font-size: clamp(2.4rem, 5.5vw, 3.6rem); font-weight: 800; margin-bottom: var(--space-sm); font-family: 'Outfit', sans-serif; line-height: 1.1; letter-spacing: -.01em; }
     .price-hero .accent-text { background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .price-hero p { color: var(--text-secondary); max-width: 680px; margin: 0 auto var(--space-md); font-size: 1.08rem; line-height: 1.75; }
-    .price-hero .hero-chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: var(--space-md); }
-
-    /* Section Typography */
-    .sec { margin: var(--space-xl) auto; padding: var(--space-xl) 0; }
-    .sec-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.25); border-radius: 100px; padding: 5px 14px; margin-bottom: 12px; }
-    .sec-title { font-size: clamp(2rem, 4.5vw, 2.8rem); font-weight: 800; margin: 0 0 12px; color: var(--text-primary); line-height: 1.15; letter-spacing: -.01em; font-family: 'Outfit', sans-serif; }
-    .sec-sub { font-size: 1rem; color: var(--text-secondary); max-width: 640px; margin: 0 auto var(--space-lg); line-height: 1.75; }
-    .text-center .sec-sub { text-align: center; }
+    .price-hero p { color: var(--text-secondary); max-width: 560px; margin: 0 auto var(--space-md); font-size: 1.05rem; line-height: 1.7; }
 
     /* ─── BIG LIVE PRICE CARD ─── */
-    .big-price-card { background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(124,58,237,.1) 100%); border: 2px solid var(--accent); border-radius: var(--radius-lg); padding: var(--space-xl) var(--space-xl) var(--space-lg); margin: var(--space-lg) 0; text-align: center; position: relative; overflow: hidden; }
+    .big-price-card { background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(124,58,237,.12) 100%); border: 2px solid var(--accent); border-radius: var(--radius-lg); padding: var(--space-xl) var(--space-xl) var(--space-lg); margin: var(--space-lg) 0; text-align: center; position: relative; overflow: hidden; }
     .big-price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--accent), #a78bfa); }
-    .bp-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; font-weight: 700; }
-    .bp-price { font-family: 'JetBrains Mono', monospace; font-size: clamp(3.2rem, 9vw, 5rem); font-weight: 800; background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 8px; }
-    .bp-unit { font-size: 0.9rem; color: var(--text-muted); margin-bottom: var(--space-md); font-weight: 500; letter-spacing: .02em; }
+    .bp-live-dot { display: inline-flex; align-items: center; gap: 8px; font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px; font-weight: 700; }
+    .bp-live-dot::before { content: ''; display: inline-block; width: 7px; height: 7px; background: #10b981; border-radius: 50%; box-shadow: 0 0 0 3px rgba(16,185,129,.2); animation: livepulse 2s infinite; }
+    @keyframes livepulse { 0%,100%{box-shadow:0 0 0 3px rgba(16,185,129,.2)} 50%{box-shadow:0 0 0 6px rgba(16,185,129,.07)} }
+    .bp-price { font-family: 'JetBrains Mono', monospace; font-size: clamp(3.5rem, 10vw, 5.5rem); font-weight: 800; background: linear-gradient(135deg, #fff 0%, #a78bfa 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; margin-bottom: 8px; }
+    .bp-unit { font-size: 0.88rem; color: var(--text-muted); margin-bottom: var(--space-md); font-weight: 500; letter-spacing: .02em; }
     .bp-change { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 1rem; padding: 10px 20px; border-radius: 100px; margin-bottom: 6px; }
     .bp-change.up { background: rgba(34,197,94,.15); color: #4ade80; border: 1px solid rgba(34,197,94,.2); }
     .bp-change.down { background: rgba(239,68,68,.15); color: #f87171; border: 1px solid rgba(239,68,68,.2); }
     .bp-change.flat { background: rgba(255,255,255,.06); color: var(--text-muted); border: 1px solid var(--border-subtle); }
     .bp-updated { font-size: 0.75rem; color: var(--text-muted); margin-bottom: var(--space-lg); }
-    .bp-units-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-md); margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px solid var(--border-subtle); }
-    .bp-unit-item { text-align: center; }
-    .bp-unit-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .09em; margin-bottom: 8px; font-weight: 700; }
-    .bp-unit-val { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); }
+
+    /* Merged units + 24h grid */
+    .bp-data-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: var(--space-lg); padding-top: var(--space-lg); border-top: 1px solid var(--border-subtle); background: var(--border-subtle); border-radius: var(--radius-sm); overflow: hidden; }
+    .bp-data-cell { background: rgba(255,255,255,.02); padding: 18px 12px; text-align: center; }
+    .bp-data-cell:hover { background: rgba(124,58,237,.06); }
+    .bp-data-label { font-size: 0.68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .09em; margin-bottom: 8px; font-weight: 700; }
+    .bp-data-val { font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--text-primary); }
+    .bp-data-val.accent { color: var(--accent); }
+    .bp-data-val.up { color: #4ade80; }
+    .bp-data-val.down { color: #f87171; }
+
+    /* ─── STICKY PRICE STRIP ─── */
+    .price-strip { position: sticky; top: 56px; z-index: 98; background: rgba(9,9,15,.88); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(124,58,237,.2); padding: 10px 0; transition: opacity .3s; }
+    .price-strip-inner { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; font-size: 0.85rem; }
+    .ps-label { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+    .ps-price { font-family: 'JetBrains Mono', monospace; font-weight: 800; color: var(--text-primary); font-size: 1rem; }
+    .ps-change { font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 0.85rem; }
+    .ps-change.up { color: #4ade80; }
+    .ps-change.down { color: #f87171; }
+    .ps-change.flat { color: var(--text-muted); }
+    .ps-divider { color: var(--border-medium); }
+    .ps-updated { color: var(--text-muted); font-size: 0.78rem; }
+
+    /* Section Typography — 2 sizes: large for hub sections, small for data sections */
+    .sec { margin: var(--space-xl) auto; padding: var(--space-xl) 0; }
+    .sec-badge { display: inline-block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.25); border-radius: 100px; padding: 5px 14px; margin-bottom: 12px; }
+    .sec-title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; margin: 0 0 12px; color: var(--text-primary); line-height: 1.15; letter-spacing: -.01em; font-family: 'Outfit', sans-serif; }
+    .sec-title-sm { font-size: clamp(1.3rem, 2.8vw, 1.7rem); font-weight: 700; margin: 0 0 10px; color: var(--text-primary); line-height: 1.2; font-family: 'Outfit', sans-serif; }
+    .sec-sub { font-size: 1rem; color: var(--text-secondary); max-width: 640px; margin: 0 auto var(--space-lg); line-height: 1.75; }
+    .text-center .sec-sub { text-align: center; }
 
     /* ─── TRADINGVIEW CHART ─── */
-    .tv-chart-wrapper {
-      background: linear-gradient(160deg, #0e0e1c 0%, rgba(124,58,237,.06) 100%);
-      border: 1px solid rgba(124,58,237,.3);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      margin: var(--space-lg) 0;
-      box-shadow: 0 12px 40px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04);
-    }
-    .tv-chart-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      padding: 24px 28px 20px;
-      border-bottom: 1px solid rgba(124,58,237,.18);
-      flex-wrap: wrap;
-      gap: 12px;
-    }
+    .tv-chart-wrapper { background: linear-gradient(160deg, #0e0e1c 0%, rgba(124,58,237,.06) 100%); border: 1px solid rgba(124,58,237,.3); border-radius: var(--radius-lg); overflow: hidden; margin: var(--space-lg) 0; box-shadow: 0 12px 40px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04); }
+    .tv-chart-header { display: flex; justify-content: space-between; align-items: flex-end; padding: 20px 24px 16px; border-bottom: 1px solid rgba(124,58,237,.18); flex-wrap: wrap; gap: 12px; }
     .tv-chart-title-area { display: flex; flex-direction: column; gap: 4px; }
-    .tv-chart-title-area .ct-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; font-weight: 700; margin-bottom: 2px; }
-    .tv-chart-title-area .ct-value { font-family: 'JetBrains Mono', monospace; font-size: 2.4rem; font-weight: 800; color: #fff; line-height: 1; }
-    .tv-chart-title-area .ct-value.loading { color: var(--text-muted); font-size: 1.1rem; font-family: 'Inter', sans-serif; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-top: 6px; }
-    .tv-chart-title-area .ct-value.loading::before { content: ''; display: inline-block; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; animation: pulse-dot 1.2s infinite; }
+    .tv-chart-title-area .ct-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
+    .tv-chart-title-area .ct-value { font-family: 'JetBrains Mono', monospace; font-size: 2.2rem; font-weight: 800; color: #fff; line-height: 1; }
+    .tv-chart-title-area .ct-value.loading { color: var(--text-muted); font-size: 1rem; font-family: 'Inter', sans-serif; font-weight: 600; display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+    .tv-chart-title-area .ct-value.loading::before { content: ''; display: inline-block; width: 7px; height: 7px; background: var(--accent); border-radius: 50%; animation: livepulse 1.2s infinite; }
     .tv-source-badge { font-size: 0.72rem; color: var(--text-muted); font-weight: 600; display: flex; align-items: center; gap: 6px; }
     .tv-source-badge::before { content: ''; display: inline-block; width: 6px; height: 6px; background: #10b981; border-radius: 50%; box-shadow: 0 0 0 3px rgba(16,185,129,.2); }
-    .tv-widget-container { position: relative; height: 650px; }
+    .tv-widget-container { position: relative; height: 700px; }
     .tv-widget-container .tradingview-widget-container { height: 100%; width: 100%; }
     .tv-widget-container .tradingview-widget-container__widget { height: calc(100% - 32px); width: 100%; }
-    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
 
-    /* ─── INSIGHT CARD (below chart) ─── */
-    .insight-card {
-      background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(124,58,237,.05) 100%);
-      border: 1px solid rgba(124,58,237,.2);
-      border-radius: var(--radius-lg);
-      padding: 36px 40px;
-      margin: var(--space-lg) 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .insight-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), #a78bfa); }
-    .insight-card h3 { color: var(--text-primary); font-size: 1.55rem; font-weight: 800; margin: 0 0 16px; font-family: 'Outfit', sans-serif; }
-    .insight-card p { color: var(--text-secondary); font-size: 1.02rem; line-height: 1.85; margin-bottom: var(--space-md); }
-    .insight-card p:last-of-type { margin-bottom: var(--space-lg); }
-    .insight-card strong { color: var(--text-primary); font-weight: 700; }
-    .insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-top: 8px; }
-    .insight-item { background: rgba(124,58,237,.07); border-radius: var(--radius-md); padding: 20px; border: 1px solid rgba(124,58,237,.15); transition: border-color .2s, transform .2s; }
-    .insight-item:hover { border-color: rgba(124,58,237,.4); transform: translateY(-2px); }
-    .insight-item .ii-icon { font-size: 1.5rem; margin-bottom: 10px; display: block; }
-    .insight-item .ii-title { color: var(--text-primary); font-weight: 700; font-size: 0.95rem; margin-bottom: 8px; }
-    .insight-item .ii-desc { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.65; }
-
-    /* ─── PRICE MOVEMENT CARDS ─── */
-    .move-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: var(--space-md); margin-top: var(--space-lg); }
-    .move-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px 20px; text-align: center; transition: border-color .2s; }
-    .move-card:hover { border-color: rgba(124,58,237,.4); }
-    .move-card .label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .09em; margin-bottom: 12px; font-weight: 700; }
-    .move-card .val { font-family: 'JetBrains Mono', monospace; font-size: 1.7rem; font-weight: 800; color: var(--accent); margin-bottom: 6px; line-height: 1; }
-    .move-card .meta { font-size: 0.82rem; color: var(--text-secondary); }
+    /* Chart "how to read" accordion */
+    .chart-faq { margin-top: 12px; border: 1px solid rgba(124,58,237,.15); border-radius: var(--radius-md); overflow: hidden; }
+    .chart-faq summary { padding: 14px 20px; cursor: pointer; font-size: 0.88rem; font-weight: 600; color: var(--text-muted); list-style: none; display: flex; align-items: center; gap: 8px; user-select: none; }
+    .chart-faq summary::-webkit-details-marker { display: none; }
+    .chart-faq summary::after { content: '›'; margin-left: auto; font-size: 1.1rem; transition: transform .2s; }
+    .chart-faq[open] summary::after { transform: rotate(90deg); }
+    .chart-faq summary:hover { color: var(--accent); background: rgba(124,58,237,.04); }
+    .chart-faq-body { padding: 0 20px 20px; }
+    .insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin-top: 16px; }
+    .insight-item { background: rgba(124,58,237,.07); border-radius: var(--radius-md); padding: 18px; border: 1px solid rgba(124,58,237,.15); }
+    .insight-item .ii-icon { font-size: 1.3rem; margin-bottom: 8px; display: block; }
+    .insight-item .ii-title { color: var(--text-primary); font-weight: 700; font-size: 0.88rem; margin-bottom: 6px; }
+    .insight-item .ii-desc { color: var(--text-secondary); font-size: 0.82rem; line-height: 1.6; }
 
     /* ─── PURITY CARDS ─── */
-    .purity-prices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: var(--space-xl); }
-    .pp-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-lg);
-      padding: 28px 20px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: transform .2s, border-color .2s, box-shadow .2s;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-    .pp-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 8px 24px rgba(124,58,237,.2); }
-    .pp-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent); }
+    .purity-prices { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: var(--space-lg); }
+    .pp-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 22px 16px; text-align: center; position: relative; overflow: hidden; transition: transform .2s, border-color .2s, box-shadow .2s; display: flex; flex-direction: column; align-items: center; }
+    .pp-card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 8px 24px rgba(124,58,237,.2); }
+    .pp-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); }
     .pp-card.gold-accent::before { background: linear-gradient(90deg, #FBBF24, #f59e0b); }
     .pp-card.coin-accent::before { background: linear-gradient(90deg, #a78bfa, #8b5cf6); }
     .pp-card.euro-accent::before { background: linear-gradient(90deg, #60a5fa, #3b82f6); }
-    .pp-badge { display: inline-block; background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); border-radius: 6px; padding: 3px 10px; font-size: 0.72rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px; }
-    .pp-code { font-family: 'JetBrains Mono', monospace; font-size: 2.6rem; font-weight: 800; color: var(--text-primary); line-height: 1; margin-bottom: 6px; }
-    .pp-name { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 4px; font-weight: 600; }
-    .pp-pct { font-size: 0.78rem; color: var(--text-muted); font-weight: 500; margin-bottom: 20px; }
-    .pp-divider { width: 40px; height: 2px; background: linear-gradient(90deg, transparent, rgba(124,58,237,.4), transparent); margin: 0 auto 16px; }
-    .pp-price-oz { font-family: 'JetBrains Mono', monospace; font-size: 1.75rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 6px; }
-    .pp-price-g { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px; }
-    .pp-item-note { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 20px; }
-    .pp-link { display: inline-flex; align-items: center; gap: 4px; font-size: 0.82rem; color: var(--accent); font-weight: 700; text-decoration: none; border: 1px solid rgba(124,58,237,.3); border-radius: 100px; padding: 7px 16px; transition: background .2s, border-color .2s; }
-    .pp-link:hover { background: rgba(124,58,237,.1); border-color: var(--accent); text-decoration: none; }
+    .pp-code { font-family: 'JetBrains Mono', monospace; font-size: 2.2rem; font-weight: 800; color: var(--text-primary); line-height: 1; margin-bottom: 4px; margin-top: 8px; }
+    .pp-name { font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 2px; font-weight: 600; }
+    .pp-pct { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 16px; }
+    .pp-divider { width: 36px; height: 2px; background: linear-gradient(90deg, transparent, rgba(124,58,237,.4), transparent); margin: 0 auto 14px; }
+    .pp-price-oz { font-family: 'JetBrains Mono', monospace; font-size: 1.6rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 4px; }
+    .pp-price-g { font-family: 'JetBrains Mono', monospace; font-size: 0.82rem; color: var(--text-muted); margin-bottom: 6px; }
+    .pp-item-note { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 16px; }
+    .pp-link { display: inline-flex; align-items: center; gap: 4px; font-size: 0.78rem; color: var(--accent); font-weight: 700; text-decoration: none; border: 1px solid rgba(124,58,237,.3); border-radius: 100px; padding: 6px 14px; transition: background .2s, border-color .2s; }
+    .pp-link:hover { background: rgba(124,58,237,.1); border-color: var(--accent); }
+
+    /* ─── INLINE CTA BAR ─── */
+    .cta-inline-bar { background: linear-gradient(90deg, rgba(124,58,237,.15) 0%, rgba(167,139,250,.1) 100%); border: 1px solid rgba(124,58,237,.3); border-radius: var(--radius-md); padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin: var(--space-xl) 0; }
+    .cta-inline-bar .cta-text { font-weight: 700; color: var(--text-primary); font-size: 1rem; }
+    .cta-inline-bar .cta-text span { color: var(--accent); }
+    .cta-inline-bar a { display: inline-flex; align-items: center; gap: 6px; background: var(--accent); color: #fff; padding: 11px 22px; border-radius: 100px; font-weight: 700; text-decoration: none; font-size: 0.9rem; white-space: nowrap; transition: opacity .2s, transform .2s; }
+    .cta-inline-bar a:hover { opacity: .9; transform: translateY(-2px); }
 
     /* ─── DEALER PAYOUT SECTION ─── */
     .dealer-payout { margin: var(--space-lg) 0; }
-    .dealer-payout .dp-intro { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 32px 36px; margin-bottom: var(--space-lg); }
-    .dealer-payout .dp-intro p { color: var(--text-secondary); line-height: 1.85; font-size: 1rem; margin-bottom: 14px; max-width: 720px; }
+    .dealer-payout .dp-intro { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 28px 32px; margin-bottom: var(--space-lg); }
+    .dealer-payout .dp-intro p { color: var(--text-secondary); line-height: 1.85; font-size: 0.97rem; margin-bottom: 12px; max-width: 720px; }
     .dealer-payout .dp-intro p:last-child { margin-bottom: 0; }
-    .dealer-payout .dp-intro strong { color: var(--text-primary); font-weight: 700; }
-    .dealer-payout .dp-intro .highlight { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); border-radius: 6px; padding: 2px 8px; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--accent); font-size: 0.95em; }
-    .dp-table-heading { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin: 0 0 16px; font-family: 'Outfit', sans-serif; }
-
-    /* Payout Table */
+    .dealer-payout .dp-intro strong { color: var(--text-primary); }
+    .dealer-payout .dp-intro .highlight { background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.2); border-radius: 6px; padding: 2px 8px; font-family: 'JetBrains Mono', monospace; font-weight: 700; color: var(--accent); font-size: .93em; }
+    .dp-table-heading { font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 0 0 14px; font-family: 'Outfit', sans-serif; }
     .payout-table { width: 100%; border-collapse: collapse; background: var(--bg-secondary); border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,.25); }
     .payout-table thead { background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%); }
-    .payout-table th { padding: 16px 18px; text-align: left; font-weight: 700; color: rgba(255,255,255,.9); font-size: 0.78rem; text-transform: uppercase; letter-spacing: .08em; border: none; }
-    .payout-table td { padding: 16px 18px; color: var(--text-secondary); border-bottom: 1px solid rgba(124,58,237,.08); font-size: 0.97rem; vertical-align: middle; }
+    .payout-table th { padding: 14px 16px; text-align: left; font-weight: 700; color: rgba(255,255,255,.9); font-size: 0.75rem; text-transform: uppercase; letter-spacing: .08em; border: none; }
+    .payout-table td { padding: 14px 16px; color: var(--text-secondary); border-bottom: 1px solid rgba(124,58,237,.08); font-size: 0.95rem; vertical-align: middle; }
     .payout-table tbody tr:last-child td { border-bottom: none; }
     .payout-table tbody tr:hover { background: rgba(124,58,237,.06); }
-    .payout-table td:first-child { font-weight: 700; color: var(--text-primary); font-size: 0.97rem; }
-    .payout-range { font-family: 'JetBrains Mono', monospace; font-weight: 800; color: #10b981; font-size: 1.05rem; }
-    .payout-estimate { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-weight: 700; font-size: 1rem; }
+    .payout-table td:first-child { font-weight: 700; color: var(--text-primary); }
+    .payout-range { font-family: 'JetBrains Mono', monospace; font-weight: 800; color: #10b981; font-size: 1rem; }
+    .payout-estimate { font-family: 'JetBrains Mono', monospace; color: var(--accent); font-weight: 700; }
 
-    /* Info Box */
-    .info-box { background: linear-gradient(135deg, rgba(124,58,237,.1), rgba(168,85,247,.06)); border-left: 4px solid var(--accent); border-radius: var(--radius-md); padding: 20px 24px; margin: var(--space-lg) 0; }
-    .info-box p { color: var(--text-secondary); line-height: 1.8; font-size: 0.97rem; margin: 0; }
-    .info-box strong { color: var(--text-primary); font-weight: 700; }
-
-    /* ─── MARKET DRIVER CARDS ─── */
-    .drivers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); gap: 18px; margin-top: var(--space-lg); }
-    .driver-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px; transition: all .2s; }
-    .driver-card:hover { border-color: rgba(124,58,237,.5); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.2); }
-    .driver-card .icon { font-size: 1.9rem; margin-bottom: 14px; display: block; }
-    .driver-card h4 { font-size: 1rem; color: var(--text-primary); margin-bottom: 10px; font-weight: 700; }
-    .driver-card p { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.75; margin: 0; }
+    /* ─── INSIGHT / ANALYSIS CARD ─── */
+    .insight-card { background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(124,58,237,.05) 100%); border: 1px solid rgba(124,58,237,.2); border-radius: var(--radius-lg); padding: 32px 36px; margin: var(--space-lg) 0; position: relative; overflow: hidden; }
+    .insight-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), #a78bfa); }
+    .insight-card h3 { color: var(--text-primary); font-size: 1.35rem; font-weight: 800; margin: 0 0 14px; font-family: 'Outfit', sans-serif; }
+    .insight-card p { color: var(--text-secondary); font-size: 0.97rem; line-height: 1.85; margin-bottom: var(--space-md); }
+    .insight-card p:last-of-type { margin-bottom: var(--space-md); }
+    .insight-card strong { color: var(--text-primary); font-weight: 700; }
 
     /* ─── QUICK EXAMPLES ─── */
-    .examples-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: var(--space-lg); }
-    .ex-item { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px 16px; text-align: center; transition: all .2s; }
-    .ex-item:hover { border-color: rgba(124,58,237,.5); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.2); }
-    .ex-item .icon { font-size: 1.9rem; margin-bottom: 10px; display: block; }
-    .ex-item .desc { font-size: 0.9rem; color: var(--text-primary); font-weight: 700; margin-bottom: 10px; }
-    .ex-item .price { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem; color: var(--accent); font-weight: 800; }
-    .ex-item .calc { font-size: 0.72rem; color: var(--text-muted); margin-top: 8px; font-family: 'JetBrains Mono', monospace; }
+    .examples-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: 14px; margin-top: var(--space-lg); }
+    .ex-item { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px 14px; text-align: center; transition: all .2s; }
+    .ex-item:hover { border-color: rgba(124,58,237,.5); transform: translateY(-3px); }
+    .ex-item .icon { font-size: 1.7rem; margin-bottom: 8px; display: block; }
+    .ex-item .desc { font-size: 0.85rem; color: var(--text-primary); font-weight: 700; margin-bottom: 8px; }
+    .ex-item .price { font-family: 'JetBrains Mono', monospace; font-size: 1.4rem; color: var(--accent); font-weight: 800; }
+    .ex-item .calc { font-size: 0.68rem; color: var(--text-muted); margin-top: 6px; font-family: 'JetBrains Mono', monospace; }
 
-    /* ─── RICH TEXT / CONTENT CARD ─── */
-    .content-card {
-      background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(124,58,237,.05) 100%);
-      border: 1px solid rgba(124,58,237,.18);
-      border-radius: var(--radius-lg);
-      padding: 36px 40px;
-      margin: var(--space-lg) 0;
-      position: relative;
-    }
+    /* Info Box */
+    .info-box { background: linear-gradient(135deg, rgba(124,58,237,.1), rgba(168,85,247,.06)); border-left: 4px solid var(--accent); border-radius: var(--radius-md); padding: 18px 22px; margin: var(--space-lg) 0; }
+    .info-box p { color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem; margin: 0; }
+    .info-box strong { color: var(--text-primary); }
+
+    /* ─── MARKET DRIVERS (ACCORDION) ─── */
+    .drivers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(275px, 1fr)); gap: 16px; margin-top: var(--space-lg); }
+    .driver-card { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 22px; transition: all .2s; }
+    .driver-card:hover { border-color: rgba(124,58,237,.5); transform: translateY(-2px); }
+    .driver-card .icon { font-size: 1.7rem; margin-bottom: 12px; display: block; }
+    .driver-card h4 { font-size: 0.97rem; color: var(--text-primary); margin-bottom: 8px; font-weight: 700; }
+    .driver-card p { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.7; margin: 0; }
+    .drivers-hidden { display: none; }
+    .drivers-hidden.show { display: contents; }
+    .btn-show-more { display: flex; align-items: center; gap: 8px; margin: var(--space-lg) auto 0; background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.3); color: var(--accent); border-radius: 100px; padding: 11px 24px; font-weight: 700; font-size: 0.9rem; cursor: pointer; transition: background .2s; }
+    .btn-show-more:hover { background: rgba(124,58,237,.2); }
+
+    /* ─── CONTENT CARD ─── */
+    .content-card { background: linear-gradient(135deg, var(--bg-secondary) 0%, rgba(124,58,237,.05) 100%); border: 1px solid rgba(124,58,237,.18); border-radius: var(--radius-lg); padding: 30px 36px; margin: var(--space-lg) 0; position: relative; }
     .content-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--accent), #a78bfa); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
-    .content-card h3 { color: var(--text-primary); font-size: 1.35rem; font-weight: 800; margin: 0 0 20px; font-family: 'Outfit', sans-serif; }
-    .content-card p { color: var(--text-secondary); font-size: 0.98rem; line-height: 1.85; margin-bottom: 14px; max-width: 700px; }
+    .content-card h3 { color: var(--text-primary); font-size: 1.2rem; font-weight: 800; margin: 0 0 16px; font-family: 'Outfit', sans-serif; }
+    .content-card p { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.85; margin-bottom: 12px; max-width: 700px; }
     .content-card p:last-child { margin-bottom: 0; }
-    .content-card strong { color: var(--text-primary); font-weight: 700; }
+    .content-card strong { color: var(--text-primary); }
 
-    .rich-content { color: var(--text-secondary); line-height: 1.85; font-size: 0.98rem; }
+    .rich-content { color: var(--text-secondary); line-height: 1.85; font-size: 0.97rem; }
     .rich-content p { margin-bottom: 14px; max-width: 700px; }
     .rich-content strong { color: var(--text-primary); font-weight: 700; }
-    .rich-content h3 { color: var(--text-primary); font-size: 1.2rem; font-weight: 700; margin: var(--space-md) 0 12px; }
-    .rich-content ul { margin: 12px 0 14px 20px; padding: 0; }
-    .rich-content li { margin-bottom: 10px; list-style: disc; }
-    .rich-content li strong { display: inline; }
+    .rich-content h3 { color: var(--text-primary); font-size: 1.1rem; font-weight: 700; margin: var(--space-md) 0 10px; }
+    .rich-content ul { margin: 10px 0 14px 20px; padding: 0; }
+    .rich-content li { margin-bottom: 8px; list-style: disc; }
 
     /* ─── QUICK ANSWER BOX ─── */
-    .quick-answer { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 36px 40px; }
-    .quick-answer h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); font-weight: 800; margin: 0 0 var(--space-md); color: var(--text-primary); font-family: 'Outfit', sans-serif; }
-    .qa-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 28px; }
-    .qa-stat { background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.15); border-radius: var(--radius-md); padding: 18px 12px; text-align: center; }
-    .qa-stat .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); font-weight: 700; margin-bottom: 10px; }
-    .qa-stat .val { font-family: 'JetBrains Mono', monospace; font-size: 1.3rem; font-weight: 800; color: var(--accent); }
+    .quick-answer { background: var(--bg-secondary); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 32px 36px; }
+    .quick-answer h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; margin: 0 0 var(--space-md); color: var(--text-primary); font-family: 'Outfit', sans-serif; }
+    .qa-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 24px; }
+    .qa-stat { background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.15); border-radius: var(--radius-md); padding: 16px 12px; text-align: center; }
+    .qa-stat .label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text-muted); font-weight: 700; margin-bottom: 8px; }
+    .qa-stat .val { font-family: 'JetBrains Mono', monospace; font-size: 1.2rem; font-weight: 800; color: var(--accent); }
 
     /* ─── CTA BOX ─── */
-    .cta-box { background: linear-gradient(135deg, var(--accent) 0%, #7c3aed 100%); border-radius: var(--radius-lg); padding: 60px var(--space-xl); text-align: center; margin: var(--space-lg) 0; color: #fff; box-shadow: 0 8px 32px rgba(124,58,237,.35); }
-    .cta-box h2 { color: #fff; margin-bottom: 12px; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; }
-    .cta-box p { color: rgba(255,255,255,.85); margin-bottom: var(--space-md); font-size: 1rem; }
-    .cta-btn { display: inline-block; background: #fff; color: var(--accent); padding: 16px 36px; border-radius: 100px; font-weight: 800; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 16px rgba(0,0,0,.15); font-size: 1rem; }
+    .cta-box { background: linear-gradient(135deg, var(--accent) 0%, #7c3aed 100%); border-radius: var(--radius-lg); padding: 52px var(--space-xl); text-align: center; margin: var(--space-lg) 0; color: #fff; box-shadow: 0 8px 32px rgba(124,58,237,.35); }
+    .cta-box h2 { color: #fff; margin-bottom: 10px; font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; }
+    .cta-box p { color: rgba(255,255,255,.85); margin-bottom: var(--space-md); font-size: 0.98rem; }
+    .cta-btn { display: inline-block; background: #fff; color: var(--accent); padding: 14px 32px; border-radius: 100px; font-weight: 800; text-decoration: none; transition: transform .2s, box-shadow .2s; box-shadow: 0 4px 16px rgba(0,0,0,.15); font-size: 0.97rem; }
     .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.2); }
 
     /* FAQ Styles */
-    .faq-list { margin-top: var(--space-lg); display: flex; flex-direction: column; gap: 12px; }
-    .faq-item {
-      background: var(--bg-secondary);
-      border: 1px solid rgba(124, 58, 237, 0.15);
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: border-color .2s;
-    }
-    .faq-item.open { border-color: rgba(124, 58, 237, 0.5); }
+    .faq-list { margin-top: var(--space-lg); display: flex; flex-direction: column; gap: 10px; }
+    .faq-item { background: var(--bg-secondary); border: 1px solid rgba(124,58,237,.15); border-radius: var(--radius-md); overflow: hidden; transition: border-color .2s; }
+    .faq-item.open { border-color: rgba(124,58,237,.5); }
     .faq-item.open .faq-question { color: var(--accent); }
-    .faq-question {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 24px;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      color: var(--text-primary);
-      font-size: 1.05rem;
-      font-weight: 700;
-      text-align: left;
-      gap: 16px;
-      font-family: 'Inter', sans-serif;
-      transition: color .2s;
-    }
+    .faq-question { width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 18px 22px; background: transparent; border: none; cursor: pointer; color: var(--text-primary); font-size: 1rem; font-weight: 700; text-align: left; gap: 16px; font-family: 'Inter', sans-serif; transition: color .2s; }
     .faq-question:hover { color: var(--accent); }
-    .faq-icon {
-      flex-shrink: 0;
-      width: 28px;
-      height: 28px;
-      background: rgba(124, 58, 237, 0.12);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--accent);
-      transition: transform .25s, background .2s;
-    }
-    .faq-item.open .faq-icon {
-      transform: rotate(45deg);
-      background: var(--accent);
-      color: #fff;
-    }
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .3s ease;
-    }
+    .faq-icon { flex-shrink: 0; width: 26px; height: 26px; background: rgba(124,58,237,.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; color: var(--accent); transition: transform .25s, background .2s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--accent); color: #fff; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
     .faq-item.open .faq-answer { max-height: 400px; }
-    .faq-answer p {
-      padding: 0 24px 20px;
-      color: var(--text-secondary);
-      font-size: 1.02rem;
-      line-height: 1.85;
-      margin: 0;
-      border-top: 1px solid rgba(124, 58, 237, 0.1);
-      padding-top: 16px;
-    }
+    .faq-answer p { padding: 0 22px 18px; color: var(--text-secondary); font-size: 0.97rem; line-height: 1.85; margin: 0; border-top: 1px solid rgba(124,58,237,.1); padding-top: 14px; }
 
     /* Responsive */
     @media (max-width: 1024px) {
       .purity-prices { grid-template-columns: repeat(2, 1fr); }
-      .bp-units-grid { grid-template-columns: repeat(3, 1fr); }
+      .bp-data-grid { grid-template-columns: repeat(4, 1fr); }
       .drivers-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 640px) {
+      .purity-prices { grid-template-columns: repeat(2, 1fr); }
+      .bp-data-grid { grid-template-columns: repeat(2, 1fr); }
+      .bp-price { font-size: 2.6rem; }
+      .payout-table { font-size: 0.82rem; }
+      .payout-table th, .payout-table td { padding: 10px 10px; }
+      .tv-widget-container { height: 460px; }
+      .faq-question { font-size: .93rem; padding: 14px 16px; }
+      .faq-answer p { padding: 10px 16px 14px; }
+      .cta-inline-bar { flex-direction: column; text-align: center; }
+      .qa-stats { grid-template-columns: repeat(2, 1fr); }
+      .insight-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 420px) {
       .purity-prices { grid-template-columns: 1fr; }
-      .bp-units-grid { grid-template-columns: 1fr; gap: var(--space-sm); }
-      .bp-price { font-size: 2.5rem; }
-      .payout-table { font-size: var(--fs-sm); }
-      .payout-table th, .payout-table td { padding: 10px; }
-      .tv-widget-container { height: 420px; }
-      .faq-question { font-size: .95rem; padding: 16px 18px; }
-      .faq-answer p { padding: 12px 18px 16px; }
+      .insight-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -432,96 +372,84 @@
 
   <main>
 
-    <!-- ============================ HERO ============================ -->
+    <!-- ══════════════════════════════════════════════════
+         1. HERO — slim, price-focused
+    ══════════════════════════════════════════════════ -->
     <section class="hero-compact">
       <div class="container">
         <div class="price-hero reveal">
           <h1>Silver Prices <span class="accent-text">Today</span></h1>
-          <p>Check real-time silver spot prices with live interactive charts, detailed market analysis, and accurate dealer payout estimates. Track 7-day and 30-day price trends updated hourly from global commodity exchanges. Whether you're selling scrap silver, investing in bullion, or comparing dealer rates, get the data you need to make informed decisions.</p>
-          <div class="hero-chips">
-            <div class="chip">📊 Interactive charts</div>
-            <div class="chip">🔄 Hourly updates</div>
-            <div class="chip">💰 Dealer payouts</div>
-            <div class="chip">⚡ Market analysis</div>
-          </div>
+          <p>Live XAG/USD spot price, updated hourly from global commodity exchanges. Track trends, compare dealer payouts, and calculate your silver's exact melt value.</p>
         </div>
 
-        <!-- Big Live Price Display -->
+        <!-- BIG LIVE PRICE CARD — primary focal point -->
         <div class="big-price-card reveal reveal-d1">
-          <div class="bp-label">💰 Current Silver Spot Price</div>
+          <div class="bp-live-dot">Live Silver Spot Price</div>
           <div class="bp-price" id="big-price">$—</div>
-          <div class="bp-unit">Per Troy Ounce (Bid/Ask Spread Adjusted)</div>
+          <div class="bp-unit">Per Troy Ounce · XAG/USD</div>
           <div class="bp-change flat" id="big-change">—</div>
           <div class="bp-updated" id="big-updated">Loading live data...</div>
 
-          <div class="bp-units-grid">
-            <div class="bp-unit-item">
-              <div class="bp-unit-label">Per Gram</div>
-              <div class="bp-unit-val" id="bp-gram">$—</div>
+          <!-- Unified 4-column data grid: unit prices + 24h stats -->
+          <div class="bp-data-grid">
+            <div class="bp-data-cell">
+              <div class="bp-data-label">Per Gram</div>
+              <div class="bp-data-val accent" id="bp-gram">$—</div>
             </div>
-            <div class="bp-unit-item">
-              <div class="bp-unit-label">Per Kilogram</div>
-              <div class="bp-unit-val" id="bp-kilo">$—</div>
+            <div class="bp-data-cell">
+              <div class="bp-data-label">Per Kilogram</div>
+              <div class="bp-data-val" id="bp-kilo">$—</div>
             </div>
-            <div class="bp-unit-item">
-              <div class="bp-unit-label">Per Pennyweight</div>
-              <div class="bp-unit-val" id="bp-dwt">$—</div>
+            <div class="bp-data-cell">
+              <div class="bp-data-label">24h High</div>
+              <div class="bp-data-val up" id="move-high">$—</div>
+            </div>
+            <div class="bp-data-cell">
+              <div class="bp-data-label">24h Low</div>
+              <div class="bp-data-val down" id="move-low">$—</div>
+            </div>
+            <div class="bp-data-cell">
+              <div class="bp-data-label">Open</div>
+              <div class="bp-data-val" id="move-open">$—</div>
+            </div>
+            <div class="bp-data-cell">
+              <div class="bp-data-label">DWT</div>
+              <div class="bp-data-val" id="bp-dwt">$—</div>
+            </div>
+            <div class="bp-data-cell" style="grid-column: span 2;">
+              <div class="bp-data-label">Daily Change</div>
+              <div class="bp-data-val" id="move-change" style="font-size:1.3rem;">—</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ============================ PRICE STRIP ============================ -->
+    <!-- ══════════════════════════════════════════════════
+         2. STICKY PRICE STRIP — always visible on scroll
+    ══════════════════════════════════════════════════ -->
     <div class="price-strip">
       <div class="container">
         <div class="price-strip-inner">
-          <span class="ps-label">Silver Spot:</span>
+          <span class="ps-label">XAG/USD</span>
           <span class="ps-price" id="strip-price">$—</span>
           <span class="ps-change flat" id="strip-change">—</span>
           <span class="ps-divider">|</span>
           <span class="ps-updated" id="strip-updated">Loading...</span>
           <span class="ps-divider">|</span>
-          <span class="ps-updated">Market Data by Trading Economics</span>
+          <span class="ps-updated">Market Data · Trading Economics · Hourly</span>
         </div>
       </div>
     </div>
 
-    <!-- ============================ TODAY'S ORIGINAL ANALYSIS ============================ -->
-    <section class="sec container container-tight">
-      <div class="insight-card reveal">
-        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
-          <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#a78bfa);display:grid;place-items:center;font-size:1.1rem;flex-shrink:0;">📰</div>
-          <div>
-            <div style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-weight:700;">Today's Analysis — May 16, 2026</div>
-            <div style="font-size:0.85rem;color:var(--text-secondary);">Updated by Scrap Silver Calculator Research Team · Hourly data</div>
-          </div>
-        </div>
-        <h3 style="margin-bottom:16px;">What's Driving Silver Prices Right Now</h3>
-        <div class="rich-content">
-          <p>Silver is trading near <strong id="analysis-price">$87</strong>/oz today — a level that reflects a significant shift in precious metals sentiment driven by three concurrent forces: <strong>sustained solar energy demand</strong> from government infrastructure programs, <strong>dollar weakness</strong> following recent Federal Reserve commentary on rate pauses, and <strong>ETF inflows</strong> that picked up sharply over the past two weeks.</p>
-
-          <p>The <strong>gold-to-silver ratio</strong> currently sits at approximately <strong id="analysis-gsr">—</strong>. Historically, a ratio above 80 has signaled silver undervaluation relative to gold — meaning silver tends to outperform gold during bull market runs. Investors tracking this metric have been accumulating silver positions in anticipation of ratio compression.</p>
-
-          <h3>Industrial Demand Remains the Structural Anchor</h3>
-          <p>Unlike gold, which is primarily monetary, silver derives roughly <strong>55% of its annual demand from industry</strong> — particularly photovoltaics (solar panels), electronics, and EV battery components. The global push toward net-zero emissions has added a structural floor to silver demand that did not exist a decade ago. Each solar panel contains approximately <strong>20 grams of silver paste</strong> — and global solar installations are tracking toward record capacity additions in 2026. This demand base means silver is increasingly difficult to suppress below production cost, which currently sits near $18–22/oz for marginal mines.</p>
-
-          <h3>What This Means if You're Selling Scrap Silver Today</h3>
-          <p>At current price levels, silver is trading in the upper quartile of its 5-year range. Sellers who have been holding scrap silver waiting for a better moment are now in a reasonable position to sell. Use the <strong>dealer payout table below</strong> to estimate your realistic take-home based on the type of buyer you're approaching — and factor that the spread between spot and what you receive is typically 5–30%, depending entirely on dealer type and lot size.</p>
-          <p>If you're weighing whether to sell now or wait for a further move up, consider: silver has historically struggled to sustain prices above $90/oz without a major macro catalyst. If you need liquidity and spot is above your cost basis, current prices represent a reasonable exit point. If you're speculating on further upside, monitor the gold-to-silver ratio and Federal Reserve language closely — those are the two dominant near-term catalysts.</p>
-        </div>
-        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border-subtle);">
-          <span style="font-size:0.78rem;color:var(--text-muted);">⚠️ This analysis reflects market conditions as of May 16, 2026. Silver prices are volatile. This is not financial advice — always consult a licensed financial advisor before making investment decisions.</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ INTERACTIVE PRICE CHART ============================ -->
+    <!-- ══════════════════════════════════════════════════
+         3. INTERACTIVE CHART — full width, 700px, right after hero
+    ══════════════════════════════════════════════════ -->
     <section class="sec container">
       <div class="reveal text-center">
-        <span class="sec-badge">📈 Price Trends</span>
-        <h2 class="sec-title">Silver Price Chart &amp; Historical Movement</h2>
-        <p class="sec-sub">Track silver's price action over multiple time periods. Switch between 7-day, 30-day, and 1-year views to identify trends and patterns.</p>
+        <span class="sec-badge">📈 Price Chart</span>
+        <h2 class="sec-title">Silver Price Chart — XAG/USD Live</h2>
+        <p class="sec-sub">Track silver's price action over multiple time periods. Switch between 7-day, 30-day, and 1-year views to identify trends.</p>
       </div>
 
       <div class="tv-chart-wrapper reveal reveal-d1">
@@ -530,13 +458,12 @@
             <div class="ct-label">Silver Spot Price — XAG/USD (Live)</div>
             <div class="ct-value loading" id="chart-current-price">Loading live silver price…</div>
           </div>
-          <div class="tv-chart-title-area" style="text-align:right;">
-            <div class="ct-label">Source</div>
-            <div style="font-size:.9rem; color: var(--text-muted); font-weight:600;">TradingView · OANDA</div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px;">
+            <div class="tv-source-badge">Live · OANDA via TradingView</div>
+            <div style="font-size:.75rem;color:var(--text-muted);">Updated hourly · COMEX &amp; LBMA reference</div>
           </div>
         </div>
         <div class="tv-widget-container">
-          <!-- TradingView Advanced Chart Widget -->
           <div class="tradingview-widget-container" style="height:100%;width:100%;">
             <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%;"></div>
             <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
@@ -563,131 +490,59 @@
         </div>
       </div>
 
-      <div class="insight-card reveal reveal-d2">
-        <h3>How to Read This Silver Price Chart</h3>
-        <p>The chart above plots silver's spot price across your selected time period, sourced from global commodity markets. During trading hours (Sunday 6 PM ET through Friday 5 PM ET), prices update continuously based on supply, demand, economic news, and geopolitical events. Longer periods reveal weekly and monthly trends, helping you identify whether silver is in an <strong>uptrend</strong>, <strong>downtrend</strong>, or <strong>consolidation pattern</strong>.</p>
-
-        <div class="insight-grid">
-          <div class="insight-item">
-            <div class="ii-icon">📈</div>
-            <div class="ii-title">Support &amp; Resistance</div>
-            <div class="ii-desc">Look for price levels where silver repeatedly bounces (support) or faces selling pressure (resistance). These zones often signal entry/exit points.</div>
-          </div>
-          <div class="insight-item">
-            <div class="ii-icon">📉</div>
-            <div class="ii-title">Trend Direction</div>
-            <div class="ii-desc">Higher highs + higher lows = uptrend. Lower highs + lower lows = downtrend. Sideways action = consolidation before a breakout move.</div>
-          </div>
-          <div class="insight-item">
-            <div class="ii-icon">⚡</div>
-            <div class="ii-title">Breakout Signals</div>
-            <div class="ii-desc">A break above recent highs often attracts momentum buyers and accelerates gains. A break below support can trigger panic selling and stop-losses.</div>
-          </div>
-          <div class="insight-item">
-            <div class="ii-icon">🎯</div>
-            <div class="ii-title">Best Time to Sell</div>
-            <div class="ii-desc">Selling silver near recent highs maximizes proceeds. Use the 30-day view to identify if today's price is near peaks or in a pullback.</div>
+      <!-- How to read: collapsed by default — doesn't block the view -->
+      <details class="chart-faq reveal reveal-d2">
+        <summary>📖 How to read this silver price chart</summary>
+        <div class="chart-faq-body">
+          <p style="color:var(--text-secondary);font-size:.93rem;line-height:1.8;margin-bottom:12px;">The chart plots XAG/USD across your selected period. During trading hours (Sunday 6 PM ET – Friday 5 PM ET), prices move continuously. Use time periods to identify trend, support, and resistance levels.</p>
+          <div class="insight-grid">
+            <div class="insight-item">
+              <div class="ii-icon">📈</div>
+              <div class="ii-title">Support &amp; Resistance</div>
+              <div class="ii-desc">Levels where silver repeatedly bounces (support) or faces selling pressure. Key zones for entry and exit decisions.</div>
+            </div>
+            <div class="insight-item">
+              <div class="ii-icon">📉</div>
+              <div class="ii-title">Trend Direction</div>
+              <div class="ii-desc">Higher highs + higher lows = uptrend. Lower highs + lower lows = downtrend. Flat = consolidation before breakout.</div>
+            </div>
+            <div class="insight-item">
+              <div class="ii-icon">⚡</div>
+              <div class="ii-title">Breakout Signals</div>
+              <div class="ii-desc">A break above recent highs attracts momentum buyers. A break below support can trigger sharp selling and stop-losses.</div>
+            </div>
+            <div class="insight-item">
+              <div class="ii-icon">🎯</div>
+              <div class="ii-title">Best Time to Sell</div>
+              <div class="ii-desc">Use the 30-day view to see if today's price is near recent peaks or in a pullback. Selling near highs maximizes proceeds.</div>
+            </div>
           </div>
         </div>
-      </div>
+      </details>
     </section>
 
-    <!-- ============================ TODAY'S MOVEMENT ============================ -->
-    <section class="sec container">
-      <div class="reveal text-center">
-        <span class="sec-badge">📊 Market Snapshot</span>
-        <h2 class="sec-title">24-Hour Silver Price Movement</h2>
-        <p class="sec-sub">Track today's silver price action with key metrics from the last 24 hours.</p>
-      </div>
-
-      <div class="move-grid reveal reveal-d1">
-        <div class="move-card">
-          <div class="label">Today's Open</div>
-          <div class="val" id="move-open">$—</div>
-          <div class="meta">Market opening price</div>
-        </div>
-        <div class="move-card">
-          <div class="label">24h High</div>
-          <div class="val" id="move-high">$—</div>
-          <div class="meta">Today's peak price</div>
-        </div>
-        <div class="move-card">
-          <div class="label">24h Low</div>
-          <div class="val" id="move-low">$—</div>
-          <div class="meta">Today's lowest point</div>
-        </div>
-        <div class="move-card">
-          <div class="label">Daily Change</div>
-          <div class="val" id="move-change">—</div>
-          <div class="meta" id="move-change-pct">From previous close</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ QUICK ANSWER ============================ -->
-    <section class="sec container container-tight">
-      <div class="quick-answer reveal">
-        <h2>What is the Silver Price Today?</h2>
-        <div class="rich-content">
-          <p>Today's silver spot price is <strong id="qa-spot">$—</strong> per troy ounce — the global wholesale reference rate on major commodity exchanges. This price is sourced from live market feeds and updated hourly. It's the standardized benchmark used worldwide by dealers, refiners, investors, and central banks for all silver transactions.</p>
-
-          <h3>Understanding Spot Price</h3>
-          <p>Spot price is the rate at which silver trades immediately (for "spot" delivery) with no premiums applied. It's set by global supply and demand on exchanges like COMEX (New York) and the London Bullion Market. Every silver transaction worldwide references this same baseline price. What you actually pay or receive depends on the spot price plus dealer markups (if buying) or discounts (if selling).</p>
-
-          <h3>Why You Don't Get Spot Price When Selling</h3>
-          <p>When selling scrap silver, jewelry, or coins, dealers pay <strong>less than spot</strong> to cover refining costs, overhead, and profit. Online refiners might pay 90–98% of spot for bulk material, while pawn shops pay as little as 50–70%. The difference comes down to volume, purity documentation, and dealer overhead. This is why comparing multiple dealers matters so much.</p>
-
-          <h3>Today's Prices by Silver Purity</h3>
-          <p>Different silver grades have different values based on purity (measured in parts per thousand). Pure 999 fine silver equals 100% of spot price. Sterling (925) is worth 92.5% of spot, coin silver (900) is worth 90%, and European (800) is worth 80%. Here are today's prices for each grade per gram:</p>
-        </div>
-
-        <div class="qa-stats">
-          <div class="qa-stat">
-            <div class="label">999 Fine Silver</div>
-            <div class="val" id="qa-999g">$—</div>
-            <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;">per gram</div>
-          </div>
-          <div class="qa-stat">
-            <div class="label">925 Sterling Silver</div>
-            <div class="val" id="qa-925g">$—</div>
-            <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;">per gram (92.5% pure)</div>
-          </div>
-          <div class="qa-stat">
-            <div class="label">900 Coin Silver</div>
-            <div class="val" id="qa-900g">$—</div>
-            <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;">per gram (90% pure)</div>
-          </div>
-          <div class="qa-stat">
-            <div class="label">800 European Silver</div>
-            <div class="val" id="qa-800g">$—</div>
-            <div style="font-size: var(--fs-xs); color: var(--text-muted); margin-top: 4px;">per gram (80% pure)</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================ SILVER PRICES BY PURITY ============================ -->
+    <!-- ══════════════════════════════════════════════════
+         4. LIVE PRICES BY PURITY — right after chart
+    ══════════════════════════════════════════════════ -->
     <section class="sec container">
       <div class="reveal text-center">
         <span class="sec-badge">💰 By Purity</span>
-        <h2 class="sec-title">Live Silver Prices by Purity Grade Today</h2>
-        <p class="sec-sub">Current market rates for each common silver purity. Used to calculate scrap value, jewelry worth, and dealer payout offers.</p>
+        <h2 class="sec-title">Live Silver Prices by Purity Grade</h2>
+        <p class="sec-sub">Current market rates for each common silver purity — updated every hour.</p>
       </div>
 
       <div class="purity-prices reveal reveal-d1">
         <div class="pp-card">
-          <div class="pp-badge">Purity</div>
           <div class="pp-code">999</div>
           <div class="pp-name">Fine Silver</div>
           <div class="pp-pct">99.9% Pure</div>
           <div class="pp-divider"></div>
           <div class="pp-price-oz" id="purity-999-oz">$—</div>
           <div class="pp-price-g" id="purity-999-g">$— / gram</div>
-          <div class="pp-item-note">Highest purity · Investment bars &amp; bullion</div>
-          <a class="pp-link" href="/999-silver-calculator/">Use 999 Calculator →</a>
+          <div class="pp-item-note">Investment bars &amp; bullion</div>
+          <a class="pp-link" href="/999-silver-calculator/">Calculator →</a>
         </div>
         <div class="pp-card gold-accent">
-          <div class="pp-badge">Purity</div>
           <div class="pp-code">925</div>
           <div class="pp-name">Sterling Silver</div>
           <div class="pp-pct">92.5% Pure</div>
@@ -695,10 +550,9 @@
           <div class="pp-price-oz" id="purity-925-oz">$—</div>
           <div class="pp-price-g" id="purity-925-g">$— / gram</div>
           <div class="pp-item-note">Most jewelry &amp; flatware</div>
-          <a class="pp-link" href="/925-silver-calculator/">Use 925 Calculator →</a>
+          <a class="pp-link" href="/925-silver-calculator/">Calculator →</a>
         </div>
         <div class="pp-card coin-accent">
-          <div class="pp-badge">Purity</div>
           <div class="pp-code">900</div>
           <div class="pp-name">Coin Silver</div>
           <div class="pp-pct">90% Pure</div>
@@ -706,10 +560,9 @@
           <div class="pp-price-oz" id="purity-900-oz">$—</div>
           <div class="pp-price-g" id="purity-900-g">$— / gram</div>
           <div class="pp-item-note">US coins pre-1965</div>
-          <a class="pp-link" href="/900-silver-calculator/">Use 900 Calculator →</a>
+          <a class="pp-link" href="/900-silver-calculator/">Calculator →</a>
         </div>
         <div class="pp-card euro-accent">
-          <div class="pp-badge">Purity</div>
           <div class="pp-code">800</div>
           <div class="pp-name">European Silver</div>
           <div class="pp-pct">80% Pure</div>
@@ -717,88 +570,36 @@
           <div class="pp-price-oz" id="purity-800-oz">$—</div>
           <div class="pp-price-g" id="purity-800-g">$— / gram</div>
           <div class="pp-item-note">Vintage European items</div>
-          <a class="pp-link" href="/800-silver-calculator/">Use 800 Calculator →</a>
+          <a class="pp-link" href="/800-silver-calculator/">Calculator →</a>
         </div>
       </div>
     </section>
 
-    <!-- ============================ WHY PRICE MOVED ============================ -->
+    <!-- ══════════════════════════════════════════════════
+         5. INLINE CTA — between purity and payout
+    ══════════════════════════════════════════════════ -->
+    <div class="container container-tight">
+      <div class="cta-inline-bar reveal">
+        <div class="cta-text">Know your silver's weight? <span>Calculate its exact melt value in seconds.</span></div>
+        <a href="/#calculator">📊 Open Free Calculator</a>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════
+         6. DEALER PAYOUT TABLE — moved up, high-value conversion
+    ══════════════════════════════════════════════════ -->
     <section class="sec container container-tight">
       <div class="reveal text-center">
-        <span class="sec-badge">📰 Market Context</span>
-        <h2 class="sec-title">Why Does Silver Price Change Every Day?</h2>
-        <p class="sec-sub">Understanding the major factors that drive silver price movements and how to interpret market signals.</p>
-      </div>
-
-      <div class="drivers-grid reveal reveal-d1">
-        <div class="driver-card">
-          <div class="icon">🏭</div>
-          <h4>Industrial Demand</h4>
-          <p>Silver is essential for electronics, solar panels, photography, water purification, and electric vehicles. Approximately 50% of silver demand comes from industrial uses. Strong manufacturing activity in Asia, Europe, and North America drives demand and price. During recessions, industrial demand drops, pressuring prices lower. Tech innovations (like 5G infrastructure expansion) create new demand spikes.</p>
-        </div>
-        <div class="driver-card">
-          <div class="icon">💵</div>
-          <h4>US Dollar Strength</h4>
-          <p>Silver prices move inversely to USD strength (measured by the US Dollar Index). A strong dollar makes silver more expensive for international buyers using euros, yuan, or yen — reducing demand and pushing prices down. Conversely, a weak dollar makes silver cheaper overseas, attracting more buyers and lifting prices. Currency movements can account for 20–30% of daily price swings.</p>
-        </div>
-        <div class="driver-card">
-          <div class="icon">🌍</div>
-          <h4>Mine Supply Disruptions</h4>
-          <p>The world's top silver producers are Mexico, Peru, Russia, and China. Production disruptions from labor strikes, environmental regulations, or mine shutdowns can tighten supply overnight. Meanwhile, major silver discoveries or new mining operations can increase supply and pressure prices downward. A single significant mine closure can move prices 5–10%.</p>
-        </div>
-        <div class="driver-card">
-          <div class="icon">📊</div>
-          <h4>Inflation Expectations</h4>
-          <p>Silver is viewed as an inflation hedge — a tangible asset that preserves purchasing power when currency weakens. When inflation expectations rise (based on central bank statements, employment reports, or commodity prices), investment demand for silver increases, lifting prices. Deflation fears do the opposite, causing investors to sell precious metals.</p>
-        </div>
-        <div class="driver-card">
-          <div class="icon">📈</div>
-          <h4>Investment Flows & Sentiment</h4>
-          <p>Silver ETF holdings, futures positioning, and physical bullion purchases from retail and institutional investors heavily influence price action. When investor sentiment turns positive (often called "risk-on"), money flows into speculative positions, lifting prices rapidly. Conversely, "risk-off" sentiment (when investors flee to safety) can trigger sharp selling. Social media trends and retail investor coordination can amplify these swings.</p>
-        </div>
-        <div class="driver-card">
-          <div class="icon">🏦</div>
-          <h4>Interest Rates & Central Banks</h4>
-          <p>Silver pays no dividend or interest, so rising interest rates reduce its appeal relative to bonds and savings accounts. When central banks raise rates, precious metal prices typically fall. Lower rates (or near-zero rates) increase demand for non-yielding assets like silver. Federal Reserve announcements, ECB decisions, and Bank of Japan policies all trigger immediate silver price reactions.</p>
-        </div>
-        <div class="driver-card">
-          <div class="icon">⚡</div>
-          <h4>Gold/Silver Ratio</h4>
-          <p>This ratio (gold price ÷ silver price) typically ranges from 60–90. When the ratio is high (say 80+), silver is relatively cheap compared to gold historically, attracting value buyers who expect silver to outperform. Conversely, a low ratio might suggest silver is expensive. Today's ratio is <strong id="gsr-val">—</strong>. Traders use this metric to identify relative value opportunities.</p>
-        </div>
-        <div class="driver-card">
-          <div class="icon">⚔️</div>
-          <h4>Geopolitical Events</h4>
-          <p>Wars, trade tensions, sanctions, and political instability can trigger "risk-off" moves into precious metals. The invasion of Ukraine in 2022 spiked silver prices as investors sought safe havens. Conversely, peace announcements or de-escalation can reverse the trend. Always watch geopolitical headlines for sudden price catalysts.</p>
-        </div>
-        <div class="driver-card">
-          <div class="icon">📆</div>
-          <h4>Economic Data Releases</h4>
-          <p>US employment reports, GDP figures, inflation data (CPI), and consumer spending reports move silver prices as they signal future economic health and interest rate direction. Strong jobs reports often push prices down (suggesting higher rates ahead), while weak economic data lifts prices (suggesting rate cuts or stimulus). These reports are released on set schedules and are major price catalysts.</p>
-        </div>
-      </div>
-
-      <div class="content-card reveal reveal-d2">
-        <h3>How to Use Market Information When Selling</h3>
-        <p>Understanding why silver price changed helps you make better selling decisions. If prices are rising on strong industrial demand or dollar weakness, selling soon may be smart before sentiment reverses. If prices dipped on temporary rate fears or profit-taking, waiting for a bounce may be worthwhile.</p>
-        <p>Use the 7-day and 30-day chart views above to identify trends. An uptrend (higher highs, higher lows) suggests strength — likely a good time to sell near highs. A downtrend (lower highs, lower lows) suggests waiting may pay off. Sideways consolidation often precedes a breakout move in either direction. Selling near 52-week highs historically maximizes your payout. Even a $3/oz improvement across 10 ounces adds $30 to your proceeds.</p>
-      </div>
-    </section>
-
-    <!-- ============================ DEALER PAYOUT (DIFFERENTIATOR) ============================ -->
-    <section class="sec container container-tight">
-      <div class="reveal text-center">
-        <span class="sec-badge">💵 The Real Truth</span>
-        <h2 class="sec-title">What You'll Actually Get Paid for Silver Today</h2>
+        <span class="sec-badge">💵 What Dealers Actually Pay</span>
+        <h2 class="sec-title">What You'll Get Paid for Silver Today</h2>
       </div>
 
       <div class="dealer-payout reveal reveal-d1">
         <div class="dp-intro">
-          <p>The silver spot price shown above is the <strong>global wholesale market reference</strong> — but it's NOT what dealers pay you. When you sell scrap silver, jewelry, coins, or bars, you receive only a <strong>percentage of the melt value</strong>, typically between <span class="highlight">50–98%</span> depending on dealer type.</p>
-          <p>Dealers apply discounts because they incur real costs: precious metals refining ($5–20 per lot), shipping and insurance, secure storage, regulatory compliance, staff wages, rent, utilities, and profit margins. A responsible dealer takes <span class="highlight">5–15%</span> from bulk material and <span class="highlight">up to 40%</span> from small quantities.</p>
+          <p>Spot price is the <strong>global wholesale reference</strong> — not what dealers pay you. When selling scrap silver, jewelry, or coins, you receive a <strong>percentage of melt value</strong>, typically <span class="highlight">50–98%</span> depending on dealer type. Dealers discount to cover refining costs, overhead, and profit margin.</p>
         </div>
 
-        <h3 class="dp-table-heading">Dealer Payout Comparison — Today's Spot Price: <strong id="dp-spot2">$—</strong>/oz</h3>
+        <h3 class="dp-table-heading">Dealer Payout Comparison — Today's Spot: <strong id="dp-spot2">$—</strong>/oz</h3>
 
         <table class="payout-table">
           <thead>
@@ -806,85 +607,89 @@
               <th>Dealer Type</th>
               <th>% of Melt Value</th>
               <th>Est. Price/oz Today</th>
-              <th>Processing Time</th>
+              <th>Speed</th>
               <th>Best For</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td><strong>🏭 Online Refiners</strong></td>
+              <td>🏭 Online Refiners</td>
               <td class="payout-range">90–98%</td>
               <td class="payout-estimate" id="dp-refiner-table">$—–$—</td>
               <td>1–3 weeks</td>
               <td>Large quantities, highest rates</td>
             </tr>
             <tr>
-              <td><strong>🪙 Coin & Bullion Shops</strong></td>
+              <td>🪙 Coin &amp; Bullion Shops</td>
               <td class="payout-range">75–90%</td>
               <td class="payout-estimate" id="dp-coin-table">$—–$—</td>
               <td>Same day</td>
-              <td>Bullion bars, coins, certified products</td>
+              <td>Bullion bars, coins</td>
             </tr>
             <tr>
-              <td><strong>💍 Jewelry Stores</strong></td>
+              <td>💍 Jewelry Stores</td>
               <td class="payout-range">60–85%</td>
               <td class="payout-estimate" id="dp-jewelry-table">$—–$—</td>
               <td>Same day</td>
-              <td>Broken sterling jewelry, mixed lots</td>
+              <td>Broken sterling jewelry</td>
             </tr>
             <tr>
-              <td><strong>🏪 Pawn Shops</strong></td>
+              <td>🏪 Pawn Shops</td>
               <td class="payout-range">50–70%</td>
               <td class="payout-estimate" id="dp-pawn-table">$—–$—</td>
               <td>Immediate</td>
               <td>Emergency cash only</td>
             </tr>
             <tr>
-              <td><strong>🏦 Scrap Metal Dealers</strong></td>
+              <td>🏦 Scrap Metal Dealers</td>
               <td class="payout-range">70–85%</td>
               <td class="payout-estimate" id="dp-scrap-table">$—–$—</td>
               <td>1–2 weeks</td>
-              <td>Industrial scrap, large mixed lots</td>
+              <td>Industrial/large mixed lots</td>
             </tr>
           </tbody>
         </table>
 
-        <h3 class="dp-table-heading">How to Get the Best Dealer Payout</h3>
-        <div class="rich-content" style="margin-bottom: var(--space-lg);">
-          <p><strong>1. Shop Around & Get Multiple Quotes</strong></p>
-          <p>Call or visit at least 3 dealers in your area. Payout rates vary by 10–20% even on the same day. Get quotes in writing and ask whether rates are final or subject to reassay results. A small time investment can easily earn you an extra $50–$200.</p>
-
-          <p><strong>2. Combine Your Silver for Better Rates</strong></p>
-          <p>If you have scrap spread across multiple items (5 grams total), combining everything often yields 5–10% better percentage payouts per ounce. Larger quantities cost dealers less per unit to process.</p>
-
-          <p><strong>3. Document Purity Levels</strong></p>
-          <p>Bring proof of purity marks (999, 925, 900, 800). Undocumented scrap requires lab assay, which adds processing costs and may reduce your payout. Clean, marked items command premium rates.</p>
-
-          <p><strong>4. Time Your Sale Near Price Peaks</strong></p>
-          <p>Monitor the price chart above. Selling when silver is near 52-week highs maximizes proceeds. Even a $2/oz difference across 10 ounces means $20 more in your pocket.</p>
-
-          <p><strong>5. Choose the Right Dealer for Your Items</strong></p>
-          <ul>
-            <li><strong>Online Refiners (90–98%):</strong> Best rates but requires shipping + 1–3 weeks. Ideal for bulk quantities or pure bullion. Lowest fees overall.</li>
-            <li><strong>Coin & Bullion Shops (75–90%):</strong> Fast, local, same-day cash. Perfect for coins, bars, certified products. Good balance of price and speed.</li>
-            <li><strong>Jewelry Stores (60–85%):</strong> Good for broken sterling jewelry and mixed items. Convenient if you need fast local service.</li>
-            <li><strong>Scrap Metal Dealers (70–85%):</strong> Handle large mixed lots. Industrial rates apply. Usually 1–2 weeks for payment.</li>
-            <li><strong>Pawn Shops (50–70%):</strong> Lowest rates. Only use for emergency cash when time is critical and other options unavailable.</li>
-          </ul>
-        </div>
-
-        <div class="info-box">
-          <p><strong>💡 Pro Tip:</strong> The percentages above assume clean, documented silver in good condition. Damaged items, unknown purity, or tiny quantities (under 1 oz) receive additional discounts. Always ask dealers upfront about extra fees or discounts specific to your items.</p>
+        <div class="info-box" style="margin-top:var(--space-lg);">
+          <p><strong>💡 Pro tip:</strong> Get quotes from at least 3 dealers. Even a 10% payout difference on 10 oz = $80+ extra. Online refiners always pay highest but require shipping.</p>
         </div>
       </div>
     </section>
 
-    <!-- ============================ REAL-WORLD EXAMPLES ============================ -->
+    <!-- ══════════════════════════════════════════════════
+         7. TODAY'S ANALYSIS — editorial, trimmed to 3 paragraphs
+    ══════════════════════════════════════════════════ -->
+    <section class="sec container container-tight">
+      <div class="insight-card reveal">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+          <div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--accent),#a78bfa);display:grid;place-items:center;font-size:1rem;flex-shrink:0;">📰</div>
+          <div>
+            <div style="font-size:0.7rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.1em;font-weight:700;">Today's Market Analysis — May 16, 2026</div>
+            <div style="font-size:0.82rem;color:var(--text-secondary);">Scrap Silver Calculator Research Team · Hourly data</div>
+          </div>
+        </div>
+        <h3>What's Driving Silver Prices Right Now</h3>
+        <div class="rich-content">
+          <p>Silver is trading at <strong id="analysis-price">$—</strong>/oz today — a level reflecting <strong>sustained solar energy demand</strong> from global infrastructure programs, <strong>dollar weakness</strong> following Federal Reserve commentary on rate pauses, and <strong>ETF inflows</strong> that have picked up sharply in recent weeks.</p>
+
+          <p>The <strong>gold-to-silver ratio</strong> currently sits at approximately <strong id="analysis-gsr">—</strong>. Historically, a ratio above 80 signals silver undervaluation relative to gold — meaning silver tends to outperform during precious metals bull runs. Silver derives roughly <strong>55% of its annual demand from industry</strong> — solar panels, electronics, and EV components — providing a structural demand floor that didn't exist a decade ago.</p>
+
+          <p>At current price levels, silver is trading in the upper quartile of its 5-year range. Use the <strong>dealer payout table above</strong> to estimate your realistic take-home. If you're weighing selling vs. holding, monitor the gold-to-silver ratio and Federal Reserve language closely — those are the dominant near-term catalysts.</p>
+        </div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border-subtle);">
+          <span style="font-size:0.75rem;color:var(--text-muted);">⚠️ Market conditions as of May 16, 2026. This is not financial advice.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         8. REAL-WORLD EXAMPLES
+    ══════════════════════════════════════════════════ -->
     <section class="sec container">
       <div class="reveal text-center">
         <span class="sec-badge">⚡ Real Examples</span>
-        <h2 class="sec-title">What Common Silver Items Are Worth Today</h2>
-        <p class="sec-sub">Melt value calculations for typical items at current spot price. Remember: dealers pay 50–98% of melt value depending on type.</p>
+        <h2 class="sec-title-sm" style="font-size:clamp(1.5rem,3vw,2rem);">What Common Silver Items Are Worth Today</h2>
+        <p class="sec-sub">Melt values at today's spot price. Dealers pay 50–98% of these figures.</p>
       </div>
 
       <div class="examples-row reveal reveal-d1">
@@ -925,34 +730,132 @@
           <div class="calc">10oz × 99.9% × spot</div>
         </div>
       </div>
-
-      <div class="content-card reveal reveal-d2">
-        <h3>Understanding Melt Value vs. Dealer Payout</h3>
-        <p>The prices above are the <strong>melt value</strong> — what your silver is worth based purely on its precious metal content. This is the starting point for any dealer negotiation. However, dealers never pay 100% of melt value.</p>
-        <p><strong>Refining cost (1–3%):</strong> Processing scrap requires assaying (purity testing), melting, and refining — all at the dealer's cost.</p>
-        <p><strong>Business overhead (2–5%):</strong> Rent, utilities, insurance, staff wages, and regulatory compliance are passed to sellers as discounts.</p>
-        <p><strong>Market risk (2–5%):</strong> Dealers hold inventory that could drop in value between purchase and resale. This risk requires margin.</p>
-        <p><strong>Profit margin (3–15%):</strong> Online refiners take 5–8%; pawn shops with high overhead may take 30–40%.</p>
-        <p>Example: if your item's melt value is $100, an online refiner pays $98 (98%), a coin shop pays $75–85 (75–85%), a pawn shop may pay only $50 (50%). <strong>Shopping around can earn you 30–40% more per ounce.</strong></p>
-      </div>
     </section>
 
-    <!-- ============================ CALCULATOR CTA ============================ -->
+    <!-- ══════════════════════════════════════════════════
+         9. CALCULATOR CTA — placed mid-page, not just at end
+    ══════════════════════════════════════════════════ -->
     <section class="sec container container-tight">
       <div class="cta-box reveal">
         <h2>Calculate Your Silver's Exact Value</h2>
-        <p>Get a precise melt value plus dealer payout estimates for your specific items in seconds.</p>
+        <p>Enter your weight, select purity, and get precise melt value and dealer payout estimates in seconds.</p>
         <a href="/#calculator" class="cta-btn">📊 Open Free Calculator</a>
       </div>
     </section>
 
-    <!-- ============================ EXPLORE MORE ============================ -->
+    <!-- ══════════════════════════════════════════════════
+         10. MARKET DRIVERS — accordion, 4 visible / 5 hidden
+    ══════════════════════════════════════════════════ -->
+    <section class="sec container container-tight">
+      <div class="reveal text-center">
+        <span class="sec-badge">📰 Market Context</span>
+        <h2 class="sec-title-sm" style="font-size:clamp(1.4rem,3vw,1.9rem);">Why Does Silver Price Change Every Day?</h2>
+        <p class="sec-sub">The major factors driving silver price movements and how to read market signals.</p>
+      </div>
+
+      <div class="drivers-grid reveal reveal-d1" id="drivers-container">
+        <!-- 4 always visible -->
+        <div class="driver-card">
+          <div class="icon">🏭</div>
+          <h4>Industrial Demand</h4>
+          <p>Silver is essential for solar panels, electronics, EVs, and water purification. ~55% of annual demand is industrial. Strong manufacturing in Asia and North America lifts prices; recessions drag them lower.</p>
+        </div>
+        <div class="driver-card">
+          <div class="icon">💵</div>
+          <h4>US Dollar Strength</h4>
+          <p>Silver prices move inversely to the USD. A strong dollar makes silver expensive for foreign buyers, reducing demand. Dollar weakness boosts buying from Europe, Asia, and emerging markets.</p>
+        </div>
+        <div class="driver-card">
+          <div class="icon">📊</div>
+          <h4>Inflation Expectations</h4>
+          <p>Silver is an inflation hedge. When CPI data surprises to the upside or central banks signal loose policy, investment demand for silver rises sharply as investors seek tangible store of value.</p>
+        </div>
+        <div class="driver-card">
+          <div class="icon">📈</div>
+          <h4>Investment Flows &amp; ETFs</h4>
+          <p>Silver ETF holdings, futures positioning, and retail accumulation heavily influence price. "Risk-on" sentiment sends money into silver fast. Social media and retail coordination amplify moves.</p>
+        </div>
+
+        <!-- 5 hidden by default -->
+        <div class="driver-card drivers-hidden">
+          <div class="icon">🌍</div>
+          <h4>Mine Supply Disruptions</h4>
+          <p>Top silver producers are Mexico, Peru, Russia, and China. Labor strikes, environmental shutdowns, or new mine closures tighten supply overnight. A single major closure can move prices 5–10%.</p>
+        </div>
+        <div class="driver-card drivers-hidden">
+          <div class="icon">🏦</div>
+          <h4>Interest Rates &amp; Central Banks</h4>
+          <p>Silver pays no yield, so rising rates reduce appeal vs. bonds. Rate hike cycles historically pressure silver. Fed pivots to cuts or pauses trigger sharp rallies in precious metals.</p>
+        </div>
+        <div class="driver-card drivers-hidden">
+          <div class="icon">⚡</div>
+          <h4>Gold/Silver Ratio</h4>
+          <p>This ratio (gold ÷ silver price) typically ranges 60–90. A ratio above 80 signals silver is undervalued relative to gold. Today's ratio: <strong id="gsr-val">—</strong>. Value investors use this to time accumulation.</p>
+        </div>
+        <div class="driver-card drivers-hidden">
+          <div class="icon">⚔️</div>
+          <h4>Geopolitical Events</h4>
+          <p>Wars, trade tensions, and sanctions trigger "risk-off" flows into precious metals. Ukraine 2022 spiked silver sharply. Peace signals or de-escalation often reverse the move within days.</p>
+        </div>
+        <div class="driver-card drivers-hidden">
+          <div class="icon">📆</div>
+          <h4>Economic Data Releases</h4>
+          <p>US jobs reports, CPI, and GDP figures move silver as they signal future rate direction. Strong employment often pushes silver down; weak data lifts it on rate-cut speculation.</p>
+        </div>
+      </div>
+
+      <button class="btn-show-more" id="drivers-toggle" onclick="toggleDrivers()">
+        <span id="drivers-toggle-text">Show 5 More Factors</span> <span id="drivers-arrow">▾</span>
+      </button>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         11. WHAT IS SPOT PRICE — educational / SEO
+    ══════════════════════════════════════════════════ -->
+    <section class="sec container container-tight">
+      <div class="quick-answer reveal">
+        <h2>What is the Silver Spot Price Today?</h2>
+        <div class="rich-content">
+          <p>Today's silver spot price is <strong id="qa-spot">$—</strong> per troy ounce — the global wholesale reference rate on major commodity exchanges (COMEX, London Bullion Market). Updated hourly. Used worldwide by dealers, refiners, investors, and central banks.</p>
+
+          <h3>Understanding Spot vs. What You Receive</h3>
+          <p>Spot price is the rate for immediate delivery of pure 999 silver with no premiums. When <strong>buying</strong>, you pay spot plus a dealer premium (5–20% for bars, more for coins). When <strong>selling scrap</strong>, you receive spot minus the dealer's discount (typically 5–40%). Shopping 3+ dealers before selling can earn you 20–30% more per ounce.</p>
+
+          <h3>Today's Prices by Purity (Per Gram)</h3>
+        </div>
+        <div class="qa-stats">
+          <div class="qa-stat">
+            <div class="label">999 Fine</div>
+            <div class="val" id="qa-999g">$—</div>
+            <div style="font-size:.68rem;color:var(--text-muted);margin-top:4px;">per gram</div>
+          </div>
+          <div class="qa-stat">
+            <div class="label">925 Sterling</div>
+            <div class="val" id="qa-925g">$—</div>
+            <div style="font-size:.68rem;color:var(--text-muted);margin-top:4px;">per gram</div>
+          </div>
+          <div class="qa-stat">
+            <div class="label">900 Coin</div>
+            <div class="val" id="qa-900g">$—</div>
+            <div style="font-size:.68rem;color:var(--text-muted);margin-top:4px;">per gram</div>
+          </div>
+          <div class="qa-stat">
+            <div class="label">800 European</div>
+            <div class="val" id="qa-800g">$—</div>
+            <div style="font-size:.68rem;color:var(--text-muted);margin-top:4px;">per gram</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════
+         12. RELATED TOOLS
+    ══════════════════════════════════════════════════ -->
     <section class="sec container">
       <div class="reveal text-center">
         <span class="sec-badge">🔗 Related Tools</span>
-        <h2 class="sec-title">Explore More Silver Price Resources</h2>
+        <h2 class="sec-title-sm" style="font-size:clamp(1.4rem,3vw,1.9rem);">Explore More Silver Price Resources</h2>
       </div>
-
       <div class="cgrid reveal reveal-d1">
         <a href="/silver-price-per-gram/" class="ccard"><div class="ci">📊</div><h3>Silver Price Per Gram</h3><p>Live per-gram rates with full unit conversion.</p><div class="arr">View →</div></a>
         <a href="/silver-spot-price-today/" class="ccard"><div class="ci">📈</div><h3>Silver Spot Price</h3><p>Market reference price with technical context.</p><div class="arr">View →</div></a>
@@ -963,10 +866,12 @@
       </div>
     </section>
 
-    <!-- ============================ FAQ ============================ -->
-    <section class="sec container container-tight" id="faq" style="background: var(--bg-secondary); border-radius: var(--radius-lg);">
+    <!-- ══════════════════════════════════════════════════
+         13. FAQ
+    ══════════════════════════════════════════════════ -->
+    <section class="sec container container-tight" id="faq" style="background:var(--bg-secondary);border-radius:var(--radius-lg);">
       <div class="reveal text-center">
-        <h2 class="sec-title">Silver Prices Today: Frequently Asked Questions</h2>
+        <h2 class="sec-title-sm" style="font-size:clamp(1.4rem,3vw,1.9rem);">Silver Prices Today: Frequently Asked Questions</h2>
       </div>
       <div class="faq-list">
         <div class="faq-item">
@@ -983,7 +888,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-question">How often do silver prices update on this page? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>Our silver price refreshes every hour from Trading Economics and global market data feeds. During active trading hours (Sunday 6 PM ET to Friday 5 PM ET), real-time exchange prices fluctuate continuously, but our displayed value updates at hourly intervals to balance freshness with API stability.</p></div>
+          <div class="faq-answer"><p>Our silver price refreshes every hour from Trading Economics and global market data feeds. During active trading hours (Sunday 6 PM ET to Friday 5 PM ET), real-time exchange prices fluctuate continuously, but our displayed value updates at hourly intervals.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question">What's the difference between spot price and what dealers pay? <span class="faq-icon">+</span></button>
@@ -991,7 +896,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-question">Does today's silver price include taxes or premiums? <span class="faq-icon">+</span></button>
-          <div class="faq-answer"><p>No. The spot price shown is the raw market price before any taxes, premiums, or dealer markups. When buying physical silver, you'll pay spot plus a premium (typically 5–20% for bars, more for coins). When selling, you'll receive spot minus the dealer's discount. Sales tax rules vary by state and product type.</p></div>
+          <div class="faq-answer"><p>No. The spot price shown is the raw market price before any taxes, premiums, or dealer markups. When buying physical silver, you'll pay spot plus a premium (typically 5–20% for bars, more for coins). When selling, you receive spot minus the dealer's discount. Sales tax rules vary by state and product type.</p></div>
         </div>
       </div>
     </section>
@@ -1021,7 +926,7 @@
       document.getElementById('bp-kilo').textContent = fmt2(spot * 1000 / 31.1035);
       document.getElementById('bp-dwt').textContent = fmt4(spot / 20);
 
-      // Big change
+      // Big change badge
       const bigChange = document.getElementById('big-change');
       if (change !== null && changePct !== null) {
         const dir = change >= 0 ? 'up' : 'down';
@@ -1039,7 +944,7 @@
       const dateStr = now.toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric', year: 'numeric' });
       document.getElementById('big-updated').textContent = `Updated: ${dateStr}, ${timeStr} ET`;
 
-      // Strip
+      // Sticky price strip
       document.getElementById('strip-price').textContent = fmt2(spot);
       const stripChange = document.getElementById('strip-change');
       if (change !== null && changePct !== null) {
@@ -1051,9 +956,9 @@
         stripChange.textContent = 'Live';
         stripChange.className = 'ps-change flat';
       }
-      document.getElementById('strip-updated').textContent = `Updated: ${dateStr} ${timeStr}`;
+      document.getElementById('strip-updated').textContent = `${dateStr} ${timeStr}`;
 
-      // Movement cards (use prevClose for open if available, otherwise estimate)
+      // 24h movement (merged into big card)
       const openPrice = prevClose !== null ? prevClose : spot;
       const dailyChange = change !== null ? change : 0;
       const dailyChangePct = changePct !== null ? changePct : 0;
@@ -1061,16 +966,9 @@
       document.getElementById('move-high').textContent = fmt2(spot * 1.012);
       document.getElementById('move-low').textContent = fmt2(spot * 0.988);
       const moveChangeEl = document.getElementById('move-change');
-      moveChangeEl.textContent = (dailyChange >= 0 ? '+' : '') + fmt2(dailyChange).replace('$-', '-$').replace('$+', '+$');
-      moveChangeEl.style.color = dailyChange >= 0 ? '#4ade80' : '#f87171';
-      document.getElementById('move-change-pct').textContent = `${dailyChangePct >= 0 ? '+' : ''}${dailyChangePct.toFixed(2)}% vs prev. close`;
-
-      // Quick answer
-      document.getElementById('qa-spot').textContent = fmt2(spot);
-      document.getElementById('qa-999g').textContent = fmt4(spot * 0.999 / 31.1035);
-      document.getElementById('qa-925g').textContent = fmt4(spot * 0.925 / 31.1035);
-      document.getElementById('qa-900g').textContent = fmt4(spot * 0.900 / 31.1035);
-      document.getElementById('qa-800g').textContent = fmt4(spot * 0.800 / 31.1035);
+      const changeSign = dailyChange >= 0 ? '+' : '';
+      moveChangeEl.textContent = `${changeSign}${dailyChangePct.toFixed(2)}% (${changeSign}${fmt2(dailyChange).replace('$-','-$')})`;
+      moveChangeEl.className = `bp-data-val ${dailyChange >= 0 ? 'up' : 'down'}`;
 
       // Purity cards
       document.getElementById('purity-999-oz').textContent = fmt2(spot * 0.999);
@@ -1082,18 +980,25 @@
       document.getElementById('purity-800-oz').textContent = fmt2(spot * 0.800);
       document.getElementById('purity-800-g').textContent = fmt4(spot * 0.800 / 31.1035) + ' / gram';
 
-      // Gold/Silver ratio
-      document.getElementById('gsr-val').textContent = (gold / spot).toFixed(1);
-
-      // Dealer payout spot price
+      // Dealer payout table
       document.getElementById('dp-spot2').textContent = fmt2(spot);
-
-      // Table payouts
       document.getElementById('dp-refiner-table').textContent = `${fmt2(spot * 0.90)}–${fmt2(spot * 0.98)}`;
       document.getElementById('dp-coin-table').textContent = `${fmt2(spot * 0.75)}–${fmt2(spot * 0.90)}`;
       document.getElementById('dp-jewelry-table').textContent = `${fmt2(spot * 0.60)}–${fmt2(spot * 0.85)}`;
       document.getElementById('dp-pawn-table').textContent = `${fmt2(spot * 0.50)}–${fmt2(spot * 0.70)}`;
       document.getElementById('dp-scrap-table').textContent = `${fmt2(spot * 0.70)}–${fmt2(spot * 0.85)}`;
+
+      // Quick answer
+      document.getElementById('qa-spot').textContent = fmt2(spot);
+      document.getElementById('qa-999g').textContent = fmt4(spot * 0.999 / 31.1035);
+      document.getElementById('qa-925g').textContent = fmt4(spot * 0.925 / 31.1035);
+      document.getElementById('qa-900g').textContent = fmt4(spot * 0.900 / 31.1035);
+      document.getElementById('qa-800g').textContent = fmt4(spot * 0.800 / 31.1035);
+
+      // Gold/Silver ratio
+      const gsr = (gold / spot).toFixed(1);
+      const gsrEl = document.getElementById('gsr-val');
+      if (gsrEl) gsrEl.textContent = gsr;
 
       // Real-world examples
       document.getElementById('ex-ring').textContent = fmt2(5 / 31.1035 * 0.925 * spot);
@@ -1103,15 +1008,27 @@
       document.getElementById('ex-quarter').textContent = fmt2(6.25 / 31.1035 * 0.90 * spot);
       document.getElementById('ex-bar').textContent = fmt2(10 * 0.999 * spot);
 
-      // Chart header price display
+      // Chart header price
       const ccp = document.getElementById('chart-current-price');
       if (ccp) { ccp.classList.remove('loading'); ccp.textContent = fmt2(spot); }
 
-      // Today's analysis live values
+      // Analysis inline values
       const ap = document.getElementById('analysis-price');
       if (ap) ap.textContent = fmt2(spot);
       const agsr = document.getElementById('analysis-gsr');
-      if (agsr) agsr.textContent = (gold / spot).toFixed(1);
+      if (agsr) agsr.textContent = gsr;
+    }
+
+    // Market drivers accordion
+    function toggleDrivers() {
+      const hidden = document.querySelectorAll('.drivers-hidden');
+      const btn = document.getElementById('drivers-toggle');
+      const txt = document.getElementById('drivers-toggle-text');
+      const arrow = document.getElementById('drivers-arrow');
+      const isOpen = hidden[0].classList.contains('show');
+      hidden.forEach(el => el.classList.toggle('show', !isOpen));
+      txt.textContent = isOpen ? 'Show 5 More Factors' : 'Show Less';
+      arrow.textContent = isOpen ? '▾' : '▴';
     }
 
     // FAQ accordion
@@ -1127,8 +1044,8 @@
 
     // Scroll reveal
     const obs = new IntersectionObserver(ents => {
-      ents.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
-    }, { threshold: 0.1 });
+      ents.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
     document.addEventListener('DOMContentLoaded', function() {
@@ -1137,7 +1054,6 @@
       SilverPrice.onPriceUpdate(() => { updateAll(); });
       updateAll();
     });
-
   </script>
 </body>
 </html>
