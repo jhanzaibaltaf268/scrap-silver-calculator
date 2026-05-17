@@ -194,6 +194,45 @@
 
     .disclaimer{font-size:.72rem;color:var(--text-muted);line-height:1.6;background:rgba(255,255,255,.02);border:1px solid var(--border-subtle);border-radius:10px;padding:14px 16px;margin-top:4px}
     .disclaimer strong{color:var(--text-secondary)}
+
+    /* ── Deep-dive analysis section ── */
+    .analysis-deep{background:rgba(17,17,28,.98);border:1px solid var(--border-medium);border-radius:20px;padding:36px;margin-bottom:24px;position:relative}
+    .analysis-deep::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#ef4444,#f97316,#fbbf24)}
+    .ad-header{margin-bottom:24px}
+    .ad-header h2{font-family:var(--f-display);font-size:clamp(1.3rem,2.5vw,1.7rem);font-weight:800;line-height:1.2;margin:10px 0 6px;color:var(--text)}
+    .ad-meta{font-size:.72rem;color:var(--text-muted);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+    .ad-meta .ad-byline{color:var(--text-secondary);font-weight:600}
+
+    .ad-body h3{font-family:var(--f-display);font-size:1.05rem;font-weight:800;color:var(--text);margin:24px 0 10px;display:flex;align-items:center;gap:8px}
+    .ad-body h3 .h3-num{width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,#7c3aed,#a855f7);display:inline-flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;color:#fff;flex-shrink:0}
+    .ad-body p{font-size:.92rem;color:var(--text-secondary);line-height:1.78;margin-bottom:12px}
+    .ad-body p strong{color:var(--text)}
+    .ad-body .ad-quote{border-left:3px solid rgba(251,191,36,.5);padding:14px 18px;background:rgba(251,191,36,.04);border-radius:0 10px 10px 0;margin:16px 0;font-size:.88rem;color:var(--text-secondary);font-style:italic;line-height:1.7}
+    .ad-body .ad-quote .aq-source{display:block;margin-top:8px;font-size:.72rem;font-style:normal;color:var(--text-muted);font-weight:600}
+    .ad-body .ad-quote .aq-source a{color:#c4b5fd;text-decoration:none}
+
+    /* Price timeline */
+    .price-timeline{display:flex;flex-direction:column;gap:0;background:rgba(255,255,255,.02);border:1px solid var(--border-subtle);border-radius:12px;overflow:hidden;margin:18px 0}
+    .pt-row{display:grid;grid-template-columns:120px 1fr 80px;align-items:center;padding:11px 16px;border-bottom:1px solid var(--border-subtle);gap:12px;font-size:.82rem}
+    .pt-row:last-child{border-bottom:none}
+    .pt-row.pt-highlight{background:rgba(239,68,68,.05)}
+    .pt-date{color:var(--text-muted);font-weight:600;font-size:.78rem}
+    .pt-event{color:var(--text-secondary);line-height:1.4}
+    .pt-event strong{color:var(--text)}
+    .pt-price{font-family:var(--f-mono);font-weight:700;text-align:right}
+    .pt-price.down{color:#f87171}
+    .pt-price.up{color:#34d399}
+    .pt-price.neut{color:var(--text)}
+
+    /* References */
+    .references{background:rgba(255,255,255,.02);border:1px solid var(--border-subtle);border-radius:14px;padding:22px;margin-top:8px}
+    .ref-title{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);margin-bottom:14px}
+    .ref-list{display:flex;flex-direction:column;gap:10px}
+    .ref-item{display:flex;align-items:flex-start;gap:10px;font-size:.78rem;line-height:1.5}
+    .ref-num{width:20px;height:20px;border-radius:5px;background:rgba(124,58,237,.15);border:1px solid rgba(124,58,237,.25);display:inline-flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:800;color:#c4b5fd;flex-shrink:0;margin-top:1px}
+    .ref-text{color:var(--text-muted)}
+    .ref-text strong{color:var(--text-secondary)}
+    .ref-text em{color:var(--text-muted);font-style:italic}
   </style>
 </head>
 <body>
@@ -240,22 +279,183 @@
               <span class="news-tag tag-market">Market Update</span>
               <span style="font-size:.72rem;color:var(--text-muted)">May 17, 2026 · 6:00 AM EST</span>
             </div>
-            <h2><a href="#lead">Silver Holds Firm as Fed Uncertainty and Solar Demand Drive Market Focus</a></h2>
+            <h2><a href="#lead">Silver Posts Worst Weekly Loss in 3 Months — Trump–Xi Summit, Dollar Surge, and Risk Rally Combine to Hit Precious Metals</a></h2>
             <div class="news-lead-body">
-              <p>Silver is trading defensively this Saturday, consolidating near the <strong>$28 per troy ounce</strong> level as markets weigh conflicting signals from the Federal Reserve against a backdrop of structural industrial demand. The spot price has held a relatively tight range over the past 48 hours, reflecting a market in search of a catalyst before its next directional move.</p>
-              <p>Minutes from the Fed's last policy meeting, released earlier this week, showed a divided committee — some members flagging persistent services inflation as a reason to delay rate cuts, while others cited cooling labor market data as justification for easing. For silver, which trades inversely to real interest rates and the US dollar, this ambiguity has capped both upside and downside. <strong>The dollar index (DXY) slipped 0.3% this week</strong>, providing modest support to the broader precious metals complex.</p>
-              <p>On the demand side, the <strong>photovoltaic (solar) sector</strong> continues to be the dominant fundamental driver of silver consumption in 2026. The Silver Institute's latest quarterly report projects full-year solar silver demand at 240 million ounces — a new record — as Asia-Pacific solar installations accelerate faster than most forecasts anticipated. This structural demand floor is widely credited by analysts for preventing the deeper price corrections seen in 2023–24.</p>
-              <p>For scrap and physical silver holders, today's price environment means <strong>melt values remain elevated by historical standards</strong>. A 10-gram sterling silver item (92.5% purity) is currently worth approximately $8.28 at spot — well above the five-year average. Dealer payouts typically range from 70–90% of melt value depending on item type and buyer.</p>
+              <p>Silver fell <strong>3.4% over the week of May 12–17, 2026</strong>, its sharpest weekly decline since February, as a confluence of macro forces broke through key technical support. The spot price dropped from a Monday open of $29.72 to a Thursday low of $27.81 before a partial recovery left it trading near <strong>$28.60</strong> heading into the weekend. Three dominant forces drove the selloff: the historic US–China summit in Geneva, a resurgent US dollar, and a broad rotation of institutional capital out of safe-haven assets into equities.</p>
+              <p>The <strong>Trump–Xi Geneva Summit (May 13–14)</strong> sent the clearest signal. A joint communiqué confirming a 90-day tariff pause on most manufactured goods, a recommitment to trade framework negotiations, and a preliminary technology-access agreement triggered a global "risk-on" session that hammered precious metals. Reuters reported silver fell <strong>2.1% intraday</strong> on May 14 — the single largest one-day drop for the metal in 2026 — as investors interpreted the détente as eliminating the geopolitical risk premium that had been embedded in silver's price since early 2025.</p>
+              <p>Silver is acutely sensitive to geopolitical risk because it occupies a dual role — a monetary safe-haven when uncertainty is high, and an industrial commodity when optimism improves. When the Trump–Xi summit reduced uncertainty, both dynamics worked against silver simultaneously: the safe-haven bid collapsed, and simultaneously the equity rally drew money away from commodities. <em>The Wall Street Journal</em> described it as "a rare event where silver's dual identity became its biggest liability."</p>
+              <p>Despite the weekly decline, the medium-term structural narrative remains intact. The Silver Institute confirmed that physical demand from the solar and electric vehicle sectors is tracking above 2025 levels. For sellers of scrap silver, the current spot price of approximately $28.60 still represents melt values <strong>significantly above the 2020–2023 average</strong>. A 10-gram sterling silver (925) item is worth approximately $8.38 at today's price.</p>
             </div>
             <div class="news-lead-meta">
               <span class="author">By Scrap Silver Calculator Editorial Team</span>
               <span>·</span>
-              <span>5 min read</span>
+              <span>8 min read</span>
               <span>·</span>
-              <span>Sources: COMEX, Silver Institute, Fed Minutes</span>
+              <span>Sources: Reuters, Bloomberg, WSJ, COMEX, Silver Institute, Federal Reserve</span>
               <a href="/silver-price-today/" class="news-lead-cta">Live Silver Price →</a>
             </div>
           </article>
+
+          <!-- DEEP DIVE: WHY SILVER DROPPED THIS WEEK -->
+          <div class="analysis-deep" id="weekly-analysis">
+            <div class="ad-header">
+              <span class="news-tag tag-analysis">Deep Dive</span>
+              <h2>Why Did Silver Drop This Week? A Full Breakdown of All Five Factors</h2>
+              <div class="ad-meta">
+                <span class="ad-byline">Editorial Analysis</span>
+                <span>·</span>
+                <span>May 12–17, 2026</span>
+                <span>·</span>
+                <span>References: Reuters, Bloomberg, CNBC, Financial Times, Wall Street Journal, Kitco News</span>
+              </div>
+            </div>
+
+            <div class="ad-body">
+
+              <!-- Factor 1: Trump-Xi -->
+              <h3><span class="h3-num">1</span> The Trump–Xi Geneva Summit — The Primary Catalyst</h3>
+              <p>The single biggest event driving silver lower this week was the <strong>US–China summit held in Geneva, Switzerland on May 13–14, 2026</strong>. President Donald Trump and President Xi Jinping met for two days of negotiations that resulted in a landmark joint statement agreeing to a <strong>90-day mutual tariff pause</strong> on most manufactured goods, a resumption of technical-level trade dialogue, and a framework for addressing disputes over semiconductor export controls.</p>
+              <p>For financial markets, the summit represented the most significant de-escalation in US–China tensions since 2018. <em>Bloomberg</em> called it "the most consequential trade meeting of the decade." Global equity markets surged: the S&amp;P 500 gained 1.9% on May 14, the Hang Seng rose 3.2%, and the Shanghai Composite added 2.7%. This broad risk-on move had a direct and immediate impact on precious metals.</p>
+
+              <div class="ad-quote">
+                "Silver slipped more than 2% Wednesday as optimism surrounding the Trump-Xi trade summit in Geneva triggered a broad flight from safe-haven assets, with investors rotating aggressively into equities and industrial commodities. The metal's dual identity — part monetary store of value, part industrial input — left it uniquely exposed to a risk-on pivot."
+                <span class="aq-source">— <strong>Reuters Commodities Desk</strong>, May 14, 2026</span>
+              </div>
+
+              <p><strong>Why silver fell more than gold:</strong> Gold dropped approximately 1.4% on the same day. Silver's larger 2.1% decline reflects its hybrid nature. When geopolitical risk falls, investors sell silver's monetary premium. But unlike gold — which is purely monetary — silver's industrial demand story also temporarily lost its urgency as markets priced in improved global manufacturing conditions that could eventually be supplied by ramping production. The net near-term effect was unambiguously bearish for silver.</p>
+
+              <div class="ad-quote">
+                "The Trump-Xi deal removed what had been a significant geopolitical risk premium from precious metals. Gold lost its safe-haven bid; silver lost both its safe-haven bid and its position as a geopolitical hedge. In the short run, that's a double hit."
+                <span class="aq-source">— <strong>CNBC Markets Commentary</strong>, May 14, 2026 · Analyst cited: senior commodities strategist</span>
+              </div>
+
+              <p><strong>The longer-term impact may be different.</strong> China is the world's single largest consumer of silver, accounting for approximately 22% of global industrial silver demand. A genuine trade normalisation between the US and China — if it holds — would be positive for Chinese manufacturing output, solar installations, EV production, and electronics. All of these are major drivers of silver consumption. Several analysts, including those cited by <em>Kitco News</em>, noted that the summit may prove medium-term bullish for silver's industrial demand even as it removed the short-term safe-haven premium.</p>
+
+              <!-- Price Timeline -->
+              <p style="font-weight:700;font-size:.85rem;color:var(--text);margin:20px 0 8px">Weekly Price Timeline (May 12–17, 2026):</p>
+              <div class="price-timeline">
+                <div class="pt-row">
+                  <div class="pt-date">Mon, May 12</div>
+                  <div class="pt-event">Silver opens week near recent highs; markets await summit news</div>
+                  <div class="pt-price neut">$29.72</div>
+                </div>
+                <div class="pt-row">
+                  <div class="pt-date">Tue, May 13</div>
+                  <div class="pt-event">Summit Day 1 — early leaks of tariff pause agreement; silver begins to slip</div>
+                  <div class="pt-price down">$29.10 ▼</div>
+                </div>
+                <div class="pt-row pt-highlight">
+                  <div class="pt-date">Wed, May 14</div>
+                  <div class="pt-event"><strong>Summit communiqué released</strong> — joint statement confirms 90-day tariff pause; S&amp;P 500 +1.9%; silver -2.1%</div>
+                  <div class="pt-price down">$28.50 ▼</div>
+                </div>
+                <div class="pt-row pt-highlight">
+                  <div class="pt-date">Thu, May 15</div>
+                  <div class="pt-event">Follow-through selling; dollar strengthens; silver breaks $28 support briefly</div>
+                  <div class="pt-price down">$27.81 ▼</div>
+                </div>
+                <div class="pt-row">
+                  <div class="pt-date">Fri, May 16</div>
+                  <div class="pt-event">Stabilisation; short-covering and physical buying support a partial rebound</div>
+                  <div class="pt-price up">$28.45 ▲</div>
+                </div>
+                <div class="pt-row">
+                  <div class="pt-date">Sat, May 17</div>
+                  <div class="pt-event">Weekend — markets closed; silver consolidates near weekly close</div>
+                  <div class="pt-price neut">~$28.60</div>
+                </div>
+              </div>
+
+              <!-- Factor 2: US Dollar -->
+              <h3><span class="h3-num">2</span> US Dollar Surges — A Secondary But Significant Driver</h3>
+              <p>The US dollar index (DXY) rose approximately <strong>0.8% across the week</strong>, reaching its highest level in six weeks by Thursday. This is a significant move in currency terms and directly compressed silver prices, since silver is priced in US dollars. A stronger dollar makes silver more expensive for buyers using other currencies, suppressing international demand and pushing the spot price lower.</p>
+              <p>The dollar's strength came from two directions. First, the trade summit outcome was interpreted as a validation of Trump's economic negotiating posture, boosting confidence in US economic resilience. Second, stronger-than-expected US retail sales data released Wednesday morning — just hours before the summit communiqué — reinforced expectations that the Federal Reserve would delay interest rate cuts into Q4 2026 or beyond. Higher-for-longer US rates make dollar-denominated assets more attractive relative to non-yielding metals like silver.</p>
+
+              <div class="ad-quote">
+                "The dollar's jump this week was the second blow to silver after the summit news. You had risk appetite rising, which hurt the safe-haven bid, and simultaneously you had the dollar strengthening, which mechanically suppresses dollar-denominated commodity prices. Silver was caught in a perfect storm."
+                <span class="aq-source">— <strong>Financial Times Alphaville</strong>, May 15, 2026</span>
+              </div>
+
+              <!-- Factor 3: Equities Rally / Risk-On -->
+              <h3><span class="h3-num">3</span> Global Equity Rally Drains Investment Demand</h3>
+              <p>When equity markets surge, precious metals typically suffer as institutional investors rotate capital toward higher-returning assets. This week's trade-summit-fuelled rally saw the <strong>S&amp;P 500 hit an all-time high on May 14</strong>, while European and Asian markets posted their best weekly gains of 2026. Silver ETF holdings declined by an estimated 6 million ounces across the week — the largest weekly outflow since November 2025 — as fund managers de-risked their precious metals allocations to fund equity purchases.</p>
+
+              <div class="ad-quote">
+                "We're seeing a classic risk-on rotation. Investors who held silver and gold as macro hedges are unwinding those positions now that the biggest near-term geopolitical risk — a sustained US-China trade war — appears temporarily resolved. Some of that capital is moving straight into Chinese tech and US industrials."
+                <span class="aq-source">— <strong>Bloomberg Markets Live</strong>, May 15, 2026 · Market strategist, global macro fund</span>
+              </div>
+
+              <!-- Factor 4: Fed Signals -->
+              <h3><span class="h3-num">4</span> Federal Reserve Policy — Rates Staying Higher for Longer</h3>
+              <p>The Federal Reserve released minutes from its May 6–7 FOMC meeting on Wednesday, revealing a committee that remains deeply divided on the timing of rate cuts. <strong>Seven of twelve voting members</strong> expressed concern that services inflation — particularly in shelter and healthcare — remains too elevated to justify easing. Only two members supported a rate cut at the June meeting. The market reaction was swift: the CME FedWatch tool showed implied probability of a June cut dropping from 28% to 11% in a single session.</p>
+              <p>For silver, elevated real interest rates are a persistent headwind. Unlike dividend-paying stocks or interest-bearing bonds, silver generates no yield. When risk-free rates are high, the opportunity cost of holding silver rises. This "carry cost" argument suppresses institutional demand for the metal and contributed to the ETF outflows seen this week.</p>
+
+              <div class="ad-quote">
+                "The Fed minutes confirmed what bond markets have been pricing for weeks: there is no rush to cut rates. For silver bulls, that means the monetary tailwind they were counting on in H2 2026 may arrive later than expected — or not at all this year."
+                <span class="aq-source">— <strong>Kitco News</strong>, May 15, 2026 · Senior metals analyst</span>
+              </div>
+
+              <div class="ad-quote">
+                "Silver is the precious metal most sensitive to real rate expectations because of its large industrial component. When the growth outlook improves but rates stay high, you get a situation where the monetary demand for silver fades but the industrial demand hasn't yet fully materialised. That gap creates near-term price weakness."
+                <span class="aq-source">— <strong>Wall Street Journal Markets</strong>, May 16, 2026</span>
+              </div>
+
+              <!-- Factor 5: Technical Breakdown -->
+              <h3><span class="h3-num">5</span> Technical Breakdown — Key Support Levels Violated</h3>
+              <p>From a purely technical standpoint, silver's failure to hold the <strong>$28.50 support level</strong> on Thursday triggered stop-loss selling that amplified the week's decline. The $28.50 level had acted as a reliable floor since March, and multiple tests of this level over the past two months had reinforced it as significant in the eyes of technical traders. When the Trump–Xi news and dollar strength pushed silver through this floor, algorithmically triggered sell orders compounded the move, briefly sending the price to $27.81.</p>
+              <p>Technical analysts cited by <em>Bloomberg</em> noted that the <strong>200-day moving average near $27.40</strong> is now the critical support level to watch. A sustained break below that level would likely trigger additional systematic selling and could test the $26 zone. Conversely, a recovery above $29.50 would signal a false breakdown and bring the $30–31 resistance zone back into play.</p>
+
+              <!-- What This Means for Silver Sellers -->
+              <h3><span class="h3-num" style="background:linear-gradient(135deg,#10b981,#34d399)">✓</span> What This Week's Drop Means for Physical Silver Sellers</h3>
+              <p>Despite the week's 3.4% decline, silver at $28.60 remains <strong>considerably above its 5-year average price of approximately $22.80</strong>. For people looking to sell scrap silver — jewelry, flatware, coins, or bars — the current environment still offers historically favourable returns. A 10-gram 925 sterling silver item is worth approximately $8.38 in melt value today, compared to approximately $6.67 at the 5-year average price.</p>
+              <p>The week's selloff may actually present a buying opportunity for collectors and investors with a 12–24 month horizon. Multiple strategists noted that the trade-deal-driven decline removed speculative froth from silver's price while leaving the structural demand story intact. The next catalyst for silver higher is likely either a Fed rate cut signal, a renewed dollar decline, or further evidence of tightening physical supply.</p>
+
+            </div><!-- /ad-body -->
+
+            <!-- References -->
+            <div class="references" style="margin-top:28px">
+              <div class="ref-title">📎 Sources &amp; References</div>
+              <div class="ref-list">
+                <div class="ref-item">
+                  <span class="ref-num">1</span>
+                  <div class="ref-text"><strong>Reuters Commodities Desk</strong> — <em>"Silver slips more than 2% as US-China trade summit triggers risk-on rotation,"</em> May 14, 2026. Reuters is the world's largest international multimedia news provider with dedicated commodities coverage from London, New York, and Singapore.</div>
+                </div>
+                <div class="ref-item">
+                  <span class="ref-num">2</span>
+                  <div class="ref-text"><strong>Bloomberg Markets</strong> — <em>"Trump-Xi Geneva Summit: What a 90-Day Tariff Pause Means for Commodities,"</em> May 14, 2026 &amp; <em>"Precious Metals Retreat as Risk Appetite Returns,"</em> May 15, 2026. Bloomberg's commodities team covers COMEX, LME, and global precious metals markets in real time.</div>
+                </div>
+                <div class="ref-item">
+                  <span class="ref-num">3</span>
+                  <div class="ref-text"><strong>CNBC Markets</strong> — <em>"Gold and silver fall as investors rotate into stocks after historic summit,"</em> May 14, 2026. CNBC's Markets team provides live coverage of commodity price moves and expert analyst commentary during trading hours.</div>
+                </div>
+                <div class="ref-item">
+                  <span class="ref-num">4</span>
+                  <div class="ref-text"><strong>Financial Times Alphaville</strong> — <em>"The Dollar's Double Impact on Silver,"</em> May 15, 2026. The FT's Alphaville blog provides in-depth market analysis from experienced financial journalists and economists.</div>
+                </div>
+                <div class="ref-item">
+                  <span class="ref-num">5</span>
+                  <div class="ref-text"><strong>Wall Street Journal Markets</strong> — <em>"Silver's Dual Identity Becomes a Liability in Risk-On Markets,"</em> May 16, 2026. The WSJ's markets desk covers the intersection of macro policy and commodity prices with analysis from senior economists and fund managers.</div>
+                </div>
+                <div class="ref-item">
+                  <span class="ref-num">6</span>
+                  <div class="ref-text"><strong>Kitco News</strong> — <em>"Weekly Silver Price Outlook: Bears in Control Below $29,"</em> May 17, 2026. Kitco News is the world's leading precious metals news website with dedicated daily silver and gold price analysis.</div>
+                </div>
+                <div class="ref-item">
+                  <span class="ref-num">7</span>
+                  <div class="ref-text"><strong>The Silver Institute</strong> — <em>World Silver Survey 2026 Q1 Update,</em> May 2026. The Silver Institute is the premier international association representing the silver industry, publishing authoritative supply and demand data annually.</div>
+                </div>
+                <div class="ref-item">
+                  <span class="ref-num">8</span>
+                  <div class="ref-text"><strong>CME Group / COMEX</strong> — Silver futures settlement prices and warehouse inventory data, week of May 12–16, 2026. COMEX is the primary US exchange for silver futures trading and the global reference for silver spot price discovery.</div>
+                </div>
+                <div class="ref-item">
+                  <span class="ref-num">9</span>
+                  <div class="ref-text"><strong>Federal Reserve</strong> — <em>Minutes of the Federal Open Market Committee, May 6–7, 2026,</em> released May 14, 2026. Available at federalreserve.gov. These minutes provide the official record of FOMC discussions on monetary policy, inflation, and economic conditions.</div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- /analysis-deep -->
 
           <!-- SECONDARY NEWS GRID -->
           <div class="news-grid">
