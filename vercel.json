@@ -12,6 +12,16 @@
       ],
       "destination": "https://scrapsilvercalculater.com/$1",
       "permanent": true
+    },
+    {
+      "source": "/current-silver-price/",
+      "destination": "/silver-price-today/",
+      "permanent": true
+    },
+    {
+      "source": "/current-silver-price",
+      "destination": "/silver-price-today/",
+      "permanent": true
     }
   ],
   "headers": [
