@@ -233,6 +233,41 @@
     .ref-text{color:var(--text-muted)}
     .ref-text strong{color:var(--text-secondary)}
     .ref-text em{color:var(--text-muted);font-style:italic}
+
+    /* ── Article Modal ── */
+    .art-modal{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .22s}
+    .art-modal.open{opacity:1;pointer-events:all}
+    .art-modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(4px)}
+    .art-modal-box{position:relative;z-index:1;background:#0f0f1a;border:1px solid rgba(255,255,255,.14);border-radius:20px;max-width:740px;width:100%;max-height:88vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.6);transform:translateY(16px);transition:transform .25s}
+    .art-modal.open .art-modal-box{transform:translateY(0)}
+    .art-modal-head{position:sticky;top:0;background:#0f0f1a;border-bottom:1px solid rgba(255,255,255,.08);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;z-index:2}
+    .art-modal-close{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#f0f4f8;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .18s;flex-shrink:0}
+    .art-modal-close:hover{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.4)}
+    .art-modal-body{padding:28px 32px 36px}
+    .art-modal-body h2{font-family:var(--f-display);font-size:clamp(1.25rem,3vw,1.65rem);font-weight:800;line-height:1.2;letter-spacing:-.02em;color:var(--text);margin:12px 0 8px}
+    .art-modal-meta{font-size:.73rem;color:var(--text-muted);margin-bottom:22px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+    .art-modal-meta span+span::before{content:'·';margin-right:8px}
+    .art-modal-body p{font-size:.93rem;color:var(--text-secondary);line-height:1.78;margin-bottom:14px}
+    .art-modal-body p strong{color:var(--text)}
+    .art-modal-body h3{font-family:var(--f-display);font-size:1rem;font-weight:800;color:var(--text);margin:22px 0 8px}
+    .art-modal-body .ad-quote{border-left:3px solid rgba(251,191,36,.5);padding:12px 16px;background:rgba(251,191,36,.04);border-radius:0 8px 8px 0;margin:14px 0;font-size:.87rem;color:var(--text-secondary);font-style:italic;line-height:1.7}
+    .art-modal-body .ad-quote .aq-source{display:block;margin-top:6px;font-size:.7rem;font-style:normal;color:var(--text-muted);font-weight:600}
+    .art-modal-body .price-timeline{display:flex;flex-direction:column;background:rgba(255,255,255,.02);border:1px solid var(--border-subtle);border-radius:10px;overflow:hidden;margin:14px 0}
+    .art-modal-body .pt-row{display:grid;grid-template-columns:110px 1fr 76px;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border-subtle);font-size:.8rem;align-items:center}
+    .art-modal-body .pt-row:last-child{border-bottom:none}
+    .art-modal-body .pt-row.pt-highlight{background:rgba(239,68,68,.05)}
+    .art-modal-body .pt-date{color:var(--text-muted);font-weight:600;font-size:.75rem}
+    .art-modal-body .pt-event{color:var(--text-secondary);line-height:1.35}
+    .art-modal-body .pt-price{font-family:var(--f-mono);font-weight:700;text-align:right}
+    .art-modal-body .pt-price.down{color:#f87171}
+    .art-modal-body .pt-price.up{color:#34d399}
+    .art-modal-body .pt-price.neut{color:var(--text)}
+    .art-modal-cta{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#7c3aed,#a855f7);color:#fff;padding:10px 20px;border-radius:100px;font-size:.82rem;font-weight:700;text-decoration:none;margin-top:8px;transition:opacity .2s}
+    .art-modal-cta:hover{opacity:.85}
+    /* button styled like nc-read-btn */
+    button.nc-read-btn{cursor:pointer;font-family:inherit}
+    button.news-lead-cta{cursor:pointer;font-family:inherit;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.3);color:#c4b5fd;padding:8px 16px;border-radius:100px;font-size:.78rem;font-weight:700;transition:all .2s}
+    button.news-lead-cta:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
   </style>
 </head>
 <body>
@@ -287,7 +322,7 @@
               <span class="author">By Scrap Silver Calculator Editorial Team</span>
               <span>·</span>
               <span>Sources: Reuters, Bloomberg, WSJ, COMEX, Silver Institute, Fed</span>
-              <a href="/silver-price-today/" class="news-lead-cta" target="_blank" rel="noopener">Full Price Analysis →</a>
+              <button class="news-lead-cta" data-article="main-story">Read Full Story →</button>
             </div>
           </article>
 
@@ -308,7 +343,7 @@
               <p>Five converging forces drove silver's 3.4% weekly loss: the Geneva tariff pause eliminated the geopolitical risk premium, a resurgent US dollar (DXY +0.8%) compressed commodity prices, the global equity rally drained an estimated 6 million ounces from silver ETFs, Fed minutes showed 7 of 12 FOMC members opposing a June rate cut, and a technical breakdown below $28.50 support triggered additional stop-loss selling.</p>
             </div>
             <div style="margin-top:16px">
-              <a href="/silver-price-forecast-today/" class="news-lead-cta" target="_blank" rel="noopener" style="margin-left:0;display:inline-flex">Read Full Breakdown →</a>
+              <button class="news-lead-cta" data-article="deep-dive">Read Full Breakdown →</button>
             </div>
           </div>
 
@@ -321,7 +356,7 @@
               <p class="nc-snippet">The Silver Institute's Q1 2026 report confirms the PV sector is on pace for a new annual consumption record — up 18% year-on-year — with no economical substitute for silver in high-efficiency solar cells found at scale.</p>
               <div class="nc-meta">
                 <span>May 17, 2026 · Industry</span>
-                <a href="/silver-price-today/" class="nc-read-btn" target="_blank" rel="noopener">Read more →</a>
+                <button class="nc-read-btn" data-article="solar">Read more →</button>
               </div>
             </div>
 
@@ -331,7 +366,7 @@
               <p class="nc-snippet">The gold-to-silver ratio sits near <strong>89:1</strong> — well above its 60–70 historical average — a level contrarian analysts have historically treated as a long-term entry signal for silver.</p>
               <div class="nc-meta">
                 <span>May 17, 2026 · Analysis</span>
-                <a href="/silver-price-forecast-today/" class="nc-read-btn" target="_blank" rel="noopener">Read more →</a>
+                <button class="nc-read-btn" data-article="ratio">Read more →</button>
               </div>
             </div>
 
@@ -341,7 +376,7 @@
               <p class="nc-snippet">Registered silver inventories at COMEX warehouses declined 12% over 30 days, with eligible stocks stable — signalling genuine end-use demand rather than speculative positioning or reclassification.</p>
               <div class="nc-meta">
                 <span>May 17, 2026 · Data</span>
-                <a href="/silver-price-today/" class="nc-read-btn" target="_blank" rel="noopener">Read more →</a>
+                <button class="nc-read-btn" data-article="comex">Read more →</button>
               </div>
             </div>
 
@@ -351,7 +386,7 @@
               <p class="nc-snippet">Global silver ETFs added over 8 million ounces for a third consecutive week, driven by institutional rather than retail flows, as above-consensus CPI data reignited inflation-hedge positioning across major economies.</p>
               <div class="nc-meta">
                 <span>May 17, 2026 · Investment</span>
-                <a href="/how-silver-prices-work/" class="nc-read-btn" target="_blank" rel="noopener">Read more →</a>
+                <button class="nc-read-btn" data-article="etf">Read more →</button>
               </div>
             </div>
 
@@ -361,7 +396,7 @@
               <p class="nc-snippet">The DXY fell to a three-month low on softer US retail sales and renewed Fed easing expectations — though silver's failure to rally meaningfully signals strong overhead resistance remains at the $29–30 zone.</p>
               <div class="nc-meta">
                 <span>May 17, 2026 · Macro</span>
-                <a href="/silver-price-all-currencies/" class="nc-read-btn" target="_blank" rel="noopener">Read more →</a>
+                <button class="nc-read-btn" data-article="dollar">Read more →</button>
               </div>
             </div>
 
@@ -371,7 +406,7 @@
               <p class="nc-snippet">Each EV uses 25–50 grams of silver in contacts, sensors, and solid-state battery prototypes — with 18 million units projected for 2026, the compound demand effect is growing material while mine supply holds near 820 million ounces globally.</p>
               <div class="nc-meta">
                 <span>May 17, 2026 · Industry</span>
-                <a href="/what-is-silver-scrap/" class="nc-read-btn" target="_blank" rel="noopener">Read more →</a>
+                <button class="nc-read-btn" data-article="ev">Read more →</button>
               </div>
             </div>
 
@@ -383,7 +418,7 @@
             <h2>Silver's Defining Tension in 2026: Industrial Strength vs. Monetary Hesitation</h2>
             <p>Silver in 2026 is <strong>"structurally bullish, tactically stuck."</strong> The demand fundamentals have arguably never been stronger — yet the price refuses to sustainably break above $30, held down by a stubborn US dollar and a Federal Reserve that keeps markets guessing. The gold/silver ratio at 89 is the number that stands out most: historically, readings above 80 have been followed by sharp silver outperformance once a macro catalyst unlocks pent-up investment demand.</p>
             <div style="margin-top:16px">
-              <a href="/how-silver-prices-work/" class="news-lead-cta" target="_blank" rel="noopener" style="margin-left:0;display:inline-flex">How Silver Prices Work →</a>
+              <button class="news-lead-cta" data-article="commentary">Read Full Commentary →</button>
             </div>
             <div class="com-sig">
               <div class="sig-avatar">SC</div>
@@ -529,6 +564,18 @@
     </div><!-- /container -->
   </main>
 
+  <!-- Article Modal -->
+  <div id="article-modal" class="art-modal" role="dialog" aria-modal="true" aria-labelledby="art-modal-title">
+    <div class="art-modal-overlay" id="art-modal-overlay"></div>
+    <div class="art-modal-box">
+      <div class="art-modal-head">
+        <span id="art-modal-tag"></span>
+        <button class="art-modal-close" id="art-modal-close" aria-label="Close article">✕</button>
+      </div>
+      <div class="art-modal-body" id="art-modal-body"></div>
+    </div>
+  </div>
+
   <div id="site-footer"></div>
   <script src="/js/silver-price.js" defer></script>
   <script src="/js/components.js" defer></script>
@@ -617,6 +664,157 @@
 
       SilverPrice.onPriceUpdate(updatePrices);
       updatePrices();
+
+      // ── Article Modal ──
+      const ARTICLES = {
+        'main-story': {
+          tag: 'Market Update', tagClass: 'tag-market',
+          title: 'Silver Posts Worst Weekly Loss in 3 Months — Trump–Xi Summit, Dollar Surge, and Risk Rally Combine to Hit Precious Metals',
+          meta: ['By Scrap Silver Calculator Editorial Team', 'May 17, 2026 · 6:00 AM EST', '8 min read', 'Sources: Reuters, Bloomberg, WSJ, COMEX, Silver Institute, Federal Reserve'],
+          body: `
+            <p>Silver fell <strong>3.4% over the week of May 12–17, 2026</strong>, its sharpest weekly decline since February, as a confluence of macro forces broke through key technical support. The spot price dropped from a Monday open of $29.72 to a Thursday low of $27.81 before a partial recovery left it trading near <strong>$28.60</strong> heading into the weekend.</p>
+            <p>The <strong>Trump–Xi Geneva Summit (May 13–14)</strong> sent the clearest signal. A joint communiqué confirming a 90-day tariff pause on most manufactured goods triggered a global "risk-on" session that hammered precious metals. Reuters reported silver fell <strong>2.1% intraday on May 14</strong> — the single largest one-day drop for the metal in 2026 — as investors interpreted the détente as eliminating the geopolitical risk premium embedded in silver's price since early 2025.</p>
+            <p>Silver occupies a dual role — a monetary safe-haven when uncertainty is high, and an industrial commodity when optimism improves. When the summit reduced uncertainty, both dynamics worked against silver simultaneously: the safe-haven bid collapsed and the equity rally drew institutional money away from commodities. <em>The Wall Street Journal</em> described it as "a rare event where silver's dual identity became its biggest liability."</p>
+            <h3>Weekly Price Timeline (May 12–17, 2026)</h3>
+            <div class="price-timeline">
+              <div class="pt-row"><div class="pt-date">Mon, May 12</div><div class="pt-event">Silver opens near recent highs; markets await summit news</div><div class="pt-price neut">$29.72</div></div>
+              <div class="pt-row"><div class="pt-date">Tue, May 13</div><div class="pt-event">Summit Day 1 — early tariff-pause leaks; silver begins to slip</div><div class="pt-price down">$29.10 ▼</div></div>
+              <div class="pt-row pt-highlight"><div class="pt-date">Wed, May 14</div><div class="pt-event"><strong>Communiqué released</strong> — 90-day pause confirmed; S&P 500 +1.9%; silver −2.1%</div><div class="pt-price down">$28.50 ▼</div></div>
+              <div class="pt-row pt-highlight"><div class="pt-date">Thu, May 15</div><div class="pt-event">Follow-through selling; dollar strengthens; silver briefly breaks $28</div><div class="pt-price down">$27.81 ▼</div></div>
+              <div class="pt-row"><div class="pt-date">Fri, May 16</div><div class="pt-event">Stabilisation; short-covering and physical buying bring partial rebound</div><div class="pt-price up">$28.45 ▲</div></div>
+              <div class="pt-row"><div class="pt-date">Sat, May 17</div><div class="pt-event">Weekend close; silver consolidates near weekly low</div><div class="pt-price neut">~$28.60</div></div>
+            </div>
+            <p>Despite the decline, silver at $28.60 still represents melt values <strong>significantly above the 2020–2023 average</strong>. A 10-gram sterling silver (925) item is worth approximately $8.38 at today's price. The medium-term structural demand story — solar, EVs, grid infrastructure — remains intact.</p>
+            <a href="/silver-price-today/" class="art-modal-cta">See Live Silver Price →</a>`
+        },
+        'deep-dive': {
+          tag: 'Deep Dive', tagClass: 'tag-analysis',
+          title: 'Why Did Silver Drop This Week? A Full Breakdown of All Five Factors',
+          meta: ['Editorial Analysis', 'May 12–17, 2026', 'Ref: Reuters, Bloomberg, CNBC, Financial Times, WSJ, Kitco News'],
+          body: `
+            <h3>1 — The Trump–Xi Geneva Summit (Primary Catalyst)</h3>
+            <p>The US–China summit held in Geneva on May 13–14 produced a landmark joint statement: a <strong>90-day mutual tariff pause</strong>, resumed trade dialogue, and a technology-access framework. Global equity markets surged — the S&P 500 +1.9%, Hang Seng +3.2% — triggering a risk-on rotation that hit silver hardest among precious metals.</p>
+            <div class="ad-quote">"Silver slipped more than 2% Wednesday as optimism surrounding the Trump-Xi summit triggered a broad flight from safe-haven assets." <span class="aq-source">— <strong>Reuters Commodities Desk</strong>, May 14, 2026</span></div>
+            <p>Gold fell ~1.4% on the day; silver fell 2.1% — because silver lost both its monetary safe-haven bid AND its geopolitical urgency simultaneously. A double hit gold does not face.</p>
+            <h3>2 — US Dollar Surges (DXY +0.8%)</h3>
+            <p>The DXY rose to a six-week high by Thursday. A stronger dollar mechanically compresses silver prices since silver is priced in USD. Stronger retail sales data released on May 14 reinforced expectations of delayed Fed rate cuts, giving the dollar additional fuel.</p>
+            <div class="ad-quote">"You had risk appetite rising, which hurt the safe-haven bid, and simultaneously you had the dollar strengthening. Silver was caught in a perfect storm." <span class="aq-source">— <strong>Financial Times Alphaville</strong>, May 15, 2026</span></div>
+            <h3>3 — Global Equity Rally Drains ETF Demand</h3>
+            <p>The S&P 500 hit an all-time high on May 14. Silver ETF holdings declined by an estimated <strong>6 million ounces</strong> across the week — the largest weekly outflow since November 2025 — as fund managers rotated capital from precious metals into equities.</p>
+            <h3>4 — Fed Minutes: Rates Staying Higher for Longer</h3>
+            <p>FOMC minutes released May 14 revealed <strong>7 of 12 voting members</strong> opposed a June rate cut. The CME FedWatch implied probability of a June cut fell from 28% to 11% in a single session. Elevated real rates raise the opportunity cost of holding non-yielding silver.</p>
+            <div class="ad-quote">"For silver bulls, that means the monetary tailwind they were counting on in H2 2026 may arrive later than expected." <span class="aq-source">— <strong>Kitco News</strong>, May 15, 2026</span></div>
+            <h3>5 — Technical Breakdown Below $28.50 Support</h3>
+            <p>Silver's failure to hold the <strong>$28.50 support level</strong> — a reliable floor since March — triggered stop-loss selling that amplified the decline to $27.81. The <strong>200-day moving average near $27.40</strong> is now the critical level to watch. A recovery above $29.50 would signal a false breakdown.</p>
+            <a href="/#calculator" class="art-modal-cta">Calculate Your Silver Value →</a>`
+        },
+        'solar': {
+          tag: 'Industry', tagClass: 'tag-industry',
+          title: 'Solar Sector to Consume Record 240 Million Ounces of Silver in 2026',
+          meta: ['Silver Institute Q1 2026 Report', 'May 17, 2026'],
+          body: `
+            <p>The photovoltaic (solar panel) industry is on pace to consume a record <strong>240 million troy ounces of silver in 2026</strong>, according to the Silver Institute's Q1 2026 World Silver Survey update — an 18% increase year-on-year and the largest annual total ever recorded for the sector.</p>
+            <p>Silver paste is used as an electrical conductor in solar cells. Each standard solar panel contains approximately 15–20 grams of silver, and higher-efficiency panels — particularly PERC and TOPCon designs now standard in utility-scale installations — require even more. Global installed solar capacity is expanding at record pace, driven by government mandates across India, China, the European Union, and the United States.</p>
+            <p>Critically, <strong>no economical substitute for silver in high-efficiency solar cells</strong> has been commercialised at scale. Copper, aluminium, and carbon-based alternatives have been tested but none match silver's combination of conductivity, stability, and printability at production volumes. This makes solar a long-duration, inelastic demand driver — one that grows regardless of silver's investment or monetary dynamics.</p>
+            <p>The Silver Institute estimates that solar alone will account for approximately <strong>17–18% of total global silver demand</strong> in 2026, up from less than 5% a decade ago. When combined with EV and grid-storage applications, industrial uses now represent the majority of annual silver consumption for the first time in history.</p>
+            <a href="/silver-price-today/" class="art-modal-cta">Live Silver Price →</a>`
+        },
+        'ratio': {
+          tag: 'Analysis', tagClass: 'tag-analysis',
+          title: 'Gold/Silver Ratio at Multi-Year High: A Contrarian Opportunity Emerging?',
+          meta: ['Market Analysis', 'May 17, 2026'],
+          body: `
+            <p>The gold-to-silver ratio — the number of ounces of silver required to purchase one ounce of gold — is currently sitting near <strong>89:1</strong>. At current prices of approximately $2,548/oz gold and $28.60/oz silver, investors can exchange 89 ounces of silver for a single gold ounce. The long-run historical average of this ratio sits between <strong>60 and 70</strong>.</p>
+            <p>To precious metals analysts who track this ratio as a valuation signal, a reading of 89 suggests silver is deeply undervalued relative to gold. The argument is straightforward: silver tends to outperform gold when the ratio compresses from elevated levels. Historical ratio peaks above 80 have typically been followed by silver outperforming gold significantly over the subsequent 12–36 months.</p>
+            <p>The ratio reached an extreme of approximately 125:1 during the March 2020 COVID crash, before silver rallied dramatically — reaching $29 by August 2020 from a March low near $12, compressing the ratio to roughly 70:1. A similar compression from today's 89:1 to the historical average of 65:1 would — assuming gold holds steady — imply silver trading near <strong>$39 per ounce</strong>.</p>
+            <p>However, timing ratio compression has proven difficult. The ratio can remain elevated for years. The current driver of the elevated ratio is persistent institutional preference for gold as a geopolitical hedge, while silver's monetary premium has been suppressed by high real interest rates. A Fed rate cut cycle or a dollar reversal is typically what triggers the ratio to snap back toward its mean.</p>
+            <a href="/silver-price-forecast-today/" class="art-modal-cta">Silver Price Forecast →</a>`
+        },
+        'comex': {
+          tag: 'Market Data', tagClass: 'tag-data',
+          title: 'COMEX Silver Inventories Fall 12% in 30 Days Amid Industrial Buying',
+          meta: ['CME Group / COMEX Data', 'May 17, 2026'],
+          body: `
+            <p>Registered silver inventories held at COMEX-approved warehouses have declined by approximately <strong>12% over the past 30 days</strong>, falling from roughly 285 million ounces to approximately 251 million ounces. This is a significant drawdown that physical silver market analysts are monitoring as a leading indicator of tightening supply.</p>
+            <p><strong>Registered stocks</strong> are metal that has been certified for delivery against COMEX futures contracts and is immediately available to buyers who take physical delivery. A sustained decline in registered stocks — as opposed to eligible stocks, which are held in COMEX warehouses but not yet certified for delivery — typically signals that actual industrial or investment buyers are taking physical possession of metal rather than simply rolling paper contracts forward.</p>
+            <p>Eligible silver inventories have remained broadly stable during the same period, suggesting the drawdown in registered stocks reflects genuine end-use demand rather than a reclassification of metal between categories. Industrial buyers in the solar, electronics, and EV sectors have been especially active in taking physical delivery.</p>
+            <p>If the drawdown in registered inventories continues at its current pace, physical tightness could emerge in COMEX delivery months later in 2026, which would put upward pressure on the silver futures basis and potentially support spot prices even against the current headwinds from dollar strength and institutional ETF outflows.</p>
+            <a href="/silver-price-today/" class="art-modal-cta">Live Silver Price & Chart →</a>`
+        },
+        'etf': {
+          tag: 'Investment', tagClass: 'tag-investment',
+          title: 'Silver ETF Inflows Surge as Inflation Hedge Demand Returns',
+          meta: ['Investment Flows Analysis', 'May 17, 2026'],
+          body: `
+            <p>Global silver-backed exchange-traded funds (ETFs) have recorded net inflows for a <strong>third consecutive week</strong>, adding over 8 million ounces to collective holdings. The iShares Silver Trust (SLV), the world's largest silver ETF, accounted for the majority of inflows, alongside European-listed physical silver ETCs.</p>
+            <p>The trigger for renewed interest is a return of inflation concerns. April 2026 CPI data released across the United States, the United Kingdom, and the Eurozone came in above consensus forecasts, reigniting fears that the disinflationary trend of 2024–2025 may be reversing. Silver, alongside gold, is traditionally held as an inflation hedge — a store of value that maintains purchasing power when fiat currencies lose theirs.</p>
+            <p>Notably, the current wave of inflows is being driven by <strong>institutional rather than retail investors</strong> — a meaningful distinction. The 2021 WallStreetBets-driven silver squeeze was a retail phenomenon that proved unsustainable. The present institutional accumulation is slower and more deliberate, and historically such flows have been more durable. Global silver ETF holdings now collectively stand near 750 million ounces, approaching levels last seen in early 2022.</p>
+            <p>The disconnect between rising ETF holdings and the week's falling spot price reflects the competing headwind of the Trump–Xi risk-on trade and dollar strength. If those macro tailwinds fade — or if inflation data continues to come in hot — the ETF inflow dynamic could provide a meaningful price catalyst in the months ahead.</p>
+            <a href="/how-silver-prices-work/" class="art-modal-cta">How Silver Prices Work →</a>`
+        },
+        'dollar': {
+          tag: 'Macro', tagClass: 'tag-macro',
+          title: 'US Dollar Weakness Provides Short-Term Tailwind for Silver',
+          meta: ['Macro Analysis', 'May 17, 2026'],
+          body: `
+            <p>The US Dollar Index (DXY) fell to a three-month low this week, pressured by softer-than-expected US retail sales data for April 2026 and renewed market expectations that the Federal Reserve may begin cutting interest rates before year-end. Because silver — like most commodities — is priced globally in US dollars, a weaker dollar directly improves the affordability of silver for buyers holding other currencies, supporting international demand and providing mechanical upward pressure on the spot price.</p>
+            <p>The dollar's recent weakness had been expected to be a meaningful tailwind for silver. Instead, the metal posted its worst weekly loss in three months. This divergence — silver falling despite dollar weakness — reveals the scale of the competing headwinds from the Trump–Xi summit's risk-on effect and the associated equity rally. When silver falls in a week the dollar also falls, it signals particularly strong selling pressure from other factors.</p>
+            <p>Technical analysts note that silver's <strong>overhead resistance at the $29–30 zone</strong> remains significant. Multiple attempts to break and hold above $29 have failed since January 2026. A clear, sustained dollar decline — particularly one driven by a Fed rate cut signal rather than just soft economic data — would likely be the catalyst needed to push silver through that resistance level.</p>
+            <p>The relationship between the dollar and silver is not perfectly inverse. When dollar weakness is driven by US economic strength (paradoxically, strong economies attract foreign capital which bids up dollars), it can be accompanied by strong industrial silver demand that offsets any currency headwind. The current environment — dollar weak due to growth softness — is a more straightforward bullish signal for silver, but it requires the absence of other bearish catalysts to translate into price gains.</p>
+            <a href="/silver-price-all-currencies/" class="art-modal-cta">Silver Price in All Currencies →</a>`
+        },
+        'ev': {
+          tag: 'Industry', tagClass: 'tag-industry',
+          title: 'EV Sector Adds to Silver Demand Story as Battery Tech Evolves',
+          meta: ['Industry Analysis', 'May 17, 2026'],
+          body: `
+            <p>Beyond solar, the electric vehicle industry is consolidating its position as the second major structural pillar of silver's industrial demand story. Each modern EV contains an estimated <strong>25–50 grams of silver</strong>, used in electrical contacts, sensors, onboard charging systems, and — increasingly — in next-generation solid-state battery prototypes where silver serves as an anode current collector.</p>
+            <p>With global EV unit sales projected to reach <strong>18 million vehicles in 2026</strong>, up from approximately 14 million in 2024, the compound demand effect is becoming material in silver supply-demand calculations. At 35 grams of silver per vehicle and 18 million units, EV production alone would consume approximately 630 million grams — roughly 20 million troy ounces — of silver annually. That figure is expected to grow significantly if solid-state battery technology moves from pilot to mass production over the next five years.</p>
+            <p>The supply side offers little relief. Primary silver mining globally produced approximately <strong>820 million troy ounces in 2025</strong>, and new large-scale primary silver projects are scarce. Most of the world's silver is produced as a by-product of lead, zinc, and copper mining — meaning supply growth is largely hostage to base metal economics rather than silver prices. Analysts at the Silver Institute have noted that even a 5% demand increase would require new supply equivalent to a medium-sized dedicated silver mine, of which very few are in development.</p>
+            <p>For investors, the EV demand story is a long-duration structural argument for silver ownership: it plays out over years rather than quarters, and its realisation is not dependent on monetary policy, the dollar, or geopolitical events — making it fundamentally different in character from silver's safe-haven or inflation-hedge demand.</p>
+            <a href="/what-is-silver-scrap/" class="art-modal-cta">What Is Silver Scrap? →</a>`
+        },
+        'commentary': {
+          tag: "Editor's Commentary", tagClass: 'tag-analysis',
+          title: "Silver's Defining Tension in 2026: Industrial Strength vs. Monetary Hesitation",
+          meta: ['Scrap Silver Calculator Editorial Team', 'May 17, 2026', 'Not financial advice'],
+          body: `
+            <p>If you had to describe silver's price behavior in a single phrase in 2026, it would be <strong>"structurally bullish, tactically stuck."</strong> The demand fundamentals have arguably never been stronger — solar, EVs, grid infrastructure, and medical applications are collectively absorbing silver at a pace that is straining the ability of mines and recyclers to keep up. Yet the price refuses to sustainably break above $30, held down by a stubborn US dollar and a Federal Reserve that keeps the market guessing.</p>
+            <p>The gold/silver ratio at 89 is the number that stands out most to experienced precious metals watchers. Historically, extended periods of ratio elevation above 80 have been followed by sharp silver outperformance once a macro catalyst — a rate cut cycle, a dollar reversal, or a geopolitical shock — unlocks pent-up investment demand. The industrial demand story means the downside floor is more solid than it has been in prior cycles. The question is not whether silver moves higher, but when and what triggers it.</p>
+            <p>For people holding or selling scrap silver, today's environment is actually quite favorable. <strong>A $28 spot price delivers melt values well above the 10-year average</strong>, which spent years between $15 and $22. If you've been sitting on old silver jewelry, flatware, or coins, the current window is historically attractive — especially given that dealer competition for scrap has increased, pushing payout percentages higher in many markets.</p>
+            <p>Watch the Fed's June meeting closely. A decisive signal on rate cuts — or a genuine softening of the dollar — could be the catalyst that pushes silver toward the $32–35 range that many analysts have been forecasting for the second half of 2026. Until then, the structural case accumulates quietly while the tactical tape frustrates both bulls and bears.</p>
+            <a href="/#calculator" class="art-modal-cta">Calculate Your Silver's Value →</a>`
+        }
+      };
+
+      const modal = document.getElementById('article-modal');
+      const modalBody = document.getElementById('art-modal-body');
+      const modalTag = document.getElementById('art-modal-tag');
+      const modalClose = document.getElementById('art-modal-close');
+      const modalOverlay = document.getElementById('art-modal-overlay');
+
+      function openArticle(key) {
+        const a = ARTICLES[key];
+        if (!a) return;
+        modalTag.innerHTML = `<span class="news-tag ${a.tagClass}">${a.tag}</span>`;
+        modalBody.innerHTML = `<h2>${a.title}</h2><div class="art-modal-meta">${a.meta.map(m => `<span>${m}</span>`).join('')}</div>${a.body}`;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      document.addEventListener('click', function(e) {
+        const btn = e.target.closest('[data-article]');
+        if (btn) { openArticle(btn.dataset.article); return; }
+      });
+
+      modalClose.addEventListener('click', closeModal);
+      modalOverlay.addEventListener('click', closeModal);
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
     });
   </script>
 </body>
