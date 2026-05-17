@@ -439,6 +439,19 @@
     button.nc-read-btn{cursor:pointer;font-family:inherit}
     button.news-lead-cta{cursor:pointer;font-family:inherit;background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.3);color:#c4b5fd;padding:8px 16px;border-radius:100px;font-size:.78rem;font-weight:700;transition:all .2s}
     button.news-lead-cta:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+    /* Social Share Icons */
+    .art-modal-share{display:flex;align-items:center;gap:12px;padding:20px 0;border-top:1px solid rgba(255,255,255,.08);margin-top:24px}
+    .art-share-label{font-size:.75rem;font-weight:700;text-transform:uppercase;color:var(--text-muted);letter-spacing:.08em}
+    .art-share-icons{display:flex;gap:8px;flex-wrap:wrap}
+    .art-share-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:var(--text-secondary);font-size:.9rem;cursor:pointer;transition:all .18s;text-decoration:none}
+    .art-share-btn:hover{background:rgba(124,58,237,.3);border-color:rgba(124,58,237,.5);color:#fff}
+    .art-share-btn.twitter:hover{background:rgba(59,130,246,.3)}
+    .art-share-btn.facebook:hover{background:rgba(59,89,152,.3)}
+    .art-share-btn.linkedin:hover{background:rgba(0,119,181,.3)}
+    .art-share-btn.whatsapp:hover{background:rgba(37,211,102,.3)}
+    .art-share-btn.email:hover{background:rgba(251,191,36,.3)}
+    .art-share-btn.copy:hover{background:rgba(52,211,153,.3)}
   </style>
 </head>
 <body>
@@ -744,6 +757,10 @@
         <button class="art-modal-close" id="art-modal-close" aria-label="Close article">✕</button>
       </div>
       <div class="art-modal-body" id="art-modal-body"></div>
+      <div class="art-modal-share" style="padding-left:32px;padding-right:32px">
+        <span class="art-share-label">Share:</span>
+        <div class="art-share-icons" id="art-share-icons"></div>
+      </div>
     </div>
   </div>
 
@@ -963,12 +980,27 @@
       const modalTag = document.getElementById('art-modal-tag');
       const modalClose = document.getElementById('art-modal-close');
       const modalOverlay = document.getElementById('art-modal-overlay');
+      const shareIcons = document.getElementById('art-share-icons');
 
       function openArticle(key) {
         const a = ARTICLES[key];
         if (!a) return;
+        const pageUrl = 'https://scrapsilvercalculater.com/silver-news-today/';
+        const shareText = a.title;
+
         modalTag.innerHTML = `<span class="news-tag ${a.tagClass}">${a.tag}</span>`;
         modalBody.innerHTML = `<h2>${a.title}</h2><div class="art-modal-meta">${a.meta.map(m => `<span>${m}</span>`).join('')}</div>${a.body}`;
+
+        // Generate share buttons
+        shareIcons.innerHTML = `
+          <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(pageUrl)}" target="_blank" rel="noopener" class="art-share-btn twitter" title="Share on Twitter" aria-label="Share on Twitter">𝕏</a>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(pageUrl)}" target="_blank" rel="noopener" class="art-share-btn facebook" title="Share on Facebook" aria-label="Share on Facebook">f</a>
+          <a href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(pageUrl)}" target="_blank" rel="noopener" class="art-share-btn linkedin" title="Share on LinkedIn" aria-label="Share on LinkedIn">in</a>
+          <a href="https://wa.me/?text=${encodeURIComponent(shareText + ' ' + pageUrl)}" target="_blank" rel="noopener" class="art-share-btn whatsapp" title="Share on WhatsApp" aria-label="Share on WhatsApp">💬</a>
+          <a href="mailto:?subject=${encodeURIComponent(shareText)}&body=${encodeURIComponent(shareText + '\n\n' + pageUrl)}" class="art-share-btn email" title="Share via Email" aria-label="Share via Email">✉</a>
+          <button class="art-share-btn copy" title="Copy link" aria-label="Copy link" onclick="navigator.clipboard.writeText('${pageUrl}').then(()=>{this.textContent='✓';setTimeout(()=>{this.textContent='🔗'},2000)})">🔗</button>
+        `;
+
         modal.classList.add('open');
         document.body.style.overflow = 'hidden';
       }
