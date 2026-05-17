@@ -132,13 +132,12 @@
     /* ── Secondary news grid ── */
     .news-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
     @media(max-width:640px){.news-grid{grid-template-columns:1fr}}
-    .news-card{background:rgba(255,255,255,.03);border:1px solid var(--border-subtle);border-radius:14px;padding:22px;transition:all .22s;text-decoration:none;color:var(--text);display:flex;flex-direction:column}
-    .news-card:hover{border-color:rgba(124,58,237,.38);background:rgba(124,58,237,.05);transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,58,237,.12)}
-    .news-card h3{font-family:var(--f-display);font-size:1rem;font-weight:700;line-height:1.35;margin-bottom:10px;color:var(--text);transition:color .2s}
-    .news-card:hover h3{color:#c4b5fd}
+    .news-card{background:rgba(255,255,255,.03);border:1px solid var(--border-subtle);border-radius:14px;padding:22px;transition:all .22s;color:var(--text);display:flex;flex-direction:column}
+    .news-card h3{font-family:var(--f-display);font-size:1rem;font-weight:700;line-height:1.35;margin-bottom:10px;color:var(--text)}
     .news-card .nc-snippet{font-size:.83rem;color:var(--text-muted);line-height:1.65;margin-bottom:14px;flex:1}
-    .news-card .nc-meta{display:flex;align-items:center;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-top:auto}
-    .news-card .nc-read{color:#a855f7;font-weight:600;display:flex;align-items:center;gap:4px}
+    .news-card .nc-meta{display:flex;align-items:center;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-top:auto;padding-top:12px;border-top:1px solid var(--border-subtle)}
+    .news-card .nc-read-btn{display:inline-flex;align-items:center;gap:5px;color:#fff;background:rgba(124,58,237,.5);border:1px solid rgba(124,58,237,.4);padding:5px 12px;border-radius:100px;font-size:.7rem;font-weight:700;text-decoration:none;transition:all .18s;white-space:nowrap}
+    .news-card .nc-read-btn:hover{background:var(--accent);border-color:var(--accent)}
 
     /* ── Commentary section ── */
     .commentary{background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.2);border-left:4px solid #7c3aed;border-radius:0 16px 16px 0;padding:30px 32px;margin-bottom:24px}
@@ -261,71 +260,71 @@
           <!-- SECONDARY NEWS GRID -->
           <div class="news-grid">
 
-            <a href="#solar" class="news-card" id="solar">
+            <div class="news-card" id="solar">
               <span class="news-tag tag-industry">Industry</span>
               <h3>Solar Sector to Consume Record 240 Million Ounces of Silver in 2026</h3>
               <p class="nc-snippet">The Silver Institute's Q1 2026 report confirms the photovoltaic industry is on pace to set a new annual consumption record. Solar panel manufacturers use silver paste as a conductor in solar cells, and with global installed capacity expanding rapidly across India, China, and the US, silver demand from this sector alone is forecast to grow 18% year-on-year.</p>
               <p class="nc-snippet">Crucially, no economical substitute for silver in high-efficiency solar cells has been found at scale, making this a long-duration demand driver independent of monetary or investment flows.</p>
               <div class="nc-meta">
                 <span>May 17, 2026 · Industry</span>
-                <span class="nc-read">Read more →</span>
+                <a href="/silver-price-today/" class="nc-read-btn">Full Price Analysis →</a>
               </div>
-            </a>
+            </div>
 
-            <a href="#ratio" class="news-card" id="ratio">
+            <div class="news-card" id="ratio">
               <span class="news-tag tag-analysis">Analysis</span>
               <h3>Gold/Silver Ratio at Multi-Year High: A Contrarian Opportunity Emerging?</h3>
               <p class="nc-snippet">The gold-to-silver ratio is currently hovering near <strong>89:1</strong>, meaning it takes 89 ounces of silver to purchase a single ounce of gold. Historically, the long-run average sits between 60 and 70. When the ratio is elevated, many precious metals analysts argue silver is undervalued relative to gold.</p>
               <p class="nc-snippet">Contrarian investors who track the ratio as a mean-reversion signal may view current levels as a multi-year entry point — though timing the ratio's compression has humbled many forecasters.</p>
               <div class="nc-meta">
                 <span>May 17, 2026 · Analysis</span>
-                <span class="nc-read">Read more →</span>
+                <a href="/silver-price-forecast-today/" class="nc-read-btn">Price Forecast →</a>
               </div>
-            </a>
+            </div>
 
-            <a href="#comex" class="news-card" id="comex">
+            <div class="news-card" id="comex">
               <span class="news-tag tag-data">Market Data</span>
               <h3>COMEX Silver Inventories Fall 12% in 30 Days Amid Industrial Buying</h3>
               <p class="nc-snippet">Registered silver inventories at COMEX warehouses have declined approximately 12% over the past 30 days, a development that physical market analysts are monitoring closely. When registered stocks fall, it typically signals that buyers are taking delivery of metal rather than rolling futures contracts — a sign of genuine end-use demand rather than speculative positioning.</p>
               <p class="nc-snippet">Eligible stocks (held in warehouses but not available for delivery) have remained stable, suggesting the drawdown is demand-driven rather than a reclassification issue.</p>
               <div class="nc-meta">
                 <span>May 17, 2026 · Data</span>
-                <span class="nc-read">Read more →</span>
+                <a href="/silver-price-today/#chart" class="nc-read-btn">Live Price Chart →</a>
               </div>
-            </a>
+            </div>
 
-            <a href="#etf" class="news-card" id="etf">
+            <div class="news-card" id="etf">
               <span class="news-tag tag-investment">Investment</span>
               <h3>Silver ETF Inflows Surge as Inflation Hedge Demand Returns</h3>
               <p class="nc-snippet">Global silver-backed ETFs have seen net inflows for the third consecutive week, adding over 8 million ounces to holdings. The move mirrors a broader rotation back into inflation-sensitive assets as headline CPI data in several major economies came in above consensus expectations for April 2026.</p>
               <p class="nc-snippet">Silver ETFs now collectively hold approximately 750 million ounces — approaching levels last seen during the 2021 Reddit-driven short squeeze. Unlike 2021, the current accumulation is driven by institutional rather than retail flows.</p>
               <div class="nc-meta">
                 <span>May 17, 2026 · Investment</span>
-                <span class="nc-read">Read more →</span>
+                <a href="/how-silver-prices-work/" class="nc-read-btn">How Prices Work →</a>
               </div>
-            </a>
+            </div>
 
-            <a href="#dollar" class="news-card" id="dollar">
+            <div class="news-card" id="dollar">
               <span class="news-tag tag-macro">Macro</span>
               <h3>US Dollar Weakness Provides Short-Term Tailwind for Silver</h3>
               <p class="nc-snippet">The DXY dollar index fell to a three-month low this week, pressured by softer-than-expected US retail sales data and renewed expectations of Federal Reserve policy easing. Because silver and most commodities are priced in US dollars, dollar weakness historically correlates with higher spot prices as purchasing power for non-US buyers improves.</p>
               <p class="nc-snippet">Technical analysts note that silver's failure to break meaningfully higher despite dollar weakness suggests overhead resistance near the $29–30 zone remains significant and will need a clear macro catalyst to overcome.</p>
               <div class="nc-meta">
                 <span>May 17, 2026 · Macro</span>
-                <span class="nc-read">Read more →</span>
+                <a href="/silver-price-all-currencies/" class="nc-read-btn">Silver in All Currencies →</a>
               </div>
-            </a>
+            </div>
 
-            <a href="#ev" class="news-card" id="ev">
+            <div class="news-card" id="ev">
               <span class="news-tag tag-industry">Industry</span>
               <h3>EV Sector Adds to Silver Demand Story as Battery Tech Evolves</h3>
               <p class="nc-snippet">Beyond solar, the electric vehicle industry is emerging as silver's second major industrial demand pillar. Each EV contains an estimated 25–50 grams of silver used in electrical contacts, sensors, and increasingly in solid-state battery prototypes. With global EV sales projected to hit 18 million units in 2026, the compound demand effect is becoming material to silver supply-demand balances.</p>
               <p class="nc-snippet">Mining supply growth remains constrained — primary silver mines produced roughly 820 million ounces globally in 2025, with limited new large-scale projects in the development pipeline.</p>
               <div class="nc-meta">
                 <span>May 17, 2026 · Industry</span>
-                <span class="nc-read">Read more →</span>
+                <a href="/what-is-silver-scrap/" class="nc-read-btn">What Is Silver Scrap? →</a>
               </div>
-            </a>
+            </div>
 
           </div>
 
@@ -444,17 +443,17 @@
             <div class="sb-card-title">⚡ Quick Melt Value</div>
             <p style="font-size:.78rem;color:var(--text-muted);margin-bottom:12px;line-height:1.5">Enter weight to see today's melt value at spot price.</p>
             <div style="display:flex;gap:8px;margin-bottom:8px">
-              <input type="number" id="qc-weight" value="10" min="0" step="0.1" style="flex:1;background:rgba(255,255,255,.05);border:1px solid var(--border-subtle);border-radius:8px;padding:8px 12px;color:var(--text);font-size:.85rem;font-family:var(--f-mono)">
-              <select id="qc-unit" style="background:rgba(255,255,255,.05);border:1px solid var(--border-subtle);border-radius:8px;padding:8px 10px;color:var(--text);font-size:.82rem">
-                <option value="g">grams</option>
-                <option value="oz">troy oz</option>
+              <input type="number" id="qc-weight" value="10" min="0" step="0.1" style="flex:1;background:#12121e;border:1px solid var(--border-subtle);border-radius:8px;padding:8px 12px;color:var(--text);font-size:.85rem;font-family:var(--f-mono)">
+              <select id="qc-unit" style="background:#12121e;border:1px solid var(--border-subtle);border-radius:8px;padding:8px 10px;color:var(--text);font-size:.82rem;-webkit-appearance:auto;appearance:auto;color-scheme:dark">
+                <option value="g" style="background:#12121e;color:#f0f4f8">grams</option>
+                <option value="oz" style="background:#12121e;color:#f0f4f8">troy oz</option>
               </select>
             </div>
-            <select id="qc-purity" style="width:100%;background:rgba(255,255,255,.05);border:1px solid var(--border-subtle);border-radius:8px;padding:8px 12px;color:var(--text);font-size:.82rem;margin-bottom:8px">
-              <option value="0.999">999 Fine Silver</option>
-              <option value="0.925" selected>925 Sterling</option>
-              <option value="0.900">900 Coin Silver</option>
-              <option value="0.800">800 Silver</option>
+            <select id="qc-purity" style="width:100%;background:#12121e;border:1px solid var(--border-subtle);border-radius:8px;padding:8px 12px;color:var(--text);font-size:.82rem;margin-bottom:8px;color-scheme:dark">
+              <option value="0.999" style="background:#12121e;color:#f0f4f8">999 Fine Silver</option>
+              <option value="0.925" selected style="background:#12121e;color:#f0f4f8">925 Sterling</option>
+              <option value="0.900" style="background:#12121e;color:#f0f4f8">900 Coin Silver</option>
+              <option value="0.800" style="background:#12121e;color:#f0f4f8">800 Silver</option>
             </select>
             <div id="qc-result" style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:8px;padding:10px 14px;text-align:center;font-family:var(--f-mono);font-size:1.2rem;font-weight:800;color:#c4b5fd;margin-bottom:10px">$—</div>
             <a href="/#calculator" style="display:block;text-align:center;font-size:.78rem;color:var(--text-muted);text-decoration:none">Full calculator with dealer payouts →</a>
