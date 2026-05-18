@@ -150,14 +150,19 @@
           <div style="position:absolute;top:-40px;right:-40px;width:130px;height:130px;background:radial-gradient(circle,rgba(124,58,237,0.25) 0%,transparent 70%);pointer-events:none;"></div>
           <h2 style="font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:14px; font-weight:600; font-family:'Inter',sans-serif;">999 Silver Per Troy Ounce</h2>
           <div style="font-size:42px; font-weight:800; color:var(--accent); margin-bottom:8px; font-family:'JetBrains Mono',monospace;">$<span id="price-999-oz">87.42</span></div>
-          <p style="font-size:13px; color:var(--muted); margin:0;">Live USD · Updates hourly</p>
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:6px;">
+            <span id="price-change-badge" style="font-size:13px; font-weight:700; font-family:'JetBrains Mono',monospace; padding:3px 8px; border-radius:6px; background:rgba(52,211,153,0.15); color:var(--accent-green);">— —</span>
+            <span style="font-size:12px; color:var(--muted);">vs yesterday</span>
+          </div>
+          <p style="font-size:12px; color:var(--muted); margin:0;">Live USD · Updates hourly from COMEX</p>
         </div>
         <!-- Per Gram -->
         <div style="background:linear-gradient(135deg,rgba(179,157,250,0.18) 0%,rgba(52,211,153,0.08) 100%); border:1px solid rgba(179,157,250,0.35); border-radius:var(--r-lg); padding:32px; position:relative; overflow:hidden;">
           <div style="position:absolute;top:-40px;right:-40px;width:130px;height:130px;background:radial-gradient(circle,rgba(179,157,250,0.25) 0%,transparent 70%);pointer-events:none;"></div>
           <h2 style="font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:14px; font-weight:600; font-family:'Inter',sans-serif;">999 Silver Per Gram</h2>
           <div style="font-size:42px; font-weight:800; color:var(--accent2); margin-bottom:8px; font-family:'JetBrains Mono',monospace;">$<span id="price-999-gm">2.81</span></div>
-          <p style="font-size:13px; color:var(--muted); margin:0;">Spot ÷ 31.1035 grams per oz</p>
+          <p style="font-size:13px; color:var(--muted); margin:0;">Spot ÷ 31.1035 grams per troy oz</p>
+          <p style="font-size:12px; color:var(--muted); margin:4px 0 0;">Most common unit for scrap sellers</p>
         </div>
         <!-- Per Pound -->
         <div style="background:linear-gradient(135deg,rgba(52,211,153,0.18) 0%,rgba(251,191,36,0.08) 100%); border:1px solid rgba(52,211,153,0.35); border-radius:var(--r-lg); padding:32px; position:relative; overflow:hidden;">
@@ -165,7 +170,18 @@
           <h2 style="font-size:13px; color:var(--muted); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:14px; font-weight:600; font-family:'Inter',sans-serif;">999 Silver Per Pound</h2>
           <div style="font-size:42px; font-weight:800; color:var(--accent-green); margin-bottom:8px; font-family:'JetBrains Mono',monospace;">$<span id="price-999-lb">1274.80</span></div>
           <p style="font-size:13px; color:var(--muted); margin:0;">14.5833 troy oz per pound</p>
+          <p style="font-size:12px; color:var(--muted); margin:4px 0 0;">Used for larger lot transactions</p>
         </div>
+      </div>
+
+      <!-- CTA 1: Mid-page after prices -->
+      <div style="display:flex; flex-wrap:wrap; gap:14px; margin-top:8px;">
+        <a href="/999-silver-calculator/" style="display:inline-flex; align-items:center; gap:8px; padding:14px 24px; background:var(--accent); color:#fff; text-decoration:none; border-radius:var(--r-md); font-weight:700; font-size:15px; transition:all 0.3s ease;">
+          ⬡ See What Your 999 Silver Is Worth
+        </a>
+        <a href="/silver-price-today/" style="display:inline-flex; align-items:center; gap:8px; padding:14px 24px; background:rgba(124,58,237,0.12); color:var(--accent2); text-decoration:none; border-radius:var(--r-md); font-weight:700; font-size:15px; border:1px solid rgba(124,58,237,0.3); transition:all 0.3s ease;">
+          View Full Price Dashboard →
+        </a>
       </div>
     </section>
 
@@ -176,10 +192,10 @@
       <div style="background:linear-gradient(135deg,rgba(124,58,237,0.1) 0%,rgba(179,157,250,0.04) 100%); border-left:4px solid var(--accent); border-radius:var(--r-lg); padding:var(--space-xl);">
         <h2 style="margin-bottom:14px;">What Is 999 Fine Silver? — 99.9% Pure Bullion Explained</h2>
         <p style="margin-bottom:16px;">
-          999 fine silver — also called "three nines fine" — is the highest commercially recognized silver purity standard in the world, containing 99.9% silver with no more than 0.1% trace impurities. It sits at the very top of the purity scale, above 958 Britannia silver (95.8%) and well above 925 sterling silver (92.5%). The "999" hallmark is mandated by international bullion standards and is the stamp you'll find on investment-grade silver bars from the Royal Canadian Mint, Perth Mint, and major LBMA-approved refineries.
+          999 fine silver — also called "three nines fine" — is the highest commercially recognized <a href="/silver-purity-chart/" style="color:var(--accent2); text-decoration:underline;">silver purity standard</a> in the world, containing <strong style="color:var(--text);">99.9% silver</strong> with no more than 0.1% trace impurities. It sits at the very top of the purity scale, above 958 Britannia silver (95.8%) and well above <a href="/925-silver-price-today/" style="color:var(--accent2); text-decoration:underline;">925 sterling silver (92.5%)</a>. The "999" hallmark is mandated by international bullion standards and is the stamp you'll find on investment-grade silver bars from the Royal Canadian Mint, Perth Mint, and major LBMA-approved refineries.
         </p>
         <p style="margin-bottom:20px;">
-          Because of its near-total purity, 999 silver commands a price that tracks the spot price almost exactly — typically at a premium of just 3–8% above spot for recognized minted products. This makes it the most efficient form of silver to buy or sell when investment value is your primary goal, as opposed to jewelry-grade silver where fabrication costs inflate the price significantly.
+          Because of its near-total purity, 999 silver commands a price that tracks the <a href="/silver-price-today/" style="color:var(--accent2); text-decoration:underline;">silver spot price</a> almost exactly — typically at a premium of just <strong style="color:var(--text);">3–8% above spot</strong> for recognized minted products. This makes it the most efficient form of silver to buy or sell when investment value is your primary goal, as opposed to jewelry-grade silver where fabrication costs inflate the price significantly.
         </p>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-top:8px;">
           <div style="padding:16px; background:rgba(255,255,255,0.04); border-radius:var(--r-md); text-align:center;">
@@ -306,7 +322,7 @@
     <section class="container" style="padding: 0 20px 56px 20px;">
       <h2 style="margin-bottom:12px;">How to Identify 999 Fine Silver</h2>
       <p style="margin-bottom:28px; max-width:760px;">
-        Spotting genuine 999 silver is straightforward once you know what to look for. Unlike lower purity silver, 999 bullion products are almost always clearly marked with internationally recognized purity stamps. Here are the three most reliable methods to verify 999 silver before buying or selling.
+        Spotting genuine 999 silver is straightforward once you know what to look for. Unlike lower purity silver, 999 bullion products are almost always clearly marked with internationally recognized purity stamps. See our full <a href="/silver-hallmarks-guide/" style="color:var(--accent2); text-decoration:underline;">silver hallmarks guide</a> for a complete reference, or use our <a href="/identify-silver/" style="color:var(--accent2); text-decoration:underline;">silver identifier tool</a> to verify any item. Here are the three most reliable methods.
       </p>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
         <div style="background:rgba(22,22,36,0.7); border:1px solid var(--border2); border-radius:var(--r-lg); padding:var(--space-lg);">
@@ -442,7 +458,7 @@
     <section class="container" style="padding: 0 20px 56px 20px;">
       <h2 style="margin-bottom:12px;">Where to Sell 999 Fine Silver for the Best Price</h2>
       <p style="margin-bottom:28px; max-width:760px;">
-        When selling 999 silver, the key is knowing what percentage of spot price each channel pays. Online dealers consistently offer the highest payouts because they have large buyer networks and low overhead. Always get at least three quotes before selling, and never accept a first offer without comparison shopping.
+        When selling 999 silver, the key is knowing what percentage of <a href="/silver-price-today/" style="color:var(--accent2); text-decoration:underline;">spot price</a> each channel pays. Online dealers consistently offer the highest payouts because they have large buyer networks and low overhead. Always get at least three quotes before selling — use our <a href="/silver-scrap-calculator/" style="color:var(--accent2); text-decoration:underline;">silver scrap calculator</a> to know your melt value before any negotiation, and never accept a first offer without comparison shopping.
       </p>
       <div style="background:rgba(22,22,36,0.7); border:1px solid var(--border2); border-radius:var(--r-lg); padding:var(--space-xl);">
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:32px;">
@@ -478,6 +494,82 @@
     </section>
 
     <!-- ═══════════════════════════════════════════
+         PAYOUT ESTIMATE CALCULATOR
+    ═══════════════════════════════════════════ -->
+    <section class="container" style="padding: 0 20px 56px 20px;">
+      <h2 style="margin-bottom:12px;">Selling Payout Estimate — What Will You Actually Receive?</h2>
+      <p style="margin-bottom:28px; max-width:760px;">
+        Melt value is what your silver is worth at spot — but what you <em>receive</em> depends on who you sell to. Different buyers take different margins. Enter your weight below and see a side-by-side payout comparison across all major selling channels, so you can choose where to sell 999 silver and get the best return.
+      </p>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:24px; align-items:start;">
+        <!-- Input -->
+        <div style="background:rgba(22,22,36,0.7); border:1px solid var(--border2); border-radius:var(--r-lg); padding:var(--space-xl);">
+          <h3 style="font-size:16px; color:var(--dim); margin-bottom:20px; font-weight:600;">Enter Your Silver</h3>
+          <div style="margin-bottom:18px;">
+            <label style="display:block; font-size:13px; font-weight:600; color:var(--muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.4px;">Weight</label>
+            <input type="number" id="payout-amount" placeholder="e.g. 100" value="100" min="0" style="width:100%; padding:14px; background:rgba(255,255,255,0.06); border:1px solid var(--border2); border-radius:var(--r-md); color:var(--text); font-size:16px; outline:none;">
+          </div>
+          <div style="margin-bottom:22px;">
+            <label style="display:block; font-size:13px; font-weight:600; color:var(--muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.4px;">Unit</label>
+            <select id="payout-unit" style="width:100%; padding:14px; background:rgba(22,22,36,0.9); border:1px solid var(--border2); border-radius:var(--r-md); color:var(--text); font-size:16px; outline:none;">
+              <option value="gm">Grams (g)</option>
+              <option value="oz">Troy Ounces (ozt)</option>
+              <option value="dwt">Pennyweights (dwt)</option>
+              <option value="lb">Pounds (lb)</option>
+              <option value="kg">Kilograms (kg)</option>
+            </select>
+          </div>
+          <button onclick="calculatePayout()" style="width:100%; padding:16px; background:var(--accent); color:white; border:none; border-radius:var(--r-md); font-weight:700; font-size:16px; cursor:pointer; font-family:'Inter',sans-serif;">
+            Compare Payout Estimates
+          </button>
+        </div>
+        <!-- Results -->
+        <div id="payout-results" style="background:rgba(22,22,36,0.5); border:1px solid var(--border); border-radius:var(--r-lg); padding:var(--space-xl);">
+          <h3 style="font-size:15px; color:var(--muted); margin-bottom:20px; font-weight:600; text-transform:uppercase; letter-spacing:0.4px;">Estimated Payouts</h3>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="padding:16px; background:linear-gradient(135deg,rgba(52,211,153,0.12) 0%,rgba(52,211,153,0.04) 100%); border:1px solid rgba(52,211,153,0.25); border-radius:var(--r-md); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+              <div>
+                <div style="font-size:13px; font-weight:700; color:var(--accent-green);">Online Dealer (Best)</div>
+                <div style="font-size:12px; color:var(--muted); margin-top:3px;">APMEX / Kitco / JM Bullion — pays ~95%</div>
+              </div>
+              <div style="font-size:22px; font-weight:800; color:var(--accent-green); font-family:'JetBrains Mono',monospace;" id="payout-online">$—</div>
+            </div>
+            <div style="padding:16px; background:rgba(179,157,250,0.08); border:1px solid rgba(179,157,250,0.2); border-radius:var(--r-md); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+              <div>
+                <div style="font-size:13px; font-weight:700; color:var(--accent2);">Local Coin Shop</div>
+                <div style="font-size:12px; color:var(--muted); margin-top:3px;">Instant cash, walk-in — pays ~88%</div>
+              </div>
+              <div style="font-size:22px; font-weight:800; color:var(--accent2); font-family:'JetBrains Mono',monospace;" id="payout-local">$—</div>
+            </div>
+            <div style="padding:16px; background:rgba(251,191,36,0.08); border:1px solid rgba(251,191,36,0.2); border-radius:var(--r-md); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+              <div>
+                <div style="font-size:13px; font-weight:700; color:var(--accent-gold);">Peer-to-Peer</div>
+                <div style="font-size:12px; color:var(--muted); margin-top:3px;">eBay / collector forums — pays ~98%</div>
+              </div>
+              <div style="font-size:22px; font-weight:800; color:var(--accent-gold); font-family:'JetBrains Mono',monospace;" id="payout-p2p">$—</div>
+            </div>
+            <div style="padding:16px; background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:var(--r-md); display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+              <div>
+                <div style="font-size:13px; font-weight:700; color:var(--muted);">Pawn Shop / Jewelry Store</div>
+                <div style="font-size:12px; color:var(--muted); margin-top:3px;">Quick cash, lowest offer — pays ~65%</div>
+              </div>
+              <div style="font-size:22px; font-weight:800; color:var(--muted); font-family:'JetBrains Mono',monospace;" id="payout-pawn">$—</div>
+            </div>
+            <div id="payout-melt-note" style="font-size:12px; color:var(--muted); margin-top:4px; padding-top:12px; border-top:1px solid var(--border); display:none;">
+              Melt value: $<span id="payout-melt">0</span> · Percentages are typical market ranges — actual offers vary by dealer and quantity.
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- CTA 2 after payout calc -->
+      <div style="margin-top:24px;">
+        <a href="/how-to-sell-silver/" style="display:inline-flex; align-items:center; gap:8px; padding:14px 24px; background:rgba(52,211,153,0.12); color:var(--accent-green); text-decoration:none; border-radius:var(--r-md); font-weight:700; font-size:15px; border:1px solid rgba(52,211,153,0.3); transition:all 0.3s ease;">
+          Compare All Places to Sell Silver →
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
          INVESTMENT PROS & CONS
     ═══════════════════════════════════════════ -->
     <section class="container" style="padding: 0 20px 56px 20px;">
@@ -508,6 +600,19 @@
             <li style="color:var(--dim); display:flex; align-items:flex-start; font-size:15px;"><span style="color:var(--accent-gold); margin-right:10px; font-weight:700; flex-shrink:0;">✗</span><span>Underperforms equities in bull market environments</span></li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <!-- CTA 3: Before FAQ -->
+    <section class="container" style="padding: 0 20px 48px 20px;">
+      <div style="background:linear-gradient(135deg,rgba(124,58,237,0.12) 0%,rgba(179,157,250,0.06) 100%); border:1px solid rgba(124,58,237,0.25); border-radius:var(--r-lg); padding:var(--space-xl); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px;">
+        <div>
+          <h3 style="font-size:20px; font-weight:700; color:var(--text); margin-bottom:8px;">Not Sure If Your Silver Is 999?</h3>
+          <p style="font-size:15px; color:var(--dim); margin:0; max-width:520px;">Use our silver identification guide to check hallmarks, test your silver at home, and understand exactly what purity level you have before selling.</p>
+        </div>
+        <a href="/identify-silver/" style="flex-shrink:0; display:inline-flex; align-items:center; gap:8px; padding:14px 26px; background:var(--accent); color:#fff; text-decoration:none; border-radius:var(--r-md); font-weight:700; font-size:15px; white-space:nowrap; transition:all 0.3s ease;">
+          Verify Your Silver →
+        </a>
       </div>
     </section>
 
@@ -646,7 +751,7 @@
   <script>
     let currentPrice = 87.42;
 
-    function updatePriceCards(pricePerOz) {
+    function updatePriceCards(pricePerOz, change, changePct) {
       currentPrice = pricePerOz;
       const pgm  = pricePerOz / 31.1035;
       const plb  = pricePerOz * 14.5833;
@@ -654,6 +759,16 @@
       document.getElementById('price-999-oz').textContent = pricePerOz.toFixed(2);
       document.getElementById('price-999-gm').textContent = pgm.toFixed(2);
       document.getElementById('price-999-lb').textContent = plb.toFixed(2);
+
+      // Price change badge
+      const badge = document.getElementById('price-change-badge');
+      if (badge && change !== null && change !== undefined) {
+        const up = change >= 0;
+        const arrow = up ? '▲' : '▼';
+        badge.textContent = arrow + ' $' + Math.abs(change).toFixed(2) + ' (' + (changePct >= 0 ? '+' : '') + changePct.toFixed(2) + '%)';
+        badge.style.background = up ? 'rgba(52,211,153,0.15)' : 'rgba(239,68,68,0.15)';
+        badge.style.color = up ? 'var(--accent-green)' : '#f87171';
+      }
 
       // Update quick reference table
       document.getElementById('ref-1g').textContent   = '$' + pgm.toFixed(2);
@@ -681,6 +796,22 @@
         amount + ' ' + unit + ' × $' + pgm.toFixed(4) + '/g = $' + totalValue;
     }
 
+    function calculatePayout() {
+      const amount = parseFloat(document.getElementById('payout-amount').value) || 0;
+      const unit   = document.getElementById('payout-unit').value;
+      const pgm    = currentPrice / 31.1035;
+      const unitMap = { gm: 1, oz: 31.1035, dwt: 1.55517, lb: 453.592, kg: 1000 };
+      const grams  = amount * (unitMap[unit] || 1);
+      const melt   = grams * pgm;
+
+      document.getElementById('payout-online').textContent = '$' + (melt * 0.95).toFixed(2);
+      document.getElementById('payout-local').textContent  = '$' + (melt * 0.88).toFixed(2);
+      document.getElementById('payout-p2p').textContent    = '$' + (melt * 0.98).toFixed(2);
+      document.getElementById('payout-pawn').textContent   = '$' + (melt * 0.65).toFixed(2);
+      document.getElementById('payout-melt').textContent   = melt.toFixed(2);
+      document.getElementById('payout-melt-note').style.display = 'block';
+    }
+
     // Toggle FAQ + sign
     document.addEventListener('click', function(e) {
       const summary = e.target.closest('summary');
@@ -705,7 +836,9 @@
       }
       if (typeof SilverPrice !== 'undefined') {
         SilverPrice.onPriceUpdate(function(price) {
-          updatePriceCards(price);
+          const change    = typeof SilverPrice.getChange === 'function' ? SilverPrice.getChange() : null;
+          const changePct = typeof SilverPrice.getChangePct === 'function' ? SilverPrice.getChangePct() : null;
+          updatePriceCards(price, change, changePct);
         });
       }
     });
