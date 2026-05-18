@@ -53,11 +53,489 @@
         <p class="subtitle">Live daily price tracking for 99.9% pure silver bullion</p>
       </div>
     </section>
-    <div class="container">
-      <div class="content-body" style="max-width: 800px; margin: 0 auto; padding: var(--space-2xl) 0;">
-        <!-- Content to be added -->
+    <!-- Price Cards Section -->
+    <section class="container" style="padding: var(--space-2xl) 20px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: var(--space-2xl);">
+        <!-- Per Ounce Card -->
+        <div style="background: linear-gradient(135deg, rgba(124,58,237,0.15) 0%, rgba(179,157,250,0.08) 100%); border: 1px solid rgba(124,58,237,0.3); border-radius: var(--r-lg); padding: 28px; position: relative; overflow: hidden;">
+          <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(124,58,237,0.2) 0%, transparent 70%);"></div>
+          <h3 style="font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; font-weight: 600;">Per Ounce</h3>
+          <div style="font-size: 36px; font-weight: 700; color: var(--accent); margin-bottom: 8px;">$<span id="price-999-oz">28.45</span></div>
+          <p style="font-size: 13px; color: var(--muted);">USD per troy ounce</p>
+        </div>
+
+        <!-- Per Gram Card -->
+        <div style="background: linear-gradient(135deg, rgba(179,157,250,0.15) 0%, rgba(52,211,153,0.08) 100%); border: 1px solid rgba(179,157,250,0.3); border-radius: var(--r-lg); padding: 28px; position: relative; overflow: hidden;">
+          <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(179,157,250,0.2) 0%, transparent 70%);"></div>
+          <h3 style="font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; font-weight: 600;">Per Gram</h3>
+          <div style="font-size: 36px; font-weight: 700; color: var(--accent2); margin-bottom: 8px;">$<span id="price-999-gm">0.91</span></div>
+          <p style="font-size: 13px; color: var(--muted);">USD per gram</p>
+        </div>
+
+        <!-- Per Pound Card -->
+        <div style="background: linear-gradient(135deg, rgba(52,211,153,0.15) 0%, rgba(251,191,36,0.08) 100%); border: 1px solid rgba(52,211,153,0.3); border-radius: var(--r-lg); padding: 28px; position: relative; overflow: hidden;">
+          <div style="position: absolute; top: -40px; right: -40px; width: 120px; height: 120px; background: radial-gradient(circle, rgba(52,211,153,0.2) 0%, transparent 70%);"></div>
+          <h3 style="font-size: 14px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 12px; font-weight: 600;">Per Pound</h3>
+          <div style="font-size: 36px; font-weight: 700; color: var(--accent-green); margin-bottom: 8px;">$<span id="price-999-lb">885.20</span></div>
+          <p style="font-size: 13px; color: var(--muted);">USD per pound</p>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Feature Box: What is 999 Silver -->
+    <section class="container" style="padding: 0 20px var(--space-2xl) 20px;">
+      <div style="background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(179,157,250,0.05) 100%); border-left: 4px solid var(--accent); border-radius: var(--r-lg); padding: var(--space-xl); margin-bottom: var(--space-2xl);">
+        <h2 style="font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 12px;">99.9% Pure — The Highest Purity Silver</h2>
+        <p style="color: var(--dim); line-height: 1.8; margin-bottom: 16px;">999 fine silver is the highest standard of pure silver, containing 99.9% silver content with only 0.1% of other metals. This makes it the most valuable form of investment-grade silver and the preferred choice for collectors and bullion investors.</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px;">
+          <div>
+            <div style="font-size: 12px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; font-weight: 600;">Purity Level</div>
+            <div style="font-size: 18px; font-weight: 700; color: var(--accent);">99.9%</div>
+          </div>
+          <div>
+            <div style="font-size: 12px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; font-weight: 600;">Other Elements</div>
+            <div style="font-size: 18px; font-weight: 700; color: var(--accent2);">0.1% Max</div>
+          </div>
+          <div>
+            <div style="font-size: 12px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; font-weight: 600;">Investment Grade</div>
+            <div style="font-size: 18px; font-weight: 700; color: var(--accent-green);">Yes</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why 999 Silver Matters -->
+    <section class="container" style="padding: 0 20px var(--space-2xl) 20px;">
+      <h2 style="font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: var(--space-lg);">Why 999 Silver Matters</h2>
+      <div style="background: rgba(22,22,36,0.6); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-xl); margin-bottom: var(--space-2xl);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--space-xl);">
+          <div>
+            <h3 style="font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 12px;">Maximum Value</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+                <span style="color: var(--accent); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Highest precious metal purity available</span>
+              </li>
+              <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+                <span style="color: var(--accent); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Direct correlation with spot silver prices</span>
+              </li>
+              <li style="color: var(--dim); display: flex; align-items: flex-start;">
+                <span style="color: var(--accent); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Premium markup minimal compared to lower purities</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size: 18px; font-weight: 700; color: var(--accent-green); margin-bottom: 12px;">Investment Appeal</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+                <span style="color: var(--accent-green); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Recognized globally for authenticity</span>
+              </li>
+              <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+                <span style="color: var(--accent-green); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Easy to sell and liquidate instantly</span>
+              </li>
+              <li style="color: var(--dim); display: flex; align-items: flex-start;">
+                <span style="color: var(--accent-green); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Perfect for collectors and portfolio diversification</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size: 18px; font-weight: 700; color: var(--accent-gold); margin-bottom: 12px;">Quality Assurance</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+                <span style="color: var(--accent-gold); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Certified hallmarks and stamps</span>
+              </li>
+              <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+                <span style="color: var(--accent-gold); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Third-party tested and verified</span>
+              </li>
+              <li style="color: var(--dim); display: flex; align-items: flex-start;">
+                <span style="color: var(--accent-gold); margin-right: 10px; font-weight: 700;">→</span>
+                <span>No tarnish or corrosion concerns</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Calculator -->
+    <section class="container" style="padding: 0 20px var(--space-2xl) 20px;">
+      <h2 style="font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: var(--space-lg);">999 Silver Value Calculator</h2>
+      <div style="background: rgba(22,22,36,0.6); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-xl); max-width: 600px;">
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 14px; font-weight: 600; color: var(--dim); margin-bottom: 8px;">Amount</label>
+          <input type="number" id="calc-amount" placeholder="Enter amount" value="10" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.06); border: 1px solid var(--border2); border-radius: var(--r-md); color: var(--text); font-size: 16px;">
+        </div>
+        <div style="margin-bottom: 20px;">
+          <label style="display: block; font-size: 14px; font-weight: 600; color: var(--dim); margin-bottom: 8px;">Unit</label>
+          <select id="calc-unit" style="width: 100%; padding: 12px; background: rgba(255,255,255,0.06); border: 1px solid var(--border2); border-radius: var(--r-md); color: var(--text); font-size: 16px;">
+            <option value="gm">Grams</option>
+            <option value="oz">Troy Ounces</option>
+            <option value="lb">Pounds</option>
+          </select>
+        </div>
+        <button style="width: 100%; padding: 14px; background: var(--accent); color: white; border: none; border-radius: var(--r-md); font-weight: 700; font-size: 16px; cursor: pointer; transition: all 0.3s ease;" onclick="calculateSilverValue()">Calculate Value</button>
+        <div id="calc-result" style="margin-top: 20px; padding: 16px; background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.3); border-radius: var(--r-md); display: none;">
+          <div style="font-size: 12px; color: var(--muted); margin-bottom: 4px;">Total Value</div>
+          <div style="font-size: 32px; font-weight: 700; color: var(--accent);">$<span id="result-value">0.00</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How to Identify 999 Silver -->
+    <section class="container" style="padding: 0 20px var(--space-2xl) 20px;">
+      <h2 style="font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: var(--space-lg);">How to Identify 999 Silver</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div style="background: rgba(22,22,36,0.6); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-lg);">
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 12px;">Check the Hallmark</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent); margin-right: 10px;">→</span>
+              <span>Look for "999" or ".999" stamp</span>
+            </li>
+            <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent); margin-right: 10px;">→</span>
+              <span>Should be clearly visible on item</span>
+            </li>
+            <li style="color: var(--dim); display: flex; align-items: flex-start;">
+              <span style="color: var(--accent); margin-right: 10px;">→</span>
+              <span>Often accompanied by maker's mark</span>
+            </li>
+          </ul>
+        </div>
+        <div style="background: rgba(22,22,36,0.6); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-lg);">
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--accent-green); margin-bottom: 12px;">Test the Weight</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-green); margin-right: 10px;">→</span>
+              <span>Use precise scale (±0.1g accuracy)</span>
+            </li>
+            <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-green); margin-right: 10px;">→</span>
+              <span>Pure silver is denser than most metals</span>
+            </li>
+            <li style="color: var(--dim); display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-green); margin-right: 10px;">→</span>
+              <span>Verify against known samples</span>
+            </li>
+          </ul>
+        </div>
+        <div style="background: rgba(22,22,36,0.6); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-lg);">
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--accent-gold); margin-bottom: 12px;">Visual Inspection</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-gold); margin-right: 10px;">→</span>
+              <span>Bright, lustrous finish</span>
+            </li>
+            <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-gold); margin-right: 10px;">→</span>
+              <span>No discoloration or dark spots</span>
+            </li>
+            <li style="color: var(--dim); display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-gold); margin-right: 10px;">→</span>
+              <span>High conductivity (magnetic test)</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 999 vs 925 Silver Comparison -->
+    <section class="container" style="padding: 0 20px var(--space-2xl) 20px;">
+      <h2 style="font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: var(--space-lg);">999 Silver vs 925 Sterling Silver</h2>
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; border-collapse: collapse;">
+          <thead>
+            <tr style="background: rgba(124,58,237,0.1); border-bottom: 2px solid var(--border2);">
+              <th style="padding: 16px; text-align: left; color: var(--text); font-weight: 700; border-right: 1px solid var(--border2);">Feature</th>
+              <th style="padding: 16px; text-align: left; color: var(--accent); font-weight: 700; border-right: 1px solid var(--border2);">999 Pure</th>
+              <th style="padding: 16px; text-align: left; color: var(--muted); font-weight: 700;">925 Sterling</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px; color: var(--text); border-right: 1px solid var(--border);">Purity</td>
+              <td style="padding: 14px; color: var(--accent); border-right: 1px solid var(--border); font-weight: 600;">99.9%</td>
+              <td style="padding: 14px; color: var(--muted);">92.5%</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02);">
+              <td style="padding: 14px; color: var(--text); border-right: 1px solid var(--border);">Price per Gram</td>
+              <td style="padding: 14px; color: var(--accent); border-right: 1px solid var(--border); font-weight: 600;">$0.91</td>
+              <td style="padding: 14px; color: var(--muted);">$0.88</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px; color: var(--text); border-right: 1px solid var(--border);">Value Retention</td>
+              <td style="padding: 14px; color: var(--accent); border-right: 1px solid var(--border); font-weight: 600;">Excellent</td>
+              <td style="padding: 14px; color: var(--muted);">Good</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border); background: rgba(255,255,255,0.02);">
+              <td style="padding: 14px; color: var(--text); border-right: 1px solid var(--border);">Tarnishing</td>
+              <td style="padding: 14px; color: var(--accent); border-right: 1px solid var(--border); font-weight: 600;">Minimal</td>
+              <td style="padding: 14px; color: var(--muted);">Moderate</td>
+            </tr>
+            <tr style="border-bottom: 1px solid var(--border);">
+              <td style="padding: 14px; color: var(--text); border-right: 1px solid var(--border);">Best Use</td>
+              <td style="padding: 14px; color: var(--accent); border-right: 1px solid var(--border); font-weight: 600;">Investment</td>
+              <td style="padding: 14px; color: var(--muted);">Jewelry</td>
+            </tr>
+            <tr style="background: rgba(255,255,255,0.02);">
+              <td style="padding: 14px; color: var(--text); border-right: 1px solid var(--border);">Resale Value</td>
+              <td style="padding: 14px; color: var(--accent); border-right: 1px solid var(--border); font-weight: 600;">Very High</td>
+              <td style="padding: 14px; color: var(--muted);">Moderate</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Where to Find 999 Silver -->
+    <section class="container" style="padding: 0 20px var(--space-2xl) 20px;">
+      <h2 style="font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: var(--space-lg);">Where to Find 999 Silver</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+        <div style="background: linear-gradient(135deg, rgba(52,211,153,0.1) 0%, rgba(179,157,250,0.05) 100%); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-lg);">
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--accent-green); margin-bottom: 12px;">Precious Metals Dealers</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-green); margin-right: 10px;">→</span>
+              <span>Local coin and bullion shops</span>
+            </li>
+            <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-green); margin-right: 10px;">→</span>
+              <span>Certified online retailers</span>
+            </li>
+            <li style="color: var(--dim); display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-green); margin-right: 10px;">→</span>
+              <span>APMEX, Kitco, JM Bullion</span>
+            </li>
+          </ul>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(251,191,36,0.1) 0%, rgba(179,157,250,0.05) 100%); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-lg);">
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--accent-gold); margin-bottom: 12px;">Investment Channels</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-gold); margin-right: 10px;">→</span>
+              <span>Silver futures & commodities</span>
+            </li>
+            <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-gold); margin-right: 10px;">→</span>
+              <span>ETFs and mutual funds</span>
+            </li>
+            <li style="color: var(--dim); display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-gold); margin-right: 10px;">→</span>
+              <span>Investment accounts</span>
+            </li>
+          </ul>
+        </div>
+        <div style="background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(179,157,250,0.05) 100%); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-lg);">
+          <h3 style="font-size: 18px; font-weight: 700; color: var(--accent); margin-bottom: 12px;">Auction & Collectibles</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent); margin-right: 10px;">→</span>
+              <span>eBay, Heritage Auctions</span>
+            </li>
+            <li style="color: var(--dim); margin-bottom: 8px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent); margin-right: 10px;">→</span>
+              <span>Specialty coin auctions</span>
+            </li>
+            <li style="color: var(--dim); display: flex; align-items: flex-start;">
+              <span style="color: var(--accent); margin-right: 10px;">→</span>
+              <span>Estate sales and liquidation</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Where to Sell 999 Silver -->
+    <section class="container" style="padding: 0 20px var(--space-2xl) 20px;">
+      <h2 style="font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: var(--space-lg);">Where to Sell 999 Silver</h2>
+      <div style="background: rgba(22,22,36,0.6); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-xl);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg);">
+          <div>
+            <h3 style="font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 12px;">Local Options</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+                <span style="color: var(--accent); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Local coin dealers & pawn shops</span>
+              </li>
+              <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+                <span style="color: var(--accent); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Jewelry stores with bullion sections</span>
+              </li>
+              <li style="color: var(--dim); display: flex; align-items: flex-start;">
+                <span style="color: var(--accent); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Walk-in instant quote available</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size: 16px; font-weight: 700; color: var(--accent-green); margin-bottom: 12px;">Online Buyers</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+                <span style="color: var(--accent-green); margin-right: 10px; font-weight: 700;">→</span>
+                <span>APMEX, Kitco, JM Bullion</span>
+              </li>
+              <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+                <span style="color: var(--accent-green); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Ship and get paid by wire</span>
+              </li>
+              <li style="color: var(--dim); display: flex; align-items: flex-start;">
+                <span style="color: var(--accent-green); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Often better prices than local</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="font-size: 16px; font-weight: 700; color: var(--accent-gold); margin-bottom: 12px;">Peer-to-Peer</h3>
+            <ul style="list-style: none; padding: 0;">
+              <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+                <span style="color: var(--accent-gold); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Facebook Marketplace, Craigslist</span>
+              </li>
+              <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+                <span style="color: var(--accent-gold); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Collector groups & forums</span>
+              </li>
+              <li style="color: var(--dim); display: flex; align-items: flex-start;">
+                <span style="color: var(--accent-gold); margin-right: 10px; font-weight: 700;">→</span>
+                <span>Often best prices, need caution</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Investment Pros and Cons -->
+    <section class="container" style="padding: 0 20px var(--space-2xl) 20px;">
+      <h2 style="font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: var(--space-lg);">999 Silver as an Investment</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <!-- Pros -->
+        <div style="background: linear-gradient(135deg, rgba(52,211,153,0.15) 0%, rgba(52,211,153,0.05) 100%); border-left: 4px solid var(--accent-green); border-radius: var(--r-lg); padding: var(--space-lg);">
+          <h3 style="font-size: 20px; font-weight: 700; color: var(--accent-green); margin-bottom: 16px;">Advantages</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-green); margin-right: 10px; font-weight: 700;">✓</span>
+              <span>Highest purity = maximum value</span>
+            </li>
+            <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-green); margin-right: 10px; font-weight: 700;">✓</span>
+              <span>Instant liquidity at spot price</span>
+            </li>
+            <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-green); margin-right: 10px; font-weight: 700;">✓</span>
+              <span>No counterfeiting risk with hallmarks</span>
+            </li>
+            <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-green); margin-right: 10px; font-weight: 700;">✓</span>
+              <span>Inflation hedge and portfolio diversifier</span>
+            </li>
+            <li style="color: var(--dim); display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-green); margin-right: 10px; font-weight: 700;">✓</span>
+              <span>Physical ownership with no counterparty risk</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Cons -->
+        <div style="background: linear-gradient(135deg, rgba(245,158,11,0.15) 0%, rgba(245,158,11,0.05) 100%); border-left: 4px solid var(--accent-gold); border-radius: var(--r-lg); padding: var(--space-lg);">
+          <h3 style="font-size: 20px; font-weight: 700; color: var(--accent-gold); margin-bottom: 16px;">Disadvantages</h3>
+          <ul style="list-style: none; padding: 0;">
+            <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-gold); margin-right: 10px; font-weight: 700;">✗</span>
+              <span>Price volatility due to commodity markets</span>
+            </li>
+            <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-gold); margin-right: 10px; font-weight: 700;">✗</span>
+              <span>Requires secure storage & insurance</span>
+            </li>
+            <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-gold); margin-right: 10px; font-weight: 700;">✗</span>
+              <span>Transaction costs (buy/sell spread)</span>
+            </li>
+            <li style="color: var(--dim); margin-bottom: 10px; display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-gold); margin-right: 10px; font-weight: 700;">✗</span>
+              <span>Not liquid during market disruptions</span>
+            </li>
+            <li style="color: var(--dim); display: flex; align-items: flex-start;">
+              <span style="color: var(--accent-gold); margin-right: 10px; font-weight: 700;">✗</span>
+              <span>Lower returns than stocks historically</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Tools -->
+    <section class="container" style="padding: 0 20px var(--space-2xl) 20px;">
+      <h2 style="font-size: 28px; font-weight: 700; color: var(--text); margin-bottom: var(--space-lg);">Related Silver Tools & Calculators</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
+        <a href="/925-silver-price-today/" style="text-decoration: none; background: rgba(22,22,36,0.6); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-lg); transition: all 0.3s ease; display: block;">
+          <h3 style="font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 6px;">925 Sterling Silver Price</h3>
+          <p style="font-size: 14px; color: var(--muted);">Live price for 92.5% pure sterling silver</p>
+        </a>
+        <a href="/999-silver-calculator/" style="text-decoration: none; background: rgba(22,22,36,0.6); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-lg); transition: all 0.3s ease; display: block;">
+          <h3 style="font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 6px;">999 Silver Calculator</h3>
+          <p style="font-size: 14px; color: var(--muted);">Calculate value of 99.9% pure silver items</p>
+        </a>
+        <a href="/silver-price-today/" style="text-decoration: none; background: rgba(22,22,36,0.6); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-lg); transition: all 0.3s ease; display: block;">
+          <h3 style="font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 6px;">Silver Price Today</h3>
+          <p style="font-size: 14px; color: var(--muted);">Current spot price for all silver purity levels</p>
+        </a>
+        <a href="/silver-purity-chart/" style="text-decoration: none; background: rgba(22,22,36,0.6); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-lg); transition: all 0.3s ease; display: block;">
+          <h3 style="font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 6px;">Silver Purity Chart</h3>
+          <p style="font-size: 14px; color: var(--muted);">Complete guide to all silver purity levels</p>
+        </a>
+        <a href="/what-is-sterling-silver/" style="text-decoration: none; background: rgba(22,22,36,0.6); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-lg); transition: all 0.3s ease; display: block;">
+          <h3 style="font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 6px;">What is Sterling Silver</h3>
+          <p style="font-size: 14px; color: var(--muted);">Learn the difference between purity standards</p>
+        </a>
+        <a href="/how-to-sell-silver/" style="text-decoration: none; background: rgba(22,22,36,0.6); border: 1px solid var(--border2); border-radius: var(--r-lg); padding: var(--space-lg); transition: all 0.3s ease; display: block;">
+          <h3 style="font-size: 16px; font-weight: 700; color: var(--accent); margin-bottom: 6px;">How to Sell Silver</h3>
+          <p style="font-size: 14px; color: var(--muted);">Best channels and tips for selling silver</p>
+        </a>
+      </div>
+    </section>
+
+    <div id="related-links"></div>
+  </main>
+
+  <script>
+    function calculateSilverValue() {
+      const amount = parseFloat(document.getElementById('calc-amount').value) || 0;
+      const unit = document.getElementById('calc-unit').value;
+      const pricePerGm = 0.91; // Update with real price
+
+      let grams = 0;
+      if (unit === 'gm') grams = amount;
+      else if (unit === 'oz') grams = amount * 31.1035; // troy oz to grams
+      else if (unit === 'lb') grams = amount * 453.592; // pounds to grams
+
+      const totalValue = (grams * pricePerGm).toFixed(2);
+      document.getElementById('calc-result').style.display = 'block';
+      document.getElementById('result-value').textContent = totalValue;
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      SiteComponents.renderHeader('site-header');
+      SiteComponents.renderFooter('site-footer');
+      SiteComponents.renderPriceTicker('price-ticker');
+      SiteComponents.renderBreadcrumb('breadcrumb', [
+        { label: 'Home', href: '/' },
+        { label: 'Silver Prices', href: '/silver-price-today/' },
+        { label: '999 Silver Price Today' }
+      ]);
+      SiteComponents.renderRelatedLinks('related-links');
+    });
+  </script>
+</body>
+</html>
   </main>
   <div id="site-footer"></div>
   <script src="/js/silver-price.js" defer></script>
