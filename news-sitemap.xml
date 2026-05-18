@@ -4,6 +4,26 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
+    <loc>https://scrapsilvercalculater.com/silver-price-today/#geopolitical-volatility</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Scrap Silver Calculator</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-18T10:15:00+00:00</news:publication_date>
+      <news:title>The Seesaw Safe-Haven: How Geopolitical Volatility and Iran Deal Rumors Formed a Double-Edged Sword for Precious Metals</news:title>
+      <news:keywords>silver price, geopolitical risk, Iran, Strait of Hormuz, crude oil, Federal Reserve, safe-haven assets, monetary policy, precious metals, market analysis, supply deficit</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://scrapsilvercalculater.com/images/social-share.png</image:loc>
+      <image:caption>Geopolitical Volatility and Precious Metals Analysis — May 18, 2026</image:caption>
+    </image:image>
+    <lastmod>2026-05-18T10:15:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.92</priority>
+  </url>
+
+  <url>
     <loc>https://scrapsilvercalculater.com/silver-market-analysis-may18/</loc>
     <news:news>
       <news:publication>
