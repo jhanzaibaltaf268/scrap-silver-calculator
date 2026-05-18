@@ -82,11 +82,11 @@
         <news:name>Scrap Silver Calculator</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-05-17T00:00:00+00:00</news:publication_date>
+      <news:publication_date>2026-05-18T06:00:00+00:00</news:publication_date>
       <news:title>925 Sterling Silver Price Today — Live Per Gram and Per Ounce</news:title>
-      <news:keywords>925 silver price today, sterling silver price, 925 silver per gram, sterling silver value</news:keywords>
+      <news:keywords>925 silver price today, sterling silver price, 925 silver per gram, sterling silver value, sterling silver melt value</news:keywords>
     </news:news>
-    <lastmod>2026-05-17T06:00:00+00:00</lastmod>
+    <lastmod>2026-05-18T06:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
@@ -102,7 +102,39 @@
       <news:title>999 Fine Silver Price Today — Live Bullion Spot Price</news:title>
       <news:keywords>999 silver price today, fine silver price, pure silver price, 999 silver per gram</news:keywords>
     </news:news>
-    <lastmod>2026-05-17T06:00:00+00:00</lastmod>
+    <lastmod>2026-05-18T06:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://scrapsilvercalculater.com/900-silver-price-today/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Scrap Silver Calculator</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-18T06:00:00+00:00</news:publication_date>
+      <news:title>900 Silver Price Today — Coin Silver and Junk Silver Melt Value</news:title>
+      <news:keywords>900 silver price today, coin silver price, junk silver melt value, Morgan dollar value, 90% silver price per gram</news:keywords>
+    </news:news>
+    <lastmod>2026-05-18T06:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://scrapsilvercalculater.com/800-silver-price-today/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Scrap Silver Calculator</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-18T06:00:00+00:00</news:publication_date>
+      <news:title>800 Silver Price Today — European Silver Melt Value Per Gram and Ounce</news:title>
+      <news:keywords>800 silver price today, European silver price, German silver value, 800 silver per gram, antique silverware value</news:keywords>
+    </news:news>
+    <lastmod>2026-05-18T06:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
