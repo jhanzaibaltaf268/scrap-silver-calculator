@@ -9,7 +9,7 @@
     <priority>1.00</priority>
   </url>
 
-  <!-- ════ TIER 2: NEWS & ANALYSIS ════ -->
+  <!-- ════ TIER 2: NEWS AND ANALYSIS ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/silver-news-today/</loc>
     <lastmod>2026-05-18</lastmod>
@@ -322,7 +322,7 @@
     <priority>0.75</priority>
   </url>
 
-  <!-- ════ TIER 7: WEIGHT & AMOUNT TOOLS ════ -->
+  <!-- ════ TIER 7: WEIGHT AND AMOUNT TOOLS ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/silver-weight-converter/</loc>
     <lastmod>2026-05-17</lastmod>
@@ -507,7 +507,7 @@
     <priority>0.75</priority>
   </url>
 
-  <!-- ════ TIER 10: LEGAL & UTILITY PAGES ════ -->
+  <!-- ════ TIER 10: LEGAL AND UTILITY PAGES ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/privacy-policy/</loc>
     <lastmod>2026-05-17</lastmod>
