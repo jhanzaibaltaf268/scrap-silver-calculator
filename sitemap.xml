@@ -88,6 +88,20 @@
     <priority>0.80</priority>
   </url>
 
+  <url>
+    <loc>https://scrapsilvercalculater.com/900-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <url>
+    <loc>https://scrapsilvercalculater.com/800-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+
   <!-- ════ TIER 4: MAIN CALCULATORS ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/silver-scrap-calculator/</loc>
@@ -520,6 +534,293 @@
     <lastmod>2026-05-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
+  </url>
+
+  <!-- ════ MULTILINGUAL PURITY PRICE PAGES ════ -->
+  <!-- Spanish -->
+  <url>
+    <loc>https://scrapsilvercalculater.com/es/999-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/es/925-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/es/900-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/es/800-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- French -->
+  <url>
+    <loc>https://scrapsilvercalculater.com/fr/999-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/fr/925-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/fr/900-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/fr/800-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- German -->
+  <url>
+    <loc>https://scrapsilvercalculater.com/de/999-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/de/925-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/de/900-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/de/800-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Italian -->
+  <url>
+    <loc>https://scrapsilvercalculater.com/it/999-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/it/925-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/it/900-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/it/800-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Portuguese -->
+  <url>
+    <loc>https://scrapsilvercalculater.com/pt/999-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/pt/925-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/pt/900-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/pt/800-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Russian -->
+  <url>
+    <loc>https://scrapsilvercalculater.com/ru/999-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/ru/925-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/ru/900-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/ru/800-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Arabic -->
+  <url>
+    <loc>https://scrapsilvercalculater.com/ar/999-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/ar/925-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/ar/900-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/ar/800-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Hindi -->
+  <url>
+    <loc>https://scrapsilvercalculater.com/hi/999-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/hi/925-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/hi/900-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/hi/800-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Urdu -->
+  <url>
+    <loc>https://scrapsilvercalculater.com/ur/999-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/ur/925-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/ur/900-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/ur/800-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Turkish -->
+  <url>
+    <loc>https://scrapsilvercalculater.com/tr/999-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/tr/925-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/tr/900-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/tr/800-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Chinese -->
+  <url>
+    <loc>https://scrapsilvercalculater.com/zh/999-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/zh/925-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/zh/900-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/zh/800-silver-price-today/</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.80</priority>
   </url>
 
 </urlset>
