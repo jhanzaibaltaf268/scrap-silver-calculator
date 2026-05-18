@@ -4,6 +4,26 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
+    <loc>https://scrapsilvercalculater.com/silver-market-analysis-may18/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Scrap Silver Calculator</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-05-18T05:03:00+00:00</news:publication_date>
+      <news:title>Silver Falls Further on Inflation Worries — Fed Tightening, Supply Surplus, and Demand Weakness</news:title>
+      <news:keywords>silver price, inflation, Federal Reserve, precious metals, commodity markets, supply chain, industrial demand, monetary policy</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://scrapsilvercalculater.com/images/social-share.png</image:loc>
+      <image:caption>Silver Market Analysis — May 18, 2026</image:caption>
+    </image:image>
+    <lastmod>2026-05-18T05:03:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.88</priority>
+  </url>
+
+  <url>
     <loc>https://scrapsilvercalculater.com/silver-news-today/</loc>
     <news:news>
       <news:publication>
