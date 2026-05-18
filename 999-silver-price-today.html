@@ -507,10 +507,22 @@
   </main>
 
   <script>
+    let currentPrice = 87.42; // Fallback price, will update with live price
+
+    function updatePriceCards(pricePerOz) {
+      currentPrice = pricePerOz;
+      const pricePerGram = pricePerOz / 31.1035;
+      const pricePerPound = pricePerOz * 14.5833;
+
+      document.getElementById('price-999-oz').textContent = pricePerOz.toFixed(2);
+      document.getElementById('price-999-gm').textContent = pricePerGram.toFixed(2);
+      document.getElementById('price-999-lb').textContent = pricePerPound.toFixed(2);
+    }
+
     function calculateSilverValue() {
       const amount = parseFloat(document.getElementById('calc-amount').value) || 0;
       const unit = document.getElementById('calc-unit').value;
-      const pricePerGm = 0.91; // Update with real price
+      const pricePerGm = currentPrice / 31.1035;
 
       let grams = 0;
       if (unit === 'gm') grams = amount;
@@ -532,6 +544,13 @@
         { label: '999 Silver Price Today' }
       ]);
       SiteComponents.renderRelatedLinks('related-links');
+
+      // Update prices with live data
+      if (typeof SilverPrice !== 'undefined') {
+        SilverPrice.onPriceUpdate(function(price) {
+          updatePriceCards(price);
+        });
+      }
     });
   </script>
 </body>
