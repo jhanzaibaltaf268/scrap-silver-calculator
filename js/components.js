@@ -679,9 +679,9 @@ const SiteComponents = (() => {
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
+    document.addEventListener('DOMContentLoaded', () => { try { init(); } catch(e) { console.error('[SiteComponents] init error:', e); } });
   } else {
-    init();
+    try { init(); } catch(e) { console.error('[SiteComponents] init error:', e); }
   }
 
   return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, injectFAQSchema, injectPageSchema, init, getLangCode, updateSpotPriceDisplay };
