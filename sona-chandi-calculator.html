@@ -236,7 +236,7 @@
           t.value = '91.6';
           resTitle.textContent = 'Sona (Gold) Value';
         }
-        calc();
+        
       });
     });
 
@@ -280,9 +280,8 @@
       }
     }
 
-    [w, t].forEach(el => el.addEventListener('input', calc));
+    [w, t].forEach(el => );
     [u, c].forEach(el => el.addEventListener('change', calc));
-    SilverPrice.onPriceUpdate(() => calc());
     
     // Attempt to set local currency based on timezone (lazy heuristic)
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -291,7 +290,7 @@
     else if (tz.includes('Dubai')) c.value = 'AED';
     else if (tz.includes('Riyadh')) c.value = 'SAR';
 
-    calc();
+    
   
     // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');

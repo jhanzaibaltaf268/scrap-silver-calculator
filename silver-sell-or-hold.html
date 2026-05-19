@@ -184,8 +184,8 @@
 
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),d=document.getElementById('discount'),cs=document.getElementById('custom-spot'),sl=document.getElementById('custom-spot-slider'),bp=document.getElementById('buy-price');
 
-    sl.addEventListener('input', () => { cs.value = sl.value; calc(); });
-    cs.addEventListener('input', () => { sl.value = cs.value; calc(); });
+    sl.addEventListener('input', () => { cs.value = sl.value;  });
+    cs.addEventListener('input', () => { sl.value = cs.value;  });
 
     function calc() {
       const weight = parseFloat(w.value)||0;
@@ -255,10 +255,10 @@
       }
     }
 
-    [w,d,cs,bp].forEach(el=>el.addEventListener('input',calc));
-    [u,p].forEach(el=>el.addEventListener('change',calc));
-    SilverPrice.onPriceUpdate(()=>{sl.value=SilverPrice.getPrice();cs.value=SilverPrice.getPrice();calc();});
-    calc();
+    
+    
+    SilverPrice.onPriceUpdate(()=>{sl.value=SilverPrice.getPrice();cs.value=SilverPrice.getPrice();});
+    
   
     // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');

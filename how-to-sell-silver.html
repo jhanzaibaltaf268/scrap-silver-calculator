@@ -196,7 +196,7 @@
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'How to Sell Silver'}]);
     const w=document.getElementById('weight'),p=document.getElementById('purity');
     function calc(){const weight=parseFloat(w.value)||0;const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-melt').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-best').textContent=SilverCalc.formatCurrency(r.value*0.95);document.getElementById('result-typical').textContent=SilverCalc.formatCurrency(r.value*0.825);}
-    [w].forEach(el=>el.addEventListener('input',calc));p.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+    p.addEventListener('change',calc);
   
     // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');

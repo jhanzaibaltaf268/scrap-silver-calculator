@@ -184,10 +184,10 @@
       dwtResultDetail.textContent = `${pureGrams.toFixed(2)}g pure silver · ${(troyOz * purity).toFixed(4)} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
     }
 
-    dwtWeight.addEventListener('input', calcDWT);
+    
     dwtPurity.addEventListener('change', calcDWT);
     SilverPrice.onPriceUpdate(() => calcDWT());
-    calcDWT();
+    
 
     // Conversion table
     const tableBody = document.getElementById('dwt-table');

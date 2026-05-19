@@ -293,11 +293,9 @@
       }
     }
 
-    [gw, gu, gp, sw, su, sp].forEach(el => el.addEventListener('input', calc));
+    [gw, gu, gp, sw, su, sp].forEach(el => );
     [gu, gp, su, sp].forEach(el => el.addEventListener('change', calc));
     
-    SilverPrice.onPriceUpdate(() => calc());
-    calc();
   
     // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');

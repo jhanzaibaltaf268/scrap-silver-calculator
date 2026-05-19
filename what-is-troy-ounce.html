@@ -170,8 +170,7 @@
       document.getElementById('result-value').textContent=SilverCalc.formatCurrency(val);
       document.getElementById('result-detail').textContent=`${oz} troy oz = ${(oz*31.1035).toFixed(2)}g = ${(oz*1.0971).toFixed(4)} regular oz · Spot: $${spot.toFixed(2)}/oz`;
     }
-    to.addEventListener('input',calc);
-    SilverPrice.onPriceUpdate(()=>calc()); calc();
+     
     SiteComponents.injectFAQSchema([
       {q:'What is a troy ounce?',a:'A troy ounce is a unit of measurement used for precious metals weighing 31.1035 grams. It is about 10% heavier than a regular (avoirdupois) ounce of 28.3495 grams.'},
       {q:'Why is silver measured in troy ounces?',a:'Troy ounces originated from the medieval French trading city of Troyes and have been the global standard for precious metals since the 1400s.'},

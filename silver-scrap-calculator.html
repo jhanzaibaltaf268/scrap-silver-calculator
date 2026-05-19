@@ -213,10 +213,9 @@
       document.getElementById('result-scrap').textContent = SilverCalc.formatCurrency(result.scrapValue);
       document.getElementById('result-scrap-detail').textContent = `After ${(disc*100).toFixed(0)}% dealer discount (−${SilverCalc.formatCurrency(result.discount)})`;
     }
-    [w,u,p,d].forEach(el => el.addEventListener('input', calc));
+    [w,u,p,d].forEach(el => );
     [u,p,d].forEach(el => el.addEventListener('change', calc));
-    SilverPrice.onPriceUpdate(() => calc());
-    calc();
+    
   
     // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');

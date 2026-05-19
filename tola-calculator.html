@@ -185,10 +185,10 @@
       tolaResultDetail.textContent = `${pureGrams.toFixed(2)}g pure silver · ${(troyOz * purity).toFixed(4)} troy oz · Spot: $${spotPrice.toFixed(2)}/oz`;
     }
 
-    tolaWeight.addEventListener('input', calcTola);
+    
     tolaPurity.addEventListener('change', calcTola);
     SilverPrice.onPriceUpdate(() => calcTola());
-    calcTola();
+    
 
     // Conversion table
     const tableBody = document.getElementById('tola-table');

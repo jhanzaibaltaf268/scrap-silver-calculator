@@ -196,8 +196,7 @@
       document.getElementById('result-value').textContent=SilverCalc.formatCurrency(value);
       document.getElementById('result-detail').textContent=`${totalOz.toFixed(4)} troy oz silver · $${face.toFixed(2)} face value · Spot: $${spot.toFixed(2)}/oz`;
     }
-    fv.addEventListener('input',calc); ct.addEventListener('change',calc);
-    SilverPrice.onPriceUpdate(()=>calc()); calc();
+     ct.addEventListener('change',calc); 
     SiteComponents.injectFAQSchema([
       {q:'What is junk silver?',a:'Junk silver refers to pre-1965 US coins containing 90% silver that are valued for their silver content rather than collectibility. The term "junk" means they are in average circulated condition.'},
       {q:'Which coins are considered junk silver?',a:'Pre-1965 Roosevelt and Mercury dimes, Washington and Standing Liberty quarters, Franklin and Walking Liberty half dollars, and Morgan and Peace dollars are all 90% silver junk coins.'},

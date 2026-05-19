@@ -174,8 +174,6 @@
         return `<tr><td>${item.label}</td><td>${weightText}</td><td>$${val.toFixed(2)}</td></tr>`;
       }).join('');
     }
-
-    SilverPrice.onPriceUpdate(() => update());
     update();
   
     // Add listener to Calculate button

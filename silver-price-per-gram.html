@@ -162,7 +162,6 @@
       const purities=[{l:'999 Fine',p:0.999},{l:'958 Britannia',p:0.958},{l:'925 Sterling',p:0.925},{l:'900 Coin',p:0.900},{l:'835 European',p:0.835},{l:'800 European',p:0.800}];
       document.getElementById('purity-rows').innerHTML=purities.map(pu=>`<tr><td>${pu.l}</td><td>${(pu.p*100).toFixed(1)}%</td><td>$${(perGram*pu.p).toFixed(4)}</td></tr>`).join('');
     }
-    SilverPrice.onPriceUpdate(()=>update());
     update();
   
     // Add listener to Calculate button

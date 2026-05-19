@@ -133,9 +133,9 @@
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Silver Jewelry Value Calculator'}]);
     const t=document.getElementById('type'),w=document.getElementById('weight'),q=document.getElementById('qty'),p=document.getElementById('purity');
-    t.addEventListener('change',()=>{const dw=t.options[t.selectedIndex].dataset.w;if(dw!=='0')w.value=dw;calc();});
+    t.addEventListener('change',()=>{const dw=t.options[t.selectedIndex].dataset.w;if(dw!=='0')w.value=dw;});
     function calc(){const weight=(parseFloat(w.value)||0)*(parseInt(q.value)||1);const purity=parseFloat(p.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(weight,purity,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';}
-    [w,q].forEach(el=>el.addEventListener('input',calc));[t,p].forEach(el=>el.addEventListener('change',calc));SilverPrice.onPriceUpdate(()=>calc());calc();
+    
   
     // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');
