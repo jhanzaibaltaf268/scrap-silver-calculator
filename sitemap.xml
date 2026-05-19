@@ -4,7 +4,7 @@
   <!-- ════ TIER 1: CRITICAL PAGES ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.00</priority>
   </url>
@@ -12,21 +12,21 @@
   <!-- ════ TIER 2: NEWS AND ANALYSIS ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/silver-news-today/</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-market-analysis-may18/</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-price-forecast-today/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
@@ -34,70 +34,70 @@
   <!-- ════ TIER 3: LIVE PRICE PAGES ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/silver-price-today/</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>hourly</changefreq>
     <priority>0.95</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-price-per-gram/</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-price-per-ounce/</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-spot-price-today/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.88</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-price-all-currencies/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/925-silver-price-today/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/999-silver-price-today/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/925-sterling-silver-price-per-gram/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/900-silver-price-today/</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/800-silver-price-today/</loc>
-    <lastmod>2026-05-18</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
@@ -105,42 +105,42 @@
   <!-- ════ TIER 4: MAIN CALCULATORS ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/silver-scrap-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-melt-value-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-jewelry-value-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-coin-value-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silverware-value-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-bar-value-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
@@ -148,49 +148,49 @@
   <!-- ════ TIER 5: PURITY CALCULATORS ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/silver-purity-chart/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/925-silver-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/999-silver-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/958-silver-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/900-silver-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/835-silver-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/800-silver-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -198,126 +198,126 @@
   <!-- ════ TIER 6: ITEM-SPECIFIC CALCULATORS ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/sterling-silver-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/junk-silver-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-dime-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-quarter-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-dollar-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/canadian-silver-coin-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/face-value-silver-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/gold-and-silver-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-spoon-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-fork-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-knife-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-tray-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-cup-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-plate-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-ring-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-bracelet-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-necklace-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-chain-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -325,70 +325,70 @@
   <!-- ════ TIER 7: WEIGHT AND AMOUNT TOOLS ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/silver-weight-converter/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/pennyweight-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/tola-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/1oz-silver-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/2oz-silver-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/5oz-silver-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/10oz-silver-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/1-10oz-silver-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/100oz-silver-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/1kg-silver-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -396,91 +396,91 @@
   <!-- ════ TIER 8: EDUCATIONAL GUIDES ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/how-to-use-silver-calculators/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/how-silver-prices-work/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/how-to-sell-silver/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/what-is-silver-scrap/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/what-is-sterling-silver/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/what-is-junk-silver/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/what-is-silver-bullion/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/what-is-troy-ounce/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/what-does-925-mean/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/what-is-silver-melt-value/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/identify-silver/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-hallmarks-guide/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.78</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/sona-chandi-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -488,21 +488,21 @@
   <!-- ════ TIER 9: OTHER CALCULATORS ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/silver-batch-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-profit-calculator/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/silver-sell-or-hold/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
@@ -524,28 +524,28 @@
   <!-- ════ TIER 10: LEGAL AND UTILITY PAGES ════ -->
   <url>
     <loc>https://scrapsilvercalculater.com/privacy-policy/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.50</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/terms-of-service/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.50</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/disclaimer/</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.50</priority>
   </url>
 
   <url>
     <loc>https://scrapsilvercalculater.com/404.html</loc>
-    <lastmod>2026-05-17</lastmod>
+    <lastmod>2026-05-19</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.30</priority>
   </url>
