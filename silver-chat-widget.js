@@ -132,7 +132,7 @@
     document.getElementById('sacMessages').scrollTop = 999999;
 
     try {
-      const response = await fetch('https://scrapsilvercalculator.app.n8n.cloud/webhook/chat', {
+      const response = await fetch('https://scrapsilvercalculator.app.n8n.cloud/webhook/silver-agent', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: msg, sessionId: window.sacSessionId }),
@@ -143,8 +143,8 @@
       const data = await response.json();
       document.getElementById('sacTyping').style.display = 'none';
 
-      // Extract Claude's response from data.response (n8n webhook format)
-      const reply = data.response || data.reply || data.message || 'Sorry, I could not get a response.';
+      // n8n AI Agent returns output field; fallback covers other formats
+      const reply = data.output || data.response || data.reply || data.message || 'Sorry, I could not get a response.';
       window.sacAddMessage(reply, 'bot');
 
     } catch (err) {
