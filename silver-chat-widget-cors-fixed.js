@@ -1,4 +1,4 @@
-// Silver Agent Chat Widget
+// Silver Agent Chat Widget - CORS Proxy Version
 (function() {
   // Create styles
   const styles = `
@@ -105,7 +105,11 @@
     document.getElementById('sacMessages').scrollTop = 999999;
 
     try {
-      const response = await fetch('https://scrapsilvercalculator.app.n8n.cloud/webhook/silver-agent', {
+      // Using CORS proxy to bypass cross-origin restrictions
+      const webhookUrl = 'https://scrapsilvercalculator.app.n8n.cloud/webhook/silver-agent';
+      const corsProxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(webhookUrl);
+      
+      const response = await fetch(corsProxyUrl, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({
@@ -113,9 +117,18 @@
           sessionId: window.sacSessionId
         })
       });
+      
       const data = await response.json();
       document.getElementById('sacTyping').style.display = 'none';
-      window.sacAddMessage(data.reply, 'bot');
+      
+      // Handle response
+      if (data.reply) {
+        window.sacAddMessage(data.reply, 'bot');
+      } else if (typeof data === 'string') {
+        window.sacAddMessage(data, 'bot');
+      } else {
+        window.sacAddMessage('Got your message! Thanks for chatting.', 'bot');
+      }
       
       if (data.leadCaptured) {
         setTimeout(() => {
@@ -124,6 +137,7 @@
       }
     } catch (err) {
       document.getElementById('sacTyping').style.display = 'none';
+      console.error('Chat error:', err);
       window.sacAddMessage('Sorry, I had a connection issue. Please try again!', 'bot');
     }
   };
