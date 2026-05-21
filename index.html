@@ -1635,6 +1635,18 @@
     init();
   }
 })();
+  // Initial greeting with price
+        setTimeout(() => {
+            if (silverPrice) {
+                addMessage(`👋 Hi! Silver is at $${silverPrice}/oz. Ask me anything!`, 'bot');
+            } else {
+                addMessage('👋 Hi! I\'m your Silver Calculator AI. Ask me anything about silver!', 'bot');
+            }
+        }, 500);
+
+        // Refresh price every 5 minutes
+        setInterval(getLivePrice, 5 * 60 * 1000);
+  
 </script>
  
 </body>
