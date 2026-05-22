@@ -10,3 +10,5 @@ temp-extract.js
 walkthrough.md
 implementation_plan.md
 task.md
+.vercel
+.env*.local
