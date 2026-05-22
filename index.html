@@ -1621,7 +1621,7 @@
 
       const data = await response.json();
       document.getElementById('sacTyping').style.display = 'none';
-      window.sacAddMessage(data.reply || data.text || 'Sorry, I could not get a response. Please try again.', 'bot');
+     addMessage(data.reply || data.text || 'Sorry, I could not get a response. Please try again.', 'bot');
 
     } catch (err) {
       document.getElementById('sacTyping').style.display = 'none';
