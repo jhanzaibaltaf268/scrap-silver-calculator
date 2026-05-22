@@ -1635,6 +1635,19 @@
     init();
   }
 })();
+  // Get live silver price
+        let silverPrice = null;
+        async function getLivePrice() {
+            try {
+                const res = await fetch('/api/metals-price');
+                const data = await res.json();
+                silverPrice = data.silver;
+                console.log('Silver price updated:', silverPrice);
+            } catch (e) {
+                console.log('Could not fetch live price:', e.message);
+            }
+        }
+        getLivePrice();
   // Initial greeting with price
         setTimeout(() => {
             if (silverPrice) {
