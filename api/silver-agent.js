@@ -19,16 +19,22 @@ export default async function handler(req, res) {
       body: JSON.stringify({ message }),
     });
 
-    // Read as text first so we never crash on non-JSON
     const rawText = await response.text();
-    const statusCode = response.status;
 
     if (!response.ok) {
-      return res.status(502).json({ error: 'n8n error', status: statusCode, raw: rawText.slice(0, 500) });
+      return res.status(502).json({ error: 'n8n error', raw: rawText.slice(0, 500) });
     }
 
-    // Return raw for debugging
-    return res.status(200).json({ success: true, message: rawText || '(empty)', _status: statusCode, _len: rawText.length });
+    let reply = '';
+    try {
+      const data = JSON.parse(rawText);
+      const item = Array.isArray(data) ? data[0] : data;
+      reply = item.text || item.output || item.reply || item.message || item.response || '';
+    } catch (_) {
+      reply = rawText;
+    }
+
+    return res.status(200).json({ success: true, message: String(reply).trim() });
 
   } catch (error) {
     return res.status(500).json({ error: error.message });
