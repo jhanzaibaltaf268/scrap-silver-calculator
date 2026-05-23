@@ -12,7 +12,8 @@
   _style.textContent =
     '.result-value,#result-best,#result-typical{opacity:0!important;transition:none!important}' +
     '.result-detail,.res-meta,#result-meta,#result-melt-detail,#result-scrap-detail{opacity:0!important}' +
-    '.result-display{opacity:0!important}';
+    '.result-display{opacity:0!important}' +
+    '#rv,#rd,#rdealer,.res-val,.res-det,.res-dealer,.d-res{opacity:0!important}';
   (document.head || document.documentElement).appendChild(_style);
 
   /* ── 2. Suppress input-event auto-calc; clear results after change events ── */
@@ -23,10 +24,10 @@
   }
 
   function clearResults() {
-    document.querySelectorAll('.result-value, #result-best, #result-typical').forEach(function (el) {
+    document.querySelectorAll('.result-value, #result-best, #result-typical, #rv, .res-val').forEach(function (el) {
       el.textContent = '—';
     });
-    document.querySelectorAll('.result-detail, .res-meta, #result-meta, #result-melt-detail, #result-scrap-detail').forEach(function (el) {
+    document.querySelectorAll('.result-detail, .res-meta, #result-meta, #result-melt-detail, #result-scrap-detail, #rd, #rdealer, .res-det, .res-dealer').forEach(function (el) {
       el.textContent = '';
     });
   }
