@@ -280,27 +280,16 @@
       }
     }
 
-    [w, t].forEach(el => );
     [u, c].forEach(el => el.addEventListener('change', calc));
-    
-    // Attempt to set local currency based on timezone (lazy heuristic)
+    SilverPrice.onPriceUpdate(() => calc());
+
+    // Set local currency based on timezone
     const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
     if (tz.includes('Karachi')) c.value = 'PKR';
     else if (tz.includes('Calcutta') || tz.includes('Kolkata')) c.value = 'INR';
     else if (tz.includes('Dubai')) c.value = 'AED';
     else if (tz.includes('Riyadh')) c.value = 'SAR';
 
-    
-  
-    // Add listener to Calculate button
-    const cb = document.getElementById('calc-btn');
-    if (cb) {
-      const fn = typeof calculate === 'function' ? calculate :
-                 (typeof calc === 'function' ? calc :
-                 (typeof update === 'function' ? update : null));
-      if (fn) cb.addEventListener('click', fn);
-    }
-  
     SiteComponents.injectFAQSchema([
       {q: 'How many grams are in 1 Tola?', a: 'The official standard Tola is 11.6638 grams. In many local markets, it is rounded to 11.66g or 11.7g. Our calculator uses the precise 11.6638g standard for accuracy.'},
       {q: 'What is 22K gold in Tunch percentage?', a: '22 Karat gold is 91.66% pure gold. In the Tunch system, this is simply referred to as 91.6 or 92 Tunch.'},

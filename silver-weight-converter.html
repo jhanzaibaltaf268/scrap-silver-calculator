@@ -223,23 +223,16 @@
       input.addEventListener('focus', () => activeField = key);
     });
 
-    SilverPrice.onPriceUpdate(() => {
-      const val = parseFloat(fields.grams.value) || 0;
-      updateAll(val, 'grams');
-    });
+    SilverPrice.onPriceUpdate(() => calc());
 
-    // Initial
-    updateAll(31.1035, 'grams');
-  
-    // Add listener to Calculate button
-    const cb = document.getElementById('calc-btn');
-    if (cb) {
-      const fn = typeof calculate === 'function' ? calculate :
-                 (typeof calc === 'function' ? calc :
-                 (typeof update === 'function' ? update : null));
-      if (fn) cb.addEventListener('click', fn);
+    function calc() {
+      const field = activeField || 'grams';
+      const input = fields[field];
+      const val = parseFloat(input.value) || 0;
+      const grams = gFromField(field, val);
+      updateAll(grams, field);
     }
-  </script>
+</script>
 
 
 </body></html>
