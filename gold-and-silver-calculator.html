@@ -94,16 +94,18 @@
     </section>
     
     <div class="calc-page-layout">
-      <!-- Calculators Section -->
-      <div style="display:flex; flex-direction:column; gap:var(--space-lg);">
-        
-        <!-- Gold Calculation -->
-        <div class="calc-widget" style="border-top: 4px solid #FCD34D;">
-          <div class="calc-widget-title"><span class="icon">🥇</span> Gold Value</div>
-          <div class="form-row">
+      <!-- Single combined calculator -->
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">🥇🥈</span> Gold &amp; Silver Calculator</div>
+
+        <!-- Side-by-side inputs -->
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-lg);">
+          <!-- Gold inputs -->
+          <div>
+            <div style="font-weight:700; color:#FBBF24; margin-bottom:var(--space-sm); font-size:var(--fs-sm);">🥇 GOLD</div>
             <div class="form-group">
               <label class="form-label" for="g-weight">Weight</label>
-              <input type="number" class="form-input" id="g-weight" placeholder="e.g. 10" step="0.01" min="0" value="0">
+              <input type="number" class="form-input" id="g-weight" value="0" step="0.01" min="0">
             </div>
             <div class="form-group">
               <label class="form-label" for="g-unit">Unit</label>
@@ -113,33 +115,24 @@
                 <option value="dwt">Pennyweight (dwt)</option>
               </select>
             </div>
+            <div class="form-group">
+              <label class="form-label" for="g-purity">Gold Purity</label>
+              <select class="form-select" id="g-purity">
+                <option value="0.999">24K — Pure (99.9%)</option>
+                <option value="0.916">22K — Jewelry (91.6%)</option>
+                <option value="0.750">18K — Jewelry (75%)</option>
+                <option value="0.585" selected="">14K — Jewelry (58.5%)</option>
+                <option value="0.417">10K — Jewelry (41.7%)</option>
+              </select>
+            </div>
           </div>
-          <div class="form-group">
-            <label class="form-label" for="g-purity">Gold Purity (Karat)</label>
-            <select class="form-select" id="g-purity">
-              <option value="0.999">24K — Pure Gold (99.9%)</option>
-              <option value="0.916">22K — Jewelry (91.6%)</option>
-              <option value="0.750">18K — Jewelry (75.0%)</option>
-              <option value="0.585" selected="">14K — Jewelry (58.5%)</option>
-              <option value="0.417">10K — Jewelry (41.7%)</option>
-            </select>
-          </div>
-          
-          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Calculate Melt Value</button>
-          <div class="result-display">
-            <div class="result-label">Gold Melt Value</div>
-            <div class="result-value" id="res-gold-val" style="color: #FBBF24;">$0.00</div>
-            <div class="result-detail" id="res-gold-det">Enter weight to calculate</div>
-          </div>
-        </div>
 
-        <!-- Silver Calculation -->
-        <div class="calc-widget" style="border-top: 4px solid #E5E7EB;">
-          <div class="calc-widget-title"><span class="icon">🥈</span> Silver Value</div>
-          <div class="form-row">
+          <!-- Silver inputs -->
+          <div>
+            <div style="font-weight:700; color:var(--text-secondary); margin-bottom:var(--space-sm); font-size:var(--fs-sm);">🥈 SILVER</div>
             <div class="form-group">
               <label class="form-label" for="s-weight">Weight</label>
-              <input type="number" class="form-input" id="s-weight" placeholder="e.g. 50" step="0.01" min="0" value="0">
+              <input type="number" class="form-input" id="s-weight" value="0" step="0.01" min="0">
             </div>
             <div class="form-group">
               <label class="form-label" for="s-unit">Unit</label>
@@ -149,37 +142,45 @@
                 <option value="dwt">Pennyweight (dwt)</option>
               </select>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="s-purity">Silver Purity</label>
-            <select class="form-select" id="s-purity">
-              <option value="0.999">999 — Fine Silver (99.9%)</option>
-              <option value="0.925" selected="">925 — Sterling (92.5%)</option>
-              <option value="0.900">900 — Coin Silver (90%)</option>
-              <option value="0.800">800 — European (80%)</option>
-            </select>
-          </div>
-          <div class="result-display">
-            <div class="result-label">Silver Melt Value</div>
-            <div class="result-value" id="res-silver-val">$0.00</div>
-            <div class="result-detail" id="res-silver-det">Enter weight to calculate</div>
+            <div class="form-group">
+              <label class="form-label" for="s-purity">Silver Purity</label>
+              <select class="form-select" id="s-purity">
+                <option value="0.999">999 — Fine (99.9%)</option>
+                <option value="0.925" selected="">925 — Sterling (92.5%)</option>
+                <option value="0.900">900 — Coin (90%)</option>
+                <option value="0.800">800 — European (80%)</option>
+              </select>
+            </div>
           </div>
         </div>
 
-        <!-- Combined Total &amp; Ratio -->
-        <div class="calc-widget" style="background: linear-gradient(135deg, rgba(52,211,153,0.08) 0%, rgba(52,211,153,0.02) 100%); border-color: var(--accent-green);">
-          <div style="display:flex; justify-content:space-between; align-items:flex-end;">
+        <button type="button" class="btn btn-primary btn-full" id="calc-btn" style="margin:var(--space-md) 0;">Calculate</button>
+
+        <!-- Results -->
+        <div class="result-display">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-md); margin-bottom:var(--space-md);">
             <div>
-              <div class="result-label">Combined Total Value</div>
-              <div class="result-value" id="res-total-val" style="background: linear-gradient(135deg, #34d399, #6ee7b7); -webkit-background-clip: text; background-clip: text;">$0.00</div>
+              <div class="result-label">Gold Value</div>
+              <div class="result-value" id="res-gold-val" style="color:#FBBF24;">—</div>
+              <div class="result-detail" id="res-gold-det"></div>
+            </div>
+            <div>
+              <div class="result-label">Silver Value</div>
+              <div class="result-value" id="res-silver-val">—</div>
+              <div class="result-detail" id="res-silver-det"></div>
+            </div>
+          </div>
+          <div style="border-top:1px solid var(--border-subtle); padding-top:var(--space-md); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:var(--space-sm);">
+            <div>
+              <div class="result-label">Combined Total</div>
+              <div class="result-value" id="res-total-val" style="background:linear-gradient(135deg,#34d399,#6ee7b7);-webkit-background-clip:text;background-clip:text;">—</div>
             </div>
             <div style="text-align:right;">
-              <div class="result-label">Live Gold/Silver Ratio</div>
-              <div class="result-value" id="res-ratio" style="font-size:var(--fs-2xl); color:var(--text-primary);">0:1</div>
+              <div class="result-label">Gold/Silver Ratio</div>
+              <div class="result-value" id="res-ratio" style="font-size:var(--fs-2xl);">—</div>
             </div>
           </div>
         </div>
-
       </div>
 
       <!-- Content Section -->
@@ -293,19 +294,9 @@
       }
     }
 
-    [gw, gu, gp, sw, su, sp].forEach(el => );
     [gu, gp, su, sp].forEach(el => el.addEventListener('change', calc));
-    
-  
-    // Add listener to Calculate button
-    const cb = document.getElementById('calc-btn');
-    if (cb) {
-      const fn = typeof calculate === 'function' ? calculate :
-                 (typeof calc === 'function' ? calc :
-                 (typeof update === 'function' ? update : null));
-      if (fn) cb.addEventListener('click', fn);
-    }
-  
+    SilverPrice.onPriceUpdate(() => calc());
+
     SiteComponents.injectFAQSchema([
       {q: 'How is the gold-to-silver ratio calculated?', a: 'The ratio is calculated by dividing the current spot price of one ounce of gold by the current spot price of one ounce of silver. For example, if gold is $2400 and silver is $30, the ratio is 80:1.'},
       {q: 'Is it better to invest in gold or silver?', a: 'Both have benefits. Gold is more compact and less volatile, while silver often has higher percentage gains during bull markets. Many investors use the gold-silver ratio to decide which metal to buy at a given time.'},
