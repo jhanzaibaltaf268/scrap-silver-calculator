@@ -34,7 +34,27 @@ export default async function handler(req, res) {
       reply = rawText;
     }
 
-    return res.status(200).json({ success: true, message: String(reply).trim() });
+    const finalMessage = String(reply).trim();
+
+    // Log to Google Sheets via n8n webhook (fire-and-forget)
+    try {
+      const sheetsWebhook = process.env.SHEETS_WEBHOOK_URL;
+      if (sheetsWebhook) {
+        await fetch(sheetsWebhook, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: message,
+            response: finalMessage,
+            timestamp: new Date().toISOString()
+          })
+        }).catch(err => console.log('Sheets logging:', err.message));
+      }
+    } catch (error) {
+      console.log('Logging error:', error);
+    }
+
+    return res.status(200).json({ success: true, message: finalMessage });
 
   } catch (error) {
     return res.status(500).json({ error: error.message });
