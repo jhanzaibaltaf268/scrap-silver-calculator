@@ -670,12 +670,77 @@ const SiteComponents = (() => {
     });
   }
 
+  function renderChatWidget() {
+    if (document.getElementById('sac-chat-bubble')) return; // already rendered
+    var widget = document.createElement('div');
+    widget.innerHTML = '<div id="sac-chat-widget-container" style="position:fixed;bottom:20px;right:20px;width:380px;height:520px;background:white;border-radius:12px;box-shadow:0 5px 40px rgba(0,0,0,0.2);display:none;flex-direction:column;font-family:system-ui,sans-serif;z-index:999999;overflow:hidden;"><div style="background:linear-gradient(135deg,#a78bfa 0%,#8b5cf6 100%);color:white;padding:16px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;"><div><h3 style="margin:0;font-size:16px;font-weight:600;">Silver Calculator AI</h3><p style="margin:4px 0 0 0;font-size:12px;opacity:0.9;">Ask about silver values</p></div><button id="sac-close-widget" style="background:none;border:none;color:white;font-size:24px;cursor:pointer;padding:0;line-height:1;">×</button></div><div id="sac-messages-container" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:#fafafa;"></div><div style="border-top:1px solid #e5e7eb;padding:12px;display:flex;gap:8px;background:white;flex-shrink:0;"><input id="sac-message-input" type="text" placeholder="Ask about silver..." style="flex:1;border:1px solid #d1d5db;border-radius:6px;padding:10px 12px;font-size:14px;outline:none;"/><button id="sac-send-button" style="background:#8b5cf6;color:white;border:none;border-radius:6px;padding:10px 16px;cursor:pointer;font-weight:600;font-size:14px;">Send</button></div></div><button id="sac-chat-bubble" style="position:fixed;bottom:24px;right:24px;width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,#a78bfa 0%,#8b5cf6 100%);color:white;border:none;font-size:28px;cursor:pointer;box-shadow:0 4px 16px rgba(139,92,246,0.5);display:flex;align-items:center;justify-content:center;z-index:999998;">💬</button>';
+    document.body.appendChild(widget);
+
+    var container = document.getElementById('sac-chat-widget-container');
+    var bubble    = document.getElementById('sac-chat-bubble');
+    var closeBtn  = document.getElementById('sac-close-widget');
+    var sendBtn   = document.getElementById('sac-send-button');
+    var input     = document.getElementById('sac-message-input');
+    var msgs      = document.getElementById('sac-messages-container');
+    var isOpen    = false;
+
+    function addMsg(text, isUser) {
+      var d = document.createElement('div');
+      d.style.cssText = isUser
+        ? 'background:#8b5cf6;color:white;padding:10px 14px;border-radius:18px 18px 4px 18px;max-width:80%;align-self:flex-end;font-size:14px;line-height:1.4;white-space:pre-wrap;'
+        : 'background:white;color:#1f2937;padding:10px 14px;border-radius:18px 18px 18px 4px;max-width:85%;align-self:flex-start;font-size:14px;line-height:1.4;box-shadow:0 1px 3px rgba(0,0,0,0.1);white-space:pre-wrap;';
+      d.textContent = text;
+      msgs.appendChild(d);
+      msgs.scrollTop = msgs.scrollHeight;
+      return d;
+    }
+
+    function open() {
+      isOpen = true;
+      container.style.display = 'flex';
+      bubble.style.display = 'none';
+      input.focus();
+    }
+
+    function close() {
+      isOpen = false;
+      container.style.display = 'none';
+      bubble.style.display = 'flex';
+    }
+
+    async function send() {
+      var msg = input.value.trim();
+      if (!msg) return;
+      input.value = '';
+      addMsg(msg, true);
+      var thinking = addMsg('Thinking…', false);
+      try {
+        var res = await fetch('/api/silver-agent/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg })
+        });
+        var data = await res.json();
+        thinking.textContent = data.message || data.reply || 'No response received.';
+      } catch (e) {
+        thinking.textContent = 'Error connecting. Please try again.';
+      }
+    }
+
+    bubble.addEventListener('click', open);
+    closeBtn.addEventListener('click', close);
+    sendBtn.addEventListener('click', send);
+    input.addEventListener('keypress', function(e) { if (e.key === 'Enter') send(); });
+    addMsg('Hi! 👋 Ask me about scrap silver values, purity grades (925, 999, 900), or how to calculate silver melt value.', false);
+  }
+
   function init() {
     renderHeader();
     renderFooter();
     renderLocalizedSections();
     injectPageSchema();
     updateSpotPriceDisplay();
+    renderChatWidget();
   }
 
   if (document.readyState === 'loading') {
