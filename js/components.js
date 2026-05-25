@@ -734,6 +734,61 @@ const SiteComponents = (() => {
     addMsg('Hi! 👋 Ask me about scrap silver values, purity grades (925, 999, 900), or how to calculate silver melt value.', false);
   }
 
+  function renderLeadCapture() {
+    if (document.getElementById('sac-lead-overlay')) return;
+    var FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdWn4DPNyUkxV3VDQ5bqaZ1wWIgATDcP5bFInLG2DYadBIP5A/formResponse';
+    var overlay = document.createElement('div');
+    overlay.id = 'sac-lead-overlay';
+    overlay.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:1000000;display:flex;align-items:center;justify-content:center;font-family:system-ui,sans-serif;';
+    overlay.innerHTML =
+      '<div style="background:white;border-radius:16px;padding:32px;width:90%;max-width:420px;box-shadow:0 20px 60px rgba(0,0,0,0.3);position:relative;">' +
+        '<button id="sac-lead-close" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:22px;cursor:pointer;color:#6b7280;">×</button>' +
+        '<div style="text-align:center;margin-bottom:20px;">' +
+          '<div style="font-size:32px;margin-bottom:8px;">🪙</div>' +
+          '<h2 style="margin:0 0 6px;font-size:20px;color:#1f2937;">Get Silver Price Alerts</h2>' +
+          '<p style="margin:0;font-size:14px;color:#6b7280;">Leave your details and we\'ll keep you updated on silver prices.</p>' +
+        '</div>' +
+        '<div id="sac-lead-form">' +
+          '<input id="sac-lead-name" type="text" placeholder="Full Name *" style="width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:8px;padding:11px 14px;font-size:14px;margin-bottom:10px;outline:none;" required/>' +
+          '<input id="sac-lead-email" type="email" placeholder="Email Address *" style="width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:8px;padding:11px 14px;font-size:14px;margin-bottom:10px;outline:none;" required/>' +
+          '<input id="sac-lead-phone" type="tel" placeholder="Phone Number *" style="width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:8px;padding:11px 14px;font-size:14px;margin-bottom:10px;outline:none;" required/>' +
+          '<input id="sac-lead-whatsapp" type="tel" placeholder="WhatsApp Number (Optional)" style="width:100%;box-sizing:border-box;border:1px solid #d1d5db;border-radius:8px;padding:11px 14px;font-size:14px;margin-bottom:16px;outline:none;"/>' +
+          '<button id="sac-lead-submit" style="width:100%;background:linear-gradient(135deg,#6d28d9,#4c1d95);color:white;border:none;border-radius:8px;padding:13px;font-size:15px;font-weight:700;cursor:pointer;">Submit →</button>' +
+          '<p style="text-align:center;font-size:12px;color:#9ca3af;margin:10px 0 0;">No spam. Unsubscribe anytime.</p>' +
+        '</div>' +
+        '<div id="sac-lead-success" style="display:none;text-align:center;padding:20px 0;">' +
+          '<div style="font-size:48px;margin-bottom:12px;">✅</div>' +
+          '<h3 style="margin:0 0 8px;color:#1f2937;">Thank you!</h3>' +
+          '<p style="margin:0;color:#6b7280;font-size:14px;">We\'ll be in touch with silver price updates.</p>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(overlay);
+
+    function closeOverlay() { overlay.style.display = 'none'; }
+    document.getElementById('sac-lead-close').addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', function(e) { if (e.target === overlay) closeOverlay(); });
+
+    document.getElementById('sac-lead-submit').addEventListener('click', function() {
+      var name     = document.getElementById('sac-lead-name').value.trim();
+      var email    = document.getElementById('sac-lead-email').value.trim();
+      var phone    = document.getElementById('sac-lead-phone').value.trim();
+      var whatsapp = document.getElementById('sac-lead-whatsapp').value.trim();
+      if (!name || !email || !phone) {
+        alert('Please fill in Name, Email and Phone.');
+        return;
+      }
+      var body = new URLSearchParams();
+      body.append('entry.2058238637', name);
+      body.append('entry.1756944575', email);
+      body.append('entry.1150577817', phone);
+      body.append('entry.1174672913', whatsapp);
+      fetch(FORM_URL, { method: 'POST', mode: 'no-cors', body: body });
+      document.getElementById('sac-lead-form').style.display = 'none';
+      document.getElementById('sac-lead-success').style.display = 'block';
+      setTimeout(closeOverlay, 3000);
+    });
+  }
+
   function init() {
     renderHeader();
     renderFooter();
@@ -741,6 +796,8 @@ const SiteComponents = (() => {
     injectPageSchema();
     updateSpotPriceDisplay();
     renderChatWidget();
+    // Show lead capture popup 5 seconds after page load
+    setTimeout(renderLeadCapture, 5000);
   }
 
   if (document.readyState === 'loading') {
