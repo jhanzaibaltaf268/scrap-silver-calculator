@@ -61,7 +61,7 @@
     }
     .swc-input {
       flex: 1;
-      background: rgba(255,255,255,.07);
+      background: #1a1a2e;
       border: 1px solid rgba(255,255,255,.15);
       border-radius: 8px;
       padding: 11px 14px;
@@ -76,7 +76,7 @@
     .swc-input::-webkit-outer-spin-button,
     .swc-input::-webkit-inner-spin-button { -webkit-appearance: none; }
     .swc-select {
-      background: rgba(255,255,255,.07);
+      background: #1a1a2e;
       border: 1px solid rgba(255,255,255,.15);
       border-radius: 8px;
       padding: 11px 14px;
@@ -86,9 +86,16 @@
       outline: none;
       cursor: pointer;
       min-width: 160px;
+      -webkit-appearance: auto;
+      appearance: auto;
     }
     .swc-select:focus { border-color: #7c3aed; }
-
+    .swc-select option {
+      background: #1a1a2e;
+      color: #f0f4f8;
+      font-weight: 500;
+      padding: 8px;
+    }
     /* Results table */
     .swc-results {
       margin-top: 20px;
