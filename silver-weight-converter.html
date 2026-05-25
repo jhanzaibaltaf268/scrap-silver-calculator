@@ -1,5 +1,4 @@
 <!DOCTYPE html><html lang="en"><head>
-  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
   <script type="text/javascript" async>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","wby5gobage");</script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YMX334ZW6Q');</script>
@@ -22,7 +21,6 @@
   <link rel="alternate" hreflang="tr" href="https://scrapsilvercalculater.com/tr/silver-weight-converter/">
   <link rel="alternate" hreflang="ur" href="https://scrapsilvercalculater.com/ur/چاندی-وزن-کنورٹر/">
   <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/银重量转换器/">
-
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://scrapsilvercalculater.com/silver-weight-converter/">
   <meta property="og:title" content="Silver Weight Converter — Grams, Troy Oz, Tola &amp; More">
@@ -35,7 +33,6 @@
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
   <link rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,97 +41,105 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap"></noscript>
 
   <style>
-    /* ── Page-specific styles ── */
-    .swc-widget {
-      background: rgba(22,22,36,.9);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 20px;
-      padding: 28px;
-      max-width: 680px;
-      margin: 0 auto 2rem;
-    }
-    .swc-widget-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #f0f4f8;
-      margin-bottom: 20px;
+    .swc-form-row {
       display: flex;
       align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .swc-form-label {
+      width: 150px;
+      flex-shrink: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+    .swc-form-controls {
+      display: flex;
       gap: 8px;
+      flex: 1;
     }
-    .swc-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    @media (max-width: 500px) {
-      .swc-grid { grid-template-columns: 1fr; }
-      .swc-widget { padding: 18px; }
-    }
-    .swc-card {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 12px;
-      padding: 14px 16px;
-      transition: border-color .2s;
-      cursor: text;
-    }
-    .swc-card:focus-within {
-      border-color: #7c3aed;
-      box-shadow: 0 0 0 3px rgba(124,58,237,.15);
-    }
-    .swc-card label {
-      display: block;
-      font-size: 11px;
-      font-weight: 700;
-      color: #8fa3bc;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin-bottom: 6px;
-      pointer-events: none;
-    }
-    .swc-card input {
-      width: 100%;
-      background: transparent;
-      border: none;
+    .swc-input {
+      flex: 1;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      padding: 11px 14px;
       color: #f0f4f8;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.35rem;
-      font-weight: 700;
+      font-size: 15px;
+      font-weight: 600;
       outline: none;
+      min-width: 0;
       -moz-appearance: textfield;
     }
-    .swc-card input::-webkit-outer-spin-button,
-    .swc-card input::-webkit-inner-spin-button { -webkit-appearance: none; }
-    .swc-card .swc-hint {
-      font-size: 11px;
-      color: #6b7f96;
-      margin-top: 4px;
+    .swc-input:focus { border-color: #7c3aed; box-shadow: 0 0 0 3px rgba(124,58,237,.15); }
+    .swc-input::-webkit-outer-spin-button,
+    .swc-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+    .swc-select {
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      padding: 11px 14px;
+      color: #f0f4f8;
+      font-size: 14px;
+      font-weight: 600;
+      outline: none;
+      cursor: pointer;
+      min-width: 160px;
     }
-    .swc-melt {
-      background: linear-gradient(135deg, rgba(124,58,237,.15), rgba(179,157,250,.1));
-      border: 1px solid rgba(124,58,237,.3);
-      border-radius: 14px;
-      padding: 18px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .swc-melt-label { font-size: 13px; color: #8fa3bc; }
-    .swc-melt-value { font-size: 1.6rem; font-weight: 800; color: #b39dfa; font-family: 'JetBrains Mono', monospace; }
-    .swc-melt-detail { font-size: 12px; color: #6b7f96; margin-top: 4px; }
+    .swc-select:focus { border-color: #7c3aed; }
 
-    /* Reference table */
-    .ref-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 14px; }
-    .ref-table th { text-align: left; padding: 8px 12px; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #8fa3bc; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .ref-table td { padding: 10px 12px; border-bottom: 1px solid rgba(255,255,255,.05); color: #c2cfe0; }
-    .ref-table tr:last-child td { border-bottom: none; }
-    .ref-table td:first-child { color: #f0f4f8; font-weight: 600; }
-    .ref-table td:nth-child(3),
-    .ref-table td:nth-child(4) { font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+    /* Results table */
+    .swc-results {
+      margin-top: 20px;
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 20px;
+    }
+    .swc-results-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .swc-res-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 10px;
+      padding: 12px 14px;
+    }
+    .swc-res-unit { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; color: #8fa3bc; margin-bottom: 4px; }
+    .swc-res-val { font-size: 1.15rem; font-weight: 700; color: #f0f4f8; font-family: 'JetBrains Mono', monospace; }
+    .swc-melt-banner {
+      background: linear-gradient(135deg, rgba(124,58,237,.2), rgba(179,157,250,.1));
+      border: 1px solid rgba(124,58,237,.35);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .swc-melt-banner .label { font-size: 13px; color: #b39dfa; font-weight: 600; }
+    .swc-melt-banner .value { font-size: 1.5rem; font-weight: 800; color: #b39dfa; font-family: 'JetBrains Mono', monospace; }
+    .swc-melt-banner .detail { font-size: 12px; color: #8fa3bc; margin-top: 2px; }
+
+    @media (max-width: 600px) {
+      .swc-form-row { flex-direction: column; align-items: stretch; }
+      .swc-form-label { width: auto; }
+      .swc-results-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 400px) {
+      .swc-results-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ref table */
+    .ref-table { width:100%;border-collapse:collapse;margin-top:1rem;font-size:14px; }
+    .ref-table th { text-align:left;padding:8px 12px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#8fa3bc;border-bottom:1px solid rgba(255,255,255,.08); }
+    .ref-table td { padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.05);color:#c2cfe0; }
+    .ref-table tr:last-child td { border-bottom:none; }
+    .ref-table td:first-child { color:#f0f4f8;font-weight:600; }
+    .ref-table td:nth-child(3),.ref-table td:nth-child(4) { font-family:'JetBrains Mono',monospace;font-size:13px; }
   </style>
 
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Silver Weight Converter","url":"https://scrapsilvercalculater.com/silver-weight-converter/","description":"Convert silver weight between grams, troy ounces, pennyweight, kilograms, and tola instantly.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
@@ -148,74 +153,92 @@
       <div class="container">
         <div id="price-ticker"></div>
         <h1>Silver Weight <span class="highlight">Converter</span></h1>
-        <p class="subtitle">Type any value — all units update instantly</p>
+        <p class="subtitle">Convert between all silver weight units and see live melt value</p>
       </div>
     </section>
 
-    <div class="container" style="max-width:780px;">
+    <div class="calc-page-layout">
+      <div class="calc-widget">
+        <div class="calc-widget-title"><span class="icon">⚖️</span> Silver Weight Converter</div>
 
-      <!-- Converter Widget -->
-      <div class="swc-widget">
-        <div class="swc-widget-title">⚖️ Weight Converter</div>
-        <div class="swc-grid">
-          <div class="swc-card">
-            <label for="swc-grams">Grams (g)</label>
-            <input type="number" id="swc-grams" step="0.001" placeholder="0" inputmode="decimal">
-            <div class="swc-hint">1 g = 0.03215 troy oz</div>
-          </div>
-          <div class="swc-card">
-            <label for="swc-troy">Troy Ounces (oz t)</label>
-            <input type="number" id="swc-troy" step="0.0001" placeholder="0" inputmode="decimal">
-            <div class="swc-hint">1 troy oz = 31.1035 g</div>
-          </div>
-          <div class="swc-card">
-            <label for="swc-dwt">Pennyweight (dwt)</label>
-            <input type="number" id="swc-dwt" step="0.01" placeholder="0" inputmode="decimal">
-            <div class="swc-hint">1 dwt = 1.5552 g · 20 dwt = 1 troy oz</div>
-          </div>
-          <div class="swc-card">
-            <label for="swc-kg">Kilograms (kg)</label>
-            <input type="number" id="swc-kg" step="0.000001" placeholder="0" inputmode="decimal">
-            <div class="swc-hint">1 kg = 32.1507 troy oz</div>
-          </div>
-          <div class="swc-card">
-            <label for="swc-tola">Tola</label>
-            <input type="number" id="swc-tola" step="0.001" placeholder="0" inputmode="decimal">
-            <div class="swc-hint">1 tola = 11.6638 g (South Asia)</div>
-          </div>
-          <div class="swc-card">
-            <label for="swc-avoz">Avoirdupois Ounce (oz)</label>
-            <input type="number" id="swc-avoz" step="0.0001" placeholder="0" inputmode="decimal">
-            <div class="swc-hint">1 av oz = 28.3495 g (regular ounce)</div>
+        <!-- Form rows -->
+        <div class="swc-form-row">
+          <div class="swc-form-label">Quantity &amp; Weight</div>
+          <div class="swc-form-controls">
+            <input type="number" class="swc-input" id="swc-qty" placeholder="e.g. 10" value="10" min="0" step="0.001" inputmode="decimal">
+            <select class="swc-select" id="swc-unit">
+              <option value="g">Gram</option>
+              <option value="troy">Troy Ounce</option>
+              <option value="dwt">Pennyweight (dwt)</option>
+              <option value="kg">Kilogram</option>
+              <option value="tola">Tola</option>
+              <option value="avoz">Avoirdupois Oz</option>
+            </select>
           </div>
         </div>
 
-        <!-- Live Melt Value -->
-        <div class="swc-melt">
-          <div>
-            <div class="swc-melt-label">Live Melt Value (999 fine)</div>
-            <div class="swc-melt-value" id="swc-melt-val">—</div>
-            <div class="swc-melt-detail" id="swc-melt-detail">Enter any weight above to see value</div>
+        <div class="swc-form-row">
+          <div class="swc-form-label">Choose Purity</div>
+          <div class="swc-form-controls">
+            <select class="swc-select" id="swc-purity" style="min-width:100%;flex:1;">
+              <option value="1">Fine silver (999)</option>
+              <option value="0.925">Sterling silver (925)</option>
+              <option value="0.958">Britannia silver (958)</option>
+              <option value="0.900">Coin silver (900)</option>
+              <option value="0.835">European silver (835)</option>
+              <option value="0.800">European silver (800)</option>
+            </select>
           </div>
-          <div style="font-size:28px;opacity:.5;">💰</div>
+        </div>
+
+        <div class="swc-form-row">
+          <div class="swc-form-label">Choose Currency</div>
+          <div class="swc-form-controls">
+            <select class="swc-select" id="swc-currency" style="min-width:100%;flex:1;">
+              <option value="USD">USD — United States Dollar</option>
+              <option value="EUR">EUR — Euro</option>
+              <option value="GBP">GBP — British Pound</option>
+              <option value="PKR">PKR — Pakistani Rupee</option>
+              <option value="INR">INR — Indian Rupee</option>
+              <option value="AED">AED — UAE Dirham</option>
+              <option value="SAR">SAR — Saudi Riyal</option>
+            </select>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:8px;">Convert &amp; Calculate</button>
+
+        <!-- Results -->
+        <div class="swc-results" id="swc-results" style="display:none;">
+          <div class="swc-results-grid">
+            <div class="swc-res-card"><div class="swc-res-unit">Grams</div><div class="swc-res-val" id="r-g">—</div></div>
+            <div class="swc-res-card"><div class="swc-res-unit">Troy Ounces</div><div class="swc-res-val" id="r-troy">—</div></div>
+            <div class="swc-res-card"><div class="swc-res-unit">Pennyweight</div><div class="swc-res-val" id="r-dwt">—</div></div>
+            <div class="swc-res-card"><div class="swc-res-unit">Kilograms</div><div class="swc-res-val" id="r-kg">—</div></div>
+            <div class="swc-res-card"><div class="swc-res-unit">Tola</div><div class="swc-res-val" id="r-tola">—</div></div>
+            <div class="swc-res-card"><div class="swc-res-unit">Avoirdupois Oz</div><div class="swc-res-val" id="r-avoz">—</div></div>
+          </div>
+          <div class="swc-melt-banner">
+            <div>
+              <div class="label">Melt Value</div>
+              <div class="value" id="r-melt">—</div>
+              <div class="detail" id="r-detail">at current spot price</div>
+            </div>
+            <div style="font-size:32px;opacity:.5;">💰</div>
+          </div>
         </div>
       </div>
 
-      <!-- Content -->
-      <div class="content-body" style="max-width:680px;margin:0 auto;">
+      <div class="content-body">
         <h2>Silver Weight Units Explained</h2>
-
         <h3>Troy Ounce vs Regular Ounce</h3>
-        <p>The precious metals industry uses <strong>troy ounces</strong> (31.1035 g), which are heavier than the standard avoirdupois ounce (28.3495 g). When you see "silver price per ounce," it always means per <em>troy</em> ounce — not a regular ounce.</p>
-
+        <p>The precious metals industry uses <strong>troy ounces</strong> (31.1035 g), which are heavier than the standard avoirdupois ounce (28.3495 g). When you see "silver price per ounce," it always means per <em>troy</em> ounce.</p>
         <h3>Pennyweight (dwt)</h3>
-        <p>Jewelers commonly weigh items in pennyweight. There are exactly 20 pennyweight in one troy ounce. One dwt equals approximately 1.5552 grams.</p>
-
+        <p>Jewelers commonly weigh items in pennyweight. There are 20 pennyweight in one troy ounce. One dwt equals approximately 1.5552 grams.</p>
         <h3>Tola</h3>
-        <p>The tola is used across South Asia (India, Pakistan, Bangladesh) for precious metals trading. One tola equals 11.6638 grams or exactly 3/8 of a troy ounce.</p>
-
-        <h3>Why Weight Units Matter When Selling Silver</h3>
-        <p>Always confirm which unit a buyer is using. A "per ounce" offer in troy ounces is about 10% more silver than a regular ounce offer — a common and costly source of confusion when selling scrap silver.</p>
+        <p>Used across South Asia (India, Pakistan, Bangladesh) for precious metals. One tola equals 11.6638 grams or exactly 3/8 of a troy ounce.</p>
+        <h3>Why Weight Units Matter</h3>
+        <p>Always confirm which unit a buyer is using. A "per ounce" offer in troy ounces is about 10% more silver than in regular ounces — a common and costly source of confusion.</p>
 
         <h2>Quick Reference Table</h2>
         <table class="ref-table">
@@ -229,8 +252,10 @@
             <tr><td>1 Avoirdupois Oz</td><td>oz</td><td>28.3495</td><td>0.9115</td></tr>
           </tbody>
         </table>
+      </div>
 
-        <h3 style="margin-top:var(--space-xl);">Related Calculators</h3>
+      <div>
+        <h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3>
         <div class="related-grid">
           <a href="/" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
           <a href="/sterling-silver-calculator/" class="related-link"><span class="r-icon">✨</span> Sterling (925)</a>
@@ -243,6 +268,7 @@
 
   <div id="site-footer"></div>
   <script src="/js/silver-price.js"></script>
+  <script src="/js/calc-button-mode.js"></script>
   <script src="/js/calculator.js"></script>
   <script src="/js/components.js"></script>
   <script>
@@ -252,19 +278,12 @@
       { label: 'Silver Weight Converter' }
     ]);
 
-    const TROY = 31.1035, DWT = 1.55517, TOLA = 11.6638, AVOZ = 28.3495;
+    // FX rates vs USD (approximate — real site could fetch live)
+    var FX = { USD:1, EUR:0.92, GBP:0.79, PKR:278, INR:83.5, AED:3.67, SAR:3.75 };
+    var TROY=31.1035, DWT=1.55517, TOLA=11.6638, AVOZ=28.3495;
 
-    const inputs = {
-      g:    document.getElementById('swc-grams'),
-      troy: document.getElementById('swc-troy'),
-      dwt:  document.getElementById('swc-dwt'),
-      kg:   document.getElementById('swc-kg'),
-      tola: document.getElementById('swc-tola'),
-      avoz: document.getElementById('swc-avoz')
-    };
-
-    function toGrams(key, v) {
-      switch(key) {
+    function toGrams(unit, v) {
+      switch(unit) {
         case 'g':    return v;
         case 'troy': return v * TROY;
         case 'dwt':  return v * DWT;
@@ -274,38 +293,38 @@
       }
     }
 
-    function update(sourceKey) {
-      var v = parseFloat(inputs[sourceKey].value);
-      if (isNaN(v) || v < 0) {
-        Object.keys(inputs).forEach(function(k) { if (k !== sourceKey) inputs[k].value = ''; });
-        document.getElementById('swc-melt-val').textContent = '—';
-        document.getElementById('swc-melt-detail').textContent = 'Enter any weight above to see value';
-        return;
-      }
-      var g = toGrams(sourceKey, v);
-      if (sourceKey !== 'g')    inputs.g.value    = (g).toFixed(4);
-      if (sourceKey !== 'troy') inputs.troy.value = (g / TROY).toFixed(4);
-      if (sourceKey !== 'dwt')  inputs.dwt.value  = (g / DWT).toFixed(4);
-      if (sourceKey !== 'kg')   inputs.kg.value   = (g / 1000).toFixed(6);
-      if (sourceKey !== 'tola') inputs.tola.value = (g / TOLA).toFixed(4);
-      if (sourceKey !== 'avoz') inputs.avoz.value = (g / AVOZ).toFixed(4);
+    function fmt(n, dec) { return parseFloat(n.toFixed(dec)).toLocaleString(); }
 
-      var spot = SilverPrice.getPrice();
+    function calc() {
+      var qty      = parseFloat(document.getElementById('swc-qty').value) || 0;
+      var unit     = document.getElementById('swc-unit').value;
+      var purity   = parseFloat(document.getElementById('swc-purity').value);
+      var currency = document.getElementById('swc-currency').value;
+
+      var g    = toGrams(unit, qty);
+      var spot = SilverPrice.getPrice() * (FX[currency] || 1);
       var oz   = g / TROY;
-      var val  = oz * spot;
-      document.getElementById('swc-melt-val').textContent    = SilverCalc.formatCurrency(val);
-      document.getElementById('swc-melt-detail').textContent = oz.toFixed(4) + ' troy oz × $' + spot.toFixed(2) + '/oz spot';
+      var melt = oz * spot * purity;
+
+      var sym  = { USD:'$', EUR:'€', GBP:'£', PKR:'₨', INR:'₹', AED:'AED ', SAR:'SAR ' }[currency] || '';
+
+      document.getElementById('r-g').textContent    = fmt(g, 4) + ' g';
+      document.getElementById('r-troy').textContent = fmt(g / TROY, 4) + ' oz t';
+      document.getElementById('r-dwt').textContent  = fmt(g / DWT, 4) + ' dwt';
+      document.getElementById('r-kg').textContent   = fmt(g / 1000, 6) + ' kg';
+      document.getElementById('r-tola').textContent = fmt(g / TOLA, 4) + ' tola';
+      document.getElementById('r-avoz').textContent = fmt(g / AVOZ, 4) + ' oz';
+      document.getElementById('r-melt').textContent = sym + fmt(melt, 2);
+      document.getElementById('r-detail').textContent =
+        fmt(oz * purity, 4) + ' troy oz pure · Spot: ' + sym + fmt(spot, 2) + '/oz';
+
+      document.getElementById('swc-results').style.display = 'block';
     }
 
-    Object.keys(inputs).forEach(function(key) {
-      inputs[key].addEventListener('input', function() { update(key); });
-    });
-
-    SilverPrice.onPriceUpdate(function() {
-      // refresh melt value when price loads, using whichever field has a value
-      for (var k in inputs) {
-        if (inputs[k].value) { update(k); break; }
-      }
+    document.getElementById('calc-btn').addEventListener('click', function() {
+      var s = document.getElementById('__calc_pending_style');
+      if (s) s.remove();
+      calc();
     });
   </script>
 </body></html>
