@@ -671,9 +671,43 @@ const SiteComponents = (() => {
   }
 
   function renderChatWidget() {
-    if (document.getElementById('sac-chat-bubble')) return; // already rendered
+    if (document.getElementById('sac-chat-bubble')) return;
+
+    // Inject responsive styles
+    var s = document.createElement('style');
+    s.textContent = [
+      '#sac-chat-widget-container{position:fixed;bottom:20px;right:20px;width:380px;height:520px;background:#fff;border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.22);display:none;flex-direction:column;font-family:system-ui,sans-serif;z-index:999999;overflow:hidden;}',
+      '#sac-chat-header{background:linear-gradient(135deg,#a78bfa,#8b5cf6);color:#fff;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;}',
+      '#sac-chat-header h3{margin:0;font-size:16px;font-weight:700;}',
+      '#sac-chat-header p{margin:3px 0 0;font-size:12px;opacity:.85;}',
+      '#sac-close-widget{background:none;border:none;color:#fff;font-size:26px;cursor:pointer;padding:0;line-height:1;min-width:36px;min-height:36px;display:flex;align-items:center;justify-content:center;}',
+      '#sac-messages-container{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:#f8f8fb;-webkit-overflow-scrolling:touch;}',
+      '#sac-chat-input-row{border-top:1px solid #e5e7eb;padding:10px 12px;display:flex;gap:8px;background:#fff;flex-shrink:0;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));}',
+      '#sac-message-input{flex:1;border:1px solid #d1d5db;border-radius:24px;padding:10px 16px;font-size:16px;outline:none;background:#f9fafb;min-width:0;}',
+      '#sac-message-input:focus{border-color:#8b5cf6;}',
+      '#sac-send-button{background:#8b5cf6;color:#fff;border:none;border-radius:24px;padding:10px 18px;cursor:pointer;font-weight:700;font-size:15px;white-space:nowrap;min-height:44px;}',
+      '#sac-chat-bubble{position:fixed;bottom:24px;right:24px;height:52px;padding:0 24px;border-radius:26px;background:linear-gradient(135deg,#6d28d9,#4c1d95);color:#fff;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(76,29,149,.6);display:flex;align-items:center;z-index:999998;font-family:system-ui,sans-serif;font-size:16px;font-weight:700;}',
+      '@media(max-width:480px){',
+        '#sac-chat-widget-container{bottom:0;right:0;left:0;width:100%;height:85vh;height:85dvh;border-radius:20px 20px 0 0;border-bottom-left-radius:0;border-bottom-right-radius:0;}',
+        '#sac-chat-bubble{bottom:16px;right:16px;font-size:15px;height:48px;padding:0 20px;}',
+      '}'
+    ].join('');
+    document.head.appendChild(s);
+
     var widget = document.createElement('div');
-    widget.innerHTML = '<div id="sac-chat-widget-container" style="position:fixed;bottom:20px;right:20px;width:380px;height:520px;background:white;border-radius:12px;box-shadow:0 5px 40px rgba(0,0,0,0.2);display:none;flex-direction:column;font-family:system-ui,sans-serif;z-index:999999;overflow:hidden;"><div style="background:linear-gradient(135deg,#a78bfa 0%,#8b5cf6 100%);color:white;padding:16px;display:flex;justify-content:space-between;align-items:center;flex-shrink:0;"><div><h3 style="margin:0;font-size:16px;font-weight:600;">Silver Calculator AI</h3><p style="margin:4px 0 0 0;font-size:12px;opacity:0.9;">Ask about silver values</p></div><button id="sac-close-widget" style="background:none;border:none;color:white;font-size:24px;cursor:pointer;padding:0;line-height:1;">×</button></div><div id="sac-messages-container" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:#fafafa;"></div><div style="border-top:1px solid #e5e7eb;padding:12px;display:flex;gap:8px;background:white;flex-shrink:0;"><input id="sac-message-input" type="text" placeholder="Ask about silver..." style="flex:1;border:1px solid #d1d5db;border-radius:6px;padding:10px 12px;font-size:14px;outline:none;"/><button id="sac-send-button" style="background:#8b5cf6;color:white;border:none;border-radius:6px;padding:10px 16px;cursor:pointer;font-weight:600;font-size:14px;">Send</button></div></div><button id="sac-chat-bubble" style="position:fixed;bottom:24px;right:24px;height:56px;padding:0 28px;border-radius:28px;background:linear-gradient(135deg,#6d28d9 0%,#4c1d95 100%);color:white;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(76,29,149,0.6);display:flex;align-items:center;z-index:999998;font-family:system-ui,sans-serif;font-size:17px;font-weight:700;letter-spacing:0.01em;">Ask AI</button>';
+    widget.innerHTML =
+      '<div id="sac-chat-widget-container">' +
+        '<div id="sac-chat-header">' +
+          '<div><h3>Silver Calculator AI</h3><p>Ask about silver values &amp; prices</p></div>' +
+          '<button id="sac-close-widget" aria-label="Close">×</button>' +
+        '</div>' +
+        '<div id="sac-messages-container"></div>' +
+        '<div id="sac-chat-input-row">' +
+          '<input id="sac-message-input" type="text" placeholder="Ask about silver..." autocomplete="off" enterkeyhint="send">' +
+          '<button id="sac-send-button">Send</button>' +
+        '</div>' +
+      '</div>' +
+      '<button id="sac-chat-bubble">Ask AI</button>';
     document.body.appendChild(widget);
 
     var container = document.getElementById('sac-chat-widget-container');
@@ -682,13 +716,12 @@ const SiteComponents = (() => {
     var sendBtn   = document.getElementById('sac-send-button');
     var input     = document.getElementById('sac-message-input');
     var msgs      = document.getElementById('sac-messages-container');
-    var isOpen    = false;
 
     function addMsg(text, isUser) {
       var d = document.createElement('div');
       d.style.cssText = isUser
-        ? 'background:#8b5cf6;color:white;padding:10px 14px;border-radius:18px 18px 4px 18px;max-width:80%;align-self:flex-end;font-size:14px;line-height:1.4;white-space:pre-wrap;'
-        : 'background:white;color:#1f2937;padding:10px 14px;border-radius:18px 18px 18px 4px;max-width:85%;align-self:flex-start;font-size:14px;line-height:1.4;box-shadow:0 1px 3px rgba(0,0,0,0.1);white-space:pre-wrap;';
+        ? 'background:#8b5cf6;color:#fff;padding:10px 14px;border-radius:18px 18px 4px 18px;max-width:80%;align-self:flex-end;font-size:15px;line-height:1.5;white-space:pre-wrap;word-break:break-word;'
+        : 'background:#fff;color:#1f2937;padding:10px 14px;border-radius:18px 18px 18px 4px;max-width:85%;align-self:flex-start;font-size:15px;line-height:1.5;box-shadow:0 1px 4px rgba(0,0,0,.1);white-space:pre-wrap;word-break:break-word;';
       d.textContent = text;
       msgs.appendChild(d);
       msgs.scrollTop = msgs.scrollHeight;
@@ -696,14 +729,12 @@ const SiteComponents = (() => {
     }
 
     function open() {
-      isOpen = true;
       container.style.display = 'flex';
       bubble.style.display = 'none';
-      input.focus();
+      setTimeout(function(){ input.focus(); }, 100);
     }
 
     function close() {
-      isOpen = false;
       container.style.display = 'none';
       bubble.style.display = 'flex';
     }
@@ -713,7 +744,9 @@ const SiteComponents = (() => {
       if (!msg) return;
       input.value = '';
       addMsg(msg, true);
+      msgs.scrollTop = msgs.scrollHeight;
       var thinking = addMsg('Thinking…', false);
+      sendBtn.disabled = true;
       try {
         var res = await fetch('/api/silver-agent/', {
           method: 'POST',
@@ -723,7 +756,10 @@ const SiteComponents = (() => {
         var data = await res.json();
         thinking.textContent = data.message || data.reply || 'No response received.';
       } catch (e) {
-        thinking.textContent = 'Error connecting. Please try again.';
+        thinking.textContent = 'Connection error. Please try again.';
+      } finally {
+        sendBtn.disabled = false;
+        msgs.scrollTop = msgs.scrollHeight;
       }
     }
 
