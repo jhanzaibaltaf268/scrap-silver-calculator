@@ -4,38 +4,16 @@
    ============================================ */
 
 /* ── CLS Prevention ──────────────────────────
-   Reserve space for dynamically-rendered elements
-   so they don't shift content when they appear.   */
+   Reserve space for dynamically-rendered elements  */
 
-/* Header is position:fixed — reserve body top padding */
-body { padding-top: var(--hdr, 56px); }
-
-/* Reserve height for dynamic components */
-#site-header  { min-height: var(--hdr, 56px); }
+/* Reserve height for dynamic components only — do NOT add body padding-top */
 #price-ticker { min-height: 44px; }
 #breadcrumb   { min-height: 28px; }
 
 /* Prevent MS Clarity body class from triggering layout reflow */
 body.ms-Fabric--isFocusHidden { outline: none; }
 body.ms-Fabric--isFocusHidden *:focus { outline: none !important; }
-
-/* Stabilise hero section — prevent font/ticker shifts */
-.hero, .hero-compact { contain: layout style; }
-
-/* Font-display: swap fallback — match metric of Inter/Outfit to system font */
-@font-face {
-  font-family: 'Inter';
-  src: local('Inter');
-  size-adjust: 100%;
-  ascent-override: 90%;
-  descent-override: 22%;
-  line-gap-override: 0%;
-}
 /* ──────────────────────────────────────────── */
-
-/* Font performance */
-@font-face { font-family: 'Inter'; font-display: swap; }
-@font-face { font-family: 'Outfit'; font-display: swap; }
 
 :root {
     /* Core Palette — dark but readable */
