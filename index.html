@@ -885,8 +885,6 @@
             </div>
 
             <h1 class="hero-h1">Scrap Silver<br><span class="accent-text">Calculator</span></h1>
-            <p class="hv2-sub">Instant melt value for any scrap silver item. Sterling, fine, coin, and European grades. Live spot prices — every purity, every unit.</p>
-
             <div class="hv2-spot">
               <div class="hv2-spot-info">
                 <span class="hv2-spot-label">Silver Spot Price</span>
@@ -895,12 +893,6 @@
               <span class="hv2-spot-change flat" id="hero-change">—</span>
             </div>
 
-            <div class="hv2-pills">
-              <span>🔒 100% Private</span>
-              <span>⚡ Instant results</span>
-              <span>💰 Always free</span>
-              <span>🔄 Updates hourly</span>
-            </div>
           </div>
 
           <!-- Right: calculator -->
@@ -1556,13 +1548,6 @@
     }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-    // Sticky mobile CTA
-    const stickyCta = document.getElementById('stickyCta');
-    const calcEl = document.getElementById('calculator');
-    const cTAObs = new IntersectionObserver(ents => {
-      ents.forEach(e => stickyCta.classList.toggle('visible', !e.isIntersecting));
-    }, { threshold: 0.1 });
-    cTAObs.observe(calcEl);
 
     initDash();
 
