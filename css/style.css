@@ -349,6 +349,7 @@ tr:hover td { background: rgba(255,255,255,0.04); }
 .fsoc-pi  { background: #e60023; }
 
 .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--muted); flex-wrap: wrap; gap: 12px; }
+.footer-bottom a { color: rgba(255,255,255,0.85); }
 
 /* ---- Mobile Styles ---- */
 .mobile-menu-btn {

@@ -338,7 +338,7 @@ const SiteComponents = (() => {
                     ${langMenuHTML}
                 </div>
             </div>
-            <button class="mobile-menu-btn" id="mobile-toggle">
+            <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Open menu">
               <span></span><span></span><span></span>
             </button>
           </div>
@@ -452,10 +452,10 @@ const SiteComponents = (() => {
           <div class="footer-bottom">
             <span>&copy; ${new Date().getFullYear()} ${t('Scrap Silver Calculator')}. ${t('All rights reserved.')}</span>
             <div style="display:flex;gap:12px;">
-                <a href="${s('/privacy-policy/')}">${t('Privacy')}</a>
-                <a href="${s('/terms-of-service/')}">${t('Terms')}</a>
-                <a href="${s('/disclaimer/')}">${t('Disclaimer')}</a>
-                <a href="${s('/contact/')}">${t('Contact')}</a>
+                <a href="${s('/privacy-policy/')}" style="color:rgba(255,255,255,0.85);">${t('Privacy')}</a>
+                <a href="${s('/terms-of-service/')}" style="color:rgba(255,255,255,0.85);">${t('Terms')}</a>
+                <a href="${s('/disclaimer/')}" style="color:rgba(255,255,255,0.85);">${t('Disclaimer')}</a>
+                <a href="${s('/contact/')}" style="color:rgba(255,255,255,0.85);">${t('Contact')}</a>
             </div>
           </div>
         </div>
@@ -724,7 +724,7 @@ const SiteComponents = (() => {
         : 'background:#fff;color:#1f2937;padding:10px 14px;border-radius:18px 18px 18px 4px;max-width:85%;align-self:flex-start;font-size:15px;line-height:1.5;box-shadow:0 1px 4px rgba(0,0,0,.1);white-space:pre-wrap;word-break:break-word;';
       d.textContent = text;
       msgs.appendChild(d);
-      msgs.scrollTop = msgs.scrollHeight;
+      requestAnimationFrame(function() { msgs.scrollTop = msgs.scrollHeight; });
       return d;
     }
 
@@ -744,7 +744,6 @@ const SiteComponents = (() => {
       if (!msg) return;
       input.value = '';
       addMsg(msg, true);
-      msgs.scrollTop = msgs.scrollHeight;
       var thinking = addMsg('Thinking…', false);
       sendBtn.disabled = true;
       try {
@@ -759,7 +758,7 @@ const SiteComponents = (() => {
         thinking.textContent = 'Connection error. Please try again.';
       } finally {
         sendBtn.disabled = false;
-        msgs.scrollTop = msgs.scrollHeight;
+        requestAnimationFrame(function() { msgs.scrollTop = msgs.scrollHeight; });
       }
     }
 
@@ -839,7 +838,7 @@ const SiteComponents = (() => {
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => { try { init(); } catch(e) { console.error('[SiteComponents] init error:', e); } });
   } else {
-    try { init(); } catch(e) { console.error('[SiteComponents] init error:', e); }
+    requestAnimationFrame(function() { try { init(); } catch(e) { console.error('[SiteComponents] init error:', e); } });
   }
 
   return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, injectFAQSchema, injectPageSchema, init, getLangCode, updateSpotPriceDisplay };
