@@ -2,14 +2,9 @@
 
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) — deferred to avoid blocking first paint -->
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YMX334ZW6Q');</script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-YMX334ZW6Q');
-  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Scrap Silver Calculator – Instant Silver Melt Value & Live Prices</title>
@@ -1398,11 +1393,12 @@
 
   <!-- Scripts -->
   <script src="/js/translations.js" defer></script>
-  <script src="/js/calc-button-mode.js"></script>
+  <script src="/js/calc-button-mode.js" defer></script>
   <script src="/js/silver-price.js" defer></script>
   <script src="/js/calculator.js" defer></script>
   <script src="/js/components.js" defer></script>
   <script>
+  document.addEventListener('DOMContentLoaded', function() {
     const PURITIES = [
       { code: '999', name: 'Fine Silver',         purity: 0.999, use: 'Bullion, coins' },
       { code: '958', name: 'Britannia Silver',    purity: 0.958, use: 'UK bullion' },
@@ -1550,12 +1546,9 @@
 
 
     initDash();
-
-    document.addEventListener('DOMContentLoaded', function() {
-      initDash();
-      SilverPrice.onPriceUpdate(() => { calc(); updateAllLive(); });
-      calc(); updateAllLive();
-    });
+    SilverPrice.onPriceUpdate(() => { calc(); updateAllLive(); });
+    calc(); updateAllLive();
+  }); // end DOMContentLoaded
   </script>
 <!-- Chat widget rendered by components.js -->
 
