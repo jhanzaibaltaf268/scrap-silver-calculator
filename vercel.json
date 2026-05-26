@@ -26,6 +26,15 @@
   ],
   "headers": [
     {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
+        { "key": "Cache-Control", "value": "public, max-age=0, s-maxage=86400, stale-while-revalidate=86400" }
+      ]
+    },
+    {
       "source": "/api/price",
       "headers": [
         { "key": "Access-Control-Allow-Origin",  "value": "*" },
@@ -36,31 +45,13 @@
     {
       "source": "/(css|js)/(.*)",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=604800, stale-while-revalidate=86400" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" }
+        { "key": "Cache-Control", "value": "public, max-age=604800, s-maxage=604800, stale-while-revalidate=86400" }
       ]
     },
     {
-      "source": "/(.*\\.png|.*\\.jpg|.*\\.jpeg|.*\\.webp|.*\\.ico|.*\\.svg)",
+      "source": "/(.*\\.(png|jpg|jpeg|webp|ico|svg|woff2|woff))",
       "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=2592000, stale-while-revalidate=86400" }
-      ]
-    },
-    {
-      "source": "/(.*\\.html)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400" },
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
-      ]
-    },
-    {
-      "source": "/((?!api/).*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+        { "key": "Cache-Control", "value": "public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400" }
       ]
     }
   ]
