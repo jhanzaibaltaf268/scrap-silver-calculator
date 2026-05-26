@@ -724,7 +724,7 @@ const SiteComponents = (() => {
         : 'background:#fff;color:#1f2937;padding:10px 14px;border-radius:18px 18px 18px 4px;max-width:85%;align-self:flex-start;font-size:15px;line-height:1.5;box-shadow:0 1px 4px rgba(0,0,0,.1);white-space:pre-wrap;word-break:break-word;';
       d.textContent = text;
       msgs.appendChild(d);
-      requestAnimationFrame(function() { msgs.scrollTop = msgs.scrollHeight; });
+      msgs.scrollTop = 999999;
       return d;
     }
 
@@ -758,7 +758,7 @@ const SiteComponents = (() => {
         thinking.textContent = 'Connection error. Please try again.';
       } finally {
         sendBtn.disabled = false;
-        requestAnimationFrame(function() { msgs.scrollTop = msgs.scrollHeight; });
+        msgs.scrollTop = 999999;
       }
     }
 

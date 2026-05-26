@@ -35,7 +35,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <!-- Critical CSS — prevents FOUC before style.css loads -->
-  <style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}:root{--bg:#09090f;--hdr:56px;--accent:#7c3aed;--text:#f0f4f8;--dim:#c2cfe0;--muted:#8fa3bc;--border:rgba(255,255,255,.10);--text-secondary:#c2cfe0;--radius-md:16px;--space-md:1rem;--f-display:'Outfit',sans-serif;--f-body:'Inter',sans-serif}body{background:#09090f;color:#f0f4f8;font-family:system-ui,sans-serif;overflow-x:hidden;padding-top:var(--hdr)}#site-header{min-height:var(--hdr);position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,6,11,.92);border-bottom:1px solid rgba(255,255,255,.10)}#price-ticker{min-height:44px}.container{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}.calc-page-layout{max-width:780px;margin:0 auto;padding:0 20px 40px}.calc-widget{background:rgba(22,22,36,.9);border:1px solid rgba(255,255,255,.10);border-radius:20px;padding:28px}.calc-widget-title{font-size:1.1rem;font-weight:700;margin-bottom:20px}</style>
+  <style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}:root{--bg:#09090f;--hdr:56px;--accent:#7c3aed;--text:#f0f4f8;--dim:#c2cfe0;--muted:#8fa3bc;--border:rgba(255,255,255,.10);--text-secondary:#c2cfe0;--radius-md:16px;--space-md:1rem;--f-display:'Outfit',sans-serif;--f-body:'Inter',sans-serif}body{background:#09090f;color:#f0f4f8;font-family:system-ui,sans-serif;overflow-x:hidden;padding-top:var(--hdr)}#site-header{min-height:var(--hdr);position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,6,11,.92);border-bottom:1px solid rgba(255,255,255,.10)}#price-ticker{min-height:44px}#breadcrumb{min-height:28px}.container{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}.calc-page-layout{max-width:780px;margin:0 auto;padding:0 20px 40px}.calc-widget{background:rgba(22,22,36,.9);border:1px solid rgba(255,255,255,.10);border-radius:20px;padding:28px}.calc-widget-title{font-size:1.1rem;font-weight:700;margin-bottom:20px}#jsc-coin{min-height:44px}</style>
   <link rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -126,7 +126,7 @@
           <div class="jsc-form-label">Coin Type</div>
           <div class="jsc-form-controls">
             <select class="jsc-select" id="jsc-coin">
-              <!-- populated by JS -->
+              <option value="us-quarter-pre1965">US Quarter (pre-1965) — 90% · 0.1808 oz</option>
             </select>
           </div>
         </div>
@@ -236,7 +236,8 @@
     var coins = SilverCalc.JUNK_COINS;
     var coinSelect = document.getElementById('jsc-coin');
 
-    // Populate coin dropdown
+    // Populate coin dropdown (clear the static placeholder first)
+    coinSelect.innerHTML = '';
     Object.entries(coins).forEach(function(entry) {
       var key = entry[0], c = entry[1];
       var opt = document.createElement('option');
