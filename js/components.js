@@ -413,19 +413,27 @@ const SiteComponents = (() => {
       </div>`
     ).join('');
 
+    const _su = encodeURIComponent(location.href), _st = encodeURIComponent(document.title);
     el.innerHTML = `
       <footer class="site-footer">
+        <div class="footer-top-bar"></div>
         <div class="container">
           <div class="footer-grid">
             <div class="footer-brand">
-              <a href="${bp}" class="header-logo">
-                <div style="width:24px;height:24px;border-radius:6px;background:linear-gradient(135deg,var(--accent),#a78bfa);display:grid;place-items:center;font-size:12px;color:#fff;">◈</div>
-                <span>Scrap Silver Calculator</span>
+              <a href="${bp}" class="footer-logo">
+                <div class="footer-logo-mark">◈</div>
+                <div><div class="footer-logo-name">Scrap Silver</div><div class="footer-logo-sub">Calculator</div></div>
               </a>
-              <p>${t('Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.')}</p>
+              <p class="footer-tagline">${t('Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.')}</p>
+              <div class="footer-trust">
+                <span class="footer-trust-badge"><span class="ldot" style="display:inline-block;margin-right:5px;"></span>${t('Live Prices')}</span>
+                <span class="footer-trust-badge">🔒 ${t('100% Free')}</span>
+                <span class="footer-trust-badge">⚡ ${t('Instant')}</span>
+              </div>
             </div>
             ${colsHTML}
           </div>
+          <div class="footer-divider"></div>
           <div class="footer-social">
             <span class="footer-social-label">${t('Share This Tool')}</span>
             <div class="footer-social-icons">
@@ -450,12 +458,12 @@ const SiteComponents = (() => {
             </div>
           </div>
           <div class="footer-bottom">
-            <span>&copy; ${new Date().getFullYear()} ${t('Scrap Silver Calculator')}. ${t('All rights reserved.')}</span>
-            <div style="display:flex;gap:12px;">
-                <a href="${s('/privacy-policy/')}" style="color:rgba(255,255,255,0.85);">${t('Privacy')}</a>
-                <a href="${s('/terms-of-service/')}" style="color:rgba(255,255,255,0.85);">${t('Terms')}</a>
-                <a href="${s('/disclaimer/')}" style="color:rgba(255,255,255,0.85);">${t('Disclaimer')}</a>
-                <a href="${s('/contact/')}" style="color:rgba(255,255,255,0.85);">${t('Contact')}</a>
+            <span class="footer-copy">&copy; ${new Date().getFullYear()} ${t('Scrap Silver Calculator')}. ${t('All rights reserved.')}</span>
+            <div class="footer-legal">
+                <a href="${s('/privacy-policy/')}">${t('Privacy')}</a>
+                <a href="${s('/terms-of-service/')}">${t('Terms')}</a>
+                <a href="${s('/disclaimer/')}">${t('Disclaimer')}</a>
+                <a href="${s('/contact/')}">${t('Contact')}</a>
             </div>
           </div>
         </div>
