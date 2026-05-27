@@ -232,7 +232,7 @@ window.MenuTranslations = {
     "ar": "حاسبة-العملة-الفضية-الكندية",
     "de": "kanadische-silbermuenzen-rechner",
     "es": "calculadora-de-monedas-de-plata-canadienses",
-    "fr": "canadian-silver-coin-calculator",
+    "fr": "calculateur-piece-en-argent-canadienne",
     "hi": "कनडई-चद-क-सकक-कलकलटर",
     "it": "calcolatore-di-monete-dargento-canadesi",
     "pt": "calculadora-de-moeda-de-prata-canadense",
@@ -271,7 +271,7 @@ window.MenuTranslations = {
     "ar": "حاسبة-القيمة-الاسمية-للفضة",
     "de": "nennwert-silber-rechner",
     "es": "calculadora-de-valor-nominal",
-    "fr": "face-value-silver-calculator",
+    "fr": "calculateur-de-valeur-nominale",
     "hi": "अकत-मलय-चद-कलकलटर",
     "it": "calcolatrice-in-argento-con-valore-nominale",
     "pt": "calculadora-de-prata-com-valor-nominal",
@@ -336,7 +336,7 @@ window.MenuTranslations = {
     "hi": "जक-सलवर-कलकलटर",
     "it": "calcolatrice-dargento-spazzatura",
     "pt": "calculadora-de-prata-lixo",
-    "ru": "калькулятор-ненужного-серебра",
+    "ru": "калькулятор-нежелательного-серебра",
     "tr": "önemsiz-gümüş-hesaplayıcı",
     "ur": "ردی-چاندی-کا-کیلکولیٹر",
     "zh": "垃圾银计算器"
@@ -625,6 +625,26 @@ window.MenuTranslations = {
     "zh": "银汤匙价值",
     "ar": "قيمة-ملعقة-فضية"
   },
+  "800-silver-price-today": {
+    "ar": "800-silver-price-today", "de": "800-silver-price-today", "es": "800-silver-price-today",
+    "hi": "800-silver-price-today", "it": "800-silver-price-today", "pt": "800-silver-price-today",
+    "ru": "800-silver-price-today", "tr": "800-silver-price-today", "ur": "800-silver-price-today", "zh": "800-silver-price-today"
+  },
+  "900-silver-price-today": {
+    "ar": "900-silver-price-today", "de": "900-silver-price-today", "es": "900-silver-price-today",
+    "hi": "900-silver-price-today", "it": "900-silver-price-today", "pt": "900-silver-price-today",
+    "ru": "900-silver-price-today", "tr": "900-silver-price-today", "ur": "900-silver-price-today", "zh": "900-silver-price-today"
+  },
+  "925-silver-price-today": {
+    "ar": "925-silver-price-today", "de": "925-silver-price-today", "es": "925-silver-price-today",
+    "hi": "925-silver-price-today", "it": "925-silver-price-today", "pt": "925-silver-price-today",
+    "ru": "925-silver-price-today", "tr": "925-silver-price-today", "ur": "925-silver-price-today", "zh": "925-silver-price-today"
+  },
+  "999-silver-price-today": {
+    "ar": "999-silver-price-today", "de": "999-silver-price-today", "es": "999-silver-price-today",
+    "hi": "999-silver-price-today", "it": "999-silver-price-today", "pt": "999-silver-price-today",
+    "ru": "999-silver-price-today", "tr": "999-silver-price-today", "ur": "999-silver-price-today", "zh": "999-silver-price-today"
+  },
   "silver-spot-price-today": {
     "ar": "سعر-الفضة-الفوري-اليوم",
     "hi": "चद-क-हजर-कमत-आज",
@@ -669,22 +689,22 @@ window.MenuTranslations = {
     "hi": "सन-चड-कलकलटर",
     "it": "calcolatrice-sona-chandi",
     "pt": "calculadora-sona-chandi",
-    "ru": "калькулятор-соны-чанди",
+    "ru": "калькулятор-сона-чанди",
     "tr": "sona-chandi-hesaplayıcı",
     "ur": "سونا-چندی-کیلکولیٹر",
     "zh": "索娜钱迪-计算器"
   },
   "sterling-silver-calculator": {
-    "ar": "حاسبة-الفضة",
-    "de": "was-ist-sterlingsilber",
+    "ar": "حاسبة-الفضة-الإسترليني",
+    "de": "sterlingsilber-rechner",
     "es": "calculadora-de-plata-esterlina",
     "fr": "calculateur-d-argent-sterling",
     "hi": "सटरलग-सलवर-कलकलटर",
-    "it": "cosè-largento-sterling",
-    "pt": "o-que-é-prata-esterlina",
-    "ru": "что-такое-стерлинговое-серебро",
+    "it": "calcolatrice-in-argento-sterling",
+    "pt": "calculadora-de-prata-esterlina",
+    "ru": "калькулятор-из-стерлингового-серебра",
     "tr": "gümüş-hesap-makinesi",
-    "ur": "سٹرلنگ-چاندی-کیا-ہے",
+    "ur": "سٹرلنگ-سلور-کیلکولیٹر",
     "zh": "纯银计算器"
   },
   "terms-of-service": {
@@ -708,7 +728,7 @@ window.MenuTranslations = {
     "hi": "तल-कलकलटर",
     "it": "calcolatrice-tola",
     "pt": "calculadora-tola",
-    "ru": "тола-калькулятор",
+    "ru": "калькулятор-тола",
     "tr": "tola-hesap-makinesi",
     "ur": "تولہ-کیلکولیٹر",
     "zh": "托拉计算器"

@@ -211,12 +211,14 @@ const SiteComponents = (() => {
       return isLocal() ? './index.html' : `/${currentLang}/`;
     }
 
-    // Resolve localized slug
+    // Resolve localized slug — fall back to English URL if no localized version exists
     let localizedTarget = target;
+    let hasLocalizedSlug = false;
     if (currentLang !== 'en' && window.MenuTranslations && window.MenuTranslations.slugs) {
         const mapping = window.MenuTranslations.slugs[target];
         if (mapping && mapping[currentLang]) {
             localizedTarget = mapping[currentLang];
+            hasLocalizedSlug = true;
         }
     }
 
@@ -226,6 +228,8 @@ const SiteComponents = (() => {
     }
 
     if (currentLang === 'en') return '/' + target + '/';
+    // If no localized slug exists, link to the English page to avoid 404
+    if (!hasLocalizedSlug) return '/' + target + '/';
     return `/${currentLang}/${localizedTarget}/`;
   }
 
