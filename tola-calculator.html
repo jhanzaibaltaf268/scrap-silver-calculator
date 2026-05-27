@@ -80,7 +80,7 @@
   <div id="site-header"></div>
   <main>
     <div class="container"><div id="price-ticker"></div></div>
-    <section class="hero" style="padding: var(--space-2xl) 0 var(--space-xl);">
+    <section class="hero" style="padding: var(--space-xl) 0 var(--space-xl);">
       <div class="container hero-content">
         <div id="breadcrumb"></div>
         
@@ -131,6 +131,22 @@
             <div class="result-value" id="tola-result-value">$0.00</div>
             <div class="result-detail" id="tola-result-detail">Enter weight in tola to calculate</div>
           </div>
+        </div>
+
+        <!-- Conversion Reference Table -->
+        <div style="margin-top:var(--space-xl);">
+          <h3 style="margin-bottom:var(--space-md);font-size:var(--fs-lg);">Tola Conversion Reference (925 Sterling)</h3>
+          <table class="purity-table">
+            <thead>
+              <tr>
+                <th>Tola</th>
+                <th>Grams</th>
+                <th>Troy Oz</th>
+                <th>Silver Value</th>
+              </tr>
+            </thead>
+            <tbody id="tola-table"></tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -186,24 +202,26 @@
     }
 
     
+    tolaWeight.addEventListener('input', calcTola);
     tolaPurity.addEventListener('change', calcTola);
     SilverPrice.onPriceUpdate(() => calcTola());
-    
 
     // Conversion table
-    const tableBody = document.getElementById('tola-table');
-    [0.5, 1, 2, 3, 5, 10, 15, 20, 50].forEach(tola => {
-      const g = (tola * TOLA_TO_GRAMS).toFixed(2);
-      const ozt = (tola * TOLA_TO_GRAMS / 31.1035).toFixed(3);
+    function buildTolaTable() {
+      const tableBody = document.getElementById('tola-table');
+      if (!tableBody) return;
       const spotPrice = SilverPrice.getPrice();
-      const val = SilverCalc.formatCurrency((tola * TOLA_TO_GRAMS / 31.1035) * 0.925 * spotPrice);
-      tableBody.innerHTML += `<tr style="border-bottom:1px solid var(--border-subtle);">
-        <td style="padding:var(--space-md);color:var(--text-primary);font-weight:600;">${tola} tola</td>
-        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${g}g</td>
-        <td style="padding:var(--space-md);text-align:right;color:var(--text-secondary);">${ozt} oz</td>
-        <td style="padding:var(--space-md);text-align:right;color:var(--accent-primary);font-weight:600;">${val}</td>
-      </tr>`;
-    });
+      tableBody.innerHTML = [0.5, 1, 2, 3, 5, 10, 15, 20, 50].map(tola => {
+        const g = (tola * TOLA_TO_GRAMS).toFixed(2);
+        const ozt = (tola * TOLA_TO_GRAMS / 31.1035).toFixed(3);
+        const val = SilverCalc.formatCurrency((tola * TOLA_TO_GRAMS / 31.1035) * 0.925 * spotPrice);
+        return `<tr><td>${tola} tola</td><td>${g}g</td><td>${ozt} oz</td><td style="color:var(--accent2);font-weight:600;">${val}</td></tr>`;
+      }).join('');
+    }
+    buildTolaTable();
+    SilverPrice.onPriceUpdate(() => buildTolaTable());
+
+    calcTola();
 
     SiteComponents.injectFAQSchema([
       { q: 'What is a tola?', a: 'A tola is a traditional unit of weight used in South Asia and the Middle East for precious metals. 1 tola equals 11.6638 grams or 0.375 troy ounces.' },
@@ -211,15 +229,6 @@
       { q: 'What is the silver price per tola today?', a: 'The silver price per tola depends on the current spot price. Since 1 tola = 0.375 troy ounces, multiply today\'s spot price by 0.375 and the purity to get the value.' },
       { q: 'How many tola in a troy ounce?', a: 'There are approximately 2.6667 tola in one troy ounce (1 ozt = 31.1035g ÷ 11.6638g per tola).' }
     ]);
-  
-    // Add listener to Calculate button
-    const cb = document.getElementById('calc-btn');
-    if (cb) {
-      const fn = typeof calculate === 'function' ? calculate :
-                 (typeof calc === 'function' ? calc :
-                 (typeof update === 'function' ? update : null));
-      if (fn) cb.addEventListener('click', fn);
-    }
   </script>
 
 
