@@ -1,7 +1,0 @@
-{
-  "name": "scrap-silver-calculator",
-  "version": "1.1.0",
-  "dependencies": {
-    "cheerio": "^1.2.0"
-  }
-}
