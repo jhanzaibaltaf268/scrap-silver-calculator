@@ -49,7 +49,13 @@
       ]
     },
     {
-      "source": "/(.*\\.(png|jpg|jpeg|webp|ico|svg|woff2|woff))",
+      "source": "/images/:file",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400" }
+      ]
+    },
+    {
+      "source": "/favicon.png",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=2592000, s-maxage=2592000, stale-while-revalidate=86400" }
       ]
