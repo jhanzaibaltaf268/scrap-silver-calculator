@@ -1553,6 +1553,21 @@
     window.setMode = setMode;
     window.setU = setU;
     window.setP = setP;
+
+    var _chatFired = false;
+    var _origCalc = calc;
+    window.calc = function() {
+      _origCalc();
+      if (!_chatFired && window.SACChat) {
+        var rv = document.getElementById('rv');
+        if (rv && rv.textContent && rv.textContent !== '—' && rv.textContent !== '$0.00') {
+          _chatFired = true;
+          setTimeout(function() {
+            window.SACChat.openWithQuestion('My silver is worth ' + rv.textContent + ' — is now a good time to sell?');
+          }, 2000);
+        }
+      }
+    };
   }); // end DOMContentLoaded
   </script>
 <!-- Chat widget rendered by components.js -->

@@ -724,11 +724,47 @@ const SiteComponents = (() => {
       }
     }
 
-    bubble.addEventListener('click', open);
+    // Suggested question chips
+    var chipsEl = document.createElement('div');
+    chipsEl.id = 'sac-chips';
+    chipsEl.style.cssText = 'position:fixed;bottom:90px;right:24px;display:flex;flex-direction:column;gap:7px;align-items:flex-end;z-index:999997;opacity:0;transition:opacity .35s;pointer-events:none;';
+    var CHIP_QS = [
+      'Is now a good time to sell silver?',
+      'How do dealers price scrap silver?',
+      'What is 925 sterling silver worth?'
+    ];
+    chipsEl.innerHTML = CHIP_QS.map(function(q) {
+      return '<button style="background:rgba(79,30,175,.93);color:#fff;border:none;border-radius:20px;padding:8px 15px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 3px 14px rgba(0,0,0,.35);white-space:nowrap;" data-q="'+q+'">'+q+'</button>';
+    }).join('');
+    document.body.appendChild(chipsEl);
+
+    function showChips() { chipsEl.style.opacity='1'; chipsEl.style.pointerEvents='auto'; }
+    function hideChips() { chipsEl.style.opacity='0'; chipsEl.style.pointerEvents='none'; }
+
+    setTimeout(function() { if (bubble.style.display !== 'none') showChips(); }, 12000);
+
+    chipsEl.querySelectorAll('button').forEach(function(chip) {
+      chip.addEventListener('click', function() {
+        hideChips();
+        open();
+        setTimeout(function() { input.value = chip.dataset.q; send(); }, 350);
+      });
+    });
+
+    function openWithQuestion(q) {
+      if (container.style.display === 'flex') return;
+      hideChips();
+      open();
+      setTimeout(function() { input.value = q; send(); }, 400);
+    }
+
+    bubble.addEventListener('click', function() { hideChips(); open(); });
     closeBtn.addEventListener('click', close);
     sendBtn.addEventListener('click', send);
     input.addEventListener('keypress', function(e) { if (e.key === 'Enter') send(); });
     addMsg('Hi! 👋 Ask me about scrap silver values, purity grades (925, 999, 900), or how to calculate silver melt value.', false);
+
+    window.SACChat = { openWithQuestion: openWithQuestion };
   }
 
   function renderLeadCapture() {
