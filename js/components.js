@@ -756,17 +756,31 @@ const SiteComponents = (() => {
 
     var pickedQs = pickQuestions();
 
-    // Build chips
+    // Build chips popup card
     var chipsEl = document.createElement('div');
     chipsEl.id = 'sac-chips';
-    chipsEl.style.cssText = 'position:fixed;bottom:90px;right:24px;display:flex;flex-direction:column;gap:8px;align-items:flex-end;z-index:999997;opacity:0;transition:opacity .4s ease;pointer-events:none;';
-    chipsEl.innerHTML = pickedQs.map(function(q) {
-      return '<button style="display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,#4c1d95,#6d28d9);color:#fff;border:none;border-radius:22px;padding:9px 16px 9px 12px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 18px rgba(76,29,149,.55);white-space:nowrap;backdrop-filter:blur(4px);transition:transform .15s,box-shadow .15s;" data-q="'+q.text+'" onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 7px 24px rgba(76,29,149,.7)\'" onmouseout="this.style.transform=\'\';this.style.boxShadow=\'0 4px 18px rgba(76,29,149,.55)\'"><span style="font-size:15px;">'+q.icon+'</span>'+q.text+'</button>';
-    }).join('');
+    chipsEl.style.cssText = 'position:fixed;bottom:88px;right:20px;width:272px;z-index:999997;opacity:0;transform:translateY(8px);transition:opacity .3s ease,transform .3s ease;pointer-events:none;font-family:system-ui,sans-serif;';
+    chipsEl.innerHTML =
+      '<div style="background:#1e1b2e;border:1px solid rgba(139,92,246,.35);border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,.55);overflow:hidden;">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px 8px;border-bottom:1px solid rgba(255,255,255,.06);">' +
+          '<span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.4);">Ask the AI</span>' +
+          '<button id="sac-chips-close" style="background:none;border:none;color:rgba(255,255,255,.35);font-size:18px;cursor:pointer;line-height:1;padding:0;width:20px;height:20px;display:flex;align-items:center;justify-content:center;">&times;</button>' +
+        '</div>' +
+        '<div style="padding:8px 10px 10px;">' +
+          pickedQs.map(function(q) {
+            return '<button style="display:flex;align-items:center;gap:9px;width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:9px 12px;font-size:13px;color:rgba(255,255,255,.85);cursor:pointer;text-align:left;margin-bottom:6px;transition:background .15s;" data-q="'+q.text+'" onmouseover="this.style.background=\'rgba(139,92,246,.2)\'" onmouseout="this.style.background=\'rgba(255,255,255,.05)\'"><span style="font-size:16px;flex-shrink:0;">'+q.icon+'</span><span>'+q.text+'</span></button>';
+          }).join('') +
+        '</div>' +
+        '<div style="width:16px;height:10px;position:absolute;bottom:-10px;right:30px;overflow:hidden;">' +
+          '<div style="width:16px;height:16px;background:#1e1b2e;border:1px solid rgba(139,92,246,.35);transform:rotate(45deg);margin-top:-8px;margin-left:0;"></div>' +
+        '</div>' +
+      '</div>';
     document.body.appendChild(chipsEl);
 
-    function showChips() { chipsEl.style.opacity='1'; chipsEl.style.pointerEvents='auto'; }
-    function hideChips() { chipsEl.style.opacity='0'; chipsEl.style.pointerEvents='none'; }
+    function showChips() { chipsEl.style.opacity='1'; chipsEl.style.transform='translateY(0)'; chipsEl.style.pointerEvents='auto'; }
+    function hideChips() { chipsEl.style.opacity='0'; chipsEl.style.transform='translateY(8px)'; chipsEl.style.pointerEvents='none'; }
+
+    document.getElementById('sac-chips-close').addEventListener('click', function(e) { e.stopPropagation(); hideChips(); });
 
     // Returning users: show chips after 8s (they know the site, just prompt)
     // New users: chips appear after post-calc trigger or after 15s idle
@@ -776,7 +790,7 @@ const SiteComponents = (() => {
       setTimeout(function() { if (bubble.style.display !== 'none') showChips(); }, 15000);
     }
 
-    chipsEl.querySelectorAll('button').forEach(function(chip) {
+    chipsEl.querySelectorAll('button[data-q]').forEach(function(chip) {
       chip.addEventListener('click', function() {
         hideChips();
         open();
