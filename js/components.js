@@ -127,8 +127,8 @@ const SiteComponents = (() => {
         { label: 'nav_guide', href: '/how-to-use-silver-calculators/' },
         { label: 'nav_purity_chart', href: '/silver-purity-chart/' },
         { label: 'nav_identifier', href: '/identify-silver/' },
-        { label: 'Privacy', href: '/privacy-policy/' },
-        { label: 'Contact', href: '/contact/' },
+        { label: 'How to Sell Silver', href: '/how-to-sell-silver/' },
+        { label: 'About', href: '/about/' },
       ]
     }
   ];
