@@ -13,16 +13,14 @@
       "destination": "https://scrapsilvercalculater.com/$1",
       "permanent": true
     },
-    {
-      "source": "/current-silver-price/",
-      "destination": "/silver-price-today/",
-      "permanent": true
-    },
-    {
-      "source": "/current-silver-price",
-      "destination": "/silver-price-today/",
-      "permanent": true
-    }
+    { "source": "/current-silver-price/",        "destination": "/silver-price-today/",             "permanent": true },
+    { "source": "/current-silver-price",          "destination": "/silver-price-today/",             "permanent": true },
+    { "source": "/silver-melt-calculator/",       "destination": "/silver-melt-value-calculator/",   "permanent": true },
+    { "source": "/silver-melt-calculator",        "destination": "/silver-melt-value-calculator/",   "permanent": true },
+    { "source": "/sterling-silver-price/",        "destination": "/925-silver-price-today/",         "permanent": true },
+    { "source": "/sterling-silver-price",         "destination": "/925-silver-price-today/",         "permanent": true },
+    { "source": "/silver-price/",                 "destination": "/silver-price-today/",             "permanent": true },
+    { "source": "/silver-price",                  "destination": "/silver-price-today/",             "permanent": true }
   ],
   "headers": [
     {
