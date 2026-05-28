@@ -926,6 +926,11 @@
                     <button class="abtn" onclick="window.print()" aria-label="Print result">🖨️ PRINT</button>
                     <button class="abtn" onclick="SiteComponents.share()" aria-label="Share result">🔗 SHARE</button>
                   </div>
+                  <div id="ai-nudge" style="display:none;margin-top:14px;background:linear-gradient(135deg,rgba(109,40,217,.18),rgba(76,29,149,.12));border:1px solid rgba(139,92,246,.35);border-radius:12px;padding:12px 14px;cursor:pointer;" onclick="document.getElementById('ai-nudge').style.display='none';window._nudgeClick&&window._nudgeClick();">
+                    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(139,92,246,.9);margin-bottom:5px;">AI Silver Expert</div>
+                    <div id="ai-nudge-text" style="font-size:13.5px;color:rgba(255,255,255,.85);line-height:1.45;margin-bottom:10px;"></div>
+                    <div style="display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:#a78bfa;">Ask now &rarr;</div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1554,17 +1559,39 @@
     window.setU = setU;
     window.setP = setP;
 
-    var _chatFired = false;
+    // Context-aware AI nudge
+    function getAIQuestion(mode, purity, value) {
+      var purityLabel = purity >= 0.999 ? 'fine silver (999)' : purity >= 0.958 ? 'Britannia silver (958)' : purity >= 0.925 ? '925 sterling silver' : purity >= 0.900 ? '90% coin silver' : purity >= 0.835 ? '835 European silver' : '800 European silver';
+      if (mode === 'coins') return { nudge: 'Your 90% junk silver coins are worth ' + value + '. Where do coin dealers vs bullion dealers pay more?', q: 'My junk silver coins are worth ' + value + ' in melt value — which type of buyer pays closer to melt?' };
+      if (mode === 'bars')  return { nudge: 'Your silver bars are worth ' + value + '. Is now the right time to sell or should you hold?', q: 'My silver bars are worth ' + value + ' — should I sell now or wait for a better price?' };
+      return { nudge: 'Your ' + purityLabel + ' is worth ' + value + '. Want to know who pays closest to melt?', q: 'My ' + purityLabel + ' scrap is worth ' + value + ' melt value — which dealers pay closest to that?' };
+    }
+
+    var _nudgeShown = false;
     var _origCalc = calc;
     window.calc = function() {
       _origCalc();
-      // Only auto-trigger for first-time visitors, only once per session
-      if (!_chatFired && window.SACChat && !window.SACChat.isReturning) {
-        var rv = document.getElementById('rv');
-        if (rv && rv.textContent && rv.textContent !== '—' && rv.textContent !== '$0.00') {
-          _chatFired = true;
-          window.SACChat.openWithQuestion('My silver is worth ' + rv.textContent + ' — is now a good time to sell?');
-        }
+      var rv = document.getElementById('rv');
+      var nudge = document.getElementById('ai-nudge');
+      var nudgeText = document.getElementById('ai-nudge-text');
+      if (!rv || !nudge) return;
+      var val = rv.textContent;
+      if (!val || val === '—' || val === '$0.00') { nudge.style.display = 'none'; return; }
+
+      var ctx = getAIQuestion(S.mode, S.purity, val);
+      nudgeText.textContent = ctx.nudge;
+      nudge.style.display = 'block';
+
+      // Wire click: open chat with the specific question
+      window._nudgeClick = function() {
+        if (window.SACChat) window.SACChat.openWithQuestion(ctx.q);
+      };
+
+      // Also change the floating bubble label once
+      if (!_nudgeShown) {
+        _nudgeShown = true;
+        var bubble = document.getElementById('sac-chat-bubble');
+        if (bubble) { bubble.textContent = '💬 Get Best Price'; }
       }
     };
   }); // end DOMContentLoaded
