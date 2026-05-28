@@ -724,30 +724,63 @@ const SiteComponents = (() => {
       }
     }
 
-    // Suggested question chips
+    // Question pool — rotated per visit so returning users see fresh prompts
+    var ALL_QS = [
+      { icon: '📈', text: 'Is now a good time to sell silver?' },
+      { icon: '🏷️', text: 'How do dealers price scrap silver?' },
+      { icon: '💰', text: 'How do I get the best payout for scrap?' },
+      { icon: '🔮', text: 'Will silver prices rise this year?' },
+      { icon: '⚖️', text: 'Should I sell or hold my silver?' },
+      { icon: '🪙', text: 'Which silver coins are worth the most?' },
+      { icon: '🏦', text: 'Where can I sell silver for the best price?' },
+      { icon: '📊', text: 'What drives silver spot price up and down?' },
+      { icon: '💎', text: 'Is 925 sterling worth selling as scrap?' },
+      { icon: '🔍', text: 'How do I know if my silver is genuine?' }
+    ];
+
+    // Pick 3 unseen questions, cycling through the pool via localStorage
+    function pickQuestions() {
+      var seen = [];
+      try { seen = JSON.parse(localStorage.getItem('sac_seen') || '[]'); } catch(e) {}
+      var unseen = ALL_QS.map(function(_,i){ return i; }).filter(function(i){ return seen.indexOf(i) === -1; });
+      if (unseen.length < 3) { seen = []; unseen = ALL_QS.map(function(_,i){ return i; }); }
+      var picked = unseen.slice(0, 3);
+      try { localStorage.setItem('sac_seen', JSON.stringify(seen.concat(picked))); } catch(e) {}
+      return picked.map(function(i){ return ALL_QS[i]; });
+    }
+
+    // Is this a returning visitor?
+    var visitCount = 0;
+    try { visitCount = parseInt(localStorage.getItem('sac_visits') || '0', 10); localStorage.setItem('sac_visits', visitCount + 1); } catch(e) {}
+    var isReturning = visitCount > 0;
+
+    var pickedQs = pickQuestions();
+
+    // Build chips
     var chipsEl = document.createElement('div');
     chipsEl.id = 'sac-chips';
-    chipsEl.style.cssText = 'position:fixed;bottom:90px;right:24px;display:flex;flex-direction:column;gap:7px;align-items:flex-end;z-index:999997;opacity:0;transition:opacity .35s;pointer-events:none;';
-    var CHIP_QS = [
-      'Is now a good time to sell silver?',
-      'How do dealers price scrap silver?',
-      'What is 925 sterling silver worth?'
-    ];
-    chipsEl.innerHTML = CHIP_QS.map(function(q) {
-      return '<button style="background:rgba(79,30,175,.93);color:#fff;border:none;border-radius:20px;padding:8px 15px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 3px 14px rgba(0,0,0,.35);white-space:nowrap;" data-q="'+q+'">'+q+'</button>';
+    chipsEl.style.cssText = 'position:fixed;bottom:90px;right:24px;display:flex;flex-direction:column;gap:8px;align-items:flex-end;z-index:999997;opacity:0;transition:opacity .4s ease;pointer-events:none;';
+    chipsEl.innerHTML = pickedQs.map(function(q) {
+      return '<button style="display:flex;align-items:center;gap:7px;background:linear-gradient(135deg,#4c1d95,#6d28d9);color:#fff;border:none;border-radius:22px;padding:9px 16px 9px 12px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 4px 18px rgba(76,29,149,.55);white-space:nowrap;backdrop-filter:blur(4px);transition:transform .15s,box-shadow .15s;" data-q="'+q.text+'" onmouseover="this.style.transform=\'translateY(-2px)\';this.style.boxShadow=\'0 7px 24px rgba(76,29,149,.7)\'" onmouseout="this.style.transform=\'\';this.style.boxShadow=\'0 4px 18px rgba(76,29,149,.55)\'"><span style="font-size:15px;">'+q.icon+'</span>'+q.text+'</button>';
     }).join('');
     document.body.appendChild(chipsEl);
 
     function showChips() { chipsEl.style.opacity='1'; chipsEl.style.pointerEvents='auto'; }
     function hideChips() { chipsEl.style.opacity='0'; chipsEl.style.pointerEvents='none'; }
 
-    setTimeout(function() { if (bubble.style.display !== 'none') showChips(); }, 12000);
+    // Returning users: show chips after 8s (they know the site, just prompt)
+    // New users: chips appear after post-calc trigger or after 15s idle
+    if (isReturning) {
+      setTimeout(function() { if (bubble.style.display !== 'none') showChips(); }, 8000);
+    } else {
+      setTimeout(function() { if (bubble.style.display !== 'none') showChips(); }, 15000);
+    }
 
     chipsEl.querySelectorAll('button').forEach(function(chip) {
       chip.addEventListener('click', function() {
         hideChips();
         open();
-        setTimeout(function() { input.value = chip.dataset.q; send(); }, 350);
+        setTimeout(function() { input.value = chip.dataset.q; send(); }, 300);
       });
     });
 
@@ -755,7 +788,7 @@ const SiteComponents = (() => {
       if (container.style.display === 'flex') return;
       hideChips();
       open();
-      setTimeout(function() { input.value = q; send(); }, 400);
+      setTimeout(function() { input.value = q; send(); }, 350);
     }
 
     bubble.addEventListener('click', function() { hideChips(); open(); });
@@ -764,7 +797,7 @@ const SiteComponents = (() => {
     input.addEventListener('keypress', function(e) { if (e.key === 'Enter') send(); });
     addMsg('Hi! 👋 Ask me about scrap silver values, purity grades (925, 999, 900), or how to calculate silver melt value.', false);
 
-    window.SACChat = { openWithQuestion: openWithQuestion };
+    window.SACChat = { openWithQuestion: openWithQuestion, isReturning: isReturning };
   }
 
   function renderLeadCapture() {
