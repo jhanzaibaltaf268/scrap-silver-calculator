@@ -1548,6 +1548,11 @@
     initDash();
     SilverPrice.onPriceUpdate(() => { calc(); updateAllLive(); });
     calc(); updateAllLive();
+
+    window.calc = calc;
+    window.setMode = setMode;
+    window.setU = setU;
+    window.setP = setP;
   }); // end DOMContentLoaded
   </script>
 <!-- Chat widget rendered by components.js -->
