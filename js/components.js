@@ -701,6 +701,28 @@ const SiteComponents = (() => {
       bubble.style.display = 'flex';
     }
 
+    // Conversation history — last 6 turns for memory
+    var _history = [];
+
+    function getPageContext() {
+      var ctx = { page: window.location.pathname };
+      // Grab live spot price if available
+      if (typeof SilverPrice !== 'undefined') {
+        try { ctx.spotPrice = SilverPrice.getPrice(); } catch(e) {}
+      }
+      // Grab calculator result if on a page that has one
+      var rv = document.getElementById('rv') || document.getElementById('result-value');
+      if (rv && rv.textContent && rv.textContent !== '—' && rv.textContent !== '$0.00') {
+        ctx.calculatedValue = rv.textContent;
+      }
+      // Grab purity/mode if available (homepage)
+      if (window._calcState) {
+        ctx.purity = window._calcState.purity;
+        ctx.mode = window._calcState.mode;
+      }
+      return ctx;
+    }
+
     async function send() {
       var msg = input.value.trim();
       if (!msg) return;
@@ -708,16 +730,28 @@ const SiteComponents = (() => {
       addMsg(msg, true);
       var thinking = addMsg('Thinking…', false);
       sendBtn.disabled = true;
+
+      _history.push({ role: 'user', content: msg });
+      if (_history.length > 12) _history = _history.slice(-12);
+
       try {
         var res = await fetch('/api/silver-agent/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ message: msg })
+          body: JSON.stringify({
+            message: msg,
+            history: _history.slice(0, -1), // prior turns only
+            context: getPageContext()
+          })
         });
         var data = await res.json();
-        thinking.textContent = data.message || data.reply || 'No response received.';
+        var reply = data.message || data.reply || 'No response received.';
+        thinking.textContent = reply;
+        _history.push({ role: 'assistant', content: reply });
+        if (_history.length > 12) _history = _history.slice(-12);
       } catch (e) {
         thinking.textContent = 'Connection error. Please try again.';
+        _history.pop(); // remove failed user message
       } finally {
         sendBtn.disabled = false;
         msgs.scrollTop = 999999;

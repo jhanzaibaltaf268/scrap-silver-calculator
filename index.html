@@ -1558,6 +1558,7 @@
     window.setMode = setMode;
     window.setU = setU;
     window.setP = setP;
+    window._calcState = S; // expose mode + purity to chat widget
 
     // Context-aware AI nudge
     function getAIQuestion(mode, purity, value) {
