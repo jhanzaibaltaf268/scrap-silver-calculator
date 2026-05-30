@@ -7,7 +7,7 @@
    Reserve space for dynamically-rendered elements  */
 
 /* Reserve height for dynamic components only — do NOT add body padding-top */
-#price-ticker { min-height: 44px; }
+#price-ticker { min-height: 68px; } /* matches .hero-pill rendered height + margins */
 #breadcrumb   { min-height: 28px; }
 
 /* Prevent MS Clarity body class from triggering layout reflow */
