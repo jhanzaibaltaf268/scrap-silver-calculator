@@ -240,6 +240,17 @@
   <script src="/js/calculator.js" defer></script>
   <script src="/js/components.js" defer></script>
   <script defer>
+  // Global scope — called by inline onclick
+  function switchTab(tab) {
+    var isCoin = tab === 'coin';
+    document.getElementById('panel-coin').style.display = isCoin ? '' : 'none';
+    document.getElementById('panel-fv').style.display = isCoin ? 'none' : '';
+    document.getElementById('tab-coin').style.background = isCoin ? 'rgba(124,58,237,.25)' : 'transparent';
+    document.getElementById('tab-coin').style.color = isCoin ? '#fff' : 'var(--muted)';
+    document.getElementById('tab-fv').style.background = isCoin ? 'transparent' : 'rgba(124,58,237,.25)';
+    document.getElementById('tab-fv').style.color = isCoin ? 'var(--muted)' : '#fff';
+  }
+
   document.addEventListener('DOMContentLoaded', function() {
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb', [
@@ -273,17 +284,6 @@
         var purityPct = Math.round(c.purity * 100) + '%';
         return '<tr><td>' + c.name + '</td><td>' + purityPct + '</td><td>' + c.silverOz + '</td><td>$' + val + '</td></tr>';
       }).join('');
-    }
-
-    // Tab switcher
-    function switchTab(tab) {
-      var isCoin = tab === 'coin';
-      document.getElementById('panel-coin').style.display = isCoin ? '' : 'none';
-      document.getElementById('panel-fv').style.display = isCoin ? 'none' : '';
-      document.getElementById('tab-coin').style.background = isCoin ? 'rgba(124,58,237,.25)' : 'transparent';
-      document.getElementById('tab-coin').style.color = isCoin ? '#fff' : 'var(--muted)';
-      document.getElementById('tab-fv').style.background = isCoin ? 'transparent' : 'rgba(124,58,237,.25)';
-      document.getElementById('tab-fv').style.color = isCoin ? 'var(--muted)' : '#fff';
     }
 
     // Face value calculator
