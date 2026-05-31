@@ -482,11 +482,22 @@
       }
     }
 
+    function isValidData(d) {
+      return d && Array.isArray(d.prices) && d.prices.length > 0
+        && d.prices.every(p => typeof p === 'number' && isFinite(p) && p > 0);
+    }
+
     async function fetchHistoricalPrices(days = 30) {
-      const cacheKey = `silver-historical-${days}d`;
+      // cache key is versioned (v2) to invalidate older empty caches
+      const cacheKey = `silver-historical-v2-${days}d`;
       const cached = localStorage.getItem(cacheKey);
 
-      if (cached) try { return JSON.parse(cached); } catch (e) {}
+      if (cached) {
+        try {
+          const parsed = JSON.parse(cached);
+          if (isValidData(parsed)) return parsed;
+        } catch (e) {}
+      }
 
       try {
         const apiKey = 'demo';
@@ -495,14 +506,21 @@
         if (!response.ok) throw new Error('API error');
 
         const data = await response.json();
-        if (data['Error Message'] || data['Note']) return generateFallbackData(days);
+        // Alpha Vantage signals limits/errors via these keys (demo key has no XAG access)
+        if (data['Error Message'] || data['Note'] || data['Information']) {
+          return generateFallbackData(days);
+        }
 
         const timeSeries = data['Time Series FX (Daily)'] || {};
         const dates = Object.keys(timeSeries).sort().slice(-days);
         const prices = dates.map(d => parseFloat(timeSeries[d]['4. close']));
 
-        localStorage.setItem(cacheKey, JSON.stringify({ dates, prices }));
-        return { dates, prices };
+        const result = { dates, prices };
+        if (!isValidData(result)) return generateFallbackData(days);
+
+        // only cache valid, non-empty data
+        localStorage.setItem(cacheKey, JSON.stringify(result));
+        return result;
       } catch (e) {
         return generateFallbackData(days);
       }
@@ -586,7 +604,6 @@
       this.style.borderColor = 'rgba(139, 92, 246, 0.5)';
       this.style.color = '#fff';
       chartData.days = days;
-      localStorage.removeItem(`silver-historical-${days}d`);
       const data = await fetchHistoricalPrices(days);
       if (priceChart) {
         priceChart.data.labels = data.dates;
