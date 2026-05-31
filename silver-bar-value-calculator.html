@@ -74,6 +74,8 @@
   <link rel="alternate" hreflang="tr" href="https://scrapsilvercalculater.com/tr/gümüş-çubuk-değeri-hesaplama/">
   <link rel="alternate" hreflang="ur" href="https://scrapsilvercalculater.com/ur/سلور-بار-ویلیو-کیلکولیٹر/">
   <link rel="alternate" hreflang="zh" href="https://scrapsilvercalculater.com/zh/银条价值计算器/">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Silver Bar Value Calculator","url":"https://scrapsilvercalculater.com/silver-bar-value-calculator/","description":"Calculate the melt value of silver bars by size and quantity. Live prices for 1oz, 5oz, 10oz, 100oz, and 1kg silver bars.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://scrapsilvercalculater.com/"},{"@type":"ListItem","position":2,"name":"Silver Bar Value Calculator","item":"https://scrapsilvercalculater.com/silver-bar-value-calculator/"}]}</script>
   </head>
 <body>
   <div id="site-header"></div>
@@ -102,13 +104,30 @@
         </table>
       </div>
       <div class="content-body">
-        <h2>Silver Bar Sizes</h2>
-        <p>Silver bars come in standardized sizes, from small 1-ounce bars to large 100-ounce industrial bars. The larger the bar, the lower the premium over spot price.</p>
+        <h2>Silver Bar Sizes &amp; Premiums Explained</h2>
+        <p>Silver bars come in standardized sizes from 1 oz to 1,000 oz commercial bars. Each size targets a different buyer — from first-time investors to institutional buyers — and carries a different premium over the live spot price.</p>
+
+        <h3>Choosing the Right Bar Size</h3>
         <ul>
-          <li><strong>1 oz bars</strong> — Popular for small investors, easy to trade</li>
-          <li><strong>10 oz bars</strong> — Most popular size for individual investors</li>
-          <li><strong>100 oz bars</strong> — Lower premiums, preferred by serious investors</li>
-          <li><strong>1 kg bars</strong> — International standard, common outside the US</li>
+          <li><strong>1 oz bars</strong> — Most liquid, easiest to sell, but carry the highest per-ounce premium (3–8%). Best for new investors or gifts.</li>
+          <li><strong>5 oz bars</strong> — A middle ground, often 2–5% premium. Good balance of cost and resale ease.</li>
+          <li><strong>10 oz bars</strong> — The most popular individual investor size. Lower premium (2–4%), still easy to sell at most coin shops.</li>
+          <li><strong>100 oz bars</strong> — Preferred by serious stackers. Premiums drop to 1–3% over spot. Harder to liquidate in partial amounts.</li>
+          <li><strong>1 kg bars</strong> — International standard used outside the US. 32.15 troy oz. Popular in European and Asian markets.</li>
+        </ul>
+
+        <h3>Melt Value vs. Market Value</h3>
+        <p>The <strong>melt value</strong> is the raw metal value based on current spot price. The <strong>market value</strong> includes the dealer premium — the markup added for fabrication, certification, and profit. When buying, you pay above melt. When selling, you receive slightly below melt. The spread is narrower for larger bars and reputable mint brands (PAMP, Engelhard, Johnson Matthey).</p>
+
+        <h3>Where to Buy Silver Bars</h3>
+        <p>Online dealers (APMEX, JM Bullion, SD Bullion) typically offer the lowest premiums and best selection. Local coin shops offer instant transactions but higher premiums. Never buy silver bars on general marketplaces without verifying the seller's reputation and checking for authenticity marks (mint stamp, serial number, weight hallmark).</p>
+
+        <h3>Silver Bar Storage Tips</h3>
+        <ul>
+          <li>Keep in original mint packaging — tampering reduces resale value</li>
+          <li>Store in a cool, dry place — humidity causes tarnishing</li>
+          <li>Use a fireproof home safe or a bank safety deposit box for large quantities</li>
+          <li>Never clean silver bars with chemicals — it damages surfaces permanently</li>
         </ul>
       </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Pages</h3><div class="related-grid">
@@ -122,23 +141,29 @@
   <div id="site-footer"></div>
   <script src="/js/silver-price.js"></script><script src="/js/calc-button-mode.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
   <script>
-    
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Silver Bar Value Calculator'}]);
     const s=document.getElementById('size'),q=document.getElementById('qty');
-    function calc(){const size=parseFloat(s.value);const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const r=SilverCalc.barValue(size,qty,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${qty}× ${size} oz bar(s) · ${r.totalOz} oz total · ${SilverCalc.formatCurrency(r.valueEach)} each · Spot: $${spot.toFixed(2)}/oz`;
-      const bars=[{l:'1 oz',s:1,w:'31.1g'},{l:'5 oz',s:5,w:'155.5g'},{l:'10 oz',s:10,w:'311.0g'},{l:'50 oz',s:50,w:'1,555g'},{l:'100 oz',s:100,w:'3,110g'},{l:'1 kg',s:32.1507,w:'1,000g'}];
-      document.getElementById('bar-table').innerHTML=bars.map(b=>`<tr><td>${b.l}</td><td>${b.w}</td><td>$${(b.s*spot).toFixed(2)}</td></tr>`).join('');}
-    
-  
-    // Add listener to Calculate button
-    const cb = document.getElementById('calc-btn');
-    if (cb) {
-      const fn = typeof calculate === 'function' ? calculate :
-                 (typeof calc === 'function' ? calc :
-                 (typeof update === 'function' ? update : null));
-      if (fn) cb.addEventListener('click', fn);
+    const bars=[{l:'1 oz',s:1,w:'31.1g'},{l:'5 oz',s:5,w:'155.5g'},{l:'10 oz',s:10,w:'311.0g'},{l:'50 oz',s:50,w:'1,555g'},{l:'100 oz',s:100,w:'3,110g'},{l:'1 kg',s:32.1507,w:'1,000g'}];
+    function calc(){
+      const size=parseFloat(s.value);const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();
+      if(!spot) return;
+      const r=SilverCalc.barValue(size,qty,spot);
+      document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
+      document.getElementById('result-detail').textContent=qty+'× '+size+' oz bar(s) · '+r.totalOz+' oz total · '+SilverCalc.formatCurrency(r.valueEach)+' each · Spot: $'+spot.toFixed(2)+'/oz';
+      document.getElementById('bar-table').innerHTML=bars.map(b=>'<tr><td>'+b.l+'</td><td>'+b.w+'</td><td>$'+(b.s*spot).toFixed(2)+'</td></tr>').join('');
     }
+    document.getElementById('calc-btn').addEventListener('click', calc);
+    SilverPrice.onPriceUpdate(calc);
+    calc();
+
+    SiteComponents.injectFAQSchema([
+      {q:'What is the most popular silver bar size?',a:'The 10 oz silver bar is the most popular size for individual investors, offering a balance between low premium over spot price and ease of storage and resale. 1 oz bars are more liquid but carry higher per-ounce premiums.'},
+      {q:'How do I calculate the value of a silver bar?',a:'Multiply the bar weight in troy ounces by the current silver spot price per troy ounce. For a 10 oz bar at $30/oz spot: 10 × $30 = $300 melt value. Our calculator does this automatically with live prices.'},
+      {q:'Do silver bars lose value?',a:'Silver bars retain their intrinsic melt value regardless of condition. However, bars from reputable mints (PAMP, Engelhard, Johnson Matthey) often trade at a slight premium due to trust and recognition.'},
+      {q:'Is buying silver bars better than silver coins?',a:'Bars generally carry lower premiums over spot than coins, making them more cost-efficient for large purchases. Coins offer higher liquidity and recognition, especially government-minted coins like American Silver Eagles.'},
+      {q:'What is the premium over spot on silver bars?',a:'Premiums vary by size. 1 oz generic bars typically sell at 3–8% over spot. 10 oz bars at 2–5%. 100 oz bars at 1–3%. Buying larger bars reduces your per-ounce cost significantly.'}
+    ]);
   </script>
 
 

@@ -105,6 +105,11 @@
           <div class="result-value" id="result-value">$0.00</div>
           <div class="result-detail" id="result-detail"></div>
         </div>
+        <h4 style="margin:var(--space-xl) 0 var(--space-md);">Common Quantities — Live Melt Values</h4>
+        <table class="purity-table">
+          <thead><tr><th>Quantity</th><th>Face Value</th><th>Silver (oz)</th><th>Melt Value</th></tr></thead>
+          <tbody id="quarter-ref-table"></tbody>
+        </table>
       </div>
       <div class="content-body">
         <h2>How Much is a Silver Quarter Worth?</h2>
@@ -144,14 +149,13 @@
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Silver Quarter Calculator'}]);
     
     const q=document.getElementById('qty');
+    const QTR_OZ = 0.18084; // troy oz silver per quarter
     function calc() {
       const qty=parseInt(q.value)||0;
-      const totalWeightGrams = qty * 6.25;
-      const purity = 0.9;
       const spot=SilverPrice.getPrice();
-      
-      const r=SilverCalc.meltValue(totalWeightGrams, purity, spot);
-      
+      if(!spot) return;
+      const totalWeightGrams = qty * 6.25;
+      const r=SilverCalc.meltValue(totalWeightGrams, 0.9, spot);
       if(qty > 0) {
         document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
         document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';
@@ -159,9 +163,24 @@
         document.getElementById('result-value').textContent='$0.00';
         document.getElementById('result-detail').textContent='Enter quantity';
       }
+      // Update reference table
+      var rows=[
+        {n:1,  face:'$0.25', label:'1 coin'},
+        {n:4,  face:'$1.00', label:'$1 face (4 coins)'},
+        {n:20, face:'$5.00', label:'$5 face (20 coins)'},
+        {n:40, face:'$10.00',label:'$10 face (40 coins)'},
+        {n:80, face:'$20.00',label:'$20 face (80 coins)'},
+        {n:200,face:'$50.00',label:'$50 face (200 coins)'},
+        {n:400,face:'$100.00',label:'$100 face (400 coins)'}
+      ];
+      document.getElementById('quarter-ref-table').innerHTML=rows.map(function(r2){
+        var oz=(r2.n*QTR_OZ).toFixed(3);
+        var val=(r2.n*QTR_OZ*spot).toFixed(2);
+        return '<tr><td>'+r2.label+'</td><td>'+r2.face+'</td><td>'+oz+' oz</td><td>$'+val+'</td></tr>';
+      }).join('');
     }
     q.addEventListener('input',calc);
-    SilverPrice.onPriceUpdate(()=>calc());
+    SilverPrice.onPriceUpdate(calc);
     calc();
 
     // Add listener to Calculate button

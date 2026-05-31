@@ -73,12 +73,26 @@
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
     <link rel="icon" type="image/png" href="/favicon.png" title="Scrap Silver Calculator">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" title="Scrap Silver Calculator">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"1oz Silver Value Calculator","url":"https://scrapsilvercalculater.com/1oz-silver-value/","description":"Live value of 1 troy ounce of silver. Calculate melt value for any quantity of 1oz silver rounds, coins, or bars.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://scrapsilvercalculater.com/"},{"@type":"ListItem","position":2,"name":"1oz Silver Value","item":"https://scrapsilvercalculater.com/1oz-silver-value/"}]}</script>
 </head>
 <body>
   <div id="site-header"></div>
   <main>
     <div class="container"><div id="breadcrumb"></div></div>
-    <section class="hero container"><div class="container"><div id="price-ticker"></div><h1>1oz Silver <span class="highlight">Value</span></h1></div></section>
+    <section class="hero container"><div class="container">
+      <div id="price-ticker"></div>
+      <h1>1oz Silver <span class="highlight">Value</span></h1>
+      <!-- Live hero card -->
+      <div style="background:linear-gradient(135deg,rgba(124,58,237,.15),rgba(76,29,149,.08));border:1px solid rgba(139,92,246,.3);border-radius:20px;padding:24px;text-align:center;margin-top:24px;max-width:480px;margin-left:auto;margin-right:auto;">
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(139,92,246,.8);margin-bottom:8px;">1 Troy Ounce Silver — Live Value</div>
+        <div style="font-family:var(--f-display);font-size:clamp(40px,10vw,64px);font-weight:800;color:#fff;line-height:1;" id="hero-oz-price">$0.00</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:8px;">.999 fine silver · 31.1035 grams</div>
+        <div style="display:inline-flex;align-items:center;gap:6px;font-size:11px;color:rgba(139,92,246,.9);margin-top:12px;">
+          <span style="width:7px;height:7px;background:#34d399;border-radius:50%;"></span>Live Market Price
+        </div>
+      </div>
+    </div></section>
     <div class="calc-page-layout">
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🧱</span> 1oz Silver Value</div>
@@ -112,6 +126,25 @@
         
         <h3>Real-Time Value Tracking</h3>
         <p>The value of your 1oz silver holdings changes every time the market ticks. Our calculator pulls <strong>live 24-hour market data</strong> from global exchanges to ensure your valuation is as accurate as possible for today's trading conditions.</p>
+
+        <h3>1oz Silver Coin Premiums vs. Melt Value</h3>
+        <p>The spot price you see is the <em>melt value</em> — the raw silver content. When buying or selling 1oz coins, dealers charge a premium. Here's what to expect:</p>
+        <div style="overflow-x:auto;margin-top:12px;">
+          <table class="purity-table">
+            <thead><tr><th>Product</th><th>Silver Content</th><th>Typical Premium</th><th>Best For</th></tr></thead>
+            <tbody>
+              <tr><td>Generic 1oz Round</td><td>.999 fine</td><td>3–6% over spot</td><td>Lowest cost stacking</td></tr>
+              <tr><td>American Silver Eagle</td><td>.999 fine</td><td>10–20% over spot</td><td>Resale / recognition</td></tr>
+              <tr><td>Canadian Maple Leaf</td><td>.9999 fine</td><td>8–15% over spot</td><td>Global liquidity</td></tr>
+              <tr><td>Britannia (UK)</td><td>.999 fine</td><td>8–14% over spot</td><td>UK/European markets</td></tr>
+              <tr><td>1oz Silver Bar</td><td>.999 fine</td><td>3–7% over spot</td><td>Bulk stacking</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>When to Buy vs. When to Sell 1oz Silver</h3>
+        <p>Silver prices cycle through strong trends. The best times to buy are when prices dip during periods of dollar strength or low industrial demand. The best times to sell are during geopolitical crises, high inflation, or industrial supply crunches — when investment demand spikes.</p>
+        <p>A simple rule: if the current price is below the 6-month average, it's historically a favorable buying window. If it's 15%+ above the 3-month average, it may be a good selling opportunity.</p>
       </div>
       <div><h3 style="margin-bottom:var(--space-lg);">Related Pages</h3><div class="related-grid">
         <a href="/silver-bar-value-calculator/" class="related-link"><span class="r-icon">🧱</span> Bar Calculator</a>
@@ -127,9 +160,17 @@
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'1oz Silver Value'}]);
     const q=document.getElementById('qty');
-    function calc(){const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();const totalOz=1*qty;const val=totalOz*spot;document.getElementById('result-value').textContent='$'+val.toFixed(2);document.getElementById('result-detail').textContent=qty+'× 1oz · '+totalOz.toFixed(2)+' oz total · Spot: $'+spot.toFixed(2)+'/oz';
-      const qtys=[1,2,5,10,25,50,100];document.getElementById('qty-table').innerHTML=qtys.map(n=>'<tr><td>'+n+'</td><td>'+(1*n).toFixed(2)+' oz</td><td>$'+(1*n*spot).toFixed(2)+'</td></tr>').join('');}
-    q.addEventListener('input',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
+    function calc(){
+      const qty=parseInt(q.value)||1;const spot=SilverPrice.getPrice();
+      if(!spot) return;
+      const totalOz=qty;const val=totalOz*spot;
+      document.getElementById('hero-oz-price').textContent='$'+spot.toFixed(2);
+      document.getElementById('result-value').textContent='$'+val.toFixed(2);
+      document.getElementById('result-detail').textContent=qty+'× 1oz · '+totalOz.toFixed(2)+' oz total · Spot: $'+spot.toFixed(2)+'/oz';
+      const qtys=[1,2,5,10,25,50,100];
+      document.getElementById('qty-table').innerHTML=qtys.map(n=>'<tr><td>'+n+'</td><td>'+(1*n).toFixed(2)+' oz</td><td>$'+(1*n*spot).toFixed(2)+'</td></tr>').join('');
+    }
+    q.addEventListener('input',calc);SilverPrice.onPriceUpdate(calc);calc();
 
     // Add listener to Calculate button
     const cb = document.getElementById('calc-btn');

@@ -167,6 +167,29 @@
         </div>
       </div>
 
+      <!-- Face Value Calculator -->
+      <div class="calc-widget" style="margin-top:20px;">
+        <div class="calc-widget-title"><span class="icon">💵</span> Face Value to Silver Value</div>
+        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:14px;">Enter any dollar amount of 90% junk silver face value to get the ounces and live melt value.</p>
+        <div class="jsc-form-row">
+          <div class="jsc-form-label">Face Value ($)</div>
+          <div class="jsc-form-controls">
+            <input type="number" class="jsc-input" id="fv-input" placeholder="e.g. 10.00" value="10" min="0.10" step="0.10" inputmode="decimal">
+          </div>
+        </div>
+        <div id="fv-results" style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div class="jsc-stat-card">
+            <div class="jsc-stat-lbl">Pure Silver</div>
+            <div class="jsc-stat-val" id="fv-oz">—</div>
+          </div>
+          <div class="jsc-stat-card" style="border-color:rgba(124,58,237,.4);background:linear-gradient(135deg,rgba(124,58,237,.1),transparent);">
+            <div class="jsc-stat-lbl">Melt Value</div>
+            <div class="jsc-stat-val" id="fv-usd" style="color:#b39dfa;">—</div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--muted);margin-top:10px;">Based on 0.715 troy oz per $1.00 face value (circulated 90% coins). Uncirculated: 0.723 oz/$1.00.</p>
+      </div>
+
       <!-- Live Reference Table -->
       <div class="calc-widget jsc-ref-widget">
         <div class="calc-widget-title" style="margin-bottom:14px;"><span class="icon">📊</span> All Junk Silver Coin Values</div>
@@ -262,8 +285,21 @@
       }).join('');
     }
 
-    SilverPrice.onPriceUpdate(updateRefTable);
+    // Face value calculator
+    function updateFaceValue() {
+      var fv = parseFloat(document.getElementById('fv-input').value) || 0;
+      var spot = SilverPrice.getPrice();
+      if (!spot || fv <= 0) return;
+      var oz = (fv * 0.715).toFixed(3);
+      var usd = (fv * 0.715 * spot).toFixed(2);
+      document.getElementById('fv-oz').textContent = oz + ' oz';
+      document.getElementById('fv-usd').textContent = '$' + usd;
+    }
+    document.getElementById('fv-input').addEventListener('input', updateFaceValue);
+
+    SilverPrice.onPriceUpdate(function() { updateRefTable(); updateFaceValue(); });
     updateRefTable();
+    updateFaceValue();
 
     // Calculator — runs only on button click
     function calc() {
