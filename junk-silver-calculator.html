@@ -122,31 +122,29 @@
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">🪙</span> Junk Silver Coin Value</div>
 
-        <div class="jsc-form-row">
-          <div class="jsc-form-label">Coin Type</div>
-          <div class="jsc-form-controls">
-            <select class="jsc-select" id="jsc-coin">
-              <option value="us-quarter-pre1965">US Quarter (pre-1965) — 90% · 0.1808 oz</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="jsc-form-row">
-          <div class="jsc-form-label">Quantity</div>
-          <div class="jsc-form-controls">
-            <input type="number" class="jsc-input" id="jsc-qty" placeholder="e.g. 10" value="10" min="1" step="1" inputmode="numeric">
-          </div>
-        </div>
-
-        <!-- Tab switcher -->
-        <div style="display:flex;gap:0;margin-top:16px;border:1px solid rgba(255,255,255,.1);border-radius:10px;overflow:hidden;">
+        <!-- Tab switcher — top of widget -->
+        <div style="display:flex;gap:0;margin-bottom:16px;border:1px solid rgba(255,255,255,.1);border-radius:10px;overflow:hidden;">
           <button id="tab-coin" onclick="switchTab('coin')" style="flex:1;padding:9px;font-size:13px;font-weight:600;border:none;cursor:pointer;background:rgba(124,58,237,.25);color:#fff;border-right:1px solid rgba(255,255,255,.1);">🪙 By Coin</button>
           <button id="tab-fv" onclick="switchTab('fv')" style="flex:1;padding:9px;font-size:13px;font-weight:600;border:none;cursor:pointer;background:transparent;color:var(--muted);">💵 By Face Value</button>
         </div>
 
         <!-- Panel: By Coin -->
         <div id="panel-coin">
-          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:14px;">Calculate Silver Value</button>
+          <div class="jsc-form-row">
+            <div class="jsc-form-label">Coin Type</div>
+            <div class="jsc-form-controls">
+              <select class="jsc-select" id="jsc-coin">
+                <option value="us-quarter-pre1965">US Quarter (pre-1965) — 90% · 0.1808 oz</option>
+              </select>
+            </div>
+          </div>
+          <div class="jsc-form-row">
+            <div class="jsc-form-label">Quantity</div>
+            <div class="jsc-form-controls">
+              <input type="number" class="jsc-input" id="jsc-qty" placeholder="e.g. 10" value="10" min="1" step="1" inputmode="numeric">
+            </div>
+          </div>
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:8px;">Calculate Silver Value</button>
           <div class="jsc-results" id="jsc-results" style="display:none;">
             <div class="jsc-melt-banner">
               <div>
