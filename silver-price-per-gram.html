@@ -543,7 +543,7 @@
         },
         options: {
           responsive: true,
-          maintainAspectRatio: true,
+          maintainAspectRatio: false,
           devicePixelRatio: window.devicePixelRatio || 1,
           plugins: {
             legend: { display: false },
@@ -572,7 +572,8 @@
         }
       });
 
-      document.getElementById('chart-loading')?.style.display = 'none';
+      var loadingEl = document.getElementById('chart-loading');
+      if (loadingEl) loadingEl.style.display = 'none';
     }
 
     const switchChart = (days) => async function() {
