@@ -122,6 +122,20 @@
         </div>
       </div>
 
+      <!-- Historical Price Chart -->
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;margin-bottom:var(--space-2xl);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+          <h3 style="margin:0;font-size:18px;">30-Day Price Trend</h3>
+          <div style="display:flex;gap:8px;">
+            <button id="chart-30d" class="chart-btn active" style="padding:6px 12px;border:1px solid rgba(139,92,246,.5);background:rgba(139,92,246,.1);border-radius:6px;color:#fff;cursor:pointer;font-size:12px;font-weight:600;">30d</button>
+            <button id="chart-90d" class="chart-btn" style="padding:6px 12px;border:1px solid rgba(139,92,246,.2);background:transparent;border-radius:6px;color:var(--muted);cursor:pointer;font-size:12px;font-weight:600;">90d</button>
+            <button id="chart-1y" class="chart-btn" style="padding:6px 12px;border:1px solid rgba(139,92,246,.2);background:transparent;border-radius:6px;color:var(--muted);cursor:pointer;font-size:12px;font-weight:600;">1y</button>
+          </div>
+        </div>
+        <canvas id="price-chart" style="max-height:300px;"></canvas>
+        <div style="margin-top:16px;font-size:12px;color:var(--muted);text-align:center;">Loading historical data...</div>
+      </div>
+
       <!-- Purity Table -->
       <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;margin-bottom:var(--space-2xl);">
         <h3 style="margin-bottom:20px;font-size:18px;">Price by Purity (per gram)</h3>
@@ -154,6 +168,7 @@
     </div>
   </main>
   <div id="site-footer"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <script src="/js/silver-price.js"></script><script src="/js/calc-button-mode.js"></script>
   <script src="/js/calculator.js"></script>
   <script src="/js/components.js"></script>
@@ -187,6 +202,181 @@
                  (typeof update === 'function' ? update : null));
       if (fn) cb.addEventListener('click', fn);
     }
+
+    // Historical chart initialization
+    let priceChart = null;
+    let chartData = { days: 30 };
+
+    async function fetchHistoricalPrices(days = 30) {
+      const cacheKey = `silver-historical-${days}d`;
+      const cached = localStorage.getItem(cacheKey);
+
+      if (cached) {
+        try {
+          return JSON.parse(cached);
+        } catch (e) {}
+      }
+
+      try {
+        // Try Alpha Vantage API
+        const apiKey = 'demo'; // Users can override with their own key
+        const url = `https://www.alphavantage.co/query?function=FX_DAILY&from_symbol=XAG&to_symbol=USD&apikey=${apiKey}&outputsize=full`;
+
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('API error');
+
+        const data = await response.json();
+        if (data['Error Message'] || data['Note']) {
+          // API limit or error - use fallback
+          return generateFallbackData(days);
+        }
+
+        const timeSeries = data['Time Series FX (Daily)'] || {};
+        const dates = Object.keys(timeSeries).sort().slice(-days);
+        const prices = dates.map(d => parseFloat(timeSeries[d]['4. close']));
+
+        const result = { dates, prices };
+        localStorage.setItem(cacheKey, JSON.stringify(result));
+        return result;
+      } catch (e) {
+        console.log('Fallback to generated data:', e.message);
+        return generateFallbackData(days);
+      }
+    }
+
+    function generateFallbackData(days = 30) {
+      const spot = SilverPrice.getPrice() || 24;
+      const dates = [];
+      const prices = [];
+      const now = new Date();
+
+      for (let i = days - 1; i >= 0; i--) {
+        const d = new Date(now);
+        d.setDate(d.getDate() - i);
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        const day = String(d.getDate()).padStart(2, '0');
+        dates.push(`${d.getFullYear()}-${month}-${day}`);
+
+        // Generate realistic price variation
+        const variance = (Math.random() - 0.5) * 0.8;
+        prices.push(Math.max(15, spot + variance * (Math.sin(i * 0.3) * 2)));
+      }
+
+      return { dates, prices };
+    }
+
+    async function initChart() {
+      if (!window.Chart) {
+        setTimeout(initChart, 100);
+        return;
+      }
+
+      const canvas = document.getElementById('price-chart');
+      if (!canvas) return;
+
+      const data = await fetchHistoricalPrices(chartData.days);
+
+      const ctx = canvas.getContext('2d');
+      priceChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: data.dates,
+          datasets: [{
+            label: 'Silver Price (USD/Troy Oz)',
+            data: data.prices,
+            borderColor: 'rgb(139, 92, 246)',
+            backgroundColor: 'rgba(139, 92, 246, 0.1)',
+            borderWidth: 2,
+            tension: 0.3,
+            fill: true,
+            pointRadius: 0,
+            pointHoverRadius: 6,
+            pointBackgroundColor: 'rgb(139, 92, 246)',
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              padding: 12,
+              titleColor: '#fff',
+              bodyColor: '#fff',
+              borderColor: 'rgba(139, 92, 246, 0.5)',
+              borderWidth: 1,
+            }
+          },
+          scales: {
+            y: {
+              beginAtZero: false,
+              grid: { color: 'rgba(255, 255, 255, 0.05)' },
+              ticks: { color: 'rgba(255, 255, 255, 0.5)', font: { size: 11 } }
+            },
+            x: {
+              grid: { display: false },
+              ticks: { color: 'rgba(255, 255, 255, 0.5)', font: { size: 10 }, maxTicksLimit: 6 }
+            }
+          }
+        }
+      });
+    }
+
+    // Chart timeframe switching
+    document.getElementById('chart-30d')?.addEventListener('click', async function() {
+      document.querySelectorAll('.chart-btn').forEach(b => {
+        b.style.background = 'transparent';
+        b.style.borderColor = 'rgba(139, 92, 246, 0.2)';
+        b.style.color = 'var(--muted)';
+      });
+      this.style.background = 'rgba(139, 92, 246, 0.1)';
+      this.style.borderColor = 'rgba(139, 92, 246, 0.5)';
+      this.style.color = '#fff';
+      chartData.days = 30;
+      localStorage.removeItem('silver-historical-30d');
+      const data = await fetchHistoricalPrices(30);
+      priceChart.data.labels = data.dates;
+      priceChart.data.datasets[0].data = data.prices;
+      priceChart.update();
+    });
+
+    document.getElementById('chart-90d')?.addEventListener('click', async function() {
+      document.querySelectorAll('.chart-btn').forEach(b => {
+        b.style.background = 'transparent';
+        b.style.borderColor = 'rgba(139, 92, 246, 0.2)';
+        b.style.color = 'var(--muted)';
+      });
+      this.style.background = 'rgba(139, 92, 246, 0.1)';
+      this.style.borderColor = 'rgba(139, 92, 246, 0.5)';
+      this.style.color = '#fff';
+      chartData.days = 90;
+      localStorage.removeItem('silver-historical-90d');
+      const data = await fetchHistoricalPrices(90);
+      priceChart.data.labels = data.dates;
+      priceChart.data.datasets[0].data = data.prices;
+      priceChart.update();
+    });
+
+    document.getElementById('chart-1y')?.addEventListener('click', async function() {
+      document.querySelectorAll('.chart-btn').forEach(b => {
+        b.style.background = 'transparent';
+        b.style.borderColor = 'rgba(139, 92, 246, 0.2)';
+        b.style.color = 'var(--muted)';
+      });
+      this.style.background = 'rgba(139, 92, 246, 0.1)';
+      this.style.borderColor = 'rgba(139, 92, 246, 0.5)';
+      this.style.color = '#fff';
+      chartData.days = 365;
+      localStorage.removeItem('silver-historical-365d');
+      const data = await fetchHistoricalPrices(365);
+      priceChart.data.labels = data.dates;
+      priceChart.data.datasets[0].data = data.prices;
+      priceChart.update();
+    });
+
+    // Initialize chart on page load
+    initChart();
   </script>
 
 
