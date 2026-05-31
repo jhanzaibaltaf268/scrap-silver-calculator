@@ -164,16 +164,27 @@
 
         <!-- Panel: By Face Value -->
         <div id="panel-fv" style="display:none;">
-          <div class="jsc-form-row" style="margin-top:14px;">
+          <div class="jsc-form-row">
             <div class="jsc-form-label">Face Value ($)</div>
             <div class="jsc-form-controls">
               <input type="number" class="jsc-input" id="fv-input" placeholder="e.g. 10.00" value="10" min="0.10" step="0.10" inputmode="decimal">
             </div>
           </div>
           <button class="btn btn-primary btn-full" id="fv-calc-btn" style="margin-top:8px;">Calculate Silver Value</button>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;">
-            <div class="jsc-stat-card"><div class="jsc-stat-lbl">Pure Silver</div><div class="jsc-stat-val" id="fv-oz">—</div></div>
-            <div class="jsc-stat-card" style="border-color:rgba(124,58,237,.4);background:linear-gradient(135deg,rgba(124,58,237,.1),transparent);"><div class="jsc-stat-lbl">Melt Value</div><div class="jsc-stat-val" id="fv-usd" style="color:#b39dfa;">—</div></div>
+          <div class="jsc-results" id="fv-results" style="display:none;">
+            <div class="jsc-melt-banner">
+              <div>
+                <div class="lbl">Total Melt Value</div>
+                <div class="val" id="fv-usd">—</div>
+                <div class="det" id="fv-detail">at current spot price</div>
+              </div>
+              <div style="font-size:38px;opacity:.45;">💵</div>
+            </div>
+            <div class="jsc-stats-grid">
+              <div class="jsc-stat-card"><div class="jsc-stat-lbl">Pure Silver</div><div class="jsc-stat-val" id="fv-oz">—</div></div>
+              <div class="jsc-stat-card"><div class="jsc-stat-lbl">Per $1 Face</div><div class="jsc-stat-val">0.715 oz</div></div>
+              <div class="jsc-stat-card"><div class="jsc-stat-lbl">Spot Price</div><div class="jsc-stat-val" id="fv-spot">—</div></div>
+            </div>
           </div>
           <p style="font-size:11px;color:var(--muted);margin-top:10px;">0.715 oz per $1.00 face value (circulated 90% silver coins).</p>
         </div>
@@ -294,6 +305,9 @@
       var usd = (fv * 0.715 * spot).toFixed(2);
       document.getElementById('fv-oz').textContent = oz + ' oz';
       document.getElementById('fv-usd').textContent = '$' + usd;
+      document.getElementById('fv-spot').textContent = '$' + spot.toFixed(2);
+      document.getElementById('fv-detail').textContent = '$' + fv.toFixed(2) + ' face · ' + oz + ' oz pure silver · Spot: $' + spot.toFixed(2) + '/oz';
+      document.getElementById('fv-results').style.display = 'block';
     }
     document.getElementById('fv-input').addEventListener('input', updateFaceValue);
     document.getElementById('fv-calc-btn').addEventListener('click', updateFaceValue);
