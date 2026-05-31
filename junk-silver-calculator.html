@@ -138,56 +138,46 @@
           </div>
         </div>
 
-        <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:8px;">Calculate Silver Value</button>
+        <!-- Tab switcher -->
+        <div style="display:flex;gap:0;margin-top:16px;border:1px solid rgba(255,255,255,.1);border-radius:10px;overflow:hidden;">
+          <button id="tab-coin" onclick="switchTab('coin')" style="flex:1;padding:9px;font-size:13px;font-weight:600;border:none;cursor:pointer;background:rgba(124,58,237,.25);color:#fff;border-right:1px solid rgba(255,255,255,.1);">🪙 By Coin</button>
+          <button id="tab-fv" onclick="switchTab('fv')" style="flex:1;padding:9px;font-size:13px;font-weight:600;border:none;cursor:pointer;background:transparent;color:var(--muted);">💵 By Face Value</button>
+        </div>
 
-        <!-- Results — hidden until button click -->
-        <div class="jsc-results" id="jsc-results" style="display:none;">
-          <div class="jsc-melt-banner">
-            <div>
-              <div class="lbl">Total Melt Value</div>
-              <div class="val" id="jsc-total">—</div>
-              <div class="det" id="jsc-detail">at current spot price</div>
+        <!-- Panel: By Coin -->
+        <div id="panel-coin">
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:14px;">Calculate Silver Value</button>
+          <div class="jsc-results" id="jsc-results" style="display:none;">
+            <div class="jsc-melt-banner">
+              <div>
+                <div class="lbl">Total Melt Value</div>
+                <div class="val" id="jsc-total">—</div>
+                <div class="det" id="jsc-detail">at current spot price</div>
+              </div>
+              <div style="font-size:38px;opacity:.45;">🪙</div>
             </div>
-            <div style="font-size:38px;opacity:.45;">🪙</div>
-          </div>
-          <div class="jsc-stats-grid">
-            <div class="jsc-stat-card">
-              <div class="jsc-stat-lbl">Per Coin</div>
-              <div class="jsc-stat-val" id="jsc-per-coin">—</div>
-            </div>
-            <div class="jsc-stat-card">
-              <div class="jsc-stat-lbl">Total Silver</div>
-              <div class="jsc-stat-val" id="jsc-oz">—</div>
-            </div>
-            <div class="jsc-stat-card">
-              <div class="jsc-stat-lbl">Spot Price</div>
-              <div class="jsc-stat-val" id="jsc-spot">—</div>
+            <div class="jsc-stats-grid">
+              <div class="jsc-stat-card"><div class="jsc-stat-lbl">Per Coin</div><div class="jsc-stat-val" id="jsc-per-coin">—</div></div>
+              <div class="jsc-stat-card"><div class="jsc-stat-lbl">Total Silver</div><div class="jsc-stat-val" id="jsc-oz">—</div></div>
+              <div class="jsc-stat-card"><div class="jsc-stat-lbl">Spot Price</div><div class="jsc-stat-val" id="jsc-spot">—</div></div>
             </div>
           </div>
         </div>
-      </div>
 
-      <!-- Face Value Calculator -->
-      <div class="calc-widget" style="margin-top:20px;">
-        <div class="calc-widget-title"><span class="icon">💵</span> Face Value to Silver Value</div>
-        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:14px;">Enter any dollar amount of 90% junk silver face value to get the ounces and live melt value.</p>
-        <div class="jsc-form-row">
-          <div class="jsc-form-label">Face Value ($)</div>
-          <div class="jsc-form-controls">
-            <input type="number" class="jsc-input" id="fv-input" placeholder="e.g. 10.00" value="10" min="0.10" step="0.10" inputmode="decimal">
+        <!-- Panel: By Face Value -->
+        <div id="panel-fv" style="display:none;">
+          <div class="jsc-form-row" style="margin-top:14px;">
+            <div class="jsc-form-label">Face Value ($)</div>
+            <div class="jsc-form-controls">
+              <input type="number" class="jsc-input" id="fv-input" placeholder="e.g. 10.00" value="10" min="0.10" step="0.10" inputmode="decimal">
+            </div>
           </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;">
+            <div class="jsc-stat-card"><div class="jsc-stat-lbl">Pure Silver</div><div class="jsc-stat-val" id="fv-oz">—</div></div>
+            <div class="jsc-stat-card" style="border-color:rgba(124,58,237,.4);background:linear-gradient(135deg,rgba(124,58,237,.1),transparent);"><div class="jsc-stat-lbl">Melt Value</div><div class="jsc-stat-val" id="fv-usd" style="color:#b39dfa;">—</div></div>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-top:10px;">0.715 oz per $1.00 face value (circulated 90% silver coins).</p>
         </div>
-        <div id="fv-results" style="margin-top:14px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div class="jsc-stat-card">
-            <div class="jsc-stat-lbl">Pure Silver</div>
-            <div class="jsc-stat-val" id="fv-oz">—</div>
-          </div>
-          <div class="jsc-stat-card" style="border-color:rgba(124,58,237,.4);background:linear-gradient(135deg,rgba(124,58,237,.1),transparent);">
-            <div class="jsc-stat-lbl">Melt Value</div>
-            <div class="jsc-stat-val" id="fv-usd" style="color:#b39dfa;">—</div>
-          </div>
-        </div>
-        <p style="font-size:11px;color:var(--muted);margin-top:10px;">Based on 0.715 troy oz per $1.00 face value (circulated 90% coins). Uncirculated: 0.723 oz/$1.00.</p>
       </div>
 
       <!-- Live Reference Table -->
@@ -283,6 +273,17 @@
         var purityPct = Math.round(c.purity * 100) + '%';
         return '<tr><td>' + c.name + '</td><td>' + purityPct + '</td><td>' + c.silverOz + '</td><td>$' + val + '</td></tr>';
       }).join('');
+    }
+
+    // Tab switcher
+    function switchTab(tab) {
+      var isCoin = tab === 'coin';
+      document.getElementById('panel-coin').style.display = isCoin ? '' : 'none';
+      document.getElementById('panel-fv').style.display = isCoin ? 'none' : '';
+      document.getElementById('tab-coin').style.background = isCoin ? 'rgba(124,58,237,.25)' : 'transparent';
+      document.getElementById('tab-coin').style.color = isCoin ? '#fff' : 'var(--muted)';
+      document.getElementById('tab-fv').style.background = isCoin ? 'transparent' : 'rgba(124,58,237,.25)';
+      document.getElementById('tab-fv').style.color = isCoin ? 'var(--muted)' : '#fff';
     }
 
     // Face value calculator
