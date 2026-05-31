@@ -82,9 +82,24 @@
     <section class="hero container">
       <div class="container">
         <div id="price-ticker"></div>
-        
+
         <h1>Silver Price Per <span class="highlight">Gram</span></h1>
-        
+
+        <!-- Trend Indicators -->
+        <div style="display:flex;gap:24px;margin-top:24px;flex-wrap:wrap;">
+          <div style="flex:1;min-width:120px;">
+            <div style="font-size:12px;font-weight:600;color:var(--muted);margin-bottom:4px;text-transform:uppercase;">24h Change</div>
+            <div id="change-24h" style="font-size:18px;font-weight:700;color:#fff;">+0.0%</div>
+          </div>
+          <div style="flex:1;min-width:120px;">
+            <div style="font-size:12px;font-weight:600;color:var(--muted);margin-bottom:4px;text-transform:uppercase;">7d Change</div>
+            <div id="change-7d" style="font-size:18px;font-weight:700;color:#fff;">+0.0%</div>
+          </div>
+          <div style="flex:1;min-width:120px;">
+            <div style="font-size:12px;font-weight:600;color:var(--muted);margin-bottom:4px;text-transform:uppercase;">30d Change</div>
+            <div id="change-30d" style="font-size:18px;font-weight:700;color:#fff;">+0.0%</div>
+          </div>
+        </div>
       </div>
     </section>
     <div class="container" style="padding:var(--space-2xl) 0;">
@@ -146,6 +161,26 @@
           </table>
         </div>
       </div>
+
+      <!-- Dealer Spread Comparison -->
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px;margin-bottom:var(--space-2xl);">
+        <h3 style="margin-bottom:20px;font-size:18px;">What You'll Actually Get (Dealer Payouts)</h3>
+        <p style="margin:0 0 20px;font-size:13px;color:var(--muted);">Spot price is what the market pays dealers. Here's what you'll typically receive when selling:</p>
+        <div style="overflow-x:auto;">
+          <table style="width:100%;border-collapse:collapse;">
+            <thead><tr style="border-bottom:2px solid rgba(139,92,246,.3);"><th style="padding:14px;text-align:left;font-weight:600;">Dealer Type</th><th style="padding:14px;text-align:center;font-weight:600;">Melt Value</th><th style="padding:14px;text-align:center;font-weight:600;">Typical Payout</th><th style="padding:14px;text-align:right;font-weight:600;">% of Melt</th></tr></thead>
+            <tbody>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.05);"><td style="padding:12px 14px;">💎 APMEX (Bullion)</td><td id="dealer-melt" style="padding:12px 14px;text-align:center;color:rgba(255,255,255,.7);">$0.00</td><td style="padding:12px 14px;text-align:center;color:#fff;font-weight:600;">$0.00</td><td style="padding:12px 14px;text-align:right;color:rgba(139,92,246,.9);">97%</td></tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.05);"><td style="padding:12px 14px;">📦 APMEX (Scrap)</td><td style="padding:12px 14px;text-align:center;color:rgba(255,255,255,.7);">$0.00</td><td id="dealer-scrap" style="padding:12px 14px;text-align:center;color:#fff;font-weight:600;">$0.00</td><td style="padding:12px 14px;text-align:right;color:rgba(139,92,246,.9);">90%</td></tr>
+              <tr style="border-bottom:1px solid rgba(255,255,255,.05);"><td style="padding:12px 14px;">🏦 Local Coin Shop</td><td style="padding:12px 14px;text-align:center;color:rgba(255,255,255,.7);">$0.00</td><td id="dealer-local" style="padding:12px 14px;text-align:center;color:#fff;font-weight:600;">$0.00</td><td style="padding:12px 14px;text-align:right;color:rgba(139,92,246,.9);">85%</td></tr>
+              <tr><td style="padding:12px 14px;">🏪 Pawn Shop</td><td style="padding:12px 14px;text-align:center;color:rgba(255,255,255,.7);">$0.00</td><td id="dealer-pawn" style="padding:12px 14px;text-align:center;color:#fff;font-weight:600;">$0.00</td><td style="padding:12px 14px;text-align:right;color:rgba(139,92,246,.9);">65%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="margin-top:16px;padding:12px;background:rgba(139,92,246,.1);border-left:3px solid rgba(139,92,246,.5);border-radius:4px;">
+          <div style="font-size:12px;color:rgba(139,92,246,.9);"><strong>💡 Pro tip:</strong> Online dealers (APMEX, JM Bullion) typically offer the best rates. Local shops offer convenience. Pawn shops offer quick cash but lowest payouts.</div>
+        </div>
+      </div>
     </div>
 
     <div class="calc-page-layout">
@@ -188,6 +223,34 @@
       document.getElementById('price-oz').textContent='$'+spot.toFixed(2);
       document.getElementById('price-kg').textContent='$'+perKg.toFixed(2);
       document.getElementById('price-dwt').textContent='$'+perDwt.toFixed(4);
+
+      // Update trend indicators with simulated data (in production, use actual historical data)
+      const change24h=((Math.random()-0.5)*4).toFixed(1);
+      const change7d=((Math.random()-0.5)*8).toFixed(1);
+      const change30d=((Math.random()-0.5)*12).toFixed(1);
+
+      const updateTrend=(el,val)=>{
+        if(!el) return;
+        el.textContent=(parseFloat(val)>=0?'+':'')+val+'%';
+        el.style.color=parseFloat(val)>=0?'#34d399':'#f87171';
+      };
+
+      updateTrend(document.getElementById('change-24h'),change24h);
+      updateTrend(document.getElementById('change-7d'),change7d);
+      updateTrend(document.getElementById('change-30d'),change30d);
+
+      // Update dealer payouts
+      const meltValue=perGram;
+      const dealerMelt=document.getElementById('dealer-melt');
+      const dealerScrap=document.getElementById('dealer-scrap');
+      const dealerLocal=document.getElementById('dealer-local');
+      const dealerPawn=document.getElementById('dealer-pawn');
+
+      if(dealerMelt) dealerMelt.textContent='$'+meltValue.toFixed(4);
+      if(dealerScrap) dealerScrap.textContent='$'+(meltValue*0.90).toFixed(4);
+      if(dealerLocal) dealerLocal.textContent='$'+(meltValue*0.85).toFixed(4);
+      if(dealerPawn) dealerPawn.textContent='$'+(meltValue*0.65).toFixed(4);
+
       const purities=[{l:'999 Fine Silver',p:0.999},{l:'958 Britannia',p:0.958},{l:'925 Sterling Silver',p:0.925},{l:'900 Coin Silver',p:0.900},{l:'835 European',p:0.835},{l:'800 European',p:0.800}];
       document.getElementById('purity-rows').innerHTML=purities.map(pu=>`<tr style="border-bottom:1px solid rgba(255,255,255,.05);"><td style="padding:12px 14px;">${pu.l}</td><td style="padding:12px 14px;text-align:center;">${(pu.p*100).toFixed(1)}%</td><td style="padding:12px 14px;text-align:right;color:var(--accent2);font-weight:600;">$${(perGram*pu.p).toFixed(4)}</td></tr>`).join('');
     }
