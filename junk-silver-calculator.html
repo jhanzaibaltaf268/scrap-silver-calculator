@@ -172,6 +172,7 @@
               <input type="number" class="jsc-input" id="fv-input" placeholder="e.g. 10.00" value="10" min="0.10" step="0.10" inputmode="decimal">
             </div>
           </div>
+          <button class="btn btn-primary btn-full" id="fv-calc-btn" style="margin-top:8px;">Calculate Silver Value</button>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;">
             <div class="jsc-stat-card"><div class="jsc-stat-lbl">Pure Silver</div><div class="jsc-stat-val" id="fv-oz">—</div></div>
             <div class="jsc-stat-card" style="border-color:rgba(124,58,237,.4);background:linear-gradient(135deg,rgba(124,58,237,.1),transparent);"><div class="jsc-stat-lbl">Melt Value</div><div class="jsc-stat-val" id="fv-usd" style="color:#b39dfa;">—</div></div>
@@ -297,6 +298,7 @@
       document.getElementById('fv-usd').textContent = '$' + usd;
     }
     document.getElementById('fv-input').addEventListener('input', updateFaceValue);
+    document.getElementById('fv-calc-btn').addEventListener('click', updateFaceValue);
 
     SilverPrice.onPriceUpdate(function() { updateRefTable(); updateFaceValue(); });
     updateRefTable();
