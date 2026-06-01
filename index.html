@@ -1596,13 +1596,13 @@
       document.getElementById('ex-4').textContent = fmt2(60 / 31.1035 * 0.925 * spot);
     }
 
-    // EDU tab switcher
-    function switchTab(panelId, btn) {
+    // EDU tab switcher — exposed globally for inline onclick
+    window.switchTab = function(panelId, btn) {
       document.querySelectorAll('.edu-panel').forEach(p => p.classList.remove('on'));
       document.querySelectorAll('.edu-tab').forEach(b => b.classList.remove('on'));
       document.getElementById(panelId).classList.add('on');
       btn.classList.add('on');
-    }
+    };
 
     // FAQ accordion
     document.addEventListener('click', e => {
