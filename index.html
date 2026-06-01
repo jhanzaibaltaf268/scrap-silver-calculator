@@ -35,6 +35,18 @@
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+  <!-- Open Graph / Social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scrapsilvercalculater.com/">
+  <meta property="og:title" content="Scrap Silver Calculator – Instant Silver Melt Value &amp; Live Prices">
+  <meta property="og:description" content="Calculate scrap silver value instantly using live silver prices. Sterling (925), fine (999), coin (900). Free melt value calculator updated hourly.">
+  <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://scrapsilvercalculater.com/">
+  <meta name="twitter:title" content="Scrap Silver Calculator – Instant Silver Melt Value &amp; Live Prices">
+  <meta name="twitter:description" content="Calculate scrap silver value instantly using live silver prices. Free melt value calculator updated hourly.">
+  <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
+
   <!-- Schema: WebApplication -->
   <script type="application/ld+json">
   {
@@ -894,9 +906,18 @@
           <div class="hv2-right reveal reveal-d1" id="calculator">
             <div class="dash">
               <div class="dtabs" role="tablist" aria-label="Calculator mode">
-                <button class="dtab on" onclick="setMode('scrap',this)" role="tab" aria-selected="true" aria-label="Scrap silver calculator">SCRAP</button>
-                <button class="dtab" onclick="setMode('coins',this)" role="tab" aria-selected="false" aria-label="Coin silver calculator">COINS</button>
-                <button class="dtab" onclick="setMode('bars',this)" role="tab" aria-selected="false" aria-label="Bullion bars calculator">BULLION</button>
+                <button class="dtab on" onclick="setMode('scrap',this)" role="tab" aria-selected="true" aria-label="Scrap silver calculator">
+                  <span>SCRAP</span>
+                  <span style="display:block;font-size:9px;font-weight:400;opacity:.7;text-transform:none;letter-spacing:0;margin-top:2px;">Jewelry, flatware, items</span>
+                </button>
+                <button class="dtab" onclick="setMode('coins',this)" role="tab" aria-selected="false" aria-label="Coin silver calculator">
+                  <span>COINS</span>
+                  <span style="display:block;font-size:9px;font-weight:400;opacity:.7;text-transform:none;letter-spacing:0;margin-top:2px;">Pre-1965 US silver coins</span>
+                </button>
+                <button class="dtab" onclick="setMode('bars',this)" role="tab" aria-selected="false" aria-label="Bullion bars calculator">
+                  <span>BULLION</span>
+                  <span style="display:block;font-size:9px;font-weight:400;opacity:.7;text-transform:none;letter-spacing:0;margin-top:2px;">Silver bars &amp; rounds</span>
+                </button>
               </div>
               <div class="dbody">
                 <div class="d-ctrl">
@@ -971,15 +992,13 @@
 
       <!-- Inline trust signals -->
       <div class="trust-inline reveal reveal-d1">
-        <span class="ti-item">🔄 Live Spot Prices</span>
+        <span class="ti-item">⭐⭐⭐⭐⭐ Used by silver sellers, coin dealers &amp; collectors worldwide</span>
         <span class="ti-dot"></span>
-        <span class="ti-item">🔒 100% Private</span>
-        <span class="ti-dot"></span>
-        <span class="ti-item">⚡ Instant Results</span>
-        <span class="ti-dot"></span>
-        <span class="ti-item">📱 All Devices</span>
+        <span class="ti-item">🔄 Updated hourly from COMEX &amp; LBMA</span>
         <span class="ti-dot"></span>
         <span class="ti-item">💰 Always Free</span>
+        <span class="ti-dot"></span>
+        <span class="ti-item">🔒 No account needed</span>
       </div>
     </section>
 
@@ -1397,6 +1416,31 @@
 
 
   <!-- Scripts -->
+  <!-- Inline price init: runs before defer scripts, eliminates $— flash -->
+  <script>
+  !function(){
+    var fb=87.42,spot=fb;
+    try{var c=JSON.parse(localStorage.getItem('silverSpotCache'));if(c&&c.price&&(Date.now()-c.ts)<86400000)spot=c.price;}catch(e){}
+    var f2=function(v){return'$'+Number(v).toFixed(2);};
+    var f4=function(v){return'$'+Number(v).toFixed(4);};
+    var s=function(id,v){var e=document.getElementById(id);if(e)e.textContent=v;};
+    s('hero-spot',f2(spot));
+    s('tick-999',f2(spot*.999)+'/oz');s('tick-925',f2(spot*.925)+'/oz');
+    s('tick-900',f2(spot*.9)+'/oz');s('tick-800',f2(spot*.8)+'/oz');
+    s('qa-spot',f2(spot));
+    s('pb-999-oz',f2(spot*.999));s('pb-999-g',f4(spot*.999/31.1035)+' /g');
+    s('pb-925-oz',f2(spot*.925));s('pb-925-g',f4(spot*.925/31.1035)+' /g');
+    s('pb-900-oz',f2(spot*.9));  s('pb-900-g',f4(spot*.9/31.1035)+' /g');
+    s('pb-800-oz',f2(spot*.8));  s('pb-800-g',f4(spot*.8/31.1035)+' /g');
+    s('int-925-g',f4(spot*.925/31.1035));s('int-925-g2',f4(spot*.925/31.1035));
+    s('int-925-oz',f2(spot*.925));s('int-900-oz',f2(spot*.9));
+    s('int-999-g',f4(spot*.999/31.1035));
+    s('int-ster-ring',f2(5/31.1035*.925*spot));
+    s('ex-1',f2(10/31.1035*.925*spot));s('ex-2',f2(50/31.1035*.925*spot));
+    s('ex-3',f2(.999*spot));s('ex-4',f2(60/31.1035*.925*spot));
+    var rv=document.getElementById('rv');if(rv)rv.textContent=f2(100/31.1035*.925*spot);
+  }();
+  </script>
   <script src="/js/translations.js" defer></script>
   <script src="/js/calc-button-mode.js" defer></script>
   <script src="/js/silver-price.js" defer></script>
