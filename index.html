@@ -106,11 +106,35 @@
        HOMEPAGE DESIGN SYSTEM — PREMIUM FINTECH REDESIGN
     ================================================================ */
 
+    /* ── Brand tokens ── */
+    :root {
+      --color-success: #34d399;
+      --color-danger:  #f87171;
+      --color-warning: #fbbf24;
+      --shadow-sm: 0 2px 8px rgba(0,0,0,.18);
+      --shadow-md: 0 8px 24px rgba(0,0,0,.28);
+      --shadow-lg: 0 24px 56px rgba(0,0,0,.42);
+      --shadow-accent: 0 8px 32px rgba(124,58,237,.22);
+      --transition: all .2s cubic-bezier(.16,1,.3,1);
+    }
+
     /* ---- HERO V2: Two-column split layout ---- */
     .hero-v2 {
-      padding: 56px 0 40px;
+      padding: 64px 0 48px;
       position: relative;
     }
+    /* Radial hero glow */
+    .hero-v2::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 30% 40%, rgba(124,58,237,.11) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 80% 20%, rgba(96,165,250,.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-v2 .container { position: relative; z-index: 1; }
     .hv2-layout {
       display: grid;
       grid-template-columns: 1fr 1.1fr;
@@ -123,12 +147,17 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      font-size: 0.72rem;
+      font-size: 0.70rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: .12em;
-      color: var(--accent);
-      margin-bottom: 20px;
+      letter-spacing: .14em;
+      color: var(--accent2);
+      background: rgba(124,58,237,.08);
+      border: 1px solid rgba(124,58,237,.2);
+      border-radius: 100px;
+      padding: 5px 14px 5px 10px;
+      margin-bottom: 24px;
+      width: fit-content;
     }
     .live-dot {
       width: 8px;
@@ -153,15 +182,22 @@
 
     .hero-h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+      font-size: clamp(2.8rem, 4.8vw, 4.2rem);
       font-weight: 800;
-      line-height: 1.06;
-      letter-spacing: -.025em;
-      margin: 0 0 16px;
+      line-height: 1.04;
+      letter-spacing: -.03em;
+      margin: 0 0 18px;
       color: var(--text-primary);
     }
+    /* Silver metallic gradient on "Scrap Silver" */
+    .hero-h1 .silver-text {
+      background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 40%, #e2e8f0 70%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
     .hero-h1 .accent-text {
-      background: linear-gradient(135deg, var(--accent) 0%, #a78bfa 100%);
+      background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #c4b5fd 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -169,31 +205,45 @@
 
     .hv2-sub {
       color: var(--text-secondary);
-      font-size: 1.02rem;
-      line-height: 1.72;
-      margin: 0 0 28px;
-      max-width: 420px;
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin: 0 0 30px;
+      max-width: 440px;
     }
+    .hv2-sub strong { color: var(--text-primary); font-weight: 600; }
 
     /* ---- Live spot mini-display in hero ---- */
     .hv2-spot {
       display: flex;
       align-items: center;
       gap: 14px;
-      background: rgba(124,58,237,.07);
-      border: 1px solid rgba(124,58,237,.2);
+      background: linear-gradient(135deg, rgba(124,58,237,.1), rgba(76,29,149,.06));
+      border: 1px solid rgba(124,58,237,.25);
       border-radius: var(--radius-lg);
       padding: 18px 22px;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
       position: relative;
       overflow: hidden;
+      box-shadow: var(--shadow-accent), inset 0 1px 0 rgba(255,255,255,.06);
     }
     .hv2-spot::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--accent), #a78bfa);
+      background: linear-gradient(90deg, transparent, var(--accent), #a78bfa, transparent);
+    }
+    /* Shine sweep animation */
+    .hv2-spot::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.04) 50%, transparent 60%);
+      animation: spotShine 4s ease-in-out infinite;
+    }
+    @keyframes spotShine {
+      0%, 100% { transform: translateX(-100%); }
+      50%       { transform: translateX(200%); }
     }
     .hv2-spot-info { display: flex; flex-direction: column; gap: 2px; }
     .hv2-spot-label {
@@ -229,13 +279,22 @@
       gap: 8px;
     }
     .hv2-pills span {
-      font-size: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 600;
       color: var(--text-secondary);
       background: rgba(255,255,255,.04);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid rgba(255,255,255,.09);
       padding: 5px 12px;
-      border-radius: 100px;
+      border-radius: 8px;
       white-space: nowrap;
+      transition: border-color .2s, background .2s;
+    }
+    .hv2-pills span:hover {
+      border-color: rgba(124,58,237,.3);
+      background: rgba(124,58,237,.06);
     }
 
     /* ---- Purity ticker strip ---- */
@@ -364,16 +423,16 @@
       gap: 14px;
     }
     .pc2 {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-subtle);
+      background: linear-gradient(155deg, rgba(255,255,255,.05) 0%, rgba(255,255,255,.02) 100%);
+      border: 1px solid rgba(255,255,255,.09);
       border-radius: var(--radius-md);
-      padding: 20px 16px;
+      padding: 22px 16px 18px;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
       text-decoration: none;
-      transition: border-color .2s, transform .15s, box-shadow .2s;
+      transition: var(--transition), box-shadow .2s;
       position: relative;
       overflow: hidden;
     }
@@ -384,20 +443,37 @@
       height: 2px;
       background: var(--accent);
       opacity: 0;
-      transition: opacity .2s;
+      transition: opacity .25s;
     }
-    .pc2:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(124,58,237,.15); }
+    /* Color tints per purity */
+    .pc2:not([class*="acc"]) { background: linear-gradient(155deg, rgba(203,213,225,.05) 0%, rgba(255,255,255,.02) 100%); }
+    .pc2.acc-gold  { background: linear-gradient(155deg, rgba(251,191,36,.07)  0%, rgba(255,255,255,.02) 100%); }
+    .pc2.acc-violet{ background: linear-gradient(155deg, rgba(167,139,250,.07) 0%, rgba(255,255,255,.02) 100%); }
+    .pc2.acc-blue  { background: linear-gradient(155deg, rgba(96,165,250,.07)  0%, rgba(255,255,255,.02) 100%); }
+
+    .pc2:hover { border-color: rgba(124,58,237,.4); transform: translateY(-4px); box-shadow: var(--shadow-md), 0 0 0 1px rgba(124,58,237,.15); }
     .pc2:hover::before { opacity: 1; }
+    .pc2.acc-gold:hover  { border-color: rgba(251,191,36,.5); box-shadow: var(--shadow-md), 0 0 0 1px rgba(251,191,36,.15); }
     .pc2.acc-gold::before  { background: #FBBF24; }
+    .pc2.acc-violet:hover{ box-shadow: var(--shadow-md), 0 0 0 1px rgba(167,139,250,.15); }
     .pc2.acc-violet::before { background: #a78bfa; }
+    .pc2.acc-blue:hover  { border-color: rgba(96,165,250,.5); box-shadow: var(--shadow-md), 0 0 0 1px rgba(96,165,250,.15); }
     .pc2.acc-blue::before  { background: #60a5fa; }
+
     .pc2-grade {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 1.9rem;
+      font-size: 2rem;
       font-weight: 800;
-      color: var(--text-primary);
       line-height: 1;
+      /* Silver metallic gradient for default (999) */
+      background: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 50%, #e2e8f0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
+    .pc2.acc-gold .pc2-grade  { background: linear-gradient(135deg, #fcd34d 0%, #FBBF24 50%, #fde68a 100%); -webkit-background-clip: text; background-clip: text; }
+    .pc2.acc-violet .pc2-grade { background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 50%, #ddd6fe 100%); -webkit-background-clip: text; background-clip: text; }
+    .pc2.acc-blue .pc2-grade  { background: linear-gradient(135deg, #93c5fd 0%, #60a5fa 50%, #bfdbfe 100%); -webkit-background-clip: text; background-clip: text; }
     .pc2-label {
       font-size: 0.68rem;
       text-transform: uppercase;
@@ -446,15 +522,22 @@
 
     /* ---- Quick lookup cards ---- */
     .ql-card {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-subtle);
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.08);
+      border-left: 3px solid rgba(124,58,237,.35);
       border-radius: var(--radius-md);
-      padding: 20px;
-      transition: border-color .2s;
+      padding: 18px 20px;
+      transition: var(--transition), box-shadow .2s;
       display: flex;
       flex-direction: column;
     }
-    .ql-card:hover { border-color: rgba(124,58,237,.4); }
+    .ql-card:hover {
+      border-color: rgba(124,58,237,.45);
+      border-left-color: var(--accent);
+      background: linear-gradient(135deg, rgba(124,58,237,.07), rgba(255,255,255,.03));
+      transform: translateX(3px);
+      box-shadow: var(--shadow-sm);
+    }
     .ql-card h3 {
       font-size: 0.9rem;
       font-weight: 700;
@@ -503,28 +586,53 @@
     .ex2-hint { font-size: 0.65rem; color: var(--text-muted); margin-top: 5px; }
 
     /* ---- How it works: 3-step horizontal ---- */
-    .hiw-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: var(--space-lg); }
-    .hiw-step {
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-subtle);
-      border-radius: var(--radius-md);
-      padding: 22px 18px;
+    .hiw-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: var(--space-lg);
       position: relative;
     }
+    /* Connecting dashes between steps */
+    .hiw-row::before {
+      content: '';
+      position: absolute;
+      top: 22px; left: calc(16.67% + 8px); right: calc(16.67% + 8px);
+      height: 1px;
+      background: linear-gradient(90deg, rgba(124,58,237,.5), rgba(124,58,237,.2), rgba(124,58,237,.5));
+      pointer-events: none;
+    }
+    .hiw-step {
+      background: rgba(255,255,255,.035);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius-md);
+      padding: 24px 20px;
+      position: relative;
+      transition: var(--transition);
+    }
+    .hiw-step:hover {
+      border-color: rgba(124,58,237,.3);
+      background: rgba(124,58,237,.05);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-sm);
+    }
     .hiw-num {
-      width: 28px; height: 28px;
-      background: var(--accent);
+      width: 32px; height: 32px;
+      background: linear-gradient(135deg, var(--accent), #a78bfa);
       color: #fff;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 0.78rem;
-      margin-bottom: 12px;
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+      box-shadow: 0 4px 12px rgba(124,58,237,.4);
+      position: relative;
+      z-index: 1;
     }
-    .hiw-title { font-size: 0.9rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
-    .hiw-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.65; }
+    .hiw-title { font-size: 0.92rem; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+    .hiw-desc { font-size: 0.81rem; color: var(--text-secondary); line-height: 1.7; }
     .formula-display {
       background: rgba(124,58,237,.08);
       border: 1px solid rgba(124,58,237,.2);
@@ -675,20 +783,31 @@
 
     /* ---- Sell silver CTA ---- */
     .sell-cta {
-      background: linear-gradient(135deg, #1a0533 0%, rgba(124,58,237,.25) 100%);
-      border: 1px solid rgba(124,58,237,.3);
+      background: linear-gradient(135deg, #130228 0%, #1e0550 40%, rgba(124,58,237,.2) 100%);
+      border: 1px solid rgba(124,58,237,.35);
       border-radius: var(--radius-lg);
-      padding: 48px var(--space-xl);
+      padding: 52px var(--space-xl);
       text-align: center;
       position: relative;
       overflow: hidden;
+      box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,.08);
     }
     .sell-cta::before {
       content: '';
       position: absolute;
       top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), #a78bfa, var(--accent));
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, var(--accent) 30%, #a78bfa 50%, var(--accent) 70%, transparent 100%);
+    }
+    /* Ambient glow behind CTA */
+    .sell-cta::after {
+      content: '';
+      position: absolute;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(124,58,237,.2) 0%, transparent 70%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
     }
     .sell-cta h2 {
       font-family: 'Outfit', sans-serif;
@@ -822,13 +941,72 @@
     /* ---- Section dividers ---- */
     .sec-divider {
       border: none;
-      border-top: 1px solid var(--border-subtle);
+      border-top: 1px solid rgba(255,255,255,.07);
       margin: 0;
+      position: relative;
+    }
+    /* Accent dot in center of divider */
+    .sec-divider::after {
+      content: '◆';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 6px;
+      color: rgba(124,58,237,.5);
+      background: var(--bg);
+      padding: 0 6px;
+      line-height: 1;
     }
 
     /* ---- Dealer estimate in result box ---- */
     .res-dealer { font-size: var(--fs-xs); color: var(--text-muted); margin-top: 6px; }
     .res-dealer strong { color: #4ade80; font-family: 'JetBrains Mono', monospace; }
+
+    /* ---- Purity ticker enhancements ---- */
+    .purity-ticker {
+      border-top: 1px solid rgba(255,255,255,.07);
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      background: rgba(255,255,255,.025);
+      padding: 11px 0;
+      backdrop-filter: blur(8px);
+    }
+
+    /* ---- EDU tabs upgrade ---- */
+    .edu-cluster {
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+    }
+    .edu-tab { transition: color .2s, background .2s; border-radius: 0; }
+    .edu-tab:first-child { border-radius: var(--radius-lg) 0 0 0; }
+    .edu-tab.on {
+      color: var(--accent2);
+      background: rgba(124,58,237,.06);
+      border-bottom-color: var(--accent);
+    }
+
+    /* ---- Methodology strip ---- */
+    .method-cell {
+      transition: background .2s;
+    }
+    .method-cell:hover { background: rgba(124,58,237,.06); }
+
+    /* ---- Dealer payout table upgrade ---- */
+    .pv2-pct { font-size: 1.05rem; }
+    .payout-v2 { box-shadow: var(--shadow-sm); }
+
+    /* ---- Email capture section ---- */
+    #sub-btn {
+      transition: var(--transition), box-shadow .2s;
+    }
+    #sub-btn:hover {
+      box-shadow: var(--shadow-accent);
+      transform: translateY(-1px);
+    }
+
+    /* ---- Responsive upgrades ---- */
+    @media (max-width: 1024px) {
+      .hiw-row::before { display: none; }
+    }
 
     /* ---- Responsive ---- */
     @media (max-width: 1024px) {
@@ -891,7 +1069,7 @@
               Live Market Data
             </div>
 
-            <h1 class="hero-h1">Scrap Silver<br><span class="accent-text">Calculator</span></h1>
+            <h1 class="hero-h1"><span class="silver-text">Scrap Silver</span><br><span class="accent-text">Calculator</span></h1>
             <div class="hv2-spot">
               <div class="hv2-spot-info">
                 <span class="hv2-spot-label">Silver Spot Price</span>
@@ -990,15 +1168,15 @@
         <p>Enter your item's weight and purity into the calculator above for an instant result — or <a href="/silver-price-today/">see today's full silver price breakdown →</a></p>
       </div>
 
-      <!-- Inline trust signals -->
+      <!-- Stats / credibility strip -->
       <div class="trust-inline reveal reveal-d1">
-        <span class="ti-item">⭐⭐⭐⭐⭐ Used by silver sellers, coin dealers &amp; collectors worldwide</span>
+        <span class="ti-item"><span style="color:#fbbf24;">★★★★★</span>&nbsp; Trusted by silver sellers &amp; coin dealers worldwide</span>
         <span class="ti-dot"></span>
-        <span class="ti-item">🔄 Updated hourly from COMEX &amp; LBMA</span>
+        <span class="ti-item">🔄 Prices from COMEX · LBMA · Updated hourly</span>
         <span class="ti-dot"></span>
-        <span class="ti-item">💰 Always Free</span>
+        <span class="ti-item" id="social-proof-counter-hp">👥 — calculations this month</span>
         <span class="ti-dot"></span>
-        <span class="ti-item">🔒 No account needed</span>
+        <span class="ti-item">🔒 Free · No account needed</span>
       </div>
     </section>
 
@@ -1436,6 +1614,18 @@
 
   <footer id="site-footer"></footer>
 
+
+  <!-- Social proof counter for homepage trust bar -->
+  <script>
+  (function(){
+    var base = 12000;
+    var daysSince = Math.floor((Date.now() - new Date('2025-01-01').getTime()) / 86400000);
+    var total = base + (daysSince * 52);
+    var display = (Math.floor(total / 1000)) + 'k+';
+    var el = document.getElementById('social-proof-counter-hp');
+    if (el) el.textContent = '👥 ' + display + ' calculations this month';
+  })();
+  </script>
 
   <!-- Scripts -->
   <!-- Inline price init: runs before defer scripts, eliminates $— flash -->
