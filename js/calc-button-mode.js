@@ -1,32 +1,39 @@
 /* ============================================
    AUTO-CALCULATE MODE
    Results show instantly on page load and update on every input change.
-   The Calculate button still works but is no longer required.
+   The Calculate button still works as a manual re-trigger.
    ============================================ */
 (function () {
   'use strict';
 
-  /* After DOM ready: wire the Calculate button as a redundant re-trigger,
-     and ensure calc() is called on every input/change event. */
   document.addEventListener('DOMContentLoaded', function () {
 
-    /* Wire the Calculate button — clicking it just re-runs calc */
     var btn = document.getElementById('calc-btn');
-    if (btn) {
+    if (!btn) return;
+
+    btn.addEventListener('click', function () {
+      /* 1 — Try named global functions first (fastest path) */
       var CALC_NAMES = ['calc', 'calcAll', 'calcDWT', 'calcTola', 'update'];
-      var realCalc = null;
       for (var i = 0; i < CALC_NAMES.length; i++) {
         if (typeof window[CALC_NAMES[i]] === 'function') {
-          realCalc = window[CALC_NAMES[i]];
-          break;
+          try { window[CALC_NAMES[i]](); } catch (e) { /* silent */ }
+          return;
         }
       }
-      if (realCalc) {
-        btn.addEventListener('click', function () {
-          try { realCalc(); } catch (e) { /* silent */ }
-        });
-      }
-    }
+
+      /* 2 — Fallback: fire input + change events on every visible form field.
+             This triggers any addEventListener('input', ...) or ('change', ...)
+             already attached by the page's own script, regardless of scope. */
+      var fields = document.querySelectorAll(
+        '.calc-widget input, .calc-widget select, ' +
+        '.dash input, .dash select, ' +
+        'main input[type="number"], main input[type="text"], main select'
+      );
+      fields.forEach(function (el) {
+        el.dispatchEvent(new Event('input',  { bubbles: true }));
+        el.dispatchEvent(new Event('change', { bubbles: true }));
+      });
+    });
 
   });
 
