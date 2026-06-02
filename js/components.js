@@ -904,6 +904,119 @@ const SiteComponents = (() => {
     });
   }
 
+  /* ---- Dealer Payout Estimator ---- */
+  function renderDealerPayout() {
+    var path = window.location.pathname;
+    // Skip pages that already show dealer info or have no single melt result
+    if (path === '/' ||
+        path.match(/\/(ar|de|es|fr|hi|it|pt|ru|tr|ur|zh)\/?$/) ||
+        path.match(/silver-scrap-calculator|sell-or-hold|how-to-sell|silver-profit|price-today|price-per-gram|price-per-ounce|price-all-currencies|silver-price|purity-chart|hallmarks|identify|what-is|what-does|how-to|how-silver|about|privacy|terms/)) return;
+
+    var lang = getLangCode();
+    var isRTL = (lang === 'ar' || lang === 'ur');
+
+    var BUYERS = [
+      { icon:'🏭', label:'Online Refinery',   lo:0.90, hi:0.98, color:'#4ade80', note:'Best value — ships in 2–5 days' },
+      { icon:'🪙', label:'Coin / Silver Dealer', lo:0.75, hi:0.90, color:'#a78bfa', note:'Same-day cash, good rates' },
+      { icon:'💍', label:'Jewelry Store',     lo:0.65, hi:0.80, color:'#fbbf24', note:'Convenient, lower offers' },
+      { icon:'🏦', label:'Pawn Shop',         lo:0.50, hi:0.70, color:'#f87171', note:'Fastest cash, lowest payout' }
+    ];
+
+    var headings = {
+      en:'What dealers will actually pay', de:'Was Händler tatsächlich zahlen',
+      es:'Lo que pagarán los dealers', fr:'Ce que les acheteurs paient vraiment',
+      ar:'ما سيدفعه التجار فعلاً', hi:'डीलर वास्तव में क्या देंगे',
+      ur:'ڈیلرز اصل میں کتنا دیں گے', it:'Quanto pagano realmente i dealer',
+      pt:'O que os dealers realmente pagam', ru:'Что реально заплатят дилеры',
+      tr:'Bayiler gerçekte ne kadar öder', zh:'经销商实际支付多少'
+    };
+    var sellLabel = {
+      en:'How to get the best price →', de:'Besten Preis erzielen →',
+      es:'Cómo obtener el mejor precio →', fr:'Comment obtenir le meilleur prix →',
+      ar:'كيف تحصل على أفضل سعر →', hi:'सबसे अच्छी कीमत कैसे पाएं →',
+      ur:'بہترین قیمت کیسے پائیں ←', it:'Come ottenere il miglior prezzo →',
+      pt:'Como obter o melhor preço →', ru:'Как получить лучшую цену →',
+      tr:'En iyi fiyatı nasıl alırsınız →', zh:'如何获得最佳价格 →'
+    };
+    var heading = headings[lang] || headings.en;
+    var sellText = sellLabel[lang] || sellLabel.en;
+    var sellHref = lang === 'en' ? '/how-to-sell-silver/' : '/' + lang + '/how-to-sell-silver/';
+
+    function fmt(n) { return '$' + n.toFixed(2); }
+
+    function buildPanel(melt) {
+      if (!melt || melt <= 0) return '';
+      var rows = BUYERS.map(function(b) {
+        var lo = fmt(melt * b.lo);
+        var hi = fmt(melt * b.hi);
+        return '<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,.05);">' +
+          '<span style="font-size:17px;width:24px;text-align:center;flex-shrink:0;">' + b.icon + '</span>' +
+          '<span style="flex:1;min-width:0;">' +
+            '<span style="display:block;font-size:13px;font-weight:600;color:#f0f4f8;">' + b.label + '</span>' +
+            '<span style="display:block;font-size:11px;color:#8fa3bc;">' + b.note + '</span>' +
+          '</span>' +
+          '<span style="font-family:\'JetBrains Mono\',monospace;font-size:13px;font-weight:700;color:' + b.color + ';white-space:nowrap;text-align:right;">' +
+            lo + ' – ' + hi +
+          '</span>' +
+        '</div>';
+      }).join('');
+
+      return '<div id="dealer-payout-panel" style="' +
+        'margin-top:16px;padding:16px 18px;' +
+        'background:rgba(15,15,26,.6);' +
+        'border:1px solid rgba(255,255,255,.1);border-radius:14px;' +
+        (isRTL ? 'direction:rtl;' : '') +
+      '">' +
+        '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:8px;flex-wrap:wrap;">' +
+          '<span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#8fa3bc;">' + heading + '</span>' +
+          '<a href="' + sellHref + '" style="font-size:11px;font-weight:700;color:#a78bfa;text-decoration:none;white-space:nowrap;">' + sellText + '</a>' +
+        '</div>' +
+        rows +
+        '<div style="margin-top:10px;font-size:11px;color:#6b7280;' + (isRTL ? 'text-align:right;' : '') + '">' +
+          '* Based on melt value of ' + fmt(melt) + '. Actual offers vary by quantity, condition and location.' +
+        '</div>' +
+      '</div>';
+    }
+
+    function getMeltValue() {
+      // Try various result element IDs used across pages
+      var selectors = ['#result-value', '#rv', '.res-val', '#total-value', '#r-melt'];
+      for (var i = 0; i < selectors.length; i++) {
+        var el = document.querySelector(selectors[i]);
+        if (!el) continue;
+        var txt = el.textContent.replace(/[^0-9.]/g, '');
+        var val = parseFloat(txt);
+        if (val > 0) return val;
+      }
+      return 0;
+    }
+
+    function refreshPanel() {
+      var melt = getMeltValue();
+      var existing = document.getElementById('dealer-payout-panel');
+      if (melt <= 0) { if (existing) existing.remove(); return; }
+
+      if (existing) {
+        // Update in-place — rebuild inner content without removing the element
+        existing.outerHTML = buildPanel(melt);
+        return;
+      }
+
+      // Find anchor: inject after result-display or d-res
+      var anchor = document.querySelector('.result-display, .d-res, #swc-results');
+      if (!anchor) return;
+      anchor.insertAdjacentHTML('afterend', buildPanel(melt));
+    }
+
+    // Observe main for any DOM/text changes (calc updates)
+    var observer = new MutationObserver(function() { refreshPanel(); });
+    var main = document.querySelector('main') || document.body;
+    observer.observe(main, { subtree: true, characterData: true, childList: true });
+
+    // Also run on first paint (auto-calc pages already have a value)
+    setTimeout(refreshPanel, 600);
+  }
+
   /* ---- Post-Calculation Next Step CTA ---- */
   function renderPostCalcCTA() {
     // Don't run on homepage or guide pages (no calculator)
@@ -1039,6 +1152,7 @@ const SiteComponents = (() => {
     injectPageSchema();
     updateSpotPriceDisplay();
     renderChatWidget();
+    renderDealerPayout();
     renderPostCalcCTA();
     // Show lead capture popup 5 seconds after page load
     setTimeout(renderLeadCapture, 5000);
@@ -1050,5 +1164,5 @@ const SiteComponents = (() => {
     requestAnimationFrame(function() { try { init(); } catch(e) { console.error('[SiteComponents] init error:', e); } });
   }
 
-  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, injectFAQSchema, injectPageSchema, init, getLangCode, updateSpotPriceDisplay, renderPostCalcCTA };
+  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, injectFAQSchema, injectPageSchema, init, getLangCode, updateSpotPriceDisplay, renderDealerPayout, renderPostCalcCTA };
 })();
