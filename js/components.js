@@ -904,6 +904,134 @@ const SiteComponents = (() => {
     });
   }
 
+  /* ---- Post-Calculation Next Step CTA ---- */
+  function renderPostCalcCTA() {
+    // Don't run on homepage or guide pages (no calculator)
+    var path = window.location.pathname;
+    if (path === '/' || path.match(/\/(ar|de|es|fr|hi|it|pt|ru|tr|ur|zh)\/?$/)) return;
+
+    // Map URL patterns → contextual next steps
+    var STEPS = {
+      jewelry:    [
+        { icon:'🍴', label:'Silverware Calculator',   href:'/silverware-value-calculator/',   desc:'Calculate your full set at once' },
+        { icon:'💰', label:'Best Way to Sell',         href:'/how-to-sell-silver/',             desc:'Get the best dealer payout' },
+        { icon:'📊', label:'Sell or Hold Analysis',    href:'/silver-sell-or-hold/',            desc:'Is now a good time?' }
+      ],
+      purity:     [
+        { icon:'📊', label:'Purity Chart',             href:'/silver-purity-chart/',            desc:'Compare all purities side by side' },
+        { icon:'♻️', label:'Scrap Calculator',          href:'/silver-scrap-calculator/',        desc:'Calculate any weight & purity' },
+        { icon:'💰', label:'Best Way to Sell',         href:'/how-to-sell-silver/',             desc:'Maximize your payout' }
+      ],
+      weight:     [
+        { icon:'📈', label:'Profit Calculator',        href:'/silver-profit-calculator/',       desc:'Track your buy vs sell price' },
+        { icon:'📊', label:'Sell or Hold Analysis',    href:'/silver-sell-or-hold/',            desc:'Is this a good time to sell?' },
+        { icon:'🧱', label:'Silver Bar Calculator',    href:'/silver-bar-value-calculator/',    desc:'Value any size bar' }
+      ],
+      coins:      [
+        { icon:'🪙', label:'Junk Silver Calculator',   href:'/junk-silver-calculator/',         desc:'Value your full coin collection' },
+        { icon:'💰', label:'Face Value Calculator',    href:'/face-value-silver-calculator/',   desc:'Compare face vs silver value' },
+        { icon:'📊', label:'Sell or Hold Analysis',    href:'/silver-sell-or-hold/',            desc:'Is now a good time to sell?' }
+      ],
+      default:    [
+        { icon:'📊', label:'Sell or Hold Analysis',    href:'/silver-sell-or-hold/',            desc:'Is this the right time to sell?' },
+        { icon:'💰', label:'How to Sell Silver',       href:'/how-to-sell-silver/',             desc:'Get the best price from dealers' },
+        { icon:'💲', label:'Price Per Gram Today',     href:'/silver-price-per-gram/',          desc:'Live silver price in your unit' }
+      ]
+    };
+
+    function getSteps() {
+      if (path.match(/ring|chain|necklace|bracelet|spoon|fork|knife|tray|cup|plate|jewelry|silverware/)) return STEPS.jewelry;
+      if (path.match(/999|958|925|900|835|800.*calculator|purity/))  return STEPS.purity;
+      if (path.match(/1oz|2oz|5oz|10oz|100oz|1kg|silver-value/))     return STEPS.weight;
+      if (path.match(/dime|quarter|dollar|coin|junk|canadian/))      return STEPS.coins;
+      return STEPS.default;
+    }
+
+    var steps = getSteps();
+    var lang  = getLangCode();
+    var isRTL = (lang === 'ar' || lang === 'ur');
+
+    // Localize label strings lightly
+    var headings = {
+      en:'What would you like to do next?', es:'¿Qué deseas hacer a continuación?',
+      de:'Was möchten Sie als nächstes tun?', fr:'Que souhaitez-vous faire ensuite?',
+      ar:'ماذا تريد أن تفعل بعد ذلك؟', hi:'आगे क्या करना चाहेंगे?',
+      ur:'آگے کیا کرنا چاہتے ہیں؟', it:'Cosa vuoi fare dopo?',
+      pt:'O que você quer fazer a seguir?', ru:'Что вы хотите сделать дальше?',
+      tr:'Sırada ne yapmak istersiniz?', zh:'您接下来想做什么？'
+    };
+    var heading = headings[lang] || headings.en;
+
+    // Resolve hrefs for non-English pages (prefix with lang code)
+    function resolveHref(href) {
+      if (lang === 'en') return href;
+      return '/' + lang + href;
+    }
+
+    var ctaHTML =
+      '<div id="post-calc-cta" style="' +
+        'margin-top:20px;padding:20px;' +
+        'background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(124,58,237,.04));' +
+        'border:1px solid rgba(124,58,237,.2);border-radius:16px;' +
+        'animation:pcta-in .35s ease both;' +
+        (isRTL ? 'direction:rtl;text-align:right;' : '') +
+      '">' +
+        '<p style="margin:0 0 14px;font-size:12px;font-weight:700;text-transform:uppercase;' +
+          'letter-spacing:.08em;color:#a78bfa;">' + heading + '</p>' +
+        '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">' +
+          steps.map(function(step) {
+            return '<a href="' + resolveHref(step.href) + '" style="' +
+              'display:flex;align-items:flex-start;gap:10px;padding:13px 14px;' +
+              'background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);' +
+              'border-radius:10px;text-decoration:none;' +
+              'transition:border-color .18s,background .18s;' +
+              '" onmouseover="this.style.borderColor=\'rgba(124,58,237,.5)\';this.style.background=\'rgba(124,58,237,.1)\'" ' +
+              'onmouseout="this.style.borderColor=\'rgba(255,255,255,.08)\';this.style.background=\'rgba(255,255,255,.04)\'">' +
+                '<span style="font-size:20px;flex-shrink:0;line-height:1.2;">' + step.icon + '</span>' +
+                '<span>' +
+                  '<span style="display:block;font-size:13px;font-weight:700;color:#f0f4f8;margin-bottom:2px;">' + step.label + '</span>' +
+                  '<span style="display:block;font-size:11px;color:#8fa3bc;">' + step.desc + '</span>' +
+                '</span>' +
+            '</a>';
+          }).join('') +
+        '</div>' +
+      '</div>';
+
+    // Inject keyframe once
+    if (!document.getElementById('__pcta_style')) {
+      var ks = document.createElement('style');
+      ks.id = '__pcta_style';
+      ks.textContent = '@keyframes pcta-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}';
+      document.head.appendChild(ks);
+    }
+
+    // Watch for a real result value appearing in result-display or .d-res
+    var injected = false;
+    function tryInject() {
+      if (injected) return;
+      // Find the result display element
+      var resultDisplay = document.querySelector('.result-display, .d-res, #swc-results');
+      if (!resultDisplay) return;
+      // Check if there's a meaningful value shown
+      var valEl = resultDisplay.querySelector('.result-value, #result-value, #rv, .res-val, #r-melt');
+      if (!valEl) return;
+      var txt = (valEl.textContent || '').replace(/[^0-9.]/g, '');
+      if (!txt || parseFloat(txt) <= 0) return;
+      // Don't inject if already exists
+      if (document.getElementById('post-calc-cta')) return;
+      injected = true;
+      resultDisplay.insertAdjacentHTML('afterend', ctaHTML);
+    }
+
+    // Observe the main element for any text changes
+    var observer = new MutationObserver(function() { tryInject(); });
+    var main = document.querySelector('main') || document.body;
+    observer.observe(main, { subtree: true, characterData: true, childList: true });
+
+    // Also try immediately (for pages that auto-calculate on load)
+    setTimeout(tryInject, 800);
+  }
+
   function init() {
     renderHeader();
     renderFooter();
@@ -911,6 +1039,7 @@ const SiteComponents = (() => {
     injectPageSchema();
     updateSpotPriceDisplay();
     renderChatWidget();
+    renderPostCalcCTA();
     // Show lead capture popup 5 seconds after page load
     setTimeout(renderLeadCapture, 5000);
   }
@@ -921,5 +1050,5 @@ const SiteComponents = (() => {
     requestAnimationFrame(function() { try { init(); } catch(e) { console.error('[SiteComponents] init error:', e); } });
   }
 
-  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, injectFAQSchema, injectPageSchema, init, getLangCode, updateSpotPriceDisplay };
+  return { renderHeader, renderFooter, renderPriceTicker, renderBreadcrumb, copyCalculation, toast, injectFAQSchema, injectPageSchema, init, getLangCode, updateSpotPriceDisplay, renderPostCalcCTA };
 })();
