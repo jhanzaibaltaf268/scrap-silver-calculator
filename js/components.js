@@ -1542,8 +1542,7 @@ const SiteComponents = (() => {
     renderSocialProof();
     renderWorthMoreWarning();
     renderMeltValueTooltips();
-    // Show lead capture popup 5 seconds after page load
-    setTimeout(renderLeadCapture, 5000);
+    // Lead capture popup removed
   }
 
   if (document.readyState === 'loading') {
