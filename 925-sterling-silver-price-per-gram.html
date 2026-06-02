@@ -87,6 +87,24 @@
         
       </div>
     </section>
+    <!-- Live price answer — shown immediately before the form -->
+    <div style="max-width:780px;margin:0 auto 0;padding:0 20px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px;">
+        <div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.22);border-radius:14px;padding:18px 20px;text-align:center;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#a78bfa;margin-bottom:6px;">925 Price Per Gram</div>
+          <div id="stat-gram" style="font-size:1.9rem;font-weight:800;font-family:'JetBrains Mono',monospace;color:#f0f4f8;">$—</div>
+        </div>
+        <div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.22);border-radius:14px;padding:18px 20px;text-align:center;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#a78bfa;margin-bottom:6px;">925 Price Per Ounce</div>
+          <div id="stat-oz" style="font-size:1.9rem;font-weight:800;font-family:'JetBrains Mono',monospace;color:#f0f4f8;">$—</div>
+        </div>
+        <div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.22);border-radius:14px;padding:18px 20px;text-align:center;">
+          <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#a78bfa;margin-bottom:6px;">Spot (999 Fine)</div>
+          <div id="stat-spot" style="font-size:1.9rem;font-weight:800;font-family:'JetBrains Mono',monospace;color:#f0f4f8;">$—</div>
+        </div>
+      </div>
+    </div>
+
     <div class="calc-page-layout">
       <div class="calc-widget">
         <div class="calc-widget-title"><span class="icon">💍</span> 925 Sterling Value Calculator</div>
@@ -158,16 +176,24 @@
       const perGram = spot / 31.1035;
       const sterlingPerGram = perGram * 0.925;
       const sterlingPerOz = spot * 0.925;
-      
       const total = weight * sterlingPerGram;
 
       document.getElementById('total-value').textContent = '$' + total.toFixed(2);
       document.getElementById('price-gram').textContent = '$' + sterlingPerGram.toFixed(4);
       document.getElementById('price-oz').textContent = '$' + sterlingPerOz.toFixed(2);
       document.getElementById('price-update').textContent = `${weight}g · Spot: $${spot.toFixed(2)}/oz`;
+
+      // Hero stat cards
+      const sg = document.getElementById('stat-gram');
+      const so = document.getElementById('stat-oz');
+      const ss = document.getElementById('stat-spot');
+      if (sg) sg.textContent = '$' + sterlingPerGram.toFixed(4);
+      if (so) so.textContent = '$' + sterlingPerOz.toFixed(2);
+      if (ss) ss.textContent = '$' + spot.toFixed(2);
     }
 
     wInput.addEventListener('input', update);
+    SilverPrice.onPriceUpdate(update);
     update();
   
     // Add listener to Calculate button

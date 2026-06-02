@@ -101,6 +101,55 @@
     <div class="calc-page-layout" style="max-width:1000px;">
       <div class="content-body" style="max-width:100%;">
 
+        <!-- Quick Hallmark Lookup — interactive anchor -->
+        <div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.22);border-radius:16px;padding:22px 24px;margin-bottom:32px;">
+          <div style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#a78bfa;margin-bottom:10px;">🔍 Quick Hallmark Lookup</div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;">
+            <input id="hm-input" type="text" placeholder="Type a mark, e.g. 925, EPNS, 800…"
+              style="flex:1;min-width:180px;background:#1a1a2e;border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:11px 14px;color:#f0f4f8;font-size:15px;outline:none;">
+            <button onclick="lookupMark()" style="background:#7c3aed;color:#fff;border:none;border-radius:10px;padding:11px 22px;font-weight:700;font-size:14px;cursor:pointer;white-space:nowrap;">Look Up</button>
+          </div>
+          <div id="hm-result" style="margin-top:12px;font-size:14px;color:#c2cfe0;min-height:20px;"></div>
+        </div>
+
+        <script>
+        var HM_DB = {
+          '999':      {real:true,  label:'Fine Silver — 99.9% pure',       link:'/999-silver-calculator/'},
+          '9999':     {real:true,  label:'Investment-grade fine silver — 99.99% pure', link:'/999-silver-calculator/'},
+          '958':      {real:true,  label:'Britannia Silver — 95.8% pure',  link:'/958-silver-calculator/'},
+          '925':      {real:true,  label:'Sterling Silver — 92.5% pure',   link:'/925-silver-calculator/'},
+          'sterling': {real:true,  label:'Sterling Silver — 92.5% pure',   link:'/sterling-silver-calculator/'},
+          'ster':     {real:true,  label:'Sterling Silver (abbreviated) — 92.5% pure', link:'/sterling-silver-calculator/'},
+          '900':      {real:true,  label:'Coin Silver — 90% pure (pre-1965 US coins)', link:'/900-silver-calculator/'},
+          '835':      {real:true,  label:'European Silver — 83.5% pure',   link:'/835-silver-calculator/'},
+          '800':      {real:true,  label:'European Silver — 80% pure',     link:'/800-silver-calculator/'},
+          '750':      {real:false, label:'This is a GOLD mark (18k gold), not silver.', link:null},
+          '585':      {real:false, label:'This is a GOLD mark (14k gold), not silver.', link:null},
+          'epns':     {real:false, label:'Electroplated Nickel Silver — silver plated only, minimal silver value.', link:null},
+          'ep':       {real:false, label:'Electroplated — thin silver coating over base metal, not solid silver.', link:null},
+          'a1':       {real:false, label:'Best quality silver plate — still plated, not solid silver.', link:null},
+          'silverplate':{real:false,label:'Silver Plated — not solid silver.', link:null},
+          'silver plate':{real:false,label:'Silver Plated — not solid silver.', link:null},
+          'is':       {real:false, label:'International Silver — a brand name for silver-plated items.', link:null},
+          'coin':     {real:true,  label:'Coin Silver — 90% pure. Found on early American flatware.', link:'/900-silver-calculator/'},
+        };
+        function lookupMark() {
+          var val = document.getElementById('hm-input').value.trim().toLowerCase().replace(/\s+/,' ');
+          var res = document.getElementById('hm-result');
+          if (!val) { res.textContent = 'Enter a hallmark above.'; return; }
+          var match = HM_DB[val];
+          if (match) {
+            var icon = match.real ? '✅' : '❌';
+            var color = match.real ? '#4ade80' : '#f87171';
+            var extra = match.link ? ' <a href="'+match.link+'" style="color:#a78bfa;font-weight:700;">Calculate value →</a>' : '';
+            res.innerHTML = '<span style="color:'+color+';font-weight:700;">'+icon+' '+match.label+'</span>' + extra;
+          } else {
+            res.innerHTML = '<span style="color:#8fa3bc;">Mark "<strong style="color:#f0f4f8;">'+val+'</strong>" not found. Scroll down for a full list, or check our <a href="/identify-silver/" style="color:#a78bfa;">silver identification guide</a>.</span>';
+          }
+        }
+        document.getElementById('hm-input').addEventListener('keydown', function(e){ if(e.key==='Enter') lookupMark(); });
+        </script>
+
         <h2>✅ Marks That Mean Real Silver</h2>
         <div class="mark-grid">
           <div class="mark-card"><div class="stamp">999</div><span class="silver-badge badge-real">Solid Silver</span><h4>Fine Silver</h4><p>99.9% pure silver. Found on bullion bars, coins, and premium items. The purest common form of silver. <a href="/999-silver-calculator/">Calculate value →</a></p></div>

@@ -84,19 +84,25 @@
         <div class="calc-widget-title"><span class="icon">🪙</span> Canadian Silver Coin Calculator</div>
         
         <div class="form-group">
+          <label class="form-label" for="coin-type">Coin Type</label>
+          <select class="form-select" id="coin-type">
+            <option value="23.33|0.80">Silver Dollar — 80% · 23.33g (1920–1966)</option>
+            <option value="11.66|0.80">50¢ Half Dollar — 80% · 11.66g (1920–1966)</option>
+            <option value="5.83|0.80" selected>Quarter (25¢) — 80% · 5.83g (1920–1966)</option>
+            <option value="2.33|0.80">Dime (10¢) — 80% · 2.33g (1920–1966)</option>
+            <option value="23.33|0.925">Silver Dollar — 92.5% · 23.33g (pre-1920)</option>
+            <option value="5.83|0.50">Quarter — 50% · 5.83g (1968 non-magnetic)</option>
+            <option value="2.33|0.50">Dime — 50% · 2.33g (1968 non-magnetic)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
           <label class="form-label" for="qty">Quantity of Coins</label>
           <input type="number" class="form-input" id="qty" value="1" min="1" step="1">
         </div>
-        
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="weight">Weight Per Coin (g)</label>
-            <input type="number" class="form-input" id="weight" value="23.33" step="0.01" readonly style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="purity">Purity</label>
-            <input type="text" class="form-input" id="purity" value="80.0%" readonly style="background:#f3f4f6; color:#6b7280; border-color:#d1d5db;">
-          </div>
+
+        <div style="font-size:12px;color:var(--muted);padding:8px 12px;background:rgba(255,255,255,.03);border-radius:8px;border:1px solid rgba(255,255,255,.06);margin-bottom:var(--space-md);">
+          📌 Selected: <strong id="coin-summary" style="color:rgba(139,92,246,.9);">Quarter · 5.83g · 80% silver · 0.150 troy oz each</strong>
         </div>
 
         <button type="button" class="btn btn-primary btn-full" id="calc-btn" style="margin:var(--space-md) 0;">Calculate</button>
@@ -149,25 +155,42 @@
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Canadian Silver Coin Calculator'}]);
     
-    const q=document.getElementById('qty');
+    const q = document.getElementById('qty');
+    const coinType = document.getElementById('coin-type');
+
+    function getCoinData() {
+      const parts = coinType.value.split('|');
+      return { weight: parseFloat(parts[0]), purity: parseFloat(parts[1]) };
+    }
+
+    function updateSummary() {
+      const d = getCoinData();
+      const oz = (d.weight * d.purity / 31.1035).toFixed(3);
+      const opt = coinType.options[coinType.selectedIndex].text;
+      const name = opt.split('—')[0].trim();
+      document.getElementById('coin-summary').textContent =
+        name + ' · ' + d.weight + 'g · ' + (d.purity * 100).toFixed(0) + '% silver · ' + oz + ' troy oz each';
+    }
+
     function calc() {
-      const qty=parseInt(q.value)||0;
-      const totalWeightGrams = qty * 23.33;
-      const purity = 0.8;
-      const spot=SilverPrice.getPrice();
-      
-      const r=SilverCalc.meltValue(totalWeightGrams, purity, spot);
-      
-      if(qty > 0) {
-        document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
-        document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure silver · '+r.silverContentOz+' oz · Spot: $'+spot.toFixed(2)+'/oz';
+      const qty = parseInt(q.value) || 0;
+      const d = getCoinData();
+      const totalWeightGrams = qty * d.weight;
+      const spot = SilverPrice.getPrice();
+      const r = SilverCalc.meltValue(totalWeightGrams, d.purity, spot);
+      if (qty > 0) {
+        document.getElementById('result-value').textContent = SilverCalc.formatCurrency(r.value);
+        document.getElementById('result-detail').textContent = r.silverContentGrams + 'g pure silver · ' + r.silverContentOz + ' oz · Spot: $' + spot.toFixed(2) + '/oz';
       } else {
-        document.getElementById('result-value').textContent='$0.00';
-        document.getElementById('result-detail').textContent='Enter quantity';
+        document.getElementById('result-value').textContent = '$0.00';
+        document.getElementById('result-detail').textContent = 'Enter quantity';
       }
     }
-    q.addEventListener('input',calc);
-    SilverPrice.onPriceUpdate(()=>calc());
+
+    coinType.addEventListener('change', function() { updateSummary(); calc(); });
+    q.addEventListener('input', calc);
+    SilverPrice.onPriceUpdate(() => calc());
+    updateSummary();
     calc();
 
     // Add listener to Calculate button
