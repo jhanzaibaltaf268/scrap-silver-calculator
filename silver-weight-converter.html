@@ -217,7 +217,7 @@
         <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:8px;">Convert &amp; Calculate</button>
 
         <!-- Results -->
-        <div class="swc-results" id="swc-results" style="display:none;">
+        <div class="swc-results" id="swc-results">
           <div class="swc-results-grid">
             <div class="swc-res-card"><div class="swc-res-unit">Grams</div><div class="swc-res-val" id="r-g">—</div></div>
             <div class="swc-res-card"><div class="swc-res-unit">Troy Ounces</div><div class="swc-res-val" id="r-troy">—</div></div>
@@ -330,11 +330,13 @@
       document.getElementById('swc-results').style.display = 'block';
     }
 
-    document.getElementById('calc-btn').addEventListener('click', function() {
-      var s = document.getElementById('__calc_pending_style');
-      if (s) s.remove();
-      calc();
-    });
+    document.getElementById('calc-btn').addEventListener('click', calc);
+    document.getElementById('swc-qty').addEventListener('input', calc);
+    document.getElementById('swc-unit').addEventListener('change', calc);
+    document.getElementById('swc-purity').addEventListener('change', calc);
+    document.getElementById('swc-currency').addEventListener('change', calc);
+    SilverPrice.onPriceUpdate(calc);
+    calc();
     }); // end DOMContentLoaded
   </script>
 </body></html>

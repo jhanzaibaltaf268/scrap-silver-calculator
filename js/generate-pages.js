@@ -159,19 +159,17 @@ function weightPage(sizeLabel, sizeOz, filename, desc, content) {
 }
 
 const weights = [
-  { label: '1oz', oz: 1, file: '1oz-silver-value', slug: '1oz-silver-value', desc: 'Current value of 1 ounce of silver. Live spot price and quantity calculator.',
+  { label: '1oz', oz: 1, file: '1oz-silver-value', slug: '1oz-silver-value', desc: 'Find the current value of 1 troy ounce of silver at today\'s live spot price. Instantly calculate melt value for any quantity of 1oz silver rounds or bars.',
     content: '<h2>How Much Is 1 Ounce of Silver Worth?</h2><p>One troy ounce (31.1035 grams) of .999 fine silver is worth the current spot price. This is the base unit for silver pricing worldwide.</p><p>1oz silver bars and coins are the most popular investment size due to their affordability and easy divisibility.</p>' },
-  { label: '2oz', oz: 2, file: '2oz-silver-value', slug: '2oz-silver-value', desc: 'Current value of 2 ounces of silver. Live spot price and quantity calculator.',
+  { label: '2oz', oz: 2, file: '2oz-silver-value', slug: '2oz-silver-value', desc: 'Calculate the current value of 2 troy ounces of silver using today\'s live spot price. Includes quantity pricing and melt value calculations for 2oz rounds and bars.',
     content: '<h2>How Much Is 2 Ounces of Silver Worth?</h2><p>Two troy ounces (62.207 grams) of .999 fine silver is worth double the current spot price. 2oz silver rounds and high-relief coins are popular collectibles and investments.</p>' },
-  { label: '5oz', oz: 5, file: '5oz-silver-value', slug: '5oz-silver-value', desc: 'Current value of 5 ounces of silver. Live spot price and quantity calculator for 5oz bars.',
+  { label: '5oz', oz: 5, file: '5oz-silver-value', slug: '5oz-silver-value', desc: 'Calculate the current value of 5 troy ounces of silver at live spot prices. Melt value calculator for 5oz bars with instant results and pricing tables.',
     content: '<h2>How Much Is 5 Ounces of Silver Worth?</h2><p>5 troy ounces (155.517 grams) of .999 fine silver is a popular size for silver bars. It offers lower premiums than 1oz sizes while remaining highly liquid.</p>' },
-  { label: '10oz', oz: 10, file: '10oz-silver-value', slug: '10oz-silver-value', desc: 'Current value of 10 ounces of silver. The most popular bar size for silver investors.',
+  { label: '10oz', oz: 10, file: '10oz-silver-value', slug: '10oz-silver-value', desc: 'Calculate the current value of 10 troy ounces of silver using live spot prices. The most popular bar size for investors with instant melt value calculator.',
     content: '<h2>How Much Is 10 Ounces of Silver Worth?</h2><p>10 troy ounces (311.035 grams) is the most popular silver bar size for individual investors. These bars typically carry lower premiums than smaller sizes.</p><p>10oz silver bars are easy to store, widely recognized, and highly liquid in the secondary market.</p>' },
-  { label: '100oz', oz: 100, file: '100oz-silver-value', slug: '100oz-silver-value', desc: 'Current value of 100 ounces of silver bar. Live spot price and quantity calculator for 100oz bars.',
+  { label: '100oz', oz: 100, file: '100oz-silver-value', slug: '100oz-silver-value', desc: 'Calculate the current value of 100 troy ounces of silver at live spot prices. Melt value calculator for large 100oz bars with instant pricing.',
     content: '<h2>How Much Is 100 Ounces of Silver Worth?</h2><p>100 troy ounces (3.11 kilograms) is the standard large-size silver bar for serious investors. 100oz bars typically carry the lowest premium over spot price of any retail silver product.</p>' },
-  { label: '1/10oz', oz: 0.1, file: '1-10oz-silver-value', slug: '1-10oz-silver-value', desc: 'Current value of 1/10 ounce of silver. Live spot price for fractional silver rounds.',
-    content: '<h2>How Much Is 1/10 Ounce of Silver Worth?</h2><p>Fractional silver, such as 1/10th troy ounce rounds, are popular for bartering and small investments. While they carry higher premiums, calculating their raw melt value is important before buying or selling.</p>' },
-  { label: '1kg', oz: 32.1507, file: '1kg-silver-value', slug: '1kg-silver-value', desc: 'Current value of 1 kilogram of silver. International standard bar size.',
+  { label: '1kg', oz: 32.1507, file: '1kg-silver-value', slug: '1kg-silver-value', desc: 'Calculate the value of 1 kilogram of silver (32.15 oz) using today\'s live spot price. Melt value calculator for international standard kilo bars.',
     content: '<h2>How Much Is 1 Kilogram of Silver Worth?</h2><p>One kilogram of silver equals 32.1507 troy ounces (1,000 grams). Kilo bars are the international standard size, especially popular in Europe, Asia, and Australia.</p><p>Kilo bars offer some of the lowest premiums over spot price, making them efficient for larger investments.</p>' }
 ];
 

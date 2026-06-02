@@ -146,7 +146,9 @@
       document.getElementById('result-detail').textContent =
         `${r.silverContentGrams}g pure silver (92.5%) · ${r.silverContentOz} oz · Spot: $${spot.toFixed(2)}/oz`;
     }
+    w.addEventListener('input', calc);
     u.addEventListener('change', calc);
     SilverPrice.onPriceUpdate(() => calc());
+    calc();
   </script>
 </body></html>

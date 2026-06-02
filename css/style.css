@@ -840,6 +840,15 @@ html[dir="rtl"] .faq-item {
 
     /* Calc widget */
     .calc-widget { padding: 18px; }
+
+    /* Mobile touch targets — Apple HIG minimum 44px, prevent iOS zoom on focus */
+    .form-input, .form-select {
+        min-height: 48px;
+        font-size: 16px; /* prevents iOS auto-zoom */
+        padding: 13px 16px;
+    }
+    .btn { min-height: 48px; font-size: 15px; }
+    .swc-input, .swc-select { min-height: 48px; font-size: 16px; padding: 13px 14px; }
 }
 
 /* ---- 480px: Small phone ---- */
