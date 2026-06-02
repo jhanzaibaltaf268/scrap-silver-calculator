@@ -552,17 +552,179 @@ const SiteComponents = (() => {
     }
   }
 
+  /* ---- Auto FAQ database keyed by URL pattern ---- */
+  function autoFAQs(path) {
+    var db = [
+      // Jewelry
+      [/silver-ring/,         [{q:'How much is a silver ring worth?',a:'A typical sterling silver (925) ring weighs 3–12 grams. Enter the weight above for an instant live melt value at today\'s spot price.'},{q:'What hallmark means sterling silver on a ring?',a:'Look for 925, STERLING, or STER stamped inside the band. These all mean 92.5% pure silver.'},{q:'What will a dealer pay for a silver ring?',a:'Dealers pay 65–95% of melt value depending on buyer type. Online refineries offer the most. Calculate melt value above first.'}],
+      [/silver-chain/,        [{q:'How much is a silver chain worth?',a:'Chains weigh 5–60 grams depending on length and style. Enter the weight above for a live melt value based on today\'s spot price.'},{q:'Is a 925 chain real silver?',a:'Yes — 925 means sterling silver (92.5% pure). It is genuine silver, not plated.'},{q:'How do I weigh my silver chain?',a:'Use a digital scale accurate to 0.1g. Remove non-silver clasps if possible and enter the weight in the calculator above.'}]],
+      [/silver-necklace/,     [{q:'How much is a silver necklace worth?',a:'Most silver necklaces are 925 sterling. Enter the weight in the calculator above for an instant live melt value.'},{q:'Does 925 on a necklace mean real silver?',a:'Yes. 925 is the hallmark for sterling silver — 92.5% pure silver, not plated.'},{q:'What will a pawn shop pay for a silver necklace?',a:'Pawn shops pay 50–70% of melt value. Use the calculator above to find melt, then expect 50–70% of that figure.'}]],
+      [/silver-bracelet/,     [{q:'How much is a silver bracelet worth?',a:'Silver bracelets weigh 8–50 grams. Enter weight and purity above for the exact live melt value.'},{q:'How do I know if my bracelet is real silver?',a:'Look for 925, 800, or STERLING stamped on the clasp. Real silver is also non-magnetic.'},{q:'What do jewelers pay for silver bracelets?',a:'Jewelers typically offer 65–80% of melt value. Calculate melt above before accepting any offer.'}]],
+      // Silverware
+      [/silver-spoon/,        [{q:'How much is a silver spoon worth?',a:'A teaspoon weighs 20–30g; a tablespoon 40–60g. Enter the exact weight above for a live melt value.'},{q:'How do I tell real silver from silver-plated spoons?',a:'Check the back of the handle. 925 or STERLING = solid silver. EPNS, EP, or A1 = plated (minimal value).'},{q:'Where should I sell silver spoons?',a:'Online refineries pay 90–98% of melt. Antique dealers may pay more for complete sets or branded pieces.'}]],
+      [/silver-fork/,         [{q:'How much is a silver fork worth?',a:'Silver forks typically weigh 25–50 grams. Enter the weight above for a live melt value.'},{q:'Is my silver fork real silver?',a:'Check the back of the handle. 925 or STERLING = solid silver. EPNS, EP = plated (nearly worthless as scrap).'},{q:'Where can I sell silver forks?',a:'Online refineries offer the best rates (90–98% of melt). Coin dealers also buy silver flatware.'}]],
+      [/silver-knife/,        [{q:'Are silver knives real silver?',a:'Most silver knives have solid sterling handles but stainless steel blades. Only calculate the handle weight for scrap value.'},{q:'How much is a silver knife worth?',a:'Sterling knife handles weigh 30–50 grams of silver. Enter the handle weight above for a live melt value.'},{q:'Where is the hallmark on a silver knife?',a:'Check the bottom of the handle or the bolster. Look for 925, STERLING, 800, or STER.'}]],
+      [/silver-tray/,         [{q:'How much is a silver tray worth?',a:'Silver trays are the heaviest household silver — typically 200–2000 grams. Enter the exact weight above for a live melt value.'},{q:'How do I check if a serving tray is solid silver?',a:'Check the underside for hallmarks: 925 or STERLING = solid silver. EPNS or Sheffield Plate = plated (very low value).'},{q:'Should I sell a silver tray as scrap or antique?',a:'If it carries a maker\'s mark (Gorham, Tiffany, Reed & Barton), get an antique appraisal first — it may be worth far more than melt.'}]],
+      [/silver-cup/,          [{q:'How much is a silver cup worth?',a:'Silver cups weigh 50–300 grams. Enter weight and purity above for an exact live melt value.'},{q:'Are silver trophies real silver?',a:'Antique trophies often are. Look for 925 or STERLING hallmarks. Modern trophies are usually silver-plated.'},{q:'What will a dealer pay for a silver cup?',a:'Dealers pay 65–95% of melt value. Calculate melt above first, then compare quotes.'}]],
+      [/silver-plate-value/,  [{q:'Is silver plate worth anything as scrap?',a:'Solid silver plates (925 or STERLING) are valuable. Silver-plated plates (EPNS, EP) have virtually no scrap value.'},{q:'How much does a solid silver dinner plate weigh?',a:'Solid sterling dinner plates typically weigh 200–400 grams — approximately $180–$370 in melt value at current prices.'},{q:'How do I tell solid silver from silver-plated?',a:'Check the underside for hallmarks. 925, STERLING, or 800 = solid silver. EP, EPNS, or Silver Plate = plated.'}]],
+      // Coins
+      [/silver-dime/,         [{q:'What years of dimes are silver?',a:'US dimes minted 1964 and earlier are 90% silver. Dimes from 1965 onward are copper-nickel clad with no silver.'},{q:'How much silver is in a silver dime?',a:'A pre-1965 US dime contains 2.25 grams of pure silver (0.07234 troy oz) in a 2.5 gram coin.'},{q:'What is a 1964 dime worth in silver?',a:'At current spot prices, multiply 0.07234 oz by today\'s spot price. Use the calculator above for an exact live value.'}]],
+      [/silver-quarter/,      [{q:'What years of quarters are silver?',a:'US quarters minted 1964 and earlier are 90% silver. Quarters from 1965 onward contain no silver.'},{q:'How much silver is in a silver quarter?',a:'A pre-1965 Washington quarter contains 0.18084 troy oz of pure silver (5.625g) in a 6.25g coin.'},{q:'What is a silver quarter worth today?',a:'Melt value = 0.18084 × current spot price per oz. Use the calculator above for today\'s live value.'}]],
+      [/silver-dollar/,       [{q:'How much silver is in a Morgan or Peace dollar?',a:'Both contain 0.7734 troy oz of pure silver (26.73g at 90% purity). Use the calculator above for live melt value.'},{q:'Are all silver dollars worth the same in melt?',a:'All Morgan and Peace dollars have identical silver content (0.7734 oz), but rare dates command large numismatic premiums above melt.'},{q:'What is the melt value of a silver dollar?',a:'Melt value = 0.7734 × current spot price. Enter quantity above for the total live value.'}]],
+      [/junk-silver/,         [{q:'What is junk silver?',a:'Junk silver refers to pre-1965 US coins (dimes, quarters, halves) sold purely for silver content. $1 face value ≈ 0.715 troy oz of pure silver.'},{q:'Is junk silver a good investment?',a:'Yes. Junk silver is divisible, recognizable, and carries low premiums over spot — ideal for inflation hedging.'},{q:'How do I calculate junk silver value?',a:'Multiply face value by 0.715 to get troy ounces, then multiply by spot price. The calculator above does this automatically.'}]],
+      [/canadian/,            [{q:'What Canadian coins are silver?',a:'Coins from 1920–1966 are 80% silver. Pre-1920 coins are 92.5% sterling. Some 1967–1968 coins are 50% silver (non-magnetic ones).'},{q:'How do I tell if a 1968 Canadian coin is silver?',a:'Magnet test: if it sticks, it is 100% nickel. If it does not stick, it is 50% silver.'},{q:'How much is a Canadian silver dollar worth?',a:'A 80% silver Canadian dollar weighs 23.33g and contains ~0.6 troy oz of pure silver. Use the calculator for live melt value.'}]],
+      [/face-value/,          [{q:'What is the face value method for silver coins?',a:'$1 face value of pre-1965 US 90% silver coins = 0.715 troy oz of pure silver — the industry standard accounting for circulation wear.'},{q:'Why is the multiplier 0.715 not 0.723?',a:'0.723 oz is theoretical for unworn coins. The 0.715 standard accounts for metal lost through decades of circulation.'},{q:'Does face value work for silver dollars?',a:'No — Morgan and Peace dollars use 0.7734 oz per dollar. Calculate them separately with our silver dollar calculator.'}]],
+      // Purity calculators
+      [/999-silver/,          [{q:'What is 999 fine silver?',a:'999 fine silver is 99.9% pure silver — the purest commercially available form, used in bullion bars, coins, and rounds.'},{q:'Is 999 silver more valuable than 925?',a:'Yes — 999 silver has 7.97% more pure silver per gram than 925 sterling at the same spot price.'},{q:'What is 999 silver worth per gram?',a:'999 silver per gram = spot price ÷ 31.1035. Use the calculator above for today\'s live price.'}]],
+      [/925-silver-calculator|sterling-silver-calc/, [{q:'What is 925 sterling silver?',a:'925 sterling silver is 92.5% pure silver alloyed with 7.5% copper. It is the world\'s most common silver standard for jewelry and flatware.'},{q:'How much is 925 silver worth per gram?',a:'925 silver per gram = (spot price ÷ 31.1035) × 0.925. Use the calculator above for today\'s live value.'},{q:'What does the 925 hallmark mean?',a:'The 925 stamp confirms the item is sterling silver — 92.5% pure. It is genuine silver, not plated.'}]],
+      [/800-silver/,          [{q:'What is 800 silver?',a:'800 silver contains 80% pure silver and 20% other metals. It is the most common European silverware standard found on German, Italian, and Austrian pieces.'},{q:'Is 800 silver worth buying?',a:'Yes — 800 silver has 80% pure silver content and significant scrap value.'},{q:'How do I identify 800 silver?',a:'Look for the number 800 stamped on the item, usually on the underside or handle.'}]],
+      [/900-silver/,          [{q:'What is 900 coin silver?',a:'900 silver contains 90% pure silver. It is the standard for pre-1965 US coins and some historical American silverware marked COIN.'},{q:'What items are made of 900 silver?',a:'Pre-1965 US dimes, quarters, half-dollars, and Morgan/Peace dollars, plus historical American flatware marked COIN.'},{q:'What is 900 silver worth per gram?',a:'900 silver per gram = (spot price ÷ 31.1035) × 0.900. Use the calculator above for today\'s live value.'}]],
+      [/835-silver/,          [{q:'What is 835 silver?',a:'835 silver contains 83.5% pure silver. It is a common European standard found on Dutch, German, and Scandinavian silverware.'},{q:'Is 835 silver valuable?',a:'Yes — 835 silver has real silver content worth calculating. Use the calculator above for a live melt value.'},{q:'Where is 835 silver found?',a:'835 silver is most common on antique European flatware and serving pieces from Germany, Netherlands, and Scandinavia.'}]],
+      [/958-silver/,          [{q:'What is 958 Britannia silver?',a:'958 Britannia silver is 95.8% pure silver — introduced in Britain in 1697. It is higher purity than sterling (925) and still used in fine British silverware.'},{q:'Is Britannia silver worth more than sterling?',a:'Per gram, yes — 958 contains 95.8% silver vs 92.5% for sterling, so it is worth about 3.6% more per gram.'},{q:'How do I identify Britannia silver?',a:'Look for the Britannia figure hallmark alongside the 958 number, or the word BRITANNIA on British pieces.'}]],
+      // Weight pages
+      [/1oz-silver/,          [{q:'How much is 1 troy ounce of silver worth?',a:'One troy oz of 999 fine silver equals the current spot price. Use the calculator above for today\'s live value.'},{q:'What is a troy ounce?',a:'A troy ounce is 31.1035 grams — slightly heavier than a standard ounce (28.35g). All silver prices are quoted in troy ounces.'},{q:'What does 1oz silver weigh in grams?',a:'1 troy ounce of silver = 31.1035 grams.'}]],
+      [/10oz-silver/,         [{q:'How much is 10 oz of silver worth?',a:'10 troy oz of 999 fine silver = 10 × current spot price. Use the calculator above for today\'s live value.'},{q:'Are 10oz silver bars a good investment?',a:'Yes — 10oz bars are the most popular retail silver investment, offering low premiums and high liquidity.'},{q:'How heavy is a 10oz silver bar in grams?',a:'A 10oz silver bar weighs exactly 311.035 grams.'}]],
+      [/1kg-silver/,          [{q:'How much is 1 kilogram of silver worth?',a:'1kg of 999 fine silver = 32.1507 troy oz × spot price. Use the calculator above for today\'s exact live value.'},{q:'Is a 1kg silver bar a good investment?',a:'Kilo bars are very efficient — they carry some of the lowest premiums over spot of any retail silver product.'},{q:'How many troy ounces is 1 kilogram?',a:'1 kilogram = 32.1507 troy ounces.'}]],
+      [/100oz-silver/,        [{q:'How much is 100 oz of silver worth?',a:'100 troy oz of silver = 100 × current spot price. At $33/oz that is approximately $3,300. Use the calculator above for live value.'},{q:'Are 100oz silver bars good for investors?',a:'100oz bars carry the lowest premiums over spot of any standard retail silver bar, making them highly efficient for larger purchases.'},{q:'How heavy is a 100oz silver bar?',a:'A 100oz silver bar weighs 3,110.35 grams (3.11 kilograms).'}]],
+      [/2oz-silver/,          [{q:'How much is 2 oz of silver worth?',a:'2 troy oz of 999 fine silver = 2 × current spot price. Use the calculator above for today\'s live value.'},{q:'What 2oz silver products are available?',a:'2oz silver rounds and high-relief collector coins are the most common 2oz silver products. They carry higher premiums than 10oz bars.'},{q:'How heavy is a 2oz silver coin in grams?',a:'A 2oz silver coin or round weighs exactly 62.207 grams.'}]],
+      [/5oz-silver/,          [{q:'How much is 5 oz of silver worth?',a:'5 troy oz of 999 fine silver = 5 × current spot price. Use the calculator above for today\'s live value.'},{q:'Are 5oz silver bars worth buying?',a:'5oz bars offer lower premiums than 1oz coins while remaining affordable. They are a good mid-size investment.'},{q:'How heavy is a 5oz silver bar?',a:'A 5oz silver bar weighs 155.517 grams.'}]],
+      // Guide pages
+      [/what-does-925/,       [{q:'What does 925 mean on silver?',a:'925 means sterling silver — 92.5% pure silver and 7.5% other metals. It is the international standard for quality silver jewelry.'},{q:'Is 925 real silver?',a:'Yes. 925 is genuine sterling silver — not silver-plated. Items marked 925 have real, calculable scrap value.'},{q:'Is 925 silver worth buying?',a:'Yes. Sterling silver has significant intrinsic silver value. Use our calculator to find the exact current worth of any 925 item.'}]],
+      [/what-is-sterling/,    [{q:'What is sterling silver?',a:'Sterling silver is 92.5% pure silver alloyed with 7.5% copper. It is the most widely used silver standard in jewelry and silverware worldwide.'},{q:'How do I identify sterling silver?',a:'Look for hallmarks: 925, STERLING, STER, or a lion passant (British). Sterling silver tarnishes and is non-magnetic.'},{q:'Is sterling silver more valuable than silver-plated?',a:'Yes, significantly. Sterling contains real silver throughout (92.5%), while plated items only have a thin surface coating worth almost nothing as scrap.'}]],
+      [/identify-silver/,     [{q:'How can I tell if something is real silver?',a:'Check for hallmarks (925, 800, STERLING). Test with a magnet — real silver is not magnetic. The ice test also works: silver melts ice unusually fast.'},{q:'What does EPNS mean on silver?',a:'EPNS = Electroplated Nickel Silver. The item has only a thin silver coating over base metal and has minimal scrap value.'},{q:'What are the best home tests for silver?',a:'1) Hallmark check (925/STERLING = real), 2) Magnet test (real silver is not magnetic), 3) Ice test (silver conducts heat faster than other metals).'}]],
+      [/how-to-sell/,         [{q:'Where is the best place to sell silver?',a:'Online refineries offer 90–98% of melt value. Coin dealers offer 75–90% with immediate payment. Pawn shops offer only 50–70% — avoid for silver.'},{q:'How do I get the best price for scrap silver?',a:'Know your melt value first (use our free calculator). Get 3+ quotes. Online refineries consistently offer the best prices.'},{q:'How long does it take to sell silver online?',a:'Most online refineries process and pay within 5–10 business days. Local dealers offer same-day payment at lower rates.'}]],
+      [/sell-or-hold/,        [{q:'Should I sell silver now or wait?',a:'Use the scenario analysis above to model performance at different price points. Key factors: current trends, your purchase price, and your timeline.'},{q:'How do I know when silver prices will rise?',a:'Silver prices are driven by industrial demand, currency strength, and investor sentiment. Check the chart tools above for trend analysis.'},{q:'What return should I target before selling silver?',a:'Most investors target 15–30% ROI. Use the tool above to set your target price and see exactly when it becomes worth selling.'}]],
+      [/purity-chart/,        [{q:'What are the silver purity grades?',a:'999 (99.9% fine), 958 (Britannia), 925 (sterling), 900 (coin), 835 (European), 800 (European). The number = parts per 1000 of pure silver.'},{q:'What is the most common silver purity?',a:'925 sterling silver is the most common worldwide — used in most jewelry, flatware, and decorative pieces.'},{q:'Which silver purity is worth the most per gram?',a:'999 fine silver has the highest silver content and is worth the most per gram, followed by 958, then 925.'}]],
+      [/hallmarks/,           [{q:'What hallmarks mean real silver?',a:'Real silver hallmarks: 999, 958, 925, 900, 835, 800, STERLING, STER, COIN. Items with these marks contain genuine silver.'},{q:'What hallmarks mean silver-plated?',a:'Plated items are marked: EPNS, EP, A1, Silver Plate, IS, or WM Rogers. These have minimal scrap value.'},{q:'Where do I find hallmarks on silver items?',a:'Inside ring bands, on necklace clasps, on the back of spoon/fork handles, on the underside of trays, and inside watch case backs.'}]],
+      [/silver-profit/,       [{q:'How do I calculate profit on silver?',a:'Profit = current melt value minus your purchase price. The tool above calculates this automatically with live spot prices.'},{q:'What ROI can I expect from silver?',a:'Silver returns vary widely but historically average 5–10% annually with periods of significant outperformance.'},{q:'When should I sell silver for maximum profit?',a:'When prices are trending up and you have hit your target ROI. Use the sell-or-hold analysis to model different exit scenarios.'}]],
+      [/silver-batch/,        [{q:'What is a batch silver calculator?',a:'A batch calculator values multiple silver items at once — different weights, purities, and quantities in a single total.'},{q:'Can I calculate multiple silver items simultaneously?',a:'Yes. Add a row for each item with its own weight, unit, and purity. The calculator totals everything automatically.'},{q:'How do I value a mixed silver collection?',a:'Use the batch calculator to add each item separately (rings, coins, flatware) with individual weights and purities.'}]],
+      [/weight-converter/,    [{q:'How do I convert grams to troy ounces for silver?',a:'Divide grams by 31.1035 to get troy ounces. Example: 100g ÷ 31.1035 = 3.215 troy oz.'},{q:'What is a pennyweight in silver?',a:'One pennyweight (dwt) = 1.5552 grams = 0.05 troy oz. Used widely by US jewelers.'},{q:'How many grams is a tola of silver?',a:'1 tola = 11.6638 grams = 0.375 troy oz. The standard precious metals unit in India and Pakistan.'}]],
+      [/pennyweight/,         [{q:'What is pennyweight in silver?',a:'1 pennyweight (dwt) = 1.5552 grams = 0.05 troy oz. 20 pennyweights = 1 troy ounce. Standard unit in the US jewelry trade.'},{q:'How do I convert pennyweight to grams?',a:'Multiply pennyweight by 1.5552 to get grams. Example: 10 dwt × 1.5552 = 15.552 grams.'},{q:'Why do jewelers use pennyweight?',a:'Pennyweight is the traditional precious metals unit in the US jewelry industry. Many appraisers and scrap buyers still quote prices in dwt.'}]],
+      [/tola/,                [{q:'What is a tola of silver?',a:'A tola is a South Asian unit of mass: 1 tola = 11.6638 grams = 0.375 troy ounces. Standard for precious metals in India and Pakistan.'},{q:'How many tolas in 1 troy ounce?',a:'1 troy ounce = 2.6667 tolas. Conversely, 1 tola = 0.375 troy ounces.'},{q:'What is the silver price per tola today?',a:'Silver per tola = spot price × 0.375. Use the calculator above for today\'s live tola price.'}]],
+      [/sona-chandi/,         [{q:'What is Sona Chandi calculator?',a:'The Sona Chandi calculator (सोना चाँदी / سونا چاندی) converts gold and silver weights between tola, grams, and troy ounces at live spot prices.'},{q:'What is the silver price in tola today?',a:'1 tola = 0.375 troy oz. Multiply the spot price by 0.375 for today\'s tola price. The calculator above shows this automatically.'},{q:'How do I calculate chandi price per tola?',a:'Chandi per tola = spot price × 0.375. For 925 sterling: multiply by 0.375 × 0.925. Use the calculator above for an instant result.'}]],
+      [/silver-price-per-gram/, [{q:'What is the silver price per gram today?',a:'Silver per gram = spot price ÷ 31.1035. See the live price in the calculator above, updated every hour.'},{q:'How do I calculate silver value in grams?',a:'(grams × purity ÷ 31.1035) × spot price. Example for 925: (weight × 0.925 ÷ 31.1035) × spot.'},{q:'What is 925 silver worth per gram?',a:'925 silver per gram = (spot ÷ 31.1035) × 0.925. At $33/oz spot ≈ $0.98/gram.'}]],
+      [/silver-price-per-ounce/, [{q:'What is the silver price per ounce today?',a:'Silver spot price per troy ounce is the global benchmark, updated live above every hour from COMEX.'},{q:'Is silver priced in troy or regular ounces?',a:'Always in troy ounces (31.1035g), not avoirdupois ounces (28.35g). This is the global precious metals standard.'},{q:'What affects the silver price per ounce?',a:'Industrial demand (solar panels, electronics), investor flows, US dollar strength, and mine supply are the main drivers.'}]],
+      [/925-sterling-silver-price-per-gram/, [{q:'What is 925 sterling silver price per gram today?',a:'925 price per gram = (spot ÷ 31.1035) × 0.925. See the live stat cards above, updated automatically.'},{q:'Why is 925 silver cheaper per gram than 999?',a:'Because 925 is only 92.5% pure. You pay for the pure silver content, so 925 is worth 92.5% of 999 fine silver per gram.'},{q:'How often does the 925 silver price change?',a:'The 925 price updates hourly, directly tracking the global silver spot price from COMEX and major exchanges.'}]],
+      [/gold-and-silver/,     [{q:'Can I calculate gold and silver value together?',a:'Yes. Enter separate weights and purities for gold and silver above and get a combined live value in one calculation.'},{q:'How do gold and silver prices compare?',a:'Gold typically trades 60–80× higher than silver per troy ounce. The ratio fluctuates with market conditions.'},{q:'Is it better to invest in gold or silver?',a:'Silver has higher industrial demand and more price volatility. Gold is more stable. Many investors hold both for diversification.'}]],
+      [/silver-bar/,          [{q:'How much is a silver bar worth?',a:'Bar value = (weight in troy oz) × spot price × purity. A 10oz 999 fine bar = 10 × spot. Use the calculator above for any size.'},{q:'What silver bar sizes are available?',a:'Common retail sizes: 1oz, 5oz, 10oz, 100oz, and 1kg. The 10oz bar is the most popular retail investment size.'},{q:'Are silver bars better than coins for investment?',a:'Bars carry lower premiums over spot than coins, making them more efficient for large purchases. Coins are more recognizable and divisible.'}]],
+      [/silverware-value/,    [{q:'How much is silverware worth?',a:'Silverware value depends on weight, purity, and whether it is solid silver or plated. Sterling (925) silverware is valuable; EPNS-plated pieces have minimal scrap value.'},{q:'How do I know if my silverware is solid silver?',a:'Check the back of the handle: 925 or STERLING = solid silver. EPNS, EP, or A1 = silver-plated (little scrap value).'},{q:'Where can I sell silverware for the best price?',a:'Online refineries offer 90–98% of melt. Antique dealers may pay more for complete sets or hallmarked pieces.'}]],
+      [/silver-jewelry/,      [{q:'How do I calculate silver jewelry value?',a:'Weigh the piece, identify the purity (usually 925), and use the calculator above for an instant live melt value.'},{q:'Is silver jewelry worth scrapping?',a:'Sterling (925) jewelry has solid scrap value. Only scrap items with no designer or collector value — Tiffany/Cartier pieces may be worth more intact.'},{q:'What is the best way to sell silver jewelry?',a:'Online refineries pay 90–98% of melt. Local jewelers offer 65–80%. Designer pieces may fetch more on eBay or to specialist buyers.'}]],
+      [/silver-melt/,         [{q:'What is silver melt value?',a:'Silver melt value is the intrinsic value of an item\'s pure silver content at the current spot price — the minimum baseline value of any silver piece.'},{q:'How do I calculate silver melt value?',a:'Melt value = (weight in grams × purity ÷ 31.1035) × spot price per troy oz. The calculator above does this automatically.'},{q:'What is the difference between melt value and spot price?',a:'Spot price is the market price for pure (999) silver per troy oz. Melt value is what your specific item is worth based on its actual weight and purity.'}]],
+      [/silver-scrap/,        [{q:'What is scrap silver?',a:'Scrap silver is any silver item sold for its metal content rather than as a collectible or functional piece — broken jewelry, flatware, coins.'},{q:'What counts as scrap silver?',a:'Sterling jewelry, flatware, coin silver items, and any silver alloy objects. Silver-plated items (EPNS) have minimal scrap value.'},{q:'Where can I sell scrap silver for the best price?',a:'Online refineries offer the best rates (90–98% of melt). Local coin dealers offer 75–90%. Calculate melt above before calling any buyer.'}]],
+      [/how-silver-prices/,   [{q:'How are silver prices determined?',a:'Silver prices are set by global supply and demand on exchanges like COMEX. Key drivers: industrial demand, investor flows, dollar strength, and mine supply.'},{q:'What moves silver prices up and down?',a:'Up: inflation, weak dollar, strong industrial demand, supply shortages. Down: strong dollar, rising interest rates, reduced demand.'},{q:'What is the gold-silver ratio?',a:'The gold-silver ratio shows how many oz of silver equal one oz of gold. Historically it averages 60–80:1. A high ratio may signal silver is undervalued.'}]],
+      [/coin-value/,          [{q:'How do I calculate silver coin value?',a:'Select your coin type and quantity above for an instant live melt value based on today\'s spot price.'},{q:'Are pre-1965 US coins worth more than face value?',a:'Yes — their silver melt value is typically 10–20× face value depending on current spot prices.'},{q:'What US coins are made of silver?',a:'Dimes, quarters, half-dollars minted 1964 and earlier (90% silver), Morgan and Peace dollars (90% silver), and War Nickels 1942–1945 (35% silver).'}]],
+      [/price-all-currencies/, [{q:'What is the silver price in different currencies?',a:'Silver is priced globally in USD per troy oz, then converted to local currencies. Our tool shows 30+ currencies simultaneously at live rates.'},{q:'Why does silver price vary by currency?',a:'The USD spot price is fixed globally, but local prices shift with exchange rate movements against the US dollar.'},{q:'Which currencies are shown?',a:'USD, EUR, GBP, JPY, CAD, AUD, CHF, INR, PKR, CNY, AED, SAR and 20+ more, all updated live.'}]],
+      [/what-is-junk/,        [{q:'What is junk silver?',a:'Junk silver refers to pre-1965 US coins sold purely for silver content at no collector premium. $1 face value ≈ 0.715 troy oz of pure silver.'},{q:'Is junk silver a good investment?',a:'Yes — it is divisible, recognizable, widely accepted, and carries low premiums over spot price.'},{q:'How do I store junk silver?',a:'Store in coin tubes or bags by denomination. Keep in a cool, dry place. A fireproof safe is recommended for larger quantities.'}]],
+      [/what-is-silver-bullion/, [{q:'What is silver bullion?',a:'Silver bullion refers to silver in pure or near-pure form (bars, rounds, government coins) bought and sold primarily for its silver content.'},{q:'What is the best type of silver bullion to buy?',a:'For investment: 10oz or 100oz bars offer the lowest premiums. For divisibility: 1oz coins or rounds. For recognition: government-minted coins like Silver Eagles.'},{q:'Where can I buy silver bullion?',a:'Reputable dealers include APMEX, JM Bullion, SD Bullion, and local coin shops. Always compare premiums over spot price before purchasing.'}]],
+      [/what-is-silver-melt/, [{q:'What is silver melt value?',a:'Silver melt value is the raw intrinsic value of the pure silver content in any object — what the metal would be worth if refined to pure silver.'},{q:'How do you calculate melt value?',a:'Melt value = (weight in grams × purity decimal ÷ 31.1035) × spot price per troy oz.'},{q:'Is melt value the same as what a dealer will pay?',a:'No. Dealers pay 65–98% of melt value depending on buyer type. Refineries pay the most; pawn shops the least.'}]],
+      [/what-is-silver-scrap/, [{q:'What is silver scrap?',a:'Silver scrap is any silver-containing item sold for its metal content — broken jewelry, damaged flatware, old coins, industrial silver waste.'},{q:'How do I know if my silver is worth scrapping?',a:'If it has hallmarks (925, 800, STERLING) confirming solid silver, it has scrap value. Calculate the melt value above before deciding.'},{q:'What is the minimum amount of silver worth scrapping?',a:'Even small amounts have value. A single sterling spoon (40g) is worth approximately $35–$45 at current prices.'}]],
+      [/what-is-troy-ounce/,  [{q:'What is a troy ounce?',a:'A troy ounce (oz t) is 31.1035 grams — the standard unit for precious metals worldwide. It is about 10% heavier than a regular (avoirdupois) ounce of 28.35 grams.'},{q:'Why is silver measured in troy ounces?',a:'Troy weight has been the precious metals standard since medieval times. All silver and gold prices globally are quoted in troy ounces.'},{q:'How many grams is a troy ounce of silver?',a:'Exactly 31.1035 grams. A 1oz silver coin or bar will weigh 31.1 grams on a digital scale.'}]],
+    ];
+
+    // Match path against database
+    for (var i = 0; i < db.length; i++) {
+      if (db[i][0].test(path)) return db[i][1];
+    }
+
+    // Generic fallback for any unmatched page
+    return [
+      {q:'How do I calculate scrap silver value?', a:'Multiply weight (grams) by purity decimal, divide by 31.1035, then multiply by the current spot price. Our free calculators do this automatically with live prices.'},
+      {q:'How often are silver prices updated?', a:'Our calculators update silver spot prices every hour using live market data from COMEX and major precious metals exchanges.'},
+      {q:'What does 925 mean on silver?', a:'925 means sterling silver — 92.5% pure silver alloyed with 7.5% copper. It is the most common hallmark on silver jewelry, flatware, and decorative items.'}
+    ];
+  }
+
   function injectPageSchema() {
-    if (document.querySelector('script[type="application/ld+json"]')) return;
-    const title = document.title || '';
-    const desc = (document.querySelector('meta[name="description"]') || {}).content || '';
-    const url = (document.querySelector('link[rel="canonical"]') || {}).href || location.href;
-    if (!title || !desc) return;
-    const schema = { '@context': 'https://schema.org', '@type': 'WebPage', 'name': title, 'description': desc, 'url': url, 'inLanguage': document.documentElement.lang || 'en', 'isPartOf': { '@type': 'WebSite', 'name': 'Scrap Silver Calculator', 'url': 'https://scrapsilvercalculater.com/' } };
-    const s = document.createElement('script');
-    s.type = 'application/ld+json';
-    s.textContent = JSON.stringify(schema);
-    document.head.appendChild(s);
+    var path   = window.location.pathname;
+    var lang   = getLangCode();
+    var title  = document.title || '';
+    var desc   = (document.querySelector('meta[name="description"]') || {}).content || '';
+    var canonical = document.querySelector('link[rel="canonical"]');
+    var url    = canonical ? canonical.href : location.href;
+    var base   = 'https://scrapsilvercalculater.com';
+    if (!title) return;
+
+    var existing     = document.querySelector('script[type="application/ld+json"]');
+    var existingText = existing ? existing.textContent : '';
+    var pageName     = title.replace(/\s*[—–|].*$/, '').trim();
+    var langCode     = lang === 'en' ? 'en-US' : lang;
+
+    function inject(obj) {
+      var s = document.createElement('script');
+      s.type = 'application/ld+json';
+      s.textContent = JSON.stringify(obj);
+      document.head.appendChild(s);
+    }
+
+    /* ── BreadcrumbList — always add if missing ── */
+    if (existingText.indexOf('BreadcrumbList') === -1 && path !== '/') {
+      var crumbItems = [
+        { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': base + '/' },
+        { '@type': 'ListItem', 'position': 2, 'name': pageName, 'item': url }
+      ];
+      // Try to read rendered breadcrumb for deeper paths
+      var breadEl = document.getElementById('breadcrumb');
+      if (breadEl) {
+        var links = breadEl.querySelectorAll('a');
+        if (links.length > 1) {
+          crumbItems = [{ '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': base + '/' }];
+          links.forEach(function (a, idx) {
+            if (a.textContent.trim().toLowerCase() !== 'home') {
+              crumbItems.push({ '@type': 'ListItem', 'position': idx + 1, 'name': a.textContent.trim(), 'item': a.href });
+            }
+          });
+          crumbItems.push({ '@type': 'ListItem', 'position': crumbItems.length + 1, 'name': pageName, 'item': url });
+        }
+      }
+      inject({ '@context': 'https://schema.org', '@type': 'BreadcrumbList', 'itemListElement': crumbItems });
+    }
+
+    /* ── WebApplication — calculator pages ── */
+    var isCalc = /calculator|converter|calc|value|pennyweight|tola|sona-chandi|face-value|silver-profit|silver-batch|silver-scrap|silver-melt|sterling-silver|junk-silver|silver-bar|silverware|silver-jewelry|silver-price-per|silver-sell-or-hold|silver-price-all/.test(path);
+    if (isCalc && existingText.indexOf('WebApplication') === -1) {
+      inject({
+        '@context': 'https://schema.org', '@type': 'WebApplication',
+        'name': pageName, 'url': url, 'description': desc || title,
+        'applicationCategory': 'FinanceApplication', 'operatingSystem': 'Any',
+        'inLanguage': langCode,
+        'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'USD' },
+        'isPartOf': { '@type': 'WebSite', 'name': 'Scrap Silver Calculator', 'url': base + '/' }
+      });
+    }
+
+    /* ── Article — guide / informational pages ── */
+    var isArticle = /what-is|what-does|how-to|how-silver|identify|hallmarks|purity-chart|silver-bullion|sterling-silver$|troy-ounce|silver-news|silver-price-forecast|silver-market/.test(path);
+    if (isArticle && existingText.indexOf('Article') === -1 && existingText.indexOf('NewsArticle') === -1) {
+      inject({
+        '@context': 'https://schema.org', '@type': 'Article',
+        'headline': pageName, 'description': desc || title, 'url': url,
+        'inLanguage': langCode,
+        'publisher': { '@type': 'Organization', 'name': 'Scrap Silver Calculator', 'url': base }
+      });
+    }
+
+    /* ── Basic WebPage fallback ── */
+    if (!isCalc && !isArticle && existingText.indexOf('@type') === -1) {
+      inject({
+        '@context': 'https://schema.org', '@type': 'WebPage',
+        'name': title, 'description': desc || title, 'url': url,
+        'inLanguage': langCode,
+        'isPartOf': { '@type': 'WebSite', 'name': 'Scrap Silver Calculator', 'url': base + '/' }
+      });
+    }
+
+    /* ── FAQPage — inject if not already present ── */
+    if (existingText.indexOf('FAQPage') === -1) {
+      var faqs = autoFAQs(path);
+      if (faqs && faqs.length > 0) {
+        inject({
+          '@context': 'https://schema.org', '@type': 'FAQPage',
+          'mainEntity': faqs.map(function (f) {
+            return { '@type': 'Question', 'name': f.q, 'acceptedAnswer': { '@type': 'Answer', 'text': f.a } };
+          })
+        });
+      }
+    }
   }
 
   function updateSpotPriceDisplay() {
