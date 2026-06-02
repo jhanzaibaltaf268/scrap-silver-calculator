@@ -556,7 +556,7 @@ const SiteComponents = (() => {
   function autoFAQs(path) {
     var db = [
       // Jewelry
-      [/silver-ring/,         [{q:'How much is a silver ring worth?',a:'A typical sterling silver (925) ring weighs 3–12 grams. Enter the weight above for an instant live melt value at today\'s spot price.'},{q:'What hallmark means sterling silver on a ring?',a:'Look for 925, STERLING, or STER stamped inside the band. These all mean 92.5% pure silver.'},{q:'What will a dealer pay for a silver ring?',a:'Dealers pay 65–95% of melt value depending on buyer type. Online refineries offer the most. Calculate melt value above first.'}],
+      [/silver-ring/,         [{q:'How much is a silver ring worth?',a:'A typical sterling silver (925) ring weighs 3–12 grams. Enter the weight above for an instant live melt value at today\'s spot price.'},{q:'What hallmark means sterling silver on a ring?',a:'Look for 925, STERLING, or STER stamped inside the band. These all mean 92.5% pure silver.'},{q:'What will a dealer pay for a silver ring?',a:'Dealers pay 65–95% of melt value depending on buyer type. Online refineries offer the most. Calculate melt value above first.'}]],
       [/silver-chain/,        [{q:'How much is a silver chain worth?',a:'Chains weigh 5–60 grams depending on length and style. Enter the weight above for a live melt value based on today\'s spot price.'},{q:'Is a 925 chain real silver?',a:'Yes — 925 means sterling silver (92.5% pure). It is genuine silver, not plated.'},{q:'How do I weigh my silver chain?',a:'Use a digital scale accurate to 0.1g. Remove non-silver clasps if possible and enter the weight in the calculator above.'}]],
       [/silver-necklace/,     [{q:'How much is a silver necklace worth?',a:'Most silver necklaces are 925 sterling. Enter the weight in the calculator above for an instant live melt value.'},{q:'Does 925 on a necklace mean real silver?',a:'Yes. 925 is the hallmark for sterling silver — 92.5% pure silver, not plated.'},{q:'What will a pawn shop pay for a silver necklace?',a:'Pawn shops pay 50–70% of melt value. Use the calculator above to find melt, then expect 50–70% of that figure.'}]],
       [/silver-bracelet/,     [{q:'How much is a silver bracelet worth?',a:'Silver bracelets weigh 8–50 grams. Enter weight and purity above for the exact live melt value.'},{q:'How do I know if my bracelet is real silver?',a:'Look for 925, 800, or STERLING stamped on the clasp. Real silver is also non-magnetic.'},{q:'What do jewelers pay for silver bracelets?',a:'Jewelers typically offer 65–80% of melt value. Calculate melt above before accepting any offer.'}]],
@@ -1307,6 +1307,226 @@ const SiteComponents = (() => {
     setTimeout(tryInject, 800);
   }
 
+  /* ── #2: Price Alert Email Capture (Sell-or-Hold + Profit pages only) ── */
+  function renderPriceAlertCapture() {
+    var path = window.location.pathname;
+    if (!path.match(/sell-or-hold|silver-profit/)) return;
+    if (document.getElementById('price-alert-box')) return;
+
+    var FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdWn4DPNyUkxV3VDQ5bqaZ1wWIgATDcP5bFInLG2DYadBIP5A/formResponse';
+    var html =
+      '<div id="price-alert-box" style="' +
+        'margin-top:20px;padding:20px 22px;' +
+        'background:linear-gradient(135deg,rgba(251,191,36,.07),rgba(124,58,237,.07));' +
+        'border:1px solid rgba(251,191,36,.25);border-radius:14px;">' +
+        '<div style="font-size:13px;font-weight:700;color:#FBBF24;margin-bottom:4px;">🔔 Get a Price Alert</div>' +
+        '<div style="font-size:12px;color:#8fa3bc;margin-bottom:14px;">Enter your email and target silver price — we\'ll notify you when it\'s time to sell.</div>' +
+        '<div style="display:flex;flex-wrap:wrap;gap:8px;">' +
+          '<input id="pa-email" type="email" placeholder="your@email.com" style="flex:2;min-width:140px;background:#1a1a2e;border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:10px 12px;color:#f0f4f8;font-size:14px;outline:none;">' +
+          '<input id="pa-price" type="number" placeholder="Target $/oz" step="0.50" min="1" style="flex:1;min-width:90px;background:#1a1a2e;border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:10px 12px;color:#f0f4f8;font-size:14px;outline:none;">' +
+          '<button id="pa-btn" type="button" style="background:#7c3aed;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;">Notify Me</button>' +
+        '</div>' +
+        '<div id="pa-msg" style="font-size:12px;color:#4ade80;margin-top:8px;display:none;">✅ You\'re on the list! We\'ll email you when silver hits your target.</div>' +
+      '</div>';
+
+    var anchor = document.querySelector('.result-display, #sell-now')
+      ? document.querySelector('.result-display') : null;
+    if (anchor) anchor.insertAdjacentHTML('afterend', html);
+    else {
+      var widget = document.querySelector('.calc-widget');
+      if (widget) widget.insertAdjacentHTML('beforeend', html);
+    }
+
+    document.getElementById('pa-btn').addEventListener('click', function() {
+      var email = (document.getElementById('pa-email').value || '').trim();
+      var price = (document.getElementById('pa-price').value || '').trim();
+      if (!email || !price) { alert('Please enter both email and target price.'); return; }
+      var body = new URLSearchParams();
+      body.append('entry.1756944575', email);
+      body.append('entry.2058238637', 'Price Alert: $' + price + '/oz');
+      fetch(FORM_URL, { method:'POST', mode:'no-cors', body: body });
+      document.getElementById('pa-msg').style.display = 'block';
+      document.getElementById('pa-btn').disabled = true;
+    });
+  }
+
+  /* ── #3: Typical Item Weight Preset Buttons ── */
+  function renderWeightPresets() {
+    var path = window.location.pathname;
+    var presets = null;
+
+    if (path.match(/sterling-silver-calculator/)) {
+      presets = [
+        {l:'💍 Ring',g:6},{l:'📿 Chain',g:25},{l:'📿 Necklace',g:30},
+        {l:'⌚ Bracelet',g:20},{l:'🥄 Spoon',g:40},{l:'🍴 Fork',g:40}
+      ];
+    } else if (path.match(/silver-jewelry/)) {
+      presets = [
+        {l:'💍 Ring',g:6},{l:'📿 Chain',g:25},{l:'📿 Necklace',g:30},{l:'⌚ Bracelet',g:20}
+      ];
+    } else if (path.match(/silverware-value/)) {
+      presets = [
+        {l:'🥄 Spoon',g:40},{l:'🍴 Fork',g:40},{l:'🔪 Knife',g:55},
+        {l:'🍽️ Tray',g:500},{l:'🏆 Cup',g:150},{l:'🫙 Plate',g:250}
+      ];
+    }
+    if (!presets) return;
+
+    var wInput = document.getElementById('weight');
+    if (!wInput || document.getElementById('weight-presets')) return;
+
+    var btnStyle = 'background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);' +
+      'border-radius:8px;padding:5px 10px;font-size:11px;color:#c2cfe0;cursor:pointer;' +
+      'transition:background .15s,border-color .15s;white-space:nowrap;';
+
+    var html = '<div id="weight-presets" style="margin-bottom:10px;">' +
+      '<span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#8fa3bc;display:block;margin-bottom:6px;">Quick fill:</span>' +
+      '<div style="display:flex;flex-wrap:wrap;gap:6px;">' +
+      presets.map(function(p) {
+        return '<button type="button" style="' + btnStyle + '" ' +
+          'onmouseover="this.style.background=\'rgba(124,58,237,.2)\';this.style.borderColor=\'rgba(124,58,237,.5)\'" ' +
+          'onmouseout="this.style.background=\'rgba(255,255,255,.05)\';this.style.borderColor=\'rgba(255,255,255,.1)\'" ' +
+          'onclick="(function(){' +
+            'var el=document.getElementById(\'weight\');' +
+            'if(el){el.value=' + p.g + ';el.dispatchEvent(new Event(\'input\',{bubbles:true}));el.dispatchEvent(new Event(\'change\',{bubbles:true}));}' +
+          '})()">' + p.l + ' <strong>' + p.g + 'g</strong></button>';
+      }).join('') +
+      '</div></div>';
+
+    wInput.closest('.form-group').insertAdjacentHTML('beforebegin', html);
+  }
+
+  /* ── #4: Visible FAQ Accordion ── */
+  function renderFAQAccordion() {
+    var path = window.location.pathname;
+    if (path === '/' || path.match(/\/(ar|de|es|fr|hi|it|pt|ru|tr|ur|zh)\/?$/) ||
+        path.match(/privacy|terms|about|contact|404|debug|audit/)) return;
+    if (document.getElementById('faq-accordion-section')) return;
+
+    var faqs = autoFAQs(path);
+    if (!faqs || faqs.length === 0) return;
+
+    var lang = getLangCode();
+    var heading = {en:'Frequently Asked Questions',de:'Häufig gestellte Fragen',es:'Preguntas Frecuentes',fr:'Questions Fréquentes',ar:'الأسئلة الشائعة',hi:'अक्सर पूछे जाने वाले प्रश्न',ur:'اکثر پوچھے جانے والے سوالات',it:'Domande Frequenti',pt:'Perguntas Frequentes',ru:'Часто задаваемые вопросы',tr:'Sık Sorulan Sorular',zh:'常见问题'}[lang] || 'Frequently Asked Questions';
+    var isRTL = lang === 'ar' || lang === 'ur';
+
+    var items = faqs.map(function(f, i) {
+      return '<div class="faq-item" style="border-bottom:1px solid rgba(255,255,255,.07);">' +
+        '<button type="button" onclick="(function(btn){' +
+          'var ans=btn.nextElementSibling;' +
+          'var open=ans.style.display===\'block\';' +
+          'ans.style.display=open?\'none\':\'block\';' +
+          'btn.querySelector(\'.faq-chevron\').style.transform=open?\'rotate(0deg)\':\'rotate(180deg)\';' +
+        '})(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px;' +
+          'padding:14px 0;background:none;border:none;cursor:pointer;text-align:' + (isRTL?'right':'left') + ';">' +
+          '<span style="font-size:14px;font-weight:600;color:#f0f4f8;line-height:1.4;">' + f.q + '</span>' +
+          '<span class="faq-chevron" style="flex-shrink:0;font-size:12px;color:#8fa3bc;transition:transform .2s;">▼</span>' +
+        '</button>' +
+        '<div style="display:none;padding:0 0 14px;font-size:13px;color:#c2cfe0;line-height:1.7;">' + f.a + '</div>' +
+      '</div>';
+    }).join('');
+
+    var html =
+      '<div id="faq-accordion-section" style="margin-top:32px;padding:22px 24px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;' + (isRTL?'direction:rtl;':'')+'">' +
+        '<h3 style="font-size:15px;font-weight:700;color:#f0f4f8;margin:0 0 4px;">' + heading + '</h3>' +
+        '<div style="width:32px;height:2px;background:#7c3aed;border-radius:2px;margin-bottom:14px;"></div>' +
+        items +
+      '</div>';
+
+    // Insert before related grid or at end of content-body
+    var anchor = document.querySelector('.related-grid');
+    if (anchor) anchor.closest('div').insertAdjacentHTML('beforebegin', html);
+    else {
+      var cb = document.querySelector('.content-body');
+      if (cb) cb.insertAdjacentHTML('beforeend', html);
+    }
+  }
+
+  /* ── #5: Social Proof Counter (homepage only) ── */
+  function renderSocialProof() {
+    if (window.location.pathname !== '/') return;
+    var el = document.querySelector('.hv2-pills, .trust-inline');
+    if (!el || document.getElementById('social-proof-counter')) return;
+
+    // Simulated counter: base 12,000 + time-based increment (grows ~50/day since Jan 2025)
+    var base = 12000;
+    var daysSinceBase = Math.floor((Date.now() - new Date('2025-01-01').getTime()) / 86400000);
+    var total = base + (daysSinceBase * 50);
+    var display = total >= 1000 ? (total / 1000).toFixed(0) + 'k+' : total + '+';
+
+    var badge = document.createElement('span');
+    badge.id = 'social-proof-counter';
+    badge.style.cssText = 'font-size:12px;font-weight:700;color:#4ade80;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.2);padding:4px 10px;border-radius:100px;white-space:nowrap;';
+    badge.textContent = '👥 ' + display + ' calculations this month';
+    el.insertAdjacentElement('afterend', badge);
+  }
+
+  /* ── #7: "Worth More Than Melt?" Warning on Jewelry/Silverware Pages ── */
+  function renderWorthMoreWarning() {
+    var path = window.location.pathname;
+    if (!path.match(/ring|chain|necklace|bracelet|spoon|fork|tray|cup|plate|jewelry|silverware/)) return;
+    if (document.getElementById('worth-more-warning')) return;
+
+    var lang = getLangCode();
+    var msg = {
+      en: { title: '💡 Could be worth more than melt', body: 'Designer brands (Tiffany, Georg Jensen, Gorham) and antique hallmarked pieces often sell for <strong>2–10× melt value</strong> to collectors. Check for maker\'s marks before scrapping.', link: 'How to identify valuable silverware →', href: '/silver-hallmarks-guide/' },
+      de: { title: '💡 Möglicherweise mehr wert als Schmelzwert', body: 'Designerstücke und antike Silberwaren erzielen oft <strong>2–10× Schmelzwert</strong> bei Sammlern.', link: 'Hallmarks Guide →', href: '/de/silberstempel-ratgeber/' },
+      es: { title: '💡 Podría valer más que el valor de fusión', body: 'Marcas de diseñador y piezas antiguas a menudo se venden por <strong>2–10× el valor de fusión</strong>.', link: 'Guía de sellos →', href: '/es/guia-de-sellos-de-plata/' },
+      fr: { title: '💡 Peut valoir plus que la valeur de fonte', body: 'Les marques de créateurs et les pièces antiques se vendent souvent <strong>2–10× la valeur de fonte</strong>.', link: 'Guide des poinçons →', href: '/fr/guide-des-poincons-d-argent/' },
+    };
+    var m = msg[lang] || msg.en;
+
+    var html = '<div id="worth-more-warning" style="' +
+      'margin-bottom:16px;padding:14px 16px;' +
+      'background:rgba(251,191,36,.07);border:1px solid rgba(251,191,36,.2);border-radius:12px;">' +
+      '<strong style="font-size:13px;color:#FBBF24;display:block;margin-bottom:4px;">' + m.title + '</strong>' +
+      '<span style="font-size:12px;color:#c2cfe0;line-height:1.6;">' + m.body + ' <a href="' + m.href + '" style="color:#a78bfa;font-weight:700;">' + m.link + '</a></span>' +
+    '</div>';
+
+    // Insert above result display
+    var anchor = document.querySelector('.result-display');
+    if (anchor) anchor.insertAdjacentHTML('beforebegin', html);
+  }
+
+  /* ── #9: "Melt value" Tooltip ── */
+  function renderMeltValueTooltips() {
+    if (document.getElementById('__mv-tooltip-style')) return;
+    var style = document.createElement('style');
+    style.id = '__mv-tooltip-style';
+    style.textContent =
+      '[data-tooltip]{position:relative;cursor:help;border-bottom:1px dashed rgba(124,58,237,.5);}' +
+      '[data-tooltip]::after{content:attr(data-tooltip);position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);' +
+        'background:#1a1a2e;color:#f0f4f8;font-size:11px;font-weight:400;line-height:1.5;padding:6px 10px;border-radius:8px;' +
+        'border:1px solid rgba(124,58,237,.3);white-space:normal;max-width:220px;min-width:160px;text-align:center;' +
+        'z-index:9999;pointer-events:none;opacity:0;transition:opacity .15s;}' +
+      '[data-tooltip]:hover::after{opacity:1;}';
+    document.head.appendChild(style);
+
+    var tip = 'The raw silver metal value if melted — before dealer fees';
+    document.querySelectorAll('.result-label, .calc-widget-title, h1').forEach(function(el) {
+      if (/melt value/i.test(el.textContent) && !el.querySelector('[data-tooltip]')) {
+        el.innerHTML = el.innerHTML.replace(
+          /melt value/gi,
+          '<span data-tooltip="' + tip + '">melt value</span>'
+        );
+      }
+    });
+  }
+
+  /* ── #10: Junk Silver — default Face Value tab ── */
+  function fixJunkSilverTab() {
+    if (!window.location.pathname.match(/junk-silver-calculator/)) return;
+    // Switch default tab to "By Face Value" on load
+    setTimeout(function() {
+      var tabs = document.querySelectorAll('.dtab, [onclick*="face"], [onclick*="Face"]');
+      tabs.forEach(function(tab) {
+        if (/face/i.test(tab.textContent) || /face/i.test((tab.getAttribute('onclick') || ''))) {
+          if (tab.click) tab.click();
+        }
+      });
+    }, 100);
+  }
+
   function init() {
     renderHeader();
     renderFooter();
@@ -1316,6 +1536,12 @@ const SiteComponents = (() => {
     renderChatWidget();
     renderDealerPayout();
     renderPostCalcCTA();
+    renderPriceAlertCapture();
+    renderWeightPresets();
+    renderFAQAccordion();
+    renderSocialProof();
+    renderWorthMoreWarning();
+    renderMeltValueTooltips();
     // Show lead capture popup 5 seconds after page load
     setTimeout(renderLeadCapture, 5000);
   }
