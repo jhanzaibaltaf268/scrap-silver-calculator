@@ -1542,7 +1542,77 @@ const SiteComponents = (() => {
     renderSocialProof();
     renderWorthMoreWarning();
     renderMeltValueTooltips();
+    localizeCalculatorUI();
     // Lead capture popup removed
+  }
+
+  /* ── Translate calculator UI labels for HI / UR pages ── */
+  function localizeCalculatorUI() {
+    var lang = getLangCode();
+    if (lang !== 'hi' && lang !== 'ur') return;
+    var T = window.MenuTranslations && window.MenuTranslations[lang];
+    if (!T) return;
+
+    function rep(selector, key) {
+      if (!T[key]) return;
+      document.querySelectorAll(selector).forEach(function(el) {
+        if (el.tagName === 'INPUT' || el.tagName === 'SELECT') {
+          if (el.placeholder) el.placeholder = T[key];
+        } else {
+          el.textContent = T[key];
+        }
+      });
+    }
+
+    // Labels
+    rep('.fl',          'Silver Purity');   // catches first .fl — Weight label
+    document.querySelectorAll('.fl').forEach(function(el, i) {
+      if (i === 0 && T['Weight'])       el.textContent = T['Weight'];
+      if (i === 1 && T['Silver Purity']) el.textContent = T['Silver Purity'];
+    });
+
+    // Result labels
+    rep('#calc-btn',    'Calculate Melt Value');
+    document.querySelectorAll('.result-label, .res-label').forEach(function(el) {
+      if (/melt/i.test(el.textContent) && T['Estimated Melt Value'])
+        el.textContent = T['Estimated Melt Value'];
+    });
+
+    // Purity select options
+    var purityNames = {
+      'Fine Silver': T['Fine Silver (99.9%)'] || T['Fine Silver'],
+      'Britannia Silver': T['Britannia Silver (95.8%)'],
+      'Sterling Silver': T['Sterling Silver (92.5%)'],
+      'Coin Silver': T['Coin Silver (90%)'],
+      'European Silver 835': T['European Silver (83.5%)'],
+      'European Silver 800': T['European Silver (80%)']
+    };
+    document.querySelectorAll('select option').forEach(function(opt) {
+      var text = opt.textContent.trim();
+      Object.keys(purityNames).forEach(function(en) {
+        if (purityNames[en] && text.indexOf(en) !== -1) {
+          opt.textContent = purityNames[en];
+        }
+      });
+    });
+
+    // Unit chips
+    var unitMap = {
+      'GRAMS': T['Grams'], 'TROY OZ': T['Troy Ounces'],
+      'DWT': T['Pennyweight'], 'KG': T['Kilograms']
+    };
+    document.querySelectorAll('.uchip').forEach(function(chip) {
+      var txt = chip.textContent.trim();
+      if (unitMap[txt]) chip.textContent = unitMap[txt];
+    });
+
+    // Spot price label
+    document.querySelectorAll('.hv2-spot-label, .pt-label').forEach(function(el) {
+      if (/silver spot/i.test(el.textContent) && T['Silver Spot Price'])
+        el.textContent = T['Silver Spot Price'];
+      if (/today/i.test(el.textContent) && T["Today's Prices"])
+        el.textContent = T["Today's Prices"];
+    });
   }
 
   if (document.readyState === 'loading') {
