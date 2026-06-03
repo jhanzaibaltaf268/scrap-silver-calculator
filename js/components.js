@@ -1537,6 +1537,7 @@ const SiteComponents = (() => {
     renderDealerPayout();
     renderPostCalcCTA();
     renderPriceAlertCapture();
+    setRegionalCurrency();
     renderWeightPresets();
     renderFAQAccordion();
     renderSocialProof();
@@ -1546,10 +1547,24 @@ const SiteComponents = (() => {
     // Lead capture popup removed
   }
 
-  /* ── Translate calculator UI labels for HI / UR pages ── */
+  /* ── Auto-set EUR currency for European language pages ── */
+  function setRegionalCurrency() {
+    var lang = getLangCode();
+    var eurLangs  = ['de','fr','it','es','pt','nl'];
+    var gbpLangs  = [];
+    var inrLangs  = ['hi'];
+    var pkrLangs  = ['ur'];
+    if (typeof SilverPrice === 'undefined' || !SilverPrice.setCurrency) return;
+    if (eurLangs.indexOf(lang)  !== -1) SilverPrice.setCurrency('EUR');
+    else if (gbpLangs.indexOf(lang) !== -1) SilverPrice.setCurrency('GBP');
+    else if (inrLangs.indexOf(lang) !== -1) SilverPrice.setCurrency('INR');
+    else if (pkrLangs.indexOf(lang) !== -1) SilverPrice.setCurrency('PKR');
+  }
+
+  /* ── Translate calculator UI labels for DE / HI / UR pages ── */
   function localizeCalculatorUI() {
     var lang = getLangCode();
-    if (lang !== 'hi' && lang !== 'ur') return;
+    if (lang !== 'de' && lang !== 'hi' && lang !== 'ur') return;
     var T = window.MenuTranslations && window.MenuTranslations[lang];
     if (!T) return;
 
@@ -1612,6 +1627,40 @@ const SiteComponents = (() => {
         el.textContent = T['Silver Spot Price'];
       if (/today/i.test(el.textContent) && T["Today's Prices"])
         el.textContent = T["Today's Prices"];
+    });
+
+    // Tab labels (SCRAP / COINS / BULLION)
+    var tabMap = {
+      'SCRAP':   T['SCRAP'],
+      'COINS':   T['COINS'],
+      'BULLION': T['BULLION']
+    };
+    document.querySelectorAll('.dtab').forEach(function(tab) {
+      var firstSpan = tab.querySelector('span');
+      if (firstSpan) {
+        var txt = firstSpan.textContent.trim();
+        if (tabMap[txt]) firstSpan.textContent = tabMap[txt];
+      }
+    });
+
+    // Purity button labels (Fine / Sterling / Coin etc.)
+    var purityLabelMap = {
+      'Fine':      T['Fine'],
+      'Sterling':  T['Sterling'],
+      'Coin':      T['Coin'],
+      'Britannia': T['Britannia']
+    };
+    document.querySelectorAll('.porb .pl').forEach(function(el) {
+      var txt = el.textContent.trim();
+      if (purityLabelMap[txt]) el.textContent = purityLabelMap[txt];
+    });
+
+    // Form labels using .fl class
+    document.querySelectorAll('.ctrl-group .fl, .form-label').forEach(function(el) {
+      var txt = el.textContent.trim();
+      if (/^weight$/i.test(txt) && T['Weight'])         el.textContent = T['Weight'];
+      if (/^silver purity$/i.test(txt) && T['Silver Purity']) el.textContent = T['Silver Purity'];
+      if (/^estimated melt/i.test(txt) && T['Estimated Melt Value']) el.textContent = T['Estimated Melt Value'];
     });
   }
 
