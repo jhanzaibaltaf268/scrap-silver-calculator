@@ -663,22 +663,22 @@ window.MenuTranslations = {
     "ar": "قيمة-ملعقة-فضية"
   },
   "800-silver-price-today": {
-    "ar": "800-silver-price-today", "de": "800-silver-price-today", "es": "800-silver-price-today",
+    "ar": "800-silver-price-today", "de": "800-silber-preis-heute", "es": "800-silver-price-today",
     "hi": "800-silver-price-today", "it": "800-silver-price-today", "pt": "800-silver-price-today",
     "ru": "800-silver-price-today", "tr": "800-silver-price-today", "ur": "800-silver-price-today", "zh": "800-silver-price-today"
   },
   "900-silver-price-today": {
-    "ar": "900-silver-price-today", "de": "900-silver-price-today", "es": "900-silver-price-today",
+    "ar": "900-silver-price-today", "de": "900-muenzsilber-preis-heute", "es": "900-silver-price-today",
     "hi": "900-silver-price-today", "it": "900-silver-price-today", "pt": "900-silver-price-today",
     "ru": "900-silver-price-today", "tr": "900-silver-price-today", "ur": "900-silver-price-today", "zh": "900-silver-price-today"
   },
   "925-silver-price-today": {
-    "ar": "925-silver-price-today", "de": "925-silver-price-today", "es": "925-silver-price-today",
+    "ar": "925-silver-price-today", "de": "925-sterlingsilber-preis-heute", "es": "925-silver-price-today",
     "hi": "925-silver-price-today", "it": "925-silver-price-today", "pt": "925-silver-price-today",
     "ru": "925-silver-price-today", "tr": "925-silver-price-today", "ur": "925-silver-price-today", "zh": "925-silver-price-today"
   },
   "999-silver-price-today": {
-    "ar": "999-silver-price-today", "de": "999-silver-price-today", "es": "999-silver-price-today",
+    "ar": "999-silver-price-today", "de": "999-feinsilber-preis-heute", "es": "999-silver-price-today",
     "hi": "999-silver-price-today", "it": "999-silver-price-today", "pt": "999-silver-price-today",
     "ru": "999-silver-price-today", "tr": "999-silver-price-today", "ur": "999-silver-price-today", "zh": "999-silver-price-today"
   },
