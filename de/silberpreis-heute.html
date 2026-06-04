@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="de"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silberpreis heute | Live Spotpreis in Euro – XAG/EUR</title>
+  <meta name="description" content="Aktueller Silberpreis heute in Euro – stündlich aktualisiert von COMEX und LBMA. Live-Spotpreis, Reinheits-Preise und Händler-Auszahlungen für Deutschland.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/de/silberpreis-heute/">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YMX334ZW6Q');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5307005898686879" crossorigin="anonymous"></script>
+  <style>
+    :root{--accent:#7c3aed;--accent2:#a855f7;--gold:#fbbf24;--green:#34d399;}
+    body{color:#f0f4f8;line-height:1.7;}
+    .hero-price{font-size:clamp(3rem,8vw,6rem);font-weight:800;font-family:'JetBrains Mono',monospace;color:var(--accent2);line-height:1;}
+    .price-card{background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.25);border-radius:16px;padding:28px;text-align:center;}
+    .price-label{font-size:12px;color:#8fa3bc;text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;font-weight:600;}
+    .price-val{font-size:2rem;font-weight:800;font-family:'JetBrains Mono',monospace;color:var(--accent2);}
+    .price-sub{font-size:12px;color:#8fa3bc;margin-top:6px;}
+    .section-title{font-size:26px;font-weight:700;margin-bottom:10px;}
+    .section-desc{color:#c2cfe0;max-width:760px;margin-bottom:28px;}
+    table{width:100%;border-collapse:collapse;}
+    th,td{padding:12px 18px;text-align:left;border-bottom:1px solid rgba(255,255,255,0.08);}
+    th{background:rgba(124,58,237,0.12);font-size:12px;text-transform:uppercase;font-weight:600;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700;}
+    .badge-green{background:rgba(52,211,153,0.15);color:#34d399;border:1px solid rgba(52,211,153,0.3);}
+    .badge-gold{background:rgba(251,191,36,0.15);color:#fbbf24;border:1px solid rgba(251,191,36,0.3);}
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container" style="padding-top:16px;"><div id="breadcrumb"></div></div>
+
+    <section class="container" style="padding:40px 20px 20px;">
+      <div style="display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;flex-wrap:wrap;">
+        <div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
+            <span style="display:inline-flex;align-items:center;gap:6px;background:rgba(52,211,153,0.12);border:1px solid rgba(52,211,153,0.3);border-radius:20px;padding:5px 14px;font-size:12px;font-weight:700;color:#34d399;">
+              ● LIVE MARKT
+            </span>
+            <span style="font-size:12px;color:#8fa3bc;" id="last-updated">Aktualisiert vor 1 Min.</span>
+          </div>
+          <h1 style="font-family:'Outfit',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.1;margin-bottom:14px;">
+            Silberpreis heute
+            <span style="display:block;color:var(--accent2);">Live Spotpreis in Euro</span>
+          </h1>
+          <p style="font-size:16px;color:#c2cfe0;max-width:600px;line-height:1.8;">
+            Aktueller Silber-Spotpreis von COMEX &amp; LBMA – stündlich aktualisiert. Alle Preise in Euro (€), umgerechnet zum tagesaktuellen Wechselkurs.
+          </p>
+        </div>
+        <div style="background:rgba(124,58,237,0.1);border:1px solid rgba(124,58,237,0.3);border-radius:20px;padding:28px;min-width:220px;text-align:center;">
+          <div style="font-size:12px;color:#8fa3bc;text-transform:uppercase;margin-bottom:10px;font-weight:600;">AKTUELLER SILBERPREIS</div>
+          <div class="hero-price">€<span id="spot-price-eur">--</span></div>
+          <div style="font-size:13px;color:#8fa3bc;margin-top:8px;">pro Feinunze (ozt)</div>
+          <div style="font-size:12px;color:#8fa3bc;margin-top:6px;" id="spot-usd-display"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="padding:24px 20px 48px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;">
+        <div class="price-card">
+          <div class="price-label">Pro Gramm</div>
+          <div class="price-val">€<span id="price-gram">--</span></div>
+          <div class="price-sub">999 Feinsilber</div>
+        </div>
+        <div class="price-card">
+          <div class="price-label">Pro Kilogramm</div>
+          <div class="price-val">€<span id="price-kg">--</span></div>
+          <div class="price-sub">Für größere Mengen</div>
+        </div>
+        <div class="price-card" style="background:rgba(251,191,36,0.08);border-color:rgba(251,191,36,0.25);">
+          <div class="price-label">925 Sterling</div>
+          <div class="price-val" style="color:var(--gold);">€<span id="price-925">--</span></div>
+          <div class="price-sub">Pro Gramm</div>
+        </div>
+        <div class="price-card" style="background:rgba(52,211,153,0.08);border-color:rgba(52,211,153,0.25);">
+          <div class="price-label">Gold/Silber Ratio</div>
+          <div class="price-val" style="color:var(--green);" id="gs-ratio">--</div>
+          <div class="price-sub">Aktuelles Verhältnis</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="padding:0 20px 56px;">
+      <h2 class="section-title">Silberpreis nach Reinheit (pro Gramm)</h2>
+      <p class="section-desc">Alle Preise in Euro, basierend auf dem aktuellen Spotpreis. Schmelzwert ohne Händleraufschlag.</p>
+      <div style="overflow-x:auto;border-radius:16px;border:1px solid rgba(255,255,255,0.08);">
+        <table>
+          <thead><tr><th>Reinheit</th><th>Bezeichnung</th><th>€/Gramm</th><th>€/Unze</th><th>Verwendung</th></tr></thead>
+          <tbody id="purity-table">
+            <tr><td>999</td><td>Feinsilber</td><td id="t-999g">--</td><td id="t-999oz">--</td><td><span class="badge badge-green">Barren &amp; Münzen</span></td></tr>
+            <tr><td>925</td><td>Sterlingsilber</td><td id="t-925g">--</td><td id="t-925oz">--</td><td><span class="badge badge-gold">Schmuck &amp; Besteck</span></td></tr>
+            <tr><td>900</td><td>Münzsilber</td><td id="t-900g">--</td><td id="t-900oz">--</td><td><span class="badge badge-gold">Historische Münzen</span></td></tr>
+            <tr><td>835</td><td>Europäisches Silber</td><td id="t-835g">--</td><td id="t-835oz">--</td><td><span class="badge badge-gold">Altes Besteck</span></td></tr>
+            <tr><td>800</td><td>Antikes Silber</td><td id="t-800g">--</td><td id="t-800oz">--</td><td><span class="badge badge-gold">Antiken &amp; Schmuck</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="container" style="padding:0 20px 56px;">
+      <h2 class="section-title">Händler-Auszahlungen in Deutschland</h2>
+      <p class="section-desc">Was zahlen deutsche Silberhändler wirklich? Typische Ankaufspreise im Vergleich zum Schmelzwert.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;">
+        <div style="background:rgba(22,22,36,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
+          <h3 style="font-size:15px;font-weight:700;margin-bottom:16px;color:#34d399;">Online-Ankäufer (Beste Preise)</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;color:#c2cfe0;font-size:14px;">
+            <li>▸ <strong>Degussa Goldhandel</strong> – 90–95% vom Schmelzwert</li>
+            <li>▸ <strong>Gold.de Marktplatz</strong> – 88–94% (Barren &amp; Münzen)</li>
+            <li>▸ <strong>Ankaeufer.de</strong> – 85–92% (Schmuck &amp; Besteck)</li>
+            <li>▸ <strong>ESG Gold</strong> – 88–95% (zertifiziertes Silber)</li>
+          </ul>
+        </div>
+        <div style="background:rgba(22,22,36,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
+          <h3 style="font-size:15px;font-weight:700;margin-bottom:16px;color:var(--gold);">Lokale Händler</h3>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:10px;color:#c2cfe0;font-size:14px;">
+            <li>▸ <strong>Münzhändler</strong> – 80–92% (Sammlermünzen)</li>
+            <li>▸ <strong>Juweliere</strong> – 65–80% (Schmuck)</li>
+            <li>▸ <strong>Pfandhäuser</strong> – 50–65% (schnelle Auszahlung)</li>
+            <li>▸ <strong>Schrotthandel</strong> – 60–75% (Besteck, Tafelsilber)</li>
+          </ul>
+        </div>
+        <div style="background:rgba(22,22,36,0.7);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:24px;">
+          <h3 style="font-size:15px;font-weight:700;margin-bottom:16px;color:var(--accent2);">Steuer-Hinweis</h3>
+          <p style="color:#c2cfe0;font-size:14px;line-height:1.8;">
+            <strong>Anlagesilber:</strong> 0% MwSt. auf Silberbarren und -münzen (§ 12 UStG)<br><br>
+            <strong>Altsilber verkaufen:</strong> Privatverkäufe bis 600 €/Jahr steuerfrei. Über 600 € muss der Gewinn als sonstiges Einkommen versteuert werden.<br><br>
+            <strong>Tipp:</strong> Kaufbelege aufheben – nach 1 Jahr Haltedauer sind Gewinne steuerfrei!
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="container" style="padding:0 20px 56px;">
+      <h2 class="section-title">Häufige Fragen zum Silberpreis</h2>
+      <div style="display:flex;flex-direction:column;gap:16px;max-width:800px;">
+        <div style="background:rgba(22,22,36,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:24px;">
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Wo kann ich den aktuellen Silberpreis verfolgen?</h3>
+          <p style="color:#c2cfe0;font-size:14px;">Dieser Preis wird stündlich von COMEX (New York) und LBMA (London) aktualisiert. Der Spotpreis gilt für sofortige Lieferung von 999-Feinsilber in Feinunzen.</p>
+        </div>
+        <div style="background:rgba(22,22,36,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:24px;">
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Warum weicht der Händlerpreis vom Spotpreis ab?</h3>
+          <p style="color:#c2cfe0;font-size:14px;">Händler müssen Verarbeitungskosten, Prägungsgebühren und Gewinnmargen einrechnen. Bei Barren zahlen Sie 3–8% Aufschlag, bei Münzen 5–20% über Spot.</p>
+        </div>
+        <div style="background:rgba(22,22,36,0.6);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:24px;">
+          <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Wie berechne ich den Schmelzwert meines Silbers?</h3>
+          <p style="color:#c2cfe0;font-size:14px;">Schmelzwert = Gewicht (g) × Feingehalt × (Spotpreis € / 31,1035). Nutzen Sie unseren <a href="/de/silberpreis-pro-gramm/" style="color:var(--accent2);">Silberpreis-Rechner</a> für genaue Ergebnisse.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div id="site-footer"></div>
+  <script src="/js/silver-price.js"></script>
+  <script src="/js/components.js"></script>
+  <script>
+    const EUR_RATE = 0.92;
+    function fmt(v,d=2){return v.toLocaleString('de-DE',{minimumFractionDigits:d,maximumFractionDigits:d});}
+
+    function updateAll() {
+      try {
+        const spotUSD = SilverPrice.getPrice();
+        if (!spotUSD) return;
+        const spotEUR = spotUSD * EUR_RATE;
+        const perGram = spotEUR / 31.1035;
+
+        document.getElementById('spot-price-eur').textContent = fmt(spotEUR);
+        document.getElementById('spot-usd-display').textContent = `$${fmt(spotUSD)} USD`;
+        document.getElementById('price-gram').textContent = fmt(perGram);
+        document.getElementById('price-kg').textContent = fmt(perGram * 1000);
+        document.getElementById('price-925').textContent = fmt(perGram * 0.925);
+
+        const gsRatio = SilverPrice.getGoldPrice ? (SilverPrice.getGoldPrice() / spotUSD) : null;
+        document.getElementById('gs-ratio').textContent = gsRatio ? fmt(gsRatio, 1) + ':1' : '~85:1';
+
+        const purities = [
+          {id:'999', p:0.999}, {id:'925', p:0.925}, {id:'900', p:0.900},
+          {id:'835', p:0.835}, {id:'800', p:0.800}
+        ];
+        purities.forEach(({id, p}) => {
+          const gEl = document.getElementById('t-'+id+'g');
+          const ozEl = document.getElementById('t-'+id+'oz');
+          if (gEl) gEl.textContent = '€' + fmt(perGram * p);
+          if (ozEl) ozEl.textContent = '€' + fmt(spotEUR * p);
+        });
+
+        document.getElementById('last-updated').textContent = 'Aktualisiert: ' + new Date().toLocaleTimeString('de-DE', {hour:'2-digit',minute:'2-digit'}) + ' Uhr';
+      } catch(e) { console.log('Preis wird aktualisiert...'); }
+    }
+
+    SiteComponents.renderBreadcrumb('breadcrumb', [{label:'Startseite',href:'/'},{label:'Silberpreis heute'}]);
+    updateAll();
+    SilverPrice.onPriceUpdate(() => updateAll());
+  </script>
+</body></html>

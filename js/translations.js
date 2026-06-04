@@ -683,7 +683,7 @@ window.MenuTranslations = {
     "ru": "999-silver-price-today", "tr": "999-silver-price-today", "ur": "999-silver-price-today", "zh": "999-silver-price-today"
   },
   "silver-price-today": {
-    "de": "silberpreis-pro-gramm"
+    "de": "silberpreis-heute"
   },
   "silver-price-per-ounce": {
     "de": "silberpreis-pro-unze"
