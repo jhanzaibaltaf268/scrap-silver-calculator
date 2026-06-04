@@ -93,35 +93,35 @@
     </section>
     <div class="calc-page-layout">
       <div class="calc-widget">
-        <div class="calc-widget-title"><span class="icon">📊</span> Silberpreis-Umrechner</div>
-
-          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Preis berechnen</button>
+        <div class="calc-widget-title"><span class="icon">📊</span> Silver Price Converter</div>
+        
+          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Schmelzwert Berechnen</button>
           <div class="result-display" style="margin-bottom:var(--space-xl);">
-          <div class="result-label">Silberpreis pro Gramm (€)</div>
-          <div class="result-value" id="price-gram">€0,00</div>
-          <div class="result-detail" id="price-update">Basiert auf Live-Spotpreis</div>
+          <div class="result-label">Silberpreis pro Gramm</div>
+          <div class="result-value" id="price-gram">$0.00</div>
+          <div class="result-detail" id="price-update">Based on live spot price</div>
         </div>
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);">
           <div class="result-display" style="padding:var(--space-md);">
             <div class="result-label" style="font-size:var(--fs-xs);">Pro Feinunze</div>
-            <div id="price-oz" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">€0,00</div>
+            <div id="price-oz" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
           </div>
           <div class="result-display" style="padding:var(--space-md);">
             <div class="result-label" style="font-size:var(--fs-xs);">Pro Kilogramm</div>
-            <div id="price-kg" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">€0,00</div>
+            <div id="price-kg" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
           </div>
           <div class="result-display" style="padding:var(--space-md);">
             <div class="result-label" style="font-size:var(--fs-xs);">Pro Pennygewicht</div>
-            <div id="price-dwt" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">€0,00</div>
+            <div id="price-dwt" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
           </div>
           <div class="result-display" style="padding:var(--space-md);">
             <div class="result-label" style="font-size:var(--fs-xs);">Pro Tola</div>
-            <div id="price-tola" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">€0,00</div>
+            <div id="price-tola" style="font-family:var(--font-display);font-weight:700;font-size:var(--fs-lg);color:var(--text-primary);">$0.00</div>
           </div>
         </div>
-        <h4 style="margin:var(--space-xl) 0 var(--space-md);">Preis nach Reinheit (pro Gramm in €)</h4>
+        <h4 style="margin:var(--space-xl) 0 var(--space-md);">Preis nach Reinheit (pro Gramm)</h4>
         <table class="purity-table">
-          <thead><tr><th>Reinheit</th><th>% Silber</th><th>€/Gramm</th></tr></thead>
+          <thead><tr><th>Reinheit</th><th>% Silber</th><th>Preis/Gramm</th></tr></thead>
           <tbody id="purity-rows"></tbody>
         </table>
       </div>
@@ -135,10 +135,10 @@
       <div>
         <h3 style="margin-bottom:var(--space-lg);">Verwandte Seiten</h3>
         <div class="related-grid">
-          <a href="/de/silberpreis-pro-unze/" class="related-link"><span class="r-icon">📊</span> Silberpreis pro Unze</a>
-          <a href="/de/1oz-silberwert/" class="related-link"><span class="r-icon">🧱</span> 1 Unze Silberwert</a>
-          <a href="/de/silberschrott-rechner/" class="related-link"><span class="r-icon">♻️</span> Schrottrechner</a>
-          <a href="/de/silber-reinheitstabelle/" class="related-link"><span class="r-icon">📋</span> Reinheitstabelle</a>
+          <a href="../de/silberpreis-pro-unze/" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+          <a href="../de/1oz-silberwert/" class="related-link"><span class="r-icon">🧱</span> 1oz Silver Value</a>
+          <a href="../de/silberschrott-rechner/" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
+          <a href="../de/silber-reinheitstabelle/" class="related-link"><span class="r-icon">📋</span> Purity Chart</a>
         </div>
       </div>
     </div>
@@ -151,28 +151,20 @@
     
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Startseite',href:'/'},{label:'Silver Price Per Gram'}]);
-    const EUR_RATE = 0.92;
-    function fmt(v){ return '€'+v.toFixed(4).replace('.',','); }
-    function fmt2(v){ return '€'+v.toFixed(2).replace('.',','); }
     function update(){
-      const spotUSD=SilverPrice.getPrice();
-      const spot=spotUSD*EUR_RATE;
+      const spot=SilverPrice.getPrice();
       const perGram=spot/31.1035;
       const perKg=spot*(1000/31.1035);
       const perDwt=spot/20;
       const perTola=spot*(11.6638/31.1035);
-      document.getElementById('price-gram').textContent=fmt(perGram);
-      document.getElementById('price-oz').textContent=fmt2(spot);
-      document.getElementById('price-kg').textContent=fmt2(perKg);
-      document.getElementById('price-dwt').textContent=fmt(perDwt);
-      document.getElementById('price-tola').textContent=fmt(perTola);
-      document.getElementById('price-update').textContent=`Spotpreis: ${fmt2(spot)}/Feinunze · ${fmt2(spotUSD*EUR_RATE/31.1035*1000)}/kg`;
-      const purities=[
-        {l:'999 Feinsilber',p:0.999},{l:'958 Britannia',p:0.958},
-        {l:'925 Sterling',p:0.925},{l:'900 Münzsilber',p:0.900},
-        {l:'835 Europäisch',p:0.835},{l:'800 Europäisch',p:0.800}
-      ];
-      document.getElementById('purity-rows').innerHTML=purities.map(pu=>`<tr><td>${pu.l}</td><td>${(pu.p*100).toFixed(1)}%</td><td>${fmt(perGram*pu.p)}</td></tr>`).join('');
+      document.getElementById('price-gram').textContent='$'+perGram.toFixed(4);
+      document.getElementById('price-oz').textContent='$'+spot.toFixed(2);
+      document.getElementById('price-kg').textContent='$'+perKg.toFixed(2);
+      document.getElementById('price-dwt').textContent='$'+perDwt.toFixed(4);
+      document.getElementById('price-tola').textContent='$'+perTola.toFixed(4);
+      document.getElementById('price-update').textContent=`Spot: $${spot.toFixed(2)}/oz`;
+      const purities=[{l:'999 Fine',p:0.999},{l:'958 Britannia',p:0.958},{l:'925 Sterling',p:0.925},{l:'900 Coin',p:0.900},{l:'835 European',p:0.835},{l:'800 European',p:0.800}];
+      document.getElementById('purity-rows').innerHTML=purities.map(pu=>`<tr><td>${pu.l}</td><td>${(pu.p*100).toFixed(1)}%</td><td>$${(perGram*pu.p).toFixed(4)}</td></tr>`).join('');
     }
     SilverPrice.onPriceUpdate(()=>update());
     update();
