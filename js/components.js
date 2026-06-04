@@ -269,23 +269,25 @@ const SiteComponents = (() => {
     const generateLangHref = (targetLang) => {
         // For English, always use the English base slug
         let slug = englishBaseSlug;
+        let hasLocalizedVersion = false;
         if (targetLang !== 'en' && window.MenuTranslations && window.MenuTranslations.slugs) {
             const mapping = window.MenuTranslations.slugs[englishBaseSlug];
             if (mapping && mapping[targetLang]) {
                 slug = mapping[targetLang];
-            } else {
-                // Fallback: use English slug (not current localized slug) to avoid cross-language 404s
-                slug = englishBaseSlug;
+                hasLocalizedVersion = true;
             }
         }
 
         if (isLocal()) {
             const prefix = getRelativePrefix();
             if (targetLang === 'en') return prefix + (slug === 'index' ? 'index' : slug) + '.html';
+            if (!hasLocalizedVersion && targetLang !== 'en') return prefix + targetLang + '/index.html';
             return prefix + targetLang + '/' + (slug === 'index' ? 'index' : slug) + '.html';
         }
 
         if (targetLang === 'en') return (slug === 'index') ? '/' : `/${slug}/`;
+        // If no localized version exists, go to language home to avoid 404
+        if (!hasLocalizedVersion && slug !== 'index') return `/${targetLang}/`;
         return (slug === 'index') ? `/${targetLang}/` : `/${targetLang}/${slug}/`;
     };
 

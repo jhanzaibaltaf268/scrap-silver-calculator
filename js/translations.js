@@ -682,6 +682,12 @@ window.MenuTranslations = {
     "hi": "999-silver-price-today", "it": "999-silver-price-today", "pt": "999-silver-price-today",
     "ru": "999-silver-price-today", "tr": "999-silver-price-today", "ur": "999-silver-price-today", "zh": "999-silver-price-today"
   },
+  "silver-price-today": {
+    "de": "silberpreis-pro-gramm"
+  },
+  "silver-price-per-ounce": {
+    "de": "silberpreis-pro-unze"
+  },
   "silver-spot-price-today": {
     "ar": "سعر-الفضة-الفوري-اليوم",
     "hi": "चद-क-हजर-कमत-आज",
