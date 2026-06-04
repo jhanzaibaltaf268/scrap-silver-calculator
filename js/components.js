@@ -133,6 +133,19 @@ const SiteComponents = (() => {
     }
   ];
 
+  // Initialize slug translations for German and other languages
+  if (!window.MenuTranslations) {
+    window.MenuTranslations = {};
+  }
+  if (!window.MenuTranslations.slugs) {
+    window.MenuTranslations.slugs = {
+      '999-silver-price-today': { de: '999-feinsilber-preis-heute' },
+      '925-silver-price-today': { de: '925-sterlingsilber-preis-heute' },
+      '900-silver-price-today': { de: '900-muenzsilber-preis-heute' },
+      '800-silver-price-today': { de: '800-silber-preis-heute' }
+    };
+  }
+
   /* ---- Helpers ---- */
   function isLocal() {
     return window.location.protocol === 'file:';
