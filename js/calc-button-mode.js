@@ -1,11 +1,12 @@
 /* ============================================
    BUTTON-ONLY CALCULATION MODE
    Results are hidden until the user clicks Calculate.
+   Fixed: removed EventTarget monkey-patch that caused Page Unresponsive errors.
    ============================================ */
 (function () {
   'use strict';
 
-  /* ── 1. Hide result elements immediately so auto-calc calls don't flash results ── */
+  /* ── 1. Hide result elements immediately ── */
   var _style = document.createElement('style');
   _style.id = '__calc_pending_style';
   _style.textContent =
@@ -15,28 +16,23 @@
     '#result-best, #result-typical, #rdealer, .res-dealer { opacity:0!important }';
   (document.head || document.documentElement).appendChild(_style);
 
-  /* ── 2. Suppress input/change event auto-calc ── */
-  var _origAdd = EventTarget.prototype.addEventListener;
-
-  function isFormEl(el) {
-    return el && (el.tagName === 'INPUT' || el.tagName === 'SELECT' || el.tagName === 'TEXTAREA');
-  }
-
-  EventTarget.prototype.addEventListener = function (type, listener, options) {
-    if (isFormEl(this)) {
-      if (type === 'input')  return;          /* suppress — typing never auto-calcs */
-      if (type === 'change') return;          /* suppress — changing select never auto-calcs */
-    }
-    return _origAdd.call(this, type, listener, options);
-  };
-
-  /* ── 3. After DOM ready: capture real calc fn, no-op globals, wire button ── */
+  /* ── 2. After DOM ready: capture calc fn, no-op globals, wire button ── */
   document.addEventListener('DOMContentLoaded', function () {
 
-    /* Kill any oninput/onchange set via HTML attributes */
+    /* Kill any oninput/onchange set via HTML attributes on form fields */
     document.querySelectorAll('input, select, textarea').forEach(function (el) {
       el.oninput  = null;
       el.onchange = null;
+    });
+
+    /* Remove input/change listeners added inline via addEventListener
+       by replacing each form element with a shallow clone */
+    document.querySelectorAll(
+      '.calc-widget input, .calc-widget select, ' +
+      'main input[type="number"], main input[type="text"], main select'
+    ).forEach(function (el) {
+      var clone = el.cloneNode(true);
+      if (el.parentNode) el.parentNode.replaceChild(clone, el);
     });
 
     /* Capture all calc-like globals then no-op them so price-update callbacks
@@ -63,23 +59,19 @@
         return;
       }
 
-      /* Fallback: fire input + change events on every form field so any
-         locally-scoped listeners still attached will fire */
-      var fields = document.querySelectorAll(
+      /* Fallback: dispatch events on current form fields */
+      document.querySelectorAll(
         '.calc-widget input, .calc-widget select, ' +
         '.dash input, .dash select, ' +
         'main input[type="number"], main input[type="text"], main select'
-      );
-      /* Temporarily restore addEventListener so dispatched events work */
-      EventTarget.prototype.addEventListener = _origAdd;
-      fields.forEach(function (el) {
+      ).forEach(function (el) {
         el.dispatchEvent(new Event('input',  { bubbles: true }));
         el.dispatchEvent(new Event('change', { bubbles: true }));
       });
     }
 
     if (btn) {
-      _origAdd.call(btn, 'click', runCalc);
+      btn.addEventListener('click', runCalc);
     }
   });
 
