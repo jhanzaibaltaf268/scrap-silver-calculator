@@ -133,16 +133,43 @@ const SiteComponents = (() => {
     }
   ];
 
-  // Initialize slug translations for German and other languages
-  if (!window.MenuTranslations) {
-    window.MenuTranslations = {};
-  }
+  // Fallback slug mappings used when translations.js is not loaded (e.g. standalone German pages)
+  if (!window.MenuTranslations) window.MenuTranslations = {};
   if (!window.MenuTranslations.slugs) {
     window.MenuTranslations.slugs = {
+      // Silver price pages
+      'silver-price-today':          { de: 'silberpreis-heute' },
+      'silver-price-per-ounce':      { de: 'silberpreis-pro-unze' },
+      'silver-price-per-gram':       { de: 'silberpreis-pro-gramm' },
+      'silver-news-today':           { de: 'silbernachrichten-heute' },
+      'silver-price-forecast-today': { de: 'silberpreis-prognose' },
+      // Purity price pages
       '999-silver-price-today': { de: '999-feinsilber-preis-heute' },
       '925-silver-price-today': { de: '925-sterlingsilber-preis-heute' },
       '900-silver-price-today': { de: '900-muenzsilber-preis-heute' },
-      '800-silver-price-today': { de: '800-silber-preis-heute' }
+      '800-silver-price-today': { de: '800-silber-preis-heute' },
+      // Calculators
+      'silver-melt-value-calculator':   { de: 'silber-schmelzwert-rechner' },
+      'sterling-silver-calculator':     { de: 'sterlingsilber-rechner' },
+      'junk-silver-calculator':         { de: 'billon-silber-rechner' },
+      'silver-coin-value-calculator':   { de: 'silbermuenzen-wert-rechner' },
+      'silver-bar-value-calculator':    { de: 'silberbarren-wert-rechner' },
+      'silver-jewelry-value-calculator':{ de: 'silberschmuck-wert-rechner' },
+      'silverware-value-calculator':    { de: 'silberbesteck-wert-rechner' },
+      'gold-and-silver-calculator':     { de: 'gold-und-silber-rechner' },
+      // Purity calculators
+      '999-silver-calculator': { de: '999-feinsilber-rechner' },
+      '925-silver-calculator': { de: '925-sterlingsilber-rechner' },
+      '900-silver-calculator': { de: '900-muenzsilber-rechner' },
+      '800-silver-calculator': { de: '800-silber-rechner' },
+      '835-silver-calculator': { de: '835-silber-rechner' },
+      // Tools
+      'silver-profit-calculator':  { de: 'silber-gewinn-rechner' },
+      'silver-weight-converter':   { de: 'silber-gewichtsumrechner' },
+      'silver-purity-chart':       { de: 'silber-reinheitstabelle' },
+      'identify-silver':           { de: 'silber-identifizieren' },
+      'how-to-sell-silver':        { de: 'wie-man-silber-verkauft' },
+      'how-to-use-silver-calculators': { de: 'wie-man-silberrechner-verwendet' }
     };
   }
 
