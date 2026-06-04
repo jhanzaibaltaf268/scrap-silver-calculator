@@ -685,8 +685,11 @@ window.MenuTranslations = {
   "silver-price-today": {
     "de": "silberpreis-heute"
   },
-  "silver-price-per-ounce": {
-    "de": "silberpreis-pro-unze"
+  "silver-news-today": {
+    "de": "silbernachrichten-heute"
+  },
+  "silver-price-forecast-today": {
+    "de": "silberpreis-prognose"
   },
   "silver-spot-price-today": {
     "ar": "سعر-الفضة-الفوري-اليوم",
