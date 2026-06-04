@@ -138,16 +138,16 @@ const SiteComponents = (() => {
   if (!window.MenuTranslations.slugs) {
     window.MenuTranslations.slugs = {
       // Silver price pages
-      'silver-price-today':          { de: 'silberpreis-heute' },
-      'silver-price-per-ounce':      { de: 'silberpreis-pro-unze' },
-      'silver-price-per-gram':       { de: 'silberpreis-pro-gramm' },
-      'silver-news-today':           { de: 'silbernachrichten-heute' },
-      'silver-price-forecast-today': { de: 'silberpreis-prognose' },
+      'silver-price-today':          { de:'silberpreis-heute', es:'precio-plata-hoy', fr:'prix-argent-aujourd-hui', it:'prezzo-argento-oggi', pt:'preco-prata-hoje', tr:'gumus-fiyati-bugun', ru:'цена-серебра-сегодня', zh:'今日银价', ar:'سعر-الفضة-اليوم', hi:'aaj-ka-chandi-bhav', ur:'aaj-chandi-ki-qeemat' },
+      'silver-price-per-ounce':      { de:'silberpreis-pro-unze', es:'precio-plata-por-onza', fr:'prix-argent-par-once', it:'prezzo-argento-per-oncia', pt:'preco-prata-por-onca', tr:'ons-basi-gumus-fiyati', ru:'цена-серебра-за-унцию', zh:'每盎司银价', ar:'سعر-الفضة-للأوقية', hi:'chandi-bhav-per-ounce', ur:'chandi-qeemat-fi-ounce' },
+      'silver-price-per-gram':       { de:'silberpreis-pro-gramm' },
+      'silver-news-today':           { de:'silbernachrichten-heute', es:'noticias-plata-hoy', fr:'actualites-argent-aujourd-hui', it:'notizie-argento-oggi', pt:'noticias-prata-hoje', tr:'gumus-haberleri-bugun', ru:'новости-серебра-сегодня', zh:'今日白银新闻', ar:'أخبار-الفضة-اليوم', hi:'chandi-samachar-aaj', ur:'chandi-khabar-aaj' },
+      'silver-price-forecast-today': { de:'silberpreis-prognose', es:'pronostico-precio-plata', fr:'prevision-prix-argent', it:'previsione-prezzo-argento', pt:'previsao-preco-prata', tr:'gumus-fiyat-tahmini', ru:'прогноз-цены-серебра', zh:'白银价格预测', ar:'توقعات-سعر-الفضة', hi:'chandi-bhav-purvanuman', ur:'chandi-qeemat-peshgoi' },
       // Purity price pages
-      '999-silver-price-today': { de: '999-feinsilber-preis-heute' },
-      '925-silver-price-today': { de: '925-sterlingsilber-preis-heute' },
-      '900-silver-price-today': { de: '900-muenzsilber-preis-heute' },
-      '800-silver-price-today': { de: '800-silber-preis-heute' },
+      '999-silver-price-today': { de:'999-feinsilber-preis-heute', es:'999-plata-fina-precio-hoy', fr:'999-argent-pur-prix-aujourd-hui', it:'999-argento-puro-prezzo-oggi', pt:'999-prata-fina-preco-hoje', tr:'999-saf-gumus-fiyati-bugun', ru:'999-чистое-серебро-цена-сегодня', zh:'999纯银今日价格', ar:'سعر-الفضة-الخالصة-999-اليوم', hi:'999-shudh-chandi-bhav-aaj', ur:'999-khalis-chandi-qeemat-aaj' },
+      '925-silver-price-today': { de:'925-sterlingsilber-preis-heute', es:'925-plata-precio-hoy', fr:'925-argent-sterling-prix-aujourd-hui', it:'925-argento-sterling-prezzo-oggi', pt:'925-prata-preco-hoje', tr:'925-gumus-fiyati-bugun', ru:'925-серебро-цена-сегодня', zh:'925银今日价格', ar:'سعر-الفضة-925-اليوم', hi:'925-chandi-bhav-aaj', ur:'925-chandi-qeemat-aaj' },
+      '900-silver-price-today': { de:'900-muenzsilber-preis-heute', es:'900-plata-moneda-precio-hoy', fr:'900-argent-monnaie-prix-aujourd-hui', it:'900-argento-moneta-prezzo-oggi', pt:'900-prata-moeda-preco-hoje', tr:'900-sikke-gumus-fiyati-bugun', ru:'900-монетное-серебро-цена-сегодня', zh:'900银币今日价格', ar:'سعر-فضة-العملة-900-اليوم', hi:'900-sikka-chandi-bhav-aaj', ur:'900-sikka-chandi-qeemat-aaj' },
+      '800-silver-price-today': { de:'800-silber-preis-heute', es:'800-plata-precio-hoy', fr:'800-argent-prix-aujourd-hui', it:'800-argento-prezzo-oggi', pt:'800-prata-preco-hoje', tr:'800-gumus-fiyati-bugun', ru:'800-серебро-цена-сегодня', zh:'800银今日价格', ar:'سعر-الفضة-800-اليوم', hi:'800-chandi-bhav-aaj', ur:'800-chandi-qeemat-aaj' },
       // Calculators
       'silver-melt-value-calculator':   { de: 'silber-schmelzwert-rechner' },
       'sterling-silver-calculator':     { de: 'sterlingsilber-rechner' },

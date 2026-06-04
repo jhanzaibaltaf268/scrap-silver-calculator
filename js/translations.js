@@ -663,33 +663,46 @@ window.MenuTranslations = {
     "ar": "قيمة-ملعقة-فضية"
   },
   "800-silver-price-today": {
-    "ar": "800-silver-price-today", "de": "800-silber-preis-heute", "es": "800-silver-price-today",
-    "hi": "800-silver-price-today", "it": "800-silver-price-today", "pt": "800-silver-price-today",
-    "ru": "800-silver-price-today", "tr": "800-silver-price-today", "ur": "800-silver-price-today", "zh": "800-silver-price-today"
+    "ar": "سعر-الفضة-800-اليوم", "de": "800-silber-preis-heute", "es": "800-plata-precio-hoy",
+    "fr": "800-argent-prix-aujourd-hui", "hi": "800-chandi-bhav-aaj", "it": "800-argento-prezzo-oggi",
+    "pt": "800-prata-preco-hoje", "ru": "800-серебро-цена-сегодня", "tr": "800-gumus-fiyati-bugun",
+    "ur": "800-chandi-qeemat-aaj", "zh": "800银今日价格"
   },
   "900-silver-price-today": {
-    "ar": "900-silver-price-today", "de": "900-muenzsilber-preis-heute", "es": "900-silver-price-today",
-    "hi": "900-silver-price-today", "it": "900-silver-price-today", "pt": "900-silver-price-today",
-    "ru": "900-silver-price-today", "tr": "900-silver-price-today", "ur": "900-silver-price-today", "zh": "900-silver-price-today"
+    "ar": "سعر-فضة-العملة-900-اليوم", "de": "900-muenzsilber-preis-heute", "es": "900-plata-moneda-precio-hoy",
+    "fr": "900-argent-monnaie-prix-aujourd-hui", "hi": "900-sikka-chandi-bhav-aaj", "it": "900-argento-moneta-prezzo-oggi",
+    "pt": "900-prata-moeda-preco-hoje", "ru": "900-монетное-серебро-цена-сегодня", "tr": "900-sikke-gumus-fiyati-bugun",
+    "ur": "900-sikka-chandi-qeemat-aaj", "zh": "900银币今日价格"
   },
   "925-silver-price-today": {
-    "ar": "925-silver-price-today", "de": "925-sterlingsilber-preis-heute", "es": "925-silver-price-today",
-    "hi": "925-silver-price-today", "it": "925-silver-price-today", "pt": "925-silver-price-today",
-    "ru": "925-silver-price-today", "tr": "925-silver-price-today", "ur": "925-silver-price-today", "zh": "925-silver-price-today"
+    "ar": "سعر-الفضة-925-اليوم", "de": "925-sterlingsilber-preis-heute", "es": "925-plata-precio-hoy",
+    "fr": "925-argent-sterling-prix-aujourd-hui", "hi": "925-chandi-bhav-aaj", "it": "925-argento-sterling-prezzo-oggi",
+    "pt": "925-prata-preco-hoje", "ru": "925-серебро-цена-сегодня", "tr": "925-gumus-fiyati-bugun",
+    "ur": "925-chandi-qeemat-aaj", "zh": "925银今日价格"
   },
   "999-silver-price-today": {
-    "ar": "999-silver-price-today", "de": "999-feinsilber-preis-heute", "es": "999-silver-price-today",
-    "hi": "999-silver-price-today", "it": "999-silver-price-today", "pt": "999-silver-price-today",
-    "ru": "999-silver-price-today", "tr": "999-silver-price-today", "ur": "999-silver-price-today", "zh": "999-silver-price-today"
+    "ar": "سعر-الفضة-الخالصة-999-اليوم", "de": "999-feinsilber-preis-heute", "es": "999-plata-fina-precio-hoy",
+    "fr": "999-argent-pur-prix-aujourd-hui", "hi": "999-shudh-chandi-bhav-aaj", "it": "999-argento-puro-prezzo-oggi",
+    "pt": "999-prata-fina-preco-hoje", "ru": "999-чистое-серебро-цена-сегодня", "tr": "999-saf-gumus-fiyati-bugun",
+    "ur": "999-khalis-chandi-qeemat-aaj", "zh": "999纯银今日价格"
   },
   "silver-price-today": {
-    "de": "silberpreis-heute"
+    "ar": "سعر-الفضة-اليوم", "de": "silberpreis-heute", "es": "precio-plata-hoy",
+    "fr": "prix-argent-aujourd-hui", "hi": "aaj-ka-chandi-bhav", "it": "prezzo-argento-oggi",
+    "pt": "preco-prata-hoje", "ru": "цена-серебра-сегодня", "tr": "gumus-fiyati-bugun",
+    "ur": "aaj-chandi-ki-qeemat", "zh": "今日银价"
   },
   "silver-news-today": {
-    "de": "silbernachrichten-heute"
+    "ar": "أخبار-الفضة-اليوم", "de": "silbernachrichten-heute", "es": "noticias-plata-hoy",
+    "fr": "actualites-argent-aujourd-hui", "hi": "chandi-samachar-aaj", "it": "notizie-argento-oggi",
+    "pt": "noticias-prata-hoje", "ru": "новости-серебра-сегодня", "tr": "gumus-haberleri-bugun",
+    "ur": "chandi-khabar-aaj", "zh": "今日白银新闻"
   },
   "silver-price-forecast-today": {
-    "de": "silberpreis-prognose"
+    "ar": "توقعات-سعر-الفضة", "de": "silberpreis-prognose", "es": "pronostico-precio-plata",
+    "fr": "prevision-prix-argent", "hi": "chandi-bhav-purvanuman", "it": "previsione-prezzo-argento",
+    "pt": "previsao-preco-prata", "ru": "прогноз-цены-серебра", "tr": "gumus-fiyat-tahmini",
+    "ur": "chandi-qeemat-peshgoi", "zh": "白银价格预测"
   },
   "silver-spot-price-today": {
     "ar": "سعر-الفضة-الفوري-اليوم",
