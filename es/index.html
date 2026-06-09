@@ -1488,11 +1488,12 @@
     }
 
     function updateAllLive() {
-      const spot = SilverPrice.getPrice();
+      const spotUSD = SilverPrice.getPrice();
+      const spot = spotUSD * 0.92; // Convert to EUR
       const change = SilverPrice.getChange();
       const changePct = SilverPrice.getChangePercent();
-      const fmt2 = v => '$' + v.toFixed(2);
-      const fmt4 = v => '$' + v.toFixed(4);
+      const fmt2 = v => '€' + v.toFixed(2);
+      const fmt4 = v => '€' + v.toFixed(4);
 
       // Hero spot display
       document.getElementById('hero-spot').textContent = fmt2(spot);
@@ -1500,7 +1501,7 @@
       if (change !== null && changePct !== null) {
         const dir = change >= 0 ? 'up' : 'down';
         const arrow = change >= 0 ? '▲' : '▼';
-        hc.textContent = `${arrow} ${fmt2(Math.abs(change))} (${Math.abs(changePct).toFixed(2)}%)`;
+        hc.textContent = `${arrow} €${Math.abs(change * 0.92).toFixed(2)} (${Math.abs(changePct).toFixed(2)}%)`;
         hc.className = `hv2-spot-change ${dir}`;
       } else {
         hc.textContent = 'En Vivo'; hc.className = 'hv2-spot-change flat';
