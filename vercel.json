@@ -18,6 +18,10 @@
       "destination": "https://scrapsilvercalculater.com/$1",
       "permanent": true
     },
+    { "source": "/1-10oz-silver-value/",           "destination": "/10oz-silver-value/",              "permanent": true },
+    { "source": "/1-10oz-silver-value",           "destination": "/10oz-silver-value/",              "permanent": true },
+    { "source": "/silver-scrap-calculator/",      "destination": "/",                                "permanent": true },
+    { "source": "/silver-scrap-calculator",       "destination": "/",                                "permanent": true },
     { "source": "/current-silver-price/",        "destination": "/silver-price-today/",             "permanent": true },
     { "source": "/current-silver-price",          "destination": "/silver-price-today/",             "permanent": true },
     { "source": "/silver-melt-calculator/",       "destination": "/silver-melt-value-calculator/",   "permanent": true },

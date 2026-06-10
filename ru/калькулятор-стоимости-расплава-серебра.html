@@ -20,10 +20,10 @@
   <script src="/js/translations.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Silver Melt Value Calculator — Find Your Silver's Melt Worth</title>
-  
-  
-  <meta name="description" content="Calculate the melt value of any silver item. Enter weight and purity to find the pure silver content and its worth at today's spot price.">
+  <title>Калькулятор стоимости плавления серебра — Узнайте ценность вашего серебра</title>
+
+
+  <meta name="description" content="Рассчитайте стоимость плавления любого серебряного изделия. Введите вес и пробу, чтобы узнать содержание чистого серебра и его стоимость по текущей спотовой цене.">
   <link rel="canonical" href="https://scrapsilvercalculater.com/ru/калькулятор-стоимости-расплава-серебра/">
       <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/silver-melt-value-calculator/">
   <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/silver-melt-value-calculator/">
@@ -63,15 +63,15 @@
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://scrapsilvercalculater.com/ru/калькулятор-стоимости-расплава-серебра/">
-  <meta property="og:title" content="Silver Melt Value Calculator — Find Your Silver's Melt Worth">
-  <meta property="og:description" content="Calculate the melt value of any silver item. Enter weight and purity to find the pure silver content and its worth at today's spot price.">
+  <meta property="og:title" content="Калькулятор стоимости плавления серебра — Узнайте ценность вашего серебра">
+  <meta property="og:description" content="Рассчитайте стоимость плавления любого серебряного изделия. Введите вес и пробу, чтобы узнать содержание чистого серебра и его стоимость по текущей спотовой цене.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://scrapsilvercalculater.com/ru/калькулятор-стоимости-расплава-серебра/">
-  <meta name="twitter:title" content="Silver Melt Value Calculator — Find Your Silver's Melt Worth">
-  <meta name="twitter:description" content="Calculate the melt value of any silver item. Enter weight and purity to find the pure silver content and its worth at today's spot price.">
+  <meta name="twitter:title" content="Калькулятор стоимости плавления серебра — Узнайте ценность вашего серебра">
+  <meta name="twitter:description" content="Рассчитайте стоимость плавления любого серебряного изделия. Введите вес и пробу, чтобы узнать содержание чистого серебра и его стоимость по текущей спотовой цене.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
     <link rel="icon" type="image/png" href="/favicon.png" title="Scrap Silver Calculator">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" title="Scrap Silver Calculator">
@@ -87,13 +87,13 @@
       <div class="container">
         <div id="price-ticker"></div>
         
-        <h1>Стоимость плавления серебра <span class="highlight">Calculator</span></h1>
+        <h1>Стоимость плавления серебра <span class="highlight">Калькулятор</span></h1>
         
       </div>
     </section>
     <div class="calc-page-layout">
       <div class="calc-widget">
-        <div class="calc-widget-title"><span class="icon">🔥</span> Melt Value Calculator</div>
+        <div class="calc-widget-title"><span class="icon">🔥</span> Калькулятор стоимости плавления</div>
         <div class="form-row">
           <div class="form-group">
             <label class="form-label" for="weight">Вес</label>
@@ -105,25 +105,25 @@
               <option value="g" selected="">Грамм (г)</option>
               <option value="oz">Тройские унции (oz)</option>
               <option value="dwt">Пеннивейт (дедвейт)</option>
-              <option value="kg">Kilograms (kg)</option>
+              <option value="kg">Килограммы (кг)</option>
             </select>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label" for="purity">Чистота</label>
           <select class="form-select" id="purity">
-            <option value="0.999">999 Fine Silver (99.9%)</option>
-            <option value="0.958">958 Britannia (95.8%)</option>
-            <option value="0.925" selected="">925 Sterling (92.5%)</option>
-            <option value="0.900">900 Coin Silver (90%)</option>
-            <option value="0.835">835 European (83.5%)</option>
-            <option value="0.800">800 European (80%)</option>
-            <option value="custom">Custom Purity...</option>
+            <option value="0.999">999 Чистое серебро (99.9%)</option>
+            <option value="0.958">958 Британия (95.8%)</option>
+            <option value="0.925" selected="">925 Стерлинговое (92.5%)</option>
+            <option value="0.900">900 Монетное серебро (90%)</option>
+            <option value="0.835">835 Европейское (83.5%)</option>
+            <option value="0.800">800 Европейское (80%)</option>
+            <option value="custom">Другая проба...</option>
           </select>
         </div>
         <div class="form-group" id="custom-purity-group" style="display:none;">
-          <label class="form-label" for="custom-purity">Custom Purity (%)</label>
-          <input type="number" class="form-input" id="custom-purity" placeholder="e.g. 85" step="0.1" min="0" max="100" value="92.5">
+          <label class="form-label" for="custom-purity">Другая проба (%)</label>
+          <input type="number" class="form-input" id="custom-purity" placeholder="напр. 85" step="0.1" min="0" max="100" value="92.5">
         </div>
         
           <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:var(--space-md);">Рассчитать стоимость лома</button>
@@ -134,26 +134,26 @@
         </div>
       </div>
       <div class="content-body">
-        <h2>Understanding Silver Melt Value</h2>
-        <p>Silver melt value represents the intrinsic worth of the pure silver metal contained in an item. It's calculated by multiplying the item's weight by its purity percentage and the current spot price of silver.</p>
-        <h3>Melt Value vs. Market Value</h3>
-        <p>Melt value is a baseline — the minimum your silver is worth as raw metal. Some items are worth more than melt:</p>
+        <h2>Что такое стоимость плавления серебра</h2>
+        <p>Стоимость плавления серебра — это внутренняя ценность чистого серебряного металла, содержащегося в изделии. Она рассчитывается путём умножения веса изделия на процент чистоты и текущую спотовую цену серебра.</p>
+        <h3>Стоимость плавления vs. рыночная стоимость</h3>
+        <p>Стоимость плавления — это базовый показатель: минимальная стоимость вашего серебра как сырого металла. Некоторые изделия стоят дороже стоимости плавления:</p>
         <ul>
-          <li><strong>Collectible coins</strong> often carry numismatic premiums above melt</li>
-          <li><strong>Artisan jewelry</strong> can be worth more due to craftsmanship</li>
-          <li><strong>Antique silverware</strong> may have collector value</li>
-          <li><strong>Bullion bars and rounds</strong> typically sell close to melt plus a small premium</li>
+          <li><strong>Коллекционные монеты</strong> часто имеют нумизматическую надбавку сверх стоимости плавления</li>
+          <li><strong>Ювелирные изделия ручной работы</strong> могут стоить дороже благодаря мастерству исполнения</li>
+          <li><strong>Антикварные столовые приборы</strong> могут иметь коллекционную ценность</li>
+          <li><strong>Слитки и монеты из серебра</strong> обычно продаются близко к стоимости плавления плюс небольшая надбавка</li>
         </ul>
-        <h3>When Is Melt Value Important?</h3>
-        <p>Melt value matters most when selling damaged, broken, or generic silver items to a dealer or refiner. It sets the floor price — no honest dealer should offer less than 80% of melt for genuine silver.</p>
+        <h3>Когда важна стоимость плавления?</h3>
+        <p>Стоимость плавления наиболее важна при продаже повреждённых, сломанных или обычных серебряных изделий дилеру или аффинажному заводу. Она устанавливает минимальную цену — ни один честный дилер не должен предлагать менее 80% от стоимости плавления за настоящее серебро.</p>
       </div>
       <div>
         <h3 style="margin-bottom: var(--space-lg);">Похожие калькуляторы</h3>
         <div class="related-grid">
-          <a href="../ru/калькулятор-лома-серебра/" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
-          <a href="../ru/калькулятор-из-стерлингового-серебра/" class="related-link"><span class="r-icon">✨</span> Sterling Silver</a>
-          <a href="../ru/калькулятор-стоимости-серебряной-монеты/" class="related-link"><span class="r-icon">🪙</span> Coin Value</a>
-          <a href="../ru/цена-серебра-за-унцию/" class="related-link"><span class="r-icon">📊</span> Price Per Ounce</a>
+          <a href="../ru/калькулятор-лома-серебра/" class="related-link"><span class="r-icon">♻️</span> Калькулятор лома</a>
+          <a href="../ru/калькулятор-из-стерлингового-серебра/" class="related-link"><span class="r-icon">✨</span> Стерлинговое серебро</a>
+          <a href="../ru/калькулятор-стоимости-серебряной-монеты/" class="related-link"><span class="r-icon">🪙</span> Стоимость монеты</a>
+          <a href="../ru/цена-серебра-за-унцию/" class="related-link"><span class="r-icon">📊</span> Цена за унцию</a>
         </div>
       </div>
     </div>
@@ -165,7 +165,7 @@
   <script>
     
     SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Главная',href:'/'},{label:'Silver Melt Value Calculator'}]);
+    SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Главная',href:'/'},{label:'Калькулятор стоимости плавления серебра'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),cp=document.getElementById('custom-purity'),cpg=document.getElementById('custom-purity-group');
     p.addEventListener('change',()=>{cpg.style.display=p.value==='custom'?'block':'none'; calc();});
     function calc(){
@@ -176,7 +176,7 @@
       const spot=SilverPrice.getPrice();
       const r=SilverCalc.meltValue(grams,purity,spot);
       document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
-      document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure silver · ${r.silverContentOz} troy oz · Spot: $${spot.toFixed(2)}/oz`;
+      document.getElementById('result-detail').textContent=`${r.silverContentGrams}г чистого серебра · ${r.silverContentOz} тр. унции · Спот: $${spot.toFixed(2)}/oz`;
     }
     [w,cp].forEach(el=>el.addEventListener('input',calc));
     [u,p].forEach(el=>el.addEventListener('change',calc));

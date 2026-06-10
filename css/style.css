@@ -1104,3 +1104,15 @@ select::placeholder { color: var(--muted); opacity: 1; }
 .article-body p { line-height: 1.8; }
 .content-body li,
 .article-body li { line-height: 1.7; }
+
+/* Subscribe form: stack input + button on very narrow screens */
+@media(max-width: 400px) {
+  #subscribe-form { flex-direction: column; }
+  #subscribe-form input,
+  #subscribe-form button { width: 100%; box-sizing: border-box; }
+}
+
+/* Hero H1: prevent 3-line wrap on 320px screens */
+@media(max-width: 360px) {
+  .hero-h1 { font-size: 1.9rem !important; }
+}

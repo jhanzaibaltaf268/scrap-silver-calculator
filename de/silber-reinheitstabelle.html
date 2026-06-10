@@ -78,12 +78,40 @@
       </div>
     </section>
     <div class="calc-page-layout">
+      
+      <!-- Interactive multi-purity calculator -->
       <div class="calc-widget" style="max-width:100%;">
-        <div class="calc-widget-title"><span class="icon">📊</span> Silver Purity Reference Table</div>
+        <div class="calc-widget-title"><span class="icon">&#x26A1;</span> Sofort-Mehrfachreinheitsrechner</div>
+        <p style="color:var(--text-secondary);font-size:14px;margin-bottom:16px;">Gewicht eingeben, um den Schmelzwert aller Silberreinheiten auf einen Blick zu sehen.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;align-items:flex-end;">
+          <div>
+            <label style="display:block;font-size:12px;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;">Gewicht</label>
+            <input type="number" id="multi-weight" value="10" min="0.01" step="0.01"
+              style="width:120px;padding:10px 14px;border:1px solid var(--border-medium);border-radius:10px;background:var(--bg-secondary);color:#fff;font-size:16px;font-weight:600;outline:none;">
+          </div>
+          <div>
+            <label style="display:block;font-size:12px;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;">Einheit</label>
+            <select id="multi-unit" style="padding:10px 14px;border:1px solid var(--border-medium);border-radius:10px;background:var(--bg-secondary);color:#fff;font-size:14px;outline:none;cursor:pointer;">
+              <option value="g">Gramm</option>
+              <option value="oz">Feinunzen</option>
+              <option value="dwt">Pennygewicht</option>
+              <option value="kg">Kilogramm</option>
+            </select>
+          </div>
+          <div style="font-size:12px;color:var(--text-muted);">Spot: <strong id="multi-spot" style="color:#f0f4f8;">...</strong></div>
+        </div>
+        <div id="purity-bars" style="display:flex;flex-direction:column;gap:8px;"></div>
+      </div>
+
+      <!-- Full reference table -->
+      <div class="calc-widget" style="max-width:100%;margin-top:0;">
+        <div class="calc-widget-title"><span class="icon">&#x1F4CA;</span> Silberreinheits-Referenztabelle</div>
+        <div class="purity-table-wrap">
         <table class="purity-table" style="margin:0;">
           <thead><tr><th>Markenzeichen</th><th>Name</th><th>Silber %</th><th>Pro Gramm</th><th>Pro Unze</th><th>10g Wert</th><th>Rechner</th></tr></thead>
           <tbody id="purity-chart"></tbody>
         </table>
+        </div>
       </div>
       <div class="article-body">
         <h2>Die Reinheit von Silber verstehen</h2>
@@ -141,28 +169,62 @@
     
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label: ((window.MenuTranslations[SiteComponents.getLangCode()] || window.MenuTranslations['en']) || {})['Home'] || 'Startseite',href:'/'},{label:'Silver Purity Chart'}]);
-    function update(){const spot=SilverPrice.getPrice();const ppg=spot/31.1035;
-    const purities=[
-      {mark:'999',name:'Fine Silver',pct:99.9,link:'/999-silver-calculator/'},
-      {mark:'980',name:'980 Silver',pct:98.0,link:'/silver-melt-value-calculator/'},
-      {mark:'970',name:'970 Silver',pct:97.0,link:'/silver-melt-value-calculator/'},
-      {mark:'958',name:'Britannia Silver',pct:95.8,link:'/958-silver-calculator/'},
-      {mark:'950',name:'950 Silver',pct:95.0,link:'/silver-melt-value-calculator/'},
-      {mark:'925',name:'Sterling Silver',pct:92.5,link:'/925-silver-calculator/'},
-      {mark:'900',name:'Coin Silver',pct:90.0,link:'/900-silver-calculator/'},
-      {mark:'875',name:'875 Silver',pct:87.5,link:'/silver-melt-value-calculator/'},
-      {mark:'835',name:'European Silver',pct:83.5,link:'/835-silver-calculator/'},
-      {mark:'800',name:'European Silver',pct:80.0,link:'/800-silver-calculator/'},
-      {mark:'750',name:'750 Silver',pct:75.0,link:'/silver-melt-value-calculator/'},
-      {mark:'500',name:'500 Silver',pct:50.0,link:'/silver-melt-value-calculator/'}
-    ];
-    document.getElementById('purity-chart').innerHTML=purities.map(p=>{
-      const g=ppg*p.pct/100;
-      const oz=spot*p.pct/100;
-      const ten=g*10;
-      return `<tr><td><strong>${p.mark}</strong></td><td>${p.name}</td><td>${p.pct}%</td><td>$${g.toFixed(4)}</td><td>$${oz.toFixed(2)}</td><td>$${ten.toFixed(2)}</td><td><a href="${p.link}" style="color:var(--accent-blue)">Calculate →</a></td></tr>`;
-    }).join('');}
-    SilverPrice.onPriceUpdate(()=>update());update();
+    const PURITIES=[
+  {mark:'999',name:'Fine Silver',pct:99.9,link:'/999-silver-calculator/'},
+  {mark:'980',name:'980 Silver',pct:98.0,link:'/silver-melt-value-calculator/'},
+  {mark:'970',name:'970 Silver',pct:97.0,link:'/silver-melt-value-calculator/'},
+  {mark:'958',name:'Britannia',pct:95.8,link:'/958-silver-calculator/'},
+  {mark:'950',name:'950 Silver',pct:95.0,link:'/silver-melt-value-calculator/'},
+  {mark:'925',name:'Sterling',pct:92.5,link:'/925-silver-calculator/'},
+  {mark:'900',name:'Coin Silver',pct:90.0,link:'/900-silver-calculator/'},
+  {mark:'875',name:'875 Silver',pct:87.5,link:'/silver-melt-value-calculator/'},
+  {mark:'835',name:'European',pct:83.5,link:'/835-silver-calculator/'},
+  {mark:'800',name:'European',pct:80.0,link:'/800-silver-calculator/'},
+  {mark:'750',name:'750 Silver',pct:75.0,link:'/silver-melt-value-calculator/'},
+  {mark:'500',name:'500 Silver',pct:50.0,link:'/silver-melt-value-calculator/'}
+];
+function getWeightInGrams(){
+  var w=parseFloat(document.getElementById('multi-weight').value)||10;
+  var u=document.getElementById('multi-unit').value;
+  if(u==='oz')return w*31.1035;
+  if(u==='dwt')return w*1.55517;
+  if(u==='kg')return w*1000;
+  return w;
+}
+function renderBars(spot){
+  var ppg=spot/31.1035,wg=getWeightInGrams(),maxVal=ppg*0.999*wg;
+  var el=document.getElementById('purity-bars');
+  if(!el)return;
+  el.innerHTML=PURITIES.map(function(p){
+    var val=ppg*(p.pct/100)*wg,bp=(val/maxVal*100).toFixed(1);
+    var col=p.pct>=95?'#34d399':p.pct>=90?'#a78bfa':p.pct>=80?'#60a5fa':'#94a3b8';
+    return '<div style="display:flex;align-items:center;gap:10px;">'
+      +'<div style="width:48px;text-align:right;font-size:13px;font-weight:700;color:#f0f4f8;flex-shrink:0;">'+p.mark+'</div>'
+      +'<div style="flex:1;background:rgba(255,255,255,.07);border-radius:6px;height:28px;position:relative;overflow:hidden;">'
+      +'<div style="position:absolute;left:0;top:0;height:100%;width:'+bp+'%;background:'+col+';border-radius:6px;opacity:.85;transition:width .3s ease;"></div>'
+      +'<span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:600;color:#fff;white-space:nowrap;">'
+      +'$'+val.toFixed(2)+' <span style="font-weight:400;font-size:11px;opacity:.7;">('+p.pct+'%)</span></span>'
+      +'</div>'
+      +'<a href="'+p.link+'" style="font-size:12px;color:var(--accent-primary);white-space:nowrap;text-decoration:none;flex-shrink:0;">Calc &rarr;</a>'
+      +'</div>';
+  }).join('');
+}
+function update(){
+  var spot=SilverPrice.getPrice();if(!spot)return;
+  var ppg=spot/31.1035;
+  var ms=document.getElementById('multi-spot');
+  if(ms)ms.textContent='$'+spot.toFixed(2)+'/oz';
+  document.getElementById('purity-chart').innerHTML=PURITIES.map(function(p){
+    var g=ppg*p.pct/100,oz=spot*p.pct/100,ten=g*10;
+    return '<tr><td><strong>'+p.mark+'</strong></td><td>'+p.name+'</td><td>'+p.pct+'%</td>'
+      +'<td>$'+g.toFixed(4)+'</td><td>$'+oz.toFixed(2)+'</td><td>$'+ten.toFixed(2)+'</td>'
+      +'<td><a href="'+p.link+'" style="color:var(--accent-blue)">Calc &rarr;</a></td></tr>';
+  }).join('');
+  renderBars(spot);
+}
+document.getElementById('multi-weight').addEventListener('input',function(){var s=SilverPrice.getPrice();if(s)renderBars(s);});
+document.getElementById('multi-unit').addEventListener('change',function(){var s=SilverPrice.getPrice();if(s)renderBars(s);});
+SilverPrice.onPriceUpdate(function(){update();});update();
   </script>
 
 <script>

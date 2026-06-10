@@ -158,12 +158,41 @@
       </div>
     </section>
     <div class="calc-page-layout">
+
+      <!-- Interactive multi-purity calculator -->
       <div class="calc-widget" style="max-width:100%;">
+        <div class="calc-widget-title"><span class="icon">⚡</span> Instant Multi-Purity Calculator</div>
+        <p style="color:var(--text-secondary);font-size:14px;margin-bottom:16px;">Enter a weight to see the melt value across every silver standard at once — at today's live spot price.</p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;align-items:flex-end;">
+          <div>
+            <label style="display:block;font-size:12px;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;">Weight</label>
+            <input type="number" id="multi-weight" value="10" min="0.01" step="0.01"
+              style="width:120px;padding:10px 14px;border:1px solid var(--border-medium);border-radius:10px;background:var(--bg-secondary);color:#fff;font-size:16px;font-weight:600;outline:none;">
+          </div>
+          <div>
+            <label style="display:block;font-size:12px;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.06em;">Unit</label>
+            <select id="multi-unit" style="padding:10px 14px;border:1px solid var(--border-medium);border-radius:10px;background:var(--bg-secondary);color:#fff;font-size:14px;outline:none;cursor:pointer;">
+              <option value="g">Grams</option>
+              <option value="oz">Troy Ounces</option>
+              <option value="dwt">Pennyweight</option>
+              <option value="kg">Kilograms</option>
+            </select>
+          </div>
+          <div style="font-size:12px;color:var(--text-muted);">Spot: <strong id="multi-spot" style="color:#f0f4f8;">loading…</strong></div>
+        </div>
+        <!-- Visual purity bars with live values -->
+        <div id="purity-bars" style="display:flex;flex-direction:column;gap:8px;"></div>
+      </div>
+
+      <!-- Full reference table -->
+      <div class="calc-widget" style="max-width:100%;margin-top:0;">
         <div class="calc-widget-title"><span class="icon">📊</span> Silver Purity Reference Table</div>
+        <div class="purity-table-wrap">
         <table class="purity-table" style="margin:0;">
           <thead><tr><th>Hallmark</th><th>Name</th><th>Silver %</th><th>Per Gram</th><th>Per Ounce</th><th>10g Value</th><th>Calculator</th></tr></thead>
           <tbody id="purity-chart"></tbody>
         </table>
+        </div>
       </div>
       <div class="article-body">
         <h2>Understanding Silver Purity</h2>
@@ -243,6 +272,32 @@
           <li><strong>Pawn shops:</strong> 50–70% of melt value. Last resort — only for immediate cash emergencies.</li>
         </ul>
         <p>Always calculate your melt value first using the calculators linked above, then compare dealer offers as a percentage of that baseline. See our <a href="/how-to-sell-silver/">complete guide to selling silver</a> for step-by-step advice.</p>
+
+        <h2>International Silver Hallmark Quick Reference</h2>
+        <p>Different countries use different hallmark systems. Here are the most common marks you'll encounter on silver items:</p>
+        <table class="purity-table" style="margin:0 0 16px;">
+          <thead><tr><th>Mark</th><th>Country / Region</th><th>Purity</th><th>Common On</th></tr></thead>
+          <tbody>
+            <tr><td><strong>925</strong></td><td>Global (UK, US, Canada, Australia)</td><td>92.5%</td><td>Jewelry, flatware</td></tr>
+            <tr><td><strong>Sterling</strong></td><td>UK, USA</td><td>92.5%</td><td>Flatware, antique jewelry</td></tr>
+            <tr><td><strong>Lion Passant</strong></td><td>United Kingdom</td><td>92.5%</td><td>British silverware (pre-decimal)</td></tr>
+            <tr><td><strong>958 / Britannia</strong></td><td>United Kingdom</td><td>95.8%</td><td>Fine British silverware</td></tr>
+            <tr><td><strong>999 / Fine</strong></td><td>Global</td><td>99.9%</td><td>Bullion bars &amp; coins</td></tr>
+            <tr><td><strong>900 / Coin</strong></td><td>USA, France, Latin America</td><td>90.0%</td><td>Pre-1965 US coins, some flatware</td></tr>
+            <tr><td><strong>835</strong></td><td>Germany, Netherlands, Scandinavia</td><td>83.5%</td><td>Continental European silverware</td></tr>
+            <tr><td><strong>800</strong></td><td>Italy, Germany, Austria</td><td>80.0%</td><td>European flatware, antiques</td></tr>
+            <tr><td><strong>84 Zolotnik</strong></td><td>Imperial Russia</td><td>87.5%</td><td>Pre-1917 Russian silverware</td></tr>
+            <tr><td><strong>88 Zolotnik</strong></td><td>Imperial Russia</td><td>91.6%</td><td>Pre-1917 Russian objects</td></tr>
+            <tr><td><strong>916</strong></td><td>India (Hallmarking Act)</td><td>91.6%</td><td>Indian jewelry &amp; silverware</td></tr>
+            <tr><td><strong>EPNS</strong></td><td>UK / Global</td><td>0%</td><td>Electroplated — no silver melt value</td></tr>
+            <tr><td><strong>EP / Silver Plate</strong></td><td>Global</td><td>0%</td><td>Base metal with silver coating</td></tr>
+          </tbody>
+        </table>
+        <p><strong>Note:</strong> "EPNS" (Electroplated Nickel Silver) and similar plated marks indicate silver coating over base metal. These items have no significant silver melt value — do not confuse them with solid silver.</p>
+
+        <h2>Silver Fineness vs. Karat: What's the Difference?</h2>
+        <p>Silver purity is expressed in fineness (parts per 1,000), while gold purity uses the karat system (parts per 24). There is no "karat" system for silver — if you see a silver item stamped with a karat number, it is either a forgery or a combination piece (e.g., gold and silver mixed).</p>
+        <p>The key conversion: fineness ÷ 10 = percentage purity. So 925 = 92.5%, 800 = 80.0%, 999 = 99.9%.</p>
       </div>
       
       <div class="cta-box">
@@ -269,8 +324,8 @@
     
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Silver Purity Chart'}]);
-    function update(){const spot=SilverPrice.getPrice();const ppg=spot/31.1035;
-    const purities=[
+
+    const PURITIES=[
       {mark:'999',name:'Fine Silver',pct:99.9,link:'/999-silver-calculator/'},
       {mark:'980',name:'980 Silver',pct:98.0,link:'/silver-melt-value-calculator/'},
       {mark:'970',name:'970 Silver',pct:97.0,link:'/silver-melt-value-calculator/'},
@@ -284,13 +339,63 @@
       {mark:'750',name:'750 Silver',pct:75.0,link:'/silver-melt-value-calculator/'},
       {mark:'500',name:'500 Silver',pct:50.0,link:'/silver-melt-value-calculator/'}
     ];
-    document.getElementById('purity-chart').innerHTML=purities.map(p=>{
-      const g=ppg*p.pct/100;
-      const oz=spot*p.pct/100;
-      const ten=g*10;
-      return `<tr><td><strong>${p.mark}</strong></td><td>${p.name}</td><td>${p.pct}%</td><td>$${g.toFixed(4)}</td><td>$${oz.toFixed(2)}</td><td>$${ten.toFixed(2)}</td><td><a href="${p.link}" style="color:var(--accent-blue)">Calculate →</a></td></tr>`;
-    }).join('');}
-    SilverPrice.onPriceUpdate(()=>update());update();
+
+    function getWeightInGrams() {
+      var w = parseFloat(document.getElementById('multi-weight').value) || 10;
+      var unit = document.getElementById('multi-unit').value;
+      if (unit === 'oz')  return w * 31.1035;
+      if (unit === 'dwt') return w * 1.55517;
+      if (unit === 'kg')  return w * 1000;
+      return w; // grams
+    }
+
+    function renderBars(spot) {
+      var ppg = spot / 31.1035;
+      var wg = getWeightInGrams();
+      var maxVal = ppg * 0.999 * wg;
+      var el = document.getElementById('purity-bars');
+      if (!el) return;
+      el.innerHTML = PURITIES.map(function(p) {
+        var val = ppg * (p.pct / 100) * wg;
+        var barPct = (val / maxVal * 100).toFixed(1);
+        var color = p.pct >= 95 ? '#34d399' : p.pct >= 90 ? '#a78bfa' : p.pct >= 80 ? '#60a5fa' : '#94a3b8';
+        return '<div style="display:flex;align-items:center;gap:10px;">'
+          + '<div style="width:48px;text-align:right;font-size:13px;font-weight:700;color:#f0f4f8;flex-shrink:0;">' + p.mark + '</div>'
+          + '<div style="flex:1;background:rgba(255,255,255,.07);border-radius:6px;height:28px;position:relative;overflow:hidden;">'
+          + '<div style="position:absolute;left:0;top:0;height:100%;width:' + barPct + '%;background:' + color + ';border-radius:6px;opacity:.85;transition:width .3s ease;"></div>'
+          + '<span style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:13px;font-weight:600;color:#fff;white-space:nowrap;">'
+          + '$' + val.toFixed(2) + ' <span style="font-weight:400;font-size:11px;opacity:.7;">(' + p.pct + '%)</span></span>'
+          + '</div>'
+          + '<a href="' + p.link + '" style="font-size:12px;color:var(--accent-primary);white-space:nowrap;text-decoration:none;flex-shrink:0;">Calc →</a>'
+          + '</div>';
+      }).join('');
+    }
+
+    function update(){
+      var spot = SilverPrice.getPrice();
+      if (!spot) return;
+      var ppg = spot / 31.1035;
+      var spotEl = document.getElementById('multi-spot');
+      if (spotEl) spotEl.textContent = '$' + spot.toFixed(2) + '/oz';
+      document.getElementById('purity-chart').innerHTML = PURITIES.map(function(p){
+        var g = ppg * p.pct / 100;
+        var oz = spot * p.pct / 100;
+        var ten = g * 10;
+        return '<tr><td><strong>' + p.mark + '</strong></td><td>' + p.name + '</td><td>' + p.pct + '%</td><td>$' + g.toFixed(4) + '</td><td>$' + oz.toFixed(2) + '</td><td>$' + ten.toFixed(2) + '</td><td><a href="' + p.link + '" style="color:var(--accent-blue)">Calculate →</a></td></tr>';
+      }).join('');
+      renderBars(spot);
+    }
+
+    // Re-render bars when weight or unit changes
+    document.getElementById('multi-weight').addEventListener('input', function() {
+      var spot = SilverPrice.getPrice(); if (spot) renderBars(spot);
+    });
+    document.getElementById('multi-unit').addEventListener('change', function() {
+      var spot = SilverPrice.getPrice(); if (spot) renderBars(spot);
+    });
+
+    SilverPrice.onPriceUpdate(function(){ update(); });
+    update();
   </script>
 
 
