@@ -1605,21 +1605,24 @@ const SiteComponents = (() => {
   function init() {
     renderHeader();
     renderFooter();
-    renderLocalizedSections();
-    injectPageSchema();
-    updateSpotPriceDisplay();
-    renderChatWidget();
-    renderDealerPayout();
-    renderPostCalcCTA();
-    renderPriceAlertCapture();
-    setRegionalCurrency();
-    renderWeightPresets();
-    renderFAQAccordion();
-    renderSocialProof();
-    renderWorthMoreWarning();
-    renderMeltValueTooltips();
-    localizeCalculatorUI();
-    // Lead capture popup removed
+    setTimeout(function() {
+      try {
+        renderLocalizedSections();
+        injectPageSchema();
+        updateSpotPriceDisplay();
+        renderChatWidget();
+        renderDealerPayout();
+        renderPostCalcCTA();
+        renderPriceAlertCapture();
+        setRegionalCurrency();
+        renderWeightPresets();
+        renderFAQAccordion();
+        renderSocialProof();
+        renderWorthMoreWarning();
+        renderMeltValueTooltips();
+        localizeCalculatorUI();
+      } catch(e) { console.error('[SiteComponents] deferred init error:', e); }
+    }, 0);
   }
 
   /* ── Auto-set EUR currency for European language pages ── */
