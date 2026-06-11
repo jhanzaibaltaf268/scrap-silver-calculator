@@ -55,6 +55,19 @@ const SiteComponents = (() => {
         { label: 'nav_identifier', href: '/identify-silver/' },
       ]
     },
+    {
+      label: 'nav_gold_metals', dropdown: [
+        { label: 'nav_gold_calc',        href: '/gold-melt-value-calculator/' },
+        { label: 'nav_14k',              href: '/14k-gold-calculator/' },
+        { label: 'nav_18k',              href: '/18k-gold-calculator/' },
+        { label: 'nav_22k',              href: '/22k-gold-calculator/' },
+        { label: 'nav_24k',              href: '/24k-gold-calculator/' },
+        { label: 'nav_gold_price',       href: '/gold-price-today/' },
+        { label: 'nav_platinum_calc',    href: '/platinum-calculator/' },
+        { label: 'nav_palladium_calc',   href: '/palladium-calculator/' },
+        { label: 'nav_metals_prices',    href: '/precious-metals-prices/' },
+      ]
+    },
     { label: 'nav_guide', href: '/how-to-use-silver-calculators/' }
   ];
 
@@ -98,6 +111,16 @@ const SiteComponents = (() => {
     nav_tola:         { en:'Tola Calculator', es:'Calculadora Tola', fr:'Calculateur Tola', de:'Tola Rechner', it:'Calcolatore Tola', pt:'Calculadora Tola', ru:'Калькулятор Тола', ar:'حاسبة التولة', hi:'तोला कैलकुलेटर', ur:'تولہ کیلکولیٹر', tr:'Tola Hesaplayıcı', zh:'托拉计算器' },
     nav_sell_hold:    { en:'Sell or Hold', es:'Vender o Mantener', fr:'Vendre ou Garder', de:'Verkaufen oder Halten', it:'Vendere o Tenere', pt:'Vender ou Manter', ru:'Продать или держать', ar:'بيع أو احتفظ', hi:'बेचें या रखें', ur:'بیچیں یا रखें', tr:'Sat veya Tut', zh:'卖出或持有' },
     nav_identifier:   { en:'Silver Identifier', es:'Identificador de Plata', fr:'Identificateur Argent', de:'Silber-Identifikator', it:'Identificatore Argento', pt:'Identificador Prata', ru:'Определитель серебра', ar:'معرف الفضة', hi:'सिल्वर पहचानकर्ता', ur:'سلور آئیڈینٹیفائر', tr:'Gümüş Tanımlayıcı', zh:'银识别器' },
+    nav_gold_metals:  { en:'Gold & Metals', es:'Oro y Metales', fr:'Or & Métaux', de:'Gold & Metalle', it:'Oro e Metalli', pt:'Ouro e Metais', ru:'Золото и Металлы', ar:'الذهب والمعادن', hi:'सोना और धातु', ur:'سونا اور دھاتیں', tr:'Altın ve Metaller', zh:'黄金和金属' },
+    nav_gold_calc:    { en:'Gold Melt Value', es:'Valor Fundición Oro', fr:'Valeur Fonte Or', de:'Goldschmelzwert', it:'Valore Fusione Oro', pt:'Valor Fusão Ouro', ru:'Стоимость плавки золота', ar:'قيمة صهر الذهب', hi:'गोल्ड मेल्ट वैल्यू', ur:'گولڈ میلٹ ویلیو', tr:'Altın Erime Değeri', zh:'黄金熔化价值' },
+    nav_14k:          { en:'14K Gold', es:'Oro 14K', fr:'Or 14K', de:'14K Gold', it:'Oro 14K', pt:'Ouro 14K', ru:'Золото 14K', ar:'ذهب 14K', hi:'14K सोना', ur:'14K سونا', tr:'14 Ayar Altın', zh:'14K黄金' },
+    nav_18k:          { en:'18K Gold', es:'Oro 18K', fr:'Or 18K', de:'18K Gold', it:'Oro 18K', pt:'Ouro 18K', ru:'Золото 18K', ar:'ذهب 18K', hi:'18K सोना', ur:'18K سونا', tr:'18 Ayar Altın', zh:'18K黄金' },
+    nav_22k:          { en:'22K Gold', es:'Oro 22K', fr:'Or 22K', de:'22K Gold', it:'Oro 22K', pt:'Ouro 22K', ru:'Золото 22K', ar:'ذهب 22K', hi:'22K सोना', ur:'22K سونا', tr:'22 Ayar Altın', zh:'22K黄金' },
+    nav_24k:          { en:'24K Gold', es:'Oro 24K', fr:'Or 24K', de:'24K Gold', it:'Oro 24K', pt:'Ouro 24K', ru:'Золото 24K', ar:'ذهب 24K', hi:'24K सोना', ur:'24K سونا', tr:'24 Ayar Altın', zh:'24K黄金' },
+    nav_gold_price:   { en:'Gold Price Today', es:'Precio del Oro Hoy', fr:'Prix de l\'Or Aujourd\'hui', de:'Goldpreis Heute', it:'Prezzo dell\'Oro Oggi', pt:'Preço do Ouro Hoje', ru:'Цена золота сегодня', ar:'سعر الذهب اليوم', hi:'आज सोने का भाव', ur:'آج سونے کی قیمت', tr:'Bugün Altın Fiyatı', zh:'今日黄金价格' },
+    nav_platinum_calc:{ en:'Platinum Calculator', es:'Calculadora Platino', fr:'Calculateur Platine', de:'Platin Rechner', it:'Calcolatore Platino', pt:'Calculadora Platina', ru:'Калькулятор платины', ar:'حاسبة البلاتين', hi:'प्लेटिनम कैलकुलेटर', ur:'پلاٹینم کیلکولیٹر', tr:'Platin Hesaplayıcı', zh:'铂金计算器' },
+    nav_palladium_calc:{ en:'Palladium Calculator', es:'Calculadora Paladio', fr:'Calculateur Palladium', de:'Palladium Rechner', it:'Calcolatore Palladio', pt:'Calculadora Paládio', ru:'Калькулятор палладия', ar:'حاسبة البلاديوم', hi:'पैलेडियम कैलकुलेटर', ur:'پیلیڈیم کیلکولیٹر', tr:'Paladyum Hesaplayıcı', zh:'钯计算器' },
+    nav_metals_prices:{ en:'All Metals Prices', es:'Precios de Metales', fr:'Prix des Métaux', de:'Metallpreise', it:'Prezzi dei Metalli', pt:'Preços dos Metais', ru:'Цены на металлы', ar:'أسعار المعادن', hi:'धातुओं की कीमतें', ur:'دھاتوں کی قیمتیں', tr:'Metal Fiyatları', zh:'金属价格' },
   };
 
   const FOOTER_COLS = [
@@ -119,6 +142,16 @@ const SiteComponents = (() => {
         { label: 'nav_925_price_today', href: '/925-silver-price-today/' },
         { label: 'nav_999_price_today', href: '/999-silver-price-today/' },
         { label: 'nav_silver_news_today', href: '/silver-news-today/' },
+      ]
+    },
+    {
+      title: 'nav_gold_metals',
+      links: [
+        { label: 'nav_gold_calc',      href: '/gold-melt-value-calculator/' },
+        { label: 'nav_14k',            href: '/14k-gold-calculator/' },
+        { label: 'nav_18k',            href: '/18k-gold-calculator/' },
+        { label: 'nav_platinum_calc',  href: '/platinum-calculator/' },
+        { label: 'nav_palladium_calc', href: '/palladium-calculator/' },
       ]
     },
     {
