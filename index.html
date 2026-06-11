@@ -1660,24 +1660,22 @@
     var rv=document.getElementById('rv');if(rv)rv.textContent=f2(100/31.1035*.925*spot);
   }();
   </script>
+  <script src="/js/silver-price.js"></script>
+  <script src="/js/calculator.js"></script>
   <script src="/js/translations.js" defer></script>
-  
-  <script src="/js/silver-price.js" defer></script>
-  <script src="/js/calculator.js" defer></script>
   <script src="/js/components.js" defer></script>
   <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const PURITIES = [
-      { code: '999', name: 'Fine Silver',         purity: 0.999, use: 'Bullion, coins' },
-      { code: '958', name: 'Britannia Silver',    purity: 0.958, use: 'UK bullion' },
-      { code: '925', name: 'Sterling Silver',     purity: 0.925, use: 'Jewelry, flatware' },
-      { code: '900', name: 'Coin Silver',         purity: 0.900, use: 'Pre-1965 US coins' },
-      { code: '835', name: 'European Silver 835', purity: 0.835, use: 'German/Dutch ware' },
-      { code: '800', name: 'European Silver 800', purity: 0.800, use: 'Continental silverware' },
+  // Calculator runs immediately — silver-price.js + calculator.js already loaded above
+  (function(){
+    var PURITIES = [
+      { code: '999', purity: 0.999 },
+      { code: '958', purity: 0.958 },
+      { code: '925', purity: 0.925 },
+      { code: '900', purity: 0.900 },
+      { code: '835', purity: 0.835 },
+      { code: '800', purity: 0.800 }
     ];
-
-    const S = { mode: 'scrap', unit: 'g', purity: 0.925 };
-    const P = [
+    var P = [
       {k:'999',v:0.999,l:'Fine'},
       {k:'958',v:0.958,l:'Britannia'},
       {k:'925',v:0.925,l:'Sterling'},
@@ -1685,151 +1683,115 @@
       {k:'835',v:0.835,l:'European'},
       {k:'800',v:0.800,l:'European'}
     ];
+    var S = { mode: 'scrap', unit: 'g', purity: 0.925 };
 
     function initDash() {
-      document.getElementById('pg').innerHTML = P.map(p => `
-        <div class="porb ${p.v===S.purity?'on':''}" onclick="setP(${p.v},this)">
-          <span class="pv">${p.k}</span><span class="pl">${p.l}</span>
-        </div>`).join('');
-    }
-
-    function setMode(m, el) {
-      S.mode = m;
-      document.querySelectorAll('.dtab').forEach(t => t.classList.remove('on'));
-      el.classList.add('on');
-      if(m==='coins') { S.purity = 0.900; initDash(); }
-      if(m==='bars')  { S.purity = 0.999; initDash(); }
-      calc();
-    }
-    function setU(u, el) {
-      S.unit = u;
-      document.querySelectorAll('.uchip').forEach(c => c.classList.remove('on'));
-      el.classList.add('on');
-      calc();
-    }
-    function setP(v, el) {
-      S.purity = v;
-      document.querySelectorAll('.porb').forEach(o => o.classList.remove('on'));
-      el.classList.add('on');
-      calc();
+      document.getElementById('pg').innerHTML = P.map(function(p) {
+        return '<div class="porb '+(p.v===S.purity?'on':'')+'" onclick="setP('+p.v+',this)"><span class="pv">'+p.k+'</span><span class="pl">'+p.l+'</span></div>';
+      }).join('');
     }
 
     function calc() {
-      const val  = parseFloat(document.getElementById('mw').value) || 0;
-      const spot = SilverPrice.getPrice();
-      const gold = SilverPrice.getGoldPrice() || 2400;
-      const grams = SilverCalc.toGrams(val, S.unit);
-      const res   = SilverCalc.meltValue(grams, S.purity, spot);
-
+      var val   = parseFloat(document.getElementById('mw').value) || 0;
+      var spot  = SilverPrice.getPrice();
+      var grams = SilverCalc.toGrams(val, S.unit);
+      var res   = SilverCalc.meltValue(grams, S.purity, spot);
       document.getElementById('rv').textContent = SilverCalc.formatCurrency(res.value);
-      document.getElementById('rd').textContent = `${res.silverContentGrams}g pure · ${res.silverContentOz} oz · ${(S.purity*100).toFixed(1)}%`;
-
-      const low  = res.value * 0.70;
-      const high = res.value * 0.95;
-      document.getElementById('rdealer').innerHTML =
-        `Dealer typically pays <strong>${SilverCalc.formatCurrency(low)}–${SilverCalc.formatCurrency(high)}</strong> (70–95% of melt)`;
+      document.getElementById('rd').textContent = res.silverContentGrams+'g pure \xB7 '+res.silverContentOz+' oz \xB7 '+(S.purity*100).toFixed(1)+'%';
+      var low  = res.value * 0.70;
+      var high = res.value * 0.95;
+      document.getElementById('rdealer').innerHTML = 'Dealer typically pays <strong>'+SilverCalc.formatCurrency(low)+'–'+SilverCalc.formatCurrency(high)+'</strong> (70–95% of melt)';
     }
 
-    function loadExample(weight, unit, purity) {
+    function updateAllLive() {
+      var spot = SilverPrice.getPrice();
+      var change = SilverPrice.getChange();
+      var changePct = SilverPrice.getChangePercent();
+      var fmt2 = function(v){ return '$'+Number(v).toFixed(2); };
+      var fmt4 = function(v){ return '$'+Number(v).toFixed(4); };
+      document.getElementById('hero-spot').textContent = fmt2(spot);
+      var hc = document.getElementById('hero-change');
+      if(change !== null && changePct !== null) {
+        var dir = change >= 0 ? 'up' : 'down';
+        hc.textContent = (change>=0?'▲':'▼')+' '+fmt2(Math.abs(change))+' ('+Math.abs(changePct).toFixed(2)+'%)';
+        hc.className = 'hv2-spot-change '+dir;
+      } else {
+        hc.textContent = 'Live'; hc.className = 'hv2-spot-change flat';
+      }
+      document.getElementById('tick-999').textContent = fmt2(spot*0.999)+'/oz';
+      document.getElementById('tick-925').textContent = fmt2(spot*0.925)+'/oz';
+      document.getElementById('tick-900').textContent = fmt2(spot*0.900)+'/oz';
+      document.getElementById('tick-800').textContent = fmt2(spot*0.800)+'/oz';
+      document.getElementById('qa-spot').textContent = fmt2(spot);
+      ['999','925','900','800'].forEach(function(code) {
+        var p = PURITIES.find(function(x){ return x.code===code; }).purity;
+        var oz = spot * p;
+        document.getElementById('pb-'+code+'-oz').textContent = fmt2(oz);
+        document.getElementById('pb-'+code+'-g').textContent  = fmt4(oz/31.1035)+' /g';
+      });
+      document.getElementById('int-925-g').textContent    = fmt4(spot*0.925/31.1035);
+      document.getElementById('int-925-g2').textContent   = fmt4(spot*0.925/31.1035);
+      document.getElementById('int-925-oz').textContent   = fmt2(spot*0.925);
+      document.getElementById('int-900-oz').textContent   = fmt2(spot*0.900);
+      document.getElementById('int-999-g').textContent    = fmt4(spot*0.999/31.1035);
+      document.getElementById('int-ster-ring').textContent = fmt2(5/31.1035*0.925*spot);
+      document.getElementById('ex-1').textContent = fmt2(10/31.1035*0.925*spot);
+      document.getElementById('ex-2').textContent = fmt2(50/31.1035*0.925*spot);
+      document.getElementById('ex-3').textContent = fmt2(1*0.999*spot);
+      document.getElementById('ex-4').textContent = fmt2(60/31.1035*0.925*spot);
+    }
+
+    window.setMode = function(m, el) {
+      S.mode = m;
+      document.querySelectorAll('.dtab').forEach(function(t){ t.classList.remove('on'); });
+      el.classList.add('on');
+      if(m==='coins'){ S.purity=0.900; initDash(); }
+      if(m==='bars') { S.purity=0.999; initDash(); }
+      calc();
+    };
+    window.setU = function(u, el) {
+      S.unit = u;
+      document.querySelectorAll('.uchip').forEach(function(c){ c.classList.remove('on'); });
+      el.classList.add('on');
+      calc();
+    };
+    window.setP = function(v, el) {
+      S.purity = v;
+      document.querySelectorAll('.porb').forEach(function(o){ o.classList.remove('on'); });
+      el.classList.add('on');
+      calc();
+    };
+    window.loadExample = function(weight, unit, purity) {
       document.getElementById('mw').value = weight;
       S.unit = unit;
       S.purity = purity;
-      document.querySelectorAll('.uchip').forEach(c => {
+      document.querySelectorAll('.uchip').forEach(function(c){
         c.classList.toggle('on', c.textContent.trim().toLowerCase().startsWith(unit==='oz'?'troy':unit));
       });
       initDash();
       calc();
       document.getElementById('calculator').scrollIntoView({ behavior:'smooth', block:'start' });
-    }
-
-    function updateAllLive() {
-      const spot = SilverPrice.getPrice();
-      const change = SilverPrice.getChange();
-      const changePct = SilverPrice.getChangePercent();
-      const fmt2 = v => '$' + v.toFixed(2);
-      const fmt4 = v => '$' + v.toFixed(4);
-
-      // Hero spot display
-      document.getElementById('hero-spot').textContent = fmt2(spot);
-      const hc = document.getElementById('hero-change');
-      if (change !== null && changePct !== null) {
-        const dir = change >= 0 ? 'up' : 'down';
-        const arrow = change >= 0 ? '▲' : '▼';
-        hc.textContent = `${arrow} ${fmt2(Math.abs(change))} (${Math.abs(changePct).toFixed(2)}%)`;
-        hc.className = `hv2-spot-change ${dir}`;
-      } else {
-        hc.textContent = 'Live'; hc.className = 'hv2-spot-change flat';
-      }
-
-      // Purity ticker
-      document.getElementById('tick-999').textContent = fmt2(spot * 0.999) + '/oz';
-      document.getElementById('tick-925').textContent = fmt2(spot * 0.925) + '/oz';
-      document.getElementById('tick-900').textContent = fmt2(spot * 0.900) + '/oz';
-      document.getElementById('tick-800').textContent = fmt2(spot * 0.800) + '/oz';
-
-      // Quick answer
-      document.getElementById('qa-spot').textContent = fmt2(spot);
-
-      // Purity cards
-      ['999','925','900','800'].forEach(code => {
-        const p = PURITIES.find(x => x.code === code).purity;
-        const oz = spot * p;
-        document.getElementById(`pb-${code}-oz`).textContent = fmt2(oz);
-        document.getElementById(`pb-${code}-g`).textContent  = fmt4(oz / 31.1035) + ' /g';
-      });
-
-      // Intent modules
-      document.getElementById('int-925-g').textContent    = fmt4(spot * 0.925 / 31.1035);
-      document.getElementById('int-925-g2').textContent   = fmt4(spot * 0.925 / 31.1035);
-      document.getElementById('int-925-oz').textContent   = fmt2(spot * 0.925);
-      document.getElementById('int-900-oz').textContent   = fmt2(spot * 0.900);
-      document.getElementById('int-999-g').textContent    = fmt4(spot * 0.999 / 31.1035);
-      document.getElementById('int-ster-ring').textContent = fmt2(5 / 31.1035 * 0.925 * spot);
-
-      // Example cards
-      document.getElementById('ex-1').textContent = fmt2(10 / 31.1035 * 0.925 * spot);
-      document.getElementById('ex-2').textContent = fmt2(50 / 31.1035 * 0.925 * spot);
-      document.getElementById('ex-3').textContent = fmt2(1 * 0.999 * spot);
-      document.getElementById('ex-4').textContent = fmt2(60 / 31.1035 * 0.925 * spot);
-    }
-
-    // EDU tab switcher — exposed globally for inline onclick
+    };
     window.switchTab = function(panelId, btn) {
-      document.querySelectorAll('.edu-panel').forEach(p => p.classList.remove('on'));
-      document.querySelectorAll('.edu-tab').forEach(b => b.classList.remove('on'));
+      document.querySelectorAll('.edu-panel').forEach(function(p){ p.classList.remove('on'); });
+      document.querySelectorAll('.edu-tab').forEach(function(b){ b.classList.remove('on'); });
       document.getElementById(panelId).classList.add('on');
       btn.classList.add('on');
     };
 
-    // FAQ accordion
-    document.addEventListener('click', e => {
-      if(e.target.closest('.faq-question')) e.target.closest('.faq-item').classList.toggle('open');
-    });
-
-    // Scroll reveal — also mark elements already in viewport as visible immediately
-    document.querySelectorAll('.reveal').forEach(el => {
-      const r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('visible');
-    });
-    const obs = new IntersectionObserver(ents => {
-      ents.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
-    }, { threshold: 0.08, rootMargin: '0px 0px -10px 0px' });
-    document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
-
+    window.calc = calc;
+    window._calcState = S;
 
     initDash();
-    SilverPrice.onPriceUpdate(() => { calc(); updateAllLive(); });
-    calc(); updateAllLive();
+    calc();
+    updateAllLive();
+    SilverPrice.onPriceUpdate(function(){ calc(); updateAllLive(); });
+    var calcBtn = document.getElementById('calc-btn');
+    if(calcBtn) calcBtn.addEventListener('click', function(){ calc(); updateAllLive(); });
+  })();
 
-    const calcBtn = document.getElementById('calc-btn');
-    if (calcBtn) calcBtn.addEventListener('click', function() { calc(); updateAllLive(); });
-
-    window.calc = calc;
-    window.setMode = setMode;
-    window.setU = setU;
-    window.setP = setP;
-    window._calcState = S; // expose mode + purity to chat widget
-
+  // AI nudge + FAQ + scroll reveal — after DOMContentLoaded (components.js deferred)
+  document.addEventListener('DOMContentLoaded', function() {
     // Context-aware AI nudge
     function getAIQuestion(mode, purity, value) {
       var purityLabel = purity >= 0.999 ? 'fine silver (999)' : purity >= 0.958 ? 'Britannia silver (958)' : purity >= 0.925 ? '925 sterling silver' : purity >= 0.900 ? '90% coin silver' : purity >= 0.835 ? '835 European silver' : '800 European silver';
@@ -1837,9 +1799,8 @@
       if (mode === 'bars')  return { nudge: 'Your silver bars are worth ' + value + '. Is now the right time to sell or should you hold?', q: 'My silver bars are worth ' + value + ' — should I sell now or wait for a better price?' };
       return { nudge: 'Your ' + purityLabel + ' is worth ' + value + '. Want to know who pays closest to melt?', q: 'My ' + purityLabel + ' scrap is worth ' + value + ' melt value — which dealers pay closest to that?' };
     }
-
     var _nudgeShown = false;
-    var _origCalc = calc;
+    var _origCalc = window.calc;
     window.calc = function() {
       _origCalc();
       var rv = document.getElementById('rv');
@@ -1849,22 +1810,34 @@
       var val = rv.textContent;
       if (!val || val === '—' || val === '$0.00') { nudge.style.display = 'none'; return; }
 
-      var ctx = getAIQuestion(S.mode, S.purity, val);
+      var _S = window._calcState;
+      var ctx = getAIQuestion(_S.mode, _S.purity, val);
       nudgeText.textContent = ctx.nudge;
       nudge.style.display = 'block';
-
-      // Wire click: open chat with the specific question
       window._nudgeClick = function() {
         if (window.SACChat) window.SACChat.openWithQuestion(ctx.q);
       };
-
-      // Also change the floating bubble label once
       if (!_nudgeShown) {
         _nudgeShown = true;
         var bubble = document.getElementById('sac-chat-bubble');
         if (bubble) { bubble.textContent = '💬 Get Best Price'; }
       }
     };
+
+    // FAQ accordion
+    document.addEventListener('click', function(e) {
+      if(e.target.closest('.faq-question')) e.target.closest('.faq-item').classList.toggle('open');
+    });
+
+    // Scroll reveal
+    document.querySelectorAll('.reveal').forEach(function(el) {
+      var r = el.getBoundingClientRect();
+      if(r.top < window.innerHeight && r.bottom > 0) el.classList.add('visible');
+    });
+    var obs = new IntersectionObserver(function(ents) {
+      ents.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.08, rootMargin: '0px 0px -10px 0px' });
+    document.querySelectorAll('.reveal:not(.visible)').forEach(function(el){ obs.observe(el); });
   }); // end DOMContentLoaded
 
   // Email subscribe form
