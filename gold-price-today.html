@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function() {
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Gold Price Today'}]);
 
     function updatePrices() {
-      const spot = SilverPrice.getPrice();
+      const spot = SilverPrice.getGoldPrice();
       const ppg = spot / 31.1035;
       const ppd = spot / 20;
 

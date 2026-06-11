@@ -15,8 +15,10 @@ module.exports = async function handler(req, res) {
   // Cache: 30 minutes fresh, 30 minutes stale-while-revalidate (prices update frequently)
   res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=1800');
 
-  const FALLBACK_SILVER = 87.42;  // Current price from Trading Economics
-  const FALLBACK_GOLD = 2440.00;
+  const FALLBACK_SILVER    = 87.42;
+  const FALLBACK_GOLD      = 3200.00;
+  const FALLBACK_PLATINUM  = 960.00;
+  const FALLBACK_PALLADIUM = 980.00;
   const HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
   };
@@ -46,7 +48,9 @@ module.exports = async function handler(req, res) {
         console.log(`✅ Trading Economics: Silver = $${silverPrice}`);
         return res.status(200).json({
           silver: Math.round(silverPrice * 100) / 100,
-          gold:   FALLBACK_GOLD,
+          gold:      FALLBACK_GOLD,
+          platinum:  FALLBACK_PLATINUM,
+          palladium: FALLBACK_PALLADIUM,
           source: 'tradingeconomics',
           ts: Date.now()
         });
@@ -62,7 +66,9 @@ module.exports = async function handler(req, res) {
         console.log(`✅ Trading Economics (text): Silver = $${silverPrice}`);
         return res.status(200).json({
           silver: Math.round(silverPrice * 100) / 100,
-          gold:   FALLBACK_GOLD,
+          gold:      FALLBACK_GOLD,
+          platinum:  FALLBACK_PLATINUM,
+          palladium: FALLBACK_PALLADIUM,
           source: 'tradingeconomics',
           ts: Date.now()
         });
@@ -77,8 +83,10 @@ module.exports = async function handler(req, res) {
   // ---- 2. Fallback to last known price ----
   console.warn('⚠️ Using fallback price');
   return res.status(200).json({
-    silver: FALLBACK_SILVER,
-    gold:   FALLBACK_GOLD,
+    silver:    FALLBACK_SILVER,
+    gold:      FALLBACK_GOLD,
+    platinum:  FALLBACK_PLATINUM,
+    palladium: FALLBACK_PALLADIUM,
     source: 'fallback',
     ts: Date.now()
   });

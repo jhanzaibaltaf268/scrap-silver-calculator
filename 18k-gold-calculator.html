@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function() {
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'18K Gold Calculator'}]);
     const w=document.getElementById('weight'),u=document.getElementById('unit');
-    function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const spot=SilverPrice.getPrice();const r=SilverCalc.meltValue(grams,0.75,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure gold (75%) · ${r.silverContentOz} oz · Spot: $${spot.toFixed(2)}/oz`;}
+    function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const spot=SilverPrice.getGoldPrice();const r=SilverCalc.meltValue(grams,0.75,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure gold (75%) · ${r.silverContentOz} oz · Gold Spot: $${spot.toFixed(2)}/oz`;}
     w.addEventListener('input',calc);u.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
     const cb = document.getElementById('calc-btn');
     if (cb) { const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null); if (fn) cb.addEventListener('click', fn); }

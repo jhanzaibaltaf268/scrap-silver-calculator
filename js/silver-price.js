@@ -9,13 +9,17 @@
    ============================================ */
 
 const SilverPrice = (() => {
-  const FALLBACK_PRICE   = 87.42;   // ~May 2026 market price (USD/troy oz)
-  const FALLBACK_GOLD    = 3200.00; // Fallback gold price
+  const FALLBACK_PRICE     = 87.42;   // ~May 2026 market price (USD/troy oz)
+  const FALLBACK_GOLD      = 3200.00; // Fallback gold price
+  const FALLBACK_PLATINUM  = 960.00;  // Fallback platinum price
+  const FALLBACK_PALLADIUM = 980.00;  // Fallback palladium price
   const CACHE_KEY        = 'silverSpotCache';
   const CACHE_DURATION   = 60 * 60 * 1000; // 1 hour (matches Edge cache)
 
-  let currentPrice  = FALLBACK_PRICE;
-  let currentGoldPrice = FALLBACK_GOLD;
+  let currentPrice          = FALLBACK_PRICE;
+  let currentGoldPrice      = FALLBACK_GOLD;
+  let currentPlatinumPrice  = FALLBACK_PLATINUM;
+  let currentPalladiumPrice = FALLBACK_PALLADIUM;
   let currentChange = null;
   let currentChangePercent = null;
   let currentPrevClose = null;
@@ -52,9 +56,9 @@ const SilverPrice = (() => {
     return null;
   }
 
-  function setCache(silver, gold, change, changePercent, prevClose) {
+  function setCache(silver, gold, platinum, palladium, change, changePercent, prevClose) {
     try {
-      sessionStorage.setItem(CACHE_KEY, JSON.stringify({ silver, gold, change, changePercent, prevClose, ts: Date.now() }));
+      sessionStorage.setItem(CACHE_KEY, JSON.stringify({ silver, gold, platinum, palladium, change, changePercent, prevClose, ts: Date.now() }));
     } catch (_) {}
   }
 
@@ -84,28 +88,26 @@ const SilverPrice = (() => {
       const data = await tryFetch('/api/price');
       if (data?.silver > 0) {
         console.log(`✅ Price via /api/price: $${data.silver} (source: ${data.source})`);
-        return { silver: data.silver, gold: data.gold, change: data.change, changePercent: data.changePercent, prevClose: data.prevClose };
+        return { silver: data.silver, gold: data.gold, platinum: data.platinum, palladium: data.palladium, change: data.change, changePercent: data.changePercent, prevClose: data.prevClose };
       }
     }
 
     // ---- Source 2: GoldAPI.io direct — may work from browser context ----
     try {
       const GOLD_API_KEY = 'goldapi-1230smo2lqnxm-io';
-      const [sRes, gRes] = await Promise.all([
-        fetch('https://www.goldapi.io/api/XAG/USD', {
-          headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' },
-          mode: 'cors'
-        }),
-        fetch('https://www.goldapi.io/api/XAU/USD', {
-          headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' },
-          mode: 'cors'
-        })
+      const [sRes, gRes, ptRes, pdRes] = await Promise.all([
+        fetch('https://www.goldapi.io/api/XAG/USD', { headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' }, mode: 'cors' }),
+        fetch('https://www.goldapi.io/api/XAU/USD', { headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' }, mode: 'cors' }),
+        fetch('https://www.goldapi.io/api/XPT/USD', { headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' }, mode: 'cors' }),
+        fetch('https://www.goldapi.io/api/XPD/USD', { headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' }, mode: 'cors' })
       ]);
       if (sRes.ok && gRes.ok) {
         const [sData, gData] = await Promise.all([sRes.json(), gRes.json()]);
+        const ptData = ptRes.ok ? await ptRes.json() : null;
+        const pdData = pdRes.ok ? await pdRes.json() : null;
         if (sData.price > 0) {
-          console.log(`✅ GoldAPI.io: $${sData.price}`);
-          return { silver: sData.price, gold: gData.price };
+          console.log(`✅ GoldAPI.io: Ag=$${sData.price} Au=$${gData.price} Pt=$${ptData?.price} Pd=$${pdData?.price}`);
+          return { silver: sData.price, gold: gData.price, platinum: ptData?.price || null, palladium: pdData?.price || null };
         }
       }
     } catch (e) {
@@ -133,11 +135,13 @@ const SilverPrice = (() => {
         const mlData = await tryFetch(endpoint, { mode: 'cors' });
         if (mlData && typeof mlData === 'object') {
           const spot = Array.isArray(mlData) ? mlData[0] : mlData;
-          const silver = spot?.silver ?? spot?.XAG ?? spot?.xag;
-          const gold = spot?.gold ?? spot?.XAU ?? spot?.xau;
+          const silver   = spot?.silver   ?? spot?.XAG ?? spot?.xag;
+          const gold     = spot?.gold     ?? spot?.XAU ?? spot?.xau;
+          const platinum = spot?.platinum ?? spot?.XPT ?? spot?.xpt;
+          const palladium= spot?.palladium?? spot?.XPD ?? spot?.xpd;
           if (silver && silver > 0) {
             console.log(`✅ metals.live: $${silver}`);
-            return { silver, gold: gold || null };
+            return { silver, gold: gold || null, platinum: platinum || null, palladium: palladium || null };
           }
         }
       } catch (e) {
@@ -168,6 +172,8 @@ const SilverPrice = (() => {
     if (cached?.silver > 0) {
       currentPrice = cached.silver;
       if (cached.gold)          currentGoldPrice        = cached.gold;
+      if (cached.platinum)      currentPlatinumPrice    = cached.platinum;
+      if (cached.palladium)     currentPalladiumPrice   = cached.palladium;
       if (cached.change        != null) currentChange        = cached.change;
       if (cached.changePercent != null) currentChangePercent = cached.changePercent;
       if (cached.prevClose     != null) currentPrevClose     = cached.prevClose;
@@ -183,10 +189,12 @@ const SilverPrice = (() => {
     if (prices?.silver > 0) {
       currentPrice = Math.round(prices.silver * 100) / 100;
       if (prices.gold)          currentGoldPrice        = Math.round(prices.gold * 100) / 100;
+      if (prices.platinum)      currentPlatinumPrice    = Math.round(prices.platinum * 100) / 100;
+      if (prices.palladium)     currentPalladiumPrice   = Math.round(prices.palladium * 100) / 100;
       if (prices.change        != null) currentChange        = Math.round(prices.change * 100) / 100;
       if (prices.changePercent != null) currentChangePercent = Math.round(prices.changePercent * 100) / 100;
       if (prices.prevClose     != null) currentPrevClose     = Math.round(prices.prevClose * 100) / 100;
-      setCache(currentPrice, currentGoldPrice, currentChange, currentChangePercent, currentPrevClose);
+      setCache(currentPrice, currentGoldPrice, currentPlatinumPrice, currentPalladiumPrice, currentChange, currentChangePercent, currentPrevClose);
     }
 
     isInitialized = true;
@@ -195,8 +203,10 @@ const SilverPrice = (() => {
   }
 
   /* ---- Public API ---- */
-  function getPrice()       { return customPrice !== null ? customPrice : currentPrice; }
-  function getGoldPrice()   { return currentGoldPrice; }
+  function getPrice()           { return customPrice !== null ? customPrice : currentPrice; }
+  function getGoldPrice()       { return currentGoldPrice; }
+  function getPlatinumPrice()   { return currentPlatinumPrice; }
+  function getPalladiumPrice()  { return currentPalladiumPrice; }
 
   function getPriceInCurrency(currency) {
     return getPrice() * (CURRENCIES[currency] || CURRENCIES.USD).rate;
@@ -234,7 +244,7 @@ const SilverPrice = (() => {
   init();
 
   return {
-    init, getPrice, getGoldPrice,
+    init, getPrice, getGoldPrice, getPlatinumPrice, getPalladiumPrice,
     getPriceInCurrency, formatInCurrency,
     setCustomPrice, clearCustomPrice, isCustom,
     setCurrency, getCurrency, getCurrencySymbol,

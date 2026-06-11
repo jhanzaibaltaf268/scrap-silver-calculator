@@ -17,8 +17,6 @@
 <meta name="google-site-verification" content="3zJ4ttr1AnZWh4z6tMWiVpqPUwg7VEia6_65eJV8Lro">
 
     <meta charset="UTF-8">
-  <script src="/js/translations.js" defer></script>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gold Melt Value Calculator — Find Your Gold's Melt Worth</title>
 
@@ -178,10 +176,10 @@ document.addEventListener('DOMContentLoaded', function() {
       const grams=SilverCalc.toGrams(weight,u.value);
       let purity=parseFloat(p.value);
       if(p.value==='custom') purity=(parseFloat(cp.value)||0)/100;
-      const spot=SilverPrice.getPrice();
+      const spot=SilverPrice.getGoldPrice();
       const r=SilverCalc.meltValue(grams,purity,spot);
       document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
-      document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure gold · ${r.silverContentOz} oz · Spot: $${spot.toFixed(2)}/oz`;
+      document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure gold · ${r.silverContentOz} oz · Gold Spot: $${spot.toFixed(2)}/oz`;
     }
     w.addEventListener('input', calc);
     u.addEventListener('change', calc);
