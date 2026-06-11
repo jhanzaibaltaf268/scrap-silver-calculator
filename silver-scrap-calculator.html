@@ -194,7 +194,10 @@
   <script src="/js/silver-price.js"></script><script src="/js/calc-button-mode.js"></script>
   <script src="/js/calculator.js"></script>
   <script src="/js/components.js"></script>
-  <script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
     
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb', [
@@ -235,7 +238,9 @@
       {q: 'How much does a dealer typically deduct?', a: 'A fair dealer typically pays between 80% and 90% of the melt value for scrap silver. If an offer is below 70%, you should consider getting a second opinion from another buyer or a refiner.'},
       {q: 'Does tarnished silver have less value?', a: 'No. Tarnish is just surface oxidation. It does not affect the purity or weight of the silver. A scrap dealer will pay the same for black, tarnished silver as they would for polished silver.'}
     ]);
-  </script>
+  
+});
+</script>
 
 
 </body></html>

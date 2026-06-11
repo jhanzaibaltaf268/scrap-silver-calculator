@@ -163,7 +163,10 @@
   </main>
   <div id="site-footer"></div>
   <script src="/js/silver-price.js" defer></script><script src="/js/calculator.js" defer></script><script src="/js/components.js" defer></script>
-  <script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'1oz Silver Value'}]);
     const q=document.getElementById('qty');
@@ -177,6 +180,8 @@
       const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null);
       if (fn) cb.addEventListener('click', fn);
     }
-  </script>
+  
+});
+</script>
 </body>
 </html>
