@@ -17,7 +17,7 @@
 <meta name="google-site-verification" content="3zJ4ttr1AnZWh4z6tMWiVpqPUwg7VEia6_65eJV8Lro">
 
     <meta charset="UTF-8">
-  <script src="/js/translations.js"></script>
+  <script src="/js/translations.js" defer></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Face Value Silver Calculator — 90% Junk Silver</title>
@@ -202,8 +202,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="/js/silver-price.js"></script><script src="/js/calc-button-mode.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
-  <script>
+  <script src="/js/silver-price.js" defer></script><script src="/js/calc-button-mode.js" defer></script><script src="/js/calculator.js" defer></script><script src="/js/components.js" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Face Value Calculator'}]);
     
@@ -246,6 +249,8 @@
       {q: 'What does "20 times face" mean?', a: 'This is a common way dealers quote prices for junk silver. If a dealer offers "20x face," a silver quarter ($0.25) is worth $5.00, and a silver dime ($0.10) is worth $2.00.'},
       {q: 'Do 40% silver Kennedy halves use the same multiplier?', a: 'No. 40% silver coins (1965-1970) have a much lower silver content. $1.00 face value of 40% halves contains approximately 0.295 troy ounces of silver.'}
     ]);
-  </script>
+  
+});
+</script>
 
 </body></html>

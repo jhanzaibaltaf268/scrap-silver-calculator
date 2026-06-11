@@ -17,7 +17,7 @@
 <meta name="google-site-verification" content="3zJ4ttr1AnZWh4z6tMWiVpqPUwg7VEia6_65eJV8Lro">
 
     <meta charset="UTF-8">
-  <script src="/js/translations.js"></script>
+  <script src="/js/translations.js" defer></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Silver Dollar Melt Value Calculator — Live Prices</title>
@@ -215,8 +215,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="/js/silver-price.js"></script><script src="/js/calc-button-mode.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
-  <script>
+  <script src="/js/silver-price.js" defer></script><script src="/js/calc-button-mode.js" defer></script><script src="/js/calculator.js" defer></script><script src="/js/components.js" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Silver Dollar Calculator'}]);
     
@@ -260,6 +263,8 @@
       {q: 'What is the "CC" mint mark on a silver dollar?', a: 'The "CC" mark stands for the Carson City Mint in Nevada. These coins are highly prized by collectors because they were minted in relatively small quantities near the source of the silver (the Comstock Lode) and often carry a huge premium over melt value.'},
       {q: 'Can I sell a worn silver dollar for scrap?', a: 'Yes. Even if a silver dollar is so worn that the date is unreadable (slick), it still retains its intrinsic value of 0.77 troy ounces of silver. However, most coin dealers will still pay a small premium above melt even for worn dollars.'}
     ]);
-  </script>
+  
+});
+</script>
 
 </body></html>

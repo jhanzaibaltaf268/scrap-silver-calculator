@@ -17,7 +17,7 @@
 <meta name="google-site-verification" content="3zJ4ttr1AnZWh4z6tMWiVpqPUwg7VEia6_65eJV8Lro">
 
     <meta charset="UTF-8">
-  <script src="/js/translations.js"></script>
+  <script src="/js/translations.js" defer></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Silver Hallmarks Guide | Decode Every Stamp & Mark</title>
@@ -299,8 +299,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="/js/silver-price.js"></script><script src="/js/calc-button-mode.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
-  <script>
+  <script src="/js/silver-price.js" defer></script><script src="/js/calc-button-mode.js" defer></script><script src="/js/calculator.js" defer></script><script src="/js/components.js" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Guides'},{label:'Silver Hallmarks Guide'}]);
     SiteComponents.injectFAQSchema([
@@ -309,7 +312,9 @@
       {q:'What does EPNS mean on silverware?',a:'EPNS stands for Electroplated Nickel Silver. It means the item has a thin layer of silver plated over a nickel alloy base. Despite containing "silver" in the name, these items have very little actual silver value.'},
       {q:'Where are silver hallmarks located?',a:'Check inside ring bands, on necklace clasps, on the back of spoon handles, on the bottom of trays and plates, and inside watch case backs. A 10x jeweler loupe helps read small marks.'}
     ]);
-  </script>
+  
+});
+</script>
 
 
 </body></html>

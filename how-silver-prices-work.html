@@ -17,7 +17,7 @@
 <meta name="google-site-verification" content="3zJ4ttr1AnZWh4z6tMWiVpqPUwg7VEia6_65eJV8Lro">
 
     <meta charset="UTF-8">
-  <script src="/js/translations.js"></script>
+  <script src="/js/translations.js" defer></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How Silver Prices Work | What Drives the Market?</title>
@@ -255,8 +255,11 @@
     </div>
   </main>
   <div id="site-footer"></div>
-  <script src="/js/silver-price.js"></script><script src="/js/calc-button-mode.js"></script><script src="/js/calculator.js"></script><script src="/js/components.js"></script>
-  <script>
+  <script src="/js/silver-price.js" defer></script><script src="/js/calc-button-mode.js" defer></script><script src="/js/calculator.js" defer></script><script src="/js/components.js" defer></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
     
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Guides'},{label:'How Silver Prices Work'}]);
@@ -275,7 +278,9 @@
       {q:'Why is the price I pay for silver different from spot?',a:'When buying physical silver, you pay a premium above spot to cover production, distribution, and dealer profit. When selling, dealers offer below spot to make their margin.'},
       {q:'When does the silver market trade?',a:'Silver trades nearly 24 hours a day, 5 days a week on the COMEX electronic platform (Sunday 6pm to Friday 5pm ET). The LBMA sets a benchmark twice daily in London.'}
     ]);
-  </script>
+  
+});
+</script>
 
 
 </body></html>
