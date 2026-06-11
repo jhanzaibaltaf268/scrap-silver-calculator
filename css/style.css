@@ -121,7 +121,7 @@ body {
 @keyframes drift { 0% { transform: translate(0,0) scale(1) } 50% { transform: translate(30px,-20px) scale(1.08) } 100% { transform: translate(-20px,15px) scale(.95) } }
 
 /* ---- Reveal Animations ---- */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal { opacity: 1; transform: none; }
 .reveal.visible { opacity: 1; transform: none; }
 .reveal-d1 { transition-delay: .1s }
 .reveal-d2 { transition-delay: .2s }
@@ -483,7 +483,7 @@ html[dir="rtl"] .form-select { background-position: left 14px center; padding-ri
 .result-detail { font-size: 13px; color: var(--dim); }
 
 /* ---- Layout Helpers ---- */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+.reveal { opacity: 1; transform: none; }
 .reveal.visible { opacity: 1; transform: none; }
 
 /* ---- Calculator Page Layouts ---- */
