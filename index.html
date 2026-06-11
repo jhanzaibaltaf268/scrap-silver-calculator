@@ -1661,7 +1661,7 @@
   }();
   </script>
   <script src="/js/translations.js" defer></script>
-  <script src="/js/calc-button-mode.js" defer></script>
+  
   <script src="/js/silver-price.js" defer></script>
   <script src="/js/calculator.js" defer></script>
   <script src="/js/components.js" defer></script>
@@ -1820,6 +1820,9 @@
     initDash();
     SilverPrice.onPriceUpdate(() => { calc(); updateAllLive(); });
     calc(); updateAllLive();
+
+    const calcBtn = document.getElementById('calc-btn');
+    if (calcBtn) calcBtn.addEventListener('click', function() { calc(); updateAllLive(); });
 
     window.calc = calc;
     window.setMode = setMode;
