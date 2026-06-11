@@ -59,19 +59,32 @@
     </div>
   </main>
   <div id="site-footer"></div>
+  <script src="/js/silver-price.js"></script>
+  <script src="/js/calculator.js"></script>
   <script src="/js/translations.js" defer></script>
-  <script src="/js/silver-price.js" defer></script>
-  <script src="/js/calculator.js" defer></script>
   <script src="/js/components.js" defer></script>
   <script>
-document.addEventListener("DOMContentLoaded", function() {
+(function(){
+  var w=document.getElementById('weight'),u=document.getElementById('unit');
+  if(!w)return;
+  function calc(){
+    var weight=parseFloat(w.value)||0;
+    var grams=SilverCalc.toGrams(weight,u.value);
+    var spot=SilverPrice.getGoldPrice();
+    var r=SilverCalc.meltValue(grams,0.417,spot);
+    document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
+    document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure gold (41.7%) \xB7 '+r.silverContentOz+' oz \xB7 Gold Spot: $'+spot.toFixed(2)+'/oz';
+  }
+  w.addEventListener('input',calc);u.addEventListener('change',calc);
+  SilverPrice.onPriceUpdate(calc);
+  calc();
+  var cb=document.getElementById('calc-btn');if(cb)cb.addEventListener('click',calc);
+})();
+document.addEventListener('DOMContentLoaded',function(){
+  if(window.SiteComponents){
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'10K Gold Calculator'}]);
-    const w=document.getElementById('weight'),u=document.getElementById('unit');
-    function calc(){const weight=parseFloat(w.value)||0;const grams=SilverCalc.toGrams(weight,u.value);const spot=SilverPrice.getGoldPrice();const r=SilverCalc.meltValue(grams,0.417,spot);document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure gold (41.7%) · ${r.silverContentOz} oz · Gold Spot: $${spot.toFixed(2)}/oz`;}
-    w.addEventListener('input',calc);u.addEventListener('change',calc);SilverPrice.onPriceUpdate(()=>calc());calc();
-    const cb = document.getElementById('calc-btn');
-    if (cb) { const fn = typeof calculate === 'function' ? calculate : (typeof calc === 'function' ? calc : null); if (fn) cb.addEventListener('click', fn); }
+  }
 });
   </script>
 </body>

@@ -89,46 +89,39 @@
     </div>
   </main>
   <div id="site-footer"></div>
+  <script src="/js/silver-price.js"></script>
   <script src="/js/translations.js" defer></script>
-  <script src="/js/silver-price.js" defer></script>
-  <script src="/js/calculator.js" defer></script>
   <script src="/js/components.js" defer></script>
   <script>
-document.addEventListener("DOMContentLoaded", function() {
+(function(){
+  function updatePrices(){
+    var spot=SilverPrice.getGoldPrice();
+    var ppg=spot/31.1035;
+    var ppd=spot/20;
+    document.getElementById('price-24k-oz').textContent='$'+spot.toFixed(2);
+    document.getElementById('price-24k-oz2').textContent='$'+spot.toFixed(2);
+    document.getElementById('price-24k-g').textContent='$'+(ppg*0.999).toFixed(2);
+    document.getElementById('price-24k-dwt').textContent='$'+(ppd*0.999).toFixed(2);
+    document.getElementById('price-18k-oz').textContent='$'+(spot*0.75).toFixed(2);
+    document.getElementById('price-18k-g').textContent='$'+(ppg*0.75).toFixed(2);
+    document.getElementById('price-18k-g2').textContent='$'+(ppg*0.75).toFixed(2);
+    document.getElementById('price-18k-dwt').textContent='$'+(ppd*0.75).toFixed(2);
+    document.getElementById('price-14k-oz').textContent='$'+(spot*0.583).toFixed(2);
+    document.getElementById('price-14k-g').textContent='$'+(ppg*0.583).toFixed(2);
+    document.getElementById('price-14k-g2').textContent='$'+(ppg*0.583).toFixed(2);
+    document.getElementById('price-14k-dwt').textContent='$'+(ppd*0.583).toFixed(2);
+    document.getElementById('price-10k-oz').textContent='$'+(spot*0.417).toFixed(2);
+    document.getElementById('price-10k-g').textContent='$'+(ppg*0.417).toFixed(2);
+    document.getElementById('price-10k-dwt').textContent='$'+(ppd*0.417).toFixed(2);
+  }
+  SilverPrice.onPriceUpdate(updatePrices);
+  updatePrices();
+})();
+document.addEventListener('DOMContentLoaded',function(){
+  if(window.SiteComponents){
     SiteComponents.renderPriceTicker('price-ticker');
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Gold Price Today'}]);
-
-    function updatePrices() {
-      const spot = SilverPrice.getGoldPrice();
-      const ppg = spot / 31.1035;
-      const ppd = spot / 20;
-
-      // 24K (99.9%)
-      document.getElementById('price-24k-oz').textContent = '$' + spot.toFixed(2);
-      document.getElementById('price-24k-oz2').textContent = '$' + spot.toFixed(2);
-      document.getElementById('price-24k-g').textContent = '$' + (ppg * 0.999).toFixed(2);
-      document.getElementById('price-24k-dwt').textContent = '$' + (ppd * 0.999).toFixed(2);
-
-      // 18K (75%)
-      document.getElementById('price-18k-oz').textContent = '$' + (spot * 0.75).toFixed(2);
-      document.getElementById('price-18k-g').textContent = '$' + (ppg * 0.75).toFixed(2);
-      document.getElementById('price-18k-g2').textContent = '$' + (ppg * 0.75).toFixed(2);
-      document.getElementById('price-18k-dwt').textContent = '$' + (ppd * 0.75).toFixed(2);
-
-      // 14K (58.3%)
-      document.getElementById('price-14k-oz').textContent = '$' + (spot * 0.583).toFixed(2);
-      document.getElementById('price-14k-g').textContent = '$' + (ppg * 0.583).toFixed(2);
-      document.getElementById('price-14k-g2').textContent = '$' + (ppg * 0.583).toFixed(2);
-      document.getElementById('price-14k-dwt').textContent = '$' + (ppd * 0.583).toFixed(2);
-
-      // 10K (41.7%)
-      document.getElementById('price-10k-oz').textContent = '$' + (spot * 0.417).toFixed(2);
-      document.getElementById('price-10k-g').textContent = '$' + (ppg * 0.417).toFixed(2);
-      document.getElementById('price-10k-dwt').textContent = '$' + (ppd * 0.417).toFixed(2);
-    }
-
-    SilverPrice.onPriceUpdate(() => updatePrices());
-    updatePrices();
+  }
 });
   </script>
 </body>

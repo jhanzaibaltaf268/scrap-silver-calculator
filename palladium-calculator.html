@@ -118,37 +118,34 @@
     </div>
   </main>
   <div id="site-footer"></div>
+  <script src="/js/silver-price.js"></script>
+  <script src="/js/calculator.js"></script>
   <script src="/js/translations.js" defer></script>
-  <script src="/js/silver-price.js" defer></script>
-  <script src="/js/calculator.js" defer></script>
   <script src="/js/components.js" defer></script>
   <script>
-document.addEventListener("DOMContentLoaded", function() {
+(function(){
+  var w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),cp=document.getElementById('custom-purity'),cpg=document.getElementById('custom-purity-group');
+  if(!w)return;
+  p.addEventListener('change',function(){cpg.style.display=p.value==='custom'?'block':'none';});
+  function calc(){
+    var weight=parseFloat(w.value)||0;
+    var grams=SilverCalc.toGrams(weight,u.value);
+    var purity=parseFloat(p.value);
+    if(p.value==='custom') purity=(parseFloat(cp.value)||0)/100;
+    var spot=SilverPrice.getPalladiumPrice();
+    var r=SilverCalc.meltValue(grams,purity,spot);
+    document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
+    document.getElementById('result-detail').textContent=r.silverContentGrams+'g pure palladium \xB7 '+r.silverContentOz+' oz \xB7 Pd Spot: $'+spot.toFixed(2)+'/oz';
+  }
+  w.addEventListener('input',calc);u.addEventListener('change',calc);p.addEventListener('change',calc);cp.addEventListener('input',calc);
+  SilverPrice.onPriceUpdate(calc);
+  calc();
+  var cb=document.getElementById('calc-btn');if(cb)cb.addEventListener('click',calc);
+})();
+document.addEventListener('DOMContentLoaded',function(){
+  if(window.SiteComponents){
     SiteComponents.renderBreadcrumb('breadcrumb',[{label:'Home',href:'/'},{label:'Palladium Calculator'}]);
-    const w=document.getElementById('weight'),u=document.getElementById('unit'),p=document.getElementById('purity'),cp=document.getElementById('custom-purity'),cpg=document.getElementById('custom-purity-group');
-
-    p.addEventListener('change',()=>{ cpg.style.display=p.value==='custom'?'block':'none'; });
-
-    function calc(){
-      const weight=parseFloat(w.value)||0;
-      const grams=SilverCalc.toGrams(weight,u.value);
-      let purity=parseFloat(p.value);
-      if(p.value==='custom') purity=(parseFloat(cp.value)||0)/100;
-      const spot=SilverPrice.getPalladiumPrice();
-      const r=SilverCalc.meltValue(grams,purity,spot);
-      document.getElementById('result-value').textContent=SilverCalc.formatCurrency(r.value);
-      document.getElementById('result-detail').textContent=`${r.silverContentGrams}g pure palladium · ${r.silverContentOz} oz · Pd Spot: $${spot.toFixed(2)}/oz`;
-    }
-
-    w.addEventListener('input',calc);
-    u.addEventListener('change',calc);
-    p.addEventListener('change',calc);
-    cp.addEventListener('input',calc);
-    SilverPrice.onPriceUpdate(()=>calc());
-    calc();
-
-    const cb=document.getElementById('calc-btn');
-    if(cb) cb.addEventListener('click',calc);
+  }
 });
   </script>
 </body>
