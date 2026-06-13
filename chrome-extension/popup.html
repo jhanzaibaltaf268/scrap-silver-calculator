@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrap Silver Calculator</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+
+  <!-- ── Header ── -->
+  <header class="header">
+    <div class="header-left">
+      <img src="icons/icon32.png" alt="" class="header-logo" width="20" height="20">
+      <span class="header-title">Scrap Silver Calc</span>
+    </div>
+    <span class="live-badge" id="live-badge">● LIVE</span>
+  </header>
+
+  <!-- ── Spot Price Card ── -->
+  <div class="price-card">
+    <div class="price-top">
+      <div>
+        <div class="price-label">Silver Spot Price</div>
+        <div class="price-main">$<span id="spot-oz">—</span><span class="price-unit">/oz</span></div>
+      </div>
+      <div class="price-right">
+        <div class="price-change" id="price-change">Loading…</div>
+        <div class="price-gram">$<span id="spot-gram">—</span>/g</div>
+      </div>
+    </div>
+    <div class="price-grid">
+      <div class="price-mini">
+        <span class="pm-label">925 /g</span>
+        <span class="pm-val" id="p925g">—</span>
+      </div>
+      <div class="price-mini">
+        <span class="pm-label">999 /g</span>
+        <span class="pm-val" id="p999g">—</span>
+      </div>
+      <div class="price-mini">
+        <span class="pm-label">Gold /oz</span>
+        <span class="pm-val gold" id="pgold">—</span>
+      </div>
+      <div class="price-mini">
+        <span class="pm-label">G/S Ratio</span>
+        <span class="pm-val" id="pgsr">—</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Calculator ── -->
+  <div class="calc-section">
+    <div class="calc-title">⚡ Melt Value Calculator</div>
+
+    <div class="form-row">
+      <input
+        type="number"
+        id="weight"
+        class="input"
+        placeholder="Weight"
+        value="10"
+        step="0.01"
+        min="0"
+        aria-label="Weight"
+      >
+      <select id="unit" class="select" aria-label="Unit">
+        <option value="g" selected>grams</option>
+        <option value="oz">troy oz</option>
+        <option value="dwt">dwt</option>
+        <option value="kg">kilograms</option>
+      </select>
+    </div>
+
+    <select id="purity" class="select full" aria-label="Purity">
+      <option value="0.999">999 Fine Silver (99.9%)</option>
+      <option value="0.958">958 Britannia (95.8%)</option>
+      <option value="0.925" selected>925 Sterling (92.5%)</option>
+      <option value="0.900">900 Coin Silver (90%)</option>
+      <option value="0.835">835 European (83.5%)</option>
+      <option value="0.800">800 European (80%)</option>
+    </select>
+
+    <div class="result-box">
+      <div class="result-label">Melt Value</div>
+      <div class="result-value" id="result-value">$0.00</div>
+      <div class="result-detail" id="result-detail">Enter weight above</div>
+    </div>
+  </div>
+
+  <!-- ── Currency Toggle ── -->
+  <div class="currency-row">
+    <span class="currency-label">Currency:</span>
+    <div class="currency-btns" id="currency-btns">
+      <button class="cur-btn active" data-cur="USD">USD</button>
+      <button class="cur-btn" data-cur="EUR">EUR</button>
+      <button class="cur-btn" data-cur="GBP">GBP</button>
+      <button class="cur-btn" data-cur="INR">INR</button>
+      <button class="cur-btn" data-cur="PKR">PKR</button>
+    </div>
+  </div>
+
+  <!-- ── Quick Links ── -->
+  <div class="links">
+    <a href="https://scrapsilvercalculater.com/" class="link-btn" target="_blank" rel="noopener">
+      🏠 Full Calculator
+    </a>
+    <a href="https://scrapsilvercalculater.com/silver-price-today/" class="link-btn" target="_blank" rel="noopener">
+      📈 Live Price
+    </a>
+    <a href="https://scrapsilvercalculater.com/silver-news-today/" class="link-btn" target="_blank" rel="noopener">
+      📰 News
+    </a>
+  </div>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <span id="last-updated">Fetching price…</span>
+    <button class="refresh-btn" id="refresh-btn" title="Refresh price">↻</button>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
