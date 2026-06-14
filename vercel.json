@@ -247,6 +247,16 @@
       "source": "/ur/999-silver-price-today/",
       "destination": "/999-silver-price-today/",
       "permanent": true
+    },
+    {
+      "source": "/silver-spot-price-today/",
+      "destination": "/silver-price-today/",
+      "permanent": true
+    },
+    {
+      "source": "/silver-spot-price-today",
+      "destination": "/silver-price-today/",
+      "permanent": true
     }
   ],
   "headers": [
