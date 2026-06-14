@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
+
+# Non-English sections are noindexed at the page level (meta robots).
+# Do NOT Disallow them here — Google must crawl them to see the noindex tag.
+# After Google drops them from index (2-4 weeks), Disallow can be added.
+
 Sitemap: https://scrapsilvercalculater.com/sitemap.xml
