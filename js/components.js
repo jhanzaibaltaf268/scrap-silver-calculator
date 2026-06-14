@@ -1228,27 +1228,51 @@ const SiteComponents = (() => {
       return 0;
     }
 
+    var payoutObserver = null;
+    var payoutMain = null;
+    var lastRenderedMelt = null;
+
+    // Re-observe helper — keep observer off during our own DOM writes so the
+    // panel rebuild does not retrigger the observer (that caused an infinite
+    // mutation loop and froze the page — "Page Unresponsive").
+    function startObserving() {
+      if (!payoutObserver || !payoutMain) return;
+      payoutObserver.observe(payoutMain, { subtree: true, characterData: true, childList: true });
+    }
+
     function refreshPanel() {
       var melt = getMeltValue();
       var existing = document.getElementById('dealer-payout-panel');
-      if (melt <= 0) { if (existing) existing.remove(); return; }
+
+      if (melt <= 0) {
+        if (existing) existing.remove();
+        lastRenderedMelt = null;
+        return;
+      }
+
+      // Nothing changed since the last render — skip the DOM write entirely.
+      // This is what breaks the self-triggering mutation loop.
+      if (existing && melt === lastRenderedMelt) return;
+
+      if (payoutObserver) payoutObserver.disconnect();
+      lastRenderedMelt = melt;
 
       if (existing) {
         // Update in-place — rebuild inner content without removing the element
         existing.outerHTML = buildPanel(melt);
-        return;
+      } else {
+        // Find anchor: inject after result-display or d-res
+        var anchor = document.querySelector('.result-display, .d-res, #swc-results');
+        if (anchor) anchor.insertAdjacentHTML('afterend', buildPanel(melt));
       }
 
-      // Find anchor: inject after result-display or d-res
-      var anchor = document.querySelector('.result-display, .d-res, #swc-results');
-      if (!anchor) return;
-      anchor.insertAdjacentHTML('afterend', buildPanel(melt));
+      startObserving();
     }
 
     // Observe main for any DOM/text changes (calc updates)
-    var observer = new MutationObserver(function() { refreshPanel(); });
-    var main = document.querySelector('main') || document.body;
-    observer.observe(main, { subtree: true, characterData: true, childList: true });
+    payoutMain = document.querySelector('main') || document.body;
+    payoutObserver = new MutationObserver(function() { refreshPanel(); });
+    startObserving();
 
     // Also run on first paint (auto-calc pages already have a value)
     setTimeout(refreshPanel, 600);
@@ -1357,6 +1381,7 @@ const SiteComponents = (() => {
 
     // Watch for a real result value appearing in result-display or .d-res
     var injected = false;
+    var ctaObserver = null;
     function tryInject() {
       if (injected) return;
       // Find the result display element
@@ -1370,13 +1395,16 @@ const SiteComponents = (() => {
       // Don't inject if already exists
       if (document.getElementById('post-calc-cta')) return;
       injected = true;
+      // Stop observing once injected — the CTA is one-shot, so there is no need
+      // to keep reacting to every future DOM mutation.
+      if (ctaObserver) ctaObserver.disconnect();
       resultDisplay.insertAdjacentHTML('afterend', ctaHTML);
     }
 
     // Observe the main element for any text changes
-    var observer = new MutationObserver(function() { tryInject(); });
+    ctaObserver = new MutationObserver(function() { tryInject(); });
     var main = document.querySelector('main') || document.body;
-    observer.observe(main, { subtree: true, characterData: true, childList: true });
+    ctaObserver.observe(main, { subtree: true, characterData: true, childList: true });
 
     // Also try immediately (for pages that auto-calculate on load)
     setTimeout(tryInject, 800);
