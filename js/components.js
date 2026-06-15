@@ -157,6 +157,7 @@ const SiteComponents = (() => {
     {
       title: 'nav_guide',
       links: [
+        { label: 'Scrap Silver Melt Value Guide', href: '/scrap-silver-melt-value-guide/' },
         { label: 'nav_guide', href: '/how-to-use-silver-calculators/' },
         { label: 'nav_purity_chart', href: '/silver-purity-chart/' },
         { label: 'nav_identifier', href: '/identify-silver/' },
