@@ -85,7 +85,13 @@
       { "@type": "Question", "name": "What is a troy ounce?", "acceptedAnswer": { "@type": "Answer", "text": "A troy ounce is 31.1035 grams, the standard unit for precious metals. It is approximately 10 percent heavier than a regular avoirdupois ounce (28.35 g)." } },
       { "@type": "Question", "name": "How can I tell if my silver is real?", "acceptedAnswer": { "@type": "Answer", "text": "Check for hallmarks (925, STERLING, 999, 800). Silver is not magnetic. For certainty, use a silver acid test kit or get free XRF testing at a local refiner." } },
       { "@type": "Question", "name": "Is silver-plated jewelry worth anything as scrap?", "acceptedAnswer": { "@type": "Answer", "text": "No. Silver-plated items (marked EPNS, Silver Plate, or Sheffield Plate) contain only a thin coating of silver and have negligible scrap value." } },
-      { "@type": "Question", "name": "How often does the silver price update?", "acceptedAnswer": { "@type": "Answer", "text": "Our silver spot price refreshes every hour from multiple market data sources (GoldAPI.io, metals.live, goldprice.org) and is delivered via global CDN." } }
+      { "@type": "Question", "name": "How often does the silver price update?", "acceptedAnswer": { "@type": "Answer", "text": "Our silver spot price refreshes every hour from multiple market data sources (GoldAPI.io, metals.live, goldprice.org) and is delivered via global CDN." } },
+      { "@type": "Question", "name": "What units of weight does this calculator support?", "acceptedAnswer": { "@type": "Answer", "text": "The calculator accepts grams, pennyweight (dwt), standard ounces, and troy ounces. For accuracy, weigh in grams or troy ounces. 1 troy ounce = 31.1035 grams = 20 pennyweight." } },
+      { "@type": "Question", "name": "How much is a 925 sterling silver ring worth in scrap?", "acceptedAnswer": { "@type": "Answer", "text": "A typical sterling ring weighing 5 grams contains 4.625 grams of pure silver. At a $30 per ounce spot price that is about $4.46 in melt value; a dealer might offer $3.50 to $4.20 depending on payout rate." } },
+      { "@type": "Question", "name": "What is junk silver?", "acceptedAnswer": { "@type": "Answer", "text": "Junk silver refers to pre-1965 US coins with 90% silver content (dimes, quarters, half dollars, dollars) that have no collectible value beyond their metal. It is highly liquid among investors and dealers." } },
+      { "@type": "Question", "name": "How much silver is in a pre-1965 quarter?", "acceptedAnswer": { "@type": "Answer", "text": "A pre-1965 Washington quarter weighs 6.25 grams and is 90% silver, which is 5.625 grams (0.1808 troy ounces) of pure silver per coin. At $30 per ounce that is about $5.43 in melt value." } },
+      { "@type": "Question", "name": "Is it legal to melt US coins?", "acceptedAnswer": { "@type": "Answer", "text": "In the United States it is currently legal to melt silver coins for their metal content. Melting pennies and nickels is prohibited under 31 CFR 82.1 because their commodity value exceeds face value. Laws vary by country." } },
+      { "@type": "Question", "name": "What is the difference between scrap silver and sterling silver?", "acceptedAnswer": { "@type": "Answer", "text": "Scrap silver is any silver item sold for refining value. Sterling silver specifically means 92.5% pure (marked .925). All sterling can be scrap, but scrap also includes .999 fine, .900 coin, and .800 European silver." } }
     ]
   }
   </script>
@@ -1450,6 +1456,161 @@
 
     <hr class="sec-divider">
 
+    <style>
+      .gd-wrap{overflow-x:auto;margin:var(--space-md) 0;border:1px solid var(--border-subtle);border-radius:16px;-webkit-overflow-scrolling:touch;}
+      .gd-table{width:100%;border-collapse:collapse;min-width:560px;font-size:0.92rem;}
+      .gd-table thead th{background:linear-gradient(135deg,rgba(124,58,237,.20),rgba(124,58,237,.06));color:#fff;text-align:left;padding:14px 16px;font-size:0.72rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;border-bottom:1px solid var(--border-subtle);}
+      .gd-table td{padding:13px 16px;border-bottom:1px solid var(--border-subtle);color:var(--text-secondary);vertical-align:top;line-height:1.5;}
+      .gd-table tbody tr:last-child td{border-bottom:none;}
+      .gd-table tbody tr:nth-child(even){background:rgba(255,255,255,.02);}
+      .gd-table tbody tr:hover td{background:rgba(124,58,237,.07);}
+      .gd-table td:first-child{font-weight:700;color:var(--text-primary);white-space:nowrap;}
+      .gd-pill{display:inline-block;font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);background:rgba(124,58,237,.12);padding:2px 9px;border-radius:6px;font-size:0.85rem;}
+      .gd-warn td,.gd-warn td:first-child{color:#fbbf24 !important;}
+      .gd-warn{background:rgba(251,191,36,.05) !important;}
+      .gd-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:var(--space-md);margin-top:var(--space-md);}
+      .gd-card{background:var(--bg-secondary);border:1px solid var(--border-subtle);border-radius:14px;padding:var(--space-lg);}
+      .gd-card .gd-ic{font-size:1.7rem;margin-bottom:10px;}
+      .gd-card h4{font-size:1rem;color:var(--text-primary);margin:0 0 8px;}
+      .gd-card p{font-size:0.88rem;color:var(--text-secondary);line-height:1.65;margin:0;}
+      .gd-ex{background:var(--bg-secondary);border:1px solid var(--border-subtle);border-left:3px solid var(--accent);border-radius:12px;padding:var(--space-lg);}
+      .gd-ex h4{color:var(--text-primary);font-size:1.02rem;margin:0 0 8px;}
+      .gd-ex p{color:var(--text-secondary);font-size:0.9rem;line-height:1.6;margin:0;}
+      .gd-ex .gd-res{display:block;font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);font-size:1.15rem;margin-top:10px;}
+      .gd-callout{background:linear-gradient(135deg,rgba(124,58,237,.12),rgba(124,58,237,.03));border:1px solid rgba(139,92,246,.3);border-radius:14px;padding:var(--space-lg);margin-top:var(--space-md);}
+      .gd-callout h4{margin:0 0 6px;color:var(--text-primary);font-size:1rem;}
+      .gd-callout ol{margin:8px 0 0;padding-left:20px;color:var(--text-secondary);font-size:0.9rem;line-height:1.9;}
+      .gd-callout .gd-res{font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--accent);}
+      .gd-tip{font-size:0.85rem;color:var(--text-muted);margin-top:var(--space-sm);}
+    </style>
+
+    <!-- ═══════════════════════════════════════════
+         PURITY & HALLMARK REFERENCE TABLES
+    ═══════════════════════════════════════════ -->
+    <section class="sec container container-tight">
+      <div>
+        <span class="sec-eyebrow">📐 Reference</span>
+        <h2 class="sec-h2">Silver Purity &amp; Hallmark Reference</h2>
+        <p class="sec-lead">Before calculating value, identify your silver's purity. Most items carry a stamp or hallmark indicating their metal content — use these reference tables to decode it.</p>
+      </div>
+
+      <h3 style="margin-top:var(--space-lg);font-size:1.1rem;color:var(--text-primary);">Silver Purity Grades at a Glance</h3>
+      <div class="gd-wrap">
+        <table class="gd-table">
+          <thead>
+            <tr><th>Purity</th><th>Hallmark</th><th>Silver Content</th><th>Typical Sources</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Fine Silver</td><td><span class="gd-pill">.999</span> / .9999</td><td>99.9%+</td><td>Bullion bars, rounds, some modern coins</td></tr>
+            <tr><td>Sterling Silver</td><td><span class="gd-pill">.925</span> or "Sterling"</td><td>92.5%</td><td>Jewelry, flatware, candlesticks, older coins</td></tr>
+            <tr><td>Coin Silver</td><td><span class="gd-pill">.900</span></td><td>90%</td><td>Pre-1965 US dimes, quarters, half dollars, dollars</td></tr>
+            <tr><td>800 Silver</td><td><span class="gd-pill">.800</span></td><td>80%</td><td>European and vintage jewelry, some decorative items</td></tr>
+            <tr><td>500 Silver</td><td><span class="gd-pill">.500</span></td><td>50%</td><td>War-era coinage, certain commemorative pieces</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 style="margin-top:var(--space-xl);font-size:1.1rem;color:var(--text-primary);">Common Silver Hallmarks Explained</h3>
+      <div class="gd-wrap">
+        <table class="gd-table">
+          <thead>
+            <tr><th>Mark</th><th>Meaning</th><th>Value Context</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>925 / "Sterling"</td><td>92.5% pure silver</td><td>Standard for high-quality jewelry and flatware</td></tr>
+            <tr><td>999 / "Fine Silver"</td><td>99.9% pure silver</td><td>Investment-grade bullion; softer, tarnishes easily</td></tr>
+            <tr><td>900</td><td>90% pure silver</td><td>Common in pre-1965 US circulation coins</td></tr>
+            <tr><td>800</td><td>80% pure silver</td><td>Frequently found in European vintage pieces</td></tr>
+            <tr><td>Coin</td><td>90% pure silver</td><td>Historic US coinage shorthand</td></tr>
+            <tr class="gd-warn"><td>EPNS</td><td>Electroplated Nickel Silver</td><td>No silver value — base metal with thin plating</td></tr>
+            <tr class="gd-warn"><td>German Silver</td><td>Nickel-copper alloy</td><td>No silver content despite the name</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="gd-tip"><strong>Pro tip:</strong> If you can't find a hallmark, a jeweler or precious-metal dealer can perform an acid test or X-ray fluorescence (XRF) analysis to determine purity accurately.</p>
+    </section>
+
+    <hr class="sec-divider">
+
+    <!-- ═══════════════════════════════════════════
+         WORKED EXAMPLES
+    ═══════════════════════════════════════════ -->
+    <section class="sec container container-tight">
+      <div>
+        <span class="sec-eyebrow">🧮 Worked Examples</span>
+        <h2 class="sec-h2">Scrap Silver Value — Real-World Examples</h2>
+        <p class="sec-lead">See exactly how the melt-value formula works on common items, step by step, at a $30.00/oz spot price.</p>
+      </div>
+
+      <div class="gd-callout">
+        <h4>Step-by-Step: Sterling Silver Bracelet (50 g)</h4>
+        <ol>
+          <li>Convert grams to troy ounces: 50 ÷ 31.1035 = <strong>1.608 troy oz</strong></li>
+          <li>Apply purity: 1.608 × 0.925 (sterling) = <strong>1.487 troy oz of pure silver</strong></li>
+          <li>Multiply by spot: 1.487 × $30.00 = <span class="gd-res">$44.61 melt value</span></li>
+        </ol>
+      </div>
+
+      <div class="gd-cards">
+        <div class="gd-ex">
+          <h4>🪙 Junk Silver Coin Bag</h4>
+          <p>A standard $1,000 face-value bag of pre-1965 US 90% silver coins contains roughly 715–720 troy oz of pure silver.</p>
+          <span class="gd-res">≈ $21,450 – $21,600</span>
+        </div>
+        <div class="gd-ex">
+          <h4>🍴 Sterling Flatware Set</h4>
+          <p>A 12-place setting (48 pieces) at ~2,000 g total: 2,000 g = 64.30 troy oz × 0.925 = 59.48 oz pure silver.</p>
+          <span class="gd-res">≈ $1,784.40</span>
+        </div>
+        <div class="gd-ex">
+          <h4>🧱 999 Silver Bullion Bar</h4>
+          <p>A 10 oz .999 fine silver bar holds exactly 10 troy oz of pure silver (bullion usually sells at a premium over spot).</p>
+          <span class="gd-res">= $300.00</span>
+        </div>
+      </div>
+    </section>
+
+    <hr class="sec-divider">
+
+    <!-- ═══════════════════════════════════════════
+         WHAT MOVES SILVER PRICES
+    ═══════════════════════════════════════════ -->
+    <section class="sec container container-tight">
+      <div>
+        <span class="sec-eyebrow">📊 Market Context</span>
+        <h2 class="sec-h2">What Moves Silver Prices</h2>
+        <p class="sec-lead">The spot price is the immediate-delivery value of one troy ounce of .999 fine silver. Five forces drive it.</p>
+      </div>
+      <div class="gd-cards">
+        <div class="gd-card"><div class="gd-ic">🏭</div><h4>Industrial Demand</h4><p>Solar panels, electronics, medical equipment, and batteries consume roughly 50% of annual silver production.</p></div>
+        <div class="gd-card"><div class="gd-ic">📈</div><h4>Investment Demand</h4><p>ETFs, bullion coins, and bars drive price surges during periods of economic uncertainty.</p></div>
+        <div class="gd-card"><div class="gd-ic">⛏️</div><h4>Mining Supply</h4><p>Over 70% of silver comes as a byproduct of copper, lead, and zinc mining — limiting supply response.</p></div>
+        <div class="gd-card"><div class="gd-ic">💵</div><h4>Currency Strength</h4><p>Silver typically trades inversely to the US dollar; a weaker dollar lifts silver prices.</p></div>
+        <div class="gd-card"><div class="gd-ic">🛡️</div><h4>Inflation Expectations</h4><p>Precious metals have historically served as a hedge against inflation and currency devaluation.</p></div>
+      </div>
+    </section>
+
+    <hr class="sec-divider">
+
+    <!-- ═══════════════════════════════════════════
+         INTERESTING FACTS
+    ═══════════════════════════════════════════ -->
+    <section class="sec container container-tight">
+      <div>
+        <span class="sec-eyebrow">💡 Did You Know?</span>
+        <h2 class="sec-h2">Interesting Facts About Silver</h2>
+      </div>
+      <div class="gd-cards">
+        <div class="gd-card"><div class="gd-ic">⚡</div><h4>Best Conductor</h4><p>Silver has the highest electrical and thermal conductivity of all metals, making it irreplaceable in electronics and solar technology.</p></div>
+        <div class="gd-card"><div class="gd-ic">🏛️</div><h4>Ancient Currency</h4><p>Silver has served as money for over 4,000 years — longer than any other form of currency.</p></div>
+        <div class="gd-card"><div class="gd-ic">⚕️</div><h4>Medical Properties</h4><p>Silver's antimicrobial properties make it valuable in wound dressings and water purification.</p></div>
+        <div class="gd-card"><div class="gd-ic">📷</div><h4>Photographic Legacy</h4><p>Before digital cameras, photography consumed nearly 25% of annual silver production.</p></div>
+        <div class="gd-card"><div class="gd-ic">📉</div><h4>Above-Ground Scarcity</h4><p>Though more abundant than gold in the crust, most mined silver is consumed industrially — leaving little investment-grade stockpile.</p></div>
+      </div>
+    </section>
+
+    <hr class="sec-divider">
+
     <!-- ═══════════════════════════════════════════
          EMAIL CAPTURE
     ═══════════════════════════════════════════ -->
@@ -1514,6 +1675,30 @@
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">How often does the silver price update? <span class="faq-icon">+</span></button>
           <div class="faq-answer"><p>Our spot price refreshes every hour from multiple market sources (GoldAPI.io, metals.live, goldprice.org), served via global CDN for instant page loads.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What units of weight does this calculator support? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>The calculator accepts grams, pennyweight (dwt), standard ounces, and troy ounces. For accuracy, weigh scrap silver in grams or troy ounces. Remember: 1 troy ounce = 31.1035 grams = 20 pennyweight.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How much is a 925 sterling silver ring worth in scrap? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>A typical sterling ring weighing 5 grams contains 4.625 grams of pure silver (5 g × 0.925). At a $30.00/oz spot price that's about $4.46 in melt value; a dealer might offer $3.50–$4.20 depending on their payout rate.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is junk silver? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Junk silver refers to pre-1965 US coins with 90% silver content (dimes, quarters, half dollars, and dollars) that have no collectible value beyond their metal. Despite the name, junk silver is highly liquid among investors and dealers.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">How much silver is in a pre-1965 quarter? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>A pre-1965 Washington quarter weighs 6.25 grams and is 90% silver — that's 5.625 grams (0.1808 troy oz) of pure silver per coin. At $30.00/oz, each quarter holds about $5.43 in melt value.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">Is it legal to melt US coins? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>In the United States it is currently legal to melt silver coins for their metal content. However, melting pennies and nickels for their copper and nickel is prohibited under 31 CFR § 82.1 because their commodity value exceeds face value. Laws vary by country.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">What is the difference between scrap silver and sterling silver? <span class="faq-icon">+</span></button>
+          <div class="faq-answer"><p>Scrap silver is any silver item sold for its refining value. Sterling silver specifically means 92.5% pure (marked .925). All sterling can be scrap silver, but scrap also includes other purities like .999 fine, .900 coin, and .800 European silver.</p></div>
         </div>
       </div>
     </section>
