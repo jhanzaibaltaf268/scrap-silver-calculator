@@ -540,6 +540,7 @@ function getUnitValue(spot,unit){
 }
 
 function updateAll(){
+  try {
   var spot = SilverPrice.getPrice();
 
   // Ticker
@@ -558,7 +559,7 @@ function updateAll(){
   // Hero main number
   var heroVal = getUnitValue(spot, activeUnit);
   var isGram = activeUnit==='gram';
-  document.getElementById('hero-main-price').textContent = isGram ? fmt4(heroVal) : fmt2(heroVal);
+  setEl('hero-main-price', isGram ? fmt4(heroVal) : fmt2(heroVal));
 
   // Hero sub
   setEl('hero-spot-eq', fmt2(spot));
@@ -569,8 +570,8 @@ function updateAll(){
   var prevClose = SilverPrice.getPrevClose ? SilverPrice.getPrevClose() : spot;
   var dollar = spot - prevClose;
   var pct = prevClose ? (dollar/prevClose)*100 : 0;
-  document.getElementById('hero-ch-dollar').textContent = (dollar>=0?'+':'')+fmt2(Math.abs(dollar)).replace('$','$');
-  document.getElementById('hero-ch-pct').textContent = '('+pct.toFixed(2)+'%)';
+  setEl('hero-ch-dollar', (dollar>=0?'+':'')+fmt2(Math.abs(dollar)));
+  setEl('hero-ch-pct', '('+pct.toFixed(2)+'%)');
   if(chEl) chEl.className='pc-change '+(dollar>=0?'up':'down');
 
   // Stats strip
@@ -618,6 +619,7 @@ function updateAll(){
   setEl('faq4-925g', fmt4((spot/TROY)*0.925));
   setEl('faq5-spot', fmt2(spot));
   setEl('faq5-gold', fmt2(spot*80)); // approx gold at 80:1 ratio
+  } catch(e){ console.error('updateAll error:',e); }
 }
 
 function runCalc(){
@@ -628,10 +630,9 @@ function runCalc(){
   var grams = u==='oz'?w*TROY : u==='dwt'?w*1.55517 : u==='kg'?w*1000 : w;
   var val = (grams/TROY)*p*spot;
   var res = document.getElementById('calc-result');
-  document.getElementById('calc-result-val').textContent = fmt2(val);
-  document.getElementById('calc-result-breakdown').textContent =
-    grams.toFixed(3)+'g ÷ 31.1035 = '+(grams/TROY).toFixed(4)+' troy oz × '+p+' × '+fmt2(spot)+' = '+fmt2(val);
-  res.style.display='block';
+  setEl('calc-result-val', fmt2(val));
+  setEl('calc-result-breakdown', grams.toFixed(3)+'g ÷ 31.1035 = '+(grams/TROY).toFixed(4)+' troy oz × '+p+' × '+fmt2(spot)+' = '+fmt2(val));
+  if(res) res.style.display='block';
 }
 
 document.addEventListener('DOMContentLoaded', function(){
