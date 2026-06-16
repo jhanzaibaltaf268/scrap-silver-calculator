@@ -1,344 +1,356 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMX334ZW6Q"></script>
-  <script type="text/javascript" async>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","wby5gobage");</script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-YMX334ZW6Q');</script>
+  <script type="text/javascript" async>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","wby5gobage");</script>
   <meta name="google-site-verification" content="3zJ4ttr1AnZWh4z6tMWiVpqPUwg7VEia6_65eJV8Lro">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Junk Silver Calculator — Pre-1965 US Coin Melt Value</title>
-  <meta name="description" content="Calculate the melt value of pre-1965 US silver coins. Find the silver value of dimes, quarters, half dollars, Morgan dollars, and more using live spot prices.">
+  <title>Junk Silver Calculator — Face Value &amp; Melt Value of 90% US Coins</title>
+  <meta name="description" content="Free junk silver calculator. Enter face value of pre-1965 US dimes, quarters, half dollars and dollars to get instant melt value at today's live silver spot price.">
   <link rel="canonical" href="https://scrapsilvercalculater.com/junk-silver-calculator/">
   <link rel="alternate" hreflang="x-default" href="https://scrapsilvercalculater.com/junk-silver-calculator/">
   <link rel="alternate" hreflang="en" href="https://scrapsilvercalculater.com/junk-silver-calculator/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://scrapsilvercalculater.com/junk-silver-calculator/">
-  <meta property="og:title" content="Junk Silver Calculator — Pre-1965 US Coin Melt Value">
-  <meta property="og:description" content="Calculate the melt value of pre-1965 US silver coins. Find the silver value of dimes, quarters, half dollars, Morgan dollars, and more using live spot prices.">
+  <meta property="og:title" content="Junk Silver Calculator — Face Value &amp; Melt Value of 90% US Coins">
+  <meta property="og:description" content="Calculate melt value of pre-1965 US 90% silver coins by face value at live spot price.">
   <meta property="og:image" content="https://scrapsilvercalculater.com/images/social-share.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://scrapsilvercalculater.com/junk-silver-calculator/">
-  <meta name="twitter:title" content="Junk Silver Calculator — Pre-1965 US Coin Melt Value">
-  <meta name="twitter:description" content="Calculate the melt value of pre-1965 US silver coins using live spot prices.">
+  <meta name="twitter:title" content="Junk Silver Calculator — Face Value &amp; Melt Value of 90% US Coins">
+  <meta name="twitter:description" content="Calculate melt value of pre-1965 US 90% silver coins by face value at live spot price.">
   <meta name="twitter:image" content="https://scrapsilvercalculater.com/images/social-share.png">
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
-  <!-- Critical CSS — prevents FOUC before style.css loads -->
-  <style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}:root{--bg:#09090f;--hdr:56px;--accent:#7c3aed;--text:#f0f4f8;--dim:#c2cfe0;--muted:#8fa3bc;--border:rgba(255,255,255,.10);--text-secondary:#c2cfe0;--radius-md:16px;--space-md:1rem;--f-display:'Outfit',sans-serif;--f-body:'Inter',sans-serif}body{background:#09090f;color:#f0f4f8;font-family:system-ui,sans-serif;overflow-x:hidden;padding-top:var(--hdr)}#site-header{min-height:var(--hdr);position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,6,11,.92);border-bottom:1px solid rgba(255,255,255,.10)}#price-ticker{min-height:44px}#breadcrumb{min-height:28px}.container{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}.calc-page-layout{max-width:780px;margin:0 auto;padding:0 20px 40px}.calc-widget{background:rgba(22,22,36,.9);border:1px solid rgba(255,255,255,.10);border-radius:20px;padding:28px}.calc-widget-title{font-size:1.1rem;font-weight:700;margin-bottom:20px}#jsc-coin{min-height:44px}</style>
-  <link rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap"></noscript>
-
-  <style>
-    /* ---- Junk Silver Calculator — page-specific styles ---- */
-    .jsc-form-row { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
-    .jsc-form-label { width:150px; flex-shrink:0; font-size:14px; font-weight:600; color:var(--text-secondary,#c2cfe0); }
-    .jsc-form-controls { display:flex; gap:8px; flex:1; min-width:0; }
-    .jsc-input {
-      flex:1; background:#1a1a2e; border:1px solid rgba(255,255,255,.15);
-      border-radius:8px; padding:11px 14px; color:#f0f4f8; font-size:15px;
-      font-weight:600; outline:none; min-width:0; -moz-appearance:textfield;
-    }
-    .jsc-input:focus { border-color:#7c3aed; box-shadow:0 0 0 3px rgba(124,58,237,.15); }
-    .jsc-input::-webkit-outer-spin-button,
-    .jsc-input::-webkit-inner-spin-button { -webkit-appearance:none; }
-    .jsc-select {
-      flex:1; background:#1a1a2e; border:1px solid rgba(255,255,255,.15);
-      border-radius:8px; padding:11px 14px; color:#f0f4f8; font-size:14px;
-      font-weight:600; outline:none; cursor:pointer; min-width:0;
-      -webkit-appearance:auto; appearance:auto;
-    }
-    .jsc-select:focus { border-color:#7c3aed; }
-    .jsc-select option { background:#1a1a2e; color:#f0f4f8; font-weight:500; }
-
-    /* Results */
-    .jsc-results { margin-top:20px; border-top:1px solid rgba(255,255,255,.08); padding-top:20px; }
-    .jsc-melt-banner {
-      background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(179,157,250,.1));
-      border:1px solid rgba(124,58,237,.35); border-radius:12px;
-      padding:16px 20px; display:flex; justify-content:space-between;
-      align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:14px;
-    }
-    .jsc-melt-banner .lbl { font-size:13px; color:#b39dfa; font-weight:600; }
-    .jsc-melt-banner .val { font-size:1.75rem; font-weight:800; color:#b39dfa; font-family:'JetBrains Mono',monospace; }
-    .jsc-melt-banner .det { font-size:12px; color:#8fa3bc; margin-top:3px; }
-    .jsc-stats-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
-    .jsc-stat-card { background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:10px; padding:12px 14px; }
-    .jsc-stat-lbl { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:#8fa3bc; margin-bottom:4px; }
-    .jsc-stat-val { font-size:1.05rem; font-weight:700; color:#f0f4f8; font-family:'JetBrains Mono',monospace; }
-
-    /* Reference table */
-    .jsc-ref-widget { margin-top:20px; }
-    .ref-table { width:100%; border-collapse:collapse; font-size:14px; }
-    .ref-table th { text-align:left; padding:8px 12px; font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:#8fa3bc; border-bottom:1px solid rgba(255,255,255,.08); }
-    .ref-table td { padding:10px 12px; border-bottom:1px solid rgba(255,255,255,.05); color:#c2cfe0; }
-    .ref-table tr:last-child td { border-bottom:none; }
-    .ref-table td:first-child { color:#f0f4f8; font-weight:600; }
-    .ref-table td:last-child { font-family:'JetBrains Mono',monospace; font-size:13px; color:#b39dfa; }
-
-    @media(max-width:600px) {
-      .jsc-form-row { flex-direction:column; align-items:stretch; }
-      .jsc-form-label { width:auto; }
-      .jsc-stats-grid { grid-template-columns:1fr 1fr; }
-      .calc-widget { padding:20px 16px; }
-    }
-    @media(max-width:380px) {
-      .jsc-stats-grid { grid-template-columns:1fr; }
-    }
-  </style>
-
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Junk Silver Calculator","url":"https://scrapsilvercalculater.com/junk-silver-calculator/","description":"Calculate the melt value of pre-1965 US silver coins including dimes, quarters, half dollars, and silver dollars.","applicationCategory":"UtilityApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://scrapsilvercalculater.com/"},{"@type":"ListItem","position":2,"name":"Junk Silver Calculator","item":"https://scrapsilvercalculater.com/junk-silver-calculator/"}]}</script>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5307005898686879"
-     crossorigin="anonymous"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Junk Silver Calculator","url":"https://scrapsilvercalculater.com/junk-silver-calculator/","description":"Calculate melt value of pre-1965 US 90% silver coins by face value at live spot price.","dateModified":"2026-06-16"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is junk silver?","acceptedAnswer":{"@type":"Answer","text":"Junk silver refers to pre-1965 US coins (dimes, quarters, half dollars, dollars) made of 90% silver with no collectible premium above their metal content. $1 face value is approximately 0.7234 troy oz of silver."}},{"@type":"Question","name":"How do I calculate junk silver value?","acceptedAnswer":{"@type":"Answer","text":"Multiply the total face value in dollars by 0.7234 to get troy ounces, then multiply by the current spot price. Use the calculator above."}},{"@type":"Question","name":"What years are junk silver coins?","acceptedAnswer":{"@type":"Answer","text":"US dimes and quarters dated 1964 and earlier are 90% silver. Half dollars: 1964 and earlier = 90%; 1965-1970 = 40%; 1971+ = no silver. Morgan and Peace dollars are 90% silver. War nickels (1942-1945) are 35% silver."}},{"@type":"Question","name":"How many troy ounces in a $1,000 junk silver bag?","acceptedAnswer":{"@type":"Answer","text":"A $1,000 face value bag of 90% silver coins contains approximately 715-720 troy ounces of pure silver. Dealers use 715 troy oz as the standard figure for circulated coins."}},{"@type":"Question","name":"Is junk silver a good investment?","acceptedAnswer":{"@type":"Answer","text":"Junk silver is one of the most practical forms of silver ownership — coins are instantly recognizable, pre-verified for purity, and divisible in small amounts. They trade at low premiums over spot."}}]}</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5307005898686879" crossorigin="anonymous"></script>
+  <style>
+.price-hero{background:linear-gradient(135deg,#11111c,#15151f);border-bottom:1px solid rgba(255,255,255,.07);padding:40px 0 32px}
+.price-hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:36px;align-items:start}
+.price-hero h1{font-family:'Outfit',sans-serif;font-size:clamp(1.8rem,3vw,2.5rem);font-weight:800;line-height:1.1;margin-bottom:14px;color:#f0f4f8}
+.price-hero h1 .hl{background:linear-gradient(135deg,#a855f7,#c4b5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.price-hero .intro{font-size:.9rem;color:#7c8ba0;line-height:1.65;max-width:480px}
+.formula-box{background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.3);border-radius:10px;padding:14px 18px;font-family:'JetBrains Mono',monospace;font-size:.9rem;color:#c4b5fd;text-align:center;margin:16px 0}
+.live-price-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-top:3px solid #7c3aed;border-radius:16px;padding:24px}
+.lpc-label{font-size:.65rem;color:#7c8ba0;text-transform:uppercase;letter-spacing:.12em;font-weight:700;margin-bottom:8px}
+.lpc-price{font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:800;color:#fff;line-height:1;margin-bottom:4px}
+.lpc-sub{font-size:.78rem;color:#b8c4d4;margin-bottom:16px}
+.lpc-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,.07)}
+.lpc-stat{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px}
+.lpc-stat-label{font-size:.62rem;color:#7c8ba0;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:6px}
+.lpc-stat-val{font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:700;color:#f0f4f8}
+.live-dot{display:inline-block;width:7px;height:7px;background:#10b981;border-radius:50%;margin-right:6px;animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 3px rgba(16,185,129,.2)}50%{box-shadow:0 0 0 6px rgba(16,185,129,.05)}}
+.tab-switcher{display:flex;gap:2px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:3px;margin-bottom:20px}
+.tab-btn{flex:1;padding:9px;background:transparent;border:none;border-radius:7px;color:#7c8ba0;font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:'Inter',sans-serif}
+.tab-btn.active{background:#7c3aed;color:#fff}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.coin-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.coin-row{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:10px 12px}
+.coin-emoji{font-size:1.3rem;flex-shrink:0}
+.coin-info{flex:1}
+.coin-label{font-size:.8rem;color:#b8c4d4;font-weight:600}
+.coin-sub{font-size:.7rem;color:#7c8ba0}
+.coin-input{width:64px;background:#0d0d18;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:6px 8px;color:#f0f4f8;font-size:.9rem;font-family:'JetBrains Mono',monospace;text-align:right}
+.gd-table{width:100%;border-collapse:collapse;margin:16px 0}
+.gd-table th{background:#15151f;color:#b8c4d4;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;padding:10px 12px;border-bottom:2px solid rgba(124,58,237,.3);text-align:left;white-space:nowrap}
+.gd-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.06);font-size:.85rem;color:#f0f4f8;vertical-align:middle}
+.gd-table tr:last-child td{border-bottom:none}
+.gd-table tr:hover td{background:rgba(255,255,255,.03)}
+.section-card{background:#11111c;border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:32px;margin:24px 0}
+.section-card h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:16px;color:#f0f4f8}
+.section-card p{font-size:.9rem;color:#b8c4d4;line-height:1.7;margin-bottom:14px}
+.section-card ul{padding-left:20px;margin-bottom:14px}
+.section-card li{font-size:.9rem;color:#b8c4d4;line-height:1.7;margin-bottom:6px}
+.payout-table{width:100%;border-collapse:collapse;margin:12px 0}
+.payout-table th{background:#15151f;color:#b8c4d4;font-size:.7rem;text-transform:uppercase;padding:10px 14px;border-bottom:2px solid rgba(124,58,237,.3);text-align:left}
+.payout-table td{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.06);font-size:.88rem;color:#f0f4f8}
+.pct-high{color:#10b981;font-weight:700}
+.pct-low{color:#ef4444;font-weight:700}
+.faq-item{border:1px solid rgba(255,255,255,.08);border-radius:12px;margin-bottom:10px;overflow:hidden}
+.faq-q{width:100%;text-align:left;background:#11111c;border:none;padding:16px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.92rem;font-weight:600;color:#f0f4f8;font-family:'Inter',sans-serif}
+.faq-q:hover{background:#15151f}
+.faq-q .faq-icon{color:#7c3aed;font-size:1.2rem;flex-shrink:0;transition:transform .3s}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 20px 16px;background:#0d0d18;font-size:.87rem;color:#b8c4d4;line-height:1.7}
+.faq-item.open .faq-a{display:block}
+.ad-slot{background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);border-radius:8px;padding:16px;text-align:center;margin:24px 0;min-height:90px;display:flex;align-items:center;justify-content:center}
+.ad-slot ins{display:block}
+.related-tools{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:16px 0}
+.related-tool-link{display:flex;align-items:center;gap:8px;background:#11111c;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 16px;text-decoration:none;color:#b8c4d4;font-size:.85rem;font-weight:600;transition:all .2s}
+.related-tool-link:hover{border-color:rgba(124,58,237,.4);color:#c4b5fd;transform:translateY(-1px)}
+@media(max-width:768px){.price-hero-grid{grid-template-columns:1fr}.coin-grid{grid-template-columns:1fr}.overflow-x-auto{overflow-x:auto}}
+  </style>
 </head>
 <body>
-  <div id="site-header"></div>
-  <main>
-    <div class="container"><div id="breadcrumb"></div></div>
+<div id="site-header"></div>
 
-    <section class="hero-compact container" style="padding:20px 0 8px;">
-      <div class="container">
-        <div id="price-ticker"></div>
-        <h1 style="margin-bottom:4px;">Junk Silver <span class="highlight">Calculator</span></h1>
-      </div>
-    </section>
-
-    <div class="calc-page-layout" style="margin-top:0;padding-top:0;">
-
-      <!-- Main Calculator Widget -->
-      <div class="calc-widget">
-        <div class="calc-widget-title"><span class="icon">🪙</span> Junk Silver Coin Value</div>
-
-        <!-- Tab switcher — top of widget -->
-        <div style="display:flex;gap:0;margin-bottom:16px;border:1px solid rgba(255,255,255,.1);border-radius:10px;overflow:hidden;">
-          <button id="tab-coin" onclick="switchTab('coin')" style="flex:1;padding:9px;font-size:13px;font-weight:600;border:none;cursor:pointer;background:rgba(124,58,237,.25);color:#fff;border-right:1px solid rgba(255,255,255,.1);">🪙 By Coin</button>
-          <button id="tab-fv" onclick="switchTab('fv')" style="flex:1;padding:9px;font-size:13px;font-weight:600;border:none;cursor:pointer;background:transparent;color:var(--muted);">💵 By Face Value</button>
-        </div>
-
-        <!-- Panel: By Coin -->
-        <div id="panel-coin">
-          <div class="jsc-form-row">
-            <div class="jsc-form-label">Coin Type</div>
-            <div class="jsc-form-controls">
-              <select class="jsc-select" id="jsc-coin">
-                <option value="us-quarter-pre1965">US Quarter (pre-1965) — 90% · 0.1808 oz</option>
-              </select>
-            </div>
-          </div>
-          <div class="jsc-form-row">
-            <div class="jsc-form-label">Quantity</div>
-            <div class="jsc-form-controls">
-              <input type="number" class="jsc-input" id="jsc-qty" placeholder="e.g. 10" value="10" min="1" step="1" inputmode="numeric">
-            </div>
-          </div>
-          <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:8px;">Calculate Silver Value</button>
-          <div class="jsc-results" id="jsc-results" style="display:none;">
-            <div class="jsc-melt-banner">
-              <div>
-                <div class="lbl">Total Melt Value</div>
-                <div class="val" id="jsc-total">—</div>
-                <div class="det" id="jsc-detail">at current spot price</div>
-              </div>
-              <div style="font-size:38px;opacity:.45;">🪙</div>
-            </div>
-            <div class="jsc-stats-grid">
-              <div class="jsc-stat-card"><div class="jsc-stat-lbl">Per Coin</div><div class="jsc-stat-val" id="jsc-per-coin">—</div></div>
-              <div class="jsc-stat-card"><div class="jsc-stat-lbl">Total Silver</div><div class="jsc-stat-val" id="jsc-oz">—</div></div>
-              <div class="jsc-stat-card"><div class="jsc-stat-lbl">Spot Price</div><div class="jsc-stat-val" id="jsc-spot">—</div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Panel: By Face Value -->
-        <div id="panel-fv" style="display:none;">
-          <div class="jsc-form-row">
-            <div class="jsc-form-label">Face Value ($)</div>
-            <div class="jsc-form-controls">
-              <input type="number" class="jsc-input" id="fv-input" placeholder="e.g. 10.00" value="10" min="0.10" step="0.10" inputmode="decimal">
-            </div>
-          </div>
-          <button class="btn btn-primary btn-full" id="fv-calc-btn" style="margin-top:8px;">Calculate Silver Value</button>
-          <div class="jsc-results" id="fv-results" style="display:none;">
-            <div class="jsc-melt-banner">
-              <div>
-                <div class="lbl">Total Melt Value</div>
-                <div class="val" id="fv-usd">—</div>
-                <div class="det" id="fv-detail">at current spot price</div>
-              </div>
-              <div style="font-size:38px;opacity:.45;">💵</div>
-            </div>
-            <div class="jsc-stats-grid">
-              <div class="jsc-stat-card"><div class="jsc-stat-lbl">Pure Silver</div><div class="jsc-stat-val" id="fv-oz">—</div></div>
-              <div class="jsc-stat-card"><div class="jsc-stat-lbl">Per $1 Face</div><div class="jsc-stat-val">0.715 oz</div></div>
-              <div class="jsc-stat-card"><div class="jsc-stat-lbl">Spot Price</div><div class="jsc-stat-val" id="fv-spot">—</div></div>
-            </div>
-          </div>
-          <p style="font-size:11px;color:var(--muted);margin-top:10px;">0.715 oz per $1.00 face value (circulated 90% silver coins).</p>
-        </div>
-      </div>
-
-      <!-- Live Reference Table -->
-      <div class="calc-widget jsc-ref-widget">
-        <div class="calc-widget-title" style="margin-bottom:14px;"><span class="icon">📊</span> All Junk Silver Coin Values</div>
-        <table class="ref-table">
-          <thead><tr><th>Coin</th><th>Purity</th><th>Silver (oz)</th><th>Value / coin</th></tr></thead>
-          <tbody id="coin-table"></tbody>
-        </table>
-        <p style="font-size:11px;color:#8fa3bc;margin-top:10px;">Updated live. <span id="ref-spot-label"></span></p>
-      </div>
-
-      <!-- Content body -->
-      <div class="content-body">
-        <h2>What Is Junk Silver?</h2>
-        <p>"Junk silver" describes United States coins minted in <strong>1964 or earlier</strong> that contain 90% silver. The term "junk" is a misnomer — it simply means the coins have no <strong>numismatic (collectible) premium</strong>, not that they are worthless. They are highly sought after by investors for their intrinsic precious metal content.</p>
-
-        <div class="callout tip">
-          <div class="callout-title">🏦 Gresham's Law in Action</div>
-          <p style="font-size:var(--fs-sm);color:var(--text-secondary);margin:0;">In 1965, the US Mint switched to copper-nickel "clad" coins. Because the 1964 silver coins were worth more than their face value, they quickly disappeared from circulation — a classic example of Gresham's Law: "Bad money drives out good." Today, finding a silver quarter in pocket change is a rare event.</p>
-        </div>
-
-        <h3>Common Junk Silver Coins &amp; Their Silver Content</h3>
-        <ul>
-          <li><strong>Dimes (Mercury &amp; Roosevelt, pre-1965)</strong> — 0.0723 troy oz pure silver each</li>
-          <li><strong>Quarters (Washington, pre-1965)</strong> — 0.1808 troy oz pure silver each</li>
-          <li><strong>Half Dollars (Franklin &amp; Kennedy, pre-1965)</strong> — 0.3617 troy oz pure silver each</li>
-          <li><strong>Morgan &amp; Peace Dollars</strong> — 0.7734 troy oz pure silver each</li>
-          <li><strong>War Nickels (1942–1945)</strong> — 0.0563 troy oz (35% silver)</li>
-          <li><strong>Kennedy Half (1965–1970)</strong> — 0.1479 troy oz (40% silver)</li>
-        </ul>
-
-        <h3>The $1.00 Face Value Rule</h3>
-        <p>$1.40 in face value of pre-1965 coins (e.g. 14 dimes, or 5 quarters + 1 dime) contains approximately <strong>one troy ounce</strong> of pure silver. This shortcut lets you quickly estimate large collections without a scale.</p>
-
-        <h3>Why Invest in Junk Silver?</h3>
-        <p>Junk silver is government-issued, immediately recognizable, and comes in <strong>small, divisible units</strong>. Unlike a 100 oz bar, you can sell a single dime if you only need a small amount of cash. Their supply is finite, adding scarcity to intrinsic value, and they typically carry a lower premium than modern bullion coins like American Silver Eagles.</p>
-
-        <h3>How to Use This Calculator</h3>
-        <p>Select your coin type from the dropdown, enter the quantity you have, then press <strong>Calculate Silver Value</strong>. The result shows total melt value based on the live silver spot price, value per coin, and total troy ounces of silver. The reference table below updates automatically with the current spot price.</p>
-      </div>
-
+<div class="price-hero">
+  <div class="container">
+    <div class="price-hero-grid">
       <div>
-        <h3 style="margin-bottom:var(--space-lg);">Related Calculators</h3>
-        <div class="related-grid">
-          <a href="/silver-coin-value-calculator/" class="related-link"><span class="r-icon">🏛️</span> Coin Value Calculator</a>
-          <a href="/" class="related-link"><span class="r-icon">♻️</span> Scrap Calculator</a>
-          <a href="/900-silver-calculator/" class="related-link"><span class="r-icon">🔢</span> 900 Silver Calculator</a>
-          <a href="/silver-batch-calculator/" class="related-link"><span class="r-icon">📋</span> Batch Calculator</a>
-          <a href="/what-is-junk-silver/" class="related-link"><span class="r-icon">📖</span> What Is Junk Silver?</a>
+        <div id="breadcrumb-junk"></div>
+        <h1>Junk Silver Calculator — <span class="hl">Face Value to Melt Value</span></h1>
+        <p class="intro">Calculate the melt value of pre-1965 US 90% silver coins by face value. Enter your total face value in dollars — our calculator does the rest at today's live spot price.</p>
+        <div class="formula-box">$1 face value of 90% silver coins ≈ 0.7234 troy oz of pure silver</div>
+      </div>
+      <div class="live-price-card">
+        <div class="lpc-label"><span class="live-dot"></span>Live · 90% Junk Silver</div>
+        <div class="lpc-price" id="hero-per-dollar">$—</div>
+        <div class="lpc-sub">melt value per $1 face value</div>
+        <div class="lpc-grid">
+          <div class="lpc-stat"><div class="lpc-stat-label">Per $10 Face</div><div class="lpc-stat-val" id="hero-10">$—</div></div>
+          <div class="lpc-stat"><div class="lpc-stat-label">Per $100 Face</div><div class="lpc-stat-val" id="hero-100">$—</div></div>
+          <div class="lpc-stat"><div class="lpc-stat-label">Per $1,000 Face</div><div class="lpc-stat-val" id="hero-1000">$—</div></div>
+          <div class="lpc-stat"><div class="lpc-stat-label">Spot Price</div><div class="lpc-stat-val" id="hero-spot">$—</div></div>
         </div>
       </div>
     </div>
-  </main>
+  </div>
+</div>
 
-  <div id="site-footer"></div>
+<main>
+<div class="container">
 
-  <script src="/js/silver-price.js" defer></script>
-  
-  <script src="/js/calculator.js" defer></script>
-  <script src="/js/components.js" defer></script>
-  <script defer>
-  // Global scope — called by inline onclick
-  function switchTab(tab) {
-    var isCoin = tab === 'coin';
-    document.getElementById('panel-coin').style.display = isCoin ? '' : 'none';
-    document.getElementById('panel-fv').style.display = isCoin ? 'none' : '';
-    document.getElementById('tab-coin').style.background = isCoin ? 'rgba(124,58,237,.25)' : 'transparent';
-    document.getElementById('tab-coin').style.color = isCoin ? '#fff' : 'var(--muted)';
-    document.getElementById('tab-fv').style.background = isCoin ? 'transparent' : 'rgba(124,58,237,.25)';
-    document.getElementById('tab-fv').style.color = isCoin ? 'var(--muted)' : '#fff';
-  }
+<div class="section-card" style="border-top:2px solid #7c3aed">
+  <h2>Junk Silver Melt Value Calculator</h2>
+  <div class="tab-switcher">
+    <button class="tab-btn active" data-tab="face">By Face Value</button>
+    <button class="tab-btn" data-tab="coins">By Coin Count</button>
+  </div>
 
-  document.addEventListener('DOMContentLoaded', function() {
-    SiteComponents.renderPriceTicker('price-ticker');
-    SiteComponents.renderBreadcrumb('breadcrumb', [
-      { label: 'Home', href: '/' },
-      { label: 'Junk Silver Calculator' }
-    ]);
+  <div class="tab-panel active" id="tab-face">
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label" for="face-value">Total Face Value ($)</label>
+        <input type="number" class="form-input" id="face-value" placeholder="e.g. 100" step="1" min="0" value="100">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="coin-type">Coin Mix</label>
+        <select class="form-select" id="coin-type">
+          <option value="0.7234">90% Silver — dimes/quarters/halves/dollars</option>
+          <option value="0.14792">40% Silver — 1965–1970 Kennedy Halves</option>
+          <option value="0.05626">35% War Nickels — 1942–1945</option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-primary btn-full" id="calc-face-btn" style="margin-top:12px">Calculate Melt Value</button>
+    <div id="face-result" style="display:none;margin-top:20px;background:#0d0d18;border:1px solid rgba(124,58,237,.3);border-radius:12px;padding:20px">
+      <div style="font-size:.7rem;color:#7c8ba0;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:8px">Melt Value</div>
+      <div id="face-melt" style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:800;color:#fff">$—</div>
+      <div id="face-detail" style="font-size:.82rem;color:#7c8ba0;margin-top:8px"></div>
+      <div style="display:flex;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:.82rem">
+        <span>Dealer (90%): <strong id="face-d90" style="color:#10b981">$—</strong></span>
+        <span>Dealer (95%): <strong id="face-d95" style="color:#10b981">$—</strong></span>
+      </div>
+    </div>
+  </div>
 
-    var coins = SilverCalc.JUNK_COINS;
-    var coinSelect = document.getElementById('jsc-coin');
+  <div class="tab-panel" id="tab-coins">
+    <p style="font-size:.85rem;color:#7c8ba0;margin-bottom:12px">Enter quantity of each coin type.</p>
+    <div class="coin-grid">
+      <div class="coin-row"><span class="coin-emoji">🪙</span><div class="coin-info"><div class="coin-label">Mercury/Roosevelt Dimes</div><div class="coin-sub">0.07234 oz · 1916–1964</div></div><input type="number" class="coin-input" id="c-dime" value="0" min="0"></div>
+      <div class="coin-row"><span class="coin-emoji">🪙</span><div class="coin-info"><div class="coin-label">Washington Quarters</div><div class="coin-sub">0.18084 oz · 1932–1964</div></div><input type="number" class="coin-input" id="c-quarter" value="0" min="0"></div>
+      <div class="coin-row"><span class="coin-emoji">🪙</span><div class="coin-info"><div class="coin-label">Half Dollars (90%)</div><div class="coin-sub">0.36169 oz · pre-1965</div></div><input type="number" class="coin-input" id="c-half90" value="0" min="0"></div>
+      <div class="coin-row"><span class="coin-emoji">🪙</span><div class="coin-info"><div class="coin-label">Kennedy Halves (40%)</div><div class="coin-sub">0.14792 oz · 1965–1970</div></div><input type="number" class="coin-input" id="c-half40" value="0" min="0"></div>
+      <div class="coin-row"><span class="coin-emoji">🏛️</span><div class="coin-info"><div class="coin-label">Morgan/Peace Dollars</div><div class="coin-sub">0.77344 oz · 90% silver</div></div><input type="number" class="coin-input" id="c-dollar" value="0" min="0"></div>
+      <div class="coin-row"><span class="coin-emoji">🪙</span><div class="coin-info"><div class="coin-label">War Nickels (35%)</div><div class="coin-sub">0.05626 oz · 1942–1945</div></div><input type="number" class="coin-input" id="c-nickel" value="0" min="0"></div>
+    </div>
+    <button class="btn btn-primary btn-full" id="calc-coins-btn">Calculate Total Value</button>
+    <div id="coins-result" style="display:none;margin-top:20px;background:#0d0d18;border:1px solid rgba(124,58,237,.3);border-radius:12px;padding:20px">
+      <div style="font-size:.7rem;color:#7c8ba0;text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:8px">Total Melt Value</div>
+      <div id="coins-melt" style="font-family:'JetBrains Mono',monospace;font-size:2.2rem;font-weight:800;color:#fff">$—</div>
+      <div id="coins-detail" style="font-size:.82rem;color:#7c8ba0;margin-top:8px"></div>
+      <div style="display:flex;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-size:.82rem">
+        <span>Dealer (90%): <strong id="coins-d90" style="color:#10b981">$—</strong></span>
+        <span>Dealer (95%): <strong id="coins-d95" style="color:#10b981">$—</strong></span>
+      </div>
+    </div>
+  </div>
+</div>
 
-    // Populate coin dropdown (clear the static placeholder first)
-    coinSelect.innerHTML = '';
-    Object.entries(coins).forEach(function(entry) {
-      var key = entry[0], c = entry[1];
-      var opt = document.createElement('option');
-      opt.value = key;
-      var purityPct = Math.round(c.purity * 100);
-      opt.textContent = c.name + ' — ' + purityPct + '% · ' + c.silverOz + ' oz';
-      coinSelect.appendChild(opt);
-    });
-    coinSelect.value = 'us-quarter-pre1965';
+<div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5307005898686879" data-ad-slot="SLOT_A" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 
-    // Live reference table
-    function updateRefTable() {
-      var spot = SilverPrice.getPrice();
-      if (!spot) return;
-      document.getElementById('ref-spot-label').textContent = 'Spot: $' + spot.toFixed(2) + '/oz';
-      document.getElementById('coin-table').innerHTML = Object.entries(coins).map(function(entry) {
-        var c = entry[1];
-        var val = (c.silverOz * spot).toFixed(2);
-        var purityPct = Math.round(c.purity * 100) + '%';
-        return '<tr><td>' + c.name + '</td><td>' + purityPct + '</td><td>' + c.silverOz + '</td><td>$' + val + '</td></tr>';
-      }).join('');
-    }
+<div class="section-card">
+  <h2>What Is Junk Silver?</h2>
+  <p>Junk silver is the common term for pre-1965 US circulated coins containing 90% silver. The "junk" label refers to the absence of numismatic (collectible) value — not the metal value. These coins are highly liquid, easy to verify, and trade close to spot. Most junk silver is sold by face value: a "$1,000 face" bag contains coins with $1,000 in face value and approximately 715–720 troy ounces of pure silver.</p>
+  <p>At today's spot price of <strong id="prose-spot">$—</strong> per troy oz, a $1,000 face bag has a melt value of approximately <strong id="prose-1000">$—</strong>. Most dealers pay 90–95% of melt for full bags. Note: Kennedy Half Dollars from 1965–1970 are 40% silver, not 90% — a common point of confusion when sorting junk silver.</p>
 
-    // Face value calculator
-    function updateFaceValue() {
-      var fv = parseFloat(document.getElementById('fv-input').value) || 0;
-      var spot = SilverPrice.getPrice();
-      if (!spot || fv <= 0) return;
-      var oz = (fv * 0.715).toFixed(3);
-      var usd = (fv * 0.715 * spot).toFixed(2);
-      document.getElementById('fv-oz').textContent = oz + ' oz';
-      document.getElementById('fv-usd').textContent = '$' + usd;
-      document.getElementById('fv-spot').textContent = '$' + spot.toFixed(2);
-      document.getElementById('fv-detail').textContent = '$' + fv.toFixed(2) + ' face · ' + oz + ' oz pure silver · Spot: $' + spot.toFixed(2) + '/oz';
-      document.getElementById('fv-results').style.display = 'block';
-    }
-    document.getElementById('fv-input').addEventListener('input', updateFaceValue);
-    document.getElementById('fv-calc-btn').addEventListener('click', updateFaceValue);
+  <h2 style="margin-top:24px">Junk Silver Melt Value by Face Value — Live Table</h2>
+  <div class="overflow-x-auto">
+  <table class="gd-table">
+    <thead><tr><th>Face Value</th><th>Troy Oz Silver</th><th>Melt Value</th><th>Dealer 80%</th><th>Dealer 95%</th></tr></thead>
+    <tbody>
+      <tr><td>$1 face</td><td>0.7234 oz</td><td id="fv-1">$—</td><td id="fv-1-80">$—</td><td id="fv-1-95">$—</td></tr>
+      <tr><td>$10 face</td><td>7.234 oz</td><td id="fv-10">$—</td><td id="fv-10-80">$—</td><td id="fv-10-95">$—</td></tr>
+      <tr><td>$100 face</td><td>72.34 oz</td><td id="fv-100">$—</td><td id="fv-100-80">$—</td><td id="fv-100-95">$—</td></tr>
+      <tr><td>$500 face</td><td>361.7 oz</td><td id="fv-500">$—</td><td id="fv-500-80">$—</td><td id="fv-500-95">$—</td></tr>
+      <tr><td>$1,000 face</td><td>≈ 717.5 oz</td><td id="fv-1000">$—</td><td id="fv-1000-80">$—</td><td id="fv-1000-95">$—</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
 
-    SilverPrice.onPriceUpdate(function() { updateRefTable(); updateFaceValue(); });
-    updateRefTable();
-    updateFaceValue();
+<div class="section-card">
+  <h2>Silver Content by Coin Type</h2>
+  <div class="overflow-x-auto">
+  <table class="gd-table">
+    <thead><tr><th>Coin</th><th>Years</th><th>Purity</th><th>Silver/coin (troy oz)</th><th>Silver/coin (grams)</th></tr></thead>
+    <tbody>
+      <tr><td>Roosevelt Dime</td><td>1946–1964</td><td>90%</td><td>0.07234</td><td>2.25</td></tr>
+      <tr><td>Mercury Dime</td><td>1916–1945</td><td>90%</td><td>0.07234</td><td>2.25</td></tr>
+      <tr><td>Washington Quarter</td><td>1932–1964</td><td>90%</td><td>0.18084</td><td>5.63</td></tr>
+      <tr><td>Walking Liberty Half</td><td>1916–1947</td><td>90%</td><td>0.36169</td><td>11.25</td></tr>
+      <tr><td>Franklin Half</td><td>1948–1963</td><td>90%</td><td>0.36169</td><td>11.25</td></tr>
+      <tr><td>Kennedy Half</td><td>1964</td><td>90%</td><td>0.36169</td><td>11.25</td></tr>
+      <tr><td>Kennedy Half</td><td>1965–1970</td><td>40%</td><td>0.14792</td><td>4.60</td></tr>
+      <tr><td>Morgan Dollar</td><td>1878–1904, 1921</td><td>90%</td><td>0.77344</td><td>24.06</td></tr>
+      <tr><td>Peace Dollar</td><td>1921–1935</td><td>90%</td><td>0.77344</td><td>24.06</td></tr>
+      <tr><td>35% War Nickel</td><td>1942–1945</td><td>35%</td><td>0.05626</td><td>1.75</td></tr>
+    </tbody>
+  </table>
+  </div>
+</div>
 
-    // Calculator — runs only on button click
-    function calc() {
-      var coinKey = coinSelect.value;
-      var qty = parseInt(document.getElementById('jsc-qty').value) || 0;
-      if (qty <= 0) return;
-      var spot = SilverPrice.getPrice();
-      var r = SilverCalc.coinValue(coinKey, qty, spot);
-      if (!r) return;
+<div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5307005898686879" data-ad-slot="SLOT_B" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
 
-      document.getElementById('jsc-total').textContent = '$' + r.value.toFixed(2);
-      document.getElementById('jsc-detail').textContent =
-        qty + '× ' + r.coin + ' · ' + r.totalSilverOz + ' oz pure silver · Spot: $' + spot.toFixed(2) + '/oz';
-      document.getElementById('jsc-per-coin').textContent = '$' + r.valueEach.toFixed(2);
-      document.getElementById('jsc-oz').textContent = r.totalSilverOz + ' oz';
-      document.getElementById('jsc-spot').textContent = '$' + spot.toFixed(2);
-      document.getElementById('jsc-results').style.display = 'block';
-    }
+<div class="section-card">
+  <h2>Where to Sell Junk Silver</h2>
+  <table class="payout-table">
+    <thead><tr><th>Buyer Type</th><th>Typical Payout</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Coin &amp; Bullion Shops</td><td class="pct-high">85–95% of melt</td><td>Same-day payment, competitive</td></tr>
+      <tr><td>Online Bullion Buyers</td><td class="pct-high">88–95% of melt</td><td>Ship coins, paid by check/wire</td></tr>
+      <tr><td>Local Coin Shows</td><td class="pct-high">85–92% of melt</td><td>Good for larger quantities</td></tr>
+      <tr><td>Direct to Collectors</td><td class="pct-high">95–110% of melt</td><td>Best for key-date coins</td></tr>
+      <tr><td>Pawn Shops</td><td class="pct-low">50–70% of melt</td><td>Avoid for junk silver bags</td></tr>
+    </tbody>
+  </table>
+</div>
 
-    document.getElementById('calc-btn').addEventListener('click', function() {
-      var s = document.getElementById('__calc_pending_style');
-      if (s) s.remove();
-      calc();
-    });
+<div class="section-card">
+  <h2>Frequently Asked Questions — Junk Silver</h2>
+  <div class="faq-item">
+    <button class="faq-q">What is junk silver? <span class="faq-icon">+</span></button>
+    <div class="faq-a"><p>Junk silver refers to pre-1965 US coins (dimes, quarters, half dollars, dollars) made of 90% silver with no collectible premium above their metal content. Despite the name, junk silver is highly liquid and widely traded. $1 face value ≈ 0.7234 troy oz of silver.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">How do I calculate junk silver value? <span class="faq-icon">+</span></button>
+    <div class="faq-a"><p>Multiply the total face value in dollars by 0.7234 to get troy ounces, then multiply by the current spot price. Example: $100 face value × 0.7234 × <span id="faq-spot">$—</span>/oz = <span id="faq-100fv">$—</span>. Or use the face value calculator above.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">What years are junk silver coins? <span class="faq-icon">+</span></button>
+    <div class="faq-a"><p>US dimes and quarters dated 1964 and earlier are 90% silver. Half dollars: 1964 and earlier = 90%; 1965–1970 = 40%; 1971+ = no silver. Dollar coins: Morgan (1878–1921) and Peace (1921–1935) dollars are 90% silver. War nickels (1942–1945 with large mint mark over dome) are 35% silver.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">How many troy ounces in a $1,000 junk silver bag? <span class="faq-icon">+</span></button>
+    <div class="faq-a"><p>A $1,000 face value bag of 90% silver coins contains approximately 715–720 troy ounces of pure silver. The standard figure used by dealers is 715 troy oz for circulated (worn) coins. At today's spot price that equals <span id="faq-715">$—</span> – <span id="faq-720">$—</span> in melt value.</p></div>
+  </div>
+  <div class="faq-item">
+    <button class="faq-q">Is junk silver a good investment? <span class="faq-icon">+</span></button>
+    <div class="faq-a"><p>Junk silver is one of the most practical forms of silver ownership — coins are instantly recognizable, pre-verified for purity, and divisible in small amounts. They trade at low premiums over spot compared to silver rounds or bars. This calculator shows melt value only; actual investment returns depend on entry price and future spot movements.</p></div>
+  </div>
+</div>
 
-    SiteComponents.injectFAQSchema([
-      {q: 'What years of US coins are considered "junk silver"?', a: 'All US dimes, quarters, and half-dollars dated 1964 or earlier are 90% silver. Kennedy half-dollars from 1965-1970 are 40% silver. Morgan and Peace dollars are 90% silver.'},
-      {q: 'How much silver is in $1.00 face value of junk silver?', a: 'A mix of circulated 90% silver coins contains approximately 0.715 troy ounces of pure silver per $1.00 of face value. Uncirculated coins contain 0.723 ounces.'},
-      {q: 'Are junk silver coins a good investment?', a: 'Yes, they are highly liquid, government-recognized, and divisible into small units. They often carry a lower premium than modern silver bullion coins like American Silver Eagles.'},
-      {q: 'Should I clean my junk silver coins?', a: 'No. Never clean silver coins. Harsh chemicals or abrasives can damage the surface and destroy any residual collector value, even on worn "junk" pieces.'},
-      {q: 'What is the difference between 90% and 40% silver coins?', a: 'Pre-1965 US dimes, quarters, and halves are 90% silver. Kennedy half-dollars from 1965-1970 are 40% silver. War Nickels (1942-1945) are 35% silver. Our calculator accounts for all these purity differences automatically.'}
-    ]);
+<div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-5307005898686879" data-ad-slot="SLOT_C" data-ad-format="auto" data-full-width-responsive="true"></ins></div>
+
+<div class="section-card">
+  <h2>Related Silver Calculators</h2>
+  <div class="related-tools">
+    <a href="/" class="related-tool-link">♻️ Scrap Silver Calculator</a>
+    <a href="/silver-dime-calculator/" class="related-tool-link">🪙 Silver Dime Calculator</a>
+    <a href="/silver-quarter-calculator/" class="related-tool-link">🪙 Silver Quarter Calculator</a>
+    <a href="/silver-dollar-calculator/" class="related-tool-link">🏛️ Silver Dollar Calculator</a>
+    <a href="/what-is-junk-silver/" class="related-tool-link">📖 What Is Junk Silver?</a>
+  </div>
+</div>
+
+</div></main>
+<div id="site-footer"></div>
+<script src="/js/silver-price.js" defer></script>
+<script src="/js/calculator.js" defer></script>
+<script src="/js/components.js" defer></script>
+<script>
+const OZ_PER_DOLLAR=0.7234;
+function fmt2(n){return '$'+n.toFixed(2)}
+function updateAll(){
+  const spot=SilverPrice.getPrice();
+  const perDollar=OZ_PER_DOLLAR*spot;
+  document.getElementById('hero-per-dollar').textContent=fmt2(perDollar);
+  document.getElementById('hero-10').textContent=fmt2(perDollar*10);
+  document.getElementById('hero-100').textContent=fmt2(perDollar*100);
+  document.getElementById('hero-1000').textContent=fmt2(perDollar*1000);
+  document.getElementById('hero-spot').textContent=fmt2(spot);
+  const ps=document.getElementById('prose-spot');const p1=document.getElementById('prose-1000');
+  if(ps)ps.textContent=fmt2(spot);if(p1)p1.textContent=fmt2(717.5*spot);
+  [[1,0.7234],[10,7.234],[100,72.34],[500,361.7],[1000,717.5]].forEach(([fv,oz])=>{
+    const m=oz*spot;
+    const s=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v};
+    s('fv-'+fv,fmt2(m));s('fv-'+fv+'-80',fmt2(m*0.80));s('fv-'+fv+'-95',fmt2(m*0.95));
   });
-  </script>
-</body></html>
+  const fs=document.getElementById('faq-spot');const f100=document.getElementById('faq-100fv');
+  const f715=document.getElementById('faq-715');const f720=document.getElementById('faq-720');
+  if(fs)fs.textContent=fmt2(spot);if(f100)f100.textContent=fmt2(100*OZ_PER_DOLLAR*spot);
+  if(f715)f715.textContent=fmt2(715*spot);if(f720)f720.textContent=fmt2(720*spot);
+}
+function calcFace(){
+  const fv=parseFloat(document.getElementById('face-value').value)||0;
+  const ozPD=parseFloat(document.getElementById('coin-type').value)||OZ_PER_DOLLAR;
+  const spot=SilverPrice.getPrice();const totalOz=fv*ozPD;const melt=totalOz*spot;
+  document.getElementById('face-melt').textContent=fmt2(melt);
+  document.getElementById('face-detail').textContent=totalOz.toFixed(3)+' troy oz · $'+spot.toFixed(2)+'/oz spot';
+  document.getElementById('face-d90').textContent=fmt2(melt*0.90);
+  document.getElementById('face-d95').textContent=fmt2(melt*0.95);
+  document.getElementById('face-result').style.display='block';
+}
+function calcCoins(){
+  const spot=SilverPrice.getPrice();
+  const coins=[{id:'c-dime',oz:0.07234},{id:'c-quarter',oz:0.18084},{id:'c-half90',oz:0.36169},{id:'c-half40',oz:0.14792},{id:'c-dollar',oz:0.77344},{id:'c-nickel',oz:0.05626}];
+  let totalOz=0;
+  coins.forEach(({id,oz})=>{const qty=parseInt(document.getElementById(id).value)||0;if(qty>0)totalOz+=qty*oz;});
+  const melt=totalOz*spot;
+  document.getElementById('coins-melt').textContent=fmt2(melt);
+  document.getElementById('coins-detail').textContent=totalOz.toFixed(4)+' troy oz total · $'+spot.toFixed(2)+'/oz spot';
+  document.getElementById('coins-d90').textContent=fmt2(melt*0.90);
+  document.getElementById('coins-d95').textContent=fmt2(melt*0.95);
+  document.getElementById('coins-result').style.display='block';
+}
+document.addEventListener('DOMContentLoaded',function(){
+  SiteComponents.renderHeader('site-header');
+  SiteComponents.renderBreadcrumb('breadcrumb-junk',[{label:'Home',href:'/'},{label:'Junk Silver Calculator'}]);
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+    });
+  });
+  document.getElementById('calc-face-btn').addEventListener('click',calcFace);
+  document.getElementById('calc-coins-btn').addEventListener('click',calcCoins);
+  document.getElementById('face-value').addEventListener('input',calcFace);
+  document.getElementById('coin-type').addEventListener('change',calcFace);
+  SilverPrice.onPriceUpdate(()=>{updateAll();calcFace();});
+  updateAll();calcFace();
+  document.querySelectorAll('.faq-q').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const item=btn.closest('.faq-item');const isOpen=item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+      if(!isOpen)item.classList.add('open');
+    });
+  });
+  try{(adsbygoogle=window.adsbygoogle||[]).push({})}catch(e){}
+  try{(adsbygoogle=window.adsbygoogle||[]).push({})}catch(e){}
+  try{(adsbygoogle=window.adsbygoogle||[]).push({})}catch(e){}
+});
+</script>
+</body>
+</html>
