@@ -543,39 +543,41 @@ function updateAll(){
   try {
   var spot = SilverPrice.getPrice();
 
+  // Hero main number — set first so a later error never leaves it blank
+  var heroVal = getUnitValue(spot, activeUnit);
+  var isGram = activeUnit==='gram';
+  setEl('hero-main-price', isGram ? fmt4(heroVal) : fmt2(heroVal));
+
+  // Safe numbers for change/prev-close (methods may exist but return null)
+  var ch       = Number(SilverPrice.getChange        ? SilverPrice.getChange()        : 0)||0;
+  var chPct    = Number(SilverPrice.getChangePercent ? SilverPrice.getChangePercent() : 0)||0;
+  var prevClose= Number(SilverPrice.getPrevClose     ? SilverPrice.getPrevClose()     : spot)||spot;
+
+  // Hero change
+  var dollar = spot - prevClose;
+  var pct    = prevClose ? (dollar/prevClose)*100 : 0;
+  setEl('hero-ch-dollar', (dollar>=0?'+':'')+fmt2(Math.abs(dollar)));
+  setEl('hero-ch-pct', '('+pct.toFixed(2)+'%)');
+  var chEl = document.getElementById('hero-change');
+  if(chEl) chEl.className='pc-change '+(dollar>=0?'up':'down');
+
+  // Hero sub
+  setEl('hero-spot-eq', fmt2(spot));
+  setEl('hero-kg-eq', fmt2((spot/TROY)*1000));
+
   // Ticker
   setEl('tk-spot', fmt2(spot));
   setEl('tk-gram', fmt4(spot/TROY));
   setEl('tk-925g', fmt4((spot/TROY)*0.925));
   setEl('tk-kg', fmt2((spot/TROY)*1000));
-  var ch = SilverPrice.getChange ? SilverPrice.getChange() : 0;
-  var chPct = SilverPrice.getChangePercent ? SilverPrice.getChangePercent() : 0;
   var tkArrow = document.getElementById('tk-change-pct');
   if(tkArrow){
     tkArrow.textContent=(ch>=0?'+':'')+chPct.toFixed(2)+'%';
     tkArrow.className='tk-arrow '+(ch>=0?'up':'down');
   }
 
-  // Hero main number
-  var heroVal = getUnitValue(spot, activeUnit);
-  var isGram = activeUnit==='gram';
-  setEl('hero-main-price', isGram ? fmt4(heroVal) : fmt2(heroVal));
-
-  // Hero sub
-  setEl('hero-spot-eq', fmt2(spot));
-  setEl('hero-kg-eq', fmt2((spot/TROY)*1000));
-
-  // Hero change
-  var chEl = document.getElementById('hero-change');
-  var prevClose = SilverPrice.getPrevClose ? SilverPrice.getPrevClose() : spot;
-  var dollar = spot - prevClose;
-  var pct = prevClose ? (dollar/prevClose)*100 : 0;
-  setEl('hero-ch-dollar', (dollar>=0?'+':'')+fmt2(Math.abs(dollar)));
-  setEl('hero-ch-pct', '('+pct.toFixed(2)+'%)');
-  if(chEl) chEl.className='pc-change '+(dollar>=0?'up':'down');
-
   // Stats strip
-  setEl('stat-prev', fmt2(prevClose));
+  setEl('stat-prev', fmt2(prevClose||spot));
   setEl('stat-oz', fmt2(spot));
   setEl('stat-925g', fmt4((spot/TROY)*0.925));
   setEl('stat-900g', fmt4((spot/TROY)*0.900));
