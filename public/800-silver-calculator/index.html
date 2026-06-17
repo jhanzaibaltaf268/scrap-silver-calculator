@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>800 Silver Calculator — What Is .800 Silver Worth Today?</title>
+  <meta name="description" content="Free .800 silver calculator. Find the melt value of 800 European silver jewelry and silverware at today's live spot price. 800 silver price per gram, ounce, and kilo with hallmark guide.">
+  <link rel="canonical" href="https://scrapsilvercalculater.com/800-silver-calculator/">
+  <link rel="stylesheet" href="../../css/style.css">
+  <style>
+    .price-card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md);margin:var(--space-xl) 0}
+    @media(max-width:640px){.price-card-grid{grid-template-columns:1fr}}
+    .price-card{background:var(--bg-tertiary);border:1px solid var(--border-medium);border-radius:var(--radius-lg);padding:var(--space-lg);text-align:center}
+    .price-card-label{font-size:var(--fs-sm);color:var(--text-muted);margin-bottom:var(--space-xs)}
+    .price-card-value{font-size:var(--fs-2xl);font-weight:700;color:var(--accent-primary);font-family:var(--font-display)}
+    .price-card-sub{font-size:var(--fs-xs);color:var(--text-muted);margin-top:var(--space-xs)}
+    .live-hero-card{background:var(--bg-tertiary);border:1px solid var(--border-accent);border-radius:var(--radius-xl);padding:var(--space-xl);margin-bottom:var(--space-xl);text-align:center}
+    .live-hero-label{font-size:var(--fs-sm);color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-md)}
+    .live-hero-main{font-size:var(--fs-4xl);font-weight:800;color:var(--accent-primary);font-family:var(--font-display);line-height:1}
+    .live-hero-sub{display:flex;justify-content:center;gap:var(--space-xl);margin-top:var(--space-md);flex-wrap:wrap}
+    .live-hero-sub span{font-size:var(--fs-sm);color:var(--text-secondary)}
+    .live-hero-note{font-size:var(--fs-xs);color:var(--text-muted);margin-top:var(--space-md)}
+    .purity-select-row{display:flex;gap:var(--space-sm);flex-wrap:wrap;margin:var(--space-md) 0}
+    .purity-btn{padding:var(--space-sm) var(--space-md);border:1px solid var(--border-medium);border-radius:var(--radius-full);background:transparent;color:var(--text-secondary);font-size:var(--fs-sm);cursor:pointer;transition:all var(--transition-fast)}
+    .purity-btn:hover{border-color:var(--accent-primary);color:var(--accent-primary)}
+    .purity-btn.active{background:var(--accent-primary);border-color:var(--accent-primary);color:var(--bg-primary);font-weight:600}
+    .dealer-row{display:flex;gap:var(--space-md);margin-top:var(--space-md);flex-wrap:wrap}
+    .dealer-card{flex:1;min-width:120px;background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:var(--space-md);text-align:center}
+    .dealer-card-label{font-size:var(--fs-xs);color:var(--text-muted);margin-bottom:var(--space-xs)}
+    .dealer-card-value{font-size:var(--fs-lg);font-weight:600;color:var(--accent-green)}
+    .adsense-slot{width:100%;min-height:90px;background:var(--bg-glass);border:1px dashed var(--border-subtle);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:var(--fs-xs);margin:var(--space-2xl) 0}
+    .hallmark-country{margin-bottom:var(--space-lg)}
+    .hallmark-country h4{color:var(--accent-primary);margin-bottom:var(--space-sm)}
+    .melt-table{width:100%;border-collapse:collapse;margin:var(--space-lg) 0;font-size:var(--fs-sm)}
+    .melt-table th,.melt-table td{padding:var(--space-md) var(--space-md);text-align:right;border-bottom:1px solid var(--border-subtle)}
+    .melt-table th:first-child,.melt-table td:first-child{text-align:left}
+    .melt-table th{font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+    .melt-table td{color:var(--text-secondary)}
+    .melt-table tr:hover td{background:var(--bg-glass)}
+    .payout-table{width:100%;border-collapse:collapse;margin:var(--space-lg) 0;font-size:var(--fs-sm)}
+    .payout-table th,.payout-table td{padding:var(--space-md);text-align:left;border-bottom:1px solid var(--border-subtle)}
+    .payout-table th{font-size:var(--fs-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em;font-weight:600}
+    .payout-table td{color:var(--text-secondary)}
+    .payout-table tr:hover td{background:var(--bg-glass)}
+    .payout-table .avoid{color:#f87171}
+    .row-highlight td{color:var(--accent-primary)!important;font-weight:600}
+    .content-section{max-width:860px;margin:0 auto var(--space-2xl)}
+    .content-section h2{margin-bottom:var(--space-lg);padding-bottom:var(--space-md);border-bottom:1px solid var(--border-subtle)}
+    .content-section p{margin-bottom:var(--space-md)}
+    .content-section ul{list-style:none;padding:0}
+    .content-section ul li{padding:var(--space-sm) 0;padding-left:var(--space-lg);position:relative;color:var(--text-secondary);border-bottom:1px solid var(--border-subtle)}
+    .content-section ul li::before{content:"▸";position:absolute;left:0;color:var(--accent-primary)}
+    .faq-wrapper{max-width:860px;margin:0 auto}
+    .internal-links{display:flex;flex-wrap:wrap;gap:var(--space-sm);margin:var(--space-xl) 0}
+    .internal-links a{padding:var(--space-sm) var(--space-md);background:var(--bg-glass);border:1px solid var(--border-subtle);border-radius:var(--radius-full);font-size:var(--fs-sm);color:var(--text-secondary);transition:all var(--transition-fast)}
+    .internal-links a:hover{color:var(--accent-primary);border-color:var(--accent-primary)}
+  </style>
+</head>
+<body>
+  <div id="site-header"></div>
+  <main>
+    <div class="container"><div id="breadcrumb"></div></div>
+
+    <section class="page-hero">
+      <div class="container">
+        <h1>800 Silver Calculator — <span class="highlight">What Is .800 Silver Worth?</span></h1>
+        <p>Enter the weight of your European .800 silver to get an instant melt value at today's live spot price.</p>
+      </div>
+    </section>
+
+    <div class="container">
+
+      <!-- LIVE PRICE CARD -->
+      <div class="live-hero-card">
+        <div class="live-hero-label">.800 Silver — Today's Value</div>
+        <div class="live-hero-main" id="hero-per-gram">$0.000</div>
+        <div class="price-card-sub" style="margin-top:var(--space-sm)">per gram</div>
+        <div class="live-hero-sub">
+          <span>Per Troy Oz: <strong id="hero-per-oz">$0.00</strong></span>
+          <span>Per Kilogram: <strong id="hero-per-kg">$0.00</strong></span>
+        </div>
+        <div class="live-hero-note">= 80% of <span id="hero-spot">$0.00</span> spot price · Updates live from COMEX</div>
+      </div>
+
+      <!-- CALCULATOR HERO -->
+      <div class="calc-widget" style="max-width:700px;margin:0 auto var(--space-2xl)">
+        <div class="calc-widget-title"><span class="icon">⚖️</span> .800 Silver Melt Value Calculator</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="weight">Weight</label>
+            <input type="number" class="form-input" id="weight" placeholder="e.g. 100" step="0.01" min="0" value="100">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="unit">Unit</label>
+            <select class="form-select" id="unit">
+              <option value="g" selected>Grams (g)</option>
+              <option value="oz">Troy Ounces (oz)</option>
+              <option value="dwt">Pennyweight (dwt)</option>
+              <option value="kg">Kilograms (kg)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Purity</label>
+          <div class="purity-select-row">
+            <button class="purity-btn active" data-purity="0.800">.800 (80%)</button>
+            <button class="purity-btn" data-purity="0.925">.925 Sterling</button>
+            <button class="purity-btn" data-purity="0.835">.835</button>
+            <button class="purity-btn" data-purity="0.999">.999 Fine</button>
+            <button class="purity-btn" data-purity="0.500">.500</button>
+          </div>
+        </div>
+        <div class="result-display">
+          <div class="result-label">Melt Value</div>
+          <div class="result-value" id="result-value">$0.00</div>
+          <div class="result-detail" id="result-detail"></div>
+        </div>
+        <div class="dealer-row">
+          <div class="dealer-card">
+            <div class="dealer-card-label">Dealer Pays (82%)</div>
+            <div class="dealer-card-value" id="dealer-82">$0.00</div>
+          </div>
+          <div class="dealer-card">
+            <div class="dealer-card-label">Dealer Pays (90%)</div>
+            <div class="dealer-card-value" id="dealer-90">$0.00</div>
+          </div>
+          <div class="dealer-card">
+            <div class="dealer-card-label">Refiner (95%)</div>
+            <div class="dealer-card-value" id="dealer-95">$0.00</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ADSENSE SLOT A -->
+      <div class="adsense-slot" id="adsense-a">
+        <!-- AdSense Slot A -->
+      </div>
+
+      <!-- WHAT IS .800 SILVER -->
+      <div class="content-section">
+        <h2>What Is .800 Silver?</h2>
+        <p>.800 silver contains 80% pure silver and 20% other metals, primarily copper. That 20% copper alloy is not incidental — it gives .800 silver a notably harder physical character than sterling, making it well-suited for flatware and serving pieces that endure daily use. The .800 standard is the minimum silver content recognized by most European national assay offices, the floor below which an item cannot legally be sold as silver in most of the continent.</p>
+        <p>This standard was formally codified in Germany through the Silver Ordinance of 1884, alongside the .835 standard. The choice was deliberate: .800 was designated for everyday domestic silver where cost efficiency mattered more than maximum silver content. .835 was the standard for higher-end pieces; .800 served the broader market. The distinction still matters today when you are selling, since .800 and .835 carry different melt values.</p>
+        <p>.800 silver appears across a remarkably wide geographic range: German silverware produced between 1880 and the mid-twentieth century, Dutch domestic silver from the nineteenth century, Austrian silver, Swiss cantonal silver, Middle Eastern decorative silver (Egyptian and Turkish pieces), and some South American colonial and post-colonial silverware. German output alone makes .800 the single most common European silver standard encountered by sellers in North America today — German immigrant households brought enormous quantities of .800 flatware and serving pieces to the United States and Canada.</p>
+        <p>From a value perspective, .800 silver is worth exactly 80% of the fine silver spot price per troy ounce — no more, no less. At today's spot of <strong id="inline-spot-1">$0.00</strong>, .800 silver is worth <strong id="inline-800-gram-1">$0.000</strong> per gram. Compare that to sterling at <strong id="inline-925-gram-1">$0.000</strong> per gram — a difference of <strong id="inline-diff-125-gram-1">$0.000</strong> per gram. For a one-kilogram lot, this difference amounts to <strong id="inline-1kg-diff-1">$0.00</strong> — substantial enough to make purity confirmation worth the two minutes it takes before accepting any offer.</p>
+      </div>
+
+      <!-- .800 SILVER PRICE TODAY -->
+      <div class="content-section">
+        <h2>.800 Silver Price Today — Per Gram, Ounce &amp; Kilogram</h2>
+        <div class="price-card-grid">
+          <div class="price-card">
+            <div class="price-card-label">.800 Silver Per Gram</div>
+            <div class="price-card-value" id="stat-per-gram">$0.000</div>
+            <div class="price-card-sub">spot ÷ 31.1035 × 0.800</div>
+          </div>
+          <div class="price-card">
+            <div class="price-card-label">.800 Silver Per Troy Oz</div>
+            <div class="price-card-value" id="stat-per-oz">$0.00</div>
+            <div class="price-card-sub">spot × 0.800</div>
+          </div>
+          <div class="price-card">
+            <div class="price-card-label">.800 Silver Per Kilogram</div>
+            <div class="price-card-value" id="stat-per-kg">$0.00</div>
+            <div class="price-card-sub">per gram × 1,000</div>
+          </div>
+        </div>
+        <p>Every figure shown here is derived mechanically from the COMEX spot price for silver with no markup or adjustment. Per gram = spot ÷ 31.1035 × 0.800; per kilogram = per gram × 1,000; per troy ounce = spot × 0.800. These relationships are fixed by the purity fraction and never change — only the underlying spot price moves.</p>
+        <p>Practical example: 200 grams of .800 European silverware at today's prices contains 160 grams of pure silver (<span id="inline-200g-pure">160.00</span>g) worth <strong id="inline-200g-value">$0.00</strong> in melt value. The same weight in sterling (.925) would be worth <strong id="inline-200g-sterling">$0.00</strong>. The gap is real, but both are worth calculating precisely. Weigh items accurately — kitchen scales are acceptable for lots of 200 grams or more, but a digital gram scale accurate to 0.1 gram gives more reliable results for smaller individual pieces. Do not estimate; small errors compound across a full flatware set.</p>
+      </div>
+
+      <!-- HALLMARKS -->
+      <div class="content-section">
+        <h2>How to Identify .800 Silver — Hallmarks by Country</h2>
+        <p>The hallmark is the only reliable non-destructive confirmation of silver purity. A magnet test tells you whether an item is magnetic (and therefore not silver), but it cannot distinguish .800 from .925 or .835. For European silver, reading the stamp is everything.</p>
+
+        <div class="hallmark-country">
+          <h4>Germany — the primary source of .800 silver</h4>
+          <p>Post-1888 German .800 silver shows the number "800" alongside a crescent moon (☽) pointing left and a crown (♛). This crescent-and-crown combination is the most recognized European silver mark outside British sterling, and its presence is definitive confirmation of German .800 silver. Pre-1888 German pieces may show "800" with an imperial eagle (Reichsadler) rather than the crescent and crown. East German pieces produced between 1949 and 1990 show "800" without the crown — the crown mark was dropped in the German Democratic Republic after partition.</p>
+        </div>
+        <div class="hallmark-country">
+          <h4>Netherlands</h4>
+          <p>"800" appears alongside a lion holding arrows — the Dutch lion passant. Dutch pieces may also carry a city mark identifying the assay office of origin. The combination of the lion mark and "800" is the key identifier.</p>
+        </div>
+        <div class="hallmark-country">
+          <h4>Austria</h4>
+          <p>"800" appears with the Austrian national eagle or, on pieces assayed after 1866, the Dianakopf — Diana's head, a profile portrait used as the Austrian assay mark for silver. The Dianakopf is one of the more elegant assay marks in European silver history and is a reliable indicator of Austrian origin.</p>
+        </div>
+        <div class="hallmark-country">
+          <h4>Switzerland</h4>
+          <p>Swiss .800 silver varies by canton. Look for "800" with cantonal animal marks — a bear for Bern, a bull for Uri, an eagle for various other cantons. Swiss pieces are less frequently encountered by North American sellers but do appear in estate sales.</p>
+        </div>
+        <div class="hallmark-country">
+          <h4>Middle East</h4>
+          <p>Egyptian silver is very frequently marked "800" and is one of the more common .800 silver types encountered in the United States due to import volume during the twentieth century. Turkish Ottoman-era silver uses tughra marks — the sultan's monogram — alongside fineness numerals. Post-Ottoman Turkish silver uses the fineness number with a crescent and star mark.</p>
+        </div>
+        <div class="hallmark-country">
+          <h4>South America</h4>
+          <p>Colonial and post-colonial pieces from Peru, Bolivia, Argentina, and other silver-producing regions may show "800" alongside regional assay marks or maker's marks. These pieces vary considerably and often require specialist identification.</p>
+        </div>
+        <p><strong>How to find the mark:</strong> Check the back of flatware handles at the base, the rim underside of bowls and pitchers, the underside of serving pieces, and the clasp or inner ring of jewelry. Marks are typically 1–3mm in size. A 10× loupe is essential — the number "800" will be clearly stamped when present, but is too small to read reliably with the naked eye. Genuine marks are sharp and struck into the metal; photocopied or painted marks are a fraud indicator.</p>
+      </div>
+
+      <!-- COMPARISON TABLE -->
+      <div class="content-section">
+        <h2>.800 Silver vs .835 vs .925 Sterling — Live Value Comparison</h2>
+        <div style="overflow-x:auto">
+          <table class="purity-table">
+            <thead>
+              <tr>
+                <th>Standard</th>
+                <th>Purity</th>
+                <th>Per Gram</th>
+                <th>Per Troy Oz</th>
+                <th>Per Kg</th>
+                <th>Common Origin</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sterling</td>
+                <td>.925</td>
+                <td id="cmp-925-gram">—</td>
+                <td id="cmp-925-oz">—</td>
+                <td id="cmp-925-kg">—</td>
+                <td>UK, USA</td>
+              </tr>
+              <tr>
+                <td>835 Silver</td>
+                <td>.835</td>
+                <td id="cmp-835-gram">—</td>
+                <td id="cmp-835-oz">—</td>
+                <td id="cmp-835-kg">—</td>
+                <td>Germany, Scandinavia</td>
+              </tr>
+              <tr class="row-highlight">
+                <td><strong>.800 Silver ◀</strong></td>
+                <td>.800</td>
+                <td id="cmp-800-gram">—</td>
+                <td id="cmp-800-oz">—</td>
+                <td id="cmp-800-kg">—</td>
+                <td>Germany, Austria, Netherlands, Middle East</td>
+              </tr>
+              <tr>
+                <td>500 Silver</td>
+                <td>.500</td>
+                <td id="cmp-500-gram">—</td>
+                <td id="cmp-500-oz">—</td>
+                <td id="cmp-500-kg">—</td>
+                <td>Old coinage</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The .925/.835/.800 hierarchy has direct consequences for any seller. Between .925 sterling and .800, the per-gram gap is <strong id="diff-925-800-gram">$0.000</strong>. Between .835 and .800, it is <strong id="diff-835-800-gram">$0.000</strong> per gram — smaller, but still meaningful across a full flatware service. Over a one-kilogram lot, the .925-versus-.800 difference equals <strong id="diff-925-800-kg">$0.00</strong>, and the .835-versus-.800 difference equals <strong id="diff-835-800-kg">$0.00</strong>.</p>
+        <p>A common seller mistake: bringing .800 European silver to a jeweler who primarily buys sterling. These buyers sometimes apply the .800 purity multiplier while using an internally inflated conversion, or incorrectly offer "coin silver" prices (90% purity — better than .800, worse than .925) as if European and American silver were interchangeable. Always calculate your own melt value using this calculator, present the figure explicitly with the confirmed purity, and negotiate from that baseline rather than from what the buyer volunteers.</p>
+      </div>
+
+      <!-- MELT VALUE REFERENCE TABLE -->
+      <div class="content-section">
+        <h2>.800 Silver Melt Value by Weight — Live Reference</h2>
+        <div style="overflow-x:auto">
+          <table class="melt-table">
+            <thead>
+              <tr>
+                <th>Weight</th>
+                <th>Pure Silver</th>
+                <th>Melt Value</th>
+                <th>Dealer 82%</th>
+                <th>Dealer 90%</th>
+              </tr>
+            </thead>
+            <tbody id="melt-table-body">
+              <!-- populated by JS -->
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size:var(--fs-sm);color:var(--text-muted)">Formula: (grams ÷ 31.1035) × 0.800 × spot price. All values update live with the silver spot price.</p>
+      </div>
+
+      <!-- ADSENSE SLOT B -->
+      <div class="adsense-slot" id="adsense-b">
+        <!-- AdSense Slot B -->
+      </div>
+
+      <!-- WHAT DEALERS PAY -->
+      <div class="content-section">
+        <h2>What Dealers Pay for .800 Silver and Where to Sell</h2>
+        <p>.800 silver is fully accepted by most silver dealers, coin dealers, and refiners operating in North America and Europe. The metal has genuine market liquidity — refiners treat .800 and .925 silver identically once assayed, paying for the actual fine silver content regardless of the alloy composition of the remainder. The main practical challenge is not the silver's value but finding buyers who correctly identify .800 and pay accordingly.</p>
+        <p>Some non-specialist buyers — pawn shops, general antique dealers, and inexperienced coin dealers — default to paying lower rates when they encounter European marks unfamiliar to them. The crescent-and-crown German hallmark is well-known in the silver trade, but it is worth presenting your purity explicitly: "This is .800 silver with the crescent-and-crown German hallmark — the melt value at today's spot price is $X." That statement closes the information gap and prevents the buyer from using uncertainty as leverage.</p>
+        <p>Payout rates across buyer types follow the same pattern as for sterling and other silver grades: local coin and silver dealers typically pay 80–90% of melt value for same-day cash; online bullion buyers pay 85–92%; professional refiners pay 88–95% for lots of 500 grams or more of pure silver content. For .800 silver, 500 grams of pure silver content means 625 grams of actual .800 material — a realistic lot size for anyone selling a flatware service.</p>
+        <p>One important exception: antique .800 pieces in excellent condition — fine German or Dutch silverware with intact chasing, engraving, or known maker's marks — may be worth significantly more than melt. German auction houses including Dorotheum Vienna and Hampel Munich actively handle quality .800 pieces at 1.5 to 4× melt for exceptional craftsmanship. If a piece has ornate decoration, maker's marks you can look up, or obvious age, consult a specialist before scrapping. Melt value is always a floor, never a ceiling.</p>
+
+        <div style="overflow-x:auto;margin-top:var(--space-xl)">
+          <table class="payout-table">
+            <thead>
+              <tr>
+                <th>Buyer Type</th>
+                <th>Typical Payout</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Online silver buyers</td>
+                <td>85–92% of melt</td>
+                <td>Most practical for US sellers; free shipping kits available</td>
+              </tr>
+              <tr>
+                <td>Local coin / silver dealers</td>
+                <td>80–90% of melt</td>
+                <td>Same-day cash; negotiate with your melt value figure ready</td>
+              </tr>
+              <tr>
+                <td>Professional refiners</td>
+                <td>88–95% of melt</td>
+                <td>Best rates; require 500g+ pure silver minimum</td>
+              </tr>
+              <tr>
+                <td>European antique dealers</td>
+                <td>Variable — may exceed melt</td>
+                <td>For fine quality pieces with intact decoration or maker's marks</td>
+              </tr>
+              <tr>
+                <td class="avoid">Pawn shops</td>
+                <td class="avoid">50–70% of melt</td>
+                <td class="avoid">Avoid for silver — payout rarely justified</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="content-section">
+        <h2>Frequently Asked Questions</h2>
+        <div class="faq-wrapper">
+          <div class="faq-list">
+
+            <div class="faq-item">
+              <button class="faq-question">
+                What is 800 silver worth per gram today?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>.800 silver is worth <strong id="faq-800-gram">$0.000</strong> per gram at today's spot price of <strong id="faq-spot">$0.00</strong> per troy ounce. This equals exactly 80% of the fine silver per-gram price. The calculation is straightforward: spot price ÷ 31.1035 × 0.800. For a 100-gram piece of .800 European silverware or jewelry, the melt value is <strong id="faq-100g-value">$0.00</strong>. For a 500-gram lot — a typical flatware service or small collection — the melt value is <strong id="faq-500g-value">$0.00</strong>. Enter any weight in the calculator above for an instant live result across any unit of measurement. The price cards in the section above also show the current .800 silver value per gram, per troy ounce, and per kilogram at a glance.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                Is 800 silver worth anything?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>Yes — .800 silver has genuine and significant scrap value. At today's prices, .800 silver is worth <strong id="faq-800-gram-2">$0.000</strong> per gram. A 500-gram lot of .800 European silverware contains 400 grams of pure silver worth <strong id="faq-500g-value-2">$0.00</strong> in melt value. Most silver dealers accept .800 European silver with proper hallmarks and pay 80–92% of melt — directly comparable to what they pay for sterling scrap at equivalent weight. Do not let any buyer tell you .800 silver is "not real silver" or "not worth much" — those statements are either uninformed or deliberately misleading. .800 is a recognized international silver standard with a two-century trading history and a clear, calculable market value. The crescent-and-crown German hallmark and the Dianakopf Austrian mark are well-understood by professional silver buyers.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                How do I calculate 800 silver melt value?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>The formula is: weight in grams ÷ 31.1035 × 0.800 × spot price per troy ounce. Example at today's spot of <strong id="faq-spot-2">$0.00</strong>: 200 grams of .800 silver = (200 ÷ 31.1035) × 0.800 × <span id="faq-spot-3">0.00</span> = <strong id="faq-200g-value">$0.00</strong>. The calculator above handles all unit conversions automatically — grams, troy ounces, pennyweights, and kilograms. The formula never changes; only the spot price moves. To convert from troy ounces: multiply the weight in troy ounces by 0.800, then multiply by spot. Always confirm purity from the hallmark before calculating — .835 and .925 pieces require different multipliers (0.835 and 0.925 respectively) and are worth more per gram than .800 material.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                What does the 800 hallmark look like?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>German .800 silver — the most common type encountered in North America — shows "800" stamped clearly alongside a crescent moon (☽) pointing left and a crown (♛). This crescent-and-crown combination is the definitive identifier for German .800 silver produced after 1888. Pre-1888 German pieces may show "800" with an imperial eagle (Reichsadler) instead of the crescent and crown. East German pieces (1949–1990) show "800" without the crown. Dutch .800 silver shows "800" with a lion holding arrows (the Dutch lion passant), sometimes with a city mark. Austrian .800 uses "800" with a national eagle or the Dianakopf (Diana's head profile, the post-1866 Austrian assay mark). Egyptian .800 silver — very common in American estate sales — typically shows "800" with minimal additional marks. A 10× loupe is essential for reading these marks; they are 1–3mm in size but sharp and clearly struck on genuine pieces.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question">
+                What is the difference between 800 and 925 sterling silver?
+                <span class="faq-icon">+</span>
+              </button>
+              <div class="faq-answer">
+                <p>.800 is 80% silver; .925 sterling is 92.5% silver. Sterling is worth more per gram: <strong id="faq-925-gram">$0.000</strong> versus <strong id="faq-800-gram-3">$0.000</strong> for .800 — a difference of <strong id="faq-diff-gram">$0.000</strong> per gram at today's prices. Over a 1-kilogram lot, the purity difference means <strong id="faq-diff-kg">$0.00</strong> less value for .800 compared to sterling. .800 is primarily European — German, Dutch, Austrian, Middle Eastern, and some South American origin; .925 is predominantly British and North American. Both are accepted by all professional silver dealers and refiners. The hardness difference is noticeable: .800 is harder than sterling due to the higher copper content, which is why German .800 flatware often shows less wear than sterling equivalents despite comparable age. When selling, always identify the hallmark and state the purity before discussing price.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ADSENSE SLOT C -->
+      <div class="adsense-slot" id="adsense-c">
+        <!-- AdSense Slot C -->
+      </div>
+
+      <!-- INTERNAL LINKS -->
+      <div class="content-section">
+        <h3>Related Silver Tools &amp; Guides</h3>
+        <div class="internal-links">
+          <a href="../../">Silver Scrap Calculator</a>
+          <a href="../sterling-silver-calculator/">Sterling Silver Calculator</a>
+          <a href="../835-silver-calculator/">835 Silver Calculator</a>
+          <a href="../silver-hallmarks-guide/">Silver Hallmarks Guide</a>
+          <a href="../silver-price-per-gram/">Silver Price Per Gram</a>
+          <a href="../identify-silver/">How to Identify Silver</a>
+        </div>
+      </div>
+
+    </div><!-- /container -->
+  </main>
+  <div id="site-footer"></div>
+
+  <!-- JSON-LD Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://scrapsilvercalculater.com/800-silver-calculator/",
+        "url": "https://scrapsilvercalculater.com/800-silver-calculator/",
+        "name": "800 Silver Calculator — What Is .800 Silver Worth Today?",
+        "description": "Free .800 silver calculator. Find the melt value of 800 European silver jewelry and silverware at today's live spot price.",
+        "isPartOf": {"@id": "https://scrapsilvercalculater.com/"},
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {"@type": "ListItem","position": 1,"name": "Home","item": "https://scrapsilvercalculater.com/"},
+            {"@type": "ListItem","position": 2,"name": "800 Silver Calculator","item": "https://scrapsilvercalculater.com/800-silver-calculator/"}
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is 800 silver worth per gram today?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": ".800 silver is worth approximately 80% of the current silver spot price divided by 31.1035 grams per troy ounce. Enter your weight in the calculator above for the exact live figure. For a 100-gram piece, multiply 100 by the current .800 per-gram price."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is 800 silver worth anything?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. .800 silver has genuine scrap value. A 500-gram lot contains 400 grams of pure silver. Most dealers pay 80–92% of melt value for .800 European silver with proper hallmarks."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I calculate 800 silver melt value?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Formula: weight in grams ÷ 31.1035 × 0.800 × spot price per troy ounce. Use the calculator above for automatic unit conversion and live pricing."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does the 800 hallmark look like?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "German .800 silver (most common) shows '800' with a crescent moon (☽) and crown (♛) — the crescent-and-crown is the definitive German 800 silver mark post-1888. Dutch .800 shows a lion holding arrows. Austrian .800 uses the Dianakopf (Diana's head) assay mark alongside '800'."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between 800 and 925 sterling silver?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": ".800 is 80% silver; .925 sterling is 92.5% silver. Sterling is worth more per gram. The 12.5 percentage point gap means approximately $0.10–$0.15 per gram difference depending on the current spot price. Both are accepted by silver dealers and refiners."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <script src="../../js/silver-price.js"></script>
+  <script src="../../js/calculator.js"></script>
+  <script src="../../js/components.js"></script>
+  <script>
+    SiteComponents.renderBreadcrumb('breadcrumb', [
+      {label: 'Home', href: '../../'},
+      {label: '800 Silver Calculator'}
+    ]);
+
+    const TROY = 31.1035;
+    let selectedPurity = 0.800;
+
+    /* ---- Purity button toggle ---- */
+    document.querySelectorAll('.purity-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.purity-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedPurity = parseFloat(btn.dataset.purity);
+        runCalc();
+      });
+    });
+
+    /* ---- Format helpers ---- */
+    function fmt(n, dec) { return '$' + n.toFixed(dec !== undefined ? dec : 2); }
+    function fmtG(n) { return '$' + n.toFixed(3); }
+
+    /* ---- Melt table rows config ---- */
+    const MELT_ROWS = [
+      {label: '1 gram', grams: 1},
+      {label: '10 grams', grams: 10},
+      {label: '50 grams', grams: 50},
+      {label: '100 grams', grams: 100},
+      {label: '500 grams', grams: 500},
+      {label: '1 kilogram', grams: 1000}
+    ];
+
+    function buildMeltTable(spot) {
+      const tbody = document.getElementById('melt-table-body');
+      tbody.innerHTML = MELT_ROWS.map(row => {
+        const pureSilver = row.grams * 0.800;
+        const melt = (row.grams / TROY) * 0.800 * spot;
+        const d82 = melt * 0.82;
+        const d90 = melt * 0.90;
+        return `<tr>
+          <td>${row.label}</td>
+          <td>${pureSilver.toFixed(1)}g</td>
+          <td>${fmt(melt)}</td>
+          <td>${fmt(d82)}</td>
+          <td>${fmt(d90)}</td>
+        </tr>`;
+      }).join('');
+    }
+
+    /* ---- Update all live price references ---- */
+    function updateLivePrices(spot) {
+      const g800  = spot / TROY * 0.800;
+      const g925  = spot / TROY * 0.925;
+      const g835  = spot / TROY * 0.835;
+      const g500  = spot / TROY * 0.500;
+      const oz800 = spot * 0.800;
+      const kg800 = g800 * 1000;
+
+      /* Hero card */
+      document.getElementById('hero-per-gram').textContent = fmtG(g800);
+      document.getElementById('hero-per-oz').textContent   = fmt(oz800);
+      document.getElementById('hero-per-kg').textContent   = fmt(kg800);
+      document.getElementById('hero-spot').textContent     = fmt(spot);
+
+      /* Stat cards */
+      document.getElementById('stat-per-gram').textContent = fmtG(g800);
+      document.getElementById('stat-per-oz').textContent   = fmt(oz800);
+      document.getElementById('stat-per-kg').textContent   = fmt(kg800);
+
+      /* Inline body text — What Is .800 */
+      document.getElementById('inline-spot-1').textContent        = fmt(spot);
+      document.getElementById('inline-800-gram-1').textContent    = fmtG(g800);
+      document.getElementById('inline-925-gram-1').textContent    = fmtG(g925);
+      document.getElementById('inline-diff-125-gram-1').textContent = fmtG(g925 - g800);
+      document.getElementById('inline-1kg-diff-1').textContent    = fmt((1000/TROY)*0.125*spot);
+
+      /* Inline body text — Price section */
+      const v200g = (200/TROY)*0.800*spot;
+      const v200s = (200/TROY)*0.925*spot;
+      document.getElementById('inline-200g-pure').textContent    = (200*0.800).toFixed(2);
+      document.getElementById('inline-200g-value').textContent   = fmt(v200g);
+      document.getElementById('inline-200g-sterling').textContent = fmt(v200s);
+
+      /* Comparison table */
+      document.getElementById('cmp-925-gram').textContent = fmtG(g925);
+      document.getElementById('cmp-925-oz').textContent   = fmt(spot * 0.925);
+      document.getElementById('cmp-925-kg').textContent   = fmt(g925 * 1000);
+      document.getElementById('cmp-835-gram').textContent = fmtG(g835);
+      document.getElementById('cmp-835-oz').textContent   = fmt(spot * 0.835);
+      document.getElementById('cmp-835-kg').textContent   = fmt(g835 * 1000);
+      document.getElementById('cmp-800-gram').textContent = fmtG(g800);
+      document.getElementById('cmp-800-oz').textContent   = fmt(oz800);
+      document.getElementById('cmp-800-kg').textContent   = fmt(kg800);
+      document.getElementById('cmp-500-gram').textContent = fmtG(g500);
+      document.getElementById('cmp-500-oz').textContent   = fmt(spot * 0.500);
+      document.getElementById('cmp-500-kg').textContent   = fmt(g500 * 1000);
+
+      /* Comparison body diffs */
+      document.getElementById('diff-925-800-gram').textContent = fmtG(g925 - g800);
+      document.getElementById('diff-835-800-gram').textContent = fmtG(g835 - g800);
+      document.getElementById('diff-925-800-kg').textContent   = fmt((g925 - g800) * 1000);
+      document.getElementById('diff-835-800-kg').textContent   = fmt((g835 - g800) * 1000);
+
+      /* FAQ values */
+      document.getElementById('faq-800-gram').textContent   = fmtG(g800);
+      document.getElementById('faq-800-gram-2').textContent = fmtG(g800);
+      document.getElementById('faq-800-gram-3').textContent = fmtG(g800);
+      document.getElementById('faq-spot').textContent       = fmt(spot);
+      document.getElementById('faq-spot-2').textContent     = fmt(spot);
+      document.getElementById('faq-spot-3').textContent     = spot.toFixed(2);
+      document.getElementById('faq-100g-value').textContent = fmt((100/TROY)*0.800*spot);
+      document.getElementById('faq-500g-value').textContent = fmt((500/TROY)*0.800*spot);
+      document.getElementById('faq-500g-value-2').textContent = fmt((500/TROY)*0.800*spot);
+      document.getElementById('faq-200g-value').textContent = fmt(v200g);
+      document.getElementById('faq-925-gram').textContent   = fmtG(g925);
+      document.getElementById('faq-diff-gram').textContent  = fmtG(g925 - g800);
+      document.getElementById('faq-diff-kg').textContent    = fmt((g925 - g800) * 1000);
+
+      /* Melt table */
+      buildMeltTable(spot);
+    }
+
+    /* ---- Calculator ---- */
+    const weightInput = document.getElementById('weight');
+    const unitSelect  = document.getElementById('unit');
+
+    function runCalc() {
+      const weight = parseFloat(weightInput.value) || 0;
+      const grams  = SilverCalc.toGrams(weight, unitSelect.value);
+      const spot   = SilverPrice.getPrice();
+      const r      = SilverCalc.meltValue(grams, selectedPurity, spot);
+
+      document.getElementById('result-value').textContent = SilverCalc.formatCurrency(r.value);
+      document.getElementById('result-detail').textContent =
+        `${r.silverContentGrams}g pure silver (${(selectedPurity*100).toFixed(1)}%) · ${r.silverContentOz} troy oz · Spot: $${spot.toFixed(2)}/oz`;
+
+      document.getElementById('dealer-82').textContent = SilverCalc.formatCurrency(r.value * 0.82);
+      document.getElementById('dealer-90').textContent = SilverCalc.formatCurrency(r.value * 0.90);
+      document.getElementById('dealer-95').textContent = SilverCalc.formatCurrency(r.value * 0.95);
+    }
+
+    weightInput.addEventListener('input', runCalc);
+    unitSelect.addEventListener('change', runCalc);
+
+    /* ---- Price update handler ---- */
+    SilverPrice.onPriceUpdate(spot => {
+      updateLivePrices(spot);
+      runCalc();
+    });
+
+    /* ---- Initial render ---- */
+    (function init() {
+      const spot = SilverPrice.getPrice();
+      updateLivePrices(spot);
+      runCalc();
+    })();
+
+    /* ---- FAQ accordion ---- */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>
