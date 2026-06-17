@@ -39,7 +39,7 @@
   <link rel="stylesheet" href="/css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300..900&family=Outfit:wght@400..800&family=JetBrains+Mono:wght@400;700;800&display=swap" rel="stylesheet">
   <!-- JSON-LD: BreadcrumbList -->
   <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://scrapsilvercalculater.com/"},{"@type":"ListItem","position":2,"name":"835 Silver Calculator","item":"https://scrapsilvercalculater.com/835-silver-calculator/"}]}
@@ -101,8 +101,17 @@
 .related-tool-link{display:flex;align-items:center;gap:8px;background:#11111c;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 16px;text-decoration:none;color:#b8c4d4;font-size:.85rem;font-weight:600;transition:all .2s}
 .related-tool-link:hover{border-color:rgba(124,58,237,.4);color:#c4b5fd;transform:translateY(-1px)}
 @media(max-width:768px){.price-hero-grid{grid-template-columns:1fr}.price-stat-row{grid-template-columns:1fr 1fr}.overflow-x-auto{overflow-x:auto}}
+/* Ticker bar */
+.ticker-bar{position:sticky;top:56px;z-index:98;background:rgba(7,7,16,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(124,58,237,.2);padding:9px 0;font-size:.75rem;overflow:hidden}
+.ticker-inner{display:flex;align-items:center;gap:24px;white-space:nowrap;color:#b8c4d4}
+.tk-live-badge{display:flex;align-items:center;gap:6px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);border-radius:20px;padding:3px 10px;font-size:.7rem;font-weight:700;color:#10b981;flex-shrink:0}
+.tk-live-dot{width:6px;height:6px;background:#10b981;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 2px rgba(16,185,129,.3)}50%{box-shadow:0 0 0 5px rgba(16,185,129,.05)}}
+.tk-sep{color:rgba(255,255,255,.15)}
+.tk-val{font-family:'JetBrains Mono',monospace;color:#f0f4f8;font-weight:700}
+.tk-arrow.up{color:#10b981}.tk-arrow.down{color:#ef4444}
 /* Calculator card overrides */
-.calc-card{background:#11111c;border:1px solid rgba(255,255,255,.07);border-top:2px solid #7c3aed;border-radius:16px;padding:32px;margin:24px 0}
+.calc-card{background:#11111c;border:1px solid rgba(255,255,255,.12);border-top:3px solid #7c3aed;border-radius:16px;padding:28px;margin:24px 0}
 .calc-card h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:20px;color:#f0f4f8}
 .calc-form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
 .calc-label{display:block;font-size:.75rem;font-weight:700;color:#7c8ba0;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
@@ -125,13 +134,31 @@
 <body>
   <div id="site-header"></div>
 
+  <!-- Ticker -->
+  <div class="ticker-bar">
+    <div class="container">
+      <div class="ticker-inner">
+        <div class="tk-live-badge"><div class="tk-live-dot"></div>LIVE MARKET</div>
+        <span class="tk-sep">|</span>
+        <span>XAG/USD <span class="tk-val" id="tk-spot">$—</span></span>
+        <span class="tk-sep">|</span>
+        <span>.835 / g <span class="tk-val" id="tk-gram">$—</span></span>
+        <span class="tk-sep">|</span>
+        <span>.835 / oz <span class="tk-val" id="tk-oz">$—</span></span>
+        <span class="tk-sep">|</span>
+        <span>.835 / kg <span class="tk-val" id="tk-kg">$—</span></span>
+        <span class="tk-sep">|</span>
+        <span class="tk-arrow" id="tk-change">—</span>
+      </div>
+    </div>
+  </div>
+
   <!-- PRICE HERO -->
   <div class="price-hero">
     <div class="container">
       <div class="price-hero-grid">
         <div>
           <div id="breadcrumb-835"></div>
-          <div class="swedish-note">🇸🇪 835 silver är ett vanligt silver standard i Sverige och Europa. Se värde nedan.</div>
           <h1>.835 Silver Calculator — <span class="hl">What Is It Worth?</span></h1>
           <p class="intro">Calculate the melt value of .835 German, Dutch, and Scandinavian silver at today's live spot price. Common in European antique silverware and flatware.</p>
         </div>
@@ -457,6 +484,20 @@
       var perGram = (spot / TROY) * purity;
       var perOz   = spot * purity;
       var perKg   = perGram * 1000;
+
+      // Ticker
+      var tkSpot = document.getElementById('tk-spot');
+      var tkGram = document.getElementById('tk-gram');
+      var tkOz   = document.getElementById('tk-oz');
+      var tkKg   = document.getElementById('tk-kg');
+      var tkChange = document.getElementById('tk-change');
+      if(tkSpot)   tkSpot.textContent   = fmt(spot);
+      if(tkGram)   tkGram.textContent   = fmt(perGram);
+      if(tkOz)     tkOz.textContent     = fmt(perOz);
+      if(tkKg)     tkKg.textContent     = fmt(perKg);
+      var ch835 = Number(SilverPrice.getChange ? SilverPrice.getChange() : 0) || 0;
+      var chPct835 = Number(SilverPrice.getChangePercent ? SilverPrice.getChangePercent() : 0) || 0;
+      if(tkChange) { tkChange.textContent = (ch835>=0?'+':'') + chPct835.toFixed(2) + '%'; tkChange.className = 'tk-arrow ' + (ch835>=0?'up':'down'); }
 
       // Hero card
       document.getElementById('p835-per-gram').textContent = fmt(perGram);

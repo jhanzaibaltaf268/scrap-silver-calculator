@@ -80,10 +80,38 @@
 .related-tool-link{display:flex;align-items:center;gap:8px;background:#11111c;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 16px;text-decoration:none;color:#b8c4d4;font-size:.85rem;font-weight:600;transition:all .2s}
 .related-tool-link:hover{border-color:rgba(124,58,237,.4);color:#c4b5fd;transform:translateY(-1px)}
 @media(max-width:768px){.price-hero-grid{grid-template-columns:1fr}.quick-card-grid{grid-template-columns:repeat(2,1fr)}.overflow-x-auto{overflow-x:auto}}
+/* Ticker bar */
+.ticker-bar{position:sticky;top:56px;z-index:98;background:rgba(7,7,16,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(124,58,237,.2);padding:9px 0;font-size:.75rem;overflow:hidden}
+.ticker-inner{display:flex;align-items:center;gap:24px;white-space:nowrap;color:#b8c4d4}
+.tk-live-badge{display:flex;align-items:center;gap:6px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);border-radius:20px;padding:3px 10px;font-size:.7rem;font-weight:700;color:#10b981;flex-shrink:0}
+.tk-live-dot{width:6px;height:6px;background:#10b981;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 2px rgba(16,185,129,.3)}50%{box-shadow:0 0 0 5px rgba(16,185,129,.05)}}
+.tk-sep{color:rgba(255,255,255,.15)}
+.tk-val{font-family:'JetBrains Mono',monospace;color:#f0f4f8;font-weight:700}
+.tk-arrow.up{color:#10b981}.tk-arrow.down{color:#ef4444}
   </style>
 </head>
 <body>
 <div id="site-header"></div>
+
+<!-- Ticker -->
+<div class="ticker-bar">
+  <div class="container">
+    <div class="ticker-inner">
+      <div class="tk-live-badge"><div class="tk-live-dot"></div>LIVE MARKET</div>
+      <span class="tk-sep">|</span>
+      <span>XAG/USD <span class="tk-val" id="tk-spot">$—</span></span>
+      <span class="tk-sep">|</span>
+      <span>.925 / g <span class="tk-val" id="tk-gram">$—</span></span>
+      <span class="tk-sep">|</span>
+      <span>.925 / oz <span class="tk-val" id="tk-oz">$—</span></span>
+      <span class="tk-sep">|</span>
+      <span>.925 / kg <span class="tk-val" id="tk-kg">$—</span></span>
+      <span class="tk-sep">|</span>
+      <span class="tk-arrow" id="tk-change">—</span>
+    </div>
+  </div>
+</div>
 
 <div class="price-hero">
   <div class="container">
@@ -257,6 +285,17 @@ function melt(g){const spot=SilverPrice.getPrice();return(g/TROY)*PURITY*spot;}
 function updateAll(){
   const spot=SilverPrice.getPrice();
   const pg=(spot/TROY)*PURITY;
+
+  // Ticker
+  const tkSpot=document.getElementById('tk-spot'),tkGram=document.getElementById('tk-gram'),tkOz=document.getElementById('tk-oz'),tkKg=document.getElementById('tk-kg'),tkChange=document.getElementById('tk-change');
+  if(tkSpot)tkSpot.textContent=fmt2(spot);
+  if(tkGram)tkGram.textContent=fmt2(pg);
+  if(tkOz)tkOz.textContent=fmt2(spot*PURITY);
+  if(tkKg)tkKg.textContent=fmt2(pg*1000);
+  const chSter=Number(SilverPrice.getChange?SilverPrice.getChange():0)||0;
+  const chPctSter=Number(SilverPrice.getChangePercent?SilverPrice.getChangePercent():0)||0;
+  if(tkChange){tkChange.textContent=(chSter>=0?'+':'')+chPctSter.toFixed(2)+'%';tkChange.className='tk-arrow '+(chSter>=0?'up':'down');}
+
   document.getElementById('hero-per-gram').textContent=fmt2(pg);
   document.getElementById('hero-per-oz').textContent=fmt2(spot*PURITY);
   document.getElementById('hero-per-dwt').textContent=fmt2((spot/20)*PURITY);

@@ -93,15 +93,61 @@
 .related-tool-link{display:flex;align-items:center;gap:8px;background:#11111c;border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:12px 16px;text-decoration:none;color:#b8c4d4;font-size:.85rem;font-weight:600;transition:all .2s}
 .related-tool-link:hover{border-color:rgba(124,58,237,.4);color:#c4b5fd;transform:translateY(-1px)}
 @media(max-width:768px){.price-hero-grid{grid-template-columns:1fr}.price-stat-row{grid-template-columns:1fr 1fr}.overflow-x-auto{overflow-x:auto}}
+/* Ticker bar */
+.ticker-bar{position:sticky;top:56px;z-index:98;background:rgba(7,7,16,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(124,58,237,.2);padding:9px 0;font-size:.75rem;overflow:hidden}
+.ticker-inner{display:flex;align-items:center;gap:24px;white-space:nowrap;color:#b8c4d4}
+.tk-live-badge{display:flex;align-items:center;gap:6px;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);border-radius:20px;padding:3px 10px;font-size:.7rem;font-weight:700;color:#10b981;flex-shrink:0}
+.tk-live-dot{width:6px;height:6px;background:#10b981;border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 2px rgba(16,185,129,.3)}50%{box-shadow:0 0 0 5px rgba(16,185,129,.05)}}
+.tk-sep{color:rgba(255,255,255,.15)}
+.tk-val{font-family:'JetBrains Mono',monospace;color:#f0f4f8;font-weight:700}
+.tk-arrow.up{color:#10b981}.tk-arrow.down{color:#ef4444}
+/* Calculator card */
+.calc-card{background:#11111c;border:1px solid rgba(255,255,255,.12);border-top:3px solid #7c3aed;border-radius:16px;padding:28px;margin:24px 0}
+.calc-card h2{font-family:'Outfit',sans-serif;font-size:1.4rem;font-weight:800;margin-bottom:20px;color:#f0f4f8}
+.calc-form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.calc-label{display:block;font-size:.75rem;font-weight:700;color:#7c8ba0;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+.calc-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:12px 14px;font-size:.95rem;color:#f0f4f8;font-family:'Inter',sans-serif;box-sizing:border-box;outline:none;transition:border-color .2s}
+.calc-input:focus{border-color:rgba(124,58,237,.5);background:rgba(255,255,255,.06)}
+.calc-input option{background:#1a1a2e;color:#f0f4f8}
+.calc-callout{background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:10px;padding:14px 16px;margin-bottom:16px;font-size:.85rem;color:#c4b5fd;font-weight:600}
+.calc-btn{width:100%;background:linear-gradient(135deg,#7c3aed,#a855f7);border:none;border-radius:10px;padding:14px;font-size:1rem;font-weight:700;color:#fff;cursor:pointer;font-family:'Inter',sans-serif;transition:opacity .2s;margin-top:4px}
+.calc-btn:hover{opacity:.9}
+.result-area{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:20px;margin-top:20px}
+.result-value{font-family:'JetBrains Mono','Courier New',monospace;font-size:2.2rem;font-weight:800;color:#a855f7;margin-bottom:6px}
+.result-detail{font-size:.82rem;color:#7c8ba0;margin-bottom:14px}
+.result-dealer-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.result-dealer-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:8px;padding:12px}
+.result-dealer-label{font-size:.65rem;color:#7c8ba0;text-transform:uppercase;letter-spacing:.08em;font-weight:700;margin-bottom:4px}
+.result-dealer-val{font-family:'JetBrains Mono','Courier New',monospace;font-size:1rem;font-weight:700;color:#f0f4f8}
+@media(max-width:768px){.calc-form-row{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
 <div id="site-header"></div>
 
+<!-- Ticker -->
+<div class="ticker-bar">
+  <div class="container">
+    <div class="ticker-inner">
+      <div class="tk-live-badge"><div class="tk-live-dot"></div>LIVE MARKET</div>
+      <span class="tk-sep">|</span>
+      <span>XAG/USD <span class="tk-val" id="tk-spot">$—</span></span>
+      <span class="tk-sep">|</span>
+      <span>.800 / g <span class="tk-val" id="tk-gram">$—</span></span>
+      <span class="tk-sep">|</span>
+      <span>.800 / oz <span class="tk-val" id="tk-oz">$—</span></span>
+      <span class="tk-sep">|</span>
+      <span>.800 / kg <span class="tk-val" id="tk-kg">$—</span></span>
+      <span class="tk-sep">|</span>
+      <span class="tk-arrow" id="tk-change">—</span>
+    </div>
+  </div>
+</div>
+
 <!-- PRICE HERO -->
 <div class="price-hero">
   <div class="container">
-    <div id="price-ticker-800"></div>
     <div class="price-hero-grid">
       <div>
         <div id="breadcrumb-800"></div>
@@ -138,17 +184,17 @@
 <main>
 <div class="container">
 
-<!-- CALCULATOR WIDGET (using existing calc-widget classes from style.css) -->
-<div class="section-card" style="border-top:2px solid #7c3aed">
+<!-- CALCULATOR WIDGET -->
+<div class="calc-card">
   <h2>800 Silver Melt Value Calculator</h2>
-  <div class="form-row">
-    <div class="form-group">
-      <label class="form-label" for="weight">Weight</label>
-      <input type="number" class="form-input" id="weight" placeholder="e.g. 50" step="0.01" min="0" value="50">
+  <div class="calc-form-row">
+    <div>
+      <label class="calc-label" for="weight">Weight</label>
+      <input type="number" class="calc-input" id="weight" placeholder="e.g. 50" step="0.01" min="0" value="50">
     </div>
-    <div class="form-group">
-      <label class="form-label" for="unit">Unit</label>
-      <select class="form-select" id="unit">
+    <div>
+      <label class="calc-label" for="unit">Unit</label>
+      <select class="calc-input" id="unit">
         <option value="g" selected>Grams</option>
         <option value="oz">Troy Ounces</option>
         <option value="dwt">Pennyweight (DWT)</option>
@@ -156,29 +202,34 @@
       </select>
     </div>
   </div>
-  <div class="callout info" style="margin:16px 0">
-    <div class="callout-title">Purity: .800 (European Silver — 80% pure)</div>
-    <p style="font-size:.85rem;color:#b8c4d4;margin:4px 0 0">Pre-set for .800 European silver. Adjust to .925 sterling or .999 fine if needed.</p>
+  <div class="calc-callout">Purity: .800 (European Silver — 80% pure)</div>
+  <div class="calc-form-row" style="margin-bottom:0">
+    <div>
+      <label class="calc-label" for="purity-override">Override Purity (optional)</label>
+      <select class="calc-input" id="purity-override">
+        <option value="0.800" selected>.800 European Silver (default)</option>
+        <option value="0.835">.835 German Silver</option>
+        <option value="0.925">.925 Sterling</option>
+        <option value="0.999">.999 Fine Silver</option>
+        <option value="0.500">.500 Silver</option>
+      </select>
+    </div>
+    <div style="display:flex;align-items:flex-end">
+      <button class="calc-btn" id="calc-btn">Calculate Melt Value</button>
+    </div>
   </div>
-  <div class="form-group">
-    <label class="form-label" for="purity-override">Override Purity (optional)</label>
-    <select class="form-select" id="purity-override">
-      <option value="0.800" selected>.800 European Silver (default)</option>
-      <option value="0.835">.835 German Silver</option>
-      <option value="0.925">.925 Sterling</option>
-      <option value="0.999">.999 Fine Silver</option>
-      <option value="0.500">.500 Silver</option>
-    </select>
-  </div>
-  <button class="btn btn-primary btn-full" id="calc-btn" style="margin-top:16px">Calculate Melt Value</button>
-  <div class="result-display" id="result-area" style="display:none">
-    <div class="result-label">Melt Value</div>
+  <div class="result-area" id="result-area" style="display:none">
     <div class="result-value" id="result-value">$0.00</div>
     <div class="result-detail" id="result-detail"></div>
-    <div style="margin-top:12px;font-size:.8rem;color:#7c8ba0">Dealer typically pays 80–90% of melt value</div>
-    <div style="display:flex;gap:10px;margin-top:8px;font-size:.82rem">
-      <span style="color:#b8c4d4">Dealer low (80%): <strong id="dealer-low" style="color:#10b981">$—</strong></span>
-      <span style="color:#b8c4d4">Dealer high (90%): <strong id="dealer-high" style="color:#10b981">$—</strong></span>
+    <div class="result-dealer-row">
+      <div class="result-dealer-card">
+        <div class="result-dealer-label">Dealer Low (80%)</div>
+        <div class="result-dealer-val" id="dealer-low">$—</div>
+      </div>
+      <div class="result-dealer-card">
+        <div class="result-dealer-label">Dealer High (90%)</div>
+        <div class="result-dealer-val" id="dealer-high">$—</div>
+      </div>
     </div>
   </div>
 </div>
@@ -345,6 +396,19 @@ function fmt2(n){return '$'+n.toFixed(2)}
 function updateAll(){
   const spot = SilverPrice.getPrice();
   const p = 0.800;
+  const perGram800 = spot/TROY*p;
+  const perOz800 = spot*p;
+  const perKg800 = perGram800*1000;
+
+  // Ticker
+  const tkSpot=document.getElementById('tk-spot'),tkGram=document.getElementById('tk-gram'),tkOz=document.getElementById('tk-oz'),tkKg=document.getElementById('tk-kg'),tkChange=document.getElementById('tk-change');
+  if(tkSpot)tkSpot.textContent=fmt2(spot);
+  if(tkGram)tkGram.textContent=fmt(perGram800);
+  if(tkOz)tkOz.textContent=fmt2(perOz800);
+  if(tkKg)tkKg.textContent=fmt2(perKg800);
+  const ch800=Number(SilverPrice.getChange?SilverPrice.getChange():0)||0;
+  const chPct800=Number(SilverPrice.getChangePercent?SilverPrice.getChangePercent():0)||0;
+  if(tkChange){tkChange.textContent=(ch800>=0?'+':'')+chPct800.toFixed(2)+'%';tkChange.className='tk-arrow '+(ch800>=0?'up':'down');}
 
   // Hero card
   document.getElementById('p800-per-gram').textContent = fmt(spot/TROY*p);
