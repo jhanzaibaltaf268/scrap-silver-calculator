@@ -10,11 +10,8 @@ const SiteComponents = (() => {
     {
       label: 'nav_silver_price', dropdown: [
         { label: 'nav_price_today',   href: '/silver-price-today/' },
-        { label: 'nav_price_per_oz',  href: '/silver-price-per-ounce/' },
         { label: 'nav_925_price_today', href: '/925-silver-price-today/' },
         { label: 'nav_999_price_today', href: '/999-silver-price-today/' },
-        { label: 'nav_900_price_today', href: '/900-silver-price-today/' },
-        { label: 'nav_800_price_today', href: '/800-silver-price-today/' },
         { label: 'nav_silver_news_today', href: '/silver-news-today/' },
         { label: 'nav_price_forecast_today', href: '/silver-price-forecast-today/' },
       ]
@@ -138,7 +135,6 @@ const SiteComponents = (() => {
       title: 'nav_silver_price',
       links: [
         { label: 'nav_price_today', href: '/silver-price-today/' },
-        { label: 'nav_price_per_oz', href: '/silver-price-per-ounce/' },
         { label: 'nav_925_price_today', href: '/925-silver-price-today/' },
         { label: 'nav_999_price_today', href: '/999-silver-price-today/' },
         { label: 'nav_silver_news_today', href: '/silver-news-today/' },
