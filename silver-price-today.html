@@ -50,6 +50,14 @@
       --highlight:     #c4b5fd;
       --mono:          'Courier New', monospace;
     }
+    :root {
+      --hdr: 56px;
+      --accent2: #b39dfa;
+      --dim: #c2cfe0;
+      --border2: rgba(255,255,255,0.18);
+      --r-md: 16px;
+      --ease: cubic-bezier(.16,1,.3,1);
+    }
     body {
       background: var(--bg);
       color: var(--text);
@@ -58,38 +66,72 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      padding-top: var(--hdr);
     }
     a { color: var(--highlight); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── NAV ── */
-    nav {
-      background: rgba(13,13,26,0.96);
-      border-bottom: 1px solid var(--border);
-      position: sticky; top: 0; z-index: 100;
-      backdrop-filter: blur(12px);
+    /* ── MAIN HEADER ── */
+    .main-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      height: var(--hdr);
+      background: rgba(6,6,11,0.92);
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+      transition: background .3s, box-shadow .3s;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
     }
-    .nav-inner {
-      max-width: 1060px; margin: 0 auto; padding: 0 24px;
+    .main-header.scrolled { background: rgba(6,6,11,0.98); box-shadow: 0 4px 24px rgba(0,0,0,0.5); }
+    .header-container {
       display: flex; align-items: center; justify-content: space-between;
-      height: 56px;
+      height: var(--hdr); max-width: 1280px; margin: 0 auto; padding: 0 20px; gap: 12px;
     }
-    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-    .logo-icon {
-      width: 32px; height: 32px; background: var(--purple);
-      border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px;
+    .header-logo {
+      font-weight: 800; color: #fff; text-decoration: none;
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
     }
-    .logo-text { font-size: 13px; font-weight: 700; line-height: 1.2; }
-    .logo-text span { color: var(--text-muted); font-weight: 400; display: block; font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; }
-    .nav-links { display: flex; gap: 24px; }
-    .nav-links a { color: var(--text-muted); font-size: 13px; font-weight: 500; transition: color .2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--text); text-decoration: none; }
-    .nav-cta {
-      background: var(--purple); color: #fff !important; padding: 7px 14px;
-      border-radius: 8px; font-size: 12px !important; font-weight: 600 !important;
-      transition: background .2s !important;
+    .logo-icon { font-size: 20px; color: var(--accent2); line-height: 1; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-main { font-size: 14px; font-weight: 800; color: #fff; }
+    .logo-sub { font-size: 10px; font-weight: 600; color: var(--accent2); text-transform: uppercase; letter-spacing: .08em; }
+    .desktop-nav { display: flex; align-items: center; gap: 2px; flex: 1; justify-content: center; }
+    .header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .nav-link { padding: 6px 12px; border-radius: 8px; font-size: 12.5px; font-weight: 600; color: var(--dim); text-decoration: none; transition: all .2s; cursor: pointer; white-space: nowrap; display: inline-block; }
+    .nav-link:hover { color: #fff; background: rgba(255,255,255,0.06); text-decoration: none; }
+    .nav-link.active { color: var(--accent2); background: rgba(124,58,237,0.1); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown-trigger { cursor: pointer; user-select: none; }
+    .nav-dropdown-menu {
+      position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%);
+      min-width: 220px; background: rgba(8,8,16,0.99); border: 1px solid var(--border2);
+      border-radius: var(--r-md); padding: 8px; display: none;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.8); backdrop-filter: blur(16px); z-index: 2000;
     }
-    .nav-cta:hover { background: var(--purple-light) !important; }
+    .nav-dropdown-menu.open { display: block; }
+    .nav-dropdown-menu.lang-menu { min-width: 260px; }
+    .nav-dropdown-menu.lang-menu.open { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+    .nav-dropdown-menu a { display: block; padding: 10px 14px; border-radius: 6px; font-size: 13px; color: var(--dim); text-decoration: none; transition: all .12s; font-weight: 500; white-space: nowrap; }
+    .nav-dropdown-menu a:hover { background: rgba(255,255,255,0.08); color: #fff; }
+    .nav-dropdown-menu a.active { color: var(--accent2); background: rgba(124,58,237,0.12); font-weight: 700; }
+    .lang-trigger { display: flex; align-items: center; gap: 4px; }
+    .mobile-menu-btn {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 10px; z-index: 1001;
+    }
+    .mobile-menu-btn span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s var(--ease); }
+    .mobile-menu-btn.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mobile-menu-btn.active span:nth-child(2) { opacity: 0; }
+    .mobile-menu-btn.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav {
+      display: none; position: fixed; top: var(--hdr); left: 0; right: 0; bottom: 0;
+      background: #0a0a0f; z-index: 999; overflow-y: auto; flex-direction: column;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav-content { padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+    .mobile-nav-group { margin-bottom: 12px; }
+    .mobile-nav-group-label { font-size: 11px; font-weight: 800; color: #8fa3bc; text-transform: uppercase; margin-bottom: 8px; padding-left: 12px; }
+    .mobile-nav a { display: block; font-size: 14px; font-weight: 600; color: var(--dim); text-decoration: none; padding: 10px 12px; border-radius: 8px; transition: color 0.2s; }
+    .mobile-nav a:hover { color: var(--accent2); background: rgba(255,255,255,0.04); }
 
     /* ── LAYOUT ── */
     .wrap { max-width: 1060px; margin: 0 auto; padding: 0 24px; }
@@ -287,6 +329,8 @@
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       .items-grid { grid-template-columns: repeat(3, 1fr); }
+      .desktop-nav { display: none; }
+      .mobile-menu-btn { display: flex; }
     }
     @media (max-width: 768px) {
       .hero-grid { grid-template-columns: 1fr; }
@@ -298,9 +342,11 @@
       .section-title { font-size: 1.5rem; }
       .chart-bar .chart-day { display: none; }
     }
+    @media (max-width: 600px) {
+      .header-container { padding: 0 12px; }
+    }
     @media (max-width: 480px) {
       .wrap { padding: 0 16px; }
-      .nav-links { gap: 14px; }
       .purity-grid { grid-template-columns: repeat(2, 1fr); }
       .factors-grid { grid-template-columns: 1fr; }
       .items-grid { grid-template-columns: repeat(2, 1fr); }
@@ -311,22 +357,155 @@
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="/" class="logo">
-      <div class="logo-icon">💎</div>
-      <div class="logo-text">Scrap Silver <span>Calculator</span></div>
+<!-- MAIN HEADER -->
+<header class="main-header" id="main-header">
+  <div class="header-container">
+    <a href="/" class="header-logo">
+      <div class="logo-icon">◈</div>
+      <div class="logo-text">
+        <span class="logo-main">Scrap Silver</span>
+        <span class="logo-sub">Calculator</span>
+      </div>
     </a>
-    <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/silver-price-today/" class="active">Silver Price</a>
-      <a href="/silver-purity-chart/">Purity</a>
-      <a href="/silver-hallmarks-guide/">Guide</a>
-      <a href="/" class="nav-cta">Calculate →</a>
+
+    <nav class="desktop-nav">
+      <a href="/" class="nav-link">Home</a>
+
+      <div class="nav-dropdown">
+        <div class="nav-link nav-dropdown-trigger active">Silver Prices <span style="font-size:8px;opacity:0.6;margin-left:4px;">▼</span></div>
+        <div class="nav-dropdown-menu">
+          <a href="/silver-price-today/" class="active">Silver Price Today</a>
+          <a href="/925-silver-price-today/">925 Silver Price Today</a>
+          <a href="/999-silver-price-today/">999 Pure Silver Price Today</a>
+          <a href="/silver-news-today/">Silver News Today</a>
+          <a href="/silver-price-forecast-today/">Silver Price Forecast</a>
+        </div>
+      </div>
+
+      <div class="nav-dropdown">
+        <div class="nav-link nav-dropdown-trigger">Calculators <span style="font-size:8px;opacity:0.6;margin-left:4px;">▼</span></div>
+        <div class="nav-dropdown-menu">
+          <a href="/gold-and-silver-calculator/">Gold &amp; Silver</a>
+          <a href="/silver-melt-value-calculator/">Silver Melt Value</a>
+          <a href="/sterling-silver-calculator/">Sterling Silver</a>
+          <a href="/junk-silver-calculator/">Junk Silver</a>
+          <a href="/silver-coin-value-calculator/">Silver Coins</a>
+          <a href="/silver-bar-value-calculator/">Silver Bar Value</a>
+          <a href="/silver-jewelry-value-calculator/">Jewelry Value</a>
+          <a href="/silverware-value-calculator/">Silverware Value</a>
+        </div>
+      </div>
+
+      <div class="nav-dropdown">
+        <div class="nav-link nav-dropdown-trigger">Purity <span style="font-size:8px;opacity:0.6;margin-left:4px;">▼</span></div>
+        <div class="nav-dropdown-menu">
+          <a href="/999-silver-calculator/">999 Fine Silver</a>
+          <a href="/958-silver-calculator/">958 Britannia</a>
+          <a href="/925-silver-calculator/">925 Sterling</a>
+          <a href="/900-silver-calculator/">900 Coin Silver</a>
+          <a href="/835-silver-calculator/">835 Silver</a>
+          <a href="/800-silver-calculator/">800 Silver</a>
+          <a href="/silver-purity-chart/">Purity Chart</a>
+        </div>
+      </div>
+
+      <div class="nav-dropdown">
+        <div class="nav-link nav-dropdown-trigger">Tools <span style="font-size:8px;opacity:0.6;margin-left:4px;">▼</span></div>
+        <div class="nav-dropdown-menu">
+          <a href="/silver-profit-calculator/">Profit Calculator</a>
+          <a href="/silver-batch-calculator/">Batch Calculator</a>
+          <a href="/sona-chandi-calculator/">Sona Chandi</a>
+          <a href="/face-value-silver-calculator/">Face Value Calc</a>
+          <a href="/silver-weight-converter/">Weight Converter</a>
+          <a href="/pennyweight-calculator/">Pennyweight</a>
+          <a href="/tola-calculator/">Tola Calculator</a>
+          <a href="/silver-sell-or-hold/">Silver Sell or Hold</a>
+          <a href="/identify-silver/">Identify Silver</a>
+        </div>
+      </div>
+
+      <div class="nav-dropdown">
+        <div class="nav-link nav-dropdown-trigger">Gold &amp; Metals <span style="font-size:8px;opacity:0.6;margin-left:4px;">▼</span></div>
+        <div class="nav-dropdown-menu">
+          <a href="/gold-and-silver-calculator/">Gold &amp; Silver</a>
+          <a href="/14k-gold-calculator/">14k Gold</a>
+          <a href="/18k-gold-calculator/">18k Gold</a>
+          <a href="/22k-gold-calculator/">22k Gold</a>
+          <a href="/24k-gold-calculator/">24k Gold</a>
+          <a href="/gold-price-today/">Gold Price Today</a>
+          <a href="/platinum-calculator/">Platinum Calculator</a>
+          <a href="/palladium-calculator/">Palladium Calculator</a>
+          <a href="/precious-metals-prices/">Precious Metals Prices</a>
+        </div>
+      </div>
+
+      <a href="/how-to-use-silver-calculators/" class="nav-link">Guide</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="nav-dropdown lang-switcher-wrap">
+        <div class="nav-link nav-dropdown-trigger lang-trigger" title="Switch language">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:4px;"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span style="font-weight:700;color:var(--accent2);font-size:11px;vertical-align:middle;">EN</span>
+        </div>
+        <div class="nav-dropdown-menu lang-menu">
+          <a href="/silver-price-today/" class="active" title="🇺🇸 EN">🇺🇸 EN</a>
+          <a href="/es/silver-price-today/" title="🇪🇸 ES">🇪🇸 ES</a>
+          <a href="/fr/silver-price-today/" title="🇫🇷 FR">🇫🇷 FR</a>
+          <a href="/de/silver-price-today/" title="🇩🇪 DE">🇩🇪 DE</a>
+          <a href="/pt/silver-price-today/" title="🇵🇹 PT">🇵🇹 PT</a>
+          <a href="/hi/silver-price-today/" title="🇮🇳 HI">🇮🇳 HI</a>
+          <a href="/ur/silver-price-today/" title="🇵🇰 UR">🇵🇰 UR</a>
+          <a href="/ar/silver-price-today/" title="🇸🇦 AR">🇸🇦 AR</a>
+          <a href="/tr/silver-price-today/" title="🇹🇷 TR">🇹🇷 TR</a>
+          <a href="/it/silver-price-today/" title="🇮🇹 IT">🇮🇹 IT</a>
+          <a href="/zh/" title="🇨🇳 ZH">🇨🇳 ZH</a>
+          <a href="/ru/" title="🇷🇺 RU">🇷🇺 RU</a>
+        </div>
+      </div>
+      <button class="mobile-menu-btn" id="mobile-toggle" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
-</nav>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobile-nav">
+  <div class="mobile-nav-content">
+    <a href="/" class="nav-link">Home</a>
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-group-label">Silver Prices</div>
+      <a href="/silver-price-today/" class="active">Silver Price Today</a>
+      <a href="/925-silver-price-today/">925 Silver Price Today</a>
+      <a href="/999-silver-price-today/">999 Pure Silver Price Today</a>
+    </div>
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-group-label">Calculators</div>
+      <a href="/">Scrap Silver Calculator</a>
+      <a href="/sterling-silver-calculator/">Sterling Silver</a>
+      <a href="/junk-silver-calculator/">Junk Silver</a>
+    </div>
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-group-label">Purity</div>
+      <a href="/999-silver-calculator/">999 Fine Silver</a>
+      <a href="/925-silver-calculator/">925 Sterling</a>
+      <a href="/900-silver-calculator/">900 Coin Silver</a>
+      <a href="/800-silver-calculator/">800 Silver</a>
+      <a href="/silver-purity-chart/">Purity Chart</a>
+    </div>
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-group-label">Tools</div>
+      <a href="/silver-weight-converter/">Weight Converter</a>
+      <a href="/silver-sell-or-hold/">Sell or Hold?</a>
+    </div>
+    <div class="mobile-nav-group">
+      <div class="mobile-nav-group-label">Gold &amp; Metals</div>
+      <a href="/gold-price-today/">Gold Price Today</a>
+      <a href="/gold-and-silver-calculator/">Gold &amp; Silver Calc</a>
+    </div>
+    <a href="/how-to-use-silver-calculators/" class="nav-link">Guide</a>
+  </div>
+</div>
 
 <!-- BREADCRUMB -->
 <div class="wrap">
@@ -654,8 +833,8 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <div style="display:flex;align-items:center;gap:10px">
-          <div class="logo-icon">💎</div>
-          <div class="logo-text">Scrap Silver <span>Calculator</span></div>
+          <div class="logo-icon">◈</div>
+          <div class="logo-text"><span class="logo-main">Scrap Silver</span><span class="logo-sub">Calculator</span></div>
         </div>
         <p>Free, accurate silver calculators using live spot prices. Calculate the melt value of your silver scrap, coins, jewelry, and bars instantly.</p>
         <div class="footer-pills">
@@ -896,6 +1075,46 @@ buildPurityTable();
 buildPurityCards();
 buildDealerTable();
 buildItemCards();
+</script>
+
+<script>
+// ── HEADER JS ──────────────────────────────────────────────────────────────────
+(function() {
+  const hdr = document.getElementById('main-header');
+
+  // Dropdown open/close
+  document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+    trigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const menu = this.nextElementSibling;
+      const isOpen = menu && menu.classList.contains('open');
+      document.querySelectorAll('.nav-dropdown-menu.open').forEach(m => m.classList.remove('open'));
+      if (!isOpen && menu) menu.classList.add('open');
+    });
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-dropdown')) {
+      document.querySelectorAll('.nav-dropdown-menu.open').forEach(m => m.classList.remove('open'));
+    }
+  });
+
+  // Mobile toggle
+  const mobBtn = document.getElementById('mobile-toggle');
+  const mobNav = document.getElementById('mobile-nav');
+  if (mobBtn && mobNav) {
+    mobBtn.addEventListener('click', function() {
+      mobBtn.classList.toggle('active');
+      mobNav.classList.toggle('open');
+      document.body.style.overflow = mobNav.classList.contains('open') ? 'hidden' : '';
+    });
+  }
+
+  // Scroll shadow
+  window.addEventListener('scroll', function() {
+    if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 20);
+  });
+})();
 </script>
 
 </body>
