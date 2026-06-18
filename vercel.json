@@ -24,17 +24,7 @@
       "permanent": true
     },
     {
-      "source": "/1-10oz-silver-value",
-      "destination": "/10oz-silver-value/",
-      "permanent": true
-    },
-    {
       "source": "/silver-scrap-calculator/",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/silver-scrap-calculator",
       "destination": "/",
       "permanent": true
     },
@@ -44,18 +34,8 @@
       "permanent": true
     },
     {
-      "source": "/current-silver-price",
-      "destination": "/silver-price-today/",
-      "permanent": true
-    },
-    {
       "source": "/silver-melt-calculator/",
-      "destination": "/silver-melt-value-calculator/",
-      "permanent": true
-    },
-    {
-      "source": "/silver-melt-calculator",
-      "destination": "/silver-melt-value-calculator/",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -64,28 +44,8 @@
       "permanent": true
     },
     {
-      "source": "/sterling-silver-price",
-      "destination": "/925-silver-price-today/",
-      "permanent": true
-    },
-    {
       "source": "/silver-price/",
       "destination": "/silver-price-today/",
-      "permanent": true
-    },
-    {
-      "source": "/silver-price",
-      "destination": "/silver-price-today/",
-      "permanent": true
-    },
-    {
-      "source": "/ru/(.*)",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/zh/(.*)",
-      "destination": "/",
       "permanent": true
     },
     {
@@ -250,11 +210,6 @@
     },
     {
       "source": "/silver-spot-price-today/",
-      "destination": "/silver-price-today/",
-      "permanent": true
-    },
-    {
-      "source": "/silver-spot-price-today",
       "destination": "/silver-price-today/",
       "permanent": true
     },
