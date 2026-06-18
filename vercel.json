@@ -3,6 +3,16 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/scrap-silver-calculator/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/scrap-silver-calculator",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/(.*)(.html)$",
       "destination": "/$1/",
       "permanent": true
