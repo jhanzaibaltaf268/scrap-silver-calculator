@@ -268,6 +268,13 @@
     /* ── DEALER PAYOUT ── */
     .dealer-prose { font-size: 0.92rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 20px; }
     .dealer-prose a { color: var(--highlight); }
+    .content-prose { font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 18px; }
+    .content-prose a { color: var(--highlight); }
+    .content-prose strong { color: var(--text); }
+    .content-h3 { font-size: 1.05rem; font-weight: 700; color: var(--text); margin: 28px 0 10px; }
+    .purity-explainer { margin-top: 48px; }
+    .purity-explainer h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 16px; }
+    .center-prose { color: var(--text-muted); font-size: 15px; max-width: 700px; margin: 0 auto 36px; line-height: 1.8; text-align: center; }
 
     /* ── FACTOR CARDS ── */
     .factors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
@@ -303,7 +310,7 @@
       font-size: 0.9rem; color: var(--text-muted); line-height: 1.7;
       max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s;
     }
-    .faq-item.open .faq-a { max-height: 400px; padding-bottom: 18px; }
+    .faq-item.open .faq-a { max-height: 600px; padding-bottom: 18px; }
     .faq-a a { color: var(--highlight); }
 
     /* ── FOOTER ── */
@@ -527,7 +534,7 @@
       <div class="hero-left">
         <div class="live-pill"><div class="live-dot"></div> Live Market Data</div>
         <h1>Silver Price Today — <span>Live Spot Price</span></h1>
-        <p>Real-time silver spot price per ounce, gram, troy oz, and kilogram. Updated every 60 minutes from COMEX and LBMA. Includes live scrap payout rates by purity.</p>
+        <p>Live silver spot price updated hourly from COMEX and LBMA. Real-time purity rates for .999 fine, .925 sterling, .900 coin, and .800 European silver. Actual dealer payouts by purity and buyer type. Use our free scrap silver calculator to find out exactly what your silver, jewelry, silverware, or bullion is worth today at the live spot price.</p>
         <div class="spot-hero-card">
           <div>
             <div class="spot-label-sm">Silver Spot Price</div>
@@ -569,6 +576,15 @@
       </div>
 
     </div>
+
+    <div class="wrap" style="padding-top:32px;">
+      <p class="center-prose">
+        The silver spot price is the global wholesale market rate for one troy ounce of .999 fine silver. It is set on the COMEX (Commodity Exchange, New York) and LBMA (London Bullion Market Association) and updates continuously during trading hours. This is the baseline price used by dealers, refiners, and investors worldwide. Your local dealer's payout — what they actually hand you for your silver — will be 70–90% of this spot price, depending on the form, purity, and buyer type.
+      </p>
+      <p class="center-prose">
+        Whether you're selling scrap silver from a jewelry box, broken sterling flatware from an estate, pre-1965 U.S. coin collections, or a bag of silver bullion, the price you receive depends on three factors: the current spot price, the purity of your silver, and the dealer's margin. This page shows you all three — the live spot, the purity breakdown, and what real dealers typically pay. Use the <a href="/" style="color:var(--highlight)">calculator</a> to get an instant estimate, then contact local refiners and coin dealers to compare their offers.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -608,7 +624,7 @@
   <div class="wrap">
     <div class="badge">💰 Live Prices by Purity</div>
     <h2 class="section-title">Live Silver Prices by Purity</h2>
-    <p class="section-sub">Real-time melt value per troy ounce for every major silver purity grade, calculated from the live spot price.</p>
+    <p class="section-sub">Real-time melt value per troy ounce for every major silver purity grade, calculated live from the spot price. The .999 price is the baseline (pure silver). All other purities are calculated by multiplying the spot price by their purity fraction — for example, .925 sterling silver is worth 92.5% of the .999 price. The table shows the 24-hour price range so you can see how volatile the market is today. Use this table to cross-check dealer quotes — if a dealer quotes significantly below these prices, they may be taking an unfair margin.</p>
 
     <div class="table-wrap">
       <table id="purity-table">
@@ -652,6 +668,31 @@
 
 
 <!-- ══════════════════════════════════
+     PURITY EXPLAINER
+══════════════════════════════════ -->
+<section>
+  <div class="wrap">
+    <div class="purity-explainer">
+      <h2>Understanding Silver Purity Grades</h2>
+      <p class="content-prose">Not all silver is created equal. The term "purity" refers to how much of an item is actually pure silver versus other metals (copper, nickel, zinc, etc.). Understanding purity is critical because it directly affects the value. A 10-gram piece of .999 fine silver is worth 24.75% more than the same 10-gram piece of .800 European silver.</p>
+
+      <h3 class="content-h3">.999 Fine Silver (Bullion &amp; Rounds)</h3>
+      <p class="content-prose">.999 fine silver is 99.9% pure silver — the highest standard. This grade includes investment bullion coins (American Silver Eagles, Canadian Maple Leafs), bars, and rounds. Dealers pay closest to spot price for .999 silver because refining costs are minimal. If you're selling .999 silver, expect to receive 82–98% of the spot price depending on the form (coins pay better than cast bars) and the buyer type (online refiners pay better than pawn shops).</p>
+
+      <h3 class="content-h3">.925 Sterling Silver (Jewelry &amp; Flatware)</h3>
+      <p class="content-prose">.925 sterling silver is 92.5% pure silver, the international standard for fine jewelry and flatware. The remaining 7.5% is typically copper, which adds durability and hardness. Most sterling silver items are marked with a small "925" hallmark. Sterling silver is worth about 92.5% of the .999 price. Dealers pay 70–90% of melt value for sterling because jewelry often requires melting and refining, adding labor costs.</p>
+
+      <h3 class="content-h3">.900 Coin Silver (U.S. Pre-1965 Coins)</h3>
+      <p class="content-prose">.900 coin silver is 90% pure silver, used in U.S. dimes, quarters, half-dollars, and dollars minted before 1965. These coins contain 90% silver and 10% copper. A single pre-1965 quarter contains 0.18 troy ounces of pure silver. Dealers pay 80–90% of melt value for coin silver because the coins must be sorted, weighed, and melted. Junk silver (circulated pre-1965 U.S. coins) trades at a slight premium to melt value due to collector interest, often 5–10% above melt.</p>
+
+      <h3 class="content-h3">.800 European Silver (Continental &amp; German Silver)</h3>
+      <p class="content-prose">.800 silver is 80% pure silver, the standard in Europe, Scandinavia, and parts of Asia. Common in German, Russian, and Scandinavian flatware, decorative items, and some jewelry. .800 silver is worth exactly 80% of the .999 spot price. Dealers typically pay 75–88% of melt value for .800 items because they are less common in the U.S. market and require additional refining work.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════
      SPOT VS DEALER
 ══════════════════════════════════ -->
 <section>
@@ -685,6 +726,18 @@
     <p style="font-size:12px;color:var(--text-dim);margin-top:12px;">
       <a href="/how-to-sell-silver/">Full guide: where to sell scrap silver for the best price →</a>
     </p>
+
+    <h3 class="content-h3">Why Dealers Don't Pay Spot Price</h3>
+    <p class="content-prose">The spot price is a wholesale price set on global commodity exchanges. It assumes immediate delivery of pure silver with zero transaction costs. Real-world dealers must account for multiple expenses. First, they must test and verify the purity of your item using acid tests, X-ray fluorescence, or assay — this costs money and takes time. Second, if your silver is not already pure (.999 bullion), they must melt it down, separate impurities, and recast it into tradeable form. Third, they must account for weight loss during melting — silver always loses 1–3% due to oxidation and handling. Fourth, they must store, insure, and eventually ship the refined silver to a buyer or refinery. Fifth, they need to maintain profit margin — typically 5–15% on scrap silver.</p>
+
+    <h3 class="content-h3">Dealer Types &amp; What They Pay</h3>
+    <p class="content-prose"><strong>Online Refiners:</strong> Pay 82–98% of melt value. They operate at scale, melt high volumes, and have lower per-item costs. Downside: 2–4 week turnaround, and you must ship your items.</p>
+    <p class="content-prose"><strong>Local Coin Dealers:</strong> Pay 70–85% of melt value. They test on-site, have immediate liquidity, and give you cash same-day. Downside: They take a larger margin because they're smaller and serve walk-in customers.</p>
+    <p class="content-prose"><strong>Pawn Shops:</strong> Pay 60–75% of melt value. They focus on speed and convenience (instant cash) but are generalists — they don't specialize in silver and often underpay. Use pawn shops only as a last resort or for quick emergency cash.</p>
+    <p class="content-prose"><strong>Private Buyers (eBay, Facebook):</strong> Can pay 90–110% of melt value if you sell to collectors. Pre-1965 junk silver coins, old flatware, and rare items often command premiums. Downside: Takes time to find buyers, handle payments, and ship safely.</p>
+
+    <h3 class="content-h3">How to Negotiate the Best Price</h3>
+    <p class="content-prose">Use this calculator to know your silver's melt value before you contact any dealer. Write it down. Then call 3–5 local coin dealers and online refiners, tell them the weight and purity, and ask for quotes. Compare. Most dealers will beat their initial offer if you show them competing quotes — they want your business. Online refiners typically pay best for bulk quantities (10+ oz). Coin dealers typically pay best for rare dates or high-quality coins. Don't settle for the first offer you get.</p>
   </div>
 </section>
 
@@ -731,6 +784,13 @@
       </div>
     </div>
 
+    <h3 class="content-h3" style="margin-top:32px;">How These Factors Interact</h3>
+    <p class="content-prose">Silver prices don't move in isolation. These six factors interact constantly. For example, when the Federal Reserve raises interest rates, two things happen: (1) the opportunity cost of holding non-yielding bullion increases, which puts downward pressure on silver, and (2) rising rates often signal inflation concerns to investors, which increases safe-haven demand for precious metals, putting upward pressure. The net effect depends on which force is stronger on any given day. Similarly, a strong U.S. dollar makes silver more expensive for foreign buyers, reducing demand, but a geopolitical crisis can trigger simultaneous dollar strength and precious metals demand, creating sharp volatility.</p>
+
+    <p class="content-prose">Industrial demand — the largest factor — is driven by smartphone production, solar panel manufacturing, and electric vehicle batteries. When tech companies announce new product launches or EV sales surge, silver demand increases and prices often rise 2–4 weeks later as factories increase orders. Conversely, when major tech companies reduce production orders or solar installations slow, industrial demand drops and prices fall.</p>
+
+    <p class="content-prose">The U.S. dollar index is inversely correlated with silver prices — when the dollar strengthens, silver gets cheaper for foreign buyers, reducing demand. This happens because 95% of global silver trades in USD. A weak dollar makes silver attractive to overseas buyers, pushing prices up. Inflation expectations are reflected in bond yields. When investors fear inflation, they demand higher yields on bonds, which raises interest rates. Higher rates reduce silver's appeal (why hold silver when bonds pay 5%?), but real inflation has historically favored silver prices over the long run.</p>
+
     <p style="margin-top:20px;font-size:0.9rem;color:var(--text-muted)">
       <a href="/how-silver-prices-work/">How silver prices work — in-depth guide →</a>
     </p>
@@ -758,6 +818,15 @@
       <a href="/junk-silver-calculator/">Junk silver calculator</a> ·
       <a href="/silver-bar-value-calculator/">Bar calculator</a>
     </p>
+
+    <h3 class="content-h3" style="margin-top:36px;">Real-World Examples at Today's Price</h3>
+    <p class="content-prose"><strong>A sterling silver ring (5 grams, .925 purity):</strong> 5g ÷ 31.1035 × 0.925 × spot price = ~$4.85 melt value per gram of spot. Dealers will pay $6–$9 depending on form and buyer type.</p>
+    <p class="content-prose"><strong>A place setting of old flatware (45 grams, .925 purity):</strong> 45g ÷ 31.1035 × 0.925 × spot = approximately $40–$50 melt value. Dealers will pay $32–$45 depending on whether the pattern is collectible or plain.</p>
+    <p class="content-prose"><strong>A bag of pre-1965 quarters (500 grams, .900 purity):</strong> 500g ÷ 31.1035 × 0.900 × spot = approximately $475–$500 melt value. Dealers will pay $380–$450 depending on condition and buyer type.</p>
+    <p class="content-prose"><strong>A 10 oz silver bar (283.5 grams, .999 purity):</strong> 10 oz × spot price = full melt value. Online refiners will pay 93–98%; local dealers may offer 85–92%.</p>
+
+    <h3 class="content-h3">Finding Hidden Silver in Your Home</h3>
+    <p class="content-prose">Most people have more silver than they realize. Check: old jewelry drawers for broken necklaces, outdated rings, and costume pieces marked "925" or "STERLING"; kitchen cabinets for old flatware (especially inherited sets from grandparents); collections of pre-1965 U.S. coins (dimes, quarters, half-dollars); old decorative items like picture frames, cigarette cases, or tea sets; and antique items from estate sales or thrift stores. Use a magnet — pure silver is non-magnetic. If a magnet sticks, it's likely plated or fake. Any item marked 925, 800, 900, 999, or STERLING contains real silver and has real melt value at today's spot price.</p>
   </div>
 </section>
 
@@ -788,7 +857,7 @@
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-a">
-          No. The spot price is the wholesale benchmark for one troy ounce of .999 pure silver traded on COMEX and LBMA. Dealers pay 75–98% of melt value depending on purity, quantity, and buyer type. See the dealer payout table above for today's realistic ranges.
+          No, they are very different. The spot price is the global wholesale market rate for pure .999 silver with no transaction costs. A dealer's payout is what they actually pay you in cash. Dealers must account for testing costs, refining costs (if required), weight loss during melting, insurance, shipping, and profit margin. Online refiners typically pay 82–98% of melt value because they operate at scale. Local coin dealers pay 70–85% because they're smaller and focus on customer service. Pawn shops pay 60–75%. The purity of your silver also matters — .999 bullion pays closer to spot, while .925 sterling or .900 coin silver pays 70–90% because refining is required. Never accept a quote below 65% of melt value — you can always find a better buyer.
         </div>
       </div>
 
@@ -808,7 +877,7 @@
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-a">
-          COMEX futures trading volume, USD exchange rate movements, industrial demand signals (solar panels, electronics, EVs), ETF inflows/outflows, and geopolitical events all move the spot price. The per-gram price moves proportionally with spot.
+          Six major factors create daily volatility. Industrial demand (~55% of total demand) from solar panels, electronics, and electric vehicles is the largest driver — when solar and EV production surges, silver demand increases 2–4 weeks later and prices follow. USD strength is inversely correlated with prices — a stronger dollar makes silver more expensive for foreign buyers, reducing demand. Inflation expectations trigger conflicting signals: higher inflation fears boost safe-haven demand, but rising interest rates reduce the appeal of non-yielding metals. Investment flows from ETFs and hedge funds can move prices 1–3% in a single day. Geopolitical events (wars, political crises, trade tensions) trigger safe-haven demand and can spike prices 2–5% overnight. Interest rate expectations reflect Federal Reserve policy — when rate hikes are expected, silver often falls; when rate cuts are expected, silver often rises.
         </div>
       </div>
 
@@ -818,7 +887,27 @@
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-a">
-          Prices refresh every 60 minutes via COMEX and LBMA data sourced through GoldAPI.io with multiple fallback providers. During market closures (weekends and US holidays), prices remain at the last traded value and resume updating when markets reopen Monday at 6pm EST.
+          The live silver spot price updates continuously during market hours (every 1–2 seconds on the COMEX). However, prices on this page refresh every 60 minutes to reduce server load and API costs. This means the price you see may be up to 1 hour old during trading hours. For real-time prices, visit the COMEX website or use a financial app like Bloomberg or Yahoo Finance. Prices remain completely static during market closures (weekends, U.S. holidays, and 5 PM Friday through 6 PM Sunday EST). The data on this page comes from GoldAPI.io, which aggregates COMEX and LBMA feeds.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          What is the silver spot price?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          The silver spot price is the immediate-delivery price for one troy ounce of .999 fine silver (99.9% pure) on global commodity markets. It is set on two exchanges: the COMEX (Commodity Exchange, New York) and the LBMA (London Bullion Market Association). The price updates continuously during market hours (8 AM – 5 PM EST on weekdays, closed weekends and U.S. holidays). The spot price is the wholesale baseline used by all dealers, refiners, investors, and institutions worldwide. It is not the price you pay to buy silver or receive when you sell — that price includes the dealer's margin. The spot price assumes immediate delivery (same-day settlement) and zero transaction costs, which is why real-world prices differ.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          Where can I sell my silver for the best price?
+          <span class="faq-icon">+</span>
+        </div>
+        <div class="faq-a">
+          You have five main options, each with tradeoffs. <strong>Online refiners</strong> pay the highest (82–98% of melt value) but require 2–3 week turnaround and you must pay shipping. <strong>Local coin dealers</strong> pay 70–85% of melt value, test on-site, give you cash same-day, and are best for large quantities or rare items. <strong>Pawn shops</strong> pay 60–75% of melt value, give immediate cash, but are best avoided unless you need emergency money. <strong>Private buyers</strong> on eBay, Facebook Marketplace, or Craigslist can pay 90–110% of melt value if you sell collectible items (rare coins, antique flatware, high-quality jewelry), but transactions take time and you bear the shipping risk. Before contacting any buyer, use this calculator to know your silver's melt value — then contact 3–5 buyers and compare quotes. Most dealers will improve their first offer if you show them competing quotes.
         </div>
       </div>
 
