@@ -1,0 +1,1470 @@
+{
+    "silver price today": {
+        "slug": "silver-price-today",
+        "competitors": [
+            {
+                "url": "https://www.kitco.com/charts/silver",
+                "name": "Silver Price Today | Price of Silver Per Ounce | 24 Hour Spot Chart | KITCO",
+                "status": "Success",
+                "title": "Silver Price Today | Price of Silver Per Ounce | 24 Hour Spot Chart | KITCO",
+                "description": "Live Silver Charts and Silver Spot Price from International Silver Markets, Prices from New York, London, Hong Kong and Sydney provided by Kitco.",
+                "h1": [
+                    "Live Charts",
+                    "/",
+                    "silver"
+                ],
+                "h2": [
+                    "Live silver Price"
+                ],
+                "h3": [
+                    "70.85",
+                    "Kitco News Channel",
+                    "KITCO"
+                ],
+                "word_count": 29,
+                "entities": [
+                    [
+                        "silver",
+                        4
+                    ],
+                    [
+                        "ounce",
+                        3
+                    ],
+                    [
+                        "gram",
+                        2
+                    ],
+                    [
+                        "pennyweight",
+                        2
+                    ],
+                    [
+                        "kilo",
+                        2
+                    ]
+                ]
+            },
+            {
+                "url": "https://silverprice.org/live-silver-price.html",
+                "name": "Live Silver Price",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            },
+            {
+                "url": "https://www.bullion.com/spotprices/silver-price",
+                "name": "Live Silver Prices | Silver Prices Per Ounce | Bullion.com",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            },
+            {
+                "url": "https://livepriceofgold.com/silver-price/islamabad.html",
+                "name": "Islamabad Silver Price Live - Today (silver rates in Pakistani rupee PKR)",
+                "status": "Success",
+                "title": "Islamabad Silver Price Live -  Today (silver rates in Pakistani rupee PKR)",
+                "description": "No description found",
+                "h1": [
+                    "Silver Price in Islamabad"
+                ],
+                "h2": [
+                    "Islamabad Silver Price live",
+                    "Today: 15 June 2026 Silver Price in Pakistan"
+                ],
+                "h3": [
+                    "GRAM",
+                    "OZ",
+                    "TOLA",
+                    "KILOGRAM"
+                ],
+                "word_count": 1183,
+                "entities": [
+                    [
+                        "gold",
+                        141
+                    ],
+                    [
+                        "silver",
+                        36
+                    ],
+                    [
+                        "gram",
+                        18
+                    ],
+                    [
+                        "pound",
+                        9
+                    ],
+                    [
+                        "kilo",
+                        7
+                    ],
+                    [
+                        "925",
+                        5
+                    ],
+                    [
+                        "999",
+                        4
+                    ],
+                    [
+                        "800",
+                        4
+                    ],
+                    [
+                        "jewelry",
+                        4
+                    ],
+                    [
+                        "kilogram",
+                        3
+                    ]
+                ]
+            },
+            {
+                "url": "https://www.goodreturns.in/silver-rates/",
+                "name": "Silver Rate Today (14 June 2026), Silver Price in India",
+                "status": "Success",
+                "title": "Silver Rate Today (15 June 2026), Silver Price in India - Goodreturns",
+                "description": "Update with silver rate today (15 June 2026) & last 10 days silver price in India, based on rupees per gram/kg in major Indian cities.",
+                "h1": [
+                    "Silver Price in India"
+                ],
+                "h2": [
+                    "Select Your City",
+                    "Weekly & Monthly Graph of Silver Price in India",
+                    "Today Silver Price Per Gram/Kg in India (INR)",
+                    "Indian Major Cities Silver Rates Today",
+                    "Silver Rate in India for Last 10 Days",
+                    "Historical Price of Silver Rate"
+                ],
+                "h3": [
+                    "Stay Connected",
+                    "Learn More",
+                    "Terms & Policies"
+                ],
+                "word_count": 972,
+                "entities": [
+                    [
+                        "silver",
+                        35
+                    ],
+                    [
+                        "gold",
+                        8
+                    ],
+                    [
+                        "gram",
+                        8
+                    ],
+                    [
+                        "800",
+                        3
+                    ],
+                    [
+                        "platinum",
+                        2
+                    ],
+                    [
+                        "bar",
+                        2
+                    ],
+                    [
+                        "kilogram",
+                        1
+                    ],
+                    [
+                        "kilo",
+                        1
+                    ],
+                    [
+                        "ring",
+                        1
+                    ]
+                ]
+            }
+        ]
+    },
+    "silver price per gram": {
+        "slug": "silver-price-per-gram",
+        "competitors": [
+            {
+                "url": "https://www.bullion.com/spotprices/silver-price-gram",
+                "name": "Silver Price per Gram | Live Silver Spot Price in Grams | Bullion.com",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            },
+            {
+                "url": "https://goldpricez.com/silver-rates/us/gram",
+                "name": "Silver Price per Gram in US Dollar (USD) Today",
+                "status": "Success",
+                "title": "Silver Price per Gram in US Dollar (USD) Today",
+                "description": "Live Silver Price per Gram in USD. Updated today with real-time rate, chart, history and quick conversions.",
+                "h1": [
+                    "Silver Price per Gram in US Dollar"
+                ],
+                "h2": [
+                    "Performance ( Silver/Gram) in USD",
+                    "Silver Market Sentiment",
+                    "More live commodity and currency",
+                    "Calculate Silver Price",
+                    "Silver price comparison in USD",
+                    "Silver  Market Price",
+                    "Silver  Rates in USD",
+                    "History of  Silver per Gram",
+                    "Current Market Value",
+                    "About  Silver Price per Gram",
+                    "Reference Information",
+                    "Explore Today's Gold Rates"
+                ],
+                "h3": [
+                    "Silver Purity/types:",
+                    "Description of Weight Units:",
+                    "Description for currency:",
+                    "Live Silver Price Chart:",
+                    "Live Silver Price Calculator:",
+                    "About this timestamp",
+                    "Silver Price Comparison by Purity:",
+                    "Silver Market Price Tool",
+                    "Silver Quantity Calculator Guide",
+                    "Silver Price History",
+                    "Reference Information"
+                ],
+                "word_count": 4223,
+                "entities": [
+                    [
+                        "silver",
+                        124
+                    ],
+                    [
+                        "pound",
+                        74
+                    ],
+                    [
+                        "gram",
+                        52
+                    ],
+                    [
+                        "gold",
+                        37
+                    ],
+                    [
+                        "ounce",
+                        21
+                    ],
+                    [
+                        "coin",
+                        17
+                    ],
+                    [
+                        "purity",
+                        16
+                    ],
+                    [
+                        "kilogram",
+                        11
+                    ],
+                    [
+                        "kilo",
+                        11
+                    ],
+                    [
+                        "bar",
+                        11
+                    ]
+                ]
+            },
+            {
+                "url": "https://www.livepriceofgold.com/silver-price/us.html",
+                "name": "US Silver Price Live - Today (silver rates in United States dollar USD)",
+                "status": "Success",
+                "title": "US Silver Price Live -  Today (silver rates in United States dollar USD)",
+                "description": "No description found",
+                "h1": [
+                    "Silver Price in the US"
+                ],
+                "h2": [
+                    "the US Silver Price live",
+                    "Today: 15 June 2026 Silver Price in Usa"
+                ],
+                "h3": [
+                    "GRAM",
+                    "OZ",
+                    "TOLA",
+                    "KILOGRAM"
+                ],
+                "word_count": 1185,
+                "entities": [
+                    [
+                        "gold",
+                        141
+                    ],
+                    [
+                        "silver",
+                        36
+                    ],
+                    [
+                        "gram",
+                        18
+                    ],
+                    [
+                        "pound",
+                        9
+                    ],
+                    [
+                        "kilo",
+                        7
+                    ],
+                    [
+                        "800",
+                        6
+                    ],
+                    [
+                        "925",
+                        5
+                    ],
+                    [
+                        "999",
+                        4
+                    ],
+                    [
+                        "jewelry",
+                        4
+                    ],
+                    [
+                        "kilogram",
+                        3
+                    ]
+                ]
+            },
+            {
+                "url": "https://www.kitco.com/charts/silver",
+                "name": "Price of Silver Per Ounce | 24 Hour Spot Chart - KITCO",
+                "status": "Success",
+                "title": "Silver Price Today | Price of Silver Per Ounce | 24 Hour Spot Chart | KITCO",
+                "description": "Live Silver Charts and Silver Spot Price from International Silver Markets, Prices from New York, London, Hong Kong and Sydney provided by Kitco.",
+                "h1": [
+                    "Live Charts",
+                    "/",
+                    "silver"
+                ],
+                "h2": [
+                    "Live silver Price"
+                ],
+                "h3": [
+                    "70.85",
+                    "Kitco News Channel",
+                    "KITCO"
+                ],
+                "word_count": 29,
+                "entities": [
+                    [
+                        "silver",
+                        4
+                    ],
+                    [
+                        "ounce",
+                        3
+                    ],
+                    [
+                        "gram",
+                        2
+                    ],
+                    [
+                        "pennyweight",
+                        2
+                    ],
+                    [
+                        "kilo",
+                        2
+                    ]
+                ]
+            },
+            {
+                "url": "https://metalcharts.org/silver-price-per-gram",
+                "name": "Silver Price Per Gram Today | Live Silver Gram Price (USD)",
+                "status": "Success",
+                "title": "Silver Price Per Gram Today | Live Silver Gram Price (USD)",
+                "description": "Check the current silver price per gram in USD. Convert troy ounce to gram pricing with live spot data. Track 1g, 10g, and 100g silver prices updated with real-time market data.",
+                "h1": [
+                    "Silver Price Per Gram"
+                ],
+                "h2": [
+                    "Price Chart",
+                    "Data Methodology",
+                    "How Is the Silver Price Per Gram Calculated?",
+                    "Buy Silver Online",
+                    "Explore MetalCharts",
+                    "Quick Links",
+                    "Frequently Asked Questions"
+                ],
+                "h3": [],
+                "word_count": 947,
+                "entities": [
+                    [
+                        "silver",
+                        44
+                    ],
+                    [
+                        "gram",
+                        37
+                    ],
+                    [
+                        "ounce",
+                        14
+                    ],
+                    [
+                        "bar",
+                        13
+                    ],
+                    [
+                        "troy ounce",
+                        11
+                    ],
+                    [
+                        "spot price",
+                        8
+                    ],
+                    [
+                        "coin",
+                        8
+                    ],
+                    [
+                        "ring",
+                        7
+                    ],
+                    [
+                        "jewelry",
+                        4
+                    ],
+                    [
+                        "bullion",
+                        4
+                    ]
+                ]
+            }
+        ]
+    },
+    "silver price per ounce": {
+        "slug": "silver-price-per-ounce",
+        "competitors": [
+            {
+                "url": "https://www.kitco.com/charts/silver",
+                "name": "Price of Silver Per Ounce | 24 Hour Spot Chart - KITCO",
+                "status": "Success",
+                "title": "Silver Price Today | Price of Silver Per Ounce | 24 Hour Spot Chart | KITCO",
+                "description": "Live Silver Charts and Silver Spot Price from International Silver Markets, Prices from New York, London, Hong Kong and Sydney provided by Kitco.",
+                "h1": [
+                    "Live Charts",
+                    "/",
+                    "silver"
+                ],
+                "h2": [
+                    "Live silver Price"
+                ],
+                "h3": [
+                    "70.87",
+                    "Kitco News Channel",
+                    "KITCO"
+                ],
+                "word_count": 29,
+                "entities": [
+                    [
+                        "silver",
+                        4
+                    ],
+                    [
+                        "ounce",
+                        3
+                    ],
+                    [
+                        "gram",
+                        2
+                    ],
+                    [
+                        "pennyweight",
+                        2
+                    ],
+                    [
+                        "kilo",
+                        2
+                    ]
+                ]
+            },
+            {
+                "url": "https://silverprice.org/silver-price-per-ounce.html",
+                "name": "Silver Price per Ounce",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            },
+            {
+                "url": "https://www.bullion.com/spotprices/silver-price",
+                "name": "Live Silver Prices | Silver Prices Per Ounce | Bullion.com",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            },
+            {
+                "url": "https://www.jmbullion.com/charts/silver-prices/",
+                "name": "Silver Price Today - Live Silver Spot Price Charts | JM Bullion",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            },
+            {
+                "url": "https://metalcharts.org/sterling-silver-price",
+                "name": "Sterling Silver Price Today | Live 925 Silver Rate Per Ounce (2026)",
+                "status": "Success",
+                "title": "Sterling Silver Price Today | Live 925 Silver Rate Per Ounce (2026)",
+                "description": "Check the live sterling silver price per ounce today. Sterling silver (.925) spot value calculated from the pure silver price. Interactive charts and scrap sterling silver values.",
+                "h1": [
+                    "Sterling Silver Price Today"
+                ],
+                "h2": [
+                    "Price Chart",
+                    "Data Methodology",
+                    "Understanding Sterling Silver",
+                    "Buy Silver Online",
+                    "Explore MetalCharts",
+                    "Quick Links",
+                    "Frequently Asked Questions"
+                ],
+                "h3": [],
+                "word_count": 1203,
+                "entities": [
+                    [
+                        "silver",
+                        65
+                    ],
+                    [
+                        "sterling silver",
+                        27
+                    ],
+                    [
+                        "925",
+                        17
+                    ],
+                    [
+                        "gold",
+                        15
+                    ],
+                    [
+                        "pure silver",
+                        11
+                    ],
+                    [
+                        "spot price",
+                        10
+                    ],
+                    [
+                        "melt value",
+                        9
+                    ],
+                    [
+                        "ring",
+                        9
+                    ],
+                    [
+                        "ounce",
+                        8
+                    ],
+                    [
+                        "jewelry",
+                        8
+                    ]
+                ]
+            }
+        ]
+    },
+    "current silver price": {
+        "slug": "current-silver-price",
+        "competitors": [
+            {
+                "url": "https://www.kitco.com/charts/silver",
+                "name": "Price of Silver Per Ounce | 24 Hour Spot Chart - KITCO",
+                "status": "Success",
+                "title": "Silver Price Today | Price of Silver Per Ounce | 24 Hour Spot Chart | KITCO",
+                "description": "Live Silver Charts and Silver Spot Price from International Silver Markets, Prices from New York, London, Hong Kong and Sydney provided by Kitco.",
+                "h1": [
+                    "Live Charts",
+                    "/",
+                    "silver"
+                ],
+                "h2": [
+                    "Live silver Price"
+                ],
+                "h3": [
+                    "70.86",
+                    "Kitco News Channel",
+                    "KITCO"
+                ],
+                "word_count": 29,
+                "entities": [
+                    [
+                        "silver",
+                        4
+                    ],
+                    [
+                        "ounce",
+                        3
+                    ],
+                    [
+                        "gram",
+                        2
+                    ],
+                    [
+                        "pennyweight",
+                        2
+                    ],
+                    [
+                        "kilo",
+                        2
+                    ]
+                ]
+            },
+            {
+                "url": "https://silverprice.org/live-silver-price.html",
+                "name": "Live Silver Price",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            },
+            {
+                "url": "https://www.bullion.com/spotprices/silver-price",
+                "name": "Live Silver Prices | Silver Prices Per Ounce | Bullion.com",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            },
+            {
+                "url": "https://metalcharts.org/sterling-silver-price",
+                "name": "Sterling Silver Price Today | Live 925 Silver Rate Per Ounce (2026)",
+                "status": "Success",
+                "title": "Sterling Silver Price Today | Live 925 Silver Rate Per Ounce (2026)",
+                "description": "Check the live sterling silver price per ounce today. Sterling silver (.925) spot value calculated from the pure silver price. Interactive charts and scrap sterling silver values.",
+                "h1": [
+                    "Sterling Silver Price Today"
+                ],
+                "h2": [
+                    "Price Chart",
+                    "Data Methodology",
+                    "Understanding Sterling Silver",
+                    "Buy Silver Online",
+                    "Explore MetalCharts",
+                    "Quick Links",
+                    "Frequently Asked Questions"
+                ],
+                "h3": [],
+                "word_count": 1203,
+                "entities": [
+                    [
+                        "silver",
+                        65
+                    ],
+                    [
+                        "sterling silver",
+                        27
+                    ],
+                    [
+                        "925",
+                        17
+                    ],
+                    [
+                        "gold",
+                        15
+                    ],
+                    [
+                        "pure silver",
+                        11
+                    ],
+                    [
+                        "spot price",
+                        10
+                    ],
+                    [
+                        "melt value",
+                        9
+                    ],
+                    [
+                        "ring",
+                        9
+                    ],
+                    [
+                        "ounce",
+                        8
+                    ],
+                    [
+                        "jewelry",
+                        8
+                    ]
+                ]
+            },
+            {
+                "url": "https://www.monex.com/silver-prices/",
+                "name": "Silver Prices Today | Live Silver Spot Price | Silver Price Charts - Monex",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            }
+        ]
+    },
+    "925 silver calculator": {
+        "slug": "925-silver-calculator",
+        "competitors": [
+            {
+                "url": "https://www.silverrecyclers.com/Calculators/ster_calculator.aspx",
+                "name": "Sterling Silver Melt Value Calculator",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            },
+            {
+                "url": "https://sagecalculator.com/925-silver-calculator/",
+                "name": "925 Silver Calculator - Sage Calculator",
+                "status": "Success",
+                "title": "925 Silver Calculator - Sage Calculator",
+                "description": "Easily calculate the value of sterling silver with our 925 Silver Calculator. Find out how much your 92.5% silver is worth today.",
+                "h1": [
+                    "925 Silver Calculator"
+                ],
+                "h2": [
+                    "925 Silver Calculator",
+                    "\ud83e\uddfe What Does 925 Silver Mean?",
+                    "\ud83d\udca1 What Is a 925 Silver Calculator?",
+                    "\ud83d\udcd0 How the Calculator Works: The Formula",
+                    "\ud83e\uddf0 How to Use the 925 Silver Calculator",
+                    "\u2696\ufe0f Common Units Used",
+                    "\ud83d\udd22 Real-Life Example Calculations",
+                    "\ud83d\udee0\ufe0f Use Cases for the 925 Silver Calculator",
+                    "\ud83d\udcac 20 Frequently Asked Questions (FAQs)",
+                    "\ud83d\udd1a Final Thoughts",
+                    "Recent Calculators"
+                ],
+                "h3": [
+                    "Example (in grams):",
+                    "\ud83d\udc8d Example 1: A 20g Sterling Silver Necklace",
+                    "\ud83e\udd44 Example 2: A 2 oz Silver Spoon (Standard Ounce)",
+                    "\ud83e\ude99 Example 3: 1 Troy Oz Silver Coin",
+                    "1. What does \u201c925\u201d mean in silver?",
+                    "2. Is 925 silver real silver?",
+                    "3. Why is sterling silver not 100% pure?",
+                    "4. How do I find the current silver price?",
+                    "5. How accurate is the calculator?",
+                    "6. What units can I use?",
+                    "7. Does the calculator show resale price?",
+                    "8. How do I weigh silver jewelry at home?",
+                    "9. Can I use this calculator for silver-plated items?",
+                    "10. What affects the silver spot price?",
+                    "11. Does silver value include craftsmanship?"
+                ],
+                "word_count": 831,
+                "entities": [
+                    [
+                        "silver",
+                        68
+                    ],
+                    [
+                        "925",
+                        31
+                    ],
+                    [
+                        "gram",
+                        20
+                    ],
+                    [
+                        "ounce",
+                        18
+                    ],
+                    [
+                        "spot price",
+                        11
+                    ],
+                    [
+                        "melt value",
+                        9
+                    ],
+                    [
+                        "sterling silver",
+                        8
+                    ],
+                    [
+                        "troy ounce",
+                        7
+                    ],
+                    [
+                        "jewelry",
+                        7
+                    ],
+                    [
+                        "purity",
+                        6
+                    ]
+                ]
+            },
+            {
+                "url": "https://gramvalue.com/silver/sterling/",
+                "name": "Sterling Silver Calculator (Live 2026) - 925 Silver Price | GramValue",
+                "status": "Success",
+                "title": "Sterling Silver Calculator (Live 2026) - 925 Silver Price | GramValue",
+                "description": "Calculate sterling silver (925) value instantly. Live 2026 prices per gram & ounce. Free calculator for 92.5% silver jewelry. Check your sterling worth now!",
+                "h1": [
+                    "Sterling Silver Calculator \u2014 925 Fineness Melt Value"
+                ],
+                "h2": [
+                    "Sterling Silver Value Calculator",
+                    "Understanding Sterling Silver",
+                    "Current Sterling Silver Prices by Weight",
+                    "Asked &answered",
+                    "More silver purities"
+                ],
+                "h3": [
+                    "What Makes Sterling Silver Special",
+                    "Sterling vs Pure Silver",
+                    "Common Sterling Silver Items",
+                    "Caring for Sterling Silver"
+                ],
+                "word_count": 2083,
+                "entities": [
+                    [
+                        "silver",
+                        119
+                    ],
+                    [
+                        "925",
+                        37
+                    ],
+                    [
+                        "sterling silver",
+                        24
+                    ],
+                    [
+                        "gram",
+                        15
+                    ],
+                    [
+                        "jewelry",
+                        15
+                    ],
+                    [
+                        "plate",
+                        15
+                    ],
+                    [
+                        "ounce",
+                        13
+                    ],
+                    [
+                        "pure silver",
+                        12
+                    ],
+                    [
+                        "hallmark",
+                        11
+                    ],
+                    [
+                        "coin",
+                        11
+                    ]
+                ]
+            },
+            {
+                "url": "https://www.livepriceofgold.com/silver-price-calculator.html",
+                "name": "Silver Price Calculator",
+                "status": "Success",
+                "title": "Silver Price Calculator - Live Silver Calculator (Gram, OZ, KG, Fine, Sterling, 0.999, 0.925)",
+                "description": "No description found",
+                "h1": [
+                    "Silver Price Calculator"
+                ],
+                "h2": [
+                    "SILVER PRICE",
+                    "Spread Options for \u2192    SILVER PRICE",
+                    "Silver Unit Conversions"
+                ],
+                "h3": [],
+                "word_count": 1564,
+                "entities": [
+                    [
+                        "gold",
+                        140
+                    ],
+                    [
+                        "silver",
+                        39
+                    ],
+                    [
+                        "pound",
+                        17
+                    ],
+                    [
+                        "gram",
+                        14
+                    ],
+                    [
+                        "purity",
+                        8
+                    ],
+                    [
+                        "market price",
+                        5
+                    ],
+                    [
+                        "999",
+                        4
+                    ],
+                    [
+                        "ounce",
+                        4
+                    ],
+                    [
+                        "ring",
+                        4
+                    ],
+                    [
+                        "sterling silver",
+                        3
+                    ]
+                ]
+            },
+            {
+                "url": "https://meltvalue.com/silver-calculator",
+                "name": "Silver Calculator: Sterling & Scrap Melt Value",
+                "status": "Success",
+                "title": "Silver Calculator: Sterling & Scrap Melt Value",
+                "description": "Calculate silver melt value by purity and weight using live prices. Covers sterling silver, 925, junk silver coins, and .999 fine silver. Free silver calculator.",
+                "h1": [
+                    "Silver Calculator"
+                ],
+                "h2": [
+                    "Silver Price by Purity",
+                    "Silver Coin Melt Values",
+                    "How Silver Melt Value Works",
+                    "Silver Calculator by Purity",
+                    "Silver Price Per Gram, Pennyweight, and Troy Ounce",
+                    "Common Sterling Silver Items Worth Checking",
+                    "What Dealers Pay for Scrap Silver",
+                    "How to Identify Sterling Silver",
+                    "Frequently Asked Questions",
+                    "Related calculators and guides"
+                ],
+                "h3": [
+                    "Sterling Silver Calculator: Price Per Gram",
+                    "Coin Silver Calculator: Price Per Gram",
+                    "Fine Silver Calculator: Price Per Gram (.999)",
+                    "Britannia Silver Calculator: Price Per Gram (.958)",
+                    "800 Silver Calculator: Price Per Gram",
+                    "Silver Price Per Pennyweight (DWT)",
+                    "Sterling Silver Hallmarks and Markings",
+                    "The Magnet Test for Silver",
+                    "The Acid Test",
+                    "What is silver worth today?",
+                    "How much is sterling silver worth per gram?",
+                    "How much is a gram of silver worth?",
+                    "How can I tell if my silver is real?",
+                    "What is the difference between sterling silver and pure silver?",
+                    "How do I calculate the value of sterling silver?"
+                ],
+                "word_count": 1316,
+                "entities": [
+                    [
+                        "silver",
+                        116
+                    ],
+                    [
+                        "gram",
+                        24
+                    ],
+                    [
+                        "coin",
+                        22
+                    ],
+                    [
+                        "sterling silver",
+                        21
+                    ],
+                    [
+                        "melt value",
+                        20
+                    ],
+                    [
+                        "purity",
+                        13
+                    ],
+                    [
+                        "925",
+                        12
+                    ],
+                    [
+                        "spot price",
+                        11
+                    ],
+                    [
+                        "pure silver",
+                        10
+                    ],
+                    [
+                        "ounce",
+                        10
+                    ]
+                ]
+            }
+        ]
+    },
+    "999 silver calculator": {
+        "slug": "999-silver-calculator",
+        "competitors": [
+            {
+                "url": "https://www.livepriceofgold.com/silver-price-calculator.html",
+                "name": "Silver Price Calculator",
+                "status": "Success",
+                "title": "Silver Price Calculator - Live Silver Calculator (Gram, OZ, KG, Fine, Sterling, 0.999, 0.925)",
+                "description": "No description found",
+                "h1": [
+                    "Silver Price Calculator"
+                ],
+                "h2": [
+                    "SILVER PRICE",
+                    "Spread Options for \u2192    SILVER PRICE",
+                    "Silver Unit Conversions"
+                ],
+                "h3": [],
+                "word_count": 1564,
+                "entities": [
+                    [
+                        "gold",
+                        140
+                    ],
+                    [
+                        "silver",
+                        39
+                    ],
+                    [
+                        "pound",
+                        17
+                    ],
+                    [
+                        "gram",
+                        14
+                    ],
+                    [
+                        "purity",
+                        8
+                    ],
+                    [
+                        "market price",
+                        5
+                    ],
+                    [
+                        "999",
+                        4
+                    ],
+                    [
+                        "ounce",
+                        4
+                    ],
+                    [
+                        "ring",
+                        4
+                    ],
+                    [
+                        "sterling silver",
+                        3
+                    ]
+                ]
+            },
+            {
+                "url": "https://meltvalue.com/silver-calculator",
+                "name": "Silver Calculator: Sterling & Scrap Melt Value",
+                "status": "Success",
+                "title": "Silver Calculator: Sterling & Scrap Melt Value",
+                "description": "Calculate silver melt value by purity and weight using live prices. Covers sterling silver, 925, junk silver coins, and .999 fine silver. Free silver calculator.",
+                "h1": [
+                    "Silver Calculator"
+                ],
+                "h2": [
+                    "Silver Price by Purity",
+                    "Silver Coin Melt Values",
+                    "How Silver Melt Value Works",
+                    "Silver Calculator by Purity",
+                    "Silver Price Per Gram, Pennyweight, and Troy Ounce",
+                    "Common Sterling Silver Items Worth Checking",
+                    "What Dealers Pay for Scrap Silver",
+                    "How to Identify Sterling Silver",
+                    "Frequently Asked Questions",
+                    "Related calculators and guides"
+                ],
+                "h3": [
+                    "Sterling Silver Calculator: Price Per Gram",
+                    "Coin Silver Calculator: Price Per Gram",
+                    "Fine Silver Calculator: Price Per Gram (.999)",
+                    "Britannia Silver Calculator: Price Per Gram (.958)",
+                    "800 Silver Calculator: Price Per Gram",
+                    "Silver Price Per Pennyweight (DWT)",
+                    "Sterling Silver Hallmarks and Markings",
+                    "The Magnet Test for Silver",
+                    "The Acid Test",
+                    "What is silver worth today?",
+                    "How much is sterling silver worth per gram?",
+                    "How much is a gram of silver worth?",
+                    "How can I tell if my silver is real?",
+                    "What is the difference between sterling silver and pure silver?",
+                    "How do I calculate the value of sterling silver?"
+                ],
+                "word_count": 1316,
+                "entities": [
+                    [
+                        "silver",
+                        116
+                    ],
+                    [
+                        "gram",
+                        24
+                    ],
+                    [
+                        "coin",
+                        22
+                    ],
+                    [
+                        "sterling silver",
+                        21
+                    ],
+                    [
+                        "melt value",
+                        20
+                    ],
+                    [
+                        "purity",
+                        13
+                    ],
+                    [
+                        "925",
+                        12
+                    ],
+                    [
+                        "spot price",
+                        11
+                    ],
+                    [
+                        "pure silver",
+                        10
+                    ],
+                    [
+                        "ounce",
+                        10
+                    ]
+                ]
+            },
+            {
+                "url": "https://gramvalue.com/silver/999/",
+                "name": "Pure Silver Calculator (Live 2026) - 999 Fine Silver Price | GramValue",
+                "status": "Success",
+                "title": "Pure Silver Calculator (Live 2026) - 999 Fine Silver Price | GramValue",
+                "description": "Calculate pure 999 silver value instantly. Live 2026 prices per gram & ounce. Free investment-grade silver calculator. Check your fine silver worth now!",
+                "h1": [
+                    "Pure 999 Fine Silver Calculator \u2014 Per-Gram Melt Value"
+                ],
+                "h2": [
+                    "999 Silver Value Calculator",
+                    "Understanding 999 Pure Silver",
+                    "Current 999 Silver Prices by Weight",
+                    "Asked &answered",
+                    "More silver purities"
+                ],
+                "h3": [
+                    "What Makes 999 Silver Special",
+                    "999 vs Sterling Silver",
+                    "Best Uses for 999 Silver",
+                    "Buying & Selling 999 Silver"
+                ],
+                "word_count": 868,
+                "entities": [
+                    [
+                        "silver",
+                        59
+                    ],
+                    [
+                        "999",
+                        42
+                    ],
+                    [
+                        "gram",
+                        14
+                    ],
+                    [
+                        "pure silver",
+                        12
+                    ],
+                    [
+                        "jewelry",
+                        12
+                    ],
+                    [
+                        "coin",
+                        12
+                    ],
+                    [
+                        "bullion",
+                        11
+                    ],
+                    [
+                        "fine silver",
+                        9
+                    ],
+                    [
+                        "spot price",
+                        7
+                    ],
+                    [
+                        "bar",
+                        7
+                    ]
+                ]
+            },
+            {
+                "url": "https://goldpricez.com/calculator/silver-rates",
+                "name": "Silver Price Calculator (Gram, KG, Oz, Tola) - Silver Calculator",
+                "status": "Success",
+                "title": "Silver Price Calculator (Gram, KG, Oz, Tola) - Silver Calculator",
+                "description": "Instantly determine the value of silver with this silver price calculator. Supports .999 fine silver, Britannia, Sterling, multiple currencies, and various weights (Gram, Ounce, Tola, Kilo).",
+                "h1": [
+                    "SILVER PRICE CALCULATOR"
+                ],
+                "h2": [
+                    "Compare Calculated Value",
+                    "Market Rates (Buy/Sell)",
+                    "More live commodity and currency",
+                    "Calculate Silver Price",
+                    "Silver price comparison in USD",
+                    "About Silver Calculator",
+                    "Reference Information",
+                    "Explore Today's Gold Rates",
+                    "Today's Live Spot Rates"
+                ],
+                "h3": [
+                    "Silver Purity/types:",
+                    "Description of Weight Units:",
+                    "Silver Price Calculation",
+                    "Calculated Silver Value",
+                    "Compare Your Silver's Worth",
+                    "Analyze Bid and Ask Silver Prices",
+                    "Live silver price chart:",
+                    "Silver Price Comparison by Purity",
+                    "Live Silver Price Calculator",
+                    "Transparent Data Sources",
+                    "About this timestamp"
+                ],
+                "word_count": 3439,
+                "entities": [
+                    [
+                        "silver",
+                        143
+                    ],
+                    [
+                        "pound",
+                        52
+                    ],
+                    [
+                        "gold",
+                        34
+                    ],
+                    [
+                        "gram",
+                        34
+                    ],
+                    [
+                        "purity",
+                        23
+                    ],
+                    [
+                        "coin",
+                        17
+                    ],
+                    [
+                        "999",
+                        15
+                    ],
+                    [
+                        "ounce",
+                        13
+                    ],
+                    [
+                        "spread",
+                        9
+                    ],
+                    [
+                        "ring",
+                        9
+                    ]
+                ]
+            },
+            {
+                "url": "https://silvercalculator.net/",
+                "name": "Silver Calculator | Free Silver IRA & Investment Value Tool",
+                "status": "Success",
+                "title": "Silver Calculator | Free Silver IRA & Investment Value Tool",
+                "description": "Free silver calculator: estimate the value, weight, and growth of your silver coins, bars, and Silver IRA. Real-time spot price math in seconds.",
+                "h1": [],
+                "h2": [],
+                "h3": [],
+                "word_count": 8,
+                "entities": [
+                    [
+                        "silver",
+                        2
+                    ]
+                ]
+            }
+        ]
+    },
+    "sterling silver calculator": {
+        "slug": "sterling-silver-calculator",
+        "competitors": [
+            {
+                "url": "https://www.silverrecyclers.com/Calculators/ster_calculator.aspx",
+                "name": "Sterling Silver Melt Value Calculator",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            },
+            {
+                "url": "http://coinapps.com/silver/sterling/calculator/",
+                "name": "Sterling Silver Melt Value Calculator - coinapps.com",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            },
+            {
+                "url": "https://meltvalue.com/silver-calculator",
+                "name": "Silver Calculator: Sterling & Scrap Melt Value",
+                "status": "Success",
+                "title": "Silver Calculator: Sterling & Scrap Melt Value",
+                "description": "Calculate silver melt value by purity and weight using live prices. Covers sterling silver, 925, junk silver coins, and .999 fine silver. Free silver calculator.",
+                "h1": [
+                    "Silver Calculator"
+                ],
+                "h2": [
+                    "Silver Price by Purity",
+                    "Silver Coin Melt Values",
+                    "How Silver Melt Value Works",
+                    "Silver Calculator by Purity",
+                    "Silver Price Per Gram, Pennyweight, and Troy Ounce",
+                    "Common Sterling Silver Items Worth Checking",
+                    "What Dealers Pay for Scrap Silver",
+                    "How to Identify Sterling Silver",
+                    "Frequently Asked Questions",
+                    "Related calculators and guides"
+                ],
+                "h3": [
+                    "Sterling Silver Calculator: Price Per Gram",
+                    "Coin Silver Calculator: Price Per Gram",
+                    "Fine Silver Calculator: Price Per Gram (.999)",
+                    "Britannia Silver Calculator: Price Per Gram (.958)",
+                    "800 Silver Calculator: Price Per Gram",
+                    "Silver Price Per Pennyweight (DWT)",
+                    "Sterling Silver Hallmarks and Markings",
+                    "The Magnet Test for Silver",
+                    "The Acid Test",
+                    "What is silver worth today?",
+                    "How much is sterling silver worth per gram?",
+                    "How much is a gram of silver worth?",
+                    "How can I tell if my silver is real?",
+                    "What is the difference between sterling silver and pure silver?",
+                    "How do I calculate the value of sterling silver?"
+                ],
+                "word_count": 1316,
+                "entities": [
+                    [
+                        "silver",
+                        116
+                    ],
+                    [
+                        "gram",
+                        24
+                    ],
+                    [
+                        "coin",
+                        22
+                    ],
+                    [
+                        "sterling silver",
+                        21
+                    ],
+                    [
+                        "melt value",
+                        20
+                    ],
+                    [
+                        "purity",
+                        13
+                    ],
+                    [
+                        "925",
+                        12
+                    ],
+                    [
+                        "spot price",
+                        11
+                    ],
+                    [
+                        "pure silver",
+                        10
+                    ],
+                    [
+                        "ounce",
+                        10
+                    ]
+                ]
+            },
+            {
+                "url": "https://gramvalue.com/silver/sterling/",
+                "name": "Sterling Silver Calculator (Live 2026) - 925 Silver Price | GramValue",
+                "status": "Success",
+                "title": "Sterling Silver Calculator (Live 2026) - 925 Silver Price | GramValue",
+                "description": "Calculate sterling silver (925) value instantly. Live 2026 prices per gram & ounce. Free calculator for 92.5% silver jewelry. Check your sterling worth now!",
+                "h1": [
+                    "Sterling Silver Calculator \u2014 925 Fineness Melt Value"
+                ],
+                "h2": [
+                    "Sterling Silver Value Calculator",
+                    "Understanding Sterling Silver",
+                    "Current Sterling Silver Prices by Weight",
+                    "Asked &answered",
+                    "More silver purities"
+                ],
+                "h3": [
+                    "What Makes Sterling Silver Special",
+                    "Sterling vs Pure Silver",
+                    "Common Sterling Silver Items",
+                    "Caring for Sterling Silver"
+                ],
+                "word_count": 2083,
+                "entities": [
+                    [
+                        "silver",
+                        119
+                    ],
+                    [
+                        "925",
+                        37
+                    ],
+                    [
+                        "sterling silver",
+                        24
+                    ],
+                    [
+                        "gram",
+                        15
+                    ],
+                    [
+                        "jewelry",
+                        15
+                    ],
+                    [
+                        "plate",
+                        15
+                    ],
+                    [
+                        "ounce",
+                        13
+                    ],
+                    [
+                        "pure silver",
+                        12
+                    ],
+                    [
+                        "hallmark",
+                        11
+                    ],
+                    [
+                        "coin",
+                        11
+                    ]
+                ]
+            },
+            {
+                "url": "https://learn.apmex.com/tools/sterling-silver-scrap-calculator/",
+                "name": "Sterling Silver Value Calculator | APMEX",
+                "status": "Failed to fetch page content (Timeout / 403 Forbidden / 404 Not Found)"
+            }
+        ]
+    }
+}

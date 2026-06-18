@@ -257,6 +257,56 @@
       "source": "/silver-spot-price-today",
       "destination": "/silver-price-today/",
       "permanent": true
+    },
+    {
+      "source": "/silver-melt-value-calculator/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/925-silver-calculator/",
+      "destination": "/sterling-silver-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/925-sterling-silver-price-per-gram/",
+      "destination": "/sterling-silver-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/face-value-silver-calculator/",
+      "destination": "/junk-silver-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/silver-coin-value-calculator/",
+      "destination": "/junk-silver-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/silver-price-per-ounce/",
+      "destination": "/silver-price-today/",
+      "permanent": true
+    },
+    {
+      "source": "/silver-price-per-troy-ounce/",
+      "destination": "/silver-price-today/",
+      "permanent": true
+    },
+    {
+      "source": "/800-silver-price-today/",
+      "destination": "/800-silver-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/900-silver-price-today/",
+      "destination": "/900-silver-calculator/",
+      "permanent": true
+    },
+    {
+      "source": "/what-does-925-mean/",
+      "destination": "/what-is-sterling-silver/",
+      "permanent": true
     }
   ],
   "headers": [

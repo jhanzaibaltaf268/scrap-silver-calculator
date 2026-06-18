@@ -1,0 +1,283 @@
+{
+    "OmniCalculator": {
+        "name": "OmniCalculator",
+        "url": "https://www.omnicalculator.com/finance/scrap-silver",
+        "title": "Scrap Silver Calculator",
+        "description": "The scrap silver calculator allows you to determine the value of the silver present in coins, bars, jewelry etc.",
+        "h1": [
+            "Scrap Silver Calculator"
+        ],
+        "h2": [
+            "Silver scrap buy and sell value",
+            "Silver's characteristics and usage",
+            "How much is silver worth?",
+            "Scrap silver value calculator \u2013 an example",
+            "Interesting facts about silver",
+            "Sources"
+        ],
+        "h3": [
+            "Related calculators"
+        ],
+        "word_count": 1518,
+        "entities": [
+            [
+                "silver",
+                95
+            ],
+            [
+                "coin",
+                18
+            ],
+            [
+                "pure silver",
+                12
+            ],
+            [
+                "ounce",
+                9
+            ],
+            [
+                "jewelry",
+                8
+            ],
+            [
+                "gold",
+                6
+            ],
+            [
+                "bracelet",
+                6
+            ],
+            [
+                "necklace",
+                6
+            ],
+            [
+                "purity",
+                5
+            ],
+            [
+                "ring",
+                5
+            ],
+            [
+                "925",
+                4
+            ],
+            [
+                "800",
+                4
+            ],
+            [
+                "troy ounce",
+                4
+            ],
+            [
+                "sterling silver",
+                3
+            ],
+            [
+                "pound",
+                3
+            ],
+            [
+                "bullion",
+                3
+            ],
+            [
+                "999",
+                2
+            ],
+            [
+                "market price",
+                2
+            ],
+            [
+                "fine silver",
+                1
+            ],
+            [
+                "900",
+                1
+            ],
+            [
+                "gram",
+                1
+            ],
+            [
+                "bid price",
+                1
+            ],
+            [
+                "commission",
+                1
+            ],
+            [
+                "spread",
+                1
+            ],
+            [
+                "silverware",
+                1
+            ],
+            [
+                "tray",
+                1
+            ]
+        ]
+    },
+    "UnitedPMR": {
+        "name": "UnitedPMR",
+        "url": "https://www.unitedpmr.com/calculators/sterling-silver-scrap-calculator/",
+        "title": "Sterling Silver Scrap Calculator - Scrap Silver Price - United PMR",
+        "description": "Use Our Sterling Silver Calculator to Get an Instant Estimated Price of Your Sterling Silver Scrap. Simply Enter the Weight and Purity of Your Silver",
+        "h1": [
+            "Sterling Silver Scrap Calculator"
+        ],
+        "h2": [
+            "PRECIOUS METAL"
+        ],
+        "h3": [
+            "Spot Prices"
+        ],
+        "word_count": 128,
+        "entities": [
+            [
+                "silver",
+                8
+            ],
+            [
+                "gold",
+                4
+            ],
+            [
+                "sterling silver",
+                4
+            ],
+            [
+                "platinum",
+                2
+            ],
+            [
+                "palladium",
+                2
+            ],
+            [
+                "purity",
+                1
+            ],
+            [
+                "gram",
+                1
+            ],
+            [
+                "dwt",
+                1
+            ],
+            [
+                "spot price",
+                1
+            ]
+        ]
+    },
+    "MeltValue": {
+        "name": "MeltValue",
+        "url": "https://meltvalue.com/",
+        "title": "Gold & Silver Melt Value Calculator \u2014 MeltValue.com",
+        "description": "Free gold and silver melt value calculator. Get instant scrap gold, silver jewelry, and coin melt values using live spot prices. Updated every 60 seconds.",
+        "h1": [
+            "Gold & Silver Melt Value Calculator"
+        ],
+        "h2": [
+            "Gold Price by Purity",
+            "US Silver Coin Melt Values",
+            "US Gold Coin Melt Values",
+            "What Is Melt Value?",
+            "Frequently Asked Questions"
+        ],
+        "h3": [
+            "The Melt Value Formula",
+            "What Dealers Pay vs. Melt Value",
+            "What is melt value?",
+            "How is melt value calculated?",
+            "Why is the dealer offer lower than melt value?",
+            "What units of weight does this calculator support?",
+            "How much is a 14K gold ring worth in scrap?",
+            "What is junk silver?",
+            "How much silver is in a pre-1965 quarter?",
+            "Is it legal to melt US coins?",
+            "How often do spot prices update on this calculator?",
+            "Calculators",
+            "Coin Values",
+            "Prices",
+            "Company"
+        ],
+        "word_count": 452,
+        "entities": [
+            [
+                "melt value",
+                25
+            ],
+            [
+                "gold",
+                19
+            ],
+            [
+                "silver",
+                15
+            ],
+            [
+                "coin",
+                13
+            ],
+            [
+                "spot price",
+                6
+            ],
+            [
+                "purity",
+                5
+            ],
+            [
+                "gram",
+                3
+            ],
+            [
+                "dwt",
+                2
+            ],
+            [
+                "ring",
+                2
+            ],
+            [
+                "troy ounce",
+                1
+            ],
+            [
+                "ounce",
+                1
+            ],
+            [
+                "pennyweight",
+                1
+            ],
+            [
+                "grain",
+                1
+            ],
+            [
+                "market price",
+                1
+            ],
+            [
+                "jewelry",
+                1
+            ],
+            [
+                "bracelet",
+                1
+            ]
+        ]
+    }
+}
