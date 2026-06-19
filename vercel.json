@@ -607,6 +607,11 @@
       "source": "/ur/چاندی-کے-سکے-کی-قیمت-کا-کیلکولیٹر/",
       "destination": "/ur/ردی-چاندی-کا-کیلکولیٹر/",
       "permanent": true
+    },
+    {
+      "source": "/es/silver-scrap-calculator/",
+      "destination": "/es/calculadora-de-plata-de-desecho/",
+      "permanent": true
     }
   ],
   "headers": [
