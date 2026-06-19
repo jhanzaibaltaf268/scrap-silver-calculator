@@ -60,12 +60,12 @@
     },
     {
       "source": "/ar/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/ar/آلة-حاسبة-فضية-800/",
       "permanent": true
     },
     {
       "source": "/ar/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/ar/آلة-حاسبة-فضة-900/",
       "permanent": true
     },
     {
@@ -80,12 +80,12 @@
     },
     {
       "source": "/de/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/de/800-silber-rechner/",
       "permanent": true
     },
     {
       "source": "/de/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/de/900-muenzsilber-rechner/",
       "permanent": true
     },
     {
@@ -100,12 +100,12 @@
     },
     {
       "source": "/es/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/es/plata-800/",
       "permanent": true
     },
     {
       "source": "/es/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/es/plata-de-moneda-900/",
       "permanent": true
     },
     {
@@ -120,12 +120,12 @@
     },
     {
       "source": "/hi/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/hi/800-चद-कलकलटर/",
       "permanent": true
     },
     {
       "source": "/hi/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/hi/900-चद-कलकलटर/",
       "permanent": true
     },
     {
@@ -140,12 +140,12 @@
     },
     {
       "source": "/it/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/it/calcolatrice-in-argento-800/",
       "permanent": true
     },
     {
       "source": "/it/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/it/calcolatrice-in-argento-900/",
       "permanent": true
     },
     {
@@ -160,12 +160,12 @@
     },
     {
       "source": "/pt/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/pt/calculadora-de-prata-800/",
       "permanent": true
     },
     {
       "source": "/pt/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/pt/calculadora-de-prata-900/",
       "permanent": true
     },
     {
@@ -180,12 +180,12 @@
     },
     {
       "source": "/tr/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/tr/800-gümüş-hesap-makinesi/",
       "permanent": true
     },
     {
       "source": "/tr/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/tr/900-gümüş-hesap-makinesi/",
       "permanent": true
     },
     {
@@ -200,12 +200,12 @@
     },
     {
       "source": "/ur/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/ur/800-چاندی-کا-کیلکولیٹر/",
       "permanent": true
     },
     {
       "source": "/ur/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/ur/900-چاندی-کا-کیلکولیٹر/",
       "permanent": true
     },
     {
