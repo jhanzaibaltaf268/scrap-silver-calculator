@@ -60,12 +60,12 @@
     },
     {
       "source": "/ar/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/ar/آلة-حاسبة-فضية-800/",
       "permanent": true
     },
     {
       "source": "/ar/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/ar/آلة-حاسبة-فضة-900/",
       "permanent": true
     },
     {
@@ -80,12 +80,12 @@
     },
     {
       "source": "/de/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/de/800-silber-rechner/",
       "permanent": true
     },
     {
       "source": "/de/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/de/900-muenzsilber-rechner/",
       "permanent": true
     },
     {
@@ -100,12 +100,12 @@
     },
     {
       "source": "/es/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/es/plata-800/",
       "permanent": true
     },
     {
       "source": "/es/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/es/plata-de-moneda-900/",
       "permanent": true
     },
     {
@@ -120,12 +120,12 @@
     },
     {
       "source": "/hi/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/hi/800-चद-कलकलटर/",
       "permanent": true
     },
     {
       "source": "/hi/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/hi/900-चद-कलकलटर/",
       "permanent": true
     },
     {
@@ -140,12 +140,12 @@
     },
     {
       "source": "/it/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/it/calcolatrice-in-argento-800/",
       "permanent": true
     },
     {
       "source": "/it/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/it/calcolatrice-in-argento-900/",
       "permanent": true
     },
     {
@@ -160,12 +160,12 @@
     },
     {
       "source": "/pt/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/pt/calculadora-de-prata-800/",
       "permanent": true
     },
     {
       "source": "/pt/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/pt/calculadora-de-prata-900/",
       "permanent": true
     },
     {
@@ -180,12 +180,12 @@
     },
     {
       "source": "/tr/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/tr/800-gümüş-hesap-makinesi/",
       "permanent": true
     },
     {
       "source": "/tr/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/tr/900-gümüş-hesap-makinesi/",
       "permanent": true
     },
     {
@@ -200,12 +200,12 @@
     },
     {
       "source": "/ur/800-silver-price-today/",
-      "destination": "/800-silver-price-today/",
+      "destination": "/ur/800-چاندی-کا-کیلکولیٹر/",
       "permanent": true
     },
     {
       "source": "/ur/900-silver-price-today/",
-      "destination": "/900-silver-price-today/",
+      "destination": "/ur/900-چاندی-کا-کیلکولیٹر/",
       "permanent": true
     },
     {
@@ -271,6 +271,346 @@
     {
       "source": "/what-does-925-mean/",
       "destination": "/what-is-sterling-silver/",
+      "permanent": true
+    },
+    {
+      "source": "/ar/1-10-أونصة-من-الفضة/",
+      "destination": "/ar/قيمة-الفضة-10-أوقية/",
+      "permanent": true
+    },
+    {
+      "source": "/ar/حاسبة-القيمة-الاسمية-للفضة/",
+      "destination": "/ar/حاسبة-الفضة-غير-المرغوب-فيه/",
+      "permanent": true
+    },
+    {
+      "source": "/ar/حاسبة-قيمة-العملة-الفضية/",
+      "destination": "/ar/حاسبة-الفضة-غير-المرغوب-فيه/",
+      "permanent": true
+    },
+    {
+      "source": "/ar/حاسبة-قيمة-ذوبان-الفضة/",
+      "destination": "/ar/",
+      "permanent": true
+    },
+    {
+      "source": "/ar/سعر-الجرام-من-الفضة-الإسترليني-عيار-925/",
+      "destination": "/ar/حاسبة-الفضة/",
+      "permanent": true
+    },
+    {
+      "source": "/ar/سعر-الفضة-الفوري-اليوم/",
+      "destination": "/ar/سعر-الفضة-اليوم/",
+      "permanent": true
+    },
+    {
+      "source": "/ar/سعر-الفضة-للأونصة/",
+      "destination": "/ar/سعر-الفضة-اليوم/",
+      "permanent": true
+    },
+    {
+      "source": "/ar/ماذا-يعني-925/",
+      "destination": "/ar/حاسبة-الفضة/",
+      "permanent": true
+    },
+    {
+      "source": "/de/1-10oz-silberwert/",
+      "destination": "/de/10oz-silberwert/",
+      "permanent": true
+    },
+    {
+      "source": "/de/nennwert-silber-rechner/",
+      "destination": "/de/billon-silber-rechner/",
+      "permanent": true
+    },
+    {
+      "source": "/de/silber-schmelzwert-rechner/",
+      "destination": "/de/",
+      "permanent": true
+    },
+    {
+      "source": "/de/silberpreis-pro-unze/",
+      "destination": "/de/silberpreis-heute/",
+      "permanent": true
+    },
+    {
+      "source": "/de/was-bedeutet-925/",
+      "destination": "/de/sterlingsilber-rechner/",
+      "permanent": true
+    },
+    {
+      "source": "/es/calculadora-de-plata-de-desecho/",
+      "destination": "/es/",
+      "permanent": true
+    },
+    {
+      "source": "/es/calculadora-de-valor-de-fusion-de-la-plata/",
+      "destination": "/es/",
+      "permanent": true
+    },
+    {
+      "source": "/es/calculadora-de-valor-nominal/",
+      "destination": "/es/calculadora-de-plata-basura/",
+      "permanent": true
+    },
+    {
+      "source": "/es/plata-esterlina-925/",
+      "destination": "/es/calculadora-de-plata-esterlina/",
+      "permanent": true
+    },
+    {
+      "source": "/es/precio-de-la-plata-por-onza/",
+      "destination": "/es/precio-plata-hoy/",
+      "permanent": true
+    },
+    {
+      "source": "/es/que-significa-925/",
+      "destination": "/es/que-es-la-plata-esterlina/",
+      "permanent": true
+    },
+    {
+      "source": "/es/valor-de-la-plata-1-10oz/",
+      "destination": "/es/valor-de-la-plata-10oz/",
+      "permanent": true
+    },
+    {
+      "source": "/es/valor-de-moneda-de-plata/",
+      "destination": "/es/calculadora-de-plata-basura/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/argent-sterling-925/",
+      "destination": "/fr/calculateur-d-argent-sterling/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/calculateur-de-valeur-de-fonte/",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/calculateur-de-valeur-nominale/",
+      "destination": "/fr/calculateur-d-argent-de-circulation/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/prix-de-l-argent-a-l-once/",
+      "destination": "/fr/prix-argent-aujourd-hui/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/que-signifie-925/",
+      "destination": "/fr/qu-est-ce-que-l-argent-sterling/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/valeur-de-l-argent-1-10oz/",
+      "destination": "/fr/valeur-de-l-argent-10oz/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/valeur-des-pieces-d-argent/",
+      "destination": "/fr/calculateur-d-argent-de-circulation/",
+      "permanent": true
+    },
+    {
+      "source": "/hi/925-चद-कलकलटर/",
+      "destination": "/hi/सटरलग-सलवर-कलकलटर/",
+      "permanent": true
+    },
+    {
+      "source": "/hi/अकत-मलय-चद-कलकलटर/",
+      "destination": "/hi/जक-सलवर-कलकलटर/",
+      "permanent": true
+    },
+    {
+      "source": "/hi/चद-क-कमत-परत-औस/",
+      "destination": "/hi/aaj-ka-chandi-bhav/",
+      "permanent": true
+    },
+    {
+      "source": "/hi/चद-क-हजर-कमत-आज/",
+      "destination": "/hi/aaj-ka-chandi-bhav/",
+      "permanent": true
+    },
+    {
+      "source": "/hi/चद-पघल-मलय-कलकलटर/",
+      "destination": "/hi/",
+      "permanent": true
+    },
+    {
+      "source": "/hi/परत-गरम-925-सटरलग-चद-क-कमत/",
+      "destination": "/hi/सटरलग-सलवर-कलकलटर/",
+      "permanent": true
+    },
+    {
+      "source": "/it/calcolatore-del-valore-di-fusione-dellargento/",
+      "destination": "/it/",
+      "permanent": true
+    },
+    {
+      "source": "/it/calcolatrice-in-argento-925/",
+      "destination": "/it/calcolatrice-in-argento-sterling/",
+      "permanent": true
+    },
+    {
+      "source": "/it/calcolatrice-in-argento-con-valore-nominale/",
+      "destination": "/it/calcolatrice-dargento-spazzatura/",
+      "permanent": true
+    },
+    {
+      "source": "/it/cosa-significa-925/",
+      "destination": "/it/cosè-largento-sterling/",
+      "permanent": true
+    },
+    {
+      "source": "/it/prezzo-argento-sterling-925-al-grammo/",
+      "destination": "/it/calcolatrice-in-argento-sterling/",
+      "permanent": true
+    },
+    {
+      "source": "/it/prezzo-dellargento-per-oncia/",
+      "destination": "/it/prezzo-argento-oggi/",
+      "permanent": true
+    },
+    {
+      "source": "/it/prezzo-spot-dellargento-oggi/",
+      "destination": "/it/prezzo-argento-oggi/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-de-prata-925/",
+      "destination": "/pt/calculadora-de-prata-esterlina/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-de-prata-com-valor-nominal/",
+      "destination": "/pt/calculadora-de-prata-lixo/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-de-valor-de-fusão-de-prata/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/o-que-significa-925/",
+      "destination": "/pt/o-que-é-prata-esterlina/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/preço-da-prata-esterlina-925-por-grama/",
+      "destination": "/pt/calculadora-de-prata-esterlina/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/preço-da-prata-por-onça/",
+      "destination": "/pt/preco-prata-hoje/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/preço-à-vista-da-prata-hoje/",
+      "destination": "/pt/preco-prata-hoje/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-de-1-10-onças-de-prata/",
+      "destination": "/pt/valor-de-prata-de-10-onças/",
+      "permanent": true
+    },
+    {
+      "source": "/tr/1-10oz-gümüş-değeri/",
+      "destination": "/tr/10oz-gümüş-değeri/",
+      "permanent": true
+    },
+    {
+      "source": "/tr/925-ayar-gümüş-gram-fiyatı/",
+      "destination": "/tr/gümüş-hesap-makinesi/",
+      "permanent": true
+    },
+    {
+      "source": "/tr/925-gümüş-hesap-makinesi/",
+      "destination": "/tr/gümüş-hesap-makinesi/",
+      "permanent": true
+    },
+    {
+      "source": "/tr/925-ne-anlama-geliyor/",
+      "destination": "/tr/",
+      "permanent": true
+    },
+    {
+      "source": "/tr/bugünkü-gümüş-spot-fiyatı/",
+      "destination": "/tr/gumus-fiyati-bugun/",
+      "permanent": true
+    },
+    {
+      "source": "/tr/gümüş-erime-değeri-hesaplayıcısı/",
+      "destination": "/tr/",
+      "permanent": true
+    },
+    {
+      "source": "/tr/gümüş-para-değeri-hesaplama/",
+      "destination": "/tr/önemsiz-gümüş-hesaplayıcı/",
+      "permanent": true
+    },
+    {
+      "source": "/tr/nominal-değer-gümüş-hesaplayıcı/",
+      "destination": "/tr/önemsiz-gümüş-hesaplayıcı/",
+      "permanent": true
+    },
+    {
+      "source": "/tr/ons-başına-gümüş-fiyatı/",
+      "destination": "/tr/gumus-fiyati-bugun/",
+      "permanent": true
+    },
+    {
+      "source": "/ur/1-10-اوز-چاندی-کی-قیمت/",
+      "destination": "/ur/10-اوز-چاندی-کی-قیمت/",
+      "permanent": true
+    },
+    {
+      "source": "/ur/925-سلور-کیلکولیٹر/",
+      "destination": "/ur/سٹرلنگ-سلور-کیلکولیٹر/",
+      "permanent": true
+    },
+    {
+      "source": "/ur/925-سٹرلنگ-چاندی-کی-قیمت-فی-گرام/",
+      "destination": "/ur/سٹرلنگ-سلور-کیلکولیٹر/",
+      "permanent": true
+    },
+    {
+      "source": "/ur/925-کا-کیا-مطلب-ہے/",
+      "destination": "/ur/سٹرلنگ-چاندی-کیا-ہے/",
+      "permanent": true
+    },
+    {
+      "source": "/ur/چاندی-پگھل-قیمت-کیلکولیٹر/",
+      "destination": "/ur/",
+      "permanent": true
+    },
+    {
+      "source": "/ur/چاندی-کی-اسپاٹ-قیمت-آج/",
+      "destination": "/ur/aaj-chandi-ki-qeemat/",
+      "permanent": true
+    },
+    {
+      "source": "/ur/چاندی-کی-قیمت-فی-اونس/",
+      "destination": "/ur/aaj-chandi-ki-qeemat/",
+      "permanent": true
+    },
+    {
+      "source": "/ur/چاندی-کی-قیمت-کا-کیلکولیٹر/",
+      "destination": "/ur/ردی-چاندی-کا-کیلکولیٹر/",
+      "permanent": true
+    },
+    {
+      "source": "/ur/چاندی-کے-سکے-کی-قیمت-کا-کیلکولیٹر/",
+      "destination": "/ur/ردی-چاندی-کا-کیلکولیٹر/",
+      "permanent": true
+    },
+    {
+      "source": "/es/silver-scrap-calculator/",
+      "destination": "/es/calculadora-de-plata-de-desecho/",
       "permanent": true
     }
   ],
