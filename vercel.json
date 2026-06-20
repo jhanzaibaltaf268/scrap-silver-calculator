@@ -480,7 +480,7 @@
     },
     {
       "source": "/pt/calculadora-de-prata-925/",
-      "destination": "/pt/calculadora-de-prata-esterlina/",
+      "destination": "/pt/prata-925/",
       "permanent": true
     },
     {
@@ -936,6 +936,56 @@
     {
       "source": "/pt/prata-vender-ou-manter/",
       "destination": "/pt/preco-da-prata-por-grama-hoje/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-de-prata-999/",
+      "destination": "/pt/prata-999/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/925-prata-preco-hoje/",
+      "destination": "/pt/prata-925/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/999-prata-fina-preco-hoje/",
+      "destination": "/pt/prata-999/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/preco-da-prata-por-grama/",
+      "destination": "/pt/preco-da-prata-por-grama-hoje/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/pre%C3%A7o-da-prata-por-grama/",
+      "destination": "/pt/preco-da-prata-por-grama-hoje/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/925-silver-calculator/",
+      "destination": "/pt/prata-925/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/999-silver-calculator/",
+      "destination": "/pt/prata-999/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/950-silver-calculator/",
+      "destination": "/pt/prata-950/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-types/",
+      "destination": "/pt/tipos-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/tipos-de-prata-guia/",
+      "destination": "/pt/tipos-de-prata/",
       "permanent": true
     }
   ],

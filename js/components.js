@@ -9,10 +9,11 @@ const SiteComponents = (() => {
     { label: 'nav_home', href: '/' },
     {
       label: 'nav_silver_price', dropdown: [
-        { label: 'nav_price_today',   href: '/silver-price-today/' },
-        { label: 'nav_925_price_today', href: '/925-silver-price-today/' },
-        { label: 'nav_999_price_today', href: '/999-silver-price-today/' },
-        { label: 'nav_silver_news_today', href: '/silver-news-today/' },
+        { label: 'nav_price_today',          href: '/silver-price-today/' },
+        { label: 'nav_price_per_gram_hoje',  href: '/silver-price-per-gram-today/', showForLangs: ['pt'] },
+        { label: 'nav_925_price_today',      href: '/925-silver-price-today/' },
+        { label: 'nav_999_price_today',      href: '/999-silver-price-today/' },
+        { label: 'nav_silver_news_today',    href: '/silver-news-today/' },
         { label: 'nav_price_forecast_today', href: '/silver-price-forecast-today/' },
       ]
     },
@@ -30,12 +31,14 @@ const SiteComponents = (() => {
     },
     {
       label: 'nav_purity', dropdown: [
-        { label: 'nav_999', href: '/999-silver-calculator/' },
-        { label: 'nav_958', href: '/958-silver-calculator/' },
-        { label: 'nav_925', href: '/925-silver-calculator/' },
-        { label: 'nav_900', href: '/900-silver-calculator/' },
-        { label: 'nav_835', href: '/835-silver-calculator/' },
-        { label: 'nav_800', href: '/800-silver-calculator/' },
+        { label: 'nav_999',        href: '/999-silver-calculator/' },
+        { label: 'nav_prata_950',  href: '/950-silver-calculator/', showForLangs: ['pt'] },
+        { label: 'nav_958',        href: '/958-silver-calculator/', hideForLangs: ['pt'] },
+        { label: 'nav_925',        href: '/925-silver-calculator/' },
+        { label: 'nav_900',        href: '/900-silver-calculator/' },
+        { label: 'nav_835',        href: '/835-silver-calculator/' },
+        { label: 'nav_800',        href: '/800-silver-calculator/' },
+        { label: 'nav_tipos_prata',href: '/silver-types-guide/',   showForLangs: ['pt'] },
         { label: 'nav_purity_chart', href: '/silver-purity-chart/' },
       ]
     },
@@ -118,6 +121,9 @@ const SiteComponents = (() => {
     nav_platinum_calc:{ en:'Platinum Calculator', es:'Calculadora Platino', fr:'Calculateur Platine', de:'Platin Rechner', it:'Calcolatore Platino', pt:'Calculadora Platina', ru:'Калькулятор платины', ar:'حاسبة البلاتين', hi:'प्लेटिनम कैलकुलेटर', ur:'پلاٹینم کیلکولیٹر', tr:'Platin Hesaplayıcı', zh:'铂金计算器' },
     nav_palladium_calc:{ en:'Palladium Calculator', es:'Calculadora Paladio', fr:'Calculateur Palladium', de:'Palladium Rechner', it:'Calcolatore Palladio', pt:'Calculadora Paládio', ru:'Калькулятор палладия', ar:'حاسبة البلاديوم', hi:'पैलेडियम कैलकुलेटर', ur:'پیلیڈیم کیلکولیٹر', tr:'Paladyum Hesaplayıcı', zh:'钯计算器' },
     nav_metals_prices:{ en:'All Metals Prices', es:'Precios de Metales', fr:'Prix des Métaux', de:'Metallpreise', it:'Prezzi dei Metalli', pt:'Preços dos Metais', ru:'Цены на металлы', ar:'أسعار المعادن', hi:'धातुओं की कीमतें', ur:'دھاتوں کی قیمتیں', tr:'Metal Fiyatları', zh:'金属价格' },
+    nav_price_per_gram_hoje: { en:'Silver Price Per Gram', pt:'Preço por Grama Hoje' },
+    nav_prata_950:           { en:'950 Silver',            pt:'Prata 950' },
+    nav_tipos_prata:         { en:'Silver Types',          pt:'Tipos de Prata' },
   };
 
   const FOOTER_COLS = [
@@ -356,8 +362,13 @@ const SiteComponents = (() => {
 
     const navItemsHTML = NAV_ITEMS.map(item => {
         if (item.hideForLangs && item.hideForLangs.includes(currentLang)) return '';
+        if (item.showForLangs && !item.showForLangs.includes(currentLang)) return '';
         if (item.dropdown) {
-            const visibleItems = item.dropdown.filter(d => !d.hideForLangs || !d.hideForLangs.includes(currentLang));
+            const visibleItems = item.dropdown.filter(d => {
+                if (d.hideForLangs && d.hideForLangs.includes(currentLang)) return false;
+                if (d.showForLangs && !d.showForLangs.includes(currentLang)) return false;
+                return true;
+            });
             if (visibleItems.length === 0) return '';
             return `
                 <div class="nav-dropdown">
@@ -406,8 +417,13 @@ const SiteComponents = (() => {
             <div style="padding:20px; display:flex; flex-direction:column; gap:8px;">
                 ${NAV_ITEMS.map(item => {
                     if (item.hideForLangs && item.hideForLangs.includes(currentLang)) return '';
+                    if (item.showForLangs && !item.showForLangs.includes(currentLang)) return '';
                     if (item.dropdown) {
-                        const visibleItems = item.dropdown.filter(d => !d.hideForLangs || !d.hideForLangs.includes(currentLang));
+                        const visibleItems = item.dropdown.filter(d => {
+                            if (d.hideForLangs && d.hideForLangs.includes(currentLang)) return false;
+                            if (d.showForLangs && !d.showForLangs.includes(currentLang)) return false;
+                            return true;
+                        });
                         if (visibleItems.length === 0) return '';
                         return `
                             <div style="margin-bottom:12px;">
