@@ -128,23 +128,18 @@
     <section class="container" style="padding:20px 20px 40px;">
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;">
         <div class="price-card">
-          <div class="price-label">Prata 999 — por onça troy (USD)</div>
-          <div class="price-value">$<span id="p-oz">--</span></div>
+          <div class="price-label">Prata 999 — por grama (R$)</div>
+          <div class="price-value">R$<span id="p-gm-brl">--</span></div>
+          <div class="price-sub">Spot ÷ 31,1035 · ref. USD: $<span id="p-gm-usd">--</span>/g</div>
+        </div>
+        <div class="price-card">
+          <div class="price-label">Prata 999 — por onça troy (R$)</div>
+          <div class="price-value">R$<span id="p-oz">--</span></div>
           <div class="price-sub">Preço spot ao vivo — 31,1035g</div>
         </div>
         <div class="price-card">
-          <div class="price-label">Prata 999 — por grama (USD)</div>
-          <div class="price-value">$<span id="p-gm-usd">--</span></div>
-          <div class="price-sub">Spot ÷ 31,1035</div>
-        </div>
-        <div class="price-card">
-          <div class="price-label">Prata 999 — por grama (BRL aprox.)</div>
-          <div class="price-value">R$<span id="p-gm-brl">--</span></div>
-          <div class="price-sub">Taxa aproximada: USD × 5,00</div>
-        </div>
-        <div class="price-card">
-          <div class="price-label">Prata 999 — por kg (USD)</div>
-          <div class="price-value">$<span id="p-kg">--</span></div>
+          <div class="price-label">Prata 999 — por kg (R$ aprox.)</div>
+          <div class="price-value">R$<span id="p-kg">--</span></div>
           <div class="price-sub">1.000g de prata 999 pura</div>
         </div>
       </div>
@@ -171,13 +166,13 @@
           <button class="btn" style="width:100%;margin-right:0;justify-content:center;" onclick="calcVal()">Calcular Valor</button>
           <div id="c-res" style="margin-top:18px;padding:18px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.3);border-radius:8px;display:none;">
             <div style="font-size:11px;color:#8fa3bc;margin-bottom:4px;text-transform:uppercase;">Valor de Fusão (Prata 999)</div>
-            <div style="font-size:28px;font-weight:800;color:var(--acc);font-family:'JetBrains Mono',monospace;">$<span id="c-val-usd">0.00</span> <span style="font-size:14px;color:#8fa3bc;">USD</span></div>
-            <div style="font-size:22px;font-weight:700;color:#c4b5fd;font-family:'JetBrains Mono',monospace;margin-top:4px;">R$<span id="c-val-brl">0,00</span> <span style="font-size:12px;color:#8fa3bc;">BRL aprox.</span></div>
+            <div style="font-size:28px;font-weight:800;color:var(--acc);font-family:'JetBrains Mono',monospace;">R$<span id="c-val-brl">0,00</span> <span style="font-size:14px;color:#8fa3bc;">BRL aprox.</span></div>
+            <div style="font-size:16px;font-weight:600;color:#8fa3bc;font-family:'JetBrains Mono',monospace;margin-top:4px;">$<span id="c-val-usd">0.00</span> <span style="font-size:12px;">USD</span></div>
           </div>
         </div>
         <div class="card">
           <h3 style="font-size:15px;font-weight:600;margin-bottom:14px;">Referência — Tamanhos Padrão de Barras/Moedas</h3>
-          <table><thead><tr><th>Tamanho</th><th>USD</th><th>BRL aprox.</th></tr></thead><tbody id="ref-tbl"></tbody></table>
+          <table><thead><tr><th>Tamanho</th><th>R$ aprox.</th><th>USD</th></tr></thead><tbody id="ref-tbl"></tbody></table>
         </div>
       </div>
     </section>
@@ -336,17 +331,17 @@
       try{
         const spot=SilverPrice.getPrice();if(!spot)return;
         const pgUsd=(spot/31.1035)*PU;
-        document.getElementById('p-oz').textContent=fmt(spot,2);
+        document.getElementById('p-oz').textContent=fmt(spot*BRL,2);
         document.getElementById('p-gm-usd').textContent=fmt(pgUsd,4);
         document.getElementById('p-gm-brl').textContent=fmt(pgUsd*BRL,2);
-        document.getElementById('p-kg').textContent=fmt(pgUsd*1000,2);
+        document.getElementById('p-kg').textContent=fmt(pgUsd*1000*BRL,2);
         document.getElementById('upd-time').textContent='Atualizado: '+new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
         const ws=[
           {l:'1g',g:1},{l:'5g',g:5},{l:'10g',g:10},
           {l:'1oz (31,1g)',g:31.1035},{l:'100g',g:100},
           {l:'500g',g:500},{l:'1kg',g:1000}
         ];
-        document.getElementById('ref-tbl').innerHTML=ws.map(w=>'<tr><td>'+w.l+'</td><td style="color:var(--acc);font-weight:600;">$'+fmt(w.g*pgUsd,2)+'</td><td style="color:#c4b5fd;">R$'+fmt(w.g*pgUsd*BRL,2)+'</td></tr>').join('');
+        document.getElementById('ref-tbl').innerHTML=ws.map(w=>'<tr><td>'+w.l+'</td><td style="color:var(--acc);font-weight:600;">R$'+fmt(w.g*pgUsd*BRL,2)+'</td><td style="color:#8fa3bc;">$'+fmt(w.g*pgUsd,2)+'</td></tr>').join('');
       }catch(e){}
     }
     function calcVal(){

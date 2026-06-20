@@ -135,7 +135,7 @@
           <div class="type-name">Prata 999 — Prata Pura</div>
           <div class="type-purity">Pureza: 99,9%</div>
           <div class="type-use">Uso: Investimento, barras, moedas. O preço spot é o preço da prata 999.</div>
-          <div class="type-price">$<span id="p-999">--</span>/g</div>
+          <div class="type-price">R$<span id="p-999">--</span>/g</div>
           <a href="/pt/prata-999/" class="btn btn-g" style="margin-top:12px;font-size:13px;padding:10px 16px;">Ver tudo →</a>
         </div>
         <div class="type-card" style="border-color:rgba(168,85,247,0.5);">
@@ -143,7 +143,7 @@
           <div class="type-name">Prata 950 — Padrão Brasileiro</div>
           <div class="type-purity">Pureza: 95,0%</div>
           <div class="type-use">Uso: Joias finas, alianças, artigos de prataria no Brasil.</div>
-          <div class="type-price">$<span id="p-950">--</span>/g</div>
+          <div class="type-price">R$<span id="p-950">--</span>/g</div>
           <a href="/pt/prata-950/" class="btn btn-g" style="margin-top:12px;font-size:13px;padding:10px 16px;">Ver tudo →</a>
         </div>
         <div class="type-card">
@@ -151,7 +151,7 @@
           <div class="type-name">Prata 925 — Sterling Silver</div>
           <div class="type-purity">Pureza: 92,5%</div>
           <div class="type-use">Uso: Joias, talheres, bijuterias — padrão internacional.</div>
-          <div class="type-price">$<span id="p-925">--</span>/g</div>
+          <div class="type-price">R$<span id="p-925">--</span>/g</div>
           <a href="/pt/prata-925/" class="btn btn-g" style="margin-top:12px;font-size:13px;padding:10px 16px;">Ver tudo →</a>
         </div>
       </div>
@@ -165,13 +165,13 @@
           <div style="font-size:28px;font-weight:900;color:var(--acc);font-family:'JetBrains Mono',monospace;margin-bottom:10px;">900</div>
           <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Prata 900 — Coin Silver</h3>
           <p style="font-size:14px;color:#c2cfe0;margin-bottom:10px;">Pureza de 90%. Usada em moedas americanas de prata antes de 1965 (dimes, quarters, half-dollars). No Brasil, algumas moedas antigas também usam este teor. Hoje é principalmente encontrada em sucata numismática e talheres europeus do século XIX.</p>
-          <div style="font-size:18px;font-weight:800;color:var(--acc);font-family:'JetBrains Mono',monospace;">$<span id="p-900">--</span>/g</div>
+          <div style="font-size:18px;font-weight:800;color:var(--acc);font-family:'JetBrains Mono',monospace;">R$<span id="p-900">--</span>/g</div>
         </div>
         <div class="card">
           <div style="font-size:28px;font-weight:900;color:var(--acc);font-family:'JetBrains Mono',monospace;margin-bottom:10px;">800</div>
           <h3 style="font-size:16px;font-weight:700;margin-bottom:8px;">Prata 800 — Prata Europeia</h3>
           <p style="font-size:14px;color:#c2cfe0;margin-bottom:10px;">Pureza de 80%. Padrão histórico em muitos países europeus (Alemanha, Itália, Escandinávia) para talheres, copos e objetos decorativos. Ainda muito encontrada em antiquários e mercados de pulga. O teor de cobre mais alto faz com que escureça mais rapidamente.</p>
-          <div style="font-size:18px;font-weight:800;color:var(--acc);font-family:'JetBrains Mono',monospace;">$<span id="p-800">--</span>/g</div>
+          <div style="font-size:18px;font-weight:800;color:var(--acc);font-family:'JetBrains Mono',monospace;">R$<span id="p-800">--</span>/g</div>
         </div>
       </div>
     </section>
@@ -188,8 +188,8 @@
               <th>Pureza</th>
               <th>Nome</th>
               <th>Uso Principal</th>
-              <th>USD/g Hoje</th>
-              <th>BRL/g Aprox.</th>
+              <th>R$/g Hoje</th>
+              <th>USD/g</th>
               <th>Detalhe</th>
             </tr>
           </thead>
@@ -323,7 +323,7 @@
         ['999','950','925','900','800'].forEach(id=>{
           const pu=PURITIES.find(p=>p.id===id);
           const el=document.getElementById('p-'+id);
-          if(el&&pu)el.textContent=fmt(pgBase*pu.p,4);
+          if(el&&pu)el.textContent=fmt(pgBase*pu.p*BRL,2);
         });
         // Full table
         document.getElementById('compare-tbody').innerHTML=PURITIES.map(pu=>{
@@ -334,8 +334,8 @@
             <td>${(pu.p*100).toFixed(1)}%</td>
             <td style="color:#c2cfe0;">${pu.name}</td>
             <td style="color:#8fa3bc;font-size:13px;">${pu.use}</td>
-            <td style="font-weight:700;color:var(--acc);">$${fmt(gpg,4)}</td>
-            <td style="color:#c4b5fd;">R$${fmt(gpg*BRL,2)}</td>
+            <td style="font-weight:700;color:var(--acc);">R$${fmt(gpg*BRL,2)}</td>
+            <td style="color:#8fa3bc;">$${fmt(gpg,4)}</td>
             <td>${link}</td>
           </tr>`;
         }).join('');
