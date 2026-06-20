@@ -223,7 +223,7 @@ window.MenuTranslations = {
     "es": "plata-esterlina-925",
     "hi": "925-चद-कलकलटर",
     "it": "calcolatrice-in-argento-925",
-    "pt": "calculadora-de-prata-925",
+    "pt": "prata-925",
     "tr": "925-gümüş-hesap-makinesi",
     "ur": "925-سلور-کیلکولیٹر",
     "zh": "925银计算器"
@@ -260,7 +260,7 @@ window.MenuTranslations = {
     "es": "plata-fina-999",
     "hi": "999-चद-कलकलटर",
     "it": "calcolatrice-in-argento-999",
-    "pt": "calculadora-de-prata-999",
+    "pt": "prata-999",
     "tr": "999-gümüş-hesap-makinesi",
     "ur": "999-سلور-کیلکولیٹر",
     "zh": "999银计算器"
@@ -572,7 +572,7 @@ window.MenuTranslations = {
     "fr": "prix-de-l-argent-au-gramme",
     "hi": "चद-क-कमत-परत-गरम",
     "it": "prezzo-dellargento-al-grammo",
-    "pt": "preço-da-prata-por-grama",
+    "pt": "preco-da-prata-por-grama-hoje",
     "ru": "цена-серебра-за-грамм",
     "tr": "gram-başına-gümüş-fiyatı",
     "ur": "چاندی-کی-قیمت-فی-گرام",
@@ -870,6 +870,15 @@ window.MenuTranslations = {
     "tr": "troy-ons-nedir",
     "ur": "ٹرائے-اونس-کیا-ہے",
     "zh": "什么是金衡盎司"
+  },
+  "950-silver-calculator": {
+    "pt": "prata-950"
+  },
+  "silver-types-guide": {
+    "pt": "tipos-de-prata"
+  },
+  "silver-price-per-gram-today": {
+    "pt": "preco-da-prata-por-grama-hoje"
   }
 }
 };
