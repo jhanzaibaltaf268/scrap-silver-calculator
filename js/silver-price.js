@@ -30,6 +30,7 @@ const SilverPrice = (() => {
   // Exchange rates — fallback values when live rates unavailable
   const CURRENCIES = {
     USD: { symbol: '$',  rate: 1,      name: 'US Dollar' },
+    BRL: { symbol: 'R$', rate: 5.70,   name: 'Real Brasileiro' },
     EUR: { symbol: '€',  rate: 0.92,   name: 'Euro' },
     GBP: { symbol: '£',  rate: 0.79,   name: 'British Pound' },
     CAD: { symbol: 'C$', rate: 1.36,   name: 'Canadian Dollar' },
