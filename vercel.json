@@ -515,7 +515,7 @@
     },
     {
       "source": "/pt/valor-de-1-10-onças-de-prata/",
-      "destination": "/pt/valor-de-prata-de-10-onças/",
+      "destination": "/pt/",
       "permanent": true
     },
     {
@@ -611,6 +611,331 @@
     {
       "source": "/es/silver-scrap-calculator/",
       "destination": "/es/calculadora-de-plata-de-desecho/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/100oz-silver-value/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/10oz-silver-value/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/2oz-silver-value/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/5oz-silver-value/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/1oz-silver-value/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-dime-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-dollar-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-quarter-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/canadian-silver-coin-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/pennyweight-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/sona-chandi-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/tola-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/10k-gold-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/14k-gold-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/18k-gold-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/22k-gold-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/24k-gold-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/gold-price-today/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-bracelet-value/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-chain-value/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-cup-value/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-fork-value/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-knife-value/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-necklace-value/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-plate-value/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-ring-value/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-spoon-value/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-tray-value/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/1kg-silver-value/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-bar-value-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-batch-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/what-is-silver-bullion/",
+      "destination": "/pt/preco-da-prata-por-grama-hoje/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/palladium-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/platinum-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-profit-calculator/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-news-today/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/silver-sell-or-hold/",
+      "destination": "/pt/preco-da-prata-por-grama-hoje/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-de-prata-de-100-onças/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-de-prata-de-10-onças/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-de-prata-de-2-onças/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-de-prata-de-5-onças/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-de-1-onça-de-prata/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-de-centavo/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-dólar-de-prata/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-do-valor-da-moeda-de-prata/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-do-quarto-de-prata/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-de-moeda-de-prata-canadense/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-sona-chandi/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-tola/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-da-pulseira-de-prata/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-da-corrente-de-prata/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-da-taça-de-prata/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-do-garfo-de-prata/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-da-faca-de-prata/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-do-colar-de-prata/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-da-placa-de-prata/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-do-anel-de-prata/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-da-colher-de-prata/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-da-bandeja-de-prata/",
+      "destination": "/pt/calculadora-de-valor-de-joias-de-prata/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/valor-de-1kg-de-prata/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-de-valor-de-barra-de-prata/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-de-lote-de-prata/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/o-que-é-barras-de-prata/",
+      "destination": "/pt/preco-da-prata-por-grama-hoje/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/calculadora-de-lucro-de-prata/",
+      "destination": "/pt/",
+      "permanent": true
+    },
+    {
+      "source": "/pt/prata-vender-ou-manter/",
+      "destination": "/pt/preco-da-prata-por-grama-hoje/",
       "permanent": true
     }
   ],
