@@ -19,11 +19,11 @@ const SiteComponents = (() => {
     {
       label: 'nav_calculators', dropdown: [
         { label: 'nav_gold_silver', href: '/gold-and-silver-calculator/' },
-        { label: 'nav_melt_value', href: '/silver-melt-value-calculator/' },
+        { label: 'nav_melt_value', href: '/silver-melt-value-calculator/', hideForLangs: ['pt'] },
         { label: 'nav_sterling', href: '/sterling-silver-calculator/' },
         { label: 'nav_junk', href: '/junk-silver-calculator/' },
         { label: 'nav_coins', href: '/silver-coin-value-calculator/' },
-        { label: 'nav_bar', href: '/silver-bar-value-calculator/' },
+        { label: 'nav_bar', href: '/silver-bar-value-calculator/', hideForLangs: ['pt'] },
         { label: 'nav_jewelry', href: '/silver-jewelry-value-calculator/' },
         { label: 'nav_silverware', href: '/silverware-value-calculator/' },
       ]
@@ -41,19 +41,19 @@ const SiteComponents = (() => {
     },
     {
       label: 'nav_tools', dropdown: [
-        { label: 'nav_profit', href: '/silver-profit-calculator/' },
-        { label: 'nav_batch', href: '/silver-batch-calculator/' },
-        { label: 'nav_sona_chandi', href: '/sona-chandi-calculator/' },
-        { label: 'nav_face_value', href: '/face-value-silver-calculator/' },
-        { label: 'nav_weight', href: '/silver-weight-converter/' },
-        { label: 'nav_pennyweight', href: '/pennyweight-calculator/' },
-        { label: 'nav_tola', href: '/tola-calculator/' },
-        { label: 'nav_sell_hold', href: '/silver-sell-or-hold/' },
-        { label: 'nav_identifier', href: '/identify-silver/' },
+        { label: 'nav_profit',      href: '/silver-profit-calculator/', hideForLangs: ['pt'] },
+        { label: 'nav_batch',       href: '/silver-batch-calculator/',  hideForLangs: ['pt'] },
+        { label: 'nav_sona_chandi', href: '/sona-chandi-calculator/',   hideForLangs: ['pt'] },
+        { label: 'nav_face_value',  href: '/face-value-silver-calculator/' },
+        { label: 'nav_weight',      href: '/silver-weight-converter/' },
+        { label: 'nav_pennyweight', href: '/pennyweight-calculator/',   hideForLangs: ['pt'] },
+        { label: 'nav_tola',        href: '/tola-calculator/',          hideForLangs: ['pt'] },
+        { label: 'nav_sell_hold',   href: '/silver-sell-or-hold/',      hideForLangs: ['pt'] },
+        { label: 'nav_identifier',  href: '/identify-silver/' },
       ]
     },
     {
-      label: 'nav_gold_metals', dropdown: [
+      label: 'nav_gold_metals', hideForLangs: ['pt'], dropdown: [
         { label: 'nav_gold_calc',        href: '/gold-melt-value-calculator/' },
         { label: 'nav_14k',              href: '/14k-gold-calculator/' },
         { label: 'nav_18k',              href: '/18k-gold-calculator/' },
@@ -124,30 +124,32 @@ const SiteComponents = (() => {
     {
       title: 'nav_calculators',
       links: [
-        { label: 'nav_melt_value', href: '/silver-melt-value-calculator/' },
-        { label: 'nav_sterling', href: '/sterling-silver-calculator/' },
-        { label: 'nav_junk', href: '/junk-silver-calculator/' },
-        { label: 'nav_coins', href: '/silver-coin-value-calculator/' },
-        { label: 'nav_bar', href: '/silver-bar-value-calculator/' },
+        { label: 'nav_melt_value', href: '/silver-melt-value-calculator/', hideForLangs: ['pt'] },
+        { label: 'nav_sterling',   href: '/sterling-silver-calculator/' },
+        { label: 'nav_junk',       href: '/junk-silver-calculator/' },
+        { label: 'nav_coins',      href: '/silver-coin-value-calculator/' },
+        { label: 'nav_bar',        href: '/silver-bar-value-calculator/', hideForLangs: ['pt'] },
+        { label: 'nav_jewelry',    href: '/silver-jewelry-value-calculator/' },
+        { label: 'nav_silverware', href: '/silverware-value-calculator/' },
       ]
     },
     {
       title: 'nav_silver_price',
       links: [
-        { label: 'nav_price_today', href: '/silver-price-today/' },
-        { label: 'nav_925_price_today', href: '/925-silver-price-today/' },
-        { label: 'nav_999_price_today', href: '/999-silver-price-today/' },
+        { label: 'nav_price_today',       href: '/silver-price-today/' },
+        { label: 'nav_925_price_today',   href: '/925-silver-price-today/' },
+        { label: 'nav_999_price_today',   href: '/999-silver-price-today/' },
         { label: 'nav_silver_news_today', href: '/silver-news-today/' },
       ]
     },
     {
       title: 'nav_gold_metals',
       links: [
-        { label: 'nav_gold_calc',      href: '/gold-melt-value-calculator/' },
-        { label: 'nav_14k',            href: '/14k-gold-calculator/' },
-        { label: 'nav_18k',            href: '/18k-gold-calculator/' },
-        { label: 'nav_platinum_calc',  href: '/platinum-calculator/' },
-        { label: 'nav_palladium_calc', href: '/palladium-calculator/' },
+        { label: 'nav_gold_calc',      href: '/gold-melt-value-calculator/',  hideForLangs: ['pt'] },
+        { label: 'nav_14k',            href: '/14k-gold-calculator/',          hideForLangs: ['pt'] },
+        { label: 'nav_18k',            href: '/18k-gold-calculator/',          hideForLangs: ['pt'] },
+        { label: 'nav_platinum_calc',  href: '/platinum-calculator/',          hideForLangs: ['pt'] },
+        { label: 'nav_palladium_calc', href: '/palladium-calculator/',         hideForLangs: ['pt'] },
       ]
     },
     {
@@ -353,12 +355,15 @@ const SiteComponents = (() => {
     }).join('');
 
     const navItemsHTML = NAV_ITEMS.map(item => {
+        if (item.hideForLangs && item.hideForLangs.includes(currentLang)) return '';
         if (item.dropdown) {
+            const visibleItems = item.dropdown.filter(d => !d.hideForLangs || !d.hideForLangs.includes(currentLang));
+            if (visibleItems.length === 0) return '';
             return `
                 <div class="nav-dropdown">
                     <div class="nav-link nav-dropdown-trigger">${tl(item.label)} <span style="font-size:8px;opacity:0.6;margin-left:4px;">▼</span></div>
                     <div class="nav-dropdown-menu">
-                        ${item.dropdown.map(d => `<a href="${s(d.href)}">${tl(d.label)}</a>`).join('')}
+                        ${visibleItems.map(d => `<a href="${s(d.href)}">${tl(d.label)}</a>`).join('')}
                     </div>
                 </div>`;
         }
@@ -400,11 +405,14 @@ const SiteComponents = (() => {
         <div class="mobile-nav-content">
             <div style="padding:20px; display:flex; flex-direction:column; gap:8px;">
                 ${NAV_ITEMS.map(item => {
+                    if (item.hideForLangs && item.hideForLangs.includes(currentLang)) return '';
                     if (item.dropdown) {
+                        const visibleItems = item.dropdown.filter(d => !d.hideForLangs || !d.hideForLangs.includes(currentLang));
+                        if (visibleItems.length === 0) return '';
                         return `
                             <div style="margin-bottom:12px;">
                                 <div style="font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;margin-bottom:8px;padding-left:12px;">${tl(item.label)}</div>
-                                ${item.dropdown.map(d => `<a href="${s(d.href)}" class="nav-link" style="padding-left:24px;">${tl(d.label)}</a>`).join('')}
+                                ${visibleItems.map(d => `<a href="${s(d.href)}" class="nav-link" style="padding-left:24px;">${tl(d.label)}</a>`).join('')}
                             </div>`;
                     }
                     return `<a href="${s(item.href)}" class="nav-link">${tl(item.label)}</a>`;
@@ -457,12 +465,16 @@ const SiteComponents = (() => {
     if (!el) return;
     const bp = getBasePath();
 
-    const colsHTML = FOOTER_COLS.map(col => `
+    const footerLang = getLangCode();
+    const colsHTML = FOOTER_COLS.map(col => {
+      const visLinks = col.links.filter(l => !l.hideForLangs || !l.hideForLangs.includes(footerLang));
+      if (visLinks.length === 0) return '';
+      return `
       <div class="footer-col">
         <h4>${tl(col.title)}</h4>
-        ${col.links.map(l => `<a href="${s(l.href)}">${tl(l.label)}</a>`).join('')}
-      </div>`
-    ).join('');
+        ${visLinks.map(l => `<a href="${s(l.href)}">${tl(l.label)}</a>`).join('')}
+      </div>`;
+    }).join('');
 
     el.innerHTML = `
       <footer class="site-footer">

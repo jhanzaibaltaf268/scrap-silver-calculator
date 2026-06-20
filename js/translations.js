@@ -422,7 +422,6 @@ window.MenuTranslations = {
     "es": "calculadora-por-lotes",
     "fr": "calculateur-par-lots",
     "it": "calcolatore-batch-argento",
-    "pt": "calculadora-de-lote-de-prata",
     "ar": "حاسبة-دفعة-الفضة"
   },
   "silver-bracelet-value": {
@@ -447,6 +446,7 @@ window.MenuTranslations = {
     "ru": "калькулятор-стоимости-серебряной-монеты",
     "es": "valor-de-moneda-de-plata",
     "fr": "valeur-des-pieces-d-argent",
+    "pt": "calculadora-de-moeda-de-prata",
     "tr": "gümüş-para-değeri-hesaplama",
     "ur": "چاندی-کے-سکے-کی-قیمت-کا-کیلکولیٹر",
     "zh": "银币价值计算器",
@@ -517,7 +517,7 @@ window.MenuTranslations = {
     "tr": "gümüş-mücevher-değeri-hesaplama",
     "it": "calcolatore-del-valore-dei-gioielli-in-argento",
     "de": "silber-schmuck-wert-rechner",
-    "pt": "calculadora-do-valor-da-jóia-de-prata",
+    "pt": "calculadora-de-valor-de-joias-de-prata",
     "hi": "चांदी-के-गहने-की-कीमत-कैलकुलेटर"
   },
   "silver-knife-value": {
@@ -598,7 +598,6 @@ window.MenuTranslations = {
     "fr": "calculateur-de-profit-d-argent",
     "hi": "चद-लभ-कलकलटर",
     "it": "calcolatore-del-profitto-dargento",
-    "pt": "calculadora-de-lucro-de-prata",
     "ru": "калькулятор-прибыли-по-серебру",
     "tr": "gümüş-kar-hesaplama",
     "ur": "چاندی-کے-منافع-کا-کیلکولیٹر",
@@ -737,6 +736,7 @@ window.MenuTranslations = {
     "ru": "калькулятор-стоимости-столового-серебра",
     "es": "valor-de-cubiertos-de-plata",
     "fr": "valeur-de-l-argenterie",
+    "pt": "calculadora-de-valor-de-talheres",
     "zh": "银器价值计算器",
     "ar": "حاسبة-قيمة-الفضيات"
   },
