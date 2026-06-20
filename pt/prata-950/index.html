@@ -127,7 +127,7 @@
         <div class="price-card">
           <div class="price-label">Prata 950 — por grama (R$)</div>
           <div class="price-value">R$<span id="p-gm-brl">--</span></div>
-          <div class="price-sub">Spot × 0,950 · ref. USD: $<span id="p-gm-usd">--</span>/g</div>
+          <div class="price-sub">Spot × 0,950 · preço ao vivo</div>
         </div>
         <div class="price-card">
           <div class="price-label">Prata 950 — por kg (R$ aprox.)</div>
@@ -150,13 +150,12 @@
           <button class="btn" style="width:100%;margin-right:0;justify-content:center;" onclick="calcVal()">Calcular Valor</button>
           <div id="c-res" style="margin-top:18px;padding:18px;background:rgba(168,85,247,0.1);border:1px solid rgba(168,85,247,0.3);border-radius:8px;display:none;">
             <div style="font-size:11px;color:#8fa3bc;margin-bottom:4px;text-transform:uppercase;">Valor de Fusão (Prata 950)</div>
-            <div style="font-size:28px;font-weight:800;color:var(--acc);font-family:'JetBrains Mono',monospace;">R$<span id="c-val-brl">0,00</span> <span style="font-size:14px;color:#8fa3bc;">BRL aprox.</span></div>
-            <div style="font-size:16px;font-weight:600;color:#8fa3bc;font-family:'JetBrains Mono',monospace;margin-top:4px;">$<span id="c-val-usd">0.00</span> <span style="font-size:12px;">USD</span></div>
+            <div style="font-size:28px;font-weight:800;color:var(--acc);font-family:'JetBrains Mono',monospace;">R$<span id="c-val-brl">0,00</span></div>
           </div>
         </div>
         <div class="card">
           <h3 style="font-size:15px;font-weight:600;margin-bottom:14px;">Referência — Pesos Comuns em Prata 950</h3>
-          <table><thead><tr><th>Peso</th><th>R$ aprox.</th><th>USD</th></tr></thead><tbody id="ref-tbl"></tbody></table>
+          <table><thead><tr><th>Peso</th><th>R$</th></tr></thead><tbody id="ref-tbl"></tbody></table>
         </div>
       </div>
     </section>
@@ -284,27 +283,27 @@
   <script src="/js/silver-price.js"></script>
   <script src="/js/components.js"></script>
   <script>
-    const BRL=5.0, PU=0.950;
+    const PU=0.950;
     function fmt(v,d=2){return v.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});}
     function upd(){
       try{
+        const BRL=SilverPrice.CURRENCIES.BRL.rate;
         const spot=SilverPrice.getPrice();if(!spot)return;
         const pgUsd=(spot/31.1035)*PU;
-        document.getElementById('p-gm-usd').textContent=fmt(pgUsd,4);
         document.getElementById('p-gm-brl').textContent=fmt(pgUsd*BRL,2);
         document.getElementById('p-kg').textContent=fmt(pgUsd*1000*BRL,2);
         document.getElementById('upd-time').textContent='Atualizado: '+new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
         const ws=[{l:'1g',g:1},{l:'5g',g:5},{l:'10g',g:10},{l:'25g',g:25},{l:'50g',g:50},{l:'100g',g:100}];
-        document.getElementById('ref-tbl').innerHTML=ws.map(w=>'<tr><td>'+w.l+'</td><td style="color:var(--acc);font-weight:600;">R$'+fmt(w.g*pgUsd*BRL,2)+'</td><td style="color:#8fa3bc;">$'+fmt(w.g*pgUsd,2)+'</td></tr>').join('');
+        document.getElementById('ref-tbl').innerHTML=ws.map(w=>'<tr><td>'+w.l+'</td><td style="color:var(--acc);font-weight:600;">R$'+fmt(w.g*pgUsd*BRL,2)+'</td></tr>').join('');
       }catch(e){}
     }
     function calcVal(){
       try{
+        const BRL=SilverPrice.CURRENCIES.BRL.rate;
         const a=parseFloat(document.getElementById('c-amt').value)||0;
         const spot=SilverPrice.getPrice();
         const pgUsd=(spot/31.1035)*PU;
         const val=a*pgUsd;
-        document.getElementById('c-val-usd').textContent=fmt(val,2);
         document.getElementById('c-val-brl').textContent=fmt(val*BRL,2);
         document.getElementById('c-res').style.display='block';
       }catch(e){}
