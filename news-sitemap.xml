@@ -4,6 +4,46 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
+    <loc>https://scrapsilvercalculater.com/silver-news/great-precious-metals-realignment-june-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Scrap Silver Calculator</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-21T07:00:00+00:00</news:publication_date>
+      <news:title>The Great Precious Metals Realignment: Paper Panics vs. Physical Reality</news:title>
+      <news:keywords>precious metals, de-dollarization, silver, gold, geopolitical, Eastern accumulation, paper markets, structural deficit, private credit crisis, China, India, Russia</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://scrapsilvercalculater.com/images/social-share.png</image:loc>
+      <image:caption>Great Precious Metals Realignment — June 21, 2026</image:caption>
+    </image:image>
+    <lastmod>2026-06-21T07:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <url>
+    <loc>https://scrapsilvercalculater.com/silver-news/silver-hawkish-fed-weekly-slide-june-2026/</loc>
+    <news:news>
+      <news:publication>
+        <news:name>Scrap Silver Calculator</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2026-06-21T07:00:00+00:00</news:publication_date>
+      <news:title>Silver Stumbles: Hawkish Fed and Easing Geopolitical Risks Trigger a 5% Weekly Slide</news:title>
+      <news:keywords>silver price, Federal Reserve, hawkish policy, geopolitical risk, supply deficit, silver market, precious metals, market analysis</news:keywords>
+    </news:news>
+    <image:image>
+      <image:loc>https://scrapsilvercalculater.com/images/social-share.png</image:loc>
+      <image:caption>Silver Weekly Slide — June 21, 2026</image:caption>
+    </image:image>
+    <lastmod>2026-06-21T07:00:00+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.94</priority>
+  </url>
+
+  <url>
     <loc>https://scrapsilvercalculater.com/silver-price-today/#geopolitical-volatility</loc>
     <news:news>
       <news:publication>
@@ -50,15 +90,15 @@
         <news:name>Scrap Silver Calculator</news:name>
         <news:language>en</news:language>
       </news:publication>
-      <news:publication_date>2026-05-17T06:00:00+00:00</news:publication_date>
-      <news:title>Silver Holds Firm as Fed Uncertainty and Solar Demand Drive Market Focus</news:title>
-      <news:keywords>silver news today, silver price May 2026, silver market analysis, silver spot price, solar silver demand, gold silver ratio, COMEX silver inventory</news:keywords>
+      <news:publication_date>2026-06-21T07:00:00+00:00</news:publication_date>
+      <news:title>Silver Market News Today — Precious Metals Realignment and Fed Policy Impact</news:title>
+      <news:keywords>silver news today, silver price June 2026, silver market analysis, silver spot price, precious metals, de-dollarization, Fed policy, supply deficit</news:keywords>
     </news:news>
     <image:image>
       <image:loc>https://scrapsilvercalculater.com/images/social-share.png</image:loc>
-      <image:caption>Silver Market News Today — May 17, 2026</image:caption>
+      <image:caption>Silver Market News Today — June 21, 2026</image:caption>
     </image:image>
-    <lastmod>2026-05-17T06:00:00+00:00</lastmod>
+    <lastmod>2026-06-21T07:00:00+00:00</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
