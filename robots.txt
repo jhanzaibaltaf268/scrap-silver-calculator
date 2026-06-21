@@ -6,3 +6,4 @@ Allow: /
 # After Google drops them from index (2-4 weeks), Disallow can be added.
 
 Sitemap: https://scrapsilvercalculater.com/sitemap.xml
+Sitemap: https://scrapsilvercalculater.com/news-sitemap.xml
