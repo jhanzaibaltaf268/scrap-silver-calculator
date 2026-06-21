@@ -547,7 +547,7 @@
         <div class="spot-hero-card">
           <div>
             <div class="spot-label-sm">Silver Spot Price</div>
-            <div class="spot-price-big" id="hero-spot">$33.24</div>
+            <div class="spot-price-big" id="hero-spot">$—</div>
             <div class="spot-sub">per troy ounce · .999 fine silver</div>
           </div>
           <div style="text-align:right">
@@ -562,7 +562,7 @@
         <div class="unit-row">
           <div class="unit-cell" style="border-color:var(--purple-border)">
             <div class="u-label">Per Troy Oz</div>
-            <div class="u-val td-gold" id="u-troy">$33.24</div>
+            <div class="u-val td-gold" id="u-troy">$—</div>
             <div class="u-unit">31.1035 g</div>
           </div>
           <div class="unit-cell">
@@ -856,7 +856,7 @@
           <span class="faq-icon">+</span>
         </div>
         <div class="faq-a">
-          Scrap silver is worth its silver content multiplied by today's live spot price of <strong id="faq-spot">$33.24</strong> per troy ounce. The exact value depends on purity (.925 sterling = 92.5% of spot; .999 fine = 99.9%; .900 coin = 90%; .800 European = 80%) and weight. Use the <a href="/">scrap silver calculator</a> for an instant result.
+          Scrap silver is worth its silver content multiplied by today's live spot price of <strong id="faq-spot">$—</strong> per troy ounce. The exact value depends on purity (.925 sterling = 92.5% of spot; .999 fine = 99.9%; .900 coin = 90%; .800 European = 80%) and weight. Use the <a href="/">scrap silver calculator</a> for an instant result.
         </div>
       </div>
 
@@ -980,10 +980,10 @@
 </footer>
 
 
+<script src="/js/silver-price.js"></script>
 <script>
 // ── PRICE DATA ─────────────────────────────────────────────────────────────────
-// Replace SPOT with your live API call output if/when you wire up GoldAPI.io
-const SPOT  = 33.24;
+let SPOT = 65.00; // placeholder — overwritten by live price below
 const TROY  = 31.1035;
 
 const PURITIES = [
@@ -1167,12 +1167,26 @@ function toggleFaq(el) {
 }
 
 // ── INIT ───────────────────────────────────────────────────────────────────────
-populateUnits();
-buildChart();
-buildPurityTable();
-buildPurityCards();
-buildDealerTable();
-buildItemCards();
+function initPage() {
+  populateUnits();
+  buildChart();
+  buildPurityTable();
+  buildPurityCards();
+  buildDealerTable();
+  buildItemCards();
+}
+
+// Use live price from SilverPrice module, rebuild page when price arrives
+if (typeof SilverPrice !== 'undefined') {
+  SilverPrice.onPriceUpdate(function(livePrice) {
+    if (livePrice > 0) {
+      SPOT = livePrice;
+      initPage();
+    }
+  });
+} else {
+  initPage();
+}
 </script>
 
 <script>
