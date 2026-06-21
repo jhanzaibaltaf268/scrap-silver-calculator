@@ -13,7 +13,7 @@ const SilverPrice = (() => {
   const FALLBACK_GOLD      = 3300.00; // Fallback gold price
   const FALLBACK_PLATINUM  = 1050.00; // Fallback platinum price
   const FALLBACK_PALLADIUM = 980.00;  // Fallback palladium price
-  const CACHE_KEY        = 'silverSpotCache';
+  const CACHE_KEY        = 'silverSpotCacheV2';
   const CACHE_DURATION   = 60 * 60 * 1000; // 1 hour (matches Edge cache)
 
   let currentPrice          = FALLBACK_PRICE;

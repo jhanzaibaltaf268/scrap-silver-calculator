@@ -835,16 +835,15 @@
           SiteComponents.renderRelatedLinks('related-links');
         }
       }
+      if (typeof SilverPrice !== 'undefined') {
+        SilverPrice.onPriceUpdate(function (price) {
+          currentPrice = price;
+          const change = SilverPrice.getChange ? SilverPrice.getChange() : null;
+          const changePct = SilverPrice.getChangePercent ? SilverPrice.getChangePercent() : null;
+          updatePriceCards(price, change, changePct);
+        });
+      }
     });
-
-    if (typeof SilverPrice !== 'undefined') {
-      SilverPrice.onPriceUpdate(function (price) {
-        currentPrice = price;
-        const change = SilverPrice.getChange ? SilverPrice.getChange() : null;
-        const changePct = SilverPrice.getChangePercent ? SilverPrice.getChangePercent() : null;
-        updatePriceCards(price, change, changePct);
-      });
-    }
   </script>
 </body>
 </html>

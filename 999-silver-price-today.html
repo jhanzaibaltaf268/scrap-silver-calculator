@@ -847,7 +847,7 @@
       if (typeof SilverPrice !== 'undefined') {
         SilverPrice.onPriceUpdate(function(price) {
           const change    = typeof SilverPrice.getChange === 'function' ? SilverPrice.getChange() : null;
-          const changePct = typeof SilverPrice.getChangePct === 'function' ? SilverPrice.getChangePct() : null;
+          const changePct = typeof SilverPrice.getChangePercent === 'function' ? SilverPrice.getChangePercent() : null;
           updatePriceCards(price, change, changePct);
         });
       }
