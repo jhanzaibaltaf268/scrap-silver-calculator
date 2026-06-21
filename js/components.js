@@ -20,10 +20,8 @@ const SiteComponents = (() => {
     {
       label: 'nav_calculators', dropdown: [
         { label: 'nav_gold_silver', href: '/gold-and-silver-calculator/' },
-        { label: 'nav_melt_value', href: '/silver-melt-value-calculator/', hideForLangs: ['pt'] },
         { label: 'nav_sterling', href: '/sterling-silver-calculator/' },
         { label: 'nav_junk', href: '/junk-silver-calculator/' },
-        { label: 'nav_coins', href: '/silver-coin-value-calculator/' },
         { label: 'nav_bar', href: '/silver-bar-value-calculator/', hideForLangs: ['pt'] },
         { label: 'nav_jewelry', href: '/silver-jewelry-value-calculator/' },
         { label: 'nav_silverware', href: '/silverware-value-calculator/' },
@@ -34,7 +32,6 @@ const SiteComponents = (() => {
         { label: 'nav_999',        href: '/999-silver-calculator/' },
         { label: 'nav_prata_950',  href: '/950-silver-calculator/', showForLangs: ['pt'] },
         { label: 'nav_958',        href: '/958-silver-calculator/', hideForLangs: ['pt'] },
-        { label: 'nav_925',        href: '/925-silver-calculator/' },
         { label: 'nav_900',        href: '/900-silver-calculator/' },
         { label: 'nav_835',        href: '/835-silver-calculator/' },
         { label: 'nav_800',        href: '/800-silver-calculator/' },
@@ -47,7 +44,6 @@ const SiteComponents = (() => {
         { label: 'nav_profit',      href: '/silver-profit-calculator/', hideForLangs: ['pt'] },
         { label: 'nav_batch',       href: '/silver-batch-calculator/',  hideForLangs: ['pt'] },
         { label: 'nav_sona_chandi', href: '/sona-chandi-calculator/',   hideForLangs: ['pt'] },
-        { label: 'nav_face_value',  href: '/face-value-silver-calculator/' },
         { label: 'nav_weight',      href: '/silver-weight-converter/' },
         { label: 'nav_pennyweight', href: '/pennyweight-calculator/',   hideForLangs: ['pt'] },
         { label: 'nav_tola',        href: '/tola-calculator/',          hideForLangs: ['pt'] },
@@ -130,10 +126,8 @@ const SiteComponents = (() => {
     {
       title: 'nav_calculators',
       links: [
-        { label: 'nav_melt_value', href: '/silver-melt-value-calculator/', hideForLangs: ['pt'] },
         { label: 'nav_sterling',   href: '/sterling-silver-calculator/' },
         { label: 'nav_junk',       href: '/junk-silver-calculator/' },
-        { label: 'nav_coins',      href: '/silver-coin-value-calculator/' },
         { label: 'nav_bar',        href: '/silver-bar-value-calculator/', hideForLangs: ['pt'] },
         { label: 'nav_jewelry',    href: '/silver-jewelry-value-calculator/' },
         { label: 'nav_silverware', href: '/silverware-value-calculator/' },
