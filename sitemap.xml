@@ -296,8 +296,20 @@
   </url>
   <url>
     <loc>https://scrapsilvercalculater.com/silver-news-today/</loc>
-    <lastmod>2026-06-15</lastmod>
+    <lastmod>2026-06-21</lastmod>
     <changefreq>daily</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/silver-news/great-precious-metals-realignment-june-2026/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://scrapsilvercalculater.com/silver-news/silver-hawkish-fed-weekly-slide-june-2026/</loc>
+    <lastmod>2026-06-21</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
