@@ -9,10 +9,10 @@
    ============================================ */
 
 const SilverPrice = (() => {
-  const FALLBACK_PRICE     = 65.00;   // Fallback — shown only if all live sources fail
-  const FALLBACK_GOLD      = 3300.00; // Fallback gold price
-  const FALLBACK_PLATINUM  = 1050.00; // Fallback platinum price
-  const FALLBACK_PALLADIUM = 980.00;  // Fallback palladium price
+  const FALLBACK_PRICE     = 58.00;   // Fallback — shown only if all live sources fail (updated June 29, 2026)
+  const FALLBACK_GOLD      = 2395.00; // Fallback gold price (updated June 29, 2026)
+  const FALLBACK_PLATINUM  = 945.00;  // Fallback platinum price (updated June 29, 2026)
+  const FALLBACK_PALLADIUM = 925.00;  // Fallback palladium price (updated June 29, 2026)
   const CACHE_KEY        = 'silverSpotCacheV2';
   const CACHE_DURATION   = 60 * 60 * 1000; // 1 hour (matches Edge cache)
 
@@ -93,29 +93,7 @@ const SilverPrice = (() => {
       }
     }
 
-    // ---- Source 2: GoldAPI.io direct — may work from browser context ----
-    try {
-      const GOLD_API_KEY = 'goldapi-1230smo2lqnxm-io';
-      const [sRes, gRes, ptRes, pdRes] = await Promise.all([
-        fetch('https://www.goldapi.io/api/XAG/USD', { headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' }, mode: 'cors' }),
-        fetch('https://www.goldapi.io/api/XAU/USD', { headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' }, mode: 'cors' }),
-        fetch('https://www.goldapi.io/api/XPT/USD', { headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' }, mode: 'cors' }),
-        fetch('https://www.goldapi.io/api/XPD/USD', { headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' }, mode: 'cors' })
-      ]);
-      if (sRes.ok && gRes.ok) {
-        const [sData, gData] = await Promise.all([sRes.json(), gRes.json()]);
-        const ptData = ptRes.ok ? await ptRes.json() : null;
-        const pdData = pdRes.ok ? await pdRes.json() : null;
-        if (sData.price > 0) {
-          console.log(`✅ GoldAPI.io: Ag=$${sData.price} Au=$${gData.price} Pt=$${ptData?.price} Pd=$${pdData?.price}`);
-          return { silver: sData.price, gold: gData.price, platinum: ptData?.price || null, palladium: pdData?.price || null };
-        }
-      }
-    } catch (e) {
-      console.debug('[GoldAPI] ', e.message);
-    }
-
-    // ---- Source 3: goldprice.org — may work from browser context ----
+    // ---- Source 2: goldprice.org — may work from browser context ----
     try {
       const gpData = await tryFetch('https://data-asg.goldprice.org/dbXRates/USD', { mode: 'cors' });
       if (gpData?.items?.[0]?.xagPrice > 0) {
@@ -127,7 +105,7 @@ const SilverPrice = (() => {
       console.debug('[goldprice] ', e.message);
     }
 
-    // ---- Source 4: metals.live — alternate endpoints ----
+    // ---- Source 3: metals.live — alternate endpoints ----
     for (const endpoint of [
       'https://metals.live/api/v1/spot',
       'https://api.metals.live/v1/spot'
@@ -148,18 +126,6 @@ const SilverPrice = (() => {
       } catch (e) {
         console.debug('[metals.live] ', e.message);
       }
-    }
-
-    // ---- Source 5: ExchangeRate API (confirmed working from Vercel, proxy only) ----
-    // This is just a sanity check to ensure connectivity is working
-    // We can't get precious metals prices from forex API, but we can verify it's reachable
-    try {
-      const testData = await tryFetch('https://api.exchangerate-api.com/v4/latest/USD');
-      if (testData?.rates) {
-        console.log('📡 Connectivity confirmed via exchangerate-api');
-      }
-    } catch (e) {
-      console.debug('[connectivity-test] ', e.message);
     }
 
     console.warn('⚠️ All precious metals sources failed. Using fallback.');

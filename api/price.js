@@ -2,13 +2,12 @@
    VERCEL SERVERLESS FUNCTION — /api/price
 
    Sources (in priority order):
-   1. GoldAPI.io  — paid key
-   2. Stooq.com   — free CSV, very reliable
-   3. Yahoo Finance v8 — free, no key
-   4. Yahoo Finance v7 — free fallback
+   1. Stooq.com   — free CSV, very reliable
+   2. Yahoo Finance v8 — free, no key
+   3. Yahoo Finance v7 — free fallback
+   4. goldprice.org
    5. metals.live
-   6. goldprice.org
-   7. Hardcoded fallback
+   6. Hardcoded fallback
    ============================================ */
 
 module.exports = async function handler(req, res) {
@@ -18,12 +17,10 @@ module.exports = async function handler(req, res) {
 
   res.setHeader('Cache-Control', 'public, s-maxage=1800, stale-while-revalidate=1800');
 
-  const FALLBACK_SILVER    = 65.00;
-  const FALLBACK_GOLD      = 3300.00;
-  const FALLBACK_PLATINUM  = 1050.00;
-  const FALLBACK_PALLADIUM = 980.00;
-
-  const GOLD_API_KEY = 'goldapi-1230smo2lqnxm-io';
+  const FALLBACK_SILVER    = 58.00;
+  const FALLBACK_GOLD      = 2395.00;
+  const FALLBACK_PLATINUM  = 945.00;
+  const FALLBACK_PALLADIUM = 925.00;
 
   async function tryFetch(url, options = {}, timeoutMs = 7000) {
     const ctrl = new AbortController();
@@ -53,36 +50,7 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  // ---- 1. GoldAPI.io ----
-  try {
-    const [sData, gData] = await Promise.all([
-      tryFetchJSON('https://www.goldapi.io/api/XAG/USD', {
-        headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' }
-      }, 6000),
-      tryFetchJSON('https://www.goldapi.io/api/XAU/USD', {
-        headers: { 'x-access-token': GOLD_API_KEY, 'Content-Type': 'application/json' }
-      }, 6000)
-    ]);
-
-    if (sData?.price > 1) {
-      console.log(`✅ GoldAPI.io: Ag=$${sData.price}`);
-      return res.status(200).json({
-        silver:        Math.round(sData.price * 100) / 100,
-        gold:          gData?.price ? Math.round(gData.price * 100) / 100 : FALLBACK_GOLD,
-        platinum:      FALLBACK_PLATINUM,
-        palladium:     FALLBACK_PALLADIUM,
-        change:        sData.ch  ?? null,
-        changePercent: sData.chp ?? null,
-        prevClose:     sData.prev_close_price ?? null,
-        source: 'goldapi',
-        ts: Date.now()
-      });
-    }
-  } catch (e) {
-    console.error('[GoldAPI] ', e.message);
-  }
-
-  // ---- 2. Stooq.com (CSV — very reliable, no auth) ----
+  // ---- 1. Stooq.com (CSV — very reliable, free, no auth) ----
   try {
     const ctrl = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 7000);
@@ -141,7 +109,7 @@ module.exports = async function handler(req, res) {
     console.error('[Stooq] ', e.message);
   }
 
-  // ---- 3. Yahoo Finance v8 ----
+  // ---- 2. Yahoo Finance v8 ----
   try {
     const yhData = await tryFetchJSON(
       'https://query1.finance.yahoo.com/v8/finance/chart/XAG=X?interval=1d&range=1d',
@@ -168,7 +136,7 @@ module.exports = async function handler(req, res) {
     console.error('[Yahoo v8] ', e.message);
   }
 
-  // ---- 4. Yahoo Finance v7 ----
+  // ---- 3. Yahoo Finance v7 ----
   try {
     const yhData = await tryFetchJSON(
       'https://query2.finance.yahoo.com/v7/finance/quote?symbols=XAG=X',
@@ -193,6 +161,28 @@ module.exports = async function handler(req, res) {
     }
   } catch (e) {
     console.error('[Yahoo v7] ', e.message);
+  }
+
+  // ---- 4. goldprice.org ----
+  try {
+    const gpData = await tryFetchJSON(
+      'https://data-asg.goldprice.org/dbXRates/USD',
+      { headers: { 'Referer': 'https://www.goldprice.org/', 'User-Agent': 'Mozilla/5.0' } }
+    );
+    const item = gpData?.items?.[0];
+    if (item?.xagPrice > 1) {
+      console.log(`✅ goldprice.org: Ag=$${item.xagPrice}`);
+      return res.status(200).json({
+        silver:    Math.round(item.xagPrice * 100) / 100,
+        gold:      item.xauPrice ? Math.round(item.xauPrice * 100) / 100 : FALLBACK_GOLD,
+        platinum:  FALLBACK_PLATINUM,
+        palladium: FALLBACK_PALLADIUM,
+        source: 'goldprice.org',
+        ts: Date.now()
+      });
+    }
+  } catch (e) {
+    console.error('[goldprice.org] ', e.message);
   }
 
   // ---- 5. metals.live ----
@@ -220,29 +210,7 @@ module.exports = async function handler(req, res) {
     }
   }
 
-  // ---- 6. goldprice.org ----
-  try {
-    const gpData = await tryFetchJSON(
-      'https://data-asg.goldprice.org/dbXRates/USD',
-      { headers: { 'Referer': 'https://www.goldprice.org/', 'User-Agent': 'Mozilla/5.0' } }
-    );
-    const item = gpData?.items?.[0];
-    if (item?.xagPrice > 1) {
-      console.log(`✅ goldprice.org: Ag=$${item.xagPrice}`);
-      return res.status(200).json({
-        silver:    Math.round(item.xagPrice * 100) / 100,
-        gold:      item.xauPrice ? Math.round(item.xauPrice * 100) / 100 : FALLBACK_GOLD,
-        platinum:  FALLBACK_PLATINUM,
-        palladium: FALLBACK_PALLADIUM,
-        source: 'goldprice.org',
-        ts: Date.now()
-      });
-    }
-  } catch (e) {
-    console.error('[goldprice.org] ', e.message);
-  }
-
-  // ---- 7. Hardcoded fallback ----
+  // ---- 6. Hardcoded fallback ----
   console.warn('⚠️ All price sources failed — using fallback');
   return res.status(200).json({
     silver:    FALLBACK_SILVER,
